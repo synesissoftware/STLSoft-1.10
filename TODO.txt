@@ -1,0 +1,18 @@
+============================================================================
+STLSoft - TODO
+
+; Created:  29th March 2002
+; Updated:  13th January 2017
+
+============================================================================
+
+
+STLSoft 1.10 TODOs:
+===================
+
+* Documentation improvements        -   deferred until 1.11 released
+* Website                           -   deferred until 1.11 released
+* custom radix in integer_to_string -   abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
+* C++ 11/14 compatibility           -   partial; further coming in 1.11
+
+=============================== End of file ================================
