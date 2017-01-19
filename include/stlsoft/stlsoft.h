@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     17th January 2017
+ * Updated:     19th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 4
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     481
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     482
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -474,8 +474,8 @@
  /* ******************************* Clang ******************************* */
 # define STLSOFT_COMPILER_IS_CLANG
 # define STLSOFT_COMPILER_LABEL_STRING          "Clang C/C++"
-# if __clang_major__ < 6
-#  error Only versions 6.0 and later of Clang C/C++ compiler is supported by the STLSoft libraries
+# if __clang_major__ < 3
+#  error Only versions 3.0 and later of Clang C/C++ compiler is supported by the STLSoft libraries
 # else /* ? __COMO_VERSION__ */
 #  define STLSOFT_COMPILER_VERSION_STRING       "Clang " ## __clang_version__
 # endif /* __COMO_VERSION__ */
