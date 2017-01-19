@@ -4,7 +4,7 @@
  * Purpose:     Path manipulation functions.
  *
  * Created:     3rd February 2011
- * Updated:     11th January 2017
+ * Updated:     19th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef PLATFORMSTL_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_REVISION 2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     17
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_REVISION 3
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     18
 #endif /* !PLATFORMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -135,10 +135,10 @@ platformstl_C_get_executable_name_from_path(
     {
         stlsoft_C_string_slice_a_t  r;
         size_t const                cch     =   strlen(path);
+        ss_char_a_t const*          dot;
         ss_char_a_t const*          slash   =   strrchr(path, '/');
 #ifdef _WIN32
         ss_char_a_t const* const    bslash  =   strrchr(path, '\\');
-        ss_char_a_t const*          dot;
 
         if(NULL == slash)
         {
@@ -211,10 +211,10 @@ platformstl_C_get_executable_name_from_path_w(
     {
         stlsoft_C_string_slice_w_t  r;
         size_t const                cch     =   wcslen(path);
+        ss_char_w_t const*          dot;
         ss_char_w_t const*          slash   =   wcsrchr(path, '/');
 #ifdef _WIN32
         ss_char_w_t const* const    bslash  =   wcsrchr(path, '\\');
-        ss_char_w_t const*          dot;
 
         if(NULL == slash)
         {
