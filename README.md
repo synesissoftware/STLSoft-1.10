@@ -19,20 +19,20 @@ libraries share the following characteristics:
    without being related by type) only to the degree of the intersection of
    identical functionality, rather than employing significant additional
    functionality to achieve total structural conformance. For example,
-   though both the unixstl::filesystem_traits and
-   winstl::filesystem_traits traits classes provide the !stat()!
-   and !fstat()! operations, !lstat()! is provided only
-   by unixstl::filesystem_traits.
+   though both the `unixstl::filesystem_traits` and
+   `winstl::filesystem_traits` traits classes provide the `stat()`
+   and `f!stat()` operations, `lstat()` is provided only
+   by `unixstl::filesystem_traits`.
 - **Maximum Cohesion with Minimal Coupling** - achieved by extensive
   use of generalising mechanisms, particularly "*shims*", e.g. types that
   manipulate character strings are able to interact with arbitrary string
-  types, not just !char const*! and !std::string!.
+  types, not just `char const*` and `std::string`.
 - **Very High Efficiency** - Second only to *Robustness*, all components
   in the libraries are implemented with a view to maximum efficient. This is
   aided by the extensive use of efficient utility classes, such as
-  !stlsoft::auto_buffer!
+  `stlsoft::auto_buffer`
   and
-  !scoped_handle!
+  `stlsoft::scoped_handle`
 
 It is important to note that *STLSoft is not a framework*. Each library
 component is as "thin" as possible to provide its given function. The intent
