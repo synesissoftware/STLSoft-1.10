@@ -4,7 +4,7 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     1st January 2017
+ * Updated:     20th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       0
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        15
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    2
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,6 +89,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_W2M
 # include <stlsoft/conversion/w2m.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_W2M */
+#ifndef STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION
+# include <stlsoft/exception/out_of_memory_exception.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION */
 #ifndef STLSOFT_INCL_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE
 # include <stlsoft/filesystem/handles/FILE_stream_handle.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE */
@@ -234,7 +237,7 @@ public: // Operations
     ///   underlying stream
     class_type& write(void const* pv, size_type cb)
     {
-      return write_bytes_(pv, n);
+        return write_bytes_(pv, cb);
     }
 
     /// Causes any buffered output to be emitted to the underlying file

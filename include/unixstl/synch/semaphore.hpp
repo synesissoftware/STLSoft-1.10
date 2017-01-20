@@ -4,7 +4,7 @@
  * Purpose:     Semaphore class, based on POSIX semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     14th January 2017
+ * Updated:     20th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 11
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     32
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 12
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -263,13 +263,15 @@ private:
     {
         UNIXSTL_ASSERT(initialCount <= maxCountValue);
 
-        handle_type sem;
+        handle_type sem = NULL;
 
         if(::sem_init(internal, bInterProcessShared, initialCount) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
             STLSOFT_THROW_X(synchronisation_exception("failed to create kernel semaphore object", errno));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
+
             sem = NULL;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }

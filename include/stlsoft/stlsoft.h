@@ -300,12 +300,13 @@
 # define _STLSOFT_VER_1_9_131   0x010983ff  /*!< Version 1.9.131 (1st October 2016) */
 
 # define _STLSOFT_VER_1_10_1_B01    0x010a0181  /*!< Version 1.10.1 beta 1 (13th January 2017) */
+# define _STLSOFT_VER_1_10_1_B02    0x010a0182  /*!< Version 1.10.1 beta 2 (19th January 2017) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B01
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B02
 
 /* /////////////////////////////////////
  * underlying version detection

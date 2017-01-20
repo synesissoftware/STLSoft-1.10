@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the file_lines components.
  *
  * Created:     25th October 2007
- * Updated:     11th January 2017
+ * Updated:     20th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -46,8 +46,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_MINOR    0
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_REVISION 11
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_EDIT     40
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_REVISION 12
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/file_lines.hpp
@@ -345,7 +345,7 @@ private: // Implementation
 
     void create_from_ref_(HRW_Ref_type mmf, ss_char_w_t const* path)
     {
-        create_from_ref_(ref, stlsoft::w2m(path));
+        create_from_ref_(mmf, stlsoft::w2m(path));
     }
 
     void create_from_ref_(HRW_Ref_type mmf, ss_char_a_t const* path)
