@@ -4,7 +4,7 @@
  * Purpose:     Definition of the stlsoft::out_of_memory_exception class.
  *
  * Created:     13th May 2010
- * Updated:     13th January 2017
+ * Updated:     20th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_MAJOR    2
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_MINOR    0
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_REVISION 2
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_EDIT     17
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_REVISION 4
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,6 +133,10 @@ private:
     typedef status_code_provider<int>                       status_code_provider_type_;
 public:
     typedef status_code_provider_type_::status_code_type    status_code_type;
+#ifdef STLSOFT_NO_NAMESPACE
+    typedef STLSoftProjectIdentifier_t                      ProjectIdentifier_t;
+    typedef STLSoftLibraryIdentifier_t                      LibraryIdentifier_t;
+#endif /* STLSOFT_NO_NAMESPACE */
 
 public: // Construction
     out_of_memory_exception()
