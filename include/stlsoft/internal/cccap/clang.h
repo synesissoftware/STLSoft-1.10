@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     13th January 2017
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    5
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     15
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 3
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -161,6 +161,7 @@
  */
 
 #if __has_feature(cxx_nullptr)
+# define STLSOFT_CF_nullptr_KEYWORD_SUPPORT
 # define STLSOFT_CF_BUILTIN_nullptr_SUPPORT
 #endif
 
@@ -237,7 +238,13 @@
 
 #define STLSOFT_CF_mutable_KEYWORD_SUPPORT
 
-#define STLSOFT_CF_override_KEYWORD_SUPPORT
+#if __has_feature(cxx_noexcept)
+# define STLSOFT_CF_noexcept_KEYWORD_SUPPORT
+#endif /* compiler */
+
+#if __has_feature(cxx_override_control)
+# define STLSOFT_CF_override_KEYWORD_SUPPORT
+#endif
 
 #define STLSOFT_CF_TEMPLATE_QUALIFIER_KEYWORD_SUPPORT
 

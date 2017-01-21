@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     11th January 2017
+ * Updated:     21st January 2017
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      26
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       98
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       99
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -284,9 +284,9 @@
 
 #define STLSOFT_CF_MEMBER_CONSTANT_SUPPORT
 
-#if __GNUC__ > 4 || \
-    (   __GNUC__ == 4 && \
-        __GNUC_MINOR__ >= 7)
+#if STLSOFT_GCC_VER >= 40700 &&\
+    defined(__cplusplus) &&\
+    (__cplusplus > 199711)
 # define STLSOFT_CF_constexpr_KEYWORD_SUPPORT
 #endif
 
@@ -294,21 +294,21 @@
 
 #define STLSOFT_CF_mutable_KEYWORD_SUPPORT
 
-#if __GNUC__ > 4 || \
-    (   __GNUC__ == 4 && \
-        __GNUC_MINOR__ >= 7)
+#if STLSOFT_GCC_VER >= 40700 &&\
+    defined(__cplusplus) &&\
+    (__cplusplus > 199711)
 # define STLSOFT_CF_noexcept_KEYWORD_SUPPORT
 #endif /* compiler */
 
-#if __GNUC__ > 4 || \
-    (   __GNUC__ == 4 && \
-        __GNUC_MINOR__ >= 7)
+#if STLSOFT_GCC_VER >= 40700 &&\
+    defined(__cplusplus) &&\
+    (__cplusplus > 199711)
 # define STLSOFT_CF_nullptr_KEYWORD_SUPPORT
 #endif /* compiler */
 
-#if __GNUC__ > 4 || \
-    (   __GNUC__ == 4 && \
-        __GNUC_MINOR__ >= 7)
+#if STLSOFT_GCC_VER >= 40700 &&\
+    defined(__cplusplus) &&\
+    (__cplusplus > 199711)
 # define STLSOFT_CF_override_KEYWORD_SUPPORT
 #endif /* compiler */
 
