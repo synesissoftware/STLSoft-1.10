@@ -4,7 +4,7 @@
  * Purpose:     Contains the shared_ptr template class.
  *
  * Created:     17th June 2002
- * Updated:     13th January 2017
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_MAJOR       3
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_MINOR       5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_REVISION    2
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_EDIT        54
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_REVISION    3
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_EDIT        55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -170,11 +170,23 @@ public:
     typedef pointer                                         resource_type;
     typedef const_pointer                                   const_resource_type;
 private:
+    // NOTE: for some reason yet to be tracked down, cannot use long with
+    // Clang on Mac OSX (as it leads to UB insofar as atomic operations
+    // produce random contents - actually appears to manipulate only the low
+    // 32-bits, leaving the upper containing sort-of junk)
+    typedef ss_sint32_t                                     internal_count_type_;
+
 #if 0
-#elif defined(STLSOFT_SHARED_PTR_USE_std_atomic)
-    typedef STLSOFT_NS_QUAL_STD(atomic_long)                internal_count_type_;
+#elif defined(STLSOFT_SHARED_PTR_USE_std_atomic) &&\
+      ( (ATOMIC_LONG_LOCK_FREE > 1) ||\
+        (ATOMIC_INT_LOCK_FREE > 1))
+
+    typedef STLSOFT_NS_QUAL_STD(atomic)<
+        internal_count_type_
+    >                                                       internal_counter_type_;
 #else
-    typedef long                                            internal_count_type_;
+
+    typedef internal_count_type_                            internal_counter_type_;
 #endif
 
 /// @}
@@ -218,7 +230,7 @@ public:
             {
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-                m_pc = new internal_count_type_(1);
+                m_pc = new internal_counter_type_(1);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             }
@@ -342,7 +354,7 @@ public:
         if(NULL != m_pc)
         {
             pointer                 p   =   m_p;
-            internal_count_type_*   pc  =   m_pc;
+            internal_counter_type_* pc  =   m_pc;
 
             // Set the members to NULL prior to possibly
             // deleting, in case close() is called on a
@@ -480,7 +492,7 @@ private:
     static
     void
     increment_(
-        internal_count_type_*   p
+        internal_counter_type_* p
     )
     {
 #if 0
@@ -503,9 +515,9 @@ private:
 #endif
     }
     static
-    long
+    internal_count_type_
     pre_decrement_(
-        internal_count_type_*   p
+        internal_counter_type_* p
     )
     {
 #if 0
@@ -517,7 +529,7 @@ private:
         return STLSOFT_NS_QUAL_STD(atomic_fetch_sub)(p, 1) - 1;
 #elif defined(STLSOFT_CF_SUPPORT_ATOMIC_GCC_BUILTINS)
 
-        return STLSOFT_INTERNAL_ATOMIC_GCC_atomic_preincrement(p);
+        return STLSOFT_INTERNAL_ATOMIC_GCC_atomic_predecrement(p);
 #elif defined(_WIN32) ||\
       defined(_WIN64)
 
@@ -528,9 +540,9 @@ private:
 #endif
     }
     static
-    long
+    internal_count_type_
     read_(
-        internal_count_type_*   p
+        internal_counter_type_* p
     )
     {
 #if 0
@@ -580,7 +592,7 @@ private:
 /// @{
 private:
     pointer                 m_p;
-    internal_count_type_*   m_pc;
+    internal_counter_type_* m_pc;
 /// @}
 };
 
