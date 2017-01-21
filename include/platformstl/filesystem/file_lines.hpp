@@ -422,11 +422,11 @@ private: // Implementation
             default:
                 if('\r' == prev)
                 {
-                --eol;
+                    --eol;
 
-                m_strings.push_back(value_string_type_(s0, eol));
+                    m_strings.push_back(value_string_type_(s0, eol));
 
-                s0 = begin;
+                    s0 = begin;
                 }
                 break;
             }
