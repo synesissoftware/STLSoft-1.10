@@ -5,7 +5,7 @@
  *              components.
  *
  * Created:     1st January 2017
- * Updated:     9th January 2017
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,8 +47,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR       0
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        2
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    3
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/readonly_memory_mapped_file.hpp
@@ -127,11 +127,11 @@ class readonly_memory_mapped_file
 
 #elif defined(PLATFORMSTL_OS_IS_UNIX)
 
-UNIXSTL_NS_USING(readonly_memory_mapped_file_base);
+UNIXSTL_NS_USING(readonly_memory_mapped_file_base)
 
 #elif defined(PLATFORMSTL_OS_IS_WINDOWS)
 
-WINSTL_NS_USING(readonly_memory_mapped_file_base);
+WINSTL_NS_USING(readonly_memory_mapped_file_base)
 
 #else /* ? operating system */
 
