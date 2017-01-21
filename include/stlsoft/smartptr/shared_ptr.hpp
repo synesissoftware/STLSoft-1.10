@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_MAJOR       3
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_MINOR       5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_REVISION    3
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_EDIT        55
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_REVISION    4
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SHARED_PTR_EDIT        56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -170,11 +170,17 @@ public:
     typedef pointer                                         resource_type;
     typedef const_pointer                                   const_resource_type;
 private:
+#if 0
+#elif defined(_WIN32) ||\
+      defined(_WIN64)
+    typedef long                                            internal_count_type_;
+#else
     // NOTE: for some reason yet to be tracked down, cannot use long with
     // Clang on Mac OSX (as it leads to UB insofar as atomic operations
     // produce random contents - actually appears to manipulate only the low
     // 32-bits, leaving the upper containing sort-of junk)
     typedef ss_sint32_t                                     internal_count_type_;
+#endif
 
 #if 0
 #elif defined(STLSOFT_SHARED_PTR_USE_std_atomic) &&\
