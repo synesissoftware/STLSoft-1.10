@@ -5,7 +5,7 @@
  *              the same cv-qualification.
  *
  * Created:     25th February 2004
- * Updated:     11th January 2017
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_MINOR      0
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_REVISION   5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_EDIT       53
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_REVISION   6
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_SAP_CAST_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -146,8 +146,10 @@ inline TO sap_cast(FROM from)
     STLSOFT_STATIC_ASSERT(0 != base_type_traits<FROM>::is_pointer);
     STLSOFT_STATIC_ASSERT(0 != base_type_traits<TO>::is_pointer);
 
+#if 0
     typedef ss_typename_type_k base_type_traits<FROM>::base_type    from_base_type;
     typedef ss_typename_type_k base_type_traits<TO>::base_type      to_base_type;
+#endif
 
     // The intermediate type might be void *, void const*, void volatile * or
     // void const volatile *

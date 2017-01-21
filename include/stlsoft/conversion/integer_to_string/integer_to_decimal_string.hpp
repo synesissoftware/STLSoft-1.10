@@ -5,7 +5,7 @@
  *              decimal representation.
  *
  * Created:     7th April 2002
- * Updated:     11th January 2017
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_MINOR       0
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_REVISION    13
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_EDIT        84
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_REVISION    14
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING_EDIT        85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -450,6 +450,7 @@ signed_integer_to_decimal_string(
     typedef integral_limits<I>                                  limit_traits_t;
 
     STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxDecimalWidth);
+    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     typedef ss_typename_type_k sign_traits<I>::unsigned_type    unsigned_t;
 
@@ -632,6 +633,7 @@ integer_to_decimal_string(
     typedef integral_format_width_limits<I>             width_traits_t;
 
     STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxDecimalWidth);
+    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     return STLSOFT_WORKER_NS_QUAL_(ximpl_I2S, integer_to_decimal_string_if_signed_)(signed_yesno_t(), buf, cchBuf, i, numWritten);
 }
@@ -664,6 +666,7 @@ integer_to_decimal_string(
     typedef integral_format_width_limits<I>             width_traits_t;
 
     STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxDecimalWidth);
+    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     STLSOFT_COVER_MARK_LINE();
 
@@ -694,6 +697,7 @@ integer_to_decimal_string(
     typedef integral_format_width_limits<I> width_traits_t;
 
     STLSOFT_MESSAGE_STATIC_ASSERT(N >= 1 + width_traits_t::maxDecimalWidth, "array is of insufficient size for the longest expressable value of the integral type");
+    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     STLSOFT_COVER_MARK_LINE();
 
