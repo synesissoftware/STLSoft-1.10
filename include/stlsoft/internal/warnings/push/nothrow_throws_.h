@@ -5,11 +5,11 @@
  *              function marked nothrow()".
  *
  * Created:     18th November 2008
- * Updated:     17th December 2016
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2008-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Refer to stlsoft/stlsoft.h for license conditions

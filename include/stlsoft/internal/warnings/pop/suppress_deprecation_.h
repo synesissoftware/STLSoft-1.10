@@ -4,11 +4,11 @@
  * Purpose:     Pops warning suppression for "".
  *
  * Created:     6th October 2016
- * Updated:     17th December 2016
+ * Updated:     21st January 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Refer to stlsoft/stlsoft.h for license conditions
