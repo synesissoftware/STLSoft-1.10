@@ -4,7 +4,7 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     20th January 2017
+ * Updated:     22nd January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       0
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        16
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       1
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    1
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,6 +86,9 @@
 # include <platformstl/synch/atomic_types.h>
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES */
 
+#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING
+# include <stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING */
 #ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_W2M
 # include <stlsoft/conversion/w2m.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_W2M */
@@ -227,7 +230,27 @@ public: // Operations
     template <typename S>
     class_type& write(S const& text)
     {
-        return write_(STLSOFT_NS_QUAL(c_str_data)(text), STLSOFT_NS_QUAL(c_str_len)(text));
+        return write_text_(STLSOFT_NS_QUAL(c_str_data)(text), STLSOFT_NS_QUAL(c_str_len)(text));
+    }
+
+    /// Writes to the underlying file stream \c cch multibyte characters
+    /// from the memory block pointed to by \c ps.
+    ///
+    /// \exception X Thrown in \c cch characters cannot be written to the
+    ///   underlying stream
+    class_type& write(char const* ps, size_type cch)
+    {
+        return write_text_(ps, cch);
+    }
+
+    /// Writes to the underlying file stream \c cch wide characters
+    /// from the memory block pointed to by \c ps.
+    ///
+    /// \exception X Thrown in \c cch characters cannot be written to the
+    ///   underlying stream
+    class_type& write(wchar_t const* ps, size_type cch)
+    {
+        return write_text_(ps, cch);
     }
 
     /// Writes \c cb bytes from the memory block pointed to by \c pv to the
@@ -248,7 +271,7 @@ public: // Operations
         {
             int const e = errno;
 
-            report_nonnormative_("failed to flush", e);
+            report_nonnormative_("failed to flush file", e);
         }
     }
 
@@ -412,29 +435,32 @@ private: // Implementation
     {
         STLSOFT_NS_QUAL(auto_buffer)<char>  buff(2u + len);
 
-        ::memcpy(&buff[0], s, sizeof(char) * len);
+        if(0 != len)
+        {
+            ::memcpy(&buff[0], s, sizeof(*s) * len);
+        }
         buff[len + 0] = '\n';
         buff[len + 1] = '\0';
 
-        return write_(buff.data(), 1u + len);
+        return write_text_(buff.data(), 1u + len);
     }
 
     class_type&
-    write_(
-        char const* s
-    ,   size_type   len
+    write_line_(
+        wchar_t const*  s
+    ,   size_type       len
     )
     {
-        size_type const n = ::fwrite(s, sizeof(char), len, m_ref->handle);
+        STLSOFT_NS_QUAL(auto_buffer)<wchar_t>  buff(2u + len);
 
-        if(n < len)
+        if(0 != len)
         {
-            int const e = errno;
-
-            report_nonnormative_("failed to write to file", e);
+            ::memcpy(&buff[0], s, sizeof(*s) * len);
         }
+        buff[len + 0] = '\n';
+        buff[len + 1] = '\0';
 
-        return *this;
+        return write_text_(buff.data(), 1u + len);
     }
 
     class_type&
@@ -449,7 +475,67 @@ private: // Implementation
         {
             int const e = errno;
 
-            report_nonnormative_("failed to write to file", e);
+            report_nonnormative_("failed to write bytes to file", e);
+        }
+
+        return *this;
+    }
+
+    class_type&
+    write_text_(
+        char const*     ps
+    ,   size_type       cch
+    )
+    {
+        char        fmt_[20 + 3 + 1];
+        size_t      n;
+        char const* fmt =   stlsoft::integer_to_decimal_string(&fmt_[0], STLSOFT_NUM_ELEMENTS(fmt_) - 1, cch, &n);
+
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - 2] = 's';
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - 1] = '\0';
+
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - (2 + n + 1)] = '.';
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - (2 + n + 2)] = '%';
+
+        fmt -= 2;
+
+        int const r = ::fprintf(m_ref->handle, fmt, ps);
+
+        if(r < 0)
+        {
+            int const e = errno;
+
+            report_nonnormative_("failed to write multibyte string to file", e);
+        }
+
+        return *this;
+    }
+
+    class_type&
+    write_text_(
+        wchar_t const*  ps
+    ,   size_type       cch
+    )
+    {
+        wchar_t         fmt_[20 + 3 + 1];
+        size_t          n;
+        wchar_t const*  fmt =   stlsoft::integer_to_decimal_string(&fmt_[0], STLSOFT_NUM_ELEMENTS(fmt_) - 1, cch, &n);
+
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - 2] = 's';
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - 1] = '\0';
+
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - (2 + n + 1)] = '.';
+        fmt_[STLSOFT_NUM_ELEMENTS(fmt_) - (2 + n + 2)] = '%';
+
+        fmt -= 2;
+
+        int const r = ::fwprintf(m_ref->handle, fmt, ps);
+
+        if(r < 0)
+        {
+            int const e = errno;
+
+            report_nonnormative_("failed to write wide string to file", e);
         }
 
         return *this;
