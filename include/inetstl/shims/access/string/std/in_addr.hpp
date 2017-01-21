@@ -4,7 +4,7 @@
  * Purpose:     String access shims for Internet types
  *
  * Created:     21st October 2006
- * Updated:     12th January 2017
+ * Updated:     22nd January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MAJOR      1
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MINOR      1
-# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_REVISION   2
-# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       20
+# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_REVISION   3
+# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -231,18 +231,33 @@ c_str_data_w(
     return ximpl_inetstl_shims_access_string_in_addr_::in_addr_to_shim_string<is_char_w_t>(addr);
 }
 
+#if 0
+#elif defined(INETSTL_OS_IS_UNIX)
+
+inline
+stlsoft::basic_shim_string<is_char_a_t, 16>
+c_str_data(
+    struct in_addr const& addr
+)
+{
+    return c_str_data_a(addr);
+}
+#elif defined(INETSTL_OS_IS_WINDOWS)
+
 inline
 stlsoft::basic_shim_string<TCHAR, 16>
 c_str_data(
     struct in_addr const& addr
 )
 {
-#ifdef UNICODE
+# ifdef UNICODE
     return c_str_data_w(addr);
-#else /* ? UNICODE */
+# else /* ? UNICODE */
     return c_str_data_a(addr);
-#endif /* UNICODE */
+# endif /* UNICODE */
 }
+#endif
+
 
 
 inline
@@ -295,6 +310,19 @@ c_str_ptr_w(
     return c_str_data_w(addr);
 }
 
+#if 0
+#elif defined(INETSTL_OS_IS_UNIX)
+
+inline
+stlsoft::basic_shim_string<is_char_a_t, 16>
+c_str_ptr(
+    struct in_addr const& addr
+)
+{
+    return c_str_data(addr);
+}
+#elif defined(INETSTL_OS_IS_WINDOWS)
+
 inline
 stlsoft::basic_shim_string<TCHAR, 16>
 c_str_ptr(
@@ -303,6 +331,7 @@ c_str_ptr(
 {
     return c_str_data(addr);
 }
+#endif
 
 
 /* struct in_addr const* */
@@ -343,18 +372,32 @@ c_str_data_w(
     }
 }
 
+#if 0
+#elif defined(INETSTL_OS_IS_UNIX)
+
+inline
+stlsoft::basic_shim_string<is_char_a_t, 16>
+c_str_data(
+    struct in_addr const* addr
+)
+{
+    return c_str_data_a(addr);
+}
+#elif defined(INETSTL_OS_IS_WINDOWS)
+
 inline
 stlsoft::basic_shim_string<TCHAR, 16>
 c_str_data(
     struct in_addr const* addr
 )
 {
-#ifdef UNICODE
+# ifdef UNICODE
     return c_str_data_w(addr);
-#else /* ? UNICODE */
+# else /* ? UNICODE */
     return c_str_data_a(addr);
-#endif /* UNICODE */
+# endif /* UNICODE */
 }
+#endif
 
 
 inline
@@ -421,6 +464,19 @@ c_str_ptr_w(
     return c_str_data_w(addr);
 }
 
+#if 0
+#elif defined(INETSTL_OS_IS_UNIX)
+
+inline
+stlsoft::basic_shim_string<is_char_a_t, 16>
+c_str_ptr(
+    struct in_addr const* addr
+)
+{
+    return c_str_data(addr);
+}
+#elif defined(INETSTL_OS_IS_WINDOWS)
+
 inline
 stlsoft::basic_shim_string<TCHAR, 16>
 c_str_ptr(
@@ -429,6 +485,7 @@ c_str_ptr(
 {
     return c_str_data(addr);
 }
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
