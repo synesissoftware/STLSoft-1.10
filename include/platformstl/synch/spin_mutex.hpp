@@ -4,7 +4,7 @@
  * Purpose:     Definition of the spin_mutex type.
  *
  * Created:     20th March 2005
- * Updated:     5th January 2017
+ * Updated:     24th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_MAJOR     2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_MINOR     2
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_MINOR     3
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_REVISION  1
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      24
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,10 +118,14 @@ namespace platformstl_project
 #elif defined(PLATFORMSTL_OS_IS_UNIX)
 
 typedef UNIXSTL_NS_QUAL(spin_mutex)                         spin_mutex;
+typedef UNIXSTL_NS_QUAL(spin_mutex_no_yield)                spin_mutex_no_yield;
+typedef UNIXSTL_NS_QUAL(spin_mutex_yield)                   spin_mutex_yield;
 
 #elif defined(PLATFORMSTL_OS_IS_WINDOWS)
 
 typedef WINSTL_NS_QUAL(spin_mutex)                          spin_mutex;
+typedef WINSTL_NS_QUAL(spin_mutex_no_yield)                 spin_mutex_no_yield;
+typedef WINSTL_NS_QUAL(spin_mutex_yield)                    spin_mutex_yield;
 
 #else /* ? operating system */
 # error Operating system not discriminated
