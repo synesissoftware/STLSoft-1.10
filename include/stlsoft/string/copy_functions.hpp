@@ -4,7 +4,7 @@
  * Purpose:     String utility functions for copying.
  *
  * Created:     13th June 2006
- * Updated:     11th January 2017
+ * Updated:     24th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MINOR       0
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_REVISION    5
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        15
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_REVISION    6
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,8 +106,8 @@ inline ss_size_t copy_contents(C *dest, ss_size_t cchDest, C const* src, ss_size
     }
     else
     {
-        typedef C                       char_t;
-        typedef stlsoft_char_traits<C>  traits_t;
+        typedef C                           char_t;
+        typedef stlsoft_char_traits<char_t> traits_t;
 
         const ss_size_t cchContent  =   (cchSource < cchDest) ? cchSource : cchDest;
 
