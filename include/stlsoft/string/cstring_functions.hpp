@@ -4,7 +4,7 @@
  * Purpose:     String duplication functions.
  *
  * Created:     26th May 2005
- * Updated:     11th January 2017
+ * Updated:     24th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MINOR    2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_REVISION 5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     40
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_REVISION 6
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -151,8 +151,8 @@ template<   ss_typename_param_k C
 inline C* string_dup(C const* str, ss_size_t cch, A& ator)
 {
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
-    typedef C                                                           char_t;
-    typedef ss_typename_type_k A::ss_template_qual_k rebind<C>::other   ator_t;
+    typedef C                                                               char_t;
+    typedef ss_typename_type_k A::ss_template_qual_k rebind<char_t>::other  ator_t;
 
     ator_t ator_;
 
