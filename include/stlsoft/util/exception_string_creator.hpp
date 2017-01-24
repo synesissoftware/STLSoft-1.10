@@ -4,7 +4,7 @@
  * Purpose:     Contains the exception_string_creator class.
  *
  * Created:     25th May 2010
- * Updated:     11th January 2017
+ * Updated:     25th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MINOR    1
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_REVISION 6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     22
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_REVISION 7
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,9 +66,9 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING
-# include <stlsoft/conversion/integer_to_string.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING
+# include <stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING */
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 # ifndef STLSOFT_INCL_STLSOFT_ERROR_HPP_CONVERSION_ERROR
 #  include <stlsoft/error/conversion_error.hpp>
@@ -426,7 +426,7 @@ private:
     {
         char_type           num[21];
         size_type           n;
-        char_type const*    r = integer_to_string(&num[0], STLSOFT_NUM_ELEMENTS(num), i, n);
+        char_type const*    r = integer_to_decimal_string(&num[0], STLSOFT_NUM_ELEMENTS(num), i, &n);
 
         return append_(r, n);
     }

@@ -4,7 +4,7 @@
  * Purpose:     WinSTL integer to string conversions.
  *
  * Created:     31st July 2002
- * Updated:     11th January 2017
+ * Updated:     25th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,19 +52,9 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MAJOR      2
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MINOR      1
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   12
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       53
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   13
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:  __BORLANDC__<0x0560
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -77,9 +67,9 @@ STLSOFT_COMPILER_IS_BORLAND:  __BORLANDC__<0x0560
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_INT_TO_STRING
-# include <stlsoft/conversion/integer_to_string.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_INT_TO_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING
+# include <stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING */
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_THREAD_MUTEX
 # include <winstl/synch/thread_mutex.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_THREAD_MUTEX */
@@ -240,8 +230,8 @@ struct Key
         // all static memory
 
         // Wrap the constructor count in a spin-mutex, and then lock it
-        spin_mutex                                                      smx(&m_ctor);
-        STLSOFT_NS_QUAL(lock_scope)<spin_mutex, spin_mutex_lock_traits> lock(smx);
+        spin_mutex32                                smx(&m_ctor);
+        STLSOFT_NS_QUAL(lock_scope)<spin_mutex32>   lock(smx);
 
         if(0 == m_init++) // The test on this variable is always guarded by m_ctor
         {
@@ -315,7 +305,7 @@ struct Key
 
 // Implementation
 private:
-    thread_mutex &mx()
+    thread_mutex& mx()
     {
         return *static_cast<thread_mutex*>(static_cast<void*>(&m__mx.bytes[0]));
     }
@@ -400,7 +390,7 @@ inline C const* int_to_string(ws_sint8_t value)
     const ws_size_t CCH     = 21; // 5 fits 8-bit + sign
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a unsigned 8-bit integer to a character string
@@ -425,7 +415,7 @@ inline C const* int_to_string(ws_uint8_t value)
     const ws_size_t CCH     = 21; // 4 fits 8-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a signed 16-bit integer to a character string
@@ -450,7 +440,7 @@ inline C const* int_to_string(ws_sint16_t value)
     const ws_size_t CCH     = 21; // 7 fits 16-bit + sign
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a unsigned 16-bit integer to a character string
@@ -475,7 +465,7 @@ inline C const* int_to_string(ws_uint16_t value)
     const ws_size_t CCH     = 21; // 6 fits 16-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a signed 32-bit integer to a character string
@@ -500,7 +490,7 @@ inline C const* int_to_string(ws_sint32_t value)
     const ws_size_t CCH     = 21; // 12 fits 32-bit + sign
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a unsigned 32-bit integer to a character string
@@ -525,7 +515,7 @@ inline C const* int_to_string(ws_uint32_t value)
     const ws_size_t CCH     = 21; // 11 fits 32-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a signed 64-bit integer to a character string
@@ -550,7 +540,7 @@ inline C const* int_to_string(ws_sint64_t const& value)
     const ws_size_t CCH     = 21; // fits 64-bit + sign
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 /** Converts a unsigned 64-bit integer to a character string
@@ -575,7 +565,7 @@ inline C const* int_to_string(ws_uint64_t const& value)
     const ws_size_t CCH     = 21; // fits 64-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 
@@ -587,7 +577,7 @@ inline C const* int_to_string(int const& value)
     const ws_size_t CCH     = 21; // fits 64-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 template<ss_typename_param_k C>
@@ -596,7 +586,7 @@ inline C const* int_to_string(unsigned int const& value)
     const ws_size_t CCH     = 21; // fits 64-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 #endif /* !STLSOFT_CF_INT_DISTINCT_INT_TYPE */
@@ -609,7 +599,7 @@ inline C const* int_to_string(long const& value)
     const ws_size_t CCH     = 21; // fits 64-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 template<ss_typename_param_k C>
@@ -618,7 +608,7 @@ inline C const* int_to_string(unsigned long const& value)
     const ws_size_t CCH     = 21; // fits 64-bit
     C*              buffer  = i2str_get_tss_buffer<C, CCH>();
 
-    return stlsoft::integer_to_string(buffer, CCH, value);
+    return stlsoft::integer_to_decimal_string(buffer, CCH, value);
 }
 
 #endif /* !STLSOFT_CF_LONG_DISTINCT_INT_TYPE */
