@@ -630,10 +630,6 @@ integer_to_decimal_string(
     STLSOFT_MESSAGE_STATIC_ASSERT(0 != stlsoft::is_integral_type<I>::value, "value must be an integral type");
 
     typedef ss_typename_type_k is_signed_type<I>::type  signed_yesno_t;
-    typedef integral_format_width_limits<I>             width_traits_t;
-
-    STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxDecimalWidth);
-    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     return STLSOFT_WORKER_NS_QUAL_(ximpl_I2S, integer_to_decimal_string_if_signed_)(signed_yesno_t(), buf, cchBuf, i, numWritten);
 }
@@ -663,10 +659,6 @@ integer_to_decimal_string(
     STLSOFT_MESSAGE_STATIC_ASSERT(0 != stlsoft::is_integral_type<I>::value, "value must be an integral type");
 
     typedef ss_typename_type_k is_signed_type<I>::type  signed_yesno_t;
-    typedef integral_format_width_limits<I>             width_traits_t;
-
-    STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxDecimalWidth);
-    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     STLSOFT_COVER_MARK_LINE();
 
