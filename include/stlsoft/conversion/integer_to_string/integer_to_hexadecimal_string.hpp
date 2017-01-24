@@ -5,7 +5,7 @@
  *              hexadecimal representation.
  *
  * Created:     7th April 2002
- * Updated:     21st January 2017
+ * Updated:     25th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MINOR       0
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    16
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        88
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    17
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -198,11 +198,7 @@ unsigned_integer_to_hexadecimal_string(
     STLSOFT_STATIC_ASSERT(0 != stlsoft::is_integral_type<I>::value);
     STLSOFT_STATIC_ASSERT(0 == stlsoft::is_signed_type<I>::value);
 
-    typedef integral_format_width_limits<I>         width_traits_t;
     typedef i2s_hexadecimal_remainder_traits_t<I>   remainder_traits_t;
-
-    STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxHexadecimalWidth);
-    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     C* end = buf + (cchBuf - 1);
 
@@ -459,11 +455,7 @@ signed_integer_to_hexadecimal_string(
     STLSOFT_STATIC_ASSERT(0 != stlsoft::is_integral_type<I>::value);
     STLSOFT_STATIC_ASSERT(0 != stlsoft::is_signed_type<I>::value);
 
-    typedef integral_format_width_limits<I>                     width_traits_t;
     typedef integral_limits<I>                                  limit_traits_t;
-
-    STLSOFT_ASSERT(cchBuf >= 1 + width_traits_t::maxHexadecimalWidth);
-    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
 
     typedef ss_typename_type_k sign_traits<I>::unsigned_type    unsigned_t;
 
@@ -702,8 +694,8 @@ integer_to_hexadecimal_string(
 
     typedef integral_format_width_limits<I> width_traits_t;
 
-    STLSOFT_MESSAGE_STATIC_ASSERT(N >= 1 + width_traits_t::maxDecimalWidth, "array is of insufficient size for the longest expressable value of the integral type");
-    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxDecimalWidth);
+    STLSOFT_MESSAGE_STATIC_ASSERT(N >= 1 + width_traits_t::maxHexadecimalWidth, "array is of insufficient size for the longest expressable value of the integral type");
+    STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxHexadecimalWidth);
 
     STLSOFT_COVER_MARK_LINE();
 
