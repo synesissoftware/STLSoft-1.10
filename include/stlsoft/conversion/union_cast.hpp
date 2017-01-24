@@ -6,7 +6,7 @@
  *              some compilers.
  *
  * Created:     2nd May 1997
- * Updated:     11th January 2017
+ * Updated:     24th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_MINOR    0
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_REVISION 8
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_EDIT     73
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_REVISION 9
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_UNION_CAST_EDIT     74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -172,6 +172,9 @@ public:
         stlsoft_constraint_must_be_pod_or_void(from_base_type);
         stlsoft_constraint_must_be_pod_or_void(to_base_type);
 
+        STLSOFT_SUPPRESS_UNUSED(sizeof(from_base_type*));
+        STLSOFT_SUPPRESS_UNUSED(sizeof(to_base_type*));
+
 # endif /* STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT */
 
         // (v) check alignment
@@ -254,6 +257,12 @@ private:
 # if defined(STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT)
         typedef ss_typename_type_k base_type_traits<from_type>::base_type   from_base_type;
         typedef ss_typename_type_k base_type_traits<to_type>::base_type     to_base_type;
+
+        stlsoft_constraint_must_be_pod_or_void(from_base_type);
+        stlsoft_constraint_must_be_pod_or_void(to_base_type);
+
+        STLSOFT_SUPPRESS_UNUSED(sizeof(from_base_type*));
+        STLSOFT_SUPPRESS_UNUSED(sizeof(to_base_type*));
 
         if(!should_compare_<base_type_traits<from_type>::is_pointer, base_type_traits<to_type>::is_pointer>(from))
         {
