@@ -4,7 +4,7 @@
  * Purpose:     Atomic operations built around GCC's builtins
  *
  * Created:     6th January 2017
- * Updated:     7th January 2017
+ * Updated:     27th January 2017
  *
  * Author:      Matthew Wilson
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__MINOR     0
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__REVISION  1
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__EDIT      2
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__REVISION  2
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__EDIT      3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,7 +69,7 @@
  */
 
 #if !defined(STLSOFT_CF_SUPPORT_ATOMIC_GCC_BUILTINS)
-# error This file cannot be used with compilers that do not support GCC's atomic built-in operations
+# error This file cannot be used with compilers that do not support GCC atomic built-in operations
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////

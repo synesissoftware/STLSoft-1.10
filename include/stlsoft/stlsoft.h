@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     19th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     482
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 6
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     483
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -300,7 +300,7 @@
 # define _STLSOFT_VER_1_9_131   0x010983ff  /*!< Version 1.9.131 (1st October 2016) */
 
 # define _STLSOFT_VER_1_10_1_B01    0x010a0181  /*!< Version 1.10.1 beta 1 (13th January 2017) */
-# define _STLSOFT_VER_1_10_1_B02    0x010a0182  /*!< Version 1.10.1 beta 2 (19th January 2017) */
+# define _STLSOFT_VER_1_10_1_B02    0x010a0182  /*!< Version 1.10.1 beta 2 (28th January 2017) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
@@ -2777,14 +2777,20 @@ STLSOFT_CLOSE_WORKER_NS_(template_ex)
  * Used to suppress unused variable warnings
  */
 #if defined(__cplusplus) && \
-    (   defined(STLSOFT_COMPILER_IS_COMO) || \
-        /* defined(STLSOFT_COMPILER_IS_DMCx) || */ \
-        (   defined(STLSOFT_COMPILER_IS_GCC) && \
-            __GNUC__ >= 3) || \
+    (   0 ||\
+        defined(STLSOFT_COMPILER_IS_COMO) ||\
+        (   1 &&\
+            defined(STLSOFT_COMPILER_IS_GCC) &&\
+            __GNUC__ >= 3 &&\
+            !defined(_WIN32) &&\
+            1) || \
         defined(STLSOFT_COMPILER_IS_INTEL) || \
-        (   defined(STLSOFT_COMPILER_IS_MSVC) && \
-            _MSC_VER >= 1600)|| \
-        defined(STLSOFT_COMPILER_IS_WATCOM))
+        (   1 &&\
+            defined(STLSOFT_COMPILER_IS_MSVC) && \
+            _MSC_VER >= 1600 &&\
+            1)|| \
+        defined(STLSOFT_COMPILER_IS_WATCOM) ||\
+        0)
 template<ss_typename_param_k T>
 inline void suppress_unused_func(T const volatile &)
 {}

@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     12th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MAJOR       4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MINOR       1
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    5
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        121
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    6
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,6 +118,8 @@ namespace winstl_project
 
 inline ws_size_t GetWindowTextLength_T_(HWND hwnd, int (WINAPI *pfn)(HWND ))
 {
+    using namespace ximpl_winstl_window_ident;
+
     WINSTL_ASSERT(NULL != pfn);
 
     WindowIdent ident       =   GetWindowIdent(hwnd);
@@ -130,7 +132,7 @@ inline ws_size_t GetWindowTextLength_T_(HWND hwnd, int (WINAPI *pfn)(HWND ))
 
     switch(ident)
     {
-        case    ListBox:
+        case    WindowIdent_ListBox:
             if(0 == (GetStyle(hwnd) & lbsStyle))
             {
                 sel = static_cast<int>(::SendMessage(hwnd, LB_GETCURSEL, 0, 0l));
@@ -146,16 +148,16 @@ inline ws_size_t GetWindowTextLength_T_(HWND hwnd, int (WINAPI *pfn)(HWND ))
             }
             break;
 #if 0
-        case    ListBox:
+        case    WindowIdent_ListBox:
             if(1 == SendMessage(hwnd, LVM_GETSELECTEDCOUNT, 0, 0L))
             {
                 sel =
             }
             break;
 #endif /* 0 */
-        case    Generic:
-        case    ComboBox:
-        case    ListView:
+        case    WindowIdent_Generic:
+        case    WindowIdent_ComboBox:
+        case    WindowIdent_ListView:
         default:
             break;
     }
@@ -199,13 +201,15 @@ struct WindowTextLength_traits<ws_char_w_t>
 
 inline ws_size_t GetWindowText_A_(HWND hwnd, ws_char_a_t *buffer, ws_size_t cchBuffer)
 {
+    using namespace ximpl_winstl_window_ident;
+
     WindowIdent ident   =   GetWindowIdent(hwnd);
     int         sel;
     ws_size_t   cch;
 
     switch(ident)
     {
-        case    ListBox:
+        case    WindowIdent_ListBox:
             if(0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
             {
                 sel = static_cast<int>(::SendMessage(hwnd, LB_GETCURSEL, 0, 0l));
@@ -230,9 +234,9 @@ inline ws_size_t GetWindowText_A_(HWND hwnd, ws_char_a_t *buffer, ws_size_t cchB
                 return cch;
             }
             break;
-        case    Generic:
-        case    ComboBox:
-        case    ListView:
+        case    WindowIdent_Generic:
+        case    WindowIdent_ComboBox:
+        case    WindowIdent_ListView:
         default:
             break;
     }
@@ -242,12 +246,14 @@ inline ws_size_t GetWindowText_A_(HWND hwnd, ws_char_a_t *buffer, ws_size_t cchB
 
 inline ws_size_t GetWindowText_W_(HWND hwnd, ws_char_w_t *buffer, ws_size_t cchBuffer)
 {
+    using namespace ximpl_winstl_window_ident;
+
     WindowIdent ident   =   GetWindowIdent(hwnd);
     int         sel;
 
     switch(ident)
     {
-        case    ListBox:
+        case    WindowIdent_ListBox:
             if(0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
             {
                 ws_size_t  cch;
@@ -270,9 +276,9 @@ inline ws_size_t GetWindowText_W_(HWND hwnd, ws_char_w_t *buffer, ws_size_t cchB
                 return cch;
             }
             break;
-        case    Generic:
-        case    ComboBox:
-        case    ListView:
+        case    WindowIdent_Generic:
+        case    WindowIdent_ComboBox:
+        case    WindowIdent_ListView:
         default:
             break;
     }

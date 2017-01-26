@@ -4,7 +4,7 @@
  * Purpose:     Windows identification.
  *
  * Created:     11th March 2004
- * Updated:     11th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MAJOR      4
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      0
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   4
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       50
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      1
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   1
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,15 +86,24 @@ namespace winstl_project
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+namespace ximpl_winstl_window_ident
+{
+
+/* /////////////////////////////////////////////////////////////////////////
  * enumerations
  */
 
 enum WindowIdent
 {
-        Generic
-    ,   ListBox         =   11
-    ,   ComboBox        =   12
-    ,   ListView        =   13
+        WindowIdent_Unknown
+    ,   WindowIdent_Generic
+    ,   WindowIdent_ListBox     =   11
+    ,   WindowIdent_ComboBox    =   12
+    ,   WindowIdent_ListView    =   13
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,20 +122,22 @@ GetWindowIdent(
         char const* name;
     };
 
-    WindowIdent         ident   =   Generic;
+    WindowIdent         ident       =   WindowIdent_Generic;
     char                buffer[256];
-    static Ident const  s_idents[] =
+    static Ident const  s_idents[]  =
     {
-            {   ListBox,    "LISTBOX"       }
-        ,   {   ComboBox,   "COMBOBOX"      }
-        ,   {   ListView,   "SysListView32" }
+        {   WindowIdent_ListBox,    "LISTBOX"       },
+        {   WindowIdent_ComboBox,   "COMBOBOX"      },
+        {   WindowIdent_ListView,   "SysListView32" },
+
+        {   WindowIdent_Unknown,    NULL            }
     };
 
     ws_size_t const     cch = static_cast<ws_size_t>(::GetClassNameA(hwnd, &buffer[0], STLSOFT_NUM_ELEMENTS(buffer)));
 
     if(cch < STLSOFT_NUM_ELEMENTS(buffer))
     {
-        for(ws_size_t index = 0; index != STLSOFT_NUM_ELEMENTS(s_idents); ++index)
+        for(ws_size_t index = 0; WindowIdent_Unknown != s_idents[index].ident; ++index)
         {
             WINSTL_ASSERT(::lstrlenA(s_idents[index].name) < int(STLSOFT_NUM_ELEMENTS(buffer)));
 
@@ -141,7 +152,16 @@ GetWindowIdent(
     return ident;
 }
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+} /* namespace ximpl_winstl_window_ident */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
 
 #ifndef WINSTL_NO_NAMESPACE
 # if defined(STLSOFT_NO_NAMESPACE) || \

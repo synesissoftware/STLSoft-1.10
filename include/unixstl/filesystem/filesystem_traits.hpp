@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     11th January 2017
+ * Updated:     27th January 2017
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  11
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      144
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  12
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      145
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -673,10 +673,25 @@ public:
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        return  dir[0] == '.' &&
-                (   dir[1] == '\0' ||
-                    (    dir[1] == '.' &&
-                        dir[2] == '\0'));
+        if('.' == dir[0])
+        {
+            if('\0' == dir[1])
+            {
+                // found "."
+                return true;
+            }
+
+            if('.' == dir[1])
+            {
+                if('\0' == dir[2])
+                {
+                    // found ".."
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     static bool_type is_path_rooted(char_type const* path)
@@ -1835,10 +1850,25 @@ public:
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        return  dir[0] == '.' &&
-                (   dir[1] == L'\0' ||
-                    (    dir[1] == L'.' &&
-                        dir[2] == L'\0'));
+        if(L'.' == dir[0])
+        {
+            if(L'\0' == dir[1])
+            {
+                // found L"."
+                return true;
+            }
+
+            if(L'.' == dir[1])
+            {
+                if(L'\0' == dir[2])
+                {
+                    // found L".."
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     static bool_type is_path_rooted(char_type const* path)
