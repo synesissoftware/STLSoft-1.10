@@ -2972,6 +2972,7 @@ inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 STLSOFT_INLINE
 # if defined(STLSOFT_CF_constexpr_KEYWORD_SUPPORT) && \
 	 !defined(STLSOFT_COMPILER_IS_MSVC)
@@ -2986,6 +2987,7 @@ stlsoft_C_always_false_(void) STLSOFT_NOEXCEPT
 {
     return 0;
 }
+
 STLSOFT_INLINE
 # if defined(STLSOFT_CF_constexpr_KEYWORD_SUPPORT) && \
 	 !defined(STLSOFT_COMPILER_IS_MSVC)
