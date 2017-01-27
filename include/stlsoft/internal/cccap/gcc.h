@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     21st January 2017
+ * Updated:     27th January 2017
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      26
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       99
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   3
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -225,10 +225,13 @@
  *    - compiler-specific keyword
  */
 
-#if __GNUC__ >= 4
+#if 0
+#elif defined(__GNUC_STDC_INLINE___)
+
 # define STLSOFT_CF_C99_INLINE
 #else /* ? compiler */
-# define STLSOFT_CUSTOM_C_INLINE        __inline__
+
+# define STLSOFT_CUSTOM_C_INLINE        static
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
