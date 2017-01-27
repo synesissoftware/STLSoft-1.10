@@ -5,7 +5,7 @@
  *              number of (decimal) digits in an integer number.
  *
  * Created:     7th June 2011
- * Updated:     12th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MINOR     0
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_REVISION  0
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      7
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_REVISION  1
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,9 @@ namespace ximpl_count_digits_
         I i
     )
     {
+#if 0
         static size_t const width = sizeof(i);
+#endif /* 0 */
 
         if(I(0) == i)
         {

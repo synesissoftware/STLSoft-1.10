@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     11th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MAJOR    4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MINOR    2
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION 7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT     52
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION 8
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT     53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,6 +171,8 @@ public:
         const size_type   numOffsets_   =   m_offsets.size();
         const size_type   numPointers_  =   m_pointers.size();
 
+        STLSOFT_SUPPRESS_UNUSED(numPointers_);
+
         m_chars.resize(numChars_ + cch + 1);
         // The next item
         traits_type::copy(&m_chars[numChars_ - 1], s, cch);
@@ -204,6 +206,8 @@ public:
         const size_type   numChars_     =   m_chars.size();
         const size_type   numOffsets_       =   m_offsets.size();
         const size_type   numPointers_  =   m_pointers.size();
+
+        STLSOFT_SUPPRESS_UNUSED(numPointers_);
 
         m_chars.resize(numChars_ + cchName + 1 + cchValue + 1);
         // The next item

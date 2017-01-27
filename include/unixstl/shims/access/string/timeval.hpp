@@ -4,7 +4,7 @@
  * Purpose:     String shims for UNIX timeval structure.
  *
  * Created:     5th May 2014
- * Updated:     12th January 2017
+ * Updated:     27th January 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_MAJOR      2
 # define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_MINOR      0
-# define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_REVISION   3
-# define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_EDIT       10
+# define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_REVISION   4
+# define UNIXSTL_VER_UNIXSTL_SHIMS_ACCESS_STRING_HPP_TIMEVAL_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,7 +149,7 @@ c_str_data_a(
         }
         else
         {
-            ss_size_t const     n1  =   ::strftime(s.data(), 1 + s.size(), "%b %d %H:%M:%S.000000 %Y", &tm);
+            ss_size_t const     n1  =   STLSOFT_NS_GLOBAL(strftime)(s.data(), 1 + s.size(), "%b %d %H:%M:%S.000000 %Y", &tm);
             ss_size_t			n2;
 
 		    STLSOFT_NS_QUAL(integer_to_decimal_string)(&s.data()[0], 16 + 7, static_cast< STLSOFT_NS_QUAL(uint32_t)>(tv->tv_usec % 1000000), &n2);
