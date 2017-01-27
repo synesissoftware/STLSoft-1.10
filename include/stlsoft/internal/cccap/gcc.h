@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      26
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       100
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   4
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       101
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -225,14 +225,10 @@
  *    - compiler-specific keyword
  */
 
-#if 0
-#elif defined(__GNUC_STDC_INLINE___)
+#ifndef __cplusplus
 
-# define STLSOFT_CF_C99_INLINE
-#else /* ? compiler */
-
-# define STLSOFT_CUSTOM_C_INLINE        static
-#endif /* compiler */
+# define STLSOFT_CUSTOM_C_INLINE                            static inline
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * Support for C++ language features - 1

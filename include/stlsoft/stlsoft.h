@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 6
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     483
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 7
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     484
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -2970,7 +2970,6 @@ inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 # endif /* C inline */
 #endif /* __cplusplus */
 
-/** @} */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 STLSOFT_INLINE
@@ -2979,6 +2978,10 @@ STLSOFT_INLINE
 constexpr
 # endif
 ss_truthy_t
+# if 0
+# elif defined(__GNUC__)
+__attribute__ ((unused))
+# endif
 stlsoft_C_always_false_(void) STLSOFT_NOEXCEPT
 {
     return 0;
@@ -2989,13 +2992,32 @@ STLSOFT_INLINE
 constexpr
 # endif
 ss_truthy_t
+# if 0
+# elif defined(__GNUC__)
+__attribute__ ((unused))
+# endif
 stlsoft_C_always_true_(void) STLSOFT_NOEXCEPT
 {
     return 1;
 }
-# define STLSOFT_ALWAYS_FALSE() stlsoft_C_always_false_()
-# define STLSOFT_ALWAYS_TRUE()  stlsoft_C_always_true_()
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/** @} */
+
+/** \def STLSOFT_ALWAYS_FALSE()
+ * pseudo-constexpr function
+ *
+ * Resolves to a construct that is always false
+ */
+
+/** \def STLSOFT_ALWAYS_TRUE()
+ * pseudo-constexpr function
+ *
+ * Resolves to a construct that is always true
+ */
+
+# define STLSOFT_ALWAYS_FALSE()                             stlsoft_C_always_false_()
+# define STLSOFT_ALWAYS_TRUE()                              stlsoft_C_always_true_()
 
 /* /////////////////////////////////////////////////////////////////////////
  * pointer manipulation functions(s)
