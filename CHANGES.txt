@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  14th January 2017
+; Updated:  28th January 2017
 
 ============================================================================
 
@@ -21,6 +21,26 @@ STLSoft - Changes
 
 ============================================================================
 
+Changes for 1.10.1 beta 2 (28th January 2017)
+
+General:
+========
+
+ * work on STLSoft integer_to_string functions to loosen non-array forms'
+   preconditions, reduce dependencies in rest of codebase to
+   integer_to_decimal_string()-only;
+ * filesystem_traits - refactored is_dots() and starts_with_dots() to
+   accomodate GCC 4.9 pedanticism
+ * exposing unixstl/winstl types spin_mutex_no_yield and spin_mutex_yield to
+   platformstl namespace
+ * a large number of changes to improve compatibility with UNIX, Clang,
+   GCC, and MinGW
+ * hiding/suppressing unused typedefs
+
+
+
+============================================================================
+
 Changes for 1.10.1 beta 1 (14th January 2017)
 
 General:
@@ -28,6 +48,34 @@ General:
 
  * too many changes to list here - it's a new world! (Bit of a shame it
    took 10 years to get here :$)
+ * in summary:
+
+ * major reworking of exceptions hierarchy, including provision of project
+   and library identifiers, status-code, and message translation
+ * several new special-string-instance types, including home_directory,
+   host_name, temporary_directory, temporary_file_name
+ * new string access shims, for types including timeval, type_info
+ * new attribute shims, including: get_synch_handle, get_FILE_ptr
+ * new logical shims, including: is_empty, is_null
+ * new high-performance conversion functions (based around the extant
+   technology in stlsoft::integer_to_string()): integer_to_decimal_string(),
+   integer_to_hexadecimal_string(), integer_to_octal_string(),
+   integer_to_lc_string(), integer_to_zero_padded_decimal_string()
+ * new conversion parsing functions: string_to_bool(), string_to_integer()
+ * new scoped_method class template
+ * new scoped_lambda class template
+ * new bit-testing functions
+ * substantially improved atomic function support
+ * substantially improved spin_mutex class templates and policies
+ * new diagnostic stopwatch classes and logging functions
+ * new platformstl::file_stream_base class template and policies
+ * new string slice classes that are compatible (but do not depend on) other
+   Synesis projects (such as FastFormat and Pantheios)
+ * new time comparison functions and operators, conversion cast and
+   functions, elicitation functions, modification functions, and validation
+   functions
+ * ... and many many other improvements and additions ...
+
 
 
 ============================================================================

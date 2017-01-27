@@ -2,10 +2,26 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  14th January 2017
+; Updated:  28th January 2017
 
 ============================================================================
 
+
+28th January 2017 - 1.10.1 (beta 2) released
+--------------------------------------------
+
+ Further to 1.10.1 (beta 1):
+
+ * work on STLSoft integer_to_string functions to loosen non-array forms'
+   preconditions, reduce dependencies in rest of codebase to
+   integer_to_decimal_string()-only;
+ * filesystem_traits - refactored is_dots() and starts_with_dots() to
+   accomodate GCC 4.9 pedanticism
+ * exposing unixstl/winstl types spin_mutex_no_yield and spin_mutex_yield to
+   platformstl namespace
+ * a large number of changes to improve compatibility with UNIX, Clang,
+   GCC, and MinGW
+ * hiding/suppressing unused typedefs
 
 14th January 2017 - 1.10.1 (beta 1) released
 --------------------------------------------
