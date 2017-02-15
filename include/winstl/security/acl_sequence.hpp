@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     26th June 2003
- * Updated:     11th January 2017
+ * Updated:     4th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MAJOR      4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MINOR      0
-# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_REVISION   5
-# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       39
+# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_REVISION   6
+# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -97,8 +97,8 @@ namespace winstl_project
  *
  * \ingroup group__library__Security
  *
- * This class provides an iterable sequence of Access Control Entries (ACEs) in
- * an Access Control List (ACL).
+ * This class provides an iterable sequence of Access Control Entries (ACEs)
+ * in an Access Control List (ACL).
  */
 class acl_sequence
     : public STLSOFT_NS_QUAL(stl_collection_tag)
@@ -115,6 +115,9 @@ public:
     ss_explicit_k acl_sequence(PACL pacl)
         : m_pacl(pacl)
     {}
+private:
+    acl_sequence(class_type const&);            // copy-construction proscribed
+    class_type& operator =(class_type const&);  // copy-assignment proscribed
 /// @}
 
 /// \name Iteration
@@ -197,7 +200,7 @@ public:
     private:
         ws_uint32_t m_index;
         ws_uint32_t m_count;
-        ACE_HEADER  *m_header;
+        ACE_HEADER* m_header;
     };
 
     const_iterator begin() const
@@ -228,13 +231,6 @@ public:
 private:
     PACL    m_pacl;
 /// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    acl_sequence(class_type const&);
-    acl_sequence& operator =(class_type const&);
-/// @}
 };
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -248,6 +244,14 @@ private:
 } /* namespace stlsoft */
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 /* ////////////////////////////////////////////////////////////////////// */
 

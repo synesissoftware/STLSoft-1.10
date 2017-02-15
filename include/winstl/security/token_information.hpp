@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     20th June 2003
- * Updated:     11th January 2017
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MAJOR     4
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     2
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  6
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      63
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     4
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  2
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,15 +66,25 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR
-# include <winstl/memory/processheap_allocator.hpp>
-#endif /* !WINSTL_INCL_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR */
-#ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES
-# include <stlsoft/exception/throw_policies.hpp>
-#endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
 #ifndef WINSTL_INCL_WINSTL_ERROR_HPP_LAST_ERROR_SCOPE
 # include <winstl/error/last_error_scope.hpp>
 #endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_LAST_ERROR_SCOPE */
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+# ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES
+#  include <winstl/exception/throw_policies.hpp>
+# endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
+# else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
+# ifndef STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_THROW_POLICIES
+#  include <stlsoft/exception/throw_policies.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_THROW_POLICIES */
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#ifndef WINSTL_INCL_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR
+# include <winstl/memory/processheap_allocator.hpp>
+#endif /* !WINSTL_INCL_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR */
+
+#ifndef WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_
+# include <winstl/api/winstl_win32_winnt_.h>
+#endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 #ifndef STLSOFT_INCL_UTILITY
 # define STLSOFT_INCL_UTILITY
@@ -100,7 +110,11 @@ namespace winstl_project
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * types
+ */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 enum
 {
@@ -111,10 +125,37 @@ enum
     ,   TokenSandBoxInert
     ,   TokenAuditPolicy
     ,   TokenOrigin
+
+    ,   TokenElevationType
+    ,   TokenLinkedToken
+    ,   TokenElevation
+    ,   TokenHasRestrictions
+    ,   TokenAccessInformation
+    ,   TokenVirtualizationAllowed
+    ,   TokenVirtualizationEnabled
+    ,   TokenIntegrityLevel
+    ,   TokenUIAccess
+    ,   TokenMandatoryPolicy
+    ,   TokenLogonSid
+
+    ,   TokenIsAppContainer
+    ,   TokenCapabilities
+    ,   TokenAppContainerSid
+    ,   TokenAppContainerNumber
+    ,   TokenUserClaimAttributes
+    ,   TokenDeviceClaimAttributes
+    ,   TokenRestrictedUserClaimAttributes
+    ,   TokenRestrictedDeviceClaimAttributes
+    ,   TokenDeviceGroups
+    ,   TokenRestrictedDeviceGroups
+    ,   TokenSecurityAttributes
+    ,   TokenIsRestricted
 };
 
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 /* /////////////////////////////////////////////////////////////////////////
- * classes
+ * traits
  */
 
 /** traits type used to determine the data type for a given \c TOKEN_INFORMATION_CLASS
@@ -125,114 +166,161 @@ enum
 template <TOKEN_INFORMATION_CLASS C>
 struct token_information_traits;
 
+/* ///////////////////////////////////////////////
+ * specialisations
+ */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenUser>
-{
-    typedef TOKEN_USER                      data_type;
-};
 
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenGroups>
-{
-    typedef TOKEN_GROUPS                    data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenPrivileges>
-{
-    typedef TOKEN_PRIVILEGES                data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenOwner>
-{
-    typedef TOKEN_OWNER                     data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenPrimaryGroup>
-{
-    typedef TOKEN_PRIMARY_GROUP             data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenDefaultDacl>
-{
-    typedef TOKEN_DEFAULT_DACL              data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenSource>
-{
-    typedef TOKEN_SOURCE                    data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenType>
-{
-    typedef TOKEN_TYPE                      data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenImpersonationLevel>
-{
-    typedef SECURITY_IMPERSONATION_LEVEL    data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<TokenStatistics>
-{
-    typedef TOKEN_STATISTICS                data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<static_cast<TOKEN_INFORMATION_CLASS>(TokenRestrictedSids)>
-{
-    typedef TOKEN_GROUPS                    data_type;
-};
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<static_cast<TOKEN_INFORMATION_CLASS>(TokenSessionId)>
-{
-    typedef DWORD                           data_type;
-};
-
-#if defined(WINSTL_TOKEN_INFORMATION_TOKEN_GROUPS_AND_PRIVILEGES_SUPPORT) || \
-    (   !defined(WINSTL_TOKEN_INFORMATION_NO_GUESS) && \
-        defined(SE_MANAGE_VOLUME_NAME))
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<static_cast<TOKEN_INFORMATION_CLASS>(TokenGroupsAndPrivileges)>
-{
-    typedef TOKEN_GROUPS_AND_PRIVILEGES     data_type;
-};
-#endif /* TOKEN_GROUPS_AND_PRIVILEGES */
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<static_cast<TOKEN_INFORMATION_CLASS>(TokenSandBoxInert)>
-{
-    typedef DWORD                           data_type;
-};
-
-#if defined(WINSTL_TOKEN_INFORMATION_TOKEN_ORIGIN_SUPPORT) /* || \
-    (   !defined(WINSTL_TOKEN_INFORMATION_NO_GUESS) && \
-        defined(SE_MANAGE_VOLUME_NAME)) */
-STLSOFT_TEMPLATE_SPECIALISATION
-struct token_information_traits<static_cast<TOKEN_INFORMATION_CLASS>(TokenOrigin)>
-{
-    typedef TOKEN_ORIGIN                    data_type;
-};
-#endif /* TOKEN_ORIGIN */
+# define WINSTL_SEC_T_I_SPECIALISE_TIT_(tic, dt)    \
+                                                    \
+    STLSOFT_TEMPLATE_SPECIALISATION                 \
+    struct token_information_traits<                \
+        static_cast<TOKEN_INFORMATION_CLASS>((tic)) \
+    >                                               \
+    {                                               \
+        typedef dt  data_type;                      \
+    }
 
 
+/* ///////////////////////////////////////////////
+ * specialisations - pre-XP
+ */
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenUser, TOKEN_USER);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenGroups, TOKEN_GROUPS);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenPrivileges, TOKEN_PRIVILEGES);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenOwner, TOKEN_OWNER);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenPrimaryGroup, TOKEN_PRIMARY_GROUP);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenDefaultDacl, TOKEN_DEFAULT_DACL);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSource, TOKEN_SOURCE);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenType, TOKEN_TYPE);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenImpersonationLevel, SECURITY_IMPERSONATION_LEVEL);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenStatistics, TOKEN_STATISTICS);
+
+/* ///////////////////////////////////////////////
+ * specialisations - XP+
+ */
+
+# if WINSTL_WIN32_WINNT >= 0x0501
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenRestrictedSids, TOKEN_GROUPS);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSessionId, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenGroupsAndPrivileges, TOKEN_GROUPS_AND_PRIVILEGES);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSandBoxInert, DWORD);
+
+# endif /* XP+ */
+
+/* ///////////////////////////////////////////////
+ * specialisations - Svr03+
+ */
+
+# if WINSTL_WIN32_WINNT >= 0x0502
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenOrigin, TOKEN_ORIGIN);
+
+# endif /* Svr03+ */
+
+/* ///////////////////////////////////////////////
+ * specialisations - Vista+
+ */
+
+# if WINSTL_WIN32_WINNT >= 0x0600
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenElevationType, TOKEN_ELEVATION_TYPE);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenLinkedToken, TOKEN_LINKED_TOKEN);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenElevation, TOKEN_ELEVATION);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenHasRestrictions, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenAccessInformation, TOKEN_ACCESS_INFORMATION);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationAllowed, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationEnabled, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIntegrityLevel, TOKEN_MANDATORY_LEVEL);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenUIAccess, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenMandatoryPolicy, TOKEN_MANDATORY_POLICY);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenLogonSid, TOKEN_GROUPS);
+
+# endif /* Vista+ */
+
+/* ///////////////////////////////////////////////
+ * specialisations - W8+
+ */
+
+# if WINSTL_WIN32_WINNT >= 0x0602
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIsAppContainer, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenCapabilities, TOKEN_GROUPS);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenAppContainerSid, TOKEN_APPCONTAINER_INFORMATION);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenAppContainerNumber, DWORD);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenUserClaimAttributes, CLAIM_SECURITY_ATTRIBUTES_INFORMATION);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenDeviceClaimAttributes, CLAIM_SECURITY_ATTRIBUTES_INFORMATION);
+
+#if 0 // This value is reserved
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenRestrictedUserClaimAttributes, void);
+#endif
+
+#if 0 // This value is reserved
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenRestrictedDeviceClaimAttributes, void);
+#endif
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenDeviceGroups, TOKEN_GROUPS);
+
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenRestrictedDeviceGroups, TOKEN_GROUPS);
+
+#if 0 // This value is reserved
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSecurityAttributes, void);
+#endif
+
+#if 0 // This value is reserved
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIsRestricted, void);
+#endif
+
+# endif /* W8+ */
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * classes
+ */
 
 // token_information
 /** Provides typed access to token information.
  *
  * \ingroup group__library__Security
+ *
+ * \tparam C [TOKEN_INFORMATION_CLASS] The token information class
+ * \tparam X The exception policy type. Defaults to security_exception_policy
+ *    when compiling with exception-support; otherwise defaults to
+ *    null_exception_policy and callers must be ready for get() to return
+ *    nullptr
+ * \tparam D The data type. Defaults to token_information_traits<C>::data_type
+ * \tparam A The allocator type. Defaults to processheap_allocator<stlsoft::byte_t>
  */
 template<
     TOKEN_INFORMATION_CLASS C
@@ -240,9 +328,13 @@ template<
 # ifdef __SYNSOFT_DBS_COMPILER_SUPPORTS_PRAGMA_MESSAGE
 #  pragma message(_sscomp_fileline_message("Note that we have to have data_type as a parameter, otherwise VC5&6 have a cow"))
 # endif /* __SYNSOFT_DBS_COMPILER_SUPPORTS_PRAGMA_MESSAGE */
-,   ss_typename_param_k     X = STLSOFT_NS_QUAL(null_exception_policy)
-,   ss_typename_param_k     D = ss_typename_type_def_k token_information_traits<C>::data_type
-,   ss_typename_param_k     A = processheap_allocator<ss_byte_t>
+# ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+,   ss_typename_param_k     X   =   security_exception_policy
+# else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
+,   ss_typename_param_k     X   =   STLSOFT_NS_QUAL(null_exception_policy)
+# endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+,   ss_typename_param_k     D   =   ss_typename_type_def_k token_information_traits<C>::data_type
+,   ss_typename_param_k     A   =   processheap_allocator<ss_byte_t>
 #else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 ,   ss_typename_param_k     X /* = STLSOFT_NS_QUAL(null_exception_policy) */
 ,   ss_typename_param_k     D /* = token_information_traits<C>::data_type */
@@ -254,22 +346,33 @@ class token_information
 /// \name Member Types
 /// @{
 public:
-    typedef token_information<C, X, D, A>               class_type;
-    typedef token_information_traits<C>                 traits_type;
-    typedef X                                           exception_thrower_type;
-    typedef D                                           data_type;
-    typedef A                                           allocator_type;
-    typedef ss_size_t                                   size_type;
+    typedef token_information<C, X, D, A>                       class_type;
+    typedef token_information_traits<C>                         traits_type;
+    typedef X                                                   exception_thrower_type;
+    typedef D                                                   data_type;
+    typedef A                                                   allocator_type;
+    typedef data_type*                                          pointer;
+    typedef data_type const*                                    const_pointer;
+    typedef ss_size_t                                           size_type;
 /// @}
 private:
-    typedef std::pair<void*, size_t>                    mem_block_type_;
+    typedef allocator_type                                      raw_allocator_type_;
+    typedef ss_typename_param_k raw_allocator_type_::pointer    raw_pointer_type_;
+    typedef std::pair<
+        pointer
+    ,   size_type
+    >                                                           mem_block_type_;
 
 /// \name Construction
 /// @{
 public:
     /// Constructs an instance from the given access token
     ///
-    ss_explicit_k token_information(HANDLE hToken)
+    /// \param hToken The token from which information will be elicited
+    ///
+    /// \note The class does not acquire ownership of \c hToken
+    ss_explicit_k
+    token_information(HANDLE hToken)
         : m_data(init_(hToken))
     {}
 
@@ -292,7 +395,8 @@ private:
         }
         else
         {
-            data_type* const data = reinterpret_cast<data_type*>(allocator_type().allocate(cbRequired));
+            raw_pointer_type_ const raw     =   raw_allocator_type_().allocate(cbRequired);
+            pointer const           data    =   static_cast<pointer>(static_cast<void*>(raw));
 
             if(NULL == data)
             {
@@ -310,9 +414,9 @@ private:
                     last_error_scope scope;
 
 #ifdef STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT
-                    allocator_type().deallocate(reinterpret_cast<ss_byte_t*>(data), cbRequired);
+                    raw_allocator_type_().deallocate(raw, cbRequired);
 #else /* ? STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
-                    allocator_type().deallocate(reinterpret_cast<ss_byte_t*>(data));
+                    raw_allocator_type_().deallocate(raw);
 #endif /* STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
 
                     // Report error
@@ -323,46 +427,50 @@ private:
             }
         }
 
-        return mem_block_type_(NULL, 0);
+        return mem_block_type_(static_cast<pointer>(NULL), 0);
     }
 public:
-
     ~token_information() STLSOFT_NOEXCEPT
     {
+        raw_pointer_type_ const raw = static_cast<raw_pointer_type_>(static_cast<void*>(m_data.first));
+
 #ifdef STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT
-        allocator_type().deallocate(m_data.first, m_data.second);
+        raw_allocator_type_().deallocate(raw, m_data.second);
 #else /* ? STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
-        allocator_type().deallocate(m_data.first);
+        raw_allocator_type_().deallocate(raw);
 #endif /* STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
     }
+private:
+    token_information(class_type const&);       // copy-construction proscribed
+    class_type& operator =(class_type const&);  // copy-assignment proscribed
 /// @}
 
 /// \name Conversion
 /// @{
 public:
-    data_type* get() const
+    pointer get() const
     {
-        return static_cast<data_type*>(m_data.first);
+        return m_data.first;
     }
     size_type size() const
     {
         return m_data.second;
     }
 
-    operator data_type *()
+    operator pointer()
     {
         return get();
     }
-    operator data_type const* () const
+    operator const_pointer() const
     {
         return get();
     }
 
-    data_type *operator ->()
+    pointer operator ->()
     {
         return get();
     }
-    data_type const* operator ->() const
+    const_pointer operator ->() const
     {
         return get();
     }
@@ -388,16 +496,11 @@ private:
 private:
     mem_block_type_ const   m_data;
 /// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    token_information(token_information const&);
-    token_information& operator =(token_information const&);
-/// @}
 };
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
 
 #ifndef WINSTL_NO_NAMESPACE
 # if defined(STLSOFT_NO_NAMESPACE) || \
@@ -408,6 +511,14 @@ private:
 } /* namespace stlsoft */
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
