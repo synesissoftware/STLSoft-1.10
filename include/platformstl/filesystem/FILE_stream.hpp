@@ -4,7 +4,7 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     22nd January 2017
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        17
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    2
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -709,6 +709,43 @@ get_FILE_stream_Ref(
 } /* namespace platformstl_project */
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ *
+ * The file ptr shims exist either in the stlsoft namespace, or in the
+ * global namespace. This is required by the lookup rules.
+ *
+ */
+
+#ifndef PLATFORMSTL_NO_NAMESPACE
+# if !defined(STLSOFT_NO_NAMESPACE) && \
+     !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
+namespace stlsoft
+{
+# else /* ? STLSOFT_NO_NAMESPACE */
+/* There is no stlsoft namespace, so must define in the global namespace */
+# endif /* !STLSOFT_NO_NAMESPACE */
+
+    using ::platformstl::get_FILE_ptr;
+    using ::platformstl::get_FILE_stream_Handle;
+    using ::platformstl::get_FILE_stream_Ref;
+
+# if !defined(STLSOFT_NO_NAMESPACE) && \
+     !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
+} /* namespace stlsoft */
+# else /* ? STLSOFT_NO_NAMESPACE */
+/* There is no stlsoft namespace, so must define in the global namespace */
+# endif /* !STLSOFT_NO_NAMESPACE */
+#endif /* !PLATFORMSTL_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
