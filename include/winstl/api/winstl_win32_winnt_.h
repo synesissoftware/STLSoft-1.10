@@ -4,8 +4,8 @@
  */
 
 
-#ifndef WINSTL_INCL_WINSTL_API_h_winstl_win32_winnt_
-#define WINSTL_INCL_WINSTL_API_h_winstl_win32_winnt_
+#ifndef WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_
+#define WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_
 
 /* /////////////////////////////////////////////////////////////////////////
  * Windows version compatibility check(s)
@@ -23,6 +23,6 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !WINSTL_INCL_WINSTL_API_h_winstl_win32_winnt_ */
+#endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */

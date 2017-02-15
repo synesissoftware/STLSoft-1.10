@@ -5,7 +5,7 @@
  *              Information Functions API.
  *
  * Created:     24th December 2016
- * Updated:     11th January 2017
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -58,9 +58,9 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_API_h_winstl_win32_winnt_
+#ifndef WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_
 # include <winstl/api/winstl_win32_winnt_.h>
-#endif /* !WINSTL_INCL_WINSTL_API_h_winstl_win32_winnt_ */
+#endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * Windows' System Information Functions
