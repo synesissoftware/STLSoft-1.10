@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     31st December 2016
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       5
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       0
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       1
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        71
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -70,6 +70,9 @@
 #ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION
 # include <winstl/exception/resource_exception.hpp>
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION */
+#ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION
+# include <winstl/exception/security_exception.hpp>
+#endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION */
 #ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION
 # include <winstl/exception/winstl_exception.hpp>
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
@@ -170,6 +173,42 @@ public:
     void operator ()(char const* reason, status_code_type sc, LPCTSTR resourceId, LPCTSTR resourceType) const
     {
         STLSOFT_THROW_X(thrown_type(reason, sc, resourceId, resourceType));
+    }
+/// @}
+};
+
+/** A policy class that throws a security_exception class.
+ *
+ * \ingroup group__library__Exception
+ *
+ */
+// [[synesis:class:exception-policy: security_exception_policy]]
+struct security_exception_policy
+{
+/// \name Member Types
+/// @{
+public:
+    /// The thrown type
+    typedef security_exception                              thrown_type;
+    /// The status code type
+    typedef ws_dword_t                                      status_code_type;
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+    typedef status_code_type                                error_code_type;
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+/// @}
+
+/// \name Operators
+/// @{
+public:
+    /// Function call operator, taking one parameter
+    void operator ()(status_code_type sc) const
+    {
+        STLSOFT_THROW_X(thrown_type(sc));
+    }
+    /// Function call operator, taking two parameters
+    void operator ()(char const* reason, status_code_type sc) const
+    {
+        STLSOFT_THROW_X(thrown_type(reason, sc));
     }
 /// @}
 };

@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        winstl/synch/exceptions.hpp
  *
- * Purpose:     Synchronisation API library exception(s).
+ * Purpose:     Synchronisation library exception(s).
  *
  * Created:     30th May 2006
- * Updated:     31st December 2016
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_MAJOR     2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_MINOR     5
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_REVISION  1
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_EDIT      24
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_REVISION  2
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_EDIT      26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -845,6 +845,14 @@ public: // Fields
 } /* namespace stlsoft */
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
