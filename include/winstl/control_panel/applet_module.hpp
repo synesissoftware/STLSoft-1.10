@@ -4,7 +4,7 @@
  * Purpose:     Control Panel module/applet manipulation classes.
  *
  * Created:     1st April 2006
- * Updated:     11th January 2017
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_MINOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_REVISION 19
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_EDIT     34
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_EDIT     35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -163,19 +163,20 @@ class applet
 /// @{
 public:
     /// The type of this class
-    typedef applet                                      class_type;
+    typedef applet                                          class_type;
     /// The string type
-    typedef STLSOFT_NS_QUAL(basic_simple_string)<TCHAR> string_type;
+    typedef STLSOFT_NS_QUAL(basic_simple_string)<TCHAR>     string_type;
     /// The index type
-    typedef ss_size_t                                   index_type;
+    typedef ss_size_t                                       index_type;
 private:
-    typedef basic_resource_string<  string_type
+    typedef basic_resource_string<
+        string_type
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-                                ,   resource_exception_policy
+    ,   resource_exception_policy
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-                                ,   STLSOFT_NS_QUAL(null_exception_policy)
+    ,   STLSOFT_NS_QUAL(null_exception_policy)
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-                                >                       resource_string_type_;
+    >                                                       resource_string_type_;
 /// @}
 
 /// \name Construction

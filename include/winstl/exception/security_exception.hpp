@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        winstl/exception/security_exception.hpp
  *
- * Purpose:     security_exception class, and its policy class
+ * Purpose:     security_exception class
  *
  * Created:     1st January 2017
- * Updated:     1st January 2017
+ * Updated:     15th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_MAJOR       1
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_MINOR       0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_REVISION    1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_EDIT        1
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
