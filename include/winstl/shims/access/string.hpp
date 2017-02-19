@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_MAJOR    4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_MINOR    2
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_REVISION 2
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_EDIT     113
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_REVISION 3
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_HPP_STRING_EDIT     114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,13 @@
 # include <winstl/shims/access/string/time.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_ACCESS_HPP_STRING */
 

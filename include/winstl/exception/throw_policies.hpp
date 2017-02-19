@@ -4,7 +4,7 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     15th February 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        72
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    2
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -227,7 +227,13 @@ public:
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
 

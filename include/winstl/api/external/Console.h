@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     24th August 2014
- * Updated:     15th February 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -451,7 +451,13 @@
 # define WINSTL_API_EXTERNAL_Console_WriteConsoleOutputCharacterW           STLSOFT_NS_GLOBAL(WriteConsoleOutputCharacterW)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleOutputCharacter W */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Console */
 

@@ -4,7 +4,7 @@
  * Purpose:     Extensions to standard algorithms.
  *
  * Created:     17th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MINOR       2
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_REVISION    8
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        79
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_REVISION    9
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,7 +204,13 @@ inline void fill_if(O first, O last, V const& value, UP pred)
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_STD_HPP_EXT */
 

@@ -4,7 +4,7 @@
  * Purpose:     Range categories.
  *
  * Created:     4th November 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,8 +47,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_MAJOR      2
 # define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_MINOR      1
-# define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_REVISION   3
-# define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_EDIT       28
+# define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_REVISION   4
+# define RANGELIB_VER_RANGELIB_HPP_RANGE_CATEGORIES_EDIT       29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -138,7 +138,13 @@ struct indirect_range_tag
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !RANGELIB_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !RANGELIB_INCL_RANGELIB_HPP_RANGE_CATEGORIES */
 

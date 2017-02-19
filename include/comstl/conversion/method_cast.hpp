@@ -4,7 +4,7 @@
  * Purpose:     COM memory functions.
  *
  * Created:     20th December 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MAJOR     2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MINOR     2
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_REVISION  3
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      39
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_REVISION  4
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -215,7 +215,13 @@ inline R method_cast(C *c, HRESULT (STDAPICALLTYPE C::*pfn)(V*))
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_CONVERSION_HPP_METHOD_CAST */
 

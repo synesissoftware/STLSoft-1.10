@@ -67,8 +67,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  8
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      121
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  9
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -911,7 +911,13 @@ inline ss_typename_type_ret_k reg_blob<A>::const_reverse_iterator reg_blob<A>::r
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_VALUE */
 

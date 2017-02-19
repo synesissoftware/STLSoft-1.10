@@ -4,7 +4,7 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   2
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       16
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   3
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -636,7 +636,13 @@ GUID_to_string(
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_GUID_FUNCTIONS */
 

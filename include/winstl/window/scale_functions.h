@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_REVISION   4
-# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_EDIT       52
+# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_REVISION   5
+# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_EDIT       53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -185,7 +185,13 @@ inline ws_sint_t calc_height(RECT const& rc)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_H_SCALE_FUNCTIONS */
 

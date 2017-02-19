@@ -4,7 +4,7 @@
  * Purpose:     Contains classes for initialising COM/OLE.
  *
  * Created:     8th February 1999
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Adi Shavit, for demanding better documentation of COMSTL.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MAJOR      3
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MINOR      3
-# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_REVISION   8
-# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       90
+# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_REVISION   9
+# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -487,7 +487,13 @@ inline HRESULT initialiser<IP, XP>::get_HRESULT() const
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_UTIL_HPP_INITIALISERS */
 

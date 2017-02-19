@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MAJOR    6
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    3
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 7
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     231
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 8
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     232
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -417,7 +417,13 @@ inline module::module_handle_type module::get_module_handle() const
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !UNIXSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !UNIXSTL_INCL_UNIXSTL_DL_HPP_MODULE */
 

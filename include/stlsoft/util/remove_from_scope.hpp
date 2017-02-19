@@ -4,7 +4,7 @@
  * Purpose:     Contains the STLSOFT_REMOVE_FROM_SCOPE() macro.
  *
  * Created:     10th June 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_MINOR       0
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_REVISION    4
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_EDIT        45
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_REVISION    5
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_EDIT        46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,13 @@
  */
 #define STLSOFT_REMOVE_FROM_SCOPE(name)     STLSOFT_NS_QUAL(inert) name
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE */
 

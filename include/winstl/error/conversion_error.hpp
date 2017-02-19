@@ -52,8 +52,8 @@
 #ifndef WINSTL_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MAJOR     1
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MINOR     0
-# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_REVISION  5
-# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      17
+# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_REVISION  6
+# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      18
 #endif /* !WINSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -179,7 +179,13 @@ private:
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_CONVERSION_ERROR */
 

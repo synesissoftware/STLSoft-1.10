@@ -4,7 +4,7 @@
  * Purpose:     Common (C++) includes for Synchronisation library.
  *
  * Created:     17th December 2016
- * Updated:     29th December 2016
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_MAJOR     1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_EDIT      4
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_REVISION  4
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_COMMON_EDIT      5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,13 @@
 # include <stlsoft/synch/concepts.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_HPP_CONCEPTS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_COMMON */
 

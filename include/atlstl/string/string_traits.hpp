@@ -4,7 +4,7 @@
  * Purpose:     Contains string_traits for ATL.
  *
  * Created:     28th April 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_MAJOR      3
 # define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_MINOR      0
-# define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_REVISION   5
-# define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_EDIT       28
+# define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_REVISION   6
+# define ATLSTL_VER_ATLSTL_STRING_HPP_STRING_TRAITS_EDIT       29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,13 @@ struct string_traits<CComBSTR>
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !ATLSTL_INCL_ATLSTL_STRING_HPP_STRING_TRAITS */
 

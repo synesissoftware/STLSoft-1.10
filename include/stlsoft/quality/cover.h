@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MINOR       0
-# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        6
+# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_REVISION    4
+# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,7 +91,13 @@
 
 #endif /* STLSOFT_USE_XCOVER */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
 

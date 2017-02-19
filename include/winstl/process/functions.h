@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 3
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     25
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 4
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -333,7 +333,13 @@ inline BOOL CreateProcess(ws_char_a_t const* cmdLine)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_PROCESS_H_FUNCTIONS */
 

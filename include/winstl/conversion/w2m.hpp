@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MAJOR    1
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MINOR    0
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_REVISION 2
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     8
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_REVISION 3
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,13 @@ STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
 # include <winstl/conversion/char_conversions.hpp>
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_W2M */
 

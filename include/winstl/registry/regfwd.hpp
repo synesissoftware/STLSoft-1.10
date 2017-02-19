@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_MAJOR    1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_MINOR    1
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_REVISION 3
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_EDIT     16
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_REVISION 4
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGFWD_EDIT     17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,13 @@ class wrong_value_type_exception;
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REGFWD */
 

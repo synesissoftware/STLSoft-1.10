@@ -4,7 +4,7 @@
  * Purpose:     basic_resource_string class.
  *
  * Created:     1st November 1994
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   Ryan Ginstrom for suggesting the implementation for handling
  *              Unicode strings on Win9x.
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MAJOR    4
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MINOR    2
-# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_REVISION 11
-# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     93
+# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_REVISION 12
+# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -421,7 +421,13 @@ inline ss_size_t c_str_len(basic_resource_string<S, X> const& s)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_STRING_HPP_RESOURCE_STRING */
 

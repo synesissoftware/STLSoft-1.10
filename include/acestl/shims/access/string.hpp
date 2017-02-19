@@ -4,7 +4,7 @@
  * Purpose:     Helper functions for ACE classes.
  *
  * Created:     2nd December 2004
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_MAJOR      2
 # define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_MINOR      0
-# define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_REVISION   2
-# define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_EDIT       17
+# define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_REVISION   3
+# define ACESTL_VER_SHIMS_ACCESS_HPP_STRING_EDIT       18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,7 +77,13 @@
 # include <acestl/shims/access/string/time_value.hpp>
 #endif /* !ACESTL_INCL_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !ACESTL_INCL_SHIMS_ACCESS_HPP_STRING */
 

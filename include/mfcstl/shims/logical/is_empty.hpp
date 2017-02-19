@@ -4,7 +4,7 @@
  * Purpose:     Contains the is_empty access shim.
  *
  * Created:     18th December 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef MFCSTL_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_MAJOR     2
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_MINOR     0
-# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_REVISION  2
-# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_EDIT      9
+# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_REVISION  3
+# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY_EDIT      10
 #endif /* !MFCSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,7 +77,13 @@
 # include <mfcstl/shims/logical/is_empty/lists.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_LISTS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_LOGICAL_HPP_IS_EMPTY */
 

@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MINOR     1
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      6
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_REVISION  2
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,13 @@
 # endif /* __STDC_WANT_SECURE_LIB__ */
 #endif /* __STDC_SECURE_LIB__ */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 

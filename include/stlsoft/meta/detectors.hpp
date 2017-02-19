@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MINOR       0
-# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_REVISION    3
-# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        10
+# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_REVISION    4
+# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -138,7 +138,13 @@ STLSOFT_COMPILER_IS_MSVC: _MSC_VER < 1310
 # include <stlsoft/meta/detector/has_value_type.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_META_DETECTOR_HPP_HAS_VALUE_TYPE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_META_HPP_DETECTORS */
 

@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_REVISION    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_EDIT        9
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_REVISION    4
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,13 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<username_policy<TCHAR> >     
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_USER_NAME */
 

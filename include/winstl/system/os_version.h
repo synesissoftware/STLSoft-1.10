@@ -4,7 +4,7 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 3
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     7
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 4
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -445,7 +445,13 @@ c_str_len_a(
 #endif /* __cplusplus */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_OS_VERSION */
 

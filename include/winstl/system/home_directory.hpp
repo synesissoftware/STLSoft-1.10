@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR      0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION   2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       7
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION   3
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -207,7 +207,13 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_HOME_DIRECTORY */
 

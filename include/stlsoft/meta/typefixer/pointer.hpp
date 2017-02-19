@@ -4,7 +4,7 @@
  * Purpose:     Definition of the fixer_pointer and fixer_const_pointer types.
  *
  * Created:     9th February 2004
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_MAJOR       4
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_MINOR       0
-# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_REVISION    3
-# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_EDIT        37
+# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_REVISION    4
+# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_EDIT        38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,7 +162,13 @@ struct fixer_const_pointer<T, false>
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_META_TYPEFIXER_HPP_POINTER */
 

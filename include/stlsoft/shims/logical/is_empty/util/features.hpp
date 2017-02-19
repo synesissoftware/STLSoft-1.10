@@ -4,7 +4,7 @@
  * Purpose:     Detects compiler features required by the is_empty shim.
  *
  * Created:     20th December 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_MAJOR     2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_MINOR     0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_REVISION  3
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_EDIT      9
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_REVISION  4
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES_EDIT      10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,7 +77,13 @@
 # endif /* !STLSOFT_INCL_STLSOFT_META_HPP_YESNO */
 #endif /* STLSOFT_SHIM_LOGICAL_IS_EMPTY_NEEDS_HELP */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_UTIL_HPP_FEATURES */
 

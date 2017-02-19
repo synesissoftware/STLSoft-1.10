@@ -4,7 +4,7 @@
  * Purpose:     CY helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MINOR       1
-# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_REVISION    1
-# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        10
+# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_REVISION    2
+# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -217,7 +217,13 @@ CY_compare(
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_CY_FUNCTIONS */
 

@@ -4,7 +4,7 @@
  * Purpose:     COM ROT (Running Object Table) functions.
  *
  * Created:     21st October 1998
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MINOR       1
-# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_REVISION    7
-# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        72
+# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_REVISION    8
+# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -499,7 +499,13 @@ inline HRESULT Rot_EnumRunning(IEnumMoniker** ppenumMoniker)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_ROT_FUNCTIONS */
 

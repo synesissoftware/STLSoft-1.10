@@ -4,7 +4,7 @@
  * Purpose:     Interface-specific predicates and functions.
  *
  * Created:     14th June 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_MAJOR     4
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_MINOR     0
-# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_REVISION  2
-# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_EDIT      69
+# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_REVISION  3
+# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_EDIT      70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,13 @@ STLSOFT_COMPILER_IS_GCC:     __GNUC__ < 3 || (__GNUC__ == 3 && __GNUC_MINOR__ < 
 # include <comstl/functional/type_functionals.hpp>
 #endif /* !COMSTL_INCL_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS */
 

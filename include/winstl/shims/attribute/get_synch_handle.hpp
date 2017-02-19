@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 handles.
  *
  * Created:     3rd July 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_MAJOR       2
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_MINOR       0
-# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_REVISION    4
-# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_EDIT        28
+# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_REVISION    5
+# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE_EDIT        29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,7 +116,13 @@ inline HANDLE get_synch_handle(HANDLE h)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_SYNCH_HANDLE */
 

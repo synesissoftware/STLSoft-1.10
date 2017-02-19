@@ -4,7 +4,7 @@
  * Purpose:     Contains the is_null attribute shim.
  *
  * Created:     31st March 2007
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_MAJOR       2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_MINOR       0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_REVISION    2
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_EDIT        9
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_REVISION    3
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,7 +114,13 @@
 # endif
 #endif /* __cplusplus */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL */
 

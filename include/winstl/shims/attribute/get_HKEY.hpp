@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_MAJOR     1
 # define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_MINOR     0
-# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_REVISION  4
-# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_EDIT      10
+# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_REVISION  5
+# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_EDIT      11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,13 @@ inline HKEY get_HKEY(HKEY h)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_SHIMS_ATTRIBUTE_HPP_GET_HKEY */
 

@@ -4,7 +4,7 @@
  * Purpose:     Range filter adaptor.
  *
  * Created:     9th July 2004
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,8 +47,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_MINOR    5
-# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_REVISION 5
-# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_EDIT     39
+# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_REVISION 6
+# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_EDIT     40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -324,7 +324,13 @@ inline filtered_range<R, P> filter_range(R r, P pr)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !RANGELIB_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !RANGELIB_INCL_RANGELIB_HPP_FILTERED_RANGE */
 

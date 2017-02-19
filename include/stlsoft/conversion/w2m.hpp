@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     3rd September 2008
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_MAJOR       1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_MINOR       0
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_REVISION    2
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_EDIT        6
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_REVISION    3
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_W2M_EDIT        7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,7 +91,13 @@ STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
 # include <stlsoft/conversion/char_conversions.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_W2M */
 

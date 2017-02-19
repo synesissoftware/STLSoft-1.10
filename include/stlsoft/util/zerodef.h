@@ -4,7 +4,7 @@
  * Purpose:     Include for defining ZERO to be the ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MINOR    0
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 6
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     32
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 7
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,13 @@
 # define ZERO   STLSOFT_NS_QUAL(ZERO_v)::create()
 #endif /* __cplusplus */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_H_ZERODEF */
 

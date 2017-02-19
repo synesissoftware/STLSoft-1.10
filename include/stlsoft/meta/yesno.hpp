@@ -4,7 +4,7 @@
  * Purpose:     yes / no classes.
  *
  * Created:     16th May 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_META_HPP_YESNO_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_YESNO_MINOR       3
-# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_REVISION    3
-# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_EDIT        20
+# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_REVISION    4
+# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_EDIT        21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -132,7 +132,13 @@ struct value_to_yesno_type<0>
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_META_HPP_YESNO */
 

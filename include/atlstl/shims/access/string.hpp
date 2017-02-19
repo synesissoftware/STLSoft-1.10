@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     27th May 2002
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_MAJOR      4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_MINOR      0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_REVISION   2
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_EDIT       100
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_REVISION   3
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_EDIT       101
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,13 @@
 # endif /* !ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW */
 #endif /* __ATLWIN__ */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_HPP_STRING */
 

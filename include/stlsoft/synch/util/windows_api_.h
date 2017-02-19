@@ -4,7 +4,7 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
-# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__REVISION 1
-# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__EDIT     5
+# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__REVISION 2
+# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__EDIT     6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -310,7 +310,13 @@ Sleep(
 
 #endif
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_UTIL_H_WINDOWS_API_ */
 

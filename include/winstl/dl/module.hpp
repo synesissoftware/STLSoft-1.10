@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_MAJOR      6
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_MINOR      5
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_REVISION   8
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       240
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_REVISION   9
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       241
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -607,7 +607,13 @@ inline module::module_handle_type module::get() const
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_DL_HPP_MODULE */
 

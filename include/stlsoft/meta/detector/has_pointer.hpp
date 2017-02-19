@@ -4,7 +4,7 @@
  * Purpose:     Definition of the has_pointer member type detector.
  *
  * Created:     19th November 1998
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_MAJOR    4
 # define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_MINOR    0
-# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_REVISION 4
-# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_EDIT     136
+# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_REVISION 5
+# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_POINTER_EDIT     137
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -128,7 +128,13 @@ struct has_pointer<void>
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_META_DETECTOR_HPP_HAS_POINTER */
 

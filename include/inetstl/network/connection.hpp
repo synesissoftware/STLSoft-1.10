@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    8
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        78
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    9
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -424,7 +424,13 @@ inline HINTERNET get_handle(basic_connection<C, X, T> &s)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !INETSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !INETSTL_INCL_INETSTL_NETWORK_HPP_CONNECTION */
 

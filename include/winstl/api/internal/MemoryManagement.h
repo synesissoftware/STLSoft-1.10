@@ -5,7 +5,7 @@
  *              Management Functions API.
  *
  * Created:     18th July 2014
- * Updated:     15th February 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -189,7 +189,13 @@ WINSTL_API_INTERNAL_MemoryManagement_MapViewOfFileEx(
  */
 
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
 

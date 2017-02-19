@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_MAJOR       4
 # define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_EDIT        145
+# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_REVISION    4
+# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_EDIT        146
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -158,7 +158,13 @@ inline void set_window_font(HWND hwnd, HFONT hfont, ws_bool_t bRedraw = true)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_H_FONT_FUNCTIONS */
 

@@ -4,7 +4,7 @@
  * Purpose:     COM-related exception classes, and their policy classes
  *
  * Created:     8th December 2004
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       3
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       0
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    1
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        52
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    2
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,7 +162,13 @@ typedef exception_policy_base<variant_type_exception>   variant_type_exception_p
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !COMSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !COMSTL_INCL_COMSTL_EXCEPTION_HPP_THROW_POLICIES */
 

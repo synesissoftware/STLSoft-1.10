@@ -21,7 +21,13 @@
 # define WINSTL_WIN32_WINNT     (_WIN32_WINNT)
 #endif
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 

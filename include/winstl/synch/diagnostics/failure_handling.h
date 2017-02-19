@@ -4,7 +4,7 @@
  * Purpose:     WinSTL Synchronisation library diagnostics facilities.
  *
  * Created:     18th December 2016
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_MAJOR       1
 # define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_MINOR       0
-# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_REVISION    1
-# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_EDIT        2
+# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_REVISION    2
+# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -271,7 +271,13 @@ namespace winstl_project
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING */
 

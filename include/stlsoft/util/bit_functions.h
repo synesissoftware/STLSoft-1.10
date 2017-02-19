@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_MINOR    2
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_EDIT     7
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_REVISION 2
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,13 @@
 # include <stlsoft/util/bits/test_functions.h>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS */
 

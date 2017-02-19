@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      1
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   1
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       53
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   2
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,7 +173,13 @@ GetWindowIdent(
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_UTIL_HPP_IDENT_ */
 

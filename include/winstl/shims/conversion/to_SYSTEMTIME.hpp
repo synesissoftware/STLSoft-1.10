@@ -4,7 +4,7 @@
  * Purpose:     Includes all winstl::to_SYSTEMTIME conversion shims.
  *
  * Created:     15th December 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_MAJOR     1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_MINOR     1
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_REVISION  4
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_EDIT      10
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_REVISION  5
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME_EDIT      11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,7 +78,13 @@
 # endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_UDATE */
 #endif /* WINSTL_UDATE_DEFINED */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_HPP_TO_SYSTEMTIME */
 

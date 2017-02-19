@@ -4,7 +4,7 @@
  * Purpose:     Contains the get_FILE_ptr attribute shim.
  *
  * Created:     4th November 2007
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_MAJOR     1
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_MINOR     0
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_REVISION  2
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_EDIT      6
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_REVISION  3
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR_EDIT      7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,13 @@
 # include <stlsoft/shims/attribute/get_FILE_ptr/std/fundamental.h>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_FILE_PTR_STD_H_FUNDAMENTAL */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_FILE_PTR */
 

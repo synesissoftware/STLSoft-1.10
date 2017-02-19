@@ -4,7 +4,7 @@
  * Purpose:     Contains the is_empty attribute shim.
  *
  * Created:     18th December 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_MAJOR       2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_MINOR       0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_REVISION    2
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_EDIT        11
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_REVISION    3
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY_EDIT        12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,13 @@
 # include <stlsoft/shims/logical/is_empty/std/container.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_IS_EMPTY_STD_HPP_CONTAINER */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_HPP_IS_EMPTY */
 

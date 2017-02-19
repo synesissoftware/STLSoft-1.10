@@ -4,7 +4,7 @@
  * Purpose:     Sequence container range adaptor.
  *
  * Created:     4th November 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Luoyi (whom I could not thank by email), for pointing out
  *              some gaps with the sequence_range
@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MINOR    12
-# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_REVISION 5
-# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     70
+# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_REVISION 6
+# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -493,7 +493,13 @@ inline sequence_range<S> make_sequence_range(S const& s)
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !RANGELIB_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !RANGELIB_INCL_RANGELIB_HPP_SEQUENCE_RANGE */
 

@@ -4,7 +4,7 @@
  * Purpose:     Contains equivalents to contents of std's <utility>.
  *
  * Created:     17th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_MAJOR     3
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_MINOR     2
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_REVISION  3
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_EDIT      76
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_REVISION  4
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_UTILITY_EDIT      77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -97,7 +97,13 @@ namespace stlsoft
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_UTILITY */
 

@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     1st April 2014
- * Updated:     15th February 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -465,7 +465,13 @@
 # define WINSTL_API_EXTERNAL_Registry_RegUnloadKey                  STLSOFT_NS_GLOBAL(RegUnloadKey)
 #endif /* !WINSTL_API_EXTERNAL_Registry_RegUnloadKey */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
 

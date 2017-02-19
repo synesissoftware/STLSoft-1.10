@@ -4,7 +4,7 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 1
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     5
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 2
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,13 @@ UNIXSTL_INTERNAL_SYNCH_32cast_v_(
 #define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement64       STLSOFT_NS_GLOBAL(InterlockedIncrement64)
 #define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement(p)      STLSOFT_NS_GLOBAL(InterlockedIncrement)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)))
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API_ */
 

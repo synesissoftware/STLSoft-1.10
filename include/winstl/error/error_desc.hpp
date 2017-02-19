@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MAJOR       4
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MINOR       6
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    9
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        99
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    10
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -874,7 +874,13 @@ using ::winstl::get_ptr;
 # endif /* !STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_ERROR_DESC */
 

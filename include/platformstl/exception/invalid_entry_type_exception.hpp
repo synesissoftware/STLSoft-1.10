@@ -5,7 +5,7 @@
  *              class.
  *
  * Created:     1st January 2017
- * Updated:     1st January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,8 +47,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_MINOR       0
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_EDIT        1
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_REVISION    2
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/invalid_entry_type_exception.hpp
@@ -125,7 +125,13 @@ typedef WINSTL_NS_QUAL(invalid_entry_type_exception)        invalid_entry_type_e
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION */
 

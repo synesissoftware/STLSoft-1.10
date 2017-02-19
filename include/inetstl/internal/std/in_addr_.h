@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__MAJOR      2
 # define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__MINOR      0
-# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__REVISION   1
-# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__EDIT       12
+# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__REVISION   2
+# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__EDIT       13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,7 +81,13 @@
 
 #endif /* OS */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !INETSTL_INCL_INETSTL_INTERNAL_STD_H_IN_ADDR_ */
 

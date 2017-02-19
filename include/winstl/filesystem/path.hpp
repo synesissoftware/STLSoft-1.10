@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     277
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 10
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     278
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -2005,7 +2005,13 @@ using ::winstl::c_str_ptr_null_w;
 # endif /* !STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH */
 

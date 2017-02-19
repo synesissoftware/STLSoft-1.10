@@ -9,7 +9,7 @@
  *              code coverage.
  *
  * Created:     18th June 2006
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_MINOR       1
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_REVISION    7
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_EDIT        24
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_REVISION    8
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_EDIT        25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1104,7 +1104,13 @@ inline must_init<T> const& operator |=(must_init<T> &v, must_init<T> const& rhs)
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_MUST_INIT */
 

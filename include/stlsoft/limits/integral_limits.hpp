@@ -8,7 +8,7 @@
  *              macros.
  *
  * Created:     16th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Jonathan Wakely for help with Solaris compatibility.
  *
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_MAJOR       5
 # define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_MINOR       0
-# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_REVISION    5
-# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_EDIT        68
+# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_REVISION    6
+# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_EDIT        69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -466,7 +466,13 @@ struct integral_limits<unsigned long>
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !STLSOFT_INCL_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS */
 
