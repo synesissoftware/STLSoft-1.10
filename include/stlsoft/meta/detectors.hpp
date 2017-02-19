@@ -4,7 +4,7 @@
  * Purpose:     Combined header file for STLSoft's TypeFixer utility components.
  *
  * Created:     15th July 2006
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MINOR       0
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_REVISION    3
-# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        9
+# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,6 +140,6 @@ STLSOFT_COMPILER_IS_MSVC: _MSC_VER < 1310
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !STLSOFT_INCL_STLSOFT_META_DETECTOR_HPP_DETECTORS */
+#endif /* !STLSOFT_INCL_STLSOFT_META_HPP_DETECTORS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

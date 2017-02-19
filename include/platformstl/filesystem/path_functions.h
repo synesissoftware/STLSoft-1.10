@@ -4,7 +4,7 @@
  * Purpose:     Path manipulation functions.
  *
  * Created:     3rd February 2011
- * Updated:     24th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MINOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_REVISION 4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     19
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     20
 #endif /* !PLATFORMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -462,6 +462,6 @@ get_directory_path_from_path(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !STLSOFT_INCL_STLSOFT_FILESYSTEM_H_PATH_FUNCTIONS */
+#endif /* !PLATFORMSTL_INCL_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

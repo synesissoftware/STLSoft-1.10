@@ -4,7 +4,7 @@
  * Purpose:     String duplication functions.
  *
  * Created:     26th May 2005
- * Updated:     24th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     41
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -200,6 +200,6 @@ inline C* string_dup(C const* str, A& ator, ss_size_t* psize = NULL)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !STLSOFT_INCL_STLSOFT_HPP_CSTRING_FUNCTIONS */
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

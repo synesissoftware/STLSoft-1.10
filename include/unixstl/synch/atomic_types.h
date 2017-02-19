@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     14th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Brad Cox, for helping out in testing and fixing the
  *              implementation for MAC OSX (Intel).
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_MAJOR     8
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_EDIT      212
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_EDIT      213
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -153,6 +153,6 @@ typedef us_sintptr_t                    atomic_int_t;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS */
+#endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_H_ATOMIC_TYPES */
 
 /* ///////////////////////////// end of file //////////////////////////// */

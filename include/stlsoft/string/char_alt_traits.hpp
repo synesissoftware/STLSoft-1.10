@@ -4,7 +4,7 @@
  * Purpose:     char_alt_traits traits class.
  *
  * Created:     19th November 1998
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_REVISION 3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_EDIT     40
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -126,6 +126,6 @@ struct char_alt_traits<ss_char_w_t>
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !STLSOFT_INCL_STLSOFT_HPP_STRING_CHAR_ALT_TRAITS */
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

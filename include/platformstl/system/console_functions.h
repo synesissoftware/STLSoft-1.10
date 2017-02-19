@@ -4,7 +4,7 @@
  * Purpose:     Console functions.
  *
  * Created:     6th August 2015
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    3
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        5
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        6
 #endif /* !PLATFORMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -158,6 +158,6 @@ get_console_width()
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* !STLSOFT_INCL_STLSOFT_SYSTEM_H_CONSOLE_FUNCTIONS */
+#endif /* !PLATFORMSTL_INCL_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
