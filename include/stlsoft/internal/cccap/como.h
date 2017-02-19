@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Comeau C/C++.
  *
  * Created:     7th February 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -39,6 +39,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error This file must not be included independently of stlsoft/stlsoft.h
 #endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
@@ -58,7 +60,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_COMO_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_COMO_MINOR     17
 # define STLSOFT_VER_H_STLSOFT_CCCAP_COMO_REVISION  2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_COMO_EDIT      75
+# define STLSOFT_VER_H_STLSOFT_CCCAP_COMO_EDIT      76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

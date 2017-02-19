@@ -1,3 +1,4 @@
+/* STLSOFT:FILE_DEPRECATED */
 
 #error This file is now obsolete. Instead include winstl/shell/memory/functions.h
 

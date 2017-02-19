@@ -5,7 +5,7 @@
  *              function marked nothrow()".
  *
  * Created:     18th November 2008
- * Updated:     21st January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -14,6 +14,8 @@
  *
  * Refer to stlsoft/stlsoft.h for license conditions
  */
+
+/* STLSOFT:FILE_EXCEPTED */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error Requires stlsoft/stlsoft.h
@@ -32,3 +34,4 @@
 #endif
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

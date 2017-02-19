@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Borland C/C++.
  *
  * Created:     7th February 2003
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   markitus82 for pointing out overlooking of support for
  *              __FUNCTION__.
@@ -42,6 +42,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error This file must not be included independently of stlsoft/stlsoft.h
 #endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
@@ -61,7 +63,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_MINOR      21
 # define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_EDIT       92
+# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_EDIT       93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

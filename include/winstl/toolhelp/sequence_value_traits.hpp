@@ -4,7 +4,7 @@
  * Purpose:     Instantiations of th_sequence_value_traits<>.
  *
  * Created:     21st May 2005
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -49,6 +49,8 @@
  *   (\ref group__library__Windows_Toolhelp "Windows ToolHelp" Library).
  */
 
+/* STLSOFT:FILE_EXCEPTED */
+
 // NO INCLUDE GUARDS
 // This file is meant to be included multiple times
 
@@ -56,7 +58,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_MINOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_REVISION  5
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_EDIT      12
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE

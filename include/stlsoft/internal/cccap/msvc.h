@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
@@ -42,6 +42,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error This file must not be included independently of stlsoft/stlsoft.h
 #endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
@@ -65,7 +67,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     31
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      140
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      141
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Obsolete
  *
  * Created:     11th May 2008
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -44,13 +44,15 @@
  * Obsolete features
  */
 
+/* STLSOFT:FILE_EXCEPTED */
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_OBSOLETE_MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_OBSOLETE_MINOR     2
 # define STLSOFT_VER_H_STLSOFT_CCCAP_OBSOLETE_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_OBSOLETE_EDIT      9
+# define STLSOFT_VER_H_STLSOFT_CCCAP_OBSOLETE_EDIT      10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

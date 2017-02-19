@@ -4,7 +4,7 @@
  * Purpose:     Standard interface traits.
  *
  * Created:     25th May 2002
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,6 +47,8 @@
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef COMSTL_INCL_COMSTL_UTIL_HPP_INTERFACE_TRAITS
 # error This file can only be included from within comstl/util/interface_traits.hpp
 #endif /* !COMSTL_INCL_COMSTL_UTIL_HPP_INTERFACE_TRAITS */
@@ -55,7 +57,7 @@
 # define COMSTL_VER_COMSTL_INTERNAL_HPP_INTERFACE_TRAITS_STD__MAJOR     4
 # define COMSTL_VER_COMSTL_INTERNAL_HPP_INTERFACE_TRAITS_STD__MINOR     0
 # define COMSTL_VER_COMSTL_INTERNAL_HPP_INTERFACE_TRAITS_STD__REVISION  1
-# define COMSTL_VER_COMSTL_INTERNAL_HPP_INTERFACE_TRAITS_STD__EDIT      52
+# define COMSTL_VER_COMSTL_INTERNAL_HPP_INTERFACE_TRAITS_STD__EDIT      53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

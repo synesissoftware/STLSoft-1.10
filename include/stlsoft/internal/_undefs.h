@@ -4,7 +4,7 @@
  * Purpose:     The #undefs for stlsoft/stlsoft.h.
  *
  * Created:     1st December 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -39,6 +39,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error This file must not be included independently of stlsoft/stlsoft.h
 #endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
@@ -58,7 +60,7 @@
 # define STLSOFT_VER_H_STLSOFT__UNDEFS_MAJOR    2
 # define STLSOFT_VER_H_STLSOFT__UNDEFS_MINOR    9
 # define STLSOFT_VER_H_STLSOFT__UNDEFS_REVISION 1
-# define STLSOFT_VER_H_STLSOFT__UNDEFS_EDIT     30
+# define STLSOFT_VER_H_STLSOFT__UNDEFS_EDIT     31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

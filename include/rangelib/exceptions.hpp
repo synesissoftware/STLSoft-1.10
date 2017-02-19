@@ -1,3 +1,4 @@
+/* STLSOFT:FILE_DEPRECATED */
 
 #error This file is now obsolete. Instead include rangelib/error/exceptions.hpp
 

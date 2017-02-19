@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     27th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -41,6 +41,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:FILE_EXCEPTED */
+
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # error This file must not be included independently of stlsoft/stlsoft.h
 #endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
@@ -60,7 +62,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      26
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   4
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       101
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
