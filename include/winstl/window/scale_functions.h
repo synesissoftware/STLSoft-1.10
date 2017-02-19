@@ -4,7 +4,7 @@
  * Purpose:     Contains scale functions.
  *
  * Created:     7th February 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_REVISION   4
-# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_EDIT       51
+# define WINSTL_VER_WINSTL_WINDOW_H_SCALE_FUNCTIONS_EDIT       52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,6 +187,6 @@ inline ws_sint_t calc_height(RECT const& rc)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_SCALE_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_SCALE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -4,7 +4,7 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  8
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      31
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -957,6 +957,6 @@ inline int custom_event_handler::handle_callback_timeout(ACE_Time_Value const& c
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* ACESTL_INCL_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER */
+#endif /* !ACESTL_INCL_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER */
 
 /* ///////////////////////////// end of file //////////////////////////// */

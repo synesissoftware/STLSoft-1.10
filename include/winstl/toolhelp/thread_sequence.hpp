@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP thread sequence class.
  *
  * Created:     21st May 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_MAJOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_MINOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_REVISION    4
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_EDIT        17
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_EDIT        18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -141,6 +141,6 @@ inline DWORD get_pid(THREADENTRY32 const& te)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE */
+#endif /* !WINSTL_INCL_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

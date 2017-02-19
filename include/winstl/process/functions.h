@@ -4,7 +4,7 @@
  * Purpose:     Process functions.
  *
  * Created:     12th March 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 3
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     24
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -335,6 +335,6 @@ inline BOOL CreateProcess(ws_char_a_t const* cmdLine)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_PROCESS_H_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_PROCESS_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Cláudio Albuquerque for suggesting the inclusion of
  *              atlstr.h.
@@ -53,7 +53,7 @@
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MAJOR     3
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MINOR     5
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_REVISION  5
-# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      101
+# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file mfcstl/mfcstl.hpp
@@ -546,6 +546,6 @@ namespace mfcstl = ::stlsoft::mfcstl_project;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* MFCSTL_INCL_MFCSTL_HPP_MFCSTL */
+#endif /* !MFCSTL_INCL_MFCSTL_HPP_MFCSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */

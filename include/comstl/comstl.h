@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_H_COMSTL_MAJOR       3
 # define COMSTL_VER_COMSTL_H_COMSTL_MINOR       9
 # define COMSTL_VER_COMSTL_H_COMSTL_REVISION    5
-# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        122
+# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        123
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file comstl/comstl.h
@@ -874,6 +874,6 @@ namespace comstl = ::stlsoft::comstl_project;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* COMSTL_INCL_COMSTL_H_COMSTL */
+#endif /* !COMSTL_INCL_COMSTL_H_COMSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */

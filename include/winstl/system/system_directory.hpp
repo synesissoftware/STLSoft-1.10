@@ -5,7 +5,7 @@
  *              directory.
  *
  * Created:     10th December 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_REVISION 5
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_EDIT     77
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_EDIT     78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -180,6 +180,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)< sysdir_policy<TCHAR> >      
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */

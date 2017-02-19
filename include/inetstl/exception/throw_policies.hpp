@@ -4,7 +4,7 @@
  * Purpose:     Contains the internet_exception class.
  *
  * Created:     25th April 2004
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  4
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      48
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,6 +167,6 @@ public:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* INETSTL_INCL_INETSTL_EXCEPTION_HPP_THROW_POLICIES */
+#endif /* !INETSTL_INCL_INETSTL_EXCEPTION_HPP_THROW_POLICIES */
 
 /* ///////////////////////////// end of file //////////////////////////// */

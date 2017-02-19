@@ -4,7 +4,7 @@
  * Purpose:     TEXTMETRICS functions.
  *
  * Created:     20th October 1994
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS_MAJOR    3
 # define WINSTL_VER_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS_REVISION 3
-# define WINSTL_VER_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS_EDIT     44
+# define WINSTL_VER_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS_EDIT     45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,6 +204,6 @@ inline TEXTMETRIC get_client_textmetrics(HWND hwnd)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_TEXTMETRICS_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

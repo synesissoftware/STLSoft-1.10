@@ -4,7 +4,7 @@
  * Purpose:     Various Windows control functions.
  *
  * Created:     13th November 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_MAJOR       4
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_MINOR       2
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_REVISION    7
-# define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_EDIT        60
+# define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_EDIT        61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -721,6 +721,6 @@ inline ws_int_t edit_getline(HWND hwnd, ws_int_t lineIndex, ws_char_w_t *buffer,
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_CONTROLS_H_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_CONTROLS_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

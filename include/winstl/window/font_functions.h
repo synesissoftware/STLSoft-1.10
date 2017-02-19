@@ -4,7 +4,7 @@
  * Purpose:     Error functions.
  *
  * Created:     20th October 1994
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_MAJOR       4
 # define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_EDIT        144
+# define WINSTL_VER_WINSTL_WINDOW_H_FONT_FUNCTIONS_EDIT        145
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -160,6 +160,6 @@ inline void set_window_font(HWND hwnd, HFONT hfont, ws_bool_t bRedraw = true)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_FONT_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_FONT_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

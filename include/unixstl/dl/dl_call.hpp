@@ -4,7 +4,7 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_MAJOR       2
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_MINOR       3
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_REVISION    11
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_EDIT        50
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -3729,6 +3729,6 @@ inline R dl_call(L const& library, FD const& fd, A0 a0, A1 a1, A2 a2, A3 a3, A4 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXSTL_INCL_UNIXSTL_DL_HPP_DL_CALL */
+#endif /* !UNIXSTL_INCL_UNIXSTL_DL_HPP_DL_CALL */
 
 /* ///////////////////////////// end of file //////////////////////////// */

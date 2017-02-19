@@ -4,7 +4,7 @@
  * Purpose:     Functionals for application to controls.
  *
  * Created:     8th October 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MAJOR    4
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MINOR    2
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 6
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     87
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -798,6 +798,6 @@ private:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_CONTROL_HPP_FUNCTIONALS */
+#endif /* !WINSTL_INCL_WINSTL_CONTROL_HPP_FUNCTIONALS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

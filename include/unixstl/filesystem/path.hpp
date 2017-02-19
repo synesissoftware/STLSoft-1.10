@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      6
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   8
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       248
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       249
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1691,6 +1691,6 @@ using ::unixstl::c_str_ptr_null_w;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_PATH */
+#endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_PATH */
 
 /* ///////////////////////////// end of file //////////////////////////// */

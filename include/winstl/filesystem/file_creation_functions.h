@@ -4,7 +4,7 @@
  * Purpose:     File creation functions.
  *
  * Created:     12th September 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   3
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       19
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -190,6 +190,6 @@ inline HANDLE open_file_exclusive(ws_char_w_t const* fileName)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_H_FILE_CREATION_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_H_FILE_CREATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

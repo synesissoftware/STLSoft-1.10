@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -68,7 +68,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  8
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      120
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      121
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -913,6 +913,6 @@ inline ss_typename_type_ret_k reg_blob<A>::const_reverse_iterator reg_blob<A>::r
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_VALUE */
+#endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_VALUE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

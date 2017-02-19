@@ -4,7 +4,7 @@
  * Purpose:     String access shims for Internet types
  *
  * Created:     21st October 2006
- * Updated:     22nd January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MAJOR      1
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MINOR      1
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_REVISION   3
-# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       21
+# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -548,6 +548,6 @@ using ::inetstl::c_str_ptr;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* INETSTL_INCL_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR */
+#endif /* !INETSTL_INCL_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR */
 
 /* ///////////////////////////// end of file //////////////////////////// */

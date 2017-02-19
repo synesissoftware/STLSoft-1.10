@@ -4,7 +4,7 @@
  * Purpose:     Z-order iteration.
  *
  * Created:     11th July 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MAJOR     2
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MINOR     0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_REVISION  8
-# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      50
+# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -463,6 +463,6 @@ inline bool zorder_iterator_tmpl<T>::equal(ss_typename_type_k zorder_iterator_tm
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_HPP_ZORDER_ITERATOR */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_ZORDER_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */

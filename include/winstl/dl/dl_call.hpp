@@ -4,7 +4,7 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     7
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  9
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      55
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -5869,6 +5869,6 @@ inline R dl_call(L const& library, FD const& fd, A0 a0, A1 a1, A2 a2, A3 a3, A4 
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_DL_HPP_DL_CALL */
+#endif /* !WINSTL_INCL_WINSTL_DL_HPP_DL_CALL */
 
 /* ///////////////////////////// end of file //////////////////////////// */

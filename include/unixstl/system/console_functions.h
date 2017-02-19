@@ -4,7 +4,7 @@
  * Purpose:     Windows console functions.
  *
  * Created:     6th August 2015
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    4
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        6
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -226,6 +226,6 @@ get_console_width()
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXSTL_INCL_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
+#endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

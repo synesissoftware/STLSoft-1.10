@@ -5,7 +5,7 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://www.stlsoft.org/
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MINOR       0
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        5
+# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,6 +93,6 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
+#endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
 
 /* ///////////////////////////// end of file //////////////////////////// */

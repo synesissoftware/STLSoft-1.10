@@ -5,7 +5,7 @@
  *              operations.
  *
  * Created:     25th November 2006
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MAJOR      1
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MINOR      0
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_REVISION   6
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       15
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -247,6 +247,6 @@ private:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* ATLSTL_INCL_ATLSTL_WINDOW_HPP_SYNESIS_ABOUT_DIALOG */
+#endif /* !ATLSTL_INCL_ATLSTL_WINDOW_HPP_SYNESIS_ABOUT_DIALOG */
 
 /* ///////////////////////////// end of file //////////////////////////// */

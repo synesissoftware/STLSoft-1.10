@@ -4,7 +4,7 @@
  * Purpose:     Colour constants.
  *
  * Created:     20th February 1999
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_COLOUR_CONSTANTS_MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_H_COLOUR_CONSTANTS_MINOR      0
 # define WINSTL_VER_WINSTL_WINDOW_H_COLOUR_CONSTANTS_REVISION   4
-# define WINSTL_VER_WINSTL_WINDOW_H_COLOUR_CONSTANTS_EDIT       32
+# define WINSTL_VER_WINSTL_WINDOW_H_COLOUR_CONSTANTS_EDIT       33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -126,6 +126,6 @@ const COLORREF  lightgrey       =   RGB(192, 192, 192); /*!< Colour constant */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_COLOUR_CONSTANTS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_COLOUR_CONSTANTS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

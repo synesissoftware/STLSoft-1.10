@@ -4,7 +4,7 @@
  * Purpose:     inetstl::inetstl_exception class
  *
  * Created:     25th April 2004
- * Updated:     8th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_MINOR     5
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_REVISION  1
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_EDIT      51
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_EDIT      52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -161,6 +161,6 @@ typedef inetstl_exception                                   internet_exception;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* INETSTL_INCL_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION */
+#endif /* !INETSTL_INCL_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */

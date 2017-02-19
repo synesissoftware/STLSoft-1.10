@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     276
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     277
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -2007,6 +2007,6 @@ using ::winstl::c_str_ptr_null_w;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH */
+#endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH */
 
 /* ///////////////////////////// end of file //////////////////////////// */

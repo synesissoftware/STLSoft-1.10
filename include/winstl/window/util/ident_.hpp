@@ -4,7 +4,7 @@
  * Purpose:     Windows identification.
  *
  * Created:     11th March 2004
- * Updated:     27th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   1
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       52
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -175,6 +175,6 @@ GetWindowIdent(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_UTIL_HPP_IDENT_ */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_UTIL_HPP_IDENT_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */

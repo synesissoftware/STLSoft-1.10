@@ -5,11 +5,11 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     29th December 2016
+ * Updated:     19th February 2017
  *
  * Home:        http://www.stlsoft.org/
  *
- * Copyright (c) 2008-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MINOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        10
+# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -176,6 +176,6 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT */
+#endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT */
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -5,7 +5,7 @@
  *              module filename.
  *
  * Created:     31st March 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_MAJOR     4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_REVISION  5
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_EDIT      82
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_EDIT      83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -202,6 +202,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_1)<modfname_policy<TCHAR> >     
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_MODULE_FILENAME */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_MODULE_FILENAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */

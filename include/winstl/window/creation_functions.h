@@ -4,7 +4,7 @@
  * Purpose:     Window creation functions.
  *
  * Created:     7th May 2000
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_CREATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_WINDOW_H_CREATION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_CREATION_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_CREATION_FUNCTIONS_EDIT     24
+# define WINSTL_VER_WINSTL_WINDOW_H_CREATION_FUNCTIONS_EDIT     25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -316,6 +316,6 @@ inline HWND CreateWindowEx( DWORD       dwExStyle
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_CREATION_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_CREATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

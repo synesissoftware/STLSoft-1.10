@@ -5,7 +5,7 @@
  *              identifiers.
  *
  * Created:     11th April 2005
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_MAJOR     2
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_MINOR     0
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_REVISION  3
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_EDIT      21
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_EDIT      22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,6 +171,6 @@ typedef basic_resource_id<TCHAR>        resource_id;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_CONVERSION_HPP_RESOURCE_ID */
+#endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_RESOURCE_ID */
 
 /* ///////////////////////////// end of file //////////////////////////// */

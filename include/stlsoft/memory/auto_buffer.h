@@ -4,7 +4,7 @@
  * Purpose:     auto_buffer functionality for C.
  *
  * Created:     5th August 2011
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MINOR     0
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_REVISION  1
-# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      11
+# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -598,6 +598,6 @@ stlsoft_C_auto_buffer_free(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_MEMORY_H_AUTO_BUFFER */
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_H_AUTO_BUFFER */
 
 /* ///////////////////////////// end of file //////////////////////////// */

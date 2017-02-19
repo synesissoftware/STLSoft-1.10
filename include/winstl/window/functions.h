@@ -4,7 +4,7 @@
  * Purpose:     Window functions.
  *
  * Created:     7th May 2000
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MINOR     0
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  13
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      74
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -629,6 +629,6 @@ inline HWND FindFirstChildById(HWND hwndParent, int id)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

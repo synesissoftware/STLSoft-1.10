@@ -4,11 +4,11 @@
  * Purpose:     Bit XOR functions
  *
  * Created:     2nd June 2010
- * Updated:     29th December 2016
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_EDIT     8
+# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -267,6 +267,6 @@ calculate_xor_over_range(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS */
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

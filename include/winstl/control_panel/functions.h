@@ -4,7 +4,7 @@
  * Purpose:     Control Panel functions.
  *
  * Created:     1st April 2006
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_REVISION   11
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       22
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -577,6 +577,6 @@ control_panel_stop(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_CONTROL_PANEL_H_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_CONTROL_PANEL_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

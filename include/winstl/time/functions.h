@@ -4,7 +4,7 @@
  * Purpose:     Time manipulation functions.
  *
  * Created:     21st November 2003
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_FUNCTIONS_MAJOR       5
 # define WINSTL_VER_WINSTL_TIME_H_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_TIME_H_FUNCTIONS_REVISION    5
-# define WINSTL_VER_WINSTL_TIME_H_FUNCTIONS_EDIT        44
+# define WINSTL_VER_WINSTL_TIME_H_FUNCTIONS_EDIT        45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,6 +89,6 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_TIME_H_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_TIME_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

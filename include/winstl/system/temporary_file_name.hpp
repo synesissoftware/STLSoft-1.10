@@ -5,7 +5,7 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      12
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -363,6 +363,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */

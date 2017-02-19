@@ -6,7 +6,7 @@
  *              page size.
  *
  * Created:     7th February 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_MAJOR     4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_MINOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_REVISION  7
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_EDIT      69
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_EDIT      70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -192,6 +192,6 @@ private:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_INFO */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_INFO */
 
 /* ///////////////////////////// end of file //////////////////////////// */

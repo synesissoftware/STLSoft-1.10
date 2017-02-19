@@ -4,7 +4,7 @@
  * Purpose:     Declares the Registry Library.
  *
  * Created:     19th January 2002
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_MAJOR      1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_MINOR      0
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_REVISION   6
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_EDIT       62
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_EDIT       63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,6 +108,6 @@ namespace winstl_project
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_REGISTRY_HPP_REGISTRY */
+#endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REGISTRY */
 
 /* ///////////////////////////// end of file //////////////////////////// */

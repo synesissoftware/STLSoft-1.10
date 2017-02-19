@@ -5,7 +5,7 @@
  *              home directory.
  *
  * Created:     30th September 2016
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR    2
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 2
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     7
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -208,6 +208,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY */
+#endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */

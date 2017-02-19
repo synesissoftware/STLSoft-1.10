@@ -4,7 +4,7 @@
  * Purpose:     Window messaging function classes and predicates.
  *
  * Created:     19th January 2001
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_MESSAGE_MAJOR     4
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_MESSAGE_MINOR     1
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_MESSAGE_REVISION  4
-# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_MESSAGE_EDIT      47
+# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_MESSAGE_EDIT      48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -210,6 +210,6 @@ private:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_FUNCTIONAL_HPP_MESSAGE */
+#endif /* !WINSTL_INCL_WINSTL_FUNCTIONAL_HPP_MESSAGE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

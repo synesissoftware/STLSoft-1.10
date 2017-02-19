@@ -4,7 +4,7 @@
  * Purpose:     Menu functions.
  *
  * Created:     20th October 1994
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_MAJOR       3
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_EDIT        131
+# define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_EDIT        132
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -166,6 +166,6 @@ inline BOOL SetMenuItemStateById(HMENU hmenu, UINT id, UINT state)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_MENU_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_MENU_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

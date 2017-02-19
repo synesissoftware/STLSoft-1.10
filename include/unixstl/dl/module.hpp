@@ -4,7 +4,7 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MAJOR    6
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    3
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 7
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     230
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     231
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -419,6 +419,6 @@ inline module::module_handle_type module::get_module_handle() const
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* UNIXSTL_INCL_UNIXSTL_DL_HPP_MODULE */
+#endif /* !UNIXSTL_INCL_UNIXSTL_DL_HPP_MODULE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

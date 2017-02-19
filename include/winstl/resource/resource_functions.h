@@ -4,7 +4,7 @@
  * Purpose:     Message functions.
  *
  * Created:     9th March 2010
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_REVISION 4
-# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     16
+# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -233,6 +233,6 @@ load_custom_resource(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

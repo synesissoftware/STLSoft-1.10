@@ -4,7 +4,7 @@
  * Purpose:     Definition of SAPI types and constants.
  *
  * Created:     31st August 2006
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MAJOR       1
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MINOR       0
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_REVISION    7
-# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        14
+# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -299,6 +299,6 @@ using ::comstl::SPF_UNUSED_FLAGS;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* COMSTL_INCL_COMSTL_SPEECH_HPP_SAPI_UTIL */
+#endif /* !COMSTL_INCL_COMSTL_SPEECH_HPP_SAPI_UTIL */
 
 /* ///////////////////////////// end of file //////////////////////////// */

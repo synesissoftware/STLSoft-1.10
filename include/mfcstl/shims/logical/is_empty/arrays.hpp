@@ -4,7 +4,7 @@
  * Purpose:     Helper functions for MFC array classes.
  *
  * Created:     18th December 2006
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS_MAJOR      2
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS_MINOR      0
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS_REVISION   4
-# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS_EDIT       14
+# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS_EDIT       15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,6 +187,6 @@ namespace stlsoft
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* MFCSTL_INCL_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS */
+#endif /* !MFCSTL_INCL_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_ARRAYS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

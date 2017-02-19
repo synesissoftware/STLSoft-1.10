@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing version information.
  *
  * Created:     16th February 1998
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MAJOR    5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     141
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     142
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1408,6 +1408,6 @@ inline void version_info::init_()
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_VERSION_INFO */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_VERSION_INFO */
 
 /* ///////////////////////////// end of file //////////////////////////// */

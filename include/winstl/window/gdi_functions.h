@@ -4,7 +4,7 @@
  * Purpose:     Error functions.
  *
  * Created:     20th October 1994
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_REVISION 4
-# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     142
+# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     143
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -220,6 +220,6 @@ inline LOGFONT get_LOGFONT(HFONT h)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_H_GDI_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_H_GDI_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -4,7 +4,7 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    8
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        14
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -441,6 +441,6 @@ hard_link_count_links(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_H_LINK_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_H_LINK_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

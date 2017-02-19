@@ -5,7 +5,7 @@
  *              temporary directory.
  *
  * Created:     27th July 2010
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MINOR     0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_REVISION  4
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      9
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -226,6 +226,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -4,7 +4,7 @@
  * Purpose:     Control creation functions.
  *
  * Created:     7th May 2000
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_H_CREATION_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_CONTROL_H_CREATION_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_CONTROL_H_CREATION_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_CONTROL_H_CREATION_FUNCTIONS_EDIT        30
+# define WINSTL_VER_WINSTL_CONTROL_H_CREATION_FUNCTIONS_EDIT        31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -386,6 +386,6 @@ inline HWND CreateCheckbox(HWND hwndParent, S const& name, DWORD buttonStyle, RE
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_CONTROL_H_CREATION_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_CONTROL_H_CREATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

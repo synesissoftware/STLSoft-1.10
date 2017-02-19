@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP heap sequence class.
  *
  * Created:     21st May 2005
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_MINOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_REVISION  5
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_EDIT      17
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_EDIT      18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -172,6 +172,6 @@ inline DWORD get_pid(HEAPLIST32 const& hl)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE */
+#endif /* !WINSTL_INCL_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

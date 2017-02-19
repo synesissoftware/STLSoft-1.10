@@ -4,7 +4,7 @@
  * Purpose:     sn(w)printf() variants.
  *
  * Created:     15th July 2012
- * Updated:     13th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_SNPRINTF_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_SNPRINTF_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_SNPRINTF_REVISION    4
-# define STLSOFT_VER_STLSOFT_UTIL_STRING_H_SNPRINTF_EDIT        6
+# define STLSOFT_VER_STLSOFT_UTIL_STRING_H_SNPRINTF_EDIT        7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -307,6 +307,6 @@ snwprintf(
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_UTIL_STRING_H_SNPRINTF */
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STRING_H_SNPRINTF */
 
 /* ///////////////////////////// end of file //////////////////////////// */

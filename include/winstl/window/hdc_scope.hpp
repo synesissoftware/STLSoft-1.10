@@ -4,7 +4,7 @@
  * Purpose:     GDI scope class.
  *
  * Created:     20th October 1994
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_MAJOR      3
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_MINOR      0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_REVISION   4
-# define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_EDIT       50
+# define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_EDIT       51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -177,6 +177,6 @@ private:
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_WINDOW_HPP_HDC_SCOPE */
+#endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_HDC_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */

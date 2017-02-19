@@ -5,7 +5,7 @@
  *              the host name.
  *
  * Created:     5th November 2014
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_REVISION    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        8
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,6 +194,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<hostname_policy<TCHAR> >     
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_HOST_NAME */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_HOST_NAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */

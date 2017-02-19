@@ -5,7 +5,7 @@
  *              home directory.
  *
  * Created:     29th January 2013
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION   2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       6
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -209,6 +209,6 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_SYSTEM_HPP_HOME_DIRECTORY */
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_HOME_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */

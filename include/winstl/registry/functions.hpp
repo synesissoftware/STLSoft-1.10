@@ -4,7 +4,7 @@
  * Purpose:     Registry functions.
  *
  * Created:     20th November 1995
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MINOR     1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_REVISION  6
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      56
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,6 +167,6 @@ inline LONG reg_get_dword_value(HKEY hkey, C const* name, DWORD& value)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* WINSTL_INCL_WINSTL_REGISTRY_HPP_FUNCTIONS */
+#endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */

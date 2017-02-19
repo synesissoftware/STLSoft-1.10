@@ -4,7 +4,7 @@
  * Purpose:     Handles detection of safe string library.
  *
  * Created:     24th March 2008
- * Updated:     11th January 2017
+ * Updated:     19th February 2017
  *
  * Author:      Matthew Wilson
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MINOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      5
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -84,6 +84,6 @@
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif /* STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
+#endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
