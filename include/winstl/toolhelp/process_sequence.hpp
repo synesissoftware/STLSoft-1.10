@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP process sequence class.
  *
  * Created:     21st May 2005
- * Updated:     12th January 2017
+ * Updated:     19th February 2017
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MAJOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MINOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_REVISION   4
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       16
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -164,6 +164,6 @@ inline DWORD get_pid(PROCESSENTRY32 const& pe)
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-#endif // WINSTL_INCL_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE
+#endif /* !WINSTL_INCL_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
