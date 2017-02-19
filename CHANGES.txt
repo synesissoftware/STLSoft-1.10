@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  28th January 2017
+; Updated:  19th February 2017
 
 ============================================================================
 
@@ -17,6 +17,50 @@ STLSoft - Changes
    **************************************
 
 
+
+
+============================================================================
+
+Changes for 1.10.1 beta 3 (19th February 2017)
+
+General:
+========
+
+ * a whole bunch of non-functional changes to make the codebase more
+   consistent and amenable to further automatic instrumentation by script
+   auto-validation script compatibility, and ensure all files have full
+   inclusion control
+ * fixing get_FILE_ptr() shim namespace issues
+ * winstl::token_information has additional compatibility up to W8/Svr12,
+   and now defaults to throwing instances of winstl::security_exception
+
+Changes:
+========
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/shims/attribute/get_FILE_ptr.hpp:
+    ~ fixing get_FILE_ptr() shim namespace issues
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/FILE_stream.hpp:
+    ~ fixing get_FILE_ptr() shim namespace issues
+
+ WinSTL:
+ =======
+
+ ~ winstl/exception/throw_policies.hpp:
+    ~ ensuring all files have full inclusion control
+    + added security_exception_policy
+
+ ~ winstl/security/token_information.hpp:
+    + incremental compatibility for up to W8/Svr12
+    ~ now defaults to throwing instances of winstl::security_exception if fails
+    + added member types
+    ~ simplified specialisation of token_information_traits<>
 
 
 ============================================================================
@@ -54,7 +98,7 @@ General:
    and library identifiers, status-code, and message translation
  * several new special-string-instance types, including home_directory,
    host_name, temporary_directory, temporary_file_name
- * new string access shims, for types including timeval, type_info
+ * new string access shims, for types including timeval, type_info   
  * new attribute shims, including: get_synch_handle, get_FILE_ptr
  * new logical shims, including: is_empty, is_null
  * new high-performance conversion functions (based around the extant
