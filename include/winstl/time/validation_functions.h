@@ -4,7 +4,7 @@
  * Purpose:     Validation functions for Windows time structures.
  *
  * Created:     1st June 2014
- * Updated:     12th January 2017
+ * Updated:     24th February 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MINOR    0
-# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_REVISION 1
-# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     8
+# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_REVISION 2
+# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,27 +89,100 @@ namespace winstl_project
  * macros
  */
 
+/** \ingroup group__library__Time
+ * \defgroup subgroup__library__Time__ValidationFlags "Time Validation Flags"
+ * @{
+ */
+
+/** \def WINSTL_INVALID_TIME_MILLISECONDS
+ * The time has an invalid milliseconds value
+ */
+
+/** \def WINSTL_INVALID_TIME_SECONDS
+ * The time has an invalid seconds value
+ */
+
+/** \def WINSTL_INVALID_TIME_MINUTES
+ * The time has an invalid minutes value
+ */
+
+/** \def WINSTL_INVALID_TIME_HOURS
+ * The time has an invalid hours value
+ */
+
+/** \def WINSTL_INVALID_TIME_MASK
+ * Mask of invalid time flags
+ */
+
 #define WINSTL_INVALID_TIME_MILLISECONDS    (0x0010)
 #define WINSTL_INVALID_TIME_SECONDS         (0x0020)
 #define WINSTL_INVALID_TIME_MINUTES         (0x0040)
 #define WINSTL_INVALID_TIME_HOURS           (0x0080)
 #define WINSTL_INVALID_TIME_MASK            (0x00f0)
 
+/** \def WINSTL_INVALID_DATE_DAYS
+ * The time has an invalid days value
+ */
+
+/** \def WINSTL_INVALID_DATE_MONTHS
+ * The time has an invalid months value
+ */
+
+/** \def WINSTL_INVALID_DATE_YEARS
+ * The time has an invalid years value
+ */
+
+/** \def WINSTL_INVALID_DATE_MASK
+ * Mask of invalid date flags
+ */
+
 #define WINSTL_INVALID_DATE_DAYS            (0x0100)
 #define WINSTL_INVALID_DATE_MONTHS          (0x0200)
 #define WINSTL_INVALID_DATE_YEARS           (0x0400)
 #define WINSTL_INVALID_DATE_MASK            (0x0700)
 
+/** @} */
+
+
+/** \ingroup group__library__Time
+ * \defgroup subgroup__library__Time__ValidationStatusCodes "Time Validation Status Codes"
+ * @{
+ */
+
+/** \def WINSTL_E_TIME_INVALIDDATE
+ * Mask of invalid date flags
+ */
+
+#define WINSTL_E_TIME_INVALIDDATE           MAKE_HRESULT(SEVERITY_ERROR, FACILITY_ITF, ERROR_INVALID_PARAMETER)
+#define WINSTL_E_TIME_INVALIDTIME           HRESULT_FROM_WIN32(ERROR_INVALID_TIME)
+
+/** @} */
+
 /* /////////////////////////////////////////////////////////////////////////
  * C functions
  */
 
+
+/** Validates the elements of a date structure
+ *
+ * \param st Non-mutating pointer to a SYSTEMTIME structure
+ * \param details Optional mutating pointer to a variable into which
+ *   the details of the validation are written
+ *
+ * \return A \c HRESULT value that indicates the validationm result
+ * \retval S_OK The \c st parameter points to a valid date
+ * \retval E_POINTER The \c st parameter is \c null
+ * \retval E_INVALIDARG The \c st parameter points to a value with invalid
+ *   date component(s)
+ * \retval HRESULT_FROM_WIN32(ERROR_INVALID_TIME) The \c st parameter points
+ *   to a value with invalid time component(s)
+ */
 STLSOFT_INLINE
 HRESULT
 winstl_C_time_validate_SYSTEMTIME(
     SYSTEMTIME const*   st
 ,   DWORD*              details
-)
+) STLSOFT_NOEXCEPT
 {
     DWORD dummy;
 
@@ -213,7 +286,7 @@ winstl_C_time_validate_SYSTEMTIME(
 
     if(0 != (WINSTL_INVALID_DATE_MASK & *details))
     {
-        return E_INVALIDARG;
+        return WINSTL_E_TIME_INVALIDDATE;
     }
 
     if(0 != (WINSTL_INVALID_TIME_MASK & *details))
@@ -244,7 +317,7 @@ HRESULT
 time_validate(
     SYSTEMTIME const*   st
 ,   DWORD*              details = NULL
-)
+) STLSOFT_NOEXCEPT
 {
     return winstl_C_time_validate_SYSTEMTIME(st, details);
 }
@@ -254,7 +327,7 @@ HRESULT
 time_validate(
     SYSTEMTIME const&   st
 ,   DWORD*              details = NULL
-)
+) STLSOFT_NOEXCEPT
 {
     return winstl_C_time_validate_SYSTEMTIME(&st, details);
 }

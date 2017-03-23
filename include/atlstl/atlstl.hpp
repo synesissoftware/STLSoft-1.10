@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,8 +48,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     6
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  1
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      116
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  2
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      117
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
@@ -130,16 +130,28 @@
 # define _ATLSTL_VER_1_6_2      0x00010602  /*!< Version 1.6.2 (with STLSoft 1.9.25) */
 # define _ATLSTL_VER_1_6_3      0x010603ff  /*!< Version 1.6.3 (with STLSoft 1.9.113) */
 # define _ATLSTL_VER_1_7_1_B01  0x01070181  /*!< Version 1.7.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _ATLSTL_VER_1_7_1_B02  0x01070182  /*!< Version 1.7.1 beta 2 (with STLSoft 1.10.1 beta 4) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _ATLSTL_VER_MAJOR       1
 #define _ATLSTL_VER_MINOR       7
 #define _ATLSTL_VER_REVISION    1
-#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B01
+#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
  */
+
+/* Strict */
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+# ifndef STRICT
+#  if defined(_ATLSTL_STRICT) || \
+      (   !defined(_ATLSTL_NO_STRICT) && \
+          !defined(NO_STRICT))
+#   define STRICT 1
+#  endif /* !NO_STRICT && !_INETSTL_NO_STRICT */
+# endif /* STRICT */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
 # include <stlsoft/stlsoft.h>

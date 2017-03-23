@@ -141,23 +141,23 @@ winstl_C_increment_FILETIME_us(
 
     if(0 != microseconds)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10) * microseconds;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10) * microseconds;
     }
     if(0 != seconds)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * seconds;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * seconds;
     }
     if(0 != minutes)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * minutes;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * minutes;
     }
     if(0 != hours)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * hours;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * hours;
     }
     if(0 != days)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * 24 * days;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * 24 * days;
     }
 }
 
