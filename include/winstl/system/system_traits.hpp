@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       9
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        146
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    3
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        147
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,6 +104,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
 # include <winstl/api/external/MemoryManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifndef STLSOFT_INCL_H_STRING
 # define STLSOFT_INCL_H_STRING
@@ -467,7 +471,7 @@ public:
         WINSTL_ASSERT(NULL != s1);
         WINSTL_ASSERT(NULL != s2);
 
-        return ::lstrcmpiA(s1, s2);
+        return STLSOFT_API_EXTERNAL_string_stricmp(s1, s2);
     }
 
     static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
@@ -478,63 +482,17 @@ public:
         return ::strncmp(s1, s2, cch);
     }
 
-// TODO: move all these into internal, C-compatible, service files
-//
-// #include <stlsoft/system/apis/string/strnicmp.h
-
-#ifdef WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# undef WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-#endif /* WINSTL_SYSTEM_TRAITS_HAS_strnicmp_ */
-
-#ifdef WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-# undef WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#endif /* WINSTL_SYSTEM_TRAITS_HAS__strnicmp_ */
-
-#if defined(STLSOFT_COMPILER_IS_BORLAND)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# endif
-# if !defined(__MFC_COMPAT__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_DMC)
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_GCC)
-# if !defined(__STRICT_ANSI__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_INTEL) || \
-      defined(STLSOFT_COMPILER_IS_MSVC)
-# if !defined(__STDC__) && \
-     !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS)
-#  define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# endif
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_MWERKS)
-# define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_WATCOM)
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#endif /* compiler */
-
-#if defined(WINSTL_SYSTEM_TRAITS_HAS_strnicmp_) || \
-    defined(WINSTL_SYSTEM_TRAITS_HAS__strnicmp_)
     static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
+#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
     {
         WINSTL_ASSERT(NULL != s1);
         WINSTL_ASSERT(NULL != s2);
 
-# if defined(WINSTL_SYSTEM_TRAITS_HAS_strnicmp_)
-        return ::strnicmp(s1, s2, cch);
-# elif defined(WINSTL_SYSTEM_TRAITS_HAS__strnicmp_)
-        return ::_strnicmp(s1, s2, cch);
-# else
-#  error
-# endif
+        return STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch);
     }
-#else /* ? compiler */
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
-#endif /* compiler */
+#else
+    ;
+#endif
 
     static size_type str_len(char_type const* src)
     {
@@ -942,7 +900,7 @@ public:
         WINSTL_ASSERT(NULL != s1);
         WINSTL_ASSERT(NULL != s2);
 
-        return ::lstrcmpiW(s1, s2);
+        return STLSOFT_API_EXTERNAL_string_wcsicmp(s1, s2);
     }
 
     static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
@@ -953,62 +911,17 @@ public:
         return ::wcsncmp(s1, s2, cch);
     }
 
-// TODO: move all these into internal, C-compatible, service files
-//
-// #include <stlsoft/system/apis/string/wcsnicmp.h
-
-#ifdef WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# undef WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-#endif /* WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_ */
-
-#ifdef WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-# undef WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#endif /* WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_ */
-
-#if defined(STLSOFT_COMPILER_IS_BORLAND)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# endif
-# if !defined(__MFC_COMPAT__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_DMC)
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_GCC)
-# if !defined(__STRICT_ANSI__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_INTEL) || \
-      defined(STLSOFT_COMPILER_IS_MSVC)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# endif
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_MWERKS)
-# define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_WATCOM)
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#endif /* compiler */
-
-#if defined(WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_) || \
-    defined(WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_)
     static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
+#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
     {
         WINSTL_ASSERT(NULL != s1);
         WINSTL_ASSERT(NULL != s2);
 
-# if defined(WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_)
-        return ::_wcsnicmp(s1, s2, cch);
-# elif defined(WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_)
-        return ::wcsnicmp(s1, s2, cch);
-# else
-#  error
-# endif
+        return STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch);
     }
-#else /* ? compiler */
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
-#endif /* compiler */
+#else
+    ;
+#endif
 
     static size_type str_len(char_type const* src)
     {

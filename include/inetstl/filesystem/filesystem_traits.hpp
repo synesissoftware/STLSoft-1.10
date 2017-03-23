@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR    4
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR    2
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 7
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     87
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 8
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,6 +80,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifndef STLSOFT_INCL_H_STRING
 # define STLSOFT_INCL_H_STRING
@@ -370,7 +374,7 @@ public:
         INETSTL_ASSERT(NULL != s1);
         INETSTL_ASSERT(NULL != s2);
 
-        return ::lstrcmpiA(s1, s2);
+        return STLSOFT_API_EXTERNAL_string_stricmp(s1, s2);
     }
 
     static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
@@ -753,7 +757,7 @@ public:
         INETSTL_ASSERT(NULL != s1);
         INETSTL_ASSERT(NULL != s2);
 
-        return ::lstrcmpiW(s1, s2);
+        return STLSOFT_API_EXTERNAL_string_wcsicmp(s1, s2);
     }
 
     static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)

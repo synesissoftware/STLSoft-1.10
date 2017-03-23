@@ -4,7 +4,7 @@
  * Purpose:     Windows identification.
  *
  * Created:     11th March 2004
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      1
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   2
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       54
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   3
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -141,7 +145,7 @@ GetWindowIdent(
         {
             WINSTL_ASSERT(::lstrlenA(s_idents[index].name) < int(STLSOFT_NUM_ELEMENTS(buffer)));
 
-            if(0 == ::lstrcmpiA(s_idents[index].name, &buffer[0]))
+            if(0 == STLSOFT_API_EXTERNAL_string_stricmp(s_idents[index].name, &buffer[0]))
             {
                 ident = s_idents[index].ident;
                 break;

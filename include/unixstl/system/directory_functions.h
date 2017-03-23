@@ -4,7 +4,7 @@
  * Purpose:     Directory functions.
  *
  * Created:     1st October 2016
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        10
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    7
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_H_COPY_FUNCTIONS
 # include <stlsoft/string/copy_functions.h>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_H_COPY_FUNCTIONS */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifndef STLSOFT_INCL_H_ERRNO
 # define STLSOFT_INCL_H_ERRNO
@@ -122,7 +126,7 @@ unixstl_C_get_home_directory_invoke_getenv_a_(
     STLSOFT_ASSERT(NULL != ev);
 
     if( NULL == r &&
-        0 == STLSOFT_NS_GLOBAL(stricmp)("HOME", ev))
+        0 == STLSOFT_API_EXTERNAL_string_stricmp("HOME", ev))
     {
         /* See if the synthetic home is present */
 

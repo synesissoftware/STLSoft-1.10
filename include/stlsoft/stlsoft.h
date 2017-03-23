@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     15th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 8
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     485
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 10
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     487
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -302,12 +302,13 @@
 # define _STLSOFT_VER_1_10_1_B01    0x010a0181  /*!< Version 1.10.1 beta 1 (13th January 2017) */
 # define _STLSOFT_VER_1_10_1_B02    0x010a0182  /*!< Version 1.10.1 beta 2 (28th January 2017) */
 # define _STLSOFT_VER_1_10_1_B03    0x010a0183  /*!< Version 1.10.1 beta 3 (15th February 2017) */
+# define _STLSOFT_VER_1_10_1_B04    0x010a0184  /*!< Version 1.10.1 beta 4 (23rd March 2017) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B03
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B04
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -335,30 +336,30 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-# define STLSOFT_STRINGIZE_DIRECT_a(x)      #x
-# define STLSOFT_STRINGIZE_INDIRECT_a(x)    STLSOFT_STRINGIZE_DIRECT_a(x)
+# define STLSOFT_STRINGIZE_DIRECT_a(x)                      #x
+# define STLSOFT_STRINGIZE_INDIRECT_a(x)                    STLSOFT_STRINGIZE_DIRECT_a(x)
 
 # if defined(__BORLANDC__) || \
      defined(__SUNPRO_C)
-#  define STLSOFT_STRINGIZE_DIRECT_w(x)     L"" ## STLSOFT_STRINGIZE_INDIRECT_a(x)
+#  define STLSOFT_STRINGIZE_DIRECT_w(x)                     L"" ## STLSOFT_STRINGIZE_INDIRECT_a(x)
 # else /* ? compiler */
-#  define STLSOFT_STRINGIZE_DIRECT_w(x)     L ## #x
+#  define STLSOFT_STRINGIZE_DIRECT_w(x)                     L ## #x
 # endif /* compiler */
-# define STLSOFT_STRINGIZE_INDIRECT_w(x)    STLSOFT_STRINGIZE_DIRECT_w(x)
+# define STLSOFT_STRINGIZE_INDIRECT_w(x)                    STLSOFT_STRINGIZE_DIRECT_w(x)
 
-# define STLSOFT_STRINGIZE_DIRECT           STLSOFT_STRINGIZE_DIRECT_a
-# define STLSOFT_STRINGIZE_INDIRECT(x)      STLSOFT_STRINGIZE_INDIRECT_a(x)
+# define STLSOFT_STRINGIZE_DIRECT                           STLSOFT_STRINGIZE_DIRECT_a
+# define STLSOFT_STRINGIZE_INDIRECT(x)                      STLSOFT_STRINGIZE_INDIRECT_a(x)
 
-# define STLSOFT_STRINGIZE_a(x)             STLSOFT_STRINGIZE_INDIRECT_a(x)
-# define STLSOFT_STRINGIZE_w(x)             STLSOFT_STRINGIZE_INDIRECT_w(x)
-# define STLSOFT_STRINGIZE(x)               STLSOFT_STRINGIZE_INDIRECT(x)
+# define STLSOFT_STRINGIZE_a(x)                             STLSOFT_STRINGIZE_INDIRECT_a(x)
+# define STLSOFT_STRINGIZE_w(x)                             STLSOFT_STRINGIZE_INDIRECT_w(x)
+# define STLSOFT_STRINGIZE(x)                               STLSOFT_STRINGIZE_INDIRECT(x)
 
 /* Simple macro indirection */
-# define STLSOFT_MACRO_INDIRECT(x)          x
+# define STLSOFT_MACRO_INDIRECT(x)                          x
 
 /* Token pasting */
-# define STLSOFT_PP_PASTE_2_TOKENS(t1, t2)        t1 ## t2
-# define STLSOFT_PP_PASTE_3_TOKENS(t1, t2, t3)    t1 ## t2 ## t3
+# define STLSOFT_PP_PASTE_2_TOKENS(t1, t2)                  t1 ## t2
+# define STLSOFT_PP_PASTE_3_TOKENS(t1, t2, t3)              t1 ## t2 ## t3
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -883,16 +884,16 @@
 #if 0
 #elif defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
 
-# define STLSOFT_FUNCTION_SYMBOL    __FUNCTION__
+# define STLSOFT_FUNCTION_SYMBOL                            __FUNCTION__
 #elif defined(STLSOFT_CF_FUNC_SYMBOL_SUPPORT)
 
-# define STLSOFT_FUNCTION_SYMBOL    __FUNC__
+# define STLSOFT_FUNCTION_SYMBOL                            __FUNC__
 #elif defined(STLSOFT_CF_func_SYMBOL_SUPPORT)
 
-# define STLSOFT_FUNCTION_SYMBOL    __func__
+# define STLSOFT_FUNCTION_SYMBOL                            __func__
 #elif defined(STLSOFT_CF_FUNCTION_SYMBOL_SUPPORT)
 
-# define STLSOFT_FUNCTION_SYMBOL    __FUNCTION__
+# define STLSOFT_FUNCTION_SYMBOL                            __FUNCTION__
 #endif /* __FUNCTION__ or __func__ */
 
 
@@ -910,13 +911,13 @@
 #if 0
 #elif defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
 
-# define STLSOFT_PRETTY_FUNCTION_SYMBOL     __PRETTY_FUNCTION__
+# define STLSOFT_PRETTY_FUNCTION_SYMBOL                     __PRETTY_FUNCTION__
 #elif defined(STLSOFT_PPF_PRETTY_FUNCTION_SYMBOL_SUPPORT)
 
-# define STLSOFT_PRETTY_FUNCTION_SYMBOL     __PRETTY_FUNCTION__
+# define STLSOFT_PRETTY_FUNCTION_SYMBOL                     __PRETTY_FUNCTION__
 #elif defined(STLSOFT_CF_FUNCSIG_SYMBOL_SUPPORT)
 
-# define STLSOFT_PRETTY_FUNCTION_SYMBOL     __FUNCSIG__
+# define STLSOFT_PRETTY_FUNCTION_SYMBOL                     __FUNCSIG__
 #endif /* __PRETTY_FUNCTION__ or __FUNCSIG__ */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1114,17 +1115,17 @@
 /** \def STLSOFT_CF_CDECL_SUPPORTED
  * When defined, indicates that the compiler supports the <b>cdecl</b> calling convention.
  */
-# define    STLSOFT_CF_CDECL_SUPPORTED
+# define STLSOFT_CF_CDECL_SUPPORTED
 
 /** \def STLSOFT_CF_FASTCALL_SUPPORTED
  * When defined, indicates that the compiler supports the <b>fastcall</b> calling convention.
  */
-# define    STLSOFT_CF_FASTCALL_SUPPORTED
+# define STLSOFT_CF_FASTCALL_SUPPORTED
 
 /** \def STLSOFT_CF_STDCALL_SUPPORTED
  * When defined, indicates that the compiler supports the <b>stdcall</b> calling convention.
  */
-# define    STLSOFT_CF_STDCALL_SUPPORTED
+# define STLSOFT_CF_STDCALL_SUPPORTED
 
 #endif /* STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -1137,7 +1138,7 @@
  */
 
 #if !defined(STLSOFT_CDECL)
-# define                        STLSOFT_CDECL
+# define STLSOFT_CDECL
 #endif /* !STLSOFT_CDECL */
 
 /** \def STLSOFT_FASTCALL
@@ -1224,7 +1225,7 @@
 # define STLSOFT_CC_STDCALL_VALUE       (0)
 #endif /* STLSOFT_CF_STDCALL_SUPPORTED */
 
-#define STLSOFT_CC_COMBINED_VALUE   (STLSOFT_CC_CDECL_VALUE | STLSOFT_CC_FASTCALL_VALUE | STLSOFT_CC_STDCALL_VALUE)
+#define STLSOFT_CC_COMBINED_VALUE       (STLSOFT_CC_CDECL_VALUE | STLSOFT_CC_FASTCALL_VALUE | STLSOFT_CC_STDCALL_VALUE)
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1778,8 +1779,8 @@ namespace stlsoft
 #endif /* !STLSOFT_CF_std_NAMESPACE */
 
 #ifndef STLSOFT_NO_PRE_1_10_BAGGAGE
-# define stlsoft_ns_qual_std(x)         STLSOFT_NS_QUAL_STD(x)
-# define stlsoft_ns_using_std(x)        STLSOFT_NS_USING_STD(x)
+# define stlsoft_ns_qual_std(x)                             STLSOFT_NS_QUAL_STD(x)
+# define stlsoft_ns_using_std(x)                            STLSOFT_NS_USING_STD(x)
 #endif /* !STLSOFT_NO_PRE_1_10_BAGGAGE */
 
 
@@ -1789,9 +1790,9 @@ namespace stlsoft
 
 #if defined(__cplusplus) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define STLSOFT_NS_GLOBAL(symbol)          ::symbol
+# define STLSOFT_NS_GLOBAL(symbol)                          ::symbol
 #else /* ? __cplusplus */
-# define STLSOFT_NS_GLOBAL(symbol)          symbol
+# define STLSOFT_NS_GLOBAL(symbol)                          symbol
 #endif /* __cplusplus */
 
 /* This stuff allows worker namespaces to be declared and used regardless of
@@ -1799,13 +1800,13 @@ namespace stlsoft
  */
 #if !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) && \
     !defined(STLSOFT_NO_NAMESPACES)
-# define STLSOFT_OPEN_WORKER_NS_(ns)        namespace ns {
-# define STLSOFT_CLOSE_WORKER_NS_(ns)       }
-# define STLSOFT_WORKER_NS_QUAL_(ns, x)     ns::x
+# define STLSOFT_OPEN_WORKER_NS_(ns)                        namespace ns {
+# define STLSOFT_CLOSE_WORKER_NS_(ns)                       }
+# define STLSOFT_WORKER_NS_QUAL_(ns, x)                     ns::x
 #else /* ? namespaces supported */
 # define STLSOFT_OPEN_WORKER_NS_(ns)
 # define STLSOFT_CLOSE_WORKER_NS_(ns)
-# define STLSOFT_WORKER_NS_QUAL_(ns, x)     x
+# define STLSOFT_WORKER_NS_QUAL_(ns, x)                     x
 #endif /* namespaces supported */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1816,7 +1817,7 @@ namespace stlsoft
     _MSC_VER >= 1310 && \
     !defined(_WIN64) && \
     defined(_Wp64)
-# define STLSOFT_WARN_64                    __w64
+# define STLSOFT_WARN_64                                    __w64
 #else /* ? compiler */
 # define STLSOFT_WARN_64
 #endif /* compiler */
@@ -2870,7 +2871,7 @@ inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 /** \def stlsoft_c_cast(T, E)
  * C-cast macro; equivalent to ((T)(E)), but more searchable
  */
-#define stlsoft_c_cast(T, E)                ((T)(E))
+#define stlsoft_c_cast(T, E)                                ((T)(E))
 
 /** \def stlsoft_static_cast(T, E)
  * C-cast macro; equivalent to <code>static_cast<T, E></code> in C++, and stlsoft_c_cast(T, E) in C
@@ -2893,43 +2894,43 @@ inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
  */
 
 #if defined(__cplusplus)
-# define stlsoft_static_cast(T, E)          static_cast< T>(E)
+# define stlsoft_static_cast(T, E)                          static_cast< T>(E)
 #else /* ? __cplusplus */
-# define stlsoft_static_cast(T, E)          stlsoft_c_cast(T, E)
+# define stlsoft_static_cast(T, E)                          stlsoft_c_cast(T, E)
 #endif /* __cplusplus */
 
 #if defined(__cplusplus)
-# define stlsoft_const_cast(T, E)           const_cast< T>(E)
+# define stlsoft_const_cast(T, E)                           const_cast< T>(E)
 #else /* ? __cplusplus */
-# define stlsoft_const_cast(T, E)           stlsoft_c_cast(T, E)
+# define stlsoft_const_cast(T, E)                           stlsoft_c_cast(T, E)
 #endif /* __cplusplus */
 
 #if defined(__cplusplus)
-# define stlsoft_volatile_cast(T, E)        const_cast< T>(E)
+# define stlsoft_volatile_cast(T, E)                        const_cast< T>(E)
 #else /* ? __cplusplus */
-# define stlsoft_volatile_cast(T, E)        stlsoft_c_cast(T, E)
+# define stlsoft_volatile_cast(T, E)                        stlsoft_c_cast(T, E)
 #endif /* __cplusplus */
 
 #if defined(__cplusplus)
-# define stlsoft_reinterpret_cast(T, E)     reinterpret_cast< T>(E)
+# define stlsoft_reinterpret_cast(T, E)                     reinterpret_cast< T>(E)
 #else /* ? __cplusplus */
-# define stlsoft_reinterpret_cast(T, E)     stlsoft_c_cast(T, E)
+# define stlsoft_reinterpret_cast(T, E)                     stlsoft_c_cast(T, E)
 #endif /* __cplusplus */
 
 #if defined(__cplusplus)
-# define stlsoft_dynamic_cast(T, E)         dynamic_cast< T>(E)
+# define stlsoft_dynamic_cast(T, E)                         dynamic_cast< T>(E)
 #else /* ? __cplusplus */
-# define stlsoft_dynamic_cast(T, E)         stlsoft_c_cast(T, E)
+# define stlsoft_dynamic_cast(T, E)                         stlsoft_c_cast(T, E)
 #endif /* __cplusplus */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
   /* STLSoft 1.12+ forward-compatible macros */
-# define STLSOFT_C_CAST(T, E)               stlsoft_c_cast(T, E)
-# define STLSOFT_STATIC_CAST(T, E)          stlsoft_static_cast(T, E)
-# define STLSOFT_CONST_CAST(T, E)           stlsoft_const_cast(T, E)
-# define STLSOFT_VOLATILE_CAST(T, E)        stlsoft_const_cast(T, E)
-# define STLSOFT_REINTERPRET_CAST(T, E)     stlsoft_reinterpret_cast(T, E)
-# define STLSOFT_DYNAMIC_CAST(T, E)         stlsoft_dynamic_cast(T, E)
+# define STLSOFT_C_CAST(T, E)                               stlsoft_c_cast(T, E)
+# define STLSOFT_STATIC_CAST(T, E)                          stlsoft_static_cast(T, E)
+# define STLSOFT_CONST_CAST(T, E)                           stlsoft_const_cast(T, E)
+# define STLSOFT_VOLATILE_CAST(T, E)                        stlsoft_const_cast(T, E)
+# define STLSOFT_REINTERPRET_CAST(T, E)                     stlsoft_reinterpret_cast(T, E)
+# define STLSOFT_DYNAMIC_CAST(T, E)                         stlsoft_dynamic_cast(T, E)
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** @} */
@@ -2954,20 +2955,20 @@ inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 #if 0
 #elif defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
 
-# define STLSOFT_INLINE                     inline
+# define STLSOFT_INLINE                                     inline
 #elif defined(__cplusplus)
 
-# define STLSOFT_INLINE                     inline
+# define STLSOFT_INLINE                                     inline
 #else /* ? __cplusplus */
 # if defined(STLSOFT_CF_C99_INLINE)
 
-#  define STLSOFT_INLINE                    inline
+#  define STLSOFT_INLINE                                    inline
 # elif defined(STLSOFT_CUSTOM_C_INLINE)
 
-#  define STLSOFT_INLINE                    STLSOFT_CUSTOM_C_INLINE
+#  define STLSOFT_INLINE                                    STLSOFT_CUSTOM_C_INLINE
 # else /* ? C inline */
 
-#  define STLSOFT_INLINE                    static
+#  define STLSOFT_INLINE                                    static
 # endif /* C inline */
 #endif /* __cplusplus */
 
@@ -3153,7 +3154,7 @@ remove_const_ptr(T const* t)
     return const_cast<T*>(t);
 }
 
-/** Adds const-qualifier to an instance.
+/** Adds const-qualifier to a reference.
  */
 template <ss_typename_param_k T>
 inline
@@ -3163,7 +3164,7 @@ apply_const(T& t)
     return t;
 }
 
-/** Adds const-qualifier to an instance.
+/** Adds const-qualifier to a pointer.
  */
 template <ss_typename_param_k T>
 inline
@@ -3195,9 +3196,9 @@ inline T& mutable_access(T const& t)
 # ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 #  ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-#   define stlsoft_define_move_rhs_type(t)           t &
+#   define stlsoft_define_move_rhs_type(t)                  t &
 #  else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
-#   define stlsoft_define_move_rhs_type(t)           t const&
+#   define stlsoft_define_move_rhs_type(t)                  t const&
 #  endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
 template <ss_typename_param_k T>

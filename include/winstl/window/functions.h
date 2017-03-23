@@ -4,7 +4,7 @@
  * Purpose:     Window functions.
  *
  * Created:     7th May 2000
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MINOR     0
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  14
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      76
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  15
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,10 @@
 # include <winstl/conversion/windows_type_conversions.hpp>
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_WINDOWS_TYPE_CONVERSIONS */
 #endif /* __cplusplus */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -187,7 +191,7 @@ STLSOFT_INLINE ws_int_t winstl__IsWindowClassA(HWND hwnd, ws_char_a_t const* nam
 
     stlsoft_static_cast(void, STLSOFT_NS_GLOBAL(GetClassNameA)(hwnd, szName, STLSOFT_NUM_ELEMENTS(szName)));
 
-    return 0 == STLSOFT_NS_GLOBAL(lstrcmpiA)(szName, name);
+    return 0 == STLSOFT_API_EXTERNAL_string_stricmp(szName, name);
 }
 
 /** Tests whether the given window has the given window class
@@ -203,7 +207,7 @@ STLSOFT_INLINE ws_int_t winstl__IsWindowClassW(HWND hwnd, ws_char_w_t const* nam
 
     stlsoft_static_cast(void, STLSOFT_NS_GLOBAL(GetClassNameW)(hwnd, szName, STLSOFT_NUM_ELEMENTS(szName)));
 
-    return 0 == STLSOFT_NS_GLOBAL(lstrcmpiW)(szName, name);
+    return 0 == STLSOFT_API_EXTERNAL_string_wcsicmp(szName, name);
 }
 
 #ifndef NOCTLMGR
@@ -520,7 +524,11 @@ inline HWND FindFirstChildById_N(HWND hwndParent, int id)
                 : m_hwndChild(NULL)
                 , m_id(id)
             {
-                ::EnumChildWindows(hwndParent, (WNDENUMPROC)EnumProc, reinterpret_cast<LPARAM>(this));
+#ifdef STRICT
+                ::EnumChildWindows(hwndParent, EnumProc, reinterpret_cast<LPARAM>(this));
+#else
+                ::EnumChildWindows(hwndParent, reinterpret_cast<WNDENUMPROC>(EnumProc), reinterpret_cast<LPARAM>(this));
+#endif
             }
 
         public:
@@ -560,7 +568,11 @@ struct FindFirstChildById_class
             : m_hwndChild(NULL)
             , m_id(id)
         {
+#ifdef STRICT
             ::EnumChildWindows(hwndParent, EnumProc, reinterpret_cast<LPARAM>(this));
+#else
+            ::EnumChildWindows(hwndParent, reinterpret_cast<WNDENUMPROC>(EnumProc), reinterpret_cast<LPARAM>(this));
+#endif
         }
 
     public:

@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     5
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     5
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      122
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  7
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      123
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,10 @@
 #  include <unixstl/system/directory_functions.h>
 # endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS */
 #endif /* STLSoft 1.10+ */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #if defined(_WIN32) || \
     defined(_WIN64)
@@ -350,16 +354,16 @@ public:
         return ::strncmp(s1, s2, cch);
     }
 
-#ifdef _MSC_VER
     static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
+#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
     {
         UNIXSTL_ASSERT(NULL != s1);
         UNIXSTL_ASSERT(NULL != s2);
 
-        return ::_strnicmp(s1, s2, cch);
+        return STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch);
     }
 #else
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
+    ;
 #endif
 
     static size_type str_len(char_type const* src)
@@ -554,16 +558,16 @@ public:
         return ::wcsncmp(s1, s2, cch);
     }
 
-#ifdef _MSC_VER
     static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
+#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
     {
         UNIXSTL_ASSERT(NULL != s1);
         UNIXSTL_ASSERT(NULL != s2);
 
-        return ::_wcsnicmp(s1, s2, cch);
+        return STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch);
     }
 #else
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
+    ;
 #endif
 
     static size_type str_len(char_type const* src)

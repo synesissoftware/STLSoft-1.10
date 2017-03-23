@@ -4,7 +4,7 @@
  * Purpose:     Definition of the string access shims for the VARIANT type.
  *
  * Created:     24th May 2002
- * Updated:     19th February 2017
+ * Updated:     23rd March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MAJOR    5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MINOR    4
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 2
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     137
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 3
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     138
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -79,6 +79,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING
 # include <stlsoft/shims/access/string/std/c_string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifdef STLSOFT_CF_THROW_BAD_ALLOC
 # include <new>
@@ -287,8 +291,11 @@ private:
         default:
             return 0 == STLSOFT_NS_GLOBAL(strncmp)(s1, s2, cch1);
 
+#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
+
         case VT_BOOL:
-            return 0 == STLSOFT_NS_GLOBAL(_strnicmp)(s1, s2, cch1);
+            return 0 == STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch1);
+#endif
         }
     }
 
@@ -317,8 +324,11 @@ private:
         default:
             return 0 == STLSOFT_NS_GLOBAL(wcsncmp)(s1, s2, cch1);
 
+#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
+
         case VT_BOOL:
-            return 0 == STLSOFT_NS_GLOBAL(_wcsnicmp)(s1, s2, cch1);
+            return 0 == STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch1);
+#endif
         }
     }
 
