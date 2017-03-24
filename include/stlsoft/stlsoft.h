@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 11
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     489
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 12
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     490
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -2795,35 +2795,35 @@ STLSOFT_CLOSE_WORKER_NS_(template_ex)
         defined(STLSOFT_COMPILER_IS_WATCOM) ||\
         0)
 template<ss_typename_param_k T>
-inline void suppress_unused_func(T const volatile &)
+inline void stlsoft_suppress_unused_func(T const volatile &)
 {}
 
 # if defined(STLSOFT_CF_CDECL_SUPPORTED)
 template<ss_typename_param_k R>
-inline void suppress_unused_func(R (STLSOFT_CDECL *)())
+inline void stlsoft_suppress_unused_func(R (STLSOFT_CDECL *)())
 {}
 template<ss_typename_param_k R, ss_typename_param_k A0>
-inline void suppress_unused_func(R (STLSOFT_CDECL *)(A0))
+inline void stlsoft_suppress_unused_func(R (STLSOFT_CDECL *)(A0))
 {}
 # endif /* STLSOFT_CF_CDECL_SUPPORTED */
 # if defined(STLSOFT_CF_FASTCALL_SUPPORTED)
 template<ss_typename_param_k R>
-inline void suppress_unused_func(R (STLSOFT_FASTCALL *)())
+inline void stlsoft_suppress_unused_func(R (STLSOFT_FASTCALL *)())
 {}
 template<ss_typename_param_k R, ss_typename_param_k A0>
-inline void suppress_unused_func(R (STLSOFT_FASTCALL *)(A0))
+inline void stlsoft_suppress_unused_func(R (STLSOFT_FASTCALL *)(A0))
 {}
 # endif /* STLSOFT_CF_FASTCALL_SUPPORTED */
 # if defined(STLSOFT_CF_STDCALL_SUPPORTED)
 template<ss_typename_param_k R>
-inline void suppress_unused_func(R (STLSOFT_STDCALL *)())
+inline void stlsoft_suppress_unused_func(R (STLSOFT_STDCALL *)())
 {}
 template<ss_typename_param_k R, ss_typename_param_k A0>
-inline void suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
+inline void stlsoft_suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 {}
 # endif /* STLSOFT_CF_STDCALL_SUPPORTED */
 
-# define STLSOFT_SUPPRESS_UNUSED(x)     STLSOFT_NS_QUAL(suppress_unused_func)(x)
+# define STLSOFT_SUPPRESS_UNUSED(x)     STLSOFT_NS_QUAL(stlsoft_suppress_unused_func)(x)
 #else /* ? compiler */
 # ifdef __cplusplus
 #  define STLSOFT_SUPPRESS_UNUSED(x)    (static_cast<void>(x))
