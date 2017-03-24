@@ -4,7 +4,7 @@
  * Purpose:     Converts a Win32 error code to a printable string.
  *
  * Created:     13th July 2003
- * Updated:     19th February 2017
+ * Updated:     24th March 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,17 +52,9 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MAJOR       4
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MINOR       6
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    10
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        100
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    11
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -106,7 +98,8 @@
 
 #ifndef WINSTL_ERROR_DESC_CANNOT_USE_FLEXIBLE_ERROR_PARAMETER_
 # if 0 || \
-     defined(STLSOFT_COMPILER_IS_MSVC) || \
+     (  defined(STLSOFT_COMPILER_IS_MSVC) && \
+        _MSC_VER < 1600) || \
      0
 #  define WINSTL_ERROR_DESC_CANNOT_USE_FLEXIBLE_ERROR_PARAMETER_
 # endif /* compiler */
@@ -124,12 +117,10 @@ namespace winstl
 {
 # else
 /* Define stlsoft::winstl_project */
-
 namespace stlsoft
 {
 namespace winstl_project
 {
-
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
@@ -186,22 +177,23 @@ private:
         STLSOFT_NS_QUAL(char_alt_traits)<C>::alt_char_type  alt_char_type;
 public:
     /// The character type
-    typedef C                       char_type;
+    typedef C                                               char_type;
     /// The traits_type
-    typedef T                       traits_type;
+    typedef T                                               traits_type;
     /// The current parameterisation of the type
-    typedef basic_error_desc<C, T>  class_type;
+    typedef basic_error_desc<C, T>                          class_type;
     /// The error type
-    typedef ws_dword_t              error_type;
+    typedef ws_dword_t                                      error_type;
     /// The size type
-    typedef ws_size_t               size_type;
+    typedef ws_size_t                                       size_type;
     /// The boolean type
-    typedef ws_bool_t               bool_type;
+    typedef ws_bool_t                                       bool_type;
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # if !defined(WINSTL_ERROR_DESC_CANNOT_USE_FLEXIBLE_ERROR_PARAMETER_)
     class param
     {
     public:
+        // NOTE: not-explicit by design
         template <typename I>
         param(I const& v)
             : value(v)
@@ -217,23 +209,8 @@ public:
             // ... that is not bool.
             STLSOFT_STATIC_ASSERT((0 == stlsoft::is_same_type<I, bool>::value));
 
-            // Must be no larger
+            // Must be not larger than error_type
             STLSOFT_STATIC_ASSERT(sizeof(I) <= sizeof(error_type));
-
-            // Finally, check signedness:
-            //
-            // 1. I can't be signed if error_type is unsigned
-            // 2. I must be smaller if it is unsigned and error_type is signed
-
-            enum { I_is_signed = stlsoft::is_signed_type<I>::value };
-            enum { error_type_is_signed = stlsoft::is_signed_type<error_type>::value };
-            enum { I_is_smaller_than_error_type = (sizeof(I) < sizeof(error_type)) };
-
-            // Must be same signed-ness (and no larger) ...
-            STLSOFT_STATIC_ASSERT((0 == error_type_is_signed) == (0 == I_is_signed));
-
-            // ... or error_type signed and smaller
-            STLSOFT_STATIC_ASSERT(error_type_is_signed && I_is_smaller_than_error_type);
         }
 
         // for 0
@@ -260,7 +237,7 @@ public:
     public:
         error_type const    value;
     };
-    typedef class param             param_type;
+    typedef class param                                     param_type;
 # endif /* !WINSTL_ERROR_DESC_CANNOT_USE_FLEXIBLE_ERROR_PARAMETER_ */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /// @}
@@ -374,6 +351,11 @@ public:
     /// \note Defined only for GCC compilation.
     basic_error_desc(class_type& rhs) STLSOFT_NOEXCEPT;
 #endif /* compiler */
+private:
+#if !defined(STLSOFT_COMPILER_IS_GCC)
+    basic_error_desc(class_type const&);        // copy-construction proscribed
+#endif /* compiler */
+    class_type& operator =(class_type const&);  // copy-assignment proscribed
 /// @}
 
 /// \name Attributes
@@ -405,7 +387,8 @@ public:
 /// \name Implementation
 /// @{
 private:
-    char_type* find_message_(
+    char_type*
+    find_message_(
         DWORD               flags
     ,   error_type          error
     ,   char_type const*    modulePath
@@ -418,20 +401,11 @@ private:
     }
 /// @}
 
-/// \name Members
+/// \name Fields
 /// @{
 private:
     size_type   m_length;
     char_type*  m_message;
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-#if !defined(STLSOFT_COMPILER_IS_GCC)
-    basic_error_desc(class_type const&);
-#endif /* compiler */
-    basic_error_desc& operator =(class_type const&);
 /// @}
 };
 
@@ -440,17 +414,17 @@ private:
  *
  * \ingroup group__library__error
  */
-typedef basic_error_desc<ws_char_a_t>   error_desc_a;
+typedef basic_error_desc<ws_char_a_t>                       error_desc_a;
 /** Specialisation of the basic_error_desc template for the Unicode character type \c wchar_t
  *
  * \ingroup group__library__error
  */
-typedef basic_error_desc<ws_char_w_t>   error_desc_w;
+typedef basic_error_desc<ws_char_w_t>                       error_desc_w;
 /** Specialisation of the basic_error_desc template for the Win32 character type \c TCHAR
  *
  * \ingroup group__library__error
  */
-typedef basic_error_desc<TCHAR>         error_desc;
+typedef basic_error_desc<TCHAR>                             error_desc;
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
