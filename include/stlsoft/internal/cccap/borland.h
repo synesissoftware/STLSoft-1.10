@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Borland C/C++.
  *
  * Created:     7th February 2003
- * Updated:     19th February 2017
+ * Updated:     15th May 2017
  *
  * Thanks to:   markitus82 for pointing out overlooking of support for
  *              __FUNCTION__.
@@ -61,9 +61,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_MINOR      21
+# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_MINOR      22
 # define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_EDIT       93
+# define STLSOFT_VER_H_STLSOFT_CCCAP_BORLAND_EDIT       94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -335,6 +335,10 @@
 /* #define STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
 #define STLSOFT_CF_ADL_LOOKUP_SUPPORT
+
+#if __BORLANDC__ >= 0x0621
+# define STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+#endif
 
 #define STLSOFT_CF_TEMPLATE_TEMPLATE_SUPPORT
 

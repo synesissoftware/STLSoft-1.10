@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     24th March 2017
+ * Updated:     15th May 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 12
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     490
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 13
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     491
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -303,7 +303,7 @@
 # define _STLSOFT_VER_1_10_1_B02    0x010a0182  /*!< Version 1.10.1 beta 2 (28th January 2017) */
 # define _STLSOFT_VER_1_10_1_B03    0x010a0183  /*!< Version 1.10.1 beta 3 (15th February 2017) */
 # define _STLSOFT_VER_1_10_1_B04    0x010a0184  /*!< Version 1.10.1 beta 4 (23rd March 2017) */
-# define _STLSOFT_VER_1_10_1_B05    0x010a0185  /*!< Version 1.10.1 beta 5 (24th March 2017) */
+# define _STLSOFT_VER_1_10_1_B05    0x010a0185  /*!< Version 1.10.1 beta 5 (15th May 2017) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
@@ -2822,6 +2822,17 @@ template<ss_typename_param_k R, ss_typename_param_k A0>
 inline void stlsoft_suppress_unused_func(R (STLSOFT_STDCALL *)(A0))
 {}
 # endif /* STLSOFT_CF_STDCALL_SUPPORTED */
+
+# ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+
+template<ss_typename_param_k T>
+inline void stlsoft_suppress_unused_func(T&&)
+{}
+# else /* ? STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
+
+inline void stlsoft_suppress_unused_func(size_t )
+{}
+# endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
 # define STLSOFT_SUPPRESS_UNUSED(x)     STLSOFT_NS_QUAL(stlsoft_suppress_unused_func)(x)
 #else /* ? compiler */

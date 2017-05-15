@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     19th February 2017
+ * Updated:     15th May 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -58,9 +58,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    5
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     17
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    6
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -207,6 +207,7 @@
  *    - type disambiguation inside initialiser lists in class template constructors
  *    - type disambiguation the return types in templates
  * - argument-dependent lookup
+ * - rvalue references
  * - static array-size determination
  * - empty-derived optimisation
  *    -
@@ -259,6 +260,10 @@
 #define STLSOFT_CF_TYPENAME_TYPE_RET_KEYWORD_SUPPORT
 
 #define STLSOFT_CF_ADL_SUPPORT
+
+#if __has_feature(cxx_rvalue_references)
+# define STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+#endif
 
 #define STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
 
