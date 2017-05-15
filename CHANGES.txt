@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  19th February 2017
+; Updated:  15th May 2017
 
 ============================================================================
 
@@ -17,6 +17,29 @@ STLSoft - Changes
    **************************************
 
 
+
+
+============================================================================
+
+Changes for 1.10.1 beta 5 (15th May 2017)
+
+General:
+========
+
+ * enhanced STLSOFT_SUPPRESS_UNUSED() to work with rvalues
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/stlsoft.h:
+ ~ stlsoft/internal/cccap/borland.h:
+ ~ stlsoft/internal/cccap/clang.h:
+ ~ stlsoft/internal/cccap/gcc.h:
+ ~ stlsoft/internal/cccap/msvc.h:
+    ~ enhanced STLSOFT_SUPPRESS_UNUSED() to work with rvalues
 
 
 ============================================================================

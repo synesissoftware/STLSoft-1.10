@@ -2,10 +2,15 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  19th February 2017
+; Updated:  15th May 2017
 
 ============================================================================
 
+
+15th May 2017 - 1.10.1 (beta 5) released
+----------------------------------------
+
+ * enhanced STLSOFT_SUPPRESS_UNUSED() to work with rvalues
 
 19th February 2017 - 1.10.1 (beta 3) released
 ---------------------------------------------
