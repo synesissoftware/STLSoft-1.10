@@ -5,7 +5,7 @@
  *              as references.
  *
  * Created:     28th December 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,20 +53,8 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_MINOR      0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_REVISION   13
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_EDIT       49
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_EDIT       50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_INTEL: _MSC_VER<1310
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1310
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

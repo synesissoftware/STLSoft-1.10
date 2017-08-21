@@ -4,7 +4,7 @@
  * Purpose:     Main header file for the STLSoft Algorithms library.
  *
  * Created:     23rd October 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define STLSOFT_VER_STLSOFT_HPP_ALGORITHMS_MAJOR       2
 # define STLSOFT_VER_STLSOFT_HPP_ALGORITHMS_MINOR       0
 # define STLSOFT_VER_STLSOFT_HPP_ALGORITHMS_REVISION    4
-# define STLSOFT_VER_STLSOFT_HPP_ALGORITHMS_EDIT        34
+# define STLSOFT_VER_STLSOFT_HPP_ALGORITHMS_EDIT        35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

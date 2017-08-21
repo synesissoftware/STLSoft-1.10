@@ -4,7 +4,7 @@
  * Purpose:     stlsoft_malloc_allocator class - uses malloc()/free().
  *
  * Created:     2nd January 2001
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,16 +52,8 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_MALLOC_ALLOCATOR_MAJOR      4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_MALLOC_ALLOCATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_MALLOC_ALLOCATOR_REVISION   13
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_MALLOC_ALLOCATOR_EDIT       97
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_MALLOC_ALLOCATOR_EDIT       98
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

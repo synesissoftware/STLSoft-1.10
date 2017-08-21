@@ -4,7 +4,7 @@
  * Purpose:     Exceptions used by the Registry library.
  *
  * Created:     8th February 2006
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,16 +52,8 @@
 # define WINSTL_VER_WINSTL_REGISTRY_ERROR_HPP_EXCEPTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_REGISTRY_ERROR_HPP_EXCEPTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_REGISTRY_ERROR_HPP_EXCEPTIONS_REVISION   6
-# define WINSTL_VER_WINSTL_REGISTRY_ERROR_HPP_EXCEPTIONS_EDIT       27
+# define WINSTL_VER_WINSTL_REGISTRY_ERROR_HPP_EXCEPTIONS_EDIT       28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

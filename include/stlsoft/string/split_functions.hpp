@@ -4,7 +4,7 @@
  * Purpose:     String split functions.
  *
  * Created:     28th January 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,21 +52,8 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_MINOR      3
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_REVISION   6
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_EDIT       51
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_EDIT       52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:  __BORLANDC__<0x0564
-STLSOFT_COMPILER_IS_DMC:  __DMC__<0x0844
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

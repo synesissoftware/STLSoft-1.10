@@ -4,7 +4,7 @@
  * Purpose:     A combination of the filter_iterator and the transform_iterator.
  *
  * Created:     2nd January 2006
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,20 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_TRANSFORM_ITERATOR_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_TRANSFORM_ITERATOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_TRANSFORM_ITERATOR_REVISION  7
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_TRANSFORM_ITERATOR_EDIT      22
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_TRANSFORM_ITERATOR_EDIT      23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1310
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

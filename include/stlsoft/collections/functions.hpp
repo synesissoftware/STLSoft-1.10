@@ -4,7 +4,7 @@
  * Purpose:     Collection manipulation functions.
  *
  * Created:     11th November 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_REVISION 7
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     43
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

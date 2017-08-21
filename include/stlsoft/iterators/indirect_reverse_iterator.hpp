@@ -4,7 +4,7 @@
  * Purpose:     indirect_reverse_iterator class template.
  *
  * Created:     7th June 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_MINOR      2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_REVISION   11
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_EDIT       40
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_EDIT       41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

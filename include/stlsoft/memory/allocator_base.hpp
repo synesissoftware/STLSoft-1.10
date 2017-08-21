@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,16 +53,8 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MINOR    1
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 12
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     58
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

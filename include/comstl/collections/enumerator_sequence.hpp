@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for IEnumXXXX enumerator interfaces.
  *
  * Created:     17th September 1998
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks:      To Eduardo Bezerra and Vivi Orunitia for reporting
  *              incompatibilities with Borland's 5.82 (Turbo C++). The awful
@@ -57,18 +57,8 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_REVISION 12
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     264
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     265
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

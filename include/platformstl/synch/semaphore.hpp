@@ -4,7 +4,7 @@
  * Purpose:     Platform header for directory manipulation functions.
  *
  * Created:     30th May 2006
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SEMAPHORE_MAJOR      1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SEMAPHORE_MINOR      1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SEMAPHORE_REVISION   4
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SEMAPHORE_EDIT       17
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SEMAPHORE_EDIT       18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

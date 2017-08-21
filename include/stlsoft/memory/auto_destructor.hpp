@@ -5,7 +5,7 @@
  *              classes.
  *
  * Created:     1st November 1994
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,16 +54,8 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MINOR       1
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_REVISION    7
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        81
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

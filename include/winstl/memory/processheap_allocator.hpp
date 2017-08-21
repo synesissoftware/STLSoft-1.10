@@ -4,7 +4,7 @@
  * Purpose:     processheap_allocator class.
  *
  * Created:     25th February 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,16 +52,8 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR_MAJOR       4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR_MINOR       1
 # define WINSTL_VER_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR_REVISION    10
-# define WINSTL_VER_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR_EDIT        95
+# define WINSTL_VER_WINSTL_MEMORY_HPP_PROCESSHEAP_ALLOCATOR_EDIT        96
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

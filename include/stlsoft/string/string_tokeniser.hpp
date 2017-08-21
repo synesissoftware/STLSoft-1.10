@@ -4,7 +4,7 @@
  * Purpose:     String token parsing class.
  *
  * Created:     6th January 2001
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,20 +53,8 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MINOR     1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_REVISION  14
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      232
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      233
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_DMC:  __DMC__<0x0839
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

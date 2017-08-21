@@ -4,7 +4,7 @@
  * Purpose:     String utility functions for trimming and removing string contents.
  *
  * Created:     25th April 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,19 +53,8 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MAJOR       2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MINOR       1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_REVISION    13
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        46
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

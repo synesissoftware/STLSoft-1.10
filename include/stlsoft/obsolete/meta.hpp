@@ -4,7 +4,7 @@
  * Purpose:     Meta programming primitives.
  *
  * Created:     19th November 1998
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_MAJOR    4
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_MINOR    0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_REVISION 6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_EDIT     139
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_EDIT     140
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

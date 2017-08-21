@@ -4,7 +4,7 @@
  * Purpose:     Contains the listbox_data_sequence class.
  *
  * Created:     16th March 2008
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_MAJOR     1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_MINOR     2
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_REVISION  7
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_EDIT      16
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_EDIT      17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

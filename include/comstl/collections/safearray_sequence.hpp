@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for COM collection interfaces.
  *
  * Created:     17th April 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MAJOR     4
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MINOR     2
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_REVISION  7
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      71
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

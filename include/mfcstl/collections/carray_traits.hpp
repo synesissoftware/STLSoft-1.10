@@ -4,7 +4,7 @@
  * Purpose:     Definition of the CArray_traits traits class.
  *
  * Created:     1st December 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,17 +52,8 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MAJOR      2
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MINOR      0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_REVISION   5
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_EDIT       20
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

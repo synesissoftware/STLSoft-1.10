@@ -4,7 +4,7 @@
  * Purpose:     Simple class that provides access to an environment variable.
  *
  * Created:     20th December 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks to:   Pablo Aguilar for requesting size() and empty().
  *
@@ -55,18 +55,8 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_REVISION 7
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     76
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Enhanced ostream iterator.
  *
  * Created:     16th December 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,12 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CONTIGUOUS_DILUTER_ITERATOR_MAJOR    1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CONTIGUOUS_DILUTER_ITERATOR_MINOR    0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CONTIGUOUS_DILUTER_ITERATOR_REVISION 8
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CONTIGUOUS_DILUTER_ITERATOR_EDIT     21
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CONTIGUOUS_DILUTER_ITERATOR_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

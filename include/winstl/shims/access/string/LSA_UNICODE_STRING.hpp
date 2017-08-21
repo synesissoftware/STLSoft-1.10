@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,16 +53,8 @@
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_MAJOR     4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_MINOR     1
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_REVISION  9
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_EDIT      123
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_EDIT      124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[<[STLSOFT-AUTO:NO-UNITTEST]>]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

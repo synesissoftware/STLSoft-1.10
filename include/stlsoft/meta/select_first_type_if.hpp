@@ -4,7 +4,7 @@
  * Purpose:     Compile-time if component.
  *
  * Created:     19th November 1998
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,19 +53,8 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MAJOR       3
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MINOR       18
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_REVISION    5
-# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        130
+# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        131
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC:   _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

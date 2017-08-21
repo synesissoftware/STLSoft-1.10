@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,12 +53,8 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MAJOR    4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MINOR    2
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION 9
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT     54
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT     55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Options verification.
  *
  * Created:     9th November 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,17 +53,11 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_REVISION  9
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      53
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC:  _MSC_VER==1300
-[Incompatibilies-end]
  */
 
 #if defined(STLSOFT_COMPILER_IS_MWERKS) || \

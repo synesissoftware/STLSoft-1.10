@@ -5,7 +5,7 @@
  *              class templates.
  *
  * Created:     1st December 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,17 +54,8 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_MAJOR     3
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_MINOR     0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_REVISION  13
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_EDIT      75
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_EDIT      76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Adapts associative containers into a sequence of their values.
  *
  * Created:     28th January 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_KEY_SEQUENCE_MAJOR     2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_KEY_SEQUENCE_MINOR     1
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_KEY_SEQUENCE_REVISION  6
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_KEY_SEQUENCE_EDIT      34
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_KEY_SEQUENCE_EDIT      35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

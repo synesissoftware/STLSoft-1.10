@@ -4,7 +4,7 @@
  * Purpose:     RRID veneer for sequence containers
  *
  * Created:     2nd October 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,19 +53,8 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MAJOR      4
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MINOR      0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_REVISION   9
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       60
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

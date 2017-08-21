@@ -5,7 +5,7 @@
  *              directory.
  *
  * Created:     5th June 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,18 +54,8 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MINOR    2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_REVISION 6
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     67
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

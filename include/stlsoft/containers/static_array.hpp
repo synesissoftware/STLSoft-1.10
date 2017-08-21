@@ -4,7 +4,7 @@
  * Purpose:     Statically sized multidimensional class template.
  *
  * Created:     4th August 1998
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
@@ -56,22 +56,8 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MAJOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MINOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_REVISION  7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      197
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      198
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:  __BORLANDC__<0x0564
-STLSOFT_COMPILER_IS_DMC:  __DMC__<0x0844
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     2nd September 2008
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,19 +53,8 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MAJOR    1
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MINOR    0
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_REVISION 3
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     9
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Discriminates between standard library implementations
  *
  * Created:     2nd January 2000
- * Updated:     11th January 2017
+ * Updated:     22nd August 2017
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support. To Gabor Fischer for reporting problems with VC++
@@ -58,12 +58,8 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MINOR       11
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_REVISION    3
-# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        117
+# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        118
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

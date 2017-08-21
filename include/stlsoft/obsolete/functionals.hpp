@@ -4,7 +4,7 @@
  * Purpose:     Basic functionals.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,18 +50,8 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FUNCTIONALS_MAJOR     3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FUNCTIONALS_MINOR     0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FUNCTIONALS_REVISION  7
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FUNCTIONALS_EDIT      53
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FUNCTIONALS_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

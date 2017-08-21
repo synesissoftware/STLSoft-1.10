@@ -5,7 +5,7 @@
  *              frame) classes.
  *
  * Created:     1st September 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
@@ -58,16 +58,8 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MINOR       1
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        144
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        145
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

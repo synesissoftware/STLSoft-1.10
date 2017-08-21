@@ -5,7 +5,7 @@
  *              non_mutating_operator_adaptor classes.
  *
  * Created:     4th November 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,19 +55,8 @@
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MAJOR       1
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MINOR       5
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_REVISION    8
-# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        39
+# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC:     _MSC_VER < 1200
-STLSOFT_COMPILER_IS_MWERKS:   (__MWERKS__ & 0xFF00) < 0x3000
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

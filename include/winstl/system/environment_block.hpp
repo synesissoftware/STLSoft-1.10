@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,12 +53,8 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MAJOR       4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_REVISION    8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        66
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

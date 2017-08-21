@@ -4,7 +4,7 @@
  * Purpose:     Functionals for application to controls.
  *
  * Created:     2nd August 2006
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,19 +52,8 @@
 # define WINSTL_VER_WINSTL_CONTROL_HPP_DIALOG_FUNCTIONALS_MAJOR     1
 # define WINSTL_VER_WINSTL_CONTROL_HPP_DIALOG_FUNCTIONALS_MINOR     0
 # define WINSTL_VER_WINSTL_CONTROL_HPP_DIALOG_FUNCTIONALS_REVISION  6
-# define WINSTL_VER_WINSTL_CONTROL_HPP_DIALOG_FUNCTIONALS_EDIT      17
+# define WINSTL_VER_WINSTL_CONTROL_HPP_DIALOG_FUNCTIONALS_EDIT      18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1100
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

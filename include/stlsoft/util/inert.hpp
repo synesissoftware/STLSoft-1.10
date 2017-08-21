@@ -4,7 +4,7 @@
  * Purpose:     Contains the inert class.
  *
  * Created:     16th January 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,17 +52,8 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INERT_MAJOR      4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INERT_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INERT_REVISION   8
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_INERT_EDIT       50
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_INERT_EDIT       51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[<[STLSOFT-AUTO:NO-DOCFILELABEL]>]
-[<[STLSOFT-AUTO:NO-UNITTEST]>]
-*/
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

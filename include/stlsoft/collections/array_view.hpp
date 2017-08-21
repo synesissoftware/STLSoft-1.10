@@ -6,7 +6,7 @@
  *              problems.
  *
  * Created:     11th November 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,18 +55,8 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_VIEW_MAJOR       4
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_VIEW_MINOR       1
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_VIEW_REVISION    6
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_VIEW_EDIT        80
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_VIEW_EDIT        81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

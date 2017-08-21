@@ -5,7 +5,7 @@
  *              abstracting away standard library inconsistencies.
  *
  * Created:     2nd January 2000
- * Updated:     11th January 2017
+ * Updated:     22nd August 2017
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support.
@@ -57,19 +57,8 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  4
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      123
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[<[STLSOFT-AUTO:NO-UNITTEST]>]
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

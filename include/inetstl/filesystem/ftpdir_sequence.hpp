@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     18th January 2006
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,18 +54,8 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_MAJOR      2
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_MINOR      1
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_REVISION   9
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_EDIT       39
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_EDIT       40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1100
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

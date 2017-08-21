@@ -4,7 +4,7 @@
  * Purpose:     Field-based properties.
  *
  * Created:     6th October 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -58,18 +58,8 @@
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_FIELD_PROPERTIES_MAJOR      4
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_FIELD_PROPERTIES_MINOR      0
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_FIELD_PROPERTIES_REVISION   7
-# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_FIELD_PROPERTIES_EDIT       40
+# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_FIELD_PROPERTIES_EDIT       41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_GCC:     __GNUC__ == 3 && defined(__APPLE__)
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

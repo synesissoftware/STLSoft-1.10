@@ -4,7 +4,7 @@
  * Purpose:     Policies for enumerator interface handling.
  *
  * Created:     20th December 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_MAJOR       6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_MINOR       1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_REVISION    12
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_EDIT        63
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_EDIT        64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

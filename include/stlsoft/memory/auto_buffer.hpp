@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -57,19 +57,8 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       2
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    12
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        176
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        177
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_GCC:     __GNUC__ < 3
-[Incompatibilies-end]
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

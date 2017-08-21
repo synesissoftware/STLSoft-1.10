@@ -4,7 +4,7 @@
  * Purpose:     Include file for all associative sequences.
  *
  * Created:     28th January 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_REVISION 4
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_EDIT     21
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

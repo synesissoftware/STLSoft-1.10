@@ -4,7 +4,7 @@
  * Purpose:     member_selector_iterator class.
  *
  * Created:     7th April 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Thanks to:   Felix Gartsman for spotting a bug in (lack of) operator <()
  *              when building Pantheios.
@@ -56,18 +56,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MINOR       4
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_REVISION    11
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        67
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

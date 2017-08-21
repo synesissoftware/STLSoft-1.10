@@ -4,7 +4,7 @@
  * Purpose:     commandline_parser class.
  *
  * Created:     20th May 2000
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MAJOR    2
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MINOR    1
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_REVISION 8
-# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     46
+# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

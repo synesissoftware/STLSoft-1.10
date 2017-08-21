@@ -4,7 +4,7 @@
  * Purpose:     string_concatenator_iterator class template.
  *
  * Created:     12th May 1998
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_MINOR       4
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_REVISION    6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_EDIT        52
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_EDIT        53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

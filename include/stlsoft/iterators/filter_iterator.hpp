@@ -5,7 +5,7 @@
  *              values from the iterator's underlying sequence.
  *
  * Created:     9th July 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,20 +54,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_ITERATOR_MAJOR    4
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_ITERATOR_MINOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_ITERATOR_REVISION 8
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_ITERATOR_EDIT     48
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_FILTER_ITERATOR_EDIT     49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1310
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

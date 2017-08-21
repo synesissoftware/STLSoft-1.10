@@ -4,7 +4,7 @@
  * Purpose:     proxy_sequence template class.
  *
  * Created:     10th September 2003
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,18 +50,8 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_MINOR      0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_REVISION   6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_EDIT       40
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_EDIT       41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

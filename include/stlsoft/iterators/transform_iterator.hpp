@@ -6,7 +6,7 @@
  *              sequence.
  *
  * Created:     6th February 1999
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,19 +55,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MINOR     1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_REVISION  6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      129
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      130
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Traits for detecting characteristics of adapted iterators.
  *
  * Created:     9th July 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,20 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ADAPTED_ITERATOR_TRAITS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ADAPTED_ITERATOR_TRAITS_MINOR    5
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ADAPTED_ITERATOR_TRAITS_REVISION 7
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ADAPTED_ITERATOR_TRAITS_EDIT     57
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ADAPTED_ITERATOR_TRAITS_EDIT     58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_BORLAND:
-STLSOFT_COMPILER_IS_MSVC:       _MSC_VER < 1310
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

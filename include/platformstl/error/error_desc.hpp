@@ -4,7 +4,7 @@
  * Purpose:     Error .
  *
  * Created:     20th March 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,16 +54,8 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_ERROR_HPP_ERROR_DESC_MAJOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_ERROR_HPP_ERROR_DESC_MINOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_ERROR_HPP_ERROR_DESC_REVISION   6
-# define PLATFORMSTL_VER_PLATFORMSTL_ERROR_HPP_ERROR_DESC_EDIT       29
+# define PLATFORMSTL_VER_PLATFORMSTL_ERROR_HPP_ERROR_DESC_EDIT       30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

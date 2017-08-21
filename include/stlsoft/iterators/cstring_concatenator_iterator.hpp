@@ -4,7 +4,7 @@
  * Purpose:     cstring_concatenator_iterator class template.
  *
  * Created:     20th June 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CSTRING_CONCATENATOR_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CSTRING_CONCATENATOR_ITERATOR_MINOR      1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CSTRING_CONCATENATOR_ITERATOR_REVISION   7
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CSTRING_CONCATENATOR_ITERATOR_EDIT       38
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_CSTRING_CONCATENATOR_ITERATOR_EDIT       39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

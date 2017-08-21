@@ -8,7 +8,7 @@
  *              one of the typedefs
  *
  * Created:     1st May 2004
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -57,19 +57,8 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION    11
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        68
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     Command-line sequences class.
  *
  * Created:     25th June 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,18 +52,8 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_MAJOR       3
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_MINOR       0
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_REVISION    8
-# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_EDIT        39
+# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_EDIT        40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

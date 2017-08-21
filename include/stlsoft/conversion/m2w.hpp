@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     27th October 2008
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,19 +53,8 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_MAJOR       1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_MINOR       0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_REVISION    3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_EDIT        7
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1200
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

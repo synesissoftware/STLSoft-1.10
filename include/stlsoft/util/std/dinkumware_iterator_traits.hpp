@@ -4,7 +4,7 @@
  * Purpose:     "Old" Dinkumware library iterator capability discrimination.
  *
  * Created:     31st December 2005
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_DINKUMWARE_ITERATOR_TRAITS_MAJOR      1
 # define STLSOFT_VER_STLSOFT_UTIL_STD_DINKUMWARE_ITERATOR_TRAITS_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_STD_DINKUMWARE_ITERATOR_TRAITS_REVISION   10
-# define STLSOFT_VER_STLSOFT_UTIL_STD_DINKUMWARE_ITERATOR_TRAITS_EDIT       26
+# define STLSOFT_VER_STLSOFT_UTIL_STD_DINKUMWARE_ITERATOR_TRAITS_EDIT       27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

@@ -4,7 +4,7 @@
  * Purpose:     basic_simple_string class template.
  *
  * Created:     19th March 1993
- * Updated:     19th February 2017
+ * Updated:     22nd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,8 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MINOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     260
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     261
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
