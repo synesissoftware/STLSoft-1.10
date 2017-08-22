@@ -4,7 +4,7 @@
  * Purpose:     event class, based on Windows EVENT.
  *
  * Created:     3rd July 2003
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     73
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 3
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -145,8 +145,8 @@ public:
         }
     }
 private:
-    event(class_type const& rhs);                   // copy-construction proscribed
-    class_type& operator =(class_type const& rhs);  // copy-assignment proscribed
+    event(class_type const&);           // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Operations

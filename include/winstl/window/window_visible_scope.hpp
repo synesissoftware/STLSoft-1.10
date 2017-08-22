@@ -4,7 +4,7 @@
  * Purpose:     Window visible-state scoping class.
  *
  * Created:     26th May 2004
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_MAJOR       4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_MINOR       1
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_REVISION    6
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_EDIT        50
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_REVISION    7
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,16 +173,14 @@ public:
 
         ::ShowWindow(m_hwnd, m_stateOnDtor);
     }
+private:
+    window_visible_scope(class_type const&);    // copy-construction proscribed
+    void operator =(class_type const&);         // copy-assignment proscribed
 
-// Members
+// fields
 private:
     HWND const      m_hwnd;
     ws_int_t const  m_stateOnDtor;
-
-// Not to be implemented
-private:
-    window_visible_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 };
 
 /* ////////////////////////////////////////////////////////////////////// */

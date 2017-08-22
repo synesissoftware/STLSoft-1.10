@@ -4,7 +4,7 @@
  * Purpose:     Window enable-state scoping class.
  *
  * Created:     5th January 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_MINOR    1
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_EDIT     100
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_REVISION 6
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ENABLE_SCOPE_EDIT     101
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,16 +173,14 @@ public:
 
         ::EnableWindow(m_hwnd, m_bEnableOnDtor);
     }
+private:
+    window_enable_scope(class_type const&); // copy-construction proscribed
+    void operator =(class_type const&);     // copy-assignment proscribed
 
 // Members
 private:
     HWND        m_hwnd;
     ws_bool_t   m_bEnableOnDtor;
-
-// Not to be implemented
-private:
-    window_enable_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 };
 
 /* ////////////////////////////////////////////////////////////////////// */

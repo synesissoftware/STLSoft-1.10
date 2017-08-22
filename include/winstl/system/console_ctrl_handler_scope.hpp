@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_console_ctrl_handler_scope class.
  *
  * Created:     8th August 2004
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,18 +53,9 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_MAJOR      4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_MINOR      0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_REVISION   8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_EDIT       36
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_REVISION   9
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_EDIT       38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -77,9 +68,9 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Console
 # include <winstl/api/external/Console.h>
-#endif /* !WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Console */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -134,6 +125,10 @@ public:
             WINSTL_API_EXTERNAL_Console_SetConsoleCtrlHandler(m_handler, false);
         }
     }
+
+private:
+    console_ctrl_handler_scope(class_type const&);  // copy-construction proscribed
+    void operator =(class_type const&);             // copy-assignment proscribed
 /// @}
 
 /// \name Members
@@ -141,13 +136,6 @@ public:
 private:
     const PHANDLER_ROUTINE  m_handler;
     const BOOL              m_bRegistered;
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    console_ctrl_handler_scope(class_type const&);
-    class_type& operator =(class_type const&);
 /// @}
 };
 

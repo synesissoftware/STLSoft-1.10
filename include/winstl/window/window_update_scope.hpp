@@ -4,7 +4,7 @@
  * Purpose:     Window update-state scoping class.
  *
  * Created:     5th January 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MAJOR      5
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MINOR      1
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_REVISION   5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       86
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_REVISION   6
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       87
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,15 +136,13 @@ public:
             ::LockWindowUpdate(NULL);
         }
     }
+private:
+    window_update_scope(class_type const&); // copy-construction proscribed
+    void operator =(class_type const&);     // copy-assignment proscribed
 
 // Members
 private:
     ws_bool_t   m_bIsLocked;
-
-// Not to be implemented
-private:
-    window_update_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 };
 
 /* ////////////////////////////////////////////////////////////////////// */

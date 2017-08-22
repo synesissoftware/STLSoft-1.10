@@ -4,7 +4,7 @@
  * Purpose:     Window icon scoping class.
  *
  * Created:     30th June 1999
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_MINOR      1
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_REVISION   5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_EDIT       60
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_REVISION   6
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_ICON_SCOPE_EDIT       61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -210,17 +210,15 @@ public:
 
         set_window_icon(m_hwnd, m_iconId, m_hicon);
     }
+private:
+    window_icon_scope(class_type const&);   // copy-construction proscribed
+    void operator =(class_type const&);     // copy-assignment proscribed
 
 // Members
 private:
     HWND    m_hwnd;
     int     m_iconId;
     HICON   m_hicon;
-
-// Not to be implemented
-private:
-    window_icon_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 };
 
 /* ////////////////////////////////////////////////////////////////////// */

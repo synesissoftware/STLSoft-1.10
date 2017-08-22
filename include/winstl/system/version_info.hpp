@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing version information.
  *
  * Created:     16th February 1998
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MAJOR    5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MINOR    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 11
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     143
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 12
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     144
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -583,6 +583,9 @@ public:
 
     /// Releases any allocated resources
     ~version_info() STLSOFT_NOEXCEPT;
+private:
+    version_info(class_type const&);    // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Properties
@@ -640,11 +643,6 @@ private:
     WORD const*                 const   m_children;
     StringFileInfo_hdr const*           m_sfi;
     VarFileInfo_hdr const*              m_vfi;
-
-// Not to be implemented
-private:
-    version_info(class_type const& rhs);
-    class_type& operator =(class_type const& rhs);
 };
 
 /* /////////////////////////////////////////////////////////////////////////

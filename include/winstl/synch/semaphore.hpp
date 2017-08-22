@@ -4,7 +4,7 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 12
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     36
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 13
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -188,6 +188,9 @@ public:
             ::CloseHandle(m_sem);
         }
     }
+private:
+    semaphore(class_type const&);       // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Operations
@@ -388,11 +391,6 @@ private:
     synch_handle_type   m_sem;          // The underlying semaphore object
     count_type const    m_maxCount;     // Record of the maximum counter value
     bool_type const     m_bOwnHandle;   // Does the instance own the handle?
-
-// Not to be implemented
-private:
-    semaphore(class_type const& rhs);
-    semaphore& operator =(class_type const& rhs);
 };
 
 /* /////////////////////////////////////////////////////////////////////////
