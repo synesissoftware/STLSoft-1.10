@@ -4,7 +4,7 @@
  * Purpose:     Memory mapped file class.
  *
  * Created:     15th December 1996
- * Updated:     2nd January 2017
+ * Updated:     23rd August 2017
  *
  * Thanks:      To Pablo Aguilar for requesting multibyte / wide string
  *              ambivalence. To Joe Mariadassou for requesting swap().
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR     12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      118
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  5
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -100,17 +100,27 @@
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
 
-#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
-# include <winstl/api/internal/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
-#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
-# include <winstl/api/external/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
-
 #ifndef STLSOFT_INCL_H_STRING
 # define STLSOFT_INCL_H_STRING
 # include <string.h>    // for memcmp()
 #endif /* !STLSOFT_INCL_H_STRING */
+
+#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
+# include <winstl/api/internal/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
+# include <winstl/api/external/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -180,7 +190,7 @@ private:
     defined(STLSOFT_COMPILER_IS_WATCOM)
     static void CloseHandle(HANDLE h)
     {
-        STLSOFT_NS_GLOBAL(CloseHandle)(h);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 #endif /* compiler */
 
@@ -241,7 +251,7 @@ private:
         {
             DWORD   fileSizeHigh;
             DWORD   fileSizeLow =   ::GetFileSize(hFile, &fileSizeHigh);
-            DWORD   scode       =   ::GetLastError();
+            DWORD   scode       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             if( INVALID_FILE_SIZE == fileSizeLow &&
                 ERROR_SUCCESS != scode)
@@ -373,7 +383,7 @@ private:
                             // view size is requested, instead of the usual
                             // ERROR_INVALID_PARAMETER.
 
-                            status_code_type scode2 = ::GetLastError();
+                            status_code_type scode2 = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef WINSTL_MEMORY_MAPPED_FILE_TRANSLATE_SC_EINVAL_2_EMEM
 
@@ -655,7 +665,7 @@ private:
     bool_type
     on_failure_(
         char const*         message
-    ,   status_code_type    scode = ::GetLastError()
+    ,   status_code_type    scode = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()
     )
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT

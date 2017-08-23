@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     74
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 4
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,10 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON
 # include <winstl/synch/common.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -141,7 +145,7 @@ public:
         if( NULL != m_ev &&
             m_bOwnHandle)
         {
-            ::CloseHandle(m_ev);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_ev);
         }
     }
 private:

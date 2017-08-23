@@ -4,7 +4,7 @@
  * Purpose:     pipe class, based on Windows anonymous pipe.
  *
  * Created:     19th June 2004
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks:      iceboy for reporting a defect in close_write()
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_MAJOR    4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_MINOR    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_REVISION 9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_EDIT     48
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_REVISION 11
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PIPE_EDIT     50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,13 @@
 #ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES
 # include <winstl/exception/throw_policies.hpp>
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -129,7 +136,7 @@ public:
 
         if(!::CreatePipe(&m_hReadHandle, &m_hWriteHandle, &sa, size))
         {
-            exception_policy_type()(::GetLastError());
+            exception_policy_type()(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
     }
 
@@ -137,11 +144,11 @@ public:
     {
         if(NULL != m_hReadHandle)
         {
-            ::CloseHandle(m_hReadHandle);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_hReadHandle);
         }
         if(NULL != m_hWriteHandle)
         {
-            ::CloseHandle(m_hWriteHandle);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_hWriteHandle);
         }
     }
 /// @}
@@ -168,7 +175,7 @@ public:
     {
         if(NULL != m_hReadHandle)
         {
-            ::CloseHandle(m_hReadHandle);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_hReadHandle);
 
             m_hReadHandle = NULL;
         }
@@ -180,7 +187,7 @@ public:
     {
         if(NULL != m_hWriteHandle)
         {
-            ::CloseHandle(m_hWriteHandle);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_hWriteHandle);
 
             m_hWriteHandle = NULL;
         }

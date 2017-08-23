@@ -5,7 +5,7 @@
  *              information about the host system version.
  *
  * Created:     10th February 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MAJOR      4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MINOR      0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_REVISION   9
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       68
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_REVISION   10
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -144,11 +144,16 @@ private:
     static OSVERSIONINFO &get_versioninfo_();
 };
 
-////////////////////////////////////////////////////////////////////////////
-// Implementation
+/* /////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
 
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline /* static */ OSVERSIONINFO &system_version::get_versioninfo_()
+inline
+/* static */
+OSVERSIONINFO&
+system_version::get_versioninfo_()
 {
     /// Unfortunately, something in this technique scares the Borland compilers (5.5
     /// and 5.51) into Internal compiler errors so the s_init variable in
@@ -183,40 +188,63 @@ inline /* static */ OSVERSIONINFO &system_version::get_versioninfo_()
     return s_versioninfo;
 }
 
-inline /* static */ ws_bool_t system_version::winnt()
+inline
+/* static */
+ws_bool_t
+system_version::winnt()
 {
     return get_versioninfo_().dwPlatformId == VER_PLATFORM_WIN32_NT;
 }
 
-inline /* static */ ws_bool_t system_version::win9x()
+inline
+/* static */
+ws_bool_t
+system_version::win9x()
 {
     return get_versioninfo_().dwPlatformId == VER_PLATFORM_WIN32_WINDOWS;
 }
 
-inline /* static */ ws_bool_t system_version::win32s()
+inline
+/* static */
+ws_bool_t
+system_version::win32s()
 {
     return get_versioninfo_().dwPlatformId == VER_PLATFORM_WIN32s;
 }
 
-inline /* static */ ws_uint_t system_version::major()
+inline
+/* static */
+ws_uint_t
+system_version::major()
 {
     return get_versioninfo_().dwMajorVersion;
 }
 
-inline /* static */ ws_uint_t system_version::minor()
+inline
+/* static */
+ws_uint_t
+system_version::minor()
 {
     return get_versioninfo_().dwMinorVersion;
 }
 
-inline /* static */ ws_uint32_t system_version::build_number()
+inline
+/* static */
+ws_uint32_t
+system_version::build_number()
 {
     return winnt() ? get_versioninfo_().dwBuildNumber : static_cast<WORD>(get_versioninfo_().dwBuildNumber);
 }
 
-inline /* static */ OSVERSIONINFO const& system_version::get_versioninfo()
+inline
+/* static */
+OSVERSIONINFO const&
+system_version::get_versioninfo()
 {
     return get_versioninfo_();
 }
+
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
 

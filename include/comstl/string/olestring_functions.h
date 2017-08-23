@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     2nd March 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MINOR       1
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    8
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        167
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    9
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        168
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,10 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -120,14 +124,14 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_a(cs_char_a_t const* s)
     {
         /* NOTE: All this posz2 hoop jumping is needed because BC++ gets confused. Ahh, bless it ... */
 
-        cs_size_t       cch     =   stlsoft_static_cast(cs_size_t, STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, s, -1, NULL, 0));
+        cs_size_t       cch     =   stlsoft_static_cast(cs_size_t, WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, NULL, 0));
         const LPOLESTR  posz2   =   stlsoft_static_cast(LPOLESTR, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)(sizeof(OLECHAR) * (cch + 1)));
 
         posz = posz2;
 
         if(NULL != posz)
         {
-            cs_size_t n = stlsoft_static_cast(cs_size_t, STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, s, -1, posz2, stlsoft_static_cast(int, cch + 1)));
+            cs_size_t n = stlsoft_static_cast(cs_size_t, WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, posz2, stlsoft_static_cast(int, cch + 1)));
 
             if(n < cch)
             {

@@ -4,7 +4,7 @@
  * Purpose:     Policies for spin mutexes.
  *
  * Created:     25th November 2006
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,8 +50,8 @@
 #ifndef WINSTL_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MAJOR      2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MINOR      1
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       12
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   3
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       13
 #endif /* !WINSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -61,6 +61,10 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS
 # include <winstl/synch/atomic_functions.h>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread
+# include <winstl/api/external/ProcessAndThread.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -199,7 +203,7 @@ public: // Operations
 #elif _WIN32_WINNT >= 0x0400
             STLSOFT_NS_GLOBAL(SwitchToThread)();
 #else /* ? _WIN32_WINNT */
-            STLSOFT_NS_GLOBAL(Sleep)(1);
+            WINSTL_API_EXTERNAL_ProcessAndThread_Sleep(1);
 #endif /* _WIN32_WINNT */
         }
     }

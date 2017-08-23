@@ -4,7 +4,7 @@
  * Purpose:     Shell memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MAJOR       6
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_REVISION    7
-# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        61
+# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_REVISION    8
+# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,6 +78,10 @@
 # define STLSOFT_INCL_H_SHLOBJ
 # include <shlobj.h>
 #endif /* !STLSOFT_INCL_H_SHLOBJ */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -132,12 +136,12 @@ STLSOFT_INLINE void *winstl__SHMemAlloc(ws_size_t cb)
 
         if(NULL == pv)
         {
-            STLSOFT_NS_GLOBAL(SetLastError)(ERROR_NOT_ENOUGH_MEMORY);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
         }
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         pv = NULL;
     }
 
@@ -174,7 +178,7 @@ STLSOFT_INLINE void winstl__SHMemFree(void *pv)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
     }
 }
 
@@ -253,12 +257,12 @@ STLSOFT_INLINE void *winstl__SHMemRealloc(void *pv, ws_size_t cb)
             0 != cb &&
             NULL != pv)
         {
-            STLSOFT_NS_GLOBAL(SetLastError)(ERROR_NOT_ENOUGH_MEMORY);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
         }
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         pvNew = NULL;
     }
 
@@ -291,7 +295,7 @@ STLSOFT_INLINE ws_size_t winstl__SHMemGetSize(void *pv)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         ulRet = 0;
     }
 
@@ -327,7 +331,7 @@ STLSOFT_INLINE ws_sint_t winstl__SHMemDidAlloc(void *pv)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         iRet = -1;
     }
 
@@ -357,7 +361,7 @@ STLSOFT_INLINE void winstl__SHMemHeapMinimise(void)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
     }
 }
 

@@ -4,7 +4,7 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks to:   Pablo Aguilar for the idea of a template-based get_symbol().
  *
@@ -87,6 +87,13 @@
 #ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <winstl/system/system_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -185,7 +192,7 @@ public:
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         if(NULL == m_hmodule)
         {
-            STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+            STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
         }
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
@@ -384,7 +391,7 @@ inline module::module(ws_char_a_t const* moduleName)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hmodule)
     {
-        STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -397,7 +404,7 @@ inline module::module(ws_char_a_t const* moduleName, void (*pfn)(ws_char_a_t con
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hmodule)
     {
-        STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -410,7 +417,7 @@ inline module::module(ws_char_w_t const* moduleName)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hmodule)
     {
-        STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -423,7 +430,7 @@ inline module::module(ws_char_w_t const* moduleName, void (*pfn)(ws_char_w_t con
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hmodule)
     {
-        STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -436,7 +443,7 @@ inline module::module(module::module_handle_type hmodule)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hmodule)
     {
-        STLSOFT_THROW_X(winstl_exception("Cannot load module", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -457,7 +464,7 @@ inline module::module(module const& rhs)
         if(0 == cch)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(winstl_exception("Cannot get module path", ::GetLastError()));
+            STLSOFT_THROW_X(winstl_exception("Cannot get module path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* STLSOFT_CF_EXCEPTION_SUPPORT */
             m_hmodule = NULL;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -502,12 +509,12 @@ inline module::module_handle_type module::detach()
 
 inline /* static */ module::module_handle_type module::load(ws_char_a_t const* moduleName)
 {
-    return ::LoadLibraryA(moduleName);
+    return WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(moduleName);
 }
 
 inline /* static */ module::module_handle_type module::load(ws_char_a_t const* moduleName, void (*pfn)(ws_char_a_t const*, handle_type, void*), void* param)
 {
-    HINSTANCE   hinst   =   ::LoadLibraryA(moduleName);
+    HINSTANCE hinst = WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(moduleName);
 
     if(NULL != pfn)
     {
@@ -519,14 +526,14 @@ inline /* static */ module::module_handle_type module::load(ws_char_a_t const* m
 
 inline /* static */ module::module_handle_type module::load(ws_char_w_t const* moduleName)
 {
-    return ::LoadLibraryW(moduleName);
+    return WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryW(moduleName);
 }
 
 inline /* static */ void module::unload(module::module_handle_type hmodule) STLSOFT_NOEXCEPT
 {
     if(NULL != hmodule)
     {
-        ::FreeLibrary(hmodule);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hmodule);
     }
 }
 
@@ -556,7 +563,7 @@ inline /* static */ void module::unload(module::module_handle_type hmodule, modu
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        ::FreeLibrary(hmodule);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hmodule);
     }
 }
 

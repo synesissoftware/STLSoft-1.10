@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 13
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     37
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 15
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,13 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON
 # include <winstl/synch/common.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -185,7 +192,7 @@ public:
         if( NULL != m_sem &&
             m_bOwnHandle)
         {
-            ::CloseHandle(m_sem);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_sem);
         }
     }
 private:
@@ -205,7 +212,7 @@ public:
 
         if(WAIT_OBJECT_0 != dwRes)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(wait_failed_logic_exception(e, "semaphore wait failed"));
@@ -224,7 +231,7 @@ public:
         if( WAIT_OBJECT_0 != dwRes &&
             WAIT_TIMEOUT != dwRes)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(wait_failed_logic_exception(e, "semaphore wait failed"));
@@ -252,7 +259,7 @@ public:
 
         if(!::ReleaseSemaphore(m_sem, 1, NULL))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "semaphore release failed", Synchronisation_SemaphoreReleaseFailed));
@@ -283,7 +290,7 @@ public:
 
         if(!::ReleaseSemaphore(m_sem, static_cast<LONG>(numLocksToRelease), &previousCount))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "semaphore release failed", Synchronisation_SemaphoreReleaseFailed));
@@ -349,7 +356,7 @@ private:
 
         if(NULL == sem)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel semaphore object"));
@@ -374,7 +381,7 @@ private:
 
         if(NULL == sem)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel semaphore object"));

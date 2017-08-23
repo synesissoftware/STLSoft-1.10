@@ -4,7 +4,7 @@
  * Purpose:     Localisation functions for Windows time structures.
  *
  * Created:     9th October 2014
- * Updated:     12th January 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_REVISION   1
-# define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_EDIT       8
+# define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_REVISION   2
+# define WINSTL_VER_WINSTL_TIME_H_LOCALISATION_FUNCTIONS_EDIT       9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,10 @@
 #  include <winstl/error/conversion_error.hpp>
 # endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_CONVERSION_ERROR */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -327,7 +331,7 @@ localise_UTC_time_to_local_time(
 
     if(!winstl_C_localise_UTC_FILETIME_to_local_FILETIME(utcTime, &localTime))
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         STLSOFT_THROW_X(conversion_error("failed to convert time value", e));
     }
@@ -371,7 +375,7 @@ localise_local_time_to_UTC_time(
 
     if(!winstl_C_localise_local_FILETIME_to_UTC_FILETIME(localTime, &utcTime))
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         STLSOFT_THROW_X(conversion_error("failed to convert time value", e));
     }

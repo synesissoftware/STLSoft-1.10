@@ -4,7 +4,7 @@
  * Purpose:     winstl::time_cast<>.
  *
  * Created:     26th May 2014
- * Updated:     12th January 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MAJOR     2
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MINOR     0
-# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_REVISION  1
-# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      9
+# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_REVISION  2
+# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,6 +83,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_COVER
 # include <stlsoft/quality/cover.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * compatibility
@@ -167,7 +171,7 @@ namespace ximpl_winstl_time_cast
 
             if(!STLSOFT_NS_GLOBAL(SystemTimeToFileTime)(&t, &ft))
             {
-                DWORD const e = ::GetLastError();
+                DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 // TODO: implement a bad_time_cast
                 STLSOFT_THROW_X(conversion_error("failed to convert time value", e));
@@ -191,7 +195,7 @@ namespace ximpl_winstl_time_cast
 
             if(!STLSOFT_NS_GLOBAL(FileTimeToSystemTime)(&t, &st))
             {
-                DWORD const e = ::GetLastError();
+                DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 // TODO: implement a bad_time_cast
                 STLSOFT_THROW_X(conversion_error("failed to convert time value", e));

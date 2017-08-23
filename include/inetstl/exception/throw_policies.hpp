@@ -4,7 +4,7 @@
  * Purpose:     Contains the internet_exception class.
  *
  * Created:     25th April 2004
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  5
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      50
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  6
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,6 +82,10 @@
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
 # error This file cannot be included when exception-handling is not supported
 #endif /* !STLSOFT_CF_EXCEPTION_SUPPORT */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -133,7 +137,7 @@ public:
     void operator ()() const
     {
 #ifdef INETSTL_OS_IS_WINDOWS
-        STLSOFT_THROW_X(thrown_type(::GetLastError()));
+        STLSOFT_THROW_X(thrown_type(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? INETSTL_OS_IS_WINDOWS */
         STLSOFT_THROW_X(thrown_type(errno));
 #endif /* INETSTL_OS_IS_WINDOWS */

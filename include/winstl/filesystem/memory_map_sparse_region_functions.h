@@ -4,7 +4,7 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_MINOR    0
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_EDIT     113
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_REVISION 4
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_EDIT     115
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -64,19 +64,23 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
-# include <winstl/api/internal/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
-#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
-# include <winstl/api/external/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
-
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT */
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_COVER
 # include <stlsoft/quality/cover.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
+
+#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
+# include <winstl/api/internal/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
+# include <winstl/api/external/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -142,7 +146,7 @@ winstl_C_sparse_region_map_view_or_close_mapping_(
 
         if(NULL == view)
         {
-            STLSOFT_NS_GLOBAL(CloseHandle)(hFileMap);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hFileMap);
         }
         else
         {

@@ -4,7 +4,7 @@
  * Purpose:     WinSTL Synchronisation library diagnostics facilities.
  *
  * Created:     18th December 2016
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_MAJOR       1
 # define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_MINOR       0
-# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_REVISION    2
-# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_EDIT        3
+# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_REVISION    3
+# define WINSTL_VER_WINSTL_SYNCH_DIAGNOSTICS_H_FAILURE_HANDLING_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * compatibility
@@ -146,7 +150,7 @@
  * \param syncSC [Synchronisation_status_code_t] The synchronisation
  *   library status code associated with the operation that failed
  * \param winSC [DWORD / LONG] The Windows thread status code (obtained
- *   from <code>GetLastError()</code>
+ *   from <code>::GetLastError()</code>
  */
 
 #ifndef WINSTL_SYNCH_OPERATION_FAILED_IN_NOX

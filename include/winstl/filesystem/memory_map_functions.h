@@ -4,7 +4,7 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   2
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       115
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   6
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       119
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -64,19 +64,29 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
-# include <winstl/api/internal/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
-#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
-# include <winstl/api/external/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
-
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT */
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_COVER
 # include <stlsoft/quality/cover.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
+
+#ifndef WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement
+# include <winstl/api/internal/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_internal_h_MemoryManagement */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
+# include <winstl/api/external/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -176,9 +186,9 @@ winstl_C_map_named_view_of_file_by_handle_v_(
  *   is either a pointer to the mapping view, or <code>NULL</code> if the
  *   mapping could not be created or viewed. When mapping a zero length
  *   file, success is denoted by: (i) returning <code>NULL</code>; (ii)
- *   setting <code>*viewSize</code> to 0; (iii) <code>GetLastError()</code>
- *   returns <code>ERROR_SUCCESS</code>. Any other combination indicates
- *   failure.
+ *   setting <code>*viewSize</code> to 0; (iii)
+ *   <code>::GetLastError()</code> returns <code>ERROR_SUCCESS</code>.
+ *   Any other combination indicates failure.
  *
  * \note If a zero-length file is mapped, <code>*viewSize</code> will be
  *   0, and an unreferenceable non-NULL pointer will be returned.
@@ -252,7 +262,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
     *viewSize = ~stlsoft_static_cast(ws_uintptr_t, 0);
 
     fileSizeLow =   STLSOFT_NS_GLOBAL(GetFileSize)(hFile, &fileSizeHigh);
-    error       =   STLSOFT_NS_GLOBAL(GetLastError)();
+    error       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
     if( INVALID_FILE_SIZE == fileSizeLow &&
         ERROR_SUCCESS != error)
@@ -271,7 +281,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 
         if(mapSize < offset) // Overflow?
         {
-            STLSOFT_NS_GLOBAL(SetLastError)(ERROR_INVALID_PARAMETER);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_PARAMETER);
 
             return NULL;
         }
@@ -280,7 +290,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
         {
             if(0 == requestSize)
             {
-                STLSOFT_NS_GLOBAL(SetLastError)(ERROR_INVALID_PARAMETER);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_PARAMETER);
 
                 return NULL;
             }
@@ -305,7 +315,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 
             if(requestSize2 > stlsoft_static_cast(ws_uint64_t, 0xffffffff))
             {
-                STLSOFT_NS_GLOBAL(SetLastError)(ERROR_NOT_ENOUGH_MEMORY);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
                 return NULL;
             }
@@ -348,7 +358,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
             // Windows CreateFileMapping() does not support mapping
             // zero-length files, so we catch this condition here
 
-            STLSOFT_NS_GLOBAL(SetLastError)(ERROR_SUCCESS);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_SUCCESS);
 
             *viewSize   =   0;
 
@@ -376,11 +386,11 @@ winstl_C_map_named_view_of_file_by_handle_v_(
                                             ,   offset
                                             ,   requestSize
                                             );
-                DWORD const e       =   STLSOFT_NS_GLOBAL(GetLastError)();
+                DWORD const e       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-                STLSOFT_NS_GLOBAL(CloseHandle)(hmap);
+                WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hmap);
 
-                STLSOFT_NS_GLOBAL(SetLastError)(e);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
                 if(NULL == memory)
                 {
@@ -469,11 +479,11 @@ winstl_C_map_view_and_close_mapping_(
                                     ,   0
                                     ,   requestSize
                                     );
-        DWORD const e       =   STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(hmap);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hmap);
 
-        STLSOFT_NS_GLOBAL(SetLastError)(e);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         if(NULL == memory)
         {
@@ -591,7 +601,7 @@ winstl_C_map_readonly_view_of_file_by_name_a(
 ,   ws_uintptr_t*       actualSize
 ) STLSOFT_NOEXCEPT
 {
-    HANDLE hFile = STLSOFT_NS_GLOBAL(CreateFileA)(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+    HANDLE hFile = WINSTL_API_EXTERNAL_FileManagement_CreateFileA(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
 
     if(INVALID_HANDLE_VALUE == hFile)
     {
@@ -606,11 +616,11 @@ winstl_C_map_readonly_view_of_file_by_name_a(
             ,   actualSize
             );
 
-        DWORD e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(hFile);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hFile);
 
-        STLSOFT_NS_GLOBAL(SetLastError)(e);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         return view;
     }
@@ -627,7 +637,7 @@ winstl_C_map_readonly_view_of_file_by_name_w(
 ,   ws_uintptr_t*       actualSize
 ) STLSOFT_NOEXCEPT
 {
-    HANDLE hFile = STLSOFT_NS_GLOBAL(CreateFileW)(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+    HANDLE hFile = WINSTL_API_EXTERNAL_FileManagement_CreateFileW(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
 
     if(INVALID_HANDLE_VALUE == hFile)
     {
@@ -642,11 +652,11 @@ winstl_C_map_readonly_view_of_file_by_name_w(
             ,   actualSize
             );
 
-        DWORD e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(hFile);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hFile);
 
-        STLSOFT_NS_GLOBAL(SetLastError)(e);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         return view;
     }

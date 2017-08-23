@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    9
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        155
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    10
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        156
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,10 +109,6 @@
 # include <stlsoft/iterators/transform_iterator.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
-# include <winstl/api/external/Registry.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
-
 #ifndef STLSOFT_INCL_NUMERIC
 # define STLSOFT_INCL_NUMERIC
 # include <numeric>
@@ -121,6 +117,13 @@
 # define STLSOFT_INCL_FUNCTIONAL
 # include <functional>
 #endif /* !STLSOFT_INCL_FUNCTIONAL */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
+# include <winstl/api/external/Registry.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -923,7 +926,7 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::hkey_type bas
             STLSOFT_THROW_X(registry_exception(message, res));
         }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        ::SetLastError(res);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
         hkey = NULL;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
@@ -961,7 +964,7 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::hkey_type bas
                 STLSOFT_THROW_X(key_not_duplicated_exception(message, res));
             }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-            ::SetLastError(res);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
             hkeyDup = NULL;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
@@ -1209,7 +1212,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::class_type basic_reg_key<C
             STLSOFT_THROW_X(registry_exception(message, res));
         }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        ::SetLastError(res);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
         return class_type();
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
@@ -1247,7 +1250,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
                 STLSOFT_THROW_X(registry_exception(message, res));
             }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-            ::SetLastError(res);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
             // Fall through
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         case    ERROR_FILE_NOT_FOUND:
@@ -1372,7 +1375,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
 
     if(buff.empty())
     {
-        ::SetLastError(ERROR_NOT_ENOUGH_MEMORY);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
         return false;
     }
@@ -1459,7 +1462,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
                 STLSOFT_THROW_X(registry_exception(message, res));
             }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-            ::SetLastError(res);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
             // Fall through
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         case    ERROR_FILE_NOT_FOUND:

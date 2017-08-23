@@ -4,7 +4,7 @@
  * Purpose:     Inter-process mutex, based on Windows MUTEX.
  *
  * Created:     15th May 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 10
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     74
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 12
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,13 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON
 # include <winstl/synch/common.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -185,7 +192,7 @@ public:
         if( NULL != m_mx &&
             m_bOwnHandle)
         {
-            ::CloseHandle(m_mx);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_mx);
         }
     }
 private:
@@ -213,7 +220,7 @@ public:
 
             if(WAIT_OBJECT_0 != dwRes)
             {
-                DWORD const e = ::GetLastError();
+                DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(wait_failed_logic_exception(e, "mutex wait failed"));
@@ -248,7 +255,7 @@ public:
             {
                 if(WAIT_OBJECT_0 != dwRes)
                 {
-                    DWORD const e = ::GetLastError();
+                    DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                     STLSOFT_THROW_X(wait_failed_logic_exception(e, "mutex wait failed"));
@@ -275,7 +282,7 @@ public:
 
         if(!WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex(m_mx))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "mutex release failed", Synchronisation_MutexReleaseFailed));
@@ -335,7 +342,7 @@ private:
 
         if(NULL == mx)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel mutex object"));
@@ -344,7 +351,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && ::GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -354,7 +361,7 @@ private:
 
         if(NULL == mx)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel mutex object"));
@@ -363,7 +370,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && ::GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -373,7 +380,7 @@ private:
 
         if(NULL == mx)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_open_exception(e, "failed to open kernel mutex object"));
@@ -382,7 +389,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && ::GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -392,7 +399,7 @@ private:
 
         if(NULL == mx)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_open_exception(e, "failed to open kernel mutex object"));
@@ -401,7 +408,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && ::GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }

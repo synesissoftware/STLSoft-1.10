@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -70,8 +70,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        233
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        234
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,6 +127,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS
 # include <stlsoft/collections/util/collections.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -964,7 +968,7 @@ basic_findfile_sequence<C, T>::validate_directory_(
     else if(0 == (directoryLen = traits_type::get_full_path_name(directory, dir.size(), &dir[0])))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(winstl_exception(::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
         return validate_directory_(directory, dir, flags | relativePath);
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -1064,7 +1068,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence<C, T>::const_iterator basi
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
     if('\0' == m_directory[0])
     {
-        ::SetLastError(ERROR_INVALID_NAME);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
         return const_iterator(*this);
     }
@@ -1289,7 +1293,7 @@ inline /* static */ HANDLE basic_findfile_sequence_const_input_iterator<C, T, V>
 
     if(INVALID_HANDLE_VALUE == hSrch)
     {
-        DWORD const dw = ::GetLastError();
+        DWORD const dw = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         if(ERROR_ACCESS_DENIED == dw)
@@ -1609,7 +1613,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
                     else
                     {
 #ifdef STLSOFT_DEBUG
-                        DWORD       dwErr   =   ::GetLastError();
+                        DWORD const dwErr = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
                         STLSOFT_SUPPRESS_UNUSED(dwErr);
 #endif /* STLSOFT_DEBUG */

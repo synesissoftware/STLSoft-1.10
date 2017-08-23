@@ -4,7 +4,7 @@
  * Purpose:     Process functions.
  *
  * Created:     12th March 2006
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 4
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     26
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 5
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,10 @@
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
 #endif /* !STLSOFT_INCL_H_STRING */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -147,8 +151,8 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcess9_a(
     {
         if(pi == &pi_)
         {
-            STLSOFT_NS_GLOBAL(CloseHandle)(pi->hProcess);
-            STLSOFT_NS_GLOBAL(CloseHandle)(pi->hThread);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi->hProcess);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi->hThread);
         }
     }
 
@@ -171,8 +175,8 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcessFEA_a(ws_char_a_t const* cmdLine, DWOR
 
     if(b)
     {
-        STLSOFT_NS_GLOBAL(CloseHandle)(pi.hProcess);
-        STLSOFT_NS_GLOBAL(CloseHandle)(pi.hThread);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi.hProcess);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi.hThread);
     }
 
     return b;

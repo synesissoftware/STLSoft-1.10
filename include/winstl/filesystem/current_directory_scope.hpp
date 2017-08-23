@@ -4,7 +4,7 @@
  * Purpose:     Current working directory scoping class.
  *
  * Created:     12th November 1998
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MINOR     2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION  11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      134
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION  12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,6 +89,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_OPERATOR_BOOL
 # include <stlsoft/util/operator_bool.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_OPERATOR_BOOL */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -287,7 +291,7 @@ inline void basic_current_directory_scope<C, T>::init_(ss_typename_type_k basic_
     if(0 == traits_type::get_current_directory(m_previous.size(), &m_previous[0]))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(winstl_exception("could not determine current directory", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("could not determine current directory", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
         m_previous[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -295,7 +299,7 @@ inline void basic_current_directory_scope<C, T>::init_(ss_typename_type_k basic_
     else if(!traits_type::set_current_directory(dir))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(winstl_exception("could not change current directory", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("could not change current directory", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
         m_previous[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */

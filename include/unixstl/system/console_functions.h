@@ -4,7 +4,7 @@
  * Purpose:     Windows console functions.
  *
  * Created:     6th August 2015
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       0
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    5
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        8
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    6
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -94,9 +94,9 @@
 #endif
 
 #if defined(_WIN32)
-# ifndef WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console
+# ifndef WINSTL_INCL_WINSTL_API_external_h_Console
 #  include <winstl/api/external/Console.h>
-# endif /* !WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console */
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_Console */
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////

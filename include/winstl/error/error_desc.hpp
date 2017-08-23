@@ -4,7 +4,7 @@
  * Purpose:     Converts a Win32 error code to a printable string.
  *
  * Created:     13th July 2003
- * Updated:     24th March 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MAJOR       4
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MINOR       6
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    11
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        102
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    12
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        103
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,6 +91,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS
 # include <stlsoft/string/char_alt_traits.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * feature discrimination
@@ -223,7 +227,7 @@ public:
         {}
 
         param()
-            : value(static_cast<error_type>( ::GetLastError()))
+            : value(static_cast<error_type>( WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()))
         {}
     private:
         param& operator =(param const&);
@@ -254,7 +258,7 @@ public:
     /// \note If the error string is not found in the given module, the standard
     /// system libraries will be searched
     ss_explicit_k basic_error_desc(
-        error_type          error       =   ::GetLastError()
+        error_type          error       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()
     ,   char_type const*    modulePath  =   NULL
     );
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -397,7 +401,7 @@ private:
 
     static DWORD get_last_error_()
     {
-        return ::GetLastError();
+        return WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
     }
 /// @}
 

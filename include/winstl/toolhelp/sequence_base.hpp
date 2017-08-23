@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP sequence_base class template.
  *
  * Created:     21st May 2005
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_MINOR     1
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_REVISION  9
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_EDIT      24
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_REVISION  11
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_EDIT      26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,6 +87,13 @@
 # define STLSOFT_INCL_H_TLHELP32
 # include <tlhelp32.h>
 #endif /* !STLSOFT_INCL_H_TLHELP32 */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -316,7 +323,7 @@ public:
     {
         if(traits_type::invalid_handle() != m_snapshot)
         {
-            ::CloseHandle(m_snapshot);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_snapshot);
         }
     }
 /// @}
@@ -371,7 +378,7 @@ private:
         if(traits_type::invalid_handle() == m_snapshot)
         {
             exception_policy    xp;
-            DWORD               dwErr   =   ::GetLastError();
+            DWORD const         dwErr   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             xp(traits_type::create_snapshot_fail_message(), dwErr);
         }

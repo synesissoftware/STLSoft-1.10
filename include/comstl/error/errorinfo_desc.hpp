@@ -4,7 +4,7 @@
  * Purpose:     errorinfo_desc class for accessing description from the COM error.
  *
  * Created:     19th December 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_MAJOR       1
 # define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_MINOR       1
-# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_REVISION    2
-# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_EDIT        41
+# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_REVISION    3
+# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_EDIT        43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,6 +86,10 @@
 #ifdef STLSOFT_CF_THROW_BAD_ALLOC
 # include <new>
 #endif /* STLSOFT_CF_THROW_BAD_ALLOC */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -194,7 +198,7 @@ private:
         if( NULL == m_description_a &&
             NULL != m_description)
         {
-            int cch = ::WideCharToMultiByte(0, 0, m_description, -1, NULL, 0, NULL, NULL);
+            int cch = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, m_description, -1, NULL, 0, NULL, NULL);
 
             m_description_a = static_cast<char*>(::CoTaskMemAlloc((1 + cch) * sizeof(char)));
 
@@ -206,7 +210,7 @@ private:
             }
             else
             {
-                ::WideCharToMultiByte(0, 0, m_description, -1, m_description_a, 1 + cch, NULL, NULL);
+                WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, m_description, -1, m_description_a, 1 + cch, NULL, NULL);
             }
         }
 

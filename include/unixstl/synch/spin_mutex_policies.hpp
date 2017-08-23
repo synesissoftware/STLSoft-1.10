@@ -4,7 +4,7 @@
  * Purpose:     Policies for spin mutexes.
  *
  * Created:     25th November 2006
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,8 +50,8 @@
 #ifndef UNIXSTL_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MAJOR      2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MINOR      0
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       13
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   4
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       14
 #endif /* !UNIXSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,6 +90,12 @@
 #  define STLSOFT_INCL_H_SCHED
 #  include <sched.h>
 # endif /* !STLSOFT_INCL_H_SCHED */
+#endif
+
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread
+#  include <winstl/api/external/ProcessAndThread.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread */
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -367,7 +373,7 @@ public: // Operations
 #if 0
 #elif defined(_STLSOFT_FORCE_ANY_COMPILER) && \
       defined(_WIN32)
-            STLSOFT_NS_GLOBAL(Sleep(1));
+            WINSTL_API_EXTERNAL_ProcessAndThread_Sleep(1);
 #else
             STLSOFT_NS_GLOBAL(sched_yield());
 #endif

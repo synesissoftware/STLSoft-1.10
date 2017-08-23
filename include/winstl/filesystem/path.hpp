@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     278
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 11
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     279
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -107,6 +107,10 @@
 #ifdef STLSOFT_DEBUG
 # include <stlsoft/algorithms/pod.hpp>
 #endif
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -1511,7 +1515,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::make_absolute(ws_bool_t bRemove
         if(0 == cch)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", ::GetLastError()));
+            STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
             return *this;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */

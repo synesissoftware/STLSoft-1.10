@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_connection class.
  *
  * Created:     30th April 1999
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    9
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        79
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    10
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,6 +85,10 @@
 #  include <stlsoft/exception/throw_policies.hpp>   // for stlsoft::null_exception_policy
 # endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -277,7 +281,7 @@ inline basic_connection<C, X, T>::basic_connection( HINTERNET       hsess
                                                 ,   is_dword_t      flags
                                                 ,   is_dword_t      context /* = 0 */)
     : m_hConn(traits_type::internet_connect(hsess, server, port, userName, password, service, flags, context))
-    , m_lastError(::GetLastError())
+    , m_lastError(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
 {
     if(NULL == m_hConn)
     {
@@ -319,7 +323,7 @@ inline is_bool_t basic_connection<C, X, T>::connect(HINTERNET       hsess
     else
     {
         m_hConn     =   traits_type::internet_connect(hsess, server, port, userName, password, service, flags, context);
-        m_lastError =   ::GetLastError();
+        m_lastError =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         if(NULL == m_hConn)
         {

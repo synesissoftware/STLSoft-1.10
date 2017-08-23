@@ -4,7 +4,7 @@
  * Purpose:     guid class.
  *
  * Created:     10th May 2000
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_MAJOR      4
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_MINOR      3
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_REVISION   9
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_EDIT       57
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_REVISION   11
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_EDIT       60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,13 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -396,14 +403,14 @@ inline /* ss_explicit_k */ guid::guid(cs_char_a_t const* s)
     OLECHAR     osz[1 + COMSTL_CCH_GUID];
     HRESULT     hr  =   S_OK;
 
-    switch(::MultiByteToWideChar(0, 0, s, -1, &osz[0], 1 + COMSTL_CCH_GUID))
+    switch(WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, &osz[0], 1 + COMSTL_CCH_GUID))
     {
         case    1 + COMSTL_CCH_GUID:
             osz[COMSTL_CCH_GUID] = L'\0';
             hr = ::CLSIDFromString(osz, &m_guid);
             break;
         default:
-            if(S_OK == (hr = HRESULT_FROM_WIN32(::GetLastError())))
+            if(S_OK == (hr = HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())))
             {
                 hr = E_INVALIDARG;
             }

@@ -4,7 +4,7 @@
  * Purpose:     Comparison functions for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     12th January 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MINOR    2
-# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_REVISION 1
-# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     59
+# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_REVISION 2
+# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,6 +75,9 @@
 # endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_CONVERSION_ERROR */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Time
 # include <winstl/api/external/Time.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Time */
@@ -174,17 +177,17 @@ winstl_C_compare_FILETIME_with_SYSTEMTIME(
          * then call compare both as such.
          */
 
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError());
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
         SYSTEMTIME  st1;
 
         if(WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(lhs, &st1))
         {
-            STLSOFT_NS_GLOBAL(SetLastError(ERROR_SUCCESS));
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_SUCCESS);
 
             return winstl_C_compare_SYSTEMTIMEs(&st1, rhs);
         }
 
-        STLSOFT_NS_GLOBAL(SetLastError(e));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         return -1;
     }
@@ -498,10 +501,10 @@ compare(
 ,   SYSTEMTIME const& rhs
 )
 {
-    STLSOFT_NS_GLOBAL(SetLastError)(ERROR_SUCCESS);
+    WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_SUCCESS);
 
     ws_sint_t const r   =   winstl_C_compare_FILETIME_with_SYSTEMTIME(&lhs, &rhs);
-    DWORD const     e   =   STLSOFT_NS_GLOBAL(GetLastError());
+    DWORD const     e   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
     if(ERROR_SUCCESS != e)
     {
@@ -526,10 +529,10 @@ compare(
 ,   FILETIME const&     rhs
 )
 {
-    STLSOFT_NS_GLOBAL(SetLastError)(ERROR_SUCCESS);
+    WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_SUCCESS);
 
     ws_sint_t const r   =   winstl_C_compare_SYSTEMTIME_with_FILETIME(&lhs, &rhs);
-    DWORD const     e   =   STLSOFT_NS_GLOBAL(GetLastError());
+    DWORD const     e   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
     if(ERROR_SUCCESS != e)
     {

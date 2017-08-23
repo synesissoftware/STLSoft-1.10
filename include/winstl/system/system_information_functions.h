@@ -4,7 +4,7 @@
  * Purpose:     System information functions.
  *
  * Created:     5th November 2014
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MINOR      1
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   2
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       7
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   3
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,6 +66,9 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
 # include <winstl/api/external/SystemInformation.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
@@ -162,7 +165,7 @@ winstl_C_get_computer_name_a(
 
     if(0 == cchBuffer)
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(ERROR_BUFFER_OVERFLOW);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_BUFFER_OVERFLOW);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
@@ -173,7 +176,7 @@ winstl_C_get_computer_name_a(
     }
     else
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         if(winstl_C_system_information_functions_MORE_DATA_(e))
         {
@@ -186,7 +189,7 @@ winstl_C_get_computer_name_a(
                 ++cch;
             }
 
-            STLSOFT_NS_GLOBAL(SetLastError)(e);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
         }
 
         return cch;
@@ -210,7 +213,7 @@ winstl_C_get_computer_name_w(
 
     if(0 == cchBuffer)
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(ERROR_BUFFER_OVERFLOW);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_BUFFER_OVERFLOW);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
@@ -221,7 +224,7 @@ winstl_C_get_computer_name_w(
     }
     else
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         if(winstl_C_system_information_functions_MORE_DATA_(e))
         {
@@ -234,7 +237,7 @@ winstl_C_get_computer_name_w(
                 ++cch;
             }
 
-            STLSOFT_NS_GLOBAL(SetLastError)(e);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
         }
 
         return cch;
@@ -271,7 +274,7 @@ winstl_C_get_user_name_a(
 
     if(0 == cchBuffer)
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(ERROR_INSUFFICIENT_BUFFER);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INSUFFICIENT_BUFFER);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
@@ -282,7 +285,7 @@ winstl_C_get_user_name_a(
     }
     else
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         if(winstl_C_system_information_functions_MORE_DATA_(e))
         {
@@ -292,7 +295,7 @@ winstl_C_get_user_name_a(
 
             WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA(&name_[0], &cch);
 
-            STLSOFT_NS_GLOBAL(SetLastError)(e);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
         }
 
         return cch;
@@ -316,7 +319,7 @@ winstl_C_get_user_name_w(
 
     if(0 == cchBuffer)
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(ERROR_INSUFFICIENT_BUFFER);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INSUFFICIENT_BUFFER);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
@@ -327,7 +330,7 @@ winstl_C_get_user_name_w(
     }
     else
     {
-        DWORD const e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         if(winstl_C_system_information_functions_MORE_DATA_(e))
         {
@@ -337,7 +340,7 @@ winstl_C_get_user_name_w(
 
             WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW(&name_[0], &cch);
 
-            STLSOFT_NS_GLOBAL(SetLastError)(e);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
         }
 
         return cch;

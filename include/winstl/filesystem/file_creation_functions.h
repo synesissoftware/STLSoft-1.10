@@ -4,7 +4,7 @@
  * Purpose:     File creation functions.
  *
  * Created:     12th September 2005
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   4
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       21
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   5
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -95,7 +99,7 @@ namespace winstl_project
  */
 STLSOFT_INLINE HANDLE winstl__open_file_read_shared_a(ws_char_a_t const* fileName, DWORD dwShareMode)
 {
-    return STLSOFT_NS_GLOBAL(CreateFileA)(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
 /** Opens an existing file for shared read access.
@@ -104,7 +108,7 @@ STLSOFT_INLINE HANDLE winstl__open_file_read_shared_a(ws_char_a_t const* fileNam
  */
 STLSOFT_INLINE HANDLE winstl__open_file_read_shared_w(ws_char_w_t const* fileName, DWORD dwShareMode)
 {
-    return STLSOFT_NS_GLOBAL(CreateFileW)(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
 /** Opens an existing file for exclusive read access.
@@ -113,7 +117,7 @@ STLSOFT_INLINE HANDLE winstl__open_file_read_shared_w(ws_char_w_t const* fileNam
  */
 STLSOFT_INLINE HANDLE winstl__open_file_exclusive_a(ws_char_a_t const* fileName)
 {
-    return STLSOFT_NS_GLOBAL(CreateFileA)(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
 /** Opens an existing file for exclusive read access.
@@ -122,7 +126,7 @@ STLSOFT_INLINE HANDLE winstl__open_file_exclusive_a(ws_char_a_t const* fileName)
  */
 STLSOFT_INLINE HANDLE winstl__open_file_exclusive_w(ws_char_w_t const* fileName)
 {
-    return STLSOFT_NS_GLOBAL(CreateFileW)(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
 /* /////////////////////////////////////////////////////////////////////////

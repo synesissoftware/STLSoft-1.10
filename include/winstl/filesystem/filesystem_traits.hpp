@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       14
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        147
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    6
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        149
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -110,6 +110,13 @@
 # define STLSOFT_INCL_H_WCTYPE
 # include <wctype.h>
 #endif /* !STLSOFT_INCL_H_WCTYPE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * findvolume API declarations
@@ -571,7 +578,7 @@ public:
         DWORD   dwLow = ::GetFileSize(h, &dwHigh);
 
         if( 0xFFFFFFFF == dwLow &&
-            ERROR_SUCCESS != ::GetLastError())
+            ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
         {
             dwHigh = 0xFFFFFFFF;
         }
@@ -1022,13 +1029,13 @@ private:
         else
         {
 #if 0
-            DWORD dw = ::GetLastError();
+            DWORD dw = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             if( 0 == r &&
                 0 == dw &&
                 str_len(fileName) > WINSTL_CONST_MAX_PATH)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
 #endif /* 0 */
 
@@ -1082,7 +1089,7 @@ public:
 
         if(NULL != class_type::str_pbrk(fileName, "<>|*?"))
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return 0;
         }
@@ -1172,10 +1179,10 @@ public:
         // Paths that exceed _MAX_PATH (aka WINSTL_CONST_MAX_PATH) cause GetFullPathNameA() to fail, but it
         // does not (appear to) call SetLastError()
         if( 0 == n &&
-            0 == ::GetLastError() &&
+            0 == WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() &&
             str_len(fileName) > WINSTL_CONST_MAX_PATH)
         {
-            ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
         }
 
         return n;
@@ -1302,7 +1309,7 @@ private:
 
         if(0 == cchPath)
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return false;
         }
@@ -1585,7 +1592,7 @@ private:
 
             if(requiredLen > maxPathLength)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
         }
 
@@ -2114,7 +2121,7 @@ private:
 
         if(0 == cchPath)
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return false;
         }
@@ -2394,7 +2401,7 @@ private:
 
             if(requiredLen > maxPathLength)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
         }
 

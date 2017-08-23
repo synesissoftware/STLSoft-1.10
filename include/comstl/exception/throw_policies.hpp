@@ -4,7 +4,7 @@
  * Purpose:     COM-related exception classes, and their policy classes
  *
  * Created:     8th December 2004
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       3
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       0
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    2
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        53
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    3
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,6 +73,10 @@
 #ifndef COMSTL_INCL_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION
 # include <comstl/exception/variant_type_exception.hpp>
 #endif /* !COMSTL_INCL_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -119,7 +123,7 @@ public:
     /// Function call operator, taking no parameters
     void operator ()() const
     {
-        STLSOFT_THROW_X(thrown_type(::GetLastError()));
+        STLSOFT_THROW_X(thrown_type(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
     /// Function call operator, taking one parameter
     void operator ()(HRESULT hr) const

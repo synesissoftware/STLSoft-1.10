@@ -4,7 +4,7 @@
  * Purpose:     Definition of the string access shims for the VARIANT type.
  *
  * Created:     24th May 2002
- * Updated:     23rd March 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MAJOR    5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MINOR    4
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 3
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     138
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 5
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     141
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -96,6 +96,13 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -167,7 +174,7 @@ public:
 
             if(0 == cchMsg)
             {
-                DWORD const e = ::GetLastError();
+                DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
                 if(ERROR_OUTOFMEMORY == e)
                 {
@@ -211,7 +218,7 @@ public:
                 ::LocalFree(msg);
                 msg = NULL;
 
-                STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_COMSTL, STLSoftLibraryIdentifier_Shims_Access_String, ::GetLastError()));
+                STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_COMSTL, STLSoftLibraryIdentifier_Shims_Access_String, WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #endif /* STLSOFT_CF_THROW_BAD_ALLOC */
             }
             else
@@ -532,14 +539,14 @@ public:
                 if(NULL == buffer_)
                 {
 #ifdef STLSOFT_CF_THROW_BAD_ALLOC
-                    STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_COMSTL, STLSoftLibraryIdentifier_Shims_Access_String, ::GetLastError()));
+                    STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_COMSTL, STLSoftLibraryIdentifier_Shims_Access_String, WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_THROW_BAD_ALLOC */
                     buffer_ = empty_string_();
 #endif /* STLSOFT_CF_THROW_BAD_ALLOC */
                 }
                 else
                 {
-                    int const n = ::WideCharToMultiByte(0, 0, w_value, -1, buffer_, static_cast<int>(cch + 1), NULL, NULL);
+                    int const n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, w_value, -1, buffer_, static_cast<int>(cch + 1), NULL, NULL);
 
 #ifdef WIN32
                     if(0 == n)
@@ -781,7 +788,7 @@ public:
                 }
                 else
                 {
-                    int const n = ::WideCharToMultiByte(0, 0, w_value, -1, buffer_, static_cast<int>(cch + 1), NULL, NULL);
+                    int const n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, w_value, -1, buffer_, static_cast<int>(cch + 1), NULL, NULL);
 
 #ifdef WIN32
                     if(0 == n)

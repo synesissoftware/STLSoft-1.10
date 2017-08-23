@@ -4,7 +4,7 @@
  * Purpose:     COM memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MAJOR     4
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MINOR     1
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  7
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      57
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  8
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,6 +73,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -123,7 +127,7 @@ STLSOFT_INLINE cs_size_t comstl__CoTaskMemGetSize(void *pv)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         ulRet = 0;
     }
 
@@ -159,7 +163,7 @@ STLSOFT_INLINE cs_sint_t comstl__CoTaskMemDidAlloc(void *pv)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
         iRet = -1;
     }
 
@@ -189,7 +193,7 @@ STLSOFT_INLINE void comstl__CoTaskMemHeapMinimise(void)
     }
     else
     {
-        STLSOFT_NS_GLOBAL(SetLastError)(stlsoft_static_cast(DWORD, hr));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(stlsoft_static_cast(DWORD, hr));
     }
 }
 
