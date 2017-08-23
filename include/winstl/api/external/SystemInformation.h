@@ -5,7 +5,7 @@
  *              Information Functions API.
  *
  * Created:     24th December 2016
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -108,18 +108,18 @@
 
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL(GetComputerNameA)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL(GetComputerNameW)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
 
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL(GetUserNameA)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL(GetUserNameW)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
 
 

@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     15th May 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 13
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     491
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 14
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     492
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -1795,6 +1795,10 @@ namespace stlsoft
 #else /* ? __cplusplus */
 # define STLSOFT_NS_GLOBAL(symbol)                          symbol
 #endif /* __cplusplus */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+# define STLSOFT_NS_GLOBAL_(symbol)                         STLSOFT_NS_GLOBAL(symbol)
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* This stuff allows worker namespaces to be declared and used regardless of
  * whether namespaces are supported and allowed

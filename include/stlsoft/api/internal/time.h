@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for internal Time API.
  *
  * Created:     11th January 2017
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -95,11 +95,11 @@ STLSOFT_API_INTERNAL_Time_gmtime(
 
     STLSOFT_COVER_MARK_LINE();
 
-    return STLSOFT_NS_GLOBAL(gmtime_s)(tm, t);
+    return STLSOFT_NS_GLOBAL_(gmtime_s)(tm, t);
 #else
 
   {
-    struct tm const* const ptm = STLSOFT_NS_GLOBAL(gmtime)(t);
+    struct tm const* const ptm = STLSOFT_NS_GLOBAL_(gmtime)(t);
 
     STLSOFT_COVER_MARK_LINE();
 
@@ -135,11 +135,11 @@ STLSOFT_API_INTERNAL_Time_localtime(
 
     STLSOFT_COVER_MARK_LINE();
 
-    return STLSOFT_NS_GLOBAL(localtime_s)(tm, t);
+    return STLSOFT_NS_GLOBAL_(localtime_s)(tm, t);
 #else
 
   {
-    struct tm const* const ptm = STLSOFT_NS_GLOBAL(localtime)(t);
+    struct tm const* const ptm = STLSOFT_NS_GLOBAL_(localtime)(t);
 
     STLSOFT_COVER_MARK_LINE();
 
