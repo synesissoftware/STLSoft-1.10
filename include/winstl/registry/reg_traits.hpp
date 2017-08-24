@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     23rd August 2017
+ * Updated:     24th August 2017
  *
  * Thanks to:   Sam Fisher for requesting reg_delete_tree().
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MAJOR    3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MINOR    5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 6
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     88
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 7
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -79,6 +79,9 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
 # include <winstl/api/external/DynamicLinkLibrary.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
 # include <winstl/api/external/Registry.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
@@ -403,7 +406,7 @@ private:
 
         if(NULL == hinst)
         {
-            r = static_cast<result_type>(::GetLastError());
+            r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
         else
         {
@@ -417,7 +420,7 @@ private:
 
             if(NULL == u.fp)
             {
-                r = static_cast<result_type>(::GetLastError());
+                r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {
@@ -595,7 +598,7 @@ private:
 
         if(NULL == hinst)
         {
-            r = static_cast<result_type>(::GetLastError());
+            r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
         else
         {
@@ -609,7 +612,7 @@ private:
 
             if(NULL == u.fp)
             {
-                r = static_cast<result_type>(::GetLastError());
+                r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {

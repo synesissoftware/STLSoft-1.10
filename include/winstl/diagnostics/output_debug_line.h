@@ -4,7 +4,7 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    1
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 3
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     13
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 4
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,6 +85,10 @@
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
 #endif /* !STLSOFT_INCL_H_STRING */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Debugging
+# include <winstl/api/external/Debugging.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -226,7 +230,7 @@ winstl_C_call_OutputDebugStringA_(
     {
         STLSOFT_COVER_MARK_LINE();
 
-        STLSOFT_NS_GLOBAL(OutputDebugStringA)(s);
+        WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA(s);
     }
 }
 

@@ -4,7 +4,7 @@
  * Purpose:     File creation functions.
  *
  * Created:     12th September 2005
- * Updated:     23rd August 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MAJOR      2
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   5
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       22
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MINOR      1
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   1
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,41 +93,92 @@ namespace winstl_project
  * C functions
  */
 
-/** Opens an existing file for shared read access.
+/** [DEPRECATED] Opens an existing file for shared read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 STLSOFT_INLINE HANDLE winstl__open_file_read_shared_a(ws_char_a_t const* fileName, DWORD dwShareMode)
 {
     return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
-/** Opens an existing file for shared read access.
+/** [DEPRECATED] Opens an existing file for shared read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 STLSOFT_INLINE HANDLE winstl__open_file_read_shared_w(ws_char_w_t const* fileName, DWORD dwShareMode)
 {
     return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
-/** Opens an existing file for exclusive read access.
+/** [DEPRECATED] Opens an existing file for exclusive read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 STLSOFT_INLINE HANDLE winstl__open_file_exclusive_a(ws_char_a_t const* fileName)
 {
     return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
 }
 
-/** Opens an existing file for exclusive read access.
+/** [DEPRECATED] Opens an existing file for exclusive read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 STLSOFT_INLINE HANDLE winstl__open_file_exclusive_w(ws_char_w_t const* fileName)
 {
     return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
 }
+
+
+
+/** Opens an existing file for shared read access.
+ *
+ * \ingroup group__library__FileSystem
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_open_existing_file_for_read_with_sharemode_m(
+    ws_char_a_t const*      path
+,   DWORD                   shareMode
+)
+{
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(path, GENERIC_READ, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+}
+
+/** Opens an existing file for shared read access.
+ *
+ * \ingroup group__library__FileSystem
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_open_existing_file_for_read_with_sharemode_w(
+    ws_char_w_t const*      path
+,   DWORD                   shareMode
+)
+{
+    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(path, GENERIC_READ, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+}
+
+#ifdef UNICODE
+
+# define winstl_C_open_existing_file_for_read_with_sharemode    winstl_C_open_existing_file_for_read_with_sharemode_w
+#else /* ? UNICODE */
+
+# define winstl_C_open_existing_file_for_read_with_sharemode    winstl_C_open_existing_file_for_read_with_sharemode_m
+#endif /* UNICODE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -144,38 +195,81 @@ namespace winstl
 
 #ifdef __cplusplus
 
-/** Opens an existing file for shared read access.
+/** [DEPRECATED] Opens an existing file for shared read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 inline HANDLE open_file_read_shared(ws_char_a_t const* fileName, DWORD dwShareMode)
 {
     return winstl__open_file_read_shared_a(fileName, dwShareMode);
 }
-/** Opens an existing file for shared read access.
+/** [DEPRECATED] Opens an existing file for shared read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 inline HANDLE open_file_read_shared(ws_char_w_t const* fileName, DWORD dwShareMode)
 {
     return winstl__open_file_read_shared_w(fileName, dwShareMode);
 }
 
-/** Opens an existing file for exclusive read access.
+/** [DEPRECATED] Opens an existing file for exclusive read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 inline HANDLE open_file_exclusive(ws_char_a_t const* fileName)
 {
     return winstl__open_file_exclusive_a(fileName);
 }
-/** Opens an existing file for exclusive read access.
+/** [DEPRECATED] Opens an existing file for exclusive read access.
  *
  * \ingroup group__library__FileSystem
+ *
+ * \deprecated This function is deprecated because it always creates the
+ *   file
  */
 inline HANDLE open_file_exclusive(ws_char_w_t const* fileName)
 {
     return winstl__open_file_exclusive_w(fileName);
+}
+
+
+
+
+/** Opens an existing file for shared read access.
+ *
+ * \ingroup group__library__FileSystem
+ */
+inline
+HANDLE
+open_existing_file_for_read_with_sharemode(
+    ws_char_a_t const*      path
+,   DWORD                   shareMode
+)
+{
+    return winstl_C_open_existing_file_for_read_with_sharemode_m(path, shareMode);
+}
+
+/** Opens an existing file for shared read access.
+ *
+ * \ingroup group__library__FileSystem
+ */
+inline
+HANDLE
+open_existing_file_for_read_with_sharemode(
+    ws_char_w_t const*      path
+,   DWORD                   shareMode
+)
+{
+    return winstl_C_open_existing_file_for_read_with_sharemode_w(path, shareMode);
 }
 
 #endif /* __cplusplus */

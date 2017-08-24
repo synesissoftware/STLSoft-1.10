@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     24th August 2014
- * Updated:     23rd August 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *

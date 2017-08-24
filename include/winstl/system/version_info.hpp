@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing version information.
  *
  * Created:     16th February 1998
- * Updated:     23rd August 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MAJOR    5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MINOR    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 12
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     144
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 14
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     146
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,6 +114,13 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -1109,14 +1116,14 @@ version_info::retrieve_module_info_block_(
         if(NULL == hinst)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", ::GetLastError()));
+            STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
             return mem_block_type_();
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
         else
         {
-            ::FreeLibrary(hinst);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hinst);
         }
     }
 
@@ -1143,7 +1150,7 @@ version_info::retrieve_module_info_block_(
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", ::GetLastError()));
+        STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
         return version_info::mem_block_type_();
@@ -1187,14 +1194,14 @@ version_info::retrieve_module_info_block_(
         if(NULL == hinst)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", ::GetLastError()));
+            STLSOFT_THROW_X(version_info_exception("Could not elicit version information from module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
             return mem_block_type_();
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
         else
         {
-            ::FreeLibrary(hinst);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hinst);
         }
     }
 
@@ -1217,7 +1224,7 @@ version_info::retrieve_module_info_block_(
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        STLSOFT_THROW_X((version_info_exception("Could not elicit version information from module", ::GetLastError())));
+        STLSOFT_THROW_X((version_info_exception("Could not elicit version information from module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
         return version_info::mem_block_type_();

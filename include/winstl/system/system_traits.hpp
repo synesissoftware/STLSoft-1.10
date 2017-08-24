@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     23rd March 2017
+ * Updated:     24th August 2017
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       9
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        147
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    6
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -101,14 +101,6 @@
 # include <winstl/system/system_information_functions.h>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
-# include <winstl/api/external/MemoryManagement.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
-
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
-
 #ifndef STLSOFT_INCL_H_STRING
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
@@ -117,6 +109,23 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
+# include <winstl/api/external/MemoryManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -356,13 +365,13 @@ public:
 public:
     static bool_type close_handle(handle_type h)
     {
-        return FALSE != ::CloseHandle(h);
+        return FALSE != WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 
 public:
     static bool_type free_library(module_type hModule)
     {
-        return FALSE != ::FreeLibrary(hModule);
+        return FALSE != WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hModule);
     }
 
     static FARPROC find_symbol(module_type hModule, char const* symbolName)
@@ -378,12 +387,12 @@ public:
 
     static error_type get_last_error()
     {
-        return ::GetLastError();
+        return WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
     }
 
     static void set_last_error(error_type er)
     {
-        ::SetLastError(er);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(er);
     }
 };
 
@@ -640,7 +649,7 @@ public:
     {
         WINSTL_ASSERT(NULL != name);
 
-        return ::LoadLibraryA(name);
+        return WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(name);
     }
 
     static bool_type free_library(module_type hModule)
@@ -1077,7 +1086,7 @@ public:
     {
         WINSTL_ASSERT(NULL != name);
 
-        return ::LoadLibraryW(name);
+        return WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryW(name);
     }
 
     static bool_type free_library(module_type hModule)

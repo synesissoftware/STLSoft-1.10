@@ -4,7 +4,7 @@
  * Purpose:     Windows version discrimination.
  *
  * Created:     4th August 2015
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 #define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__MAJOR     1
 #define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__MINOR     0
-#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__REVISION  1
-#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__EDIT      10
+#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__REVISION  2
+#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__EDIT      11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -134,7 +138,7 @@ winstl_C_internal_GetWkstaVersionInfo_(
     } WKSTA_INFO_100_;
 
     BOOL            r   =   FALSE;
-    HMODULE const   hm  =   STLSOFT_NS_GLOBAL(LoadLibraryA)("netapi32.dll");
+    HMODULE const   hm  =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("netapi32.dll");
 
     WINSTL_ASSERT(NULL != verMajor);
     WINSTL_ASSERT(NULL != verMinor);
@@ -181,7 +185,7 @@ winstl_C_internal_GetWkstaVersionInfo_(
             }
         }
 
-        STLSOFT_NS_GLOBAL(FreeLibrary)(hm);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hm);
     }
 
     return r;

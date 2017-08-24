@@ -4,7 +4,7 @@
  * Purpose:     Contains the to_uint64 access shim.
  *
  * Created:     4th July 2007
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_WIN32_FIND_DATA_MAJOR     1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_WIN32_FIND_DATA_MINOR     0
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_WIN32_FIND_DATA_REVISION  7
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_WIN32_FIND_DATA_EDIT      12
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_WIN32_FIND_DATA_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,11 +89,19 @@ namespace stlsoft
  *    (static_cast<uint64_t>(nFileSizeHigh) << 32 + nFileSizeLow).
  * \ingroup group__concept__Shim__Conversion__to_uint64
  */
-inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(WIN32_FIND_DATAA const& fd)
+inline
+STLSOFT_NS_QUAL(ss_uint64_t)
+to_uint64(
+    WIN32_FIND_DATAA const& fd
+)
 {
     return ((static_cast<STLSOFT_NS_QUAL(ss_uint64_t)>(fd.nFileSizeHigh) << 32) + fd.nFileSizeLow);
 }
-inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(WIN32_FIND_DATAW const& fd)
+inline
+STLSOFT_NS_QUAL(ss_uint64_t)
+to_uint64(
+    WIN32_FIND_DATAW const& fd
+)
 {
     return ((static_cast<STLSOFT_NS_QUAL(ss_uint64_t)>(fd.nFileSizeHigh) << 32) + fd.nFileSizeLow);
 }
@@ -104,11 +112,19 @@ inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(WIN32_FIND_DATAW const& fd)
  *    (static_cast<uint64_t>(nFileSizeHigh) << 32 + nFileSizeLow).
  * \ingroup group__concept__Shim__Conversion__to_uint64
  */
-inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(WIN32_FIND_DATAA const* pfd)
+inline
+STLSOFT_NS_QUAL(ss_uint64_t)
+to_uint64(
+    WIN32_FIND_DATAA const* pfd
+)
 {
     return (NULL == pfd) ? 0 : to_uint64(*pfd);
 }
-inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(WIN32_FIND_DATAW const* pfd)
+inline
+STLSOFT_NS_QUAL(ss_uint64_t)
+to_uint64(
+    WIN32_FIND_DATAW const* pfd
+)
 {
     return (NULL == pfd) ? 0 : to_uint64(*pfd);
 }

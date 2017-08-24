@@ -4,7 +4,7 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 4
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     8
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 5
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -196,7 +200,7 @@ winstl_C_identify_operating_system(
 #else /* ? XP+ */
         typedef void (WINAPI *GNSI_fn_t)(LPSYSTEM_INFO);
 
-        HMODULE     h   =   STLSOFT_NS_GLOBAL(LoadLibrary)("KERNEL32");
+        HMODULE     h   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32");
         GNSI_fn_t   pfn =   NULL;
 
         if(NULL != h)
@@ -208,7 +212,7 @@ winstl_C_identify_operating_system(
                 (*pfn)(&si);
             }
 
-            STLSOFT_NS_GLOBAL(FreeLibrary)(h);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(h);
         }
 
         if(NULL == pfn)

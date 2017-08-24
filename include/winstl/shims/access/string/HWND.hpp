@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MAJOR       4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MINOR       1
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    7
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        123
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    8
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,18 +116,23 @@ namespace winstl_project
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline ws_size_t GetWindowTextLength_T_(HWND hwnd, int (WINAPI *pfn)(HWND ))
+inline
+ws_size_t
+GetWindowTextLength_T_(
+    HWND            hwnd
+,   int (WINAPI*    pfn)(HWND )
+)
 {
     using namespace ximpl_winstl_window_ident;
 
     WINSTL_ASSERT(NULL != pfn);
 
-    WindowIdent ident       =   GetWindowIdent(hwnd);
-    int         sel;
+    WindowIdent const   ident       =   GetWindowIdent(hwnd);
+    int                 sel;
 # ifndef NOWINSTYLES
-    const long  lbsStyle    =   LBS_MULTIPLESEL | LBS_EXTENDEDSEL;
+    const long          lbsStyle    =   LBS_MULTIPLESEL | LBS_EXTENDEDSEL;
 # else /* ? NOWINSTYLES */
-    const long  lbsStyle    =   0x0008L | 0x0800L;
+    const long          lbsStyle    =   0x0008L | 0x0800L;
 # endif /* NOWINSTYLES */
 
     switch(ident)
@@ -165,15 +170,27 @@ inline ws_size_t GetWindowTextLength_T_(HWND hwnd, int (WINAPI *pfn)(HWND ))
     return static_cast<ws_size_t>(pfn(hwnd));
 }
 
-inline ws_size_t GetWindowTextLength_T_(HWND hwnd)
+inline
+ws_size_t
+GetWindowTextLength_T_(
+    HWND hwnd
+)
 {
     return GetWindowTextLength_T_(hwnd, ::GetWindowTextLength);
 }
-inline ws_size_t GetWindowTextLength_A_(HWND hwnd)
+inline
+ws_size_t
+GetWindowTextLength_A_(
+    HWND hwnd
+)
 {
     return GetWindowTextLength_T_(hwnd, ::GetWindowTextLengthA);
 }
-inline ws_size_t GetWindowTextLength_W_(HWND hwnd)
+inline
+ws_size_t
+GetWindowTextLength_W_(
+    HWND hwnd
+)
 {
     return GetWindowTextLength_T_(hwnd, ::GetWindowTextLengthW);
 }
@@ -184,7 +201,11 @@ struct WindowTextLength_traits;
 STLSOFT_TEMPLATE_SPECIALISATION
 struct WindowTextLength_traits<ws_char_a_t>
 {
-    static ws_size_t get_length(HWND hwnd)
+    static
+    ws_size_t
+    get_length(
+        HWND hwnd
+    )
     {
         return GetWindowTextLength_A_(hwnd);
     }
@@ -193,19 +214,29 @@ struct WindowTextLength_traits<ws_char_a_t>
 STLSOFT_TEMPLATE_SPECIALISATION
 struct WindowTextLength_traits<ws_char_w_t>
 {
-    static ws_size_t get_length(HWND hwnd)
+    static
+    ws_size_t
+    get_length(
+        HWND hwnd
+    )
     {
         return GetWindowTextLength_W_(hwnd);
     }
 };
 
-inline ws_size_t GetWindowText_A_(HWND hwnd, ws_char_a_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+GetWindowText_A_(
+    HWND            hwnd
+,   ws_char_a_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
     using namespace ximpl_winstl_window_ident;
 
-    WindowIdent ident   =   GetWindowIdent(hwnd);
-    int         sel;
-    ws_size_t   cch;
+    WindowIdent const   ident   =   GetWindowIdent(hwnd);
+    int                 sel;
+    ws_size_t           cch;
 
     switch(ident)
     {
@@ -244,12 +275,18 @@ inline ws_size_t GetWindowText_A_(HWND hwnd, ws_char_a_t *buffer, ws_size_t cchB
     return static_cast<ws_size_t>(::GetWindowTextA(hwnd, buffer, static_cast<int>(cchBuffer)));
 }
 
-inline ws_size_t GetWindowText_W_(HWND hwnd, ws_char_w_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+GetWindowText_W_(
+    HWND            hwnd
+,   ws_char_w_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
     using namespace ximpl_winstl_window_ident;
 
-    WindowIdent ident   =   GetWindowIdent(hwnd);
-    int         sel;
+    WindowIdent const   ident   =   GetWindowIdent(hwnd);
+    int                 sel;
 
     switch(ident)
     {
@@ -314,12 +351,15 @@ public:
 public:
     /// Constructs an instance of the proxy from the given HWND
     ///
-    /// \param h The HWND from which the text will be retrieved
-    ss_explicit_k c_str_ptr_null_HWND_proxy(HWND h)
+    /// \param hwnd The HWND from which the text will be retrieved
+    ss_explicit_k
+    c_str_ptr_null_HWND_proxy(
+        HWND hwnd
+    )
     {
-        ws_size_t length  =   WindowTextLength_traits<C>::get_length(h);
+        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
 
-        if(length == 0)
+        if(0 == length)
         {
             m_buffer = NULL;
         }
@@ -329,7 +369,7 @@ public:
 
             if(NULL != m_buffer)
             {
-                get_window_text(h, m_buffer, length + 1);
+                get_window_text(hwnd, m_buffer, length + 1);
             }
         }
     }
@@ -360,6 +400,8 @@ public:
     {
         string_maker_type::free(m_buffer);
     }
+private:
+    void operator =(class_type const&); // copy-assignment proscribed
 
 // Accessors
 public:
@@ -372,29 +414,37 @@ public:
 
 // Implementation
 private:
-    ws_size_t get_window_text(HWND h, char_type* buffer, ws_size_t cchBuffer);
+    ws_size_t get_window_text(HWND hwnd, char_type* buffer, ws_size_t cchBuffer);
 
 // Members
 private:
     char_type   *m_buffer;
-
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
 };
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline ws_size_t c_str_ptr_null_HWND_proxy<ws_char_a_t>::get_window_text(HWND h, ws_char_a_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+c_str_ptr_null_HWND_proxy<ws_char_a_t>::get_window_text(
+    HWND            hwnd
+,   ws_char_a_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
-    return GetWindowText_A_(h, buffer, cchBuffer);
+    return GetWindowText_A_(hwnd, buffer, cchBuffer);
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline ws_size_t c_str_ptr_null_HWND_proxy<ws_char_w_t>::get_window_text(HWND h, ws_char_w_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+c_str_ptr_null_HWND_proxy<ws_char_w_t>::get_window_text(
+    HWND            hwnd
+,   ws_char_w_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
-    return GetWindowText_W_(h, buffer, cchBuffer);
+    return GetWindowText_W_(hwnd, buffer, cchBuffer);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -420,16 +470,19 @@ public:
 public:
     /// Constructs an instance of the proxy from the given HWND
     ///
-    /// \param h The HWND from which the text will be retrieved
-    ss_explicit_k c_str_ptr_HWND_proxy(HWND h)
+    /// \param hwnd The HWND from which the text will be retrieved
+    ss_explicit_k
+    c_str_ptr_HWND_proxy(
+        HWND hwnd
+    )
     {
-        ws_size_t length  =   WindowTextLength_traits<C>::get_length(h);
+        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
 
         m_buffer = string_maker_type::alloc(length);
 
         if(NULL != m_buffer)
         {
-            get_window_text(h, m_buffer, length + 1);
+            get_window_text(hwnd, m_buffer, length + 1);
         }
     }
 
@@ -459,6 +512,8 @@ public:
     {
         string_maker_type::free(m_buffer);
     }
+private:
+    void operator =(class_type const&); // copy-assignment proscribed
 
 // Accessors
 public:
@@ -473,29 +528,37 @@ public:
 
 // Implementation
 private:
-    ws_size_t get_window_text(HWND h, char_type* buffer, ws_size_t cchBuffer);
+    ws_size_t get_window_text(HWND hwnd, char_type* buffer, ws_size_t cchBuffer);
 
 // Members
 private:
-    char_type   *m_buffer;
-
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
+    char_type*  m_buffer;
 };
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline ws_size_t c_str_ptr_HWND_proxy<ws_char_a_t>::get_window_text(HWND h, ws_char_a_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+c_str_ptr_HWND_proxy<ws_char_a_t>::get_window_text(
+    HWND            hwnd
+,   ws_char_a_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
-    return GetWindowText_A_(h, buffer, cchBuffer);
+    return GetWindowText_A_(hwnd, buffer, cchBuffer);
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline ws_size_t c_str_ptr_HWND_proxy<ws_char_w_t>::get_window_text(HWND h, ws_char_w_t *buffer, ws_size_t cchBuffer)
+inline
+ws_size_t
+c_str_ptr_HWND_proxy<ws_char_w_t>::get_window_text(
+    HWND            hwnd
+,   ws_char_w_t*    buffer
+,   ws_size_t       cchBuffer
+)
 {
-    return GetWindowText_W_(h, buffer, cchBuffer);
+    return GetWindowText_W_(hwnd, buffer, cchBuffer);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -508,7 +571,12 @@ inline ws_size_t c_str_ptr_HWND_proxy<ws_char_w_t>::get_window_text(HWND h, ws_c
 template<   ss_typename_param_k C
         ,   ss_typename_param_k S
         >
-inline S& operator <<(S& s, c_str_ptr_null_HWND_proxy<C> const& shim)
+inline
+S&
+operator <<(
+    S&                                  s
+,   c_str_ptr_null_HWND_proxy<C> const& shim
+)
 {
     s << static_cast<C const*>(shim);
 
@@ -518,7 +586,12 @@ inline S& operator <<(S& s, c_str_ptr_null_HWND_proxy<C> const& shim)
 template<   ss_typename_param_k C
         ,   ss_typename_param_k S
         >
-inline S& operator <<(S& s, c_str_ptr_HWND_proxy<C> const& shim)
+inline
+S&
+operator <<(
+    S&                                  s
+,   c_str_ptr_HWND_proxy<C> const&      shim
+)
 {
     s << static_cast<C const*>(shim);
 
@@ -534,13 +607,21 @@ inline S& operator <<(S& s, c_str_ptr_HWND_proxy<C> const& shim)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline c_str_ptr_HWND_proxy<ws_char_a_t> c_str_data_a(HWND h)
+inline
+c_str_ptr_HWND_proxy<ws_char_a_t>
+c_str_data_a(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<ws_char_a_t>(h);
+    return c_str_ptr_HWND_proxy<ws_char_a_t>(hwnd);
 }
-inline c_str_ptr_HWND_proxy<ws_char_w_t> c_str_data_w(HWND h)
+inline
+c_str_ptr_HWND_proxy<ws_char_w_t>
+c_str_data_w(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<ws_char_w_t>(h);
+    return c_str_ptr_HWND_proxy<ws_char_w_t>(hwnd);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -550,9 +631,13 @@ inline c_str_ptr_HWND_proxy<ws_char_w_t> c_str_data_w(HWND h)
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline c_str_ptr_HWND_proxy<TCHAR> c_str_data(HWND h)
+inline
+c_str_ptr_HWND_proxy<TCHAR>
+c_str_data(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<TCHAR>(h);
+    return c_str_ptr_HWND_proxy<TCHAR>(hwnd);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -566,13 +651,21 @@ inline c_str_ptr_HWND_proxy<TCHAR> c_str_data(HWND h)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline ws_size_t c_str_len_a(HWND h)
+inline
+ws_size_t
+c_str_len_a(
+    HWND hwnd
+)
 {
-    return GetWindowTextLength_A_(h);
+    return GetWindowTextLength_A_(hwnd);
 }
-inline ws_size_t c_str_len_w(HWND h)
+inline
+ws_size_t
+c_str_len_w(
+    HWND hwnd
+)
 {
-    return GetWindowTextLength_W_(h);
+    return GetWindowTextLength_W_(hwnd);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -582,9 +675,13 @@ inline ws_size_t c_str_len_w(HWND h)
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline ws_size_t c_str_len(HWND h)
+inline
+ws_size_t
+c_str_len(
+    HWND hwnd
+)
 {
-    return GetWindowTextLength_T_(h);
+    return GetWindowTextLength_T_(hwnd);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -598,13 +695,21 @@ inline ws_size_t c_str_len(HWND h)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline c_str_ptr_HWND_proxy<ws_char_a_t> c_str_ptr_a(HWND h)
+inline
+c_str_ptr_HWND_proxy<ws_char_a_t>
+c_str_ptr_a(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<ws_char_a_t>(h);
+    return c_str_ptr_HWND_proxy<ws_char_a_t>(hwnd);
 }
-inline c_str_ptr_HWND_proxy<ws_char_w_t> c_str_ptr_w(HWND h)
+inline
+c_str_ptr_HWND_proxy<ws_char_w_t>
+c_str_ptr_w(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<ws_char_w_t>(h);
+    return c_str_ptr_HWND_proxy<ws_char_w_t>(hwnd);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -614,9 +719,13 @@ inline c_str_ptr_HWND_proxy<ws_char_w_t> c_str_ptr_w(HWND h)
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline c_str_ptr_HWND_proxy<TCHAR> c_str_ptr(HWND h)
+inline
+c_str_ptr_HWND_proxy<TCHAR>
+c_str_ptr(
+    HWND hwnd
+)
 {
-    return c_str_ptr_HWND_proxy<TCHAR>(h);
+    return c_str_ptr_HWND_proxy<TCHAR>(hwnd);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -630,13 +739,21 @@ inline c_str_ptr_HWND_proxy<TCHAR> c_str_ptr(HWND h)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline c_str_ptr_null_HWND_proxy<ws_char_a_t> c_str_ptr_null_a(HWND h)
+inline
+c_str_ptr_null_HWND_proxy<ws_char_a_t>
+c_str_ptr_null_a(
+    HWND hwnd
+)
 {
-    return c_str_ptr_null_HWND_proxy<ws_char_a_t>(h);
+    return c_str_ptr_null_HWND_proxy<ws_char_a_t>(hwnd);
 }
-inline c_str_ptr_null_HWND_proxy<ws_char_w_t> c_str_ptr_null_w(HWND h)
+inline
+c_str_ptr_null_HWND_proxy<ws_char_w_t>
+c_str_ptr_null_w(
+    HWND hwnd
+)
 {
-    return c_str_ptr_null_HWND_proxy<ws_char_w_t>(h);
+    return c_str_ptr_null_HWND_proxy<ws_char_w_t>(hwnd);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -646,9 +763,13 @@ inline c_str_ptr_null_HWND_proxy<ws_char_w_t> c_str_ptr_null_w(HWND h)
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline c_str_ptr_null_HWND_proxy<TCHAR> c_str_ptr_null(HWND h)
+inline
+c_str_ptr_null_HWND_proxy<TCHAR>
+c_str_ptr_null(
+    HWND hwnd
+)
 {
-    return c_str_ptr_null_HWND_proxy<TCHAR>(h);
+    return c_str_ptr_null_HWND_proxy<TCHAR>(hwnd);
 }
 
 /* ////////////////////////////////////////////////////////////////////// */

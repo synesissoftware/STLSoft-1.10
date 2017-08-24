@@ -4,7 +4,7 @@
  * Purpose:     Error functions.
  *
  * Created:     20th October 1994
- * Updated:     19th February 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MINOR    0
-# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     144
+# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_REVISION 6
+# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     145
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DeviceContext
+# include <winstl/api/external/DeviceContext.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DeviceContext */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -91,32 +95,32 @@ namespace winstl_project
 
 STLSOFT_INLINE ws_size_t winstl__get_BITMAP(HBITMAP hbmp, BITMAP *pbmp)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hbmp, sizeof(BITMAP), pbmp));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hbmp, sizeof(BITMAP), pbmp));
 }
 
 STLSOFT_INLINE ws_size_t winstl__get_DIBSECTION(HBITMAP hbmp, DIBSECTION *pds)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hbmp, sizeof(DIBSECTION), pds));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hbmp, sizeof(DIBSECTION), pds));
 }
 
 STLSOFT_INLINE ws_size_t winstl__get_LOGPEN(HPEN hpen, LOGPEN *plp)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hpen, sizeof(LOGPEN), plp));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hpen, sizeof(LOGPEN), plp));
 }
 
 STLSOFT_INLINE ws_size_t winstl__get_EXTLOGPEN(HPEN hpen, EXTLOGPEN *pxlp)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hpen, sizeof(EXTLOGPEN), pxlp));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hpen, sizeof(EXTLOGPEN), pxlp));
 }
 
 STLSOFT_INLINE ws_size_t winstl__get_LOGBRUSH(HBRUSH hpal, LOGBRUSH *pbr)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hpal, sizeof(LOGBRUSH), pbr));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hpal, sizeof(LOGBRUSH), pbr));
 }
 
 STLSOFT_INLINE ws_size_t winstl__get_LOGFONT(HFONT hpal, LOGFONT *pfnt)
 {
-    return stlsoft_static_cast(ws_size_t, STLSOFT_NS_GLOBAL(GetObject)(hpal, sizeof(LOGFONT), pfnt));
+    return stlsoft_static_cast(ws_size_t, WINSTL_API_EXTERNAL_DeviceContext_GetObject(hpal, sizeof(LOGFONT), pfnt));
 }
 
 /* /////////////////////////////////////////////////////////////////////////

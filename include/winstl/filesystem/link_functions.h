@@ -4,7 +4,7 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     23rd August 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    10
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        17
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    12
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,9 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
 # include <winstl/api/external/FileManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -285,7 +288,7 @@ winstl_C_hard_link_get_link_information_a(
     {
         r = winstl_C_hard_link_get_link_information_by_handle(h, fileIndexHigh, fileIndexLow, volumeSerialNumber, numLinks);
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(h);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 
     return r;
@@ -326,7 +329,7 @@ winstl_C_hard_link_get_link_information_w(
     {
         r = winstl_C_hard_link_get_link_information_by_handle(h, fileIndexHigh, fileIndexLow, volumeSerialNumber, numLinks);
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(h);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 
     return r;
