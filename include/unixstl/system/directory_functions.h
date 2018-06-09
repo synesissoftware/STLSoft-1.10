@@ -4,11 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     1st October 2016
- * Updated:     23rd March 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    7
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        11
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    8
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,10 +81,6 @@
 # define STLSOFT_INCL_H_ERRNO
 # include <errno.h>
 #endif /* !STLSOFT_INCL_H_ERRNO */
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

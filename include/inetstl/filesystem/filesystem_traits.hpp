@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     23rd March 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1999-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1999-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR    4
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR    2
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 8
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     88
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 9
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -84,15 +84,6 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
-
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>
-#endif /* !STLSOFT_INCL_H_WCHAR */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

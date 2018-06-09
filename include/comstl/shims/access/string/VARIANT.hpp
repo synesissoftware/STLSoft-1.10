@@ -4,11 +4,11 @@
  * Purpose:     Definition of the string access shims for the VARIANT type.
  *
  * Created:     24th May 2002
- * Updated:     23rd March 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MAJOR    5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MINOR    4
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 3
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     138
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 4
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     139
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,15 +87,6 @@
 #ifdef STLSOFT_CF_THROW_BAD_ALLOC
 # include <new>
 #endif /* STLSOFT_CF_THROW_BAD_ALLOC */
-
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>
-#endif /* !STLSOFT_INCL_H_WCHAR */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
