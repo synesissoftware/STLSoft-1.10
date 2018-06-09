@@ -4,11 +4,11 @@
  * Purpose:     External preprocessor aliases for string functions.
  *
  * Created:     15th November 2002
- * Updated:     23rd March 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,17 @@
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
 #endif /* !STLSOFT_INCL_H_STRING */
+#if 0 ||\
+    defined(STLSOFT_COMPILER_IS_BORLAND)||\
+    0
+# ifndef STLSOFT_INCL_H_TCHAR
+#  include <tchar.h>
+# endif /* !STLSOFT_INCL_H_TCHAR */
+#endif /* compiler */
+#ifndef STLSOFT_INCL_H_WCHAR
+# define STLSOFT_INCL_H_WCHAR
+# include <wchar.h>
+#endif /* !STLSOFT_INCL_H_WCHAR */
 
 /* /////////////////////////////////////////////////////////////////////////
  * String Functions
@@ -209,6 +220,8 @@
 # elif defined(STLSOFT_COMPILER_IS_BORLAND)
 
 #  if 0
+#  elif (0x0620 == (__BORLANDC__ & 0xfff0))
+#   define STLSOFT_API_EXTERNAL_string_wcsicmp                              STLSOFT_NS_GLOBAL(_wcsicmp)
 #  elif !defined(__STDC__)
 #   define STLSOFT_API_EXTERNAL_string_wcsicmp                              STLSOFT_NS_GLOBAL(wcsicmp)
 #  elif !defined(__MFC_COMPAT__)
@@ -343,6 +356,8 @@
 # elif defined(STLSOFT_COMPILER_IS_BORLAND)
 
 #  if 0
+#  elif (0x0620 == (__BORLANDC__ & 0xfff0))
+#   define STLSOFT_API_EXTERNAL_string_wcsnicmp                             STLSOFT_NS_GLOBAL(_wcsnicmp)
 #  elif !defined(__STDC__)
 #   define STLSOFT_API_EXTERNAL_string_wcsnicmp                             STLSOFT_NS_GLOBAL(wcsnicmp)
 #  elif !defined(__MFC_COMPAT__)
@@ -394,7 +409,6 @@
 #  define STLSOFT_API_EXTERNAL_string_wcsnicmp                              STLSOFT_NS_GLOBAL(_wcsnicmp)
 # endif
 #endif /* !STLSOFT_API_EXTERNAL_string_wcsnicmp */
-
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
