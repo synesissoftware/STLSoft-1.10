@@ -4,11 +4,11 @@
  * Purpose:     Message functions.
  *
  * Created:     7th May 2000
- * Updated:     19th February 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_MINOR    0
-# define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_EDIT     47
+# define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_REVISION 6
+# define WINSTL_VER_WINSTL_WINDOW_H_MESSAGE_FUNCTIONS_EDIT     48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,8 @@ STLSOFT_INLINE LRESULT winstl__SendMessage( HWND    hwnd
  * C++ functions
  */
 
-#ifndef WINSTL_NO_NAMESPACE
+#if !defined(WINSTL_NO_NAMESPACE) &&\
+    !defined(STLSOFT_COMPILER_IS_BORLAND)
 inline LRESULT SendMessageA(HWND    hwnd
                         ,   UINT    uMsg
                         ,   WPARAM  wParam
