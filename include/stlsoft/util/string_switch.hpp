@@ -4,11 +4,11 @@
  * Purpose:     String-switch functions.
  *
  * Created:     10th May 2010
- * Updated:     19th February 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MINOR    3
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_REVISION 3
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     27
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -184,8 +184,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 1>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 1>
+string_cases(
     C const*  name0
 ,   E         value0
 )
@@ -211,8 +212,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 2>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 2>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -243,8 +245,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 3>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 3>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -280,8 +283,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 4>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 4>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -322,8 +326,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 5>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 5>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -369,8 +374,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 6>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 6>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -421,8 +427,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 7>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 7>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -478,8 +485,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 8>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 8>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -540,8 +548,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 9>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 9>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -607,8 +616,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 10>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 10>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -679,8 +689,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 11>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 11>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -756,8 +767,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 12>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 12>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -838,8 +850,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 13>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 13>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -925,8 +938,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 14>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 14>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -1017,8 +1031,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 15>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 15>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -1114,8 +1129,9 @@ template<
     ss_typename_param_k C
 ,   ss_typename_param_k E
 >
-inline ximpl::string_case_item_array_t<C, E, 16>
-  string_cases(
+inline
+ximpl::string_case_item_array_t<C, E, 16>
+string_cases(
     C const*  name0
 ,   E         value0
 ,   C const*  name1
@@ -1183,7 +1199,9 @@ template<
 ,   ss_size_t           N
 ,   ss_typename_param_k V
 >
-inline bool string_switch_(
+inline
+bool
+string_switch_(
     C const*                                        s
 ,   size_t                                          len
 ,   R*                                              result
@@ -1210,7 +1228,9 @@ template<
 ,   ss_typename_param_k R
 ,   ss_typename_param_k C
 >
-inline bool string_switch(
+inline
+bool
+string_switch(
     S const&                                        s
 ,   R*                                              result
 ,   C const&                                        cases
@@ -1228,7 +1248,9 @@ template<
 ,   ss_size_t           N
 ,   ss_typename_param_k V
 >
-inline bool string_switch_(
+inline
+bool
+string_switch_(
     C const*                                        s
 ,   size_t                                          len
 ,   R*                                              result

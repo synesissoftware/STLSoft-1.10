@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     1st January 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  9
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      59
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  10
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,9 +73,6 @@
 #ifndef STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_THROW_POLICIES
 # include <stlsoft/exception/throw_policies.hpp>        // for null_exception_policy
 #endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_THROW_POLICIES */
-#ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_EXCEPTION_STRING
-# include <stlsoft/util/exception_string.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_EXCEPTION_STRING */
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
@@ -84,10 +81,6 @@
 # define STLSOFT_INCL_H_ERRNO
 # include <errno.h>
 #endif /* !STLSOFT_INCL_H_ERRNO */
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
