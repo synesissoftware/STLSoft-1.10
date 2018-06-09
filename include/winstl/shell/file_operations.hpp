@@ -4,13 +4,13 @@
  * Purpose:     Shell file operations.
  *
  * Created:     12th December 1996
- * Updated:     19th February 2017
+ * Updated:     5th June 2018
  *
  * Thanks:      To Pablo Aguilar for default folder enhancements.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MINOR      1
-# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_REVISION   8
-# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       97
+# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_REVISION   9
+# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       98
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,6 +83,10 @@
 # define STLSOFT_INCL_H_SHELLAPI
 # include <shellapi.h>
 #endif /* !STLSOFT_INCL_H_SHELLAPI */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -131,7 +135,7 @@ shell_delete_a_(
 
     if(buff.empty())
     {
-        ::SetLastError(ERROR_NOT_ENOUGH_MEMORY);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
         return ERROR_NOT_ENOUGH_MEMORY;
     }
@@ -187,7 +191,7 @@ shell_delete_w_(
 
     if(buff.empty())
     {
-        ::SetLastError(ERROR_NOT_ENOUGH_MEMORY);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
         return ERROR_NOT_ENOUGH_MEMORY;
     }

@@ -6,11 +6,11 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     24th August 2017
+ * Updated:     8th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 15
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     493
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 16
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     495
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -304,12 +304,13 @@
 # define _STLSOFT_VER_1_10_1_B03    0x010a0183  /*!< Version 1.10.1 beta 3 (15th February 2017) */
 # define _STLSOFT_VER_1_10_1_B04    0x010a0184  /*!< Version 1.10.1 beta 4 (23rd March 2017) */
 # define _STLSOFT_VER_1_10_1_B05    0x010a0185  /*!< Version 1.10.1 beta 5 (15th May 2017) */
+# define _STLSOFT_VER_1_10_1_B06    0x010a0186  /*!< Version 1.10.1 beta 6 (8th June 2018) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B05
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B06
 
 /* /////////////////////////////////////
  * underlying version detection

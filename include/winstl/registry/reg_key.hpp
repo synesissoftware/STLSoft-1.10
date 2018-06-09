@@ -5,14 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     23rd August 2017
+ * Updated:     5th June 2018
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        156
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    11
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        157
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -506,7 +506,7 @@ public:
      * \retval false The sub-key does not exist. (<b>Note</b>:
      *  if \ref page__exception_agnostic "exception handling is not enabled",
      *  then false will also be returned for any other reason, and the
-     *  reason will be available via ::<code>GetLastError()</code>.)
+     *  reason will be available via <code>::GetLastError()</code>.)
      *
      * \exception winstl::registry_exception If \ref page__exception_agnostic "exception handling is enabled",
      *  an instance of \link winstl::registry_exception registry_exception\endlink
@@ -523,7 +523,7 @@ public:
      * \retval false The sub-key does not exist. (<b>Note</b>:
      *  if \ref page__exception_agnostic "exception handling is not enabled",
      *  then false will also be returned for any other reason, and the
-     *  reason will be available via ::<code>GetLastError()</code>.)
+     *  reason will be available via <code>::GetLastError()</code>.)
      *
      * \exception winstl::registry_exception If \ref page__exception_agnostic "exception handling is enabled",
      *  an instance of \link winstl::registry_exception registry_exception\endlink
@@ -709,7 +709,7 @@ public:
      * \retval false The value does not exist. (<b>Note</b>:
      *  if \ref page__exception_agnostic "exception handling is not enabled",
      *  then false will also be returned for any other reason, and the
-     *  reason will be available via ::<code>GetLastError()</code>.)
+     *  reason will be available via <code>::GetLastError()</code>.)
      *
      * \exception winstl::registry_exception If \ref page__exception_agnostic "exception handling is enabled",
      *  an instance of \link winstl::registry_exception registry_exception\endlink
@@ -726,7 +726,7 @@ public:
      * \retval false The value does not exist. (<b>Note</b>:
      *  if \ref page__exception_agnostic "exception handling is not enabled",
      *  then false will also be returned for any other reason, and the
-     *  reason will be available via ::<code>GetLastError()</code>.)
+     *  reason will be available via <code>::GetLastError()</code>.)
      *
      * \exception winstl::registry_exception If \ref page__exception_agnostic "exception handling is enabled",
      *  an instance of \link winstl::registry_exception registry_exception\endlink
