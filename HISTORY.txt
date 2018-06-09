@@ -7,6 +7,14 @@ STLSoft - History
 ============================================================================
 
 
+9th June 2018 - 1.10.1 (beta 7) released
+----------------------------------------
+
+ * auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+ * added subscript operator for auto_array_destructor<>
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
+
 9th June 2018 - 1.10.1 (beta 6) released
 ----------------------------------------
 

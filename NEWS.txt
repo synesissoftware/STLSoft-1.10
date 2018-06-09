@@ -9,6 +9,8 @@ STLSoft - News
 
 News:
 
+  9th June 2017         -   Release of STLSoft 1.10.1 beta 7
+
   9th June 2017         -   Release of STLSoft 1.10.1 beta 6
 
   15th May 2017         -   Release of STLSoft 1.10.1 beta 5
