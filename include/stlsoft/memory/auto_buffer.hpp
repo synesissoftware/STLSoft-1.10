@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     22nd August 2017
+ * Updated:     9th June 2018
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       2
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    12
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        177
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       3
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    11
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        179
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -601,6 +601,9 @@ public:
             deallocate_(m_buffer, m_cItems);
         }
     }
+private:
+    auto_buffer(class_type const&);     // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Operations
@@ -1160,11 +1163,6 @@ private:
     ss_bool_t   m_bExternal;        // This is required, since not allowed to compare m_buffer with &m_internal[0] - can't remember why; // NOTE: Check std
     value_type  m_internal[space];  // Internal storage
 /// @}
-
-// Not to be implemented
-private:
-    auto_buffer(class_type const& rhs);
-    auto_buffer const& operator =(class_type const& rhs);
 };
 
 
@@ -1227,12 +1225,10 @@ public:
     ss_explicit_k auto_buffer_old(size_type cItems)
         : parent_class_type(cItems)
     {}
-/// @}
-
-// Not to be implemented
 private:
-    auto_buffer_old(class_type const& rhs);
-    class_type& operator =(class_type const& rhs);
+    auto_buffer_old(class_type const&); // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
+/// @}
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -1262,6 +1258,57 @@ inline void swap(auto_buffer<T, SPACE, A>& lhs, auto_buffer<T, SPACE, A>& rhs)
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
+  * operators
+  */
+
+/** Defines <code>operator -()</code> that facilitates the subtraction of a
+ * (related) raw pointer from an \c auto_buffer instance - as
+ * in <code>p - buff</code> - where previously the subtraction would have to
+ * be against another raw pointer obtained from the buffer - as
+ * in <code>p - &buff[0]</code>.
+ *
+ * \param lhs The (related) raw pointer
+ * \param rhs The \c auto_buffer instance
+ *
+ * \note No validation is done to check that \c lhs is within the range of
+ *   memory managed by \c rhs
+ */
+#if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
+
+template<
+    ss_typename_param_k             T_value
+,   ss_typename_param_k             T_allocator
+,   STLSOFT_NS_QUAL(ss_size_t)      V_space
+>
+#else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
+
+template<
+    ss_typename_param_k             T_value
+,   STLSOFT_NS_QUAL(ss_size_t)      V_space
+,   ss_typename_param_k             T_allocator
+>
+#endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
+STLSOFT_NS_QUAL(ss_ptrdiff_t)
+operator -(
+    T_value const*          lhs
+,   auto_buffer<
+        T_value
+#if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
+
+    ,   T_allocator
+    ,   V_space
+#else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
+
+    ,   V_space
+    ,   T_allocator
+#endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
+    > const&                rhs
+)
+{
+    return lhs - &rhs[0];
+}
+
+/* /////////////////////////////////////////////////////////////////////////
  * shims
  */
 
@@ -1287,7 +1334,9 @@ inline ss_bool_t is_empty(auto_buffer<T, SPACE, A> const& b)
 
 #endif /* !STLSOFT_CF_TEMPLATE_SHIMS_NOT_SUPPORTED */
 
-/* ////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
 
 #ifndef STLSOFT_NO_NAMESPACE
 } /* namespace stlsoft */
