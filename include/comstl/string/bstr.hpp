@@ -4,13 +4,13 @@
  * Purpose:     bstr class.
  *
  * Created:     20th December 1996
- * Updated:     19th February 2017
+ * Updated:     9th June 2018
  *
  * Thanks:      To Gabor Fischer for requesting attach().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MAJOR       2
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MINOR       8
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    11
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        73
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    12
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,6 +91,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 # include <stdexcept>
