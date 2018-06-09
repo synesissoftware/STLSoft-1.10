@@ -2,10 +2,18 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  15th May 2017
+; Updated:  9th June 2018
 
 ============================================================================
 
+
+9th June 2018 - 1.10.1 (beta 6) released
+----------------------------------------
+
+ * refactored in terms of external API
+ * removed empty/meaningless "compatibility" sections
+ * canonicalising proscribed construction methods
+ * simplifying, and prospective changes (for getting to 1.12)
 
 15th May 2017 - 1.10.1 (beta 5) released
 ----------------------------------------

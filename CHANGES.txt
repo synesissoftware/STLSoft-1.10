@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  15th May 2017
+; Updated:  9th June 2018
 
 ============================================================================
 
@@ -17,7 +17,420 @@ STLSoft - Changes
    **************************************
 
 
+============================================================================
 
+Changes for 1.10.1 beta 6 (9th June 2018)
+
+General:
+========
+
+ * refactored in terms of external API
+ * removed empty/meaningless "compatibility" sections
+ * canonicalising proscribed construction methods
+ * simplifying, and prospective changes (for getting to 1.12)
+
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/shims/access/string/cwindow.hpp:
+    ~ canonicalising proscribed construction methods
+
+ COMSTL:
+ =======
+
+ ~ comstl/collections/enumeration_policies.hpp:
+ ~ comstl/collections/enumerator_sequence.hpp:
+ ~ comstl/collections/safearray_sequence.hpp:
+ ~ comstl/conversion/interface_cast.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/error/errorinfo_desc.hpp:
+ ~ comstl/error/errorinfo_functions.h:
+ ~ comstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ comstl/memory/functions.h:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/memory/task_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/shims/access/string/VARIANT.hpp:
+ ~ comstl/string/BSTR_functions.h:
+ ~ comstl/string/bstr.hpp:
+ ~ comstl/string/olestring_functions.h:
+ ~ comstl/util/GUID_functions.h:
+ ~ comstl/util/guid.hpp:
+ ~ comstl/util/variant.hpp:
+    ~ refactored in terms of external API
+
+ InetSTL:
+ =======
+
+ ~ inetstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ inetstl/filesystem/ftpdir_sequence.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ inetstl/network/connection.hpp:
+ ~ inetstl/network/session.hpp:
+    ~ refactored in terms of external API
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/collections/carray_adaptors.hpp:
+ ~ mfcstl/collections/carray_traits.hpp:
+ ~ mfcstl/collections/clist_adaptors.hpp:
+ ~ mfcstl/memory/afx_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ PlatformSTL:
+ =======
+
+ ~ platformstl/error/error_desc.hpp:
+ ~ platformstl/filesystem/directory_functions.hpp:
+ ~ platformstl/synch/semaphore.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ RangeLib:
+ =======
+
+ ~ rangelib/operator_adaptors.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/algorithms.hpp:
+ ~ stlsoft/algorithms/bounded.hpp:
+ ~ stlsoft/algorithms/debug.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/api/external/string.h:
+ ~ stlsoft/api/internal/time.h:
+    ~ refactored in terms of external API
+
+ ~ stlsoft/collections/array_view.hpp:
+ ~ stlsoft/collections/associative_adaptor_sequences.hpp:
+ ~ stlsoft/collections/associative_container_veneer.hpp:
+ ~ stlsoft/collections/associative_key_sequence.hpp:
+ ~ stlsoft/collections/associative_value_sequence.hpp:
+ ~ stlsoft/collections/functions.hpp:
+ ~ stlsoft/collections/sequence_container_veneer.hpp:
+ ~ stlsoft/containers/environment_block.hpp:
+ ~ stlsoft/containers/fixed_array.hpp:
+ ~ stlsoft/containers/pod_vector.hpp:
+ ~ stlsoft/containers/static_array.hpp:
+ ~ stlsoft/containers/util/array_policies.hpp:
+ ~ stlsoft/conversion/m2w.hpp:
+ ~ stlsoft/conversion/ptr_cast.hpp:
+ ~ stlsoft/conversion/w2m.hpp:
+ ~ stlsoft/error/errno_scope.hpp:
+ ~ stlsoft/filesystem/searchspec_sequence.hpp:
+ ~ stlsoft/functional/noop.hpp:
+ ~ stlsoft/iterators/adapted_iterator_traits.hpp:
+ ~ stlsoft/iterators/associative_select_iterator.hpp:
+ ~ stlsoft/iterators/c_str_inserter.hpp:
+ ~ stlsoft/iterators/contiguous_diluter_iterator.hpp:
+ ~ stlsoft/iterators/cstring_concatenator_iterator.hpp:
+ ~ stlsoft/iterators/filter_iterator.hpp:
+ ~ stlsoft/iterators/filter_transform_iterator.hpp:
+ ~ stlsoft/iterators/index_iterator.hpp:
+ ~ stlsoft/iterators/indirect_reverse_iterator.hpp:
+ ~ stlsoft/iterators/member_selector_iterator.hpp:
+ ~ stlsoft/iterators/null_output_iterator.hpp:
+ ~ stlsoft/iterators/string_concatenator_iterator.hpp:
+ ~ stlsoft/iterators/transform_filter_iterator.hpp:
+ ~ stlsoft/iterators/transform_iterator.hpp:
+ ~ stlsoft/memory/allocator_base.hpp:
+ ~ stlsoft/memory/auto_buffer.hpp:
+ ~ stlsoft/memory/auto_destructor.hpp:
+ ~ stlsoft/memory/malloc_allocator.hpp:
+ ~ stlsoft/memory/new_allocator.hpp:
+ ~ stlsoft/memory/null_allocator.hpp:
+ ~ stlsoft/meta/is_same_type.hpp:
+ ~ stlsoft/meta/select_first_type_if.hpp:
+ ~ stlsoft/obsolete/functional.hpp:
+ ~ stlsoft/obsolete/functionals.hpp:
+ ~ stlsoft/obsolete/meta.hpp:
+ ~ stlsoft/obsolete/proxy_iterator.hpp:
+ ~ stlsoft/obsolete/proxy_sequence.hpp:
+ ~ stlsoft/properties/field_properties.hpp:
+ ~ stlsoft/properties/method_properties.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/stlsoft.h:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/string/charset_tokeniser.hpp:
+ ~ stlsoft/string/container_slice_functions.hpp:
+ ~ stlsoft/string/cstring_functions.hpp:
+ ~ stlsoft/string/fast_string_concatenator.hpp:
+ ~ stlsoft/string/functionals.hpp:
+ ~ stlsoft/string/simple_string.hpp:
+ ~ stlsoft/string/slice_functions.hpp:
+ ~ stlsoft/string/split_functions.hpp:
+ ~ stlsoft/string/string_tokeniser.hpp:
+ ~ stlsoft/string/string_traits.hpp:
+ ~ stlsoft/string/trim_functions.hpp:
+ ~ stlsoft/string/view_slice_functions.hpp:
+ ~ stlsoft/system/cmdargs.hpp:
+ ~ stlsoft/system/commandline_parser.hpp:
+ ~ stlsoft/util/inert.hpp:
+ ~ stlsoft/util/options_verifier.hpp:
+ ~ stlsoft/util/std/dinkumware_iterator_traits.hpp:
+ ~ stlsoft/util/std/iterator_helper.hpp:
+ ~ stlsoft/util/std/library_discriminator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ unixstl/synch/sleep_functions.h:
+ ~ unixstl/synch/spin_mutex_policies.hpp:
+ ~ unixstl/synch/util/windows_api_.h:
+ ~ unixstl/system/console_functions.h:
+    ~ refactored in terms of external API
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Console.h:
+ + winstl/api/external/Debugging.h:
+ + winstl/api/external/DeviceContext.h:
+ + winstl/api/external/DynamicLinkLibrary.h:
+ + winstl/api/external/ErrorHandling.h:
+ + winstl/api/external/FileManagement.h:
+ + winstl/api/external/HandleAndObject.h:
+ ~ winstl/api/external/MemoryManagement.h:
+ + winstl/api/external/ProcessAndThread.h:
+ ~ winstl/api/external/Registry.h:
+ ~ winstl/api/external/Synchronization.h:
+ ~ winstl/api/external/SystemInformation.h:
+ ~ winstl/api/external/Time.h:
+ + winstl/api/external/UnicodeAndCharacterSet.h:
+ ~ winstl/clipboard/clipboard_scope.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/clipboard/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/control_panel/applet_module.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/control_panel/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/control_panel/functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/controls/commctrl_functionals.hpp:
+ ~ winstl/controls/dialog_functionals.hpp:
+ ~ winstl/controls/listbox_data_sequence.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/conversion/char_conversions.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/conversion/w2m.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/diagnostics/output_debug_line.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/dl/dl_call.hpp:
+ ~ winstl/dl/module.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/error/error_desc.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/error/last_error_scope.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/filesystem/current_directory_scope.hpp:
+ ~ winstl/filesystem/file_creation_functions.h:
+ ~ winstl/filesystem/file_functions.hpp:
+ ~ winstl/filesystem/filesystem_traits.hpp:
+ ~ winstl/filesystem/findfile_sequence.hpp:
+ ~ winstl/filesystem/handles/os_file_handle.hpp:
+ ~ winstl/filesystem/link_functions.h:
+ ~ winstl/filesystem/memory_map_functions.h:
+ ~ winstl/filesystem/memory_map_sparse_region_functions.h:
+ ~ winstl/filesystem/memory_mapped_file.hpp:
+ ~ winstl/filesystem/path.hpp:
+ ~ winstl/filesystem/pipe.hpp:
+ ~ winstl/filesystem/readonly_memory_mapped_file.hpp:
+ ~ winstl/internal/windows_version_.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/memory/global_allocator.hpp:
+ ~ winstl/memory/heapwalk_sequence.hpp:
+ ~ winstl/memory/netapi_allocator.hpp:
+ ~ winstl/memory/processheap_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/process/functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/registry/reg_key.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_key_sequence.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_traits.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_value.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_value_sequence.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/security/token_information.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/shell/file_operations.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ winstl/shell/memory/functions.h:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/shims/access/string/HWND.hpp:
+    ~ tightening up
+
+ ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/shims/access/string/time.hpp:
+ ~ winstl/shims/conversion/to_FILETIME/SYSTEMTIME.hpp:
+ ~ winstl/shims/conversion/to_SYSTEMTIME/DATE.hpp:
+ ~ winstl/shims/conversion/to_SYSTEMTIME/FILETIME.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/shims/conversion/to_uint64/WIN32_FIND_DATA.hpp:
+    ~ reformatting
+
+ ~ winstl/string/resource_string.hpp:
+ ~ winstl/synch/diagnostics/failure_handling.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/event.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/process_mutex.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/semaphore.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/sleep_functions.h:
+ ~ winstl/synch/spin_mutex_policies.hpp:
+ ~ winstl/synch/tss_index.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/console_colour_scope.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/system/console_ctrl_handler_scope.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/console_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/environment_block.hpp:
+ ~ winstl/system/environment_variable.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/memory_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/module_directory.hpp:
+ ~ winstl/system/module_filename.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/os_version.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/pid_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/process_module_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/system_information_functions.h:
+ ~ winstl/system/system_traits.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/system_version.hpp:
+    ~ simplifying, and prospective changes (for getting to 1.12)
+
+ ~ winstl/system/temporary_file_name.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/version_info.hpp:
+    ~ refactored in terms of external API
+    ~ canonicalising proscribed construction methods
+
+ ~ winstl/time/comparison_functions.h:
+ ~ winstl/time/localisation_functions.h:
+ ~ winstl/time/time_cast.hpp:
+ ~ winstl/toolhelp/sequence_base.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/window/functions.h:
+    ~ simplifying, and prospective changes (for getting to 1.12)
+
+ ~ winstl/window/gdi_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/window/window_enable_scope.hpp:
+ ~ winstl/window/window_icon_scope.hpp:
+ ~ winstl/window/window_redraw_scope.hpp:
+ ~ winstl/window/window_text_scope.hpp:
+ ~ winstl/window/window_update_scope.hpp:
+ ~ winstl/window/window_visible_scope.hpp:
+    ~ canonicalising proscribed construction methods
+
+ ~ winstl/window/zorder_iterator.hpp:
+    ~ refactored in terms of external API
 
 ============================================================================
 
