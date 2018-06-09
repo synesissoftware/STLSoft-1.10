@@ -4,11 +4,11 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     20th June 2003
- * Updated:     23rd August 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MAJOR     4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     4
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  3
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      71
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  4
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -257,7 +257,7 @@ WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationAllowed, DWORD);
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationEnabled, DWORD);
 
-WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIntegrityLevel, TOKEN_MANDATORY_LEVEL);
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIntegrityLevel, TOKEN_MANDATORY_LABEL);
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenUIAccess, DWORD);
 

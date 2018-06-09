@@ -4,11 +4,11 @@
  * Purpose:     Converts a standard rerror code (errno) to a printable string.
  *
  * Created:     18th July 2006
- * Updated:     19th February 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MINOR     2
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  12
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      36
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  13
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,18 +83,14 @@
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #ifndef STLSOFT_INCL_H_STDLIB
 # define STLSOFT_INCL_H_STDLIB
 # include <stdlib.h>                    // for mbstowcs()
 #endif /* !STLSOFT_INCL_H_STDLIB */
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>                    // for strerror()
-#endif /* !STLSOFT_INCL_H_STRING */
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>                     // for wcslen()
-#endif /* !STLSOFT_INCL_H_WCHAR */
 
 #ifndef STLSOFT_INCL_H_ERRNO
 # define STLSOFT_INCL_H_ERRNO

@@ -5,14 +5,14 @@
  *              abstracting away standard library inconsistencies.
  *
  * Created:     2nd January 2000
- * Updated:     22nd August 2017
+ * Updated:     9th June 2018
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  4
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      124
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  5
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      125
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,6 +80,9 @@
 # include <iterator>    // for std::iterator, std::reverse_iterator, std::reverse_bidirectional_iterator
 #endif /* !STLSOFT_INCL_ITERATOR */
 
+#ifndef STLSOFT_INCL_STLSOFT_META_HPP_CAPABILITIES
+# include <stlsoft/meta/capabilities.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_META_HPP_CAPABILITIES */
 #ifdef STLSOFT_CF_HAS_MEMBER_TYPE_SUPPORTED_XXXX
 # ifndef STLSOFT_INCL_STLSOFT_META_TYPEFIXER_HPP_POINTER
 #  include <stlsoft/meta/typefixer/pointer.hpp>

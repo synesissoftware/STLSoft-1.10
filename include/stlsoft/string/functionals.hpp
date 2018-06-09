@@ -4,11 +4,11 @@
  * Purpose:     String function classes
  *
  * Created:     22nd April 2005
- * Updated:     22nd August 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MAJOR       2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MINOR       2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_REVISION    9
-# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        43
+# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_REVISION    10
+# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -79,14 +79,9 @@
 # error Now need to write that std_binary_function stuff!!
 #endif /* _STLSOFT_STRING_FUNCTIONALS_NO_STD */
 
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>
-#endif /* !STLSOFT_INCL_H_WCHAR */
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

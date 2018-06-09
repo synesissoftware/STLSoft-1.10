@@ -4,11 +4,11 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     13th January 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     6
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 4
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -283,15 +283,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_a_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("true", 4)
         ,   stlsoft_C_string_slice_a_t::create("True", 4)
         ,   stlsoft_C_string_slice_a_t::create("TRUE", 4)
+#else
+
+            { 4, "true" }
+        ,   { 4, "True" }
+        ,   { 4, "TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_a_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("false", 5)
         ,   stlsoft_C_string_slice_a_t::create("False", 5)
         ,   stlsoft_C_string_slice_a_t::create("FALSE", 5)
+#else
+
+            { 5, "false" }
+        ,   { 5, "False" }
+        ,   { 5, "FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -318,15 +334,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_w_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"true", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"True", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"TRUE", 4)
+#else
+
+            { 4, L"true" }
+        ,   { 4, L"True" }
+        ,   { 4, L"TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_w_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"false", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"False", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"FALSE", 5)
+#else
+
+            { 5, L"false" }
+        ,   { 5, L"False" }
+        ,   { 5, L"FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -379,15 +411,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_a_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("true", 4)
         ,   stlsoft_C_string_slice_a_t::create("True", 4)
         ,   stlsoft_C_string_slice_a_t::create("TRUE", 4)
+#else
+
+            { 4, "true" }
+        ,   { 4, "True" }
+        ,   { 4, "TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_a_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("false", 5)
         ,   stlsoft_C_string_slice_a_t::create("False", 5)
         ,   stlsoft_C_string_slice_a_t::create("FALSE", 5)
+#else
+
+            { 5, "false" }
+        ,   { 5, "False" }
+        ,   { 5, "FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -413,15 +461,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_w_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"true", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"True", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"TRUE", 4)
+#else
+
+            { 4, L"true" }
+        ,   { 4, L"True" }
+        ,   { 4, L"TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_w_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"false", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"False", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"FALSE", 5)
+#else
+
+            { 5, L"false" }
+        ,   { 5, L"False" }
+        ,   { 5, L"FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -494,8 +558,7 @@ namespace
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-/* ////////////////////////////////////////////////////////////////////// */
-
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

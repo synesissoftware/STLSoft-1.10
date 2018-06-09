@@ -4,11 +4,11 @@
  * Purpose:     integral_printf_traits classes.
  *
  * Created:     16th January 2002
- * Updated:     19th February 2017
+ * Updated:     9th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_MAJOR      6
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_MINOR      0
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_REVISION   7
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_EDIT       80
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_REVISION   8
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_EDIT       81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -281,7 +281,15 @@ public:
     {
             size_min = 1 + (typeIsSigned ? integral_format_width_limits<T>::maxDecimalWidth : 1)
         ,   size_max = 1 + integral_format_width_limits<T>::maxDecimalWidthWithoutSign
+#if 0
+
+            // This is the original logic (left in for revisibility), but ...
         ,   size = (size_min < size_max) ? size_max : size_min
+#else
+            // ... this is the form required by Borland, presumably because it
+            // sees a '<' as doing something templatey.
+        ,   size = (size_max > size_min) ? size_max : size_min
+#endif
     };
 };
 
