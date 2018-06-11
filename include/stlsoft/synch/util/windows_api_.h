@@ -317,3 +317,5 @@ Sleep(
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_UTIL_H_WINDOWS_API_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
+
