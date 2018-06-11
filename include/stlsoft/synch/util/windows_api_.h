@@ -4,7 +4,7 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     9th June 2018
+ * Updated:     11th June 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -317,5 +317,4 @@ Sleep(
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_UTIL_H_WINDOWS_API_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
 

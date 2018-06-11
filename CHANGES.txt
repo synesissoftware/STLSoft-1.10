@@ -17,6 +17,110 @@ STLSoft - Changes
    **************************************
 
 
+============================================================================
+
+Changes for 1.10.1 beta 9 (11th June 2018)
+
+General:
+========
+
+ * Borland compatibility
+
+Changes:
+========
+
+ ACESTL:
+ =======
+
+ ~ acestl/shims/access/string/inet_addr.hpp:
+    + Borland compatibility
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/string/ccombstr_veneer.hpp:
+    + Borland compatibility
+
+ COMSTL:
+ =======
+
+ ~ comstl/error/errorinfo_functions.h:
+ ~ comstl/shims/access/string/VARIANT.hpp:
+ ~ comstl/string/BSTR_functions.h:
+ ~ comstl/string/bstr.hpp:
+ ~ comstl/string/olestring_functions.h:
+    + Borland compatibility
+
+ InetSTL:
+ ========
+
+ ~ inetstl/filesystem/filesystem_traits.hpp:
+    + Borland compatibility
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/path_functions.h:
+ ~ platformstl/system/environment_map.hpp:
+ ~ platformstl/system/environment_variable_traits.hpp:
+    + Borland compatibility
+
+ RangeLib:
+ =========
+
+ ~ rangelib/associative_range.hpp:
+ ~ rangelib/error/exceptions.hpp:
+    + Borland compatibility
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/api/external/string.h:
+ ~ stlsoft/conversion/byte_format_functions.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_hexadecimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_octal_string.hpp:
+ ~ stlsoft/conversion/string_to_bool.hpp:
+ ~ stlsoft/error/error_desc.hpp:
+ ~ stlsoft/shims/access/string/std/c_string.h:
+ ~ stlsoft/shims/access/string/std/exception.hpp:
+ ~ stlsoft/shims/access/string/std/type_info.hpp:
+ ~ stlsoft/std/cstring.hpp:
+ ~ stlsoft/string/char_traits.hpp:
+ ~ stlsoft/string/copy_functions.h:
+ ~ stlsoft/string/functionals.hpp:
+ ~ stlsoft/string/trim_functions.hpp:
+ ~ stlsoft/synch/util/windows_api_.h:
+ ~ stlsoft/util/integral_printf_traits.hpp:
+ ~ stlsoft/util/std/iterator_helper.hpp:
+ ~ stlsoft/util/string_switch.hpp:
+    + Borland compatibility
+
+ UNIXSTL:
+ =======
+
+ ~ unixstl/exception/throw_policies.hpp:
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+ ~ unixstl/filesystem/glob_sequence.hpp:
+ ~ unixstl/system/directory_functions.h:
+ ~ unixstl/system/system_traits.hpp:
+    + Borland compatibility
+
+ WinSTL:
+ =======
+
+ ~ winstl/controls/listbox_data_sequence.hpp:
+ ~ winstl/filesystem/filesystem_traits.hpp:
+ ~ winstl/security/token_information.hpp:
+ ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
+ ~ winstl/system/os_version.h:
+ ~ winstl/system/system_traits.hpp:
+ ~ winstl/window/message_functions.h:
+    + Borland compatibility
+
+
+============================================================================
+
 Changes for 1.10.1 beta 8 (11th June 2018)
 
 General:
