@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  9th June 2018
+; Updated:  11th June 2018
 
 ============================================================================
 
@@ -17,6 +17,71 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.1 beta 8 (11th June 2018)
+
+General:
+========
+
+ * fixing break to UNIX-compatibility introduced in beta-6/7
+
+Changes:
+========
+
+ InetSTL:
+ ========
+
+ ~ inetstl/exception/throw_policies.hpp:
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+ ~ inetstl/network/connection.hpp:
+ ~ inetstl/network/session.hpp:
+    ~ fixing break to UNIX-compatibility introduced in beta-6/7
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    ~ fixing break to UNIX-compatibility introduced in beta-6/7
+
+============================================================================
+
+Changes for 1.10.1 beta 7 (9th June 2018)
+
+General:
+========
+
+ * auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+ * added subscript operator for auto_array_destructor<>
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/memory/auto_buffer.hpp:
+    + auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+    ~ refactoring of copy-proscriptions
+
+ ~ stlsoft/memory/auto_destructor.hpp:
+    + added subscript operator for auto_array_destructor<>
+    ~ minor tidying/canonicalisation
+    ~ whitespace
+
+ ~ stlsoft/stlsoft.h:
+    + VC++ 14.1x compatibility
+
+ ~ stlsoft/string/split_functions.hpp:
+    ~ trivial boilerplate changes
+
+ WinSTL:
+ =======
+
+ ~ winstl/diagnostics/output_debug_line.h:
+ ~ winstl/diagnostics/output_debug_line.hpp:
+    ~ trivial boilerplate changes
+
 ============================================================================
 
 Changes for 1.10.1 beta 6 (9th June 2018)
@@ -28,7 +93,6 @@ General:
  * removed empty/meaningless "compatibility" sections
  * canonicalising proscribed construction methods
  * simplifying, and prospective changes (for getting to 1.12)
-
 
 Changes:
 ========

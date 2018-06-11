@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_session class.
  *
  * Created:     30th April 1999
- * Updated:     23rd August 2017
+ * Updated:     11th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1999-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1999-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_MAJOR      5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_MINOR      1
-# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_REVISION   10
-# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_EDIT       74
+# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_REVISION   11
+# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_EDIT       75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,9 +83,11 @@
 # endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
-# include <winstl/api/external/ErrorHandling.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+#  include <winstl/api/external/ErrorHandling.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

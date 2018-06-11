@@ -2,10 +2,23 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  9th June 2018
+; Updated:  11th June 2018
 
 ============================================================================
 
+
+11th June 2018 - 1.10.1 (beta 8) released
+-----------------------------------------
+
+ * fixing break to UNIX-compatibility introduced in beta-6/7
+
+9th June 2018 - 1.10.1 (beta 7) released
+----------------------------------------
+
+ * auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+ * added subscript operator for auto_array_destructor<>
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
 
 9th June 2018 - 1.10.1 (beta 6) released
 ----------------------------------------

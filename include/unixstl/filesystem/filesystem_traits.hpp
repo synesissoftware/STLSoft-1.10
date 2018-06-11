@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     9th June 2018
+ * Updated:     11th June 2018
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -135,9 +135,11 @@
 # include <sys/stat.h>
 #endif /* !STLSOFT_INCL_SYS_H_STAT */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
-# include <winstl/api/external/ErrorHandling.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+#  include <winstl/api/external/ErrorHandling.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
