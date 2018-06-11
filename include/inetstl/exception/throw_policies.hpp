@@ -4,11 +4,11 @@
  * Purpose:     Contains the internet_exception class.
  *
  * Created:     25th April 2004
- * Updated:     23rd August 2017
+ * Updated:     11th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  6
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      51
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  7
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,9 +83,11 @@
 # error This file cannot be included when exception-handling is not supported
 #endif /* !STLSOFT_CF_EXCEPTION_SUPPORT */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
-# include <winstl/api/external/ErrorHandling.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+#  include <winstl/api/external/ErrorHandling.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

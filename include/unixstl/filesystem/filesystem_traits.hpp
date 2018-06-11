@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     5th June 2018
+ * Updated:     11th June 2018
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  15
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      149
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  16
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -139,9 +139,11 @@
 # include <sys/stat.h>
 #endif /* !STLSOFT_INCL_SYS_H_STAT */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
-# include <winstl/api/external/ErrorHandling.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+#  include <winstl/api/external/ErrorHandling.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

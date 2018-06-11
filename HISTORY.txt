@@ -2,10 +2,15 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  9th June 2018
+; Updated:  11th June 2018
 
 ============================================================================
 
+
+11th June 2018 - 1.10.1 (beta 8) released
+-----------------------------------------
+
+ * fixing break to UNIX-compatibility introduced in beta-6/7
 
 9th June 2018 - 1.10.1 (beta 7) released
 ----------------------------------------
