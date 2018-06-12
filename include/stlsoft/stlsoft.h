@@ -307,12 +307,13 @@
 # define _STLSOFT_VER_1_10_1_B06    0x010a0186  /*!< Version 1.10.1 beta 6 (8th June 2018) */
 # define _STLSOFT_VER_1_10_1_B07    0x010a0187  /*!< Version 1.10.1 beta 7 (9th June 2018) */
 # define _STLSOFT_VER_1_10_1_B08    0x010a0188  /*!< Version 1.10.1 beta 8 (11th June 2018) */
+# define _STLSOFT_VER_1_10_1_B09    0x010a0189  /*!< Version 1.10.1 beta 9 (11th June 2018) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B08
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B09
 
 /* /////////////////////////////////////
  * underlying version detection
