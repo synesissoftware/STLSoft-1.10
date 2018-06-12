@@ -1,15 +1,15 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        winstl/api/external/SystemInformation.h
+ * File:        winstl/api/external/UnicodeAndCharacterSet.h
  *
- * Purpose:     External preprocessor aliases for external Windows' System
- *              Information Functions API.
+ * Purpose:     External preprocessor aliases for external Windows' Unicode
+ *              and Character Set Functions API.
  *
- * Created:     24th December 2016
+ * Created:     20th August 2017
  * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,8 @@
  * subject to change at any time, so if you use them it is at your own risk.
  */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
-#define WINSTL_INCL_WINSTL_API_external_h_SystemInformation
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+#define WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -63,90 +63,40 @@
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Windows' System Information Functions
+ * Windows' Unicode and Character Set Functions
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+GetTextCharset
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+GetTextCharsetInfo
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+IsDBCSLeadByte
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+IsDBCSLeadByteEx
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+IsTextUnicode
  */
 
+#ifndef WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar
+# define WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar         STLSOFT_NS_GLOBAL_(MultiByteToWideChar)
+#endif /* !WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar */
 
-/* *************************************
- * XXXX functions
+/*
+TranslateCharsetInfo
  */
 
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
+#ifndef WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte
+# define WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte         STLSOFT_NS_GLOBAL_(WideCharToMultiByte)
+#endif /* !WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -156,6 +106,7 @@
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

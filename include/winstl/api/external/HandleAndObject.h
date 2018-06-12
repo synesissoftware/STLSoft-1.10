@@ -1,15 +1,15 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        winstl/api/external/SystemInformation.h
+ * File:        winstl/api/external/HandleAndObject.h
  *
- * Purpose:     External preprocessor aliases for external Windows' System
- *              Information Functions API.
+ * Purpose:     External preprocessor aliases for external Windows' Handle
+ *              and Object Functions API.
  *
- * Created:     24th December 2016
+ * Created:     20th August 2017
  * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,8 @@
  * subject to change at any time, so if you use them it is at your own risk.
  */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
-#define WINSTL_INCL_WINSTL_API_external_h_SystemInformation
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+#define WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -63,90 +63,28 @@
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Windows' System Information Functions
+ * Windows' Handle and Object Functions
  */
 
+#ifndef WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle
+# define WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle                        STLSOFT_NS_GLOBAL_(CloseHandle)
+#endif /* !WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle */
 
-/* *************************************
- * XXXX functions
- */
+#ifndef WINSTL_API_EXTERNAL_HandleAndObject_CompareObjectHandles
+# define WINSTL_API_EXTERNAL_HandleAndObject_CompareObjectHandles               STLSOFT_NS_GLOBAL_(CompareObjectHandles)
+#endif /* !WINSTL_API_EXTERNAL_HandleAndObject_CompareObjectHandles */
 
+#ifndef WINSTL_API_EXTERNAL_HandleAndObject_DuplicateHandle
+# define WINSTL_API_EXTERNAL_HandleAndObject_DuplicateHandle                    STLSOFT_NS_GLOBAL_(DuplicateHandle)
+#endif /* !WINSTL_API_EXTERNAL_HandleAndObject_DuplicateHandle */
 
-/* *************************************
- * XXXX functions
- */
+#ifndef WINSTL_API_EXTERNAL_HandleAndObject_GetHandleInformation
+# define WINSTL_API_EXTERNAL_HandleAndObject_GetHandleInformation               STLSOFT_NS_GLOBAL_(GetHandleInformation)
+#endif /* !WINSTL_API_EXTERNAL_HandleAndObject_GetHandleInformation */
 
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
+#ifndef WINSTL_API_EXTERNAL_HandleAndObject_SetHandleInformation
+# define WINSTL_API_EXTERNAL_HandleAndObject_SetHandleInformation               STLSOFT_NS_GLOBAL_(SetHandleInformation)
+#endif /* !WINSTL_API_EXTERNAL_HandleAndObject_SetHandleInformation */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -156,6 +94,7 @@
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     22nd October 2016
- * Updated:     19th February 2017
+ * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -78,42 +78,42 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_DeleteCriticalSection
-# define WINSTL_API_EXTERNAL_Synchronization_DeleteCriticalSection                                  STLSOFT_NS_GLOBAL(DeleteCriticalSection)
+# define WINSTL_API_EXTERNAL_Synchronization_DeleteCriticalSection                                  STLSOFT_NS_GLOBAL_(DeleteCriticalSection)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_DeleteCriticalSection */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_EnterCriticalSection
-# define WINSTL_API_EXTERNAL_Synchronization_EnterCriticalSection                                   STLSOFT_NS_GLOBAL(EnterCriticalSection)
+# define WINSTL_API_EXTERNAL_Synchronization_EnterCriticalSection                                   STLSOFT_NS_GLOBAL_(EnterCriticalSection)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_EnterCriticalSection */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSection
-# define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSection                              STLSOFT_NS_GLOBAL(InitializeCriticalSection)
+# define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSection                              STLSOFT_NS_GLOBAL_(InitializeCriticalSection)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSection */
 
 #if WINSTL_WIN32_WINNT >= 0x0403
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionAndSpinCount
-#  define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionAndSpinCount                 STLSOFT_NS_GLOBAL(InitializeCriticalSectionAndSpinCount)
+#  define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionAndSpinCount                 STLSOFT_NS_GLOBAL_(InitializeCriticalSectionAndSpinCount)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionAndSpinCount */
 #endif
 
 #if WINSTL_WIN32_WINNT >= 0x0403
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionEx
-#  define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionEx                           STLSOFT_NS_GLOBAL(InitializeCriticalSectionEx)
+#  define WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionEx                           STLSOFT_NS_GLOBAL_(InitializeCriticalSectionEx)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InitializeCriticalSectionEx */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_LeaveCriticalSection
-# define WINSTL_API_EXTERNAL_Synchronization_LeaveCriticalSection                                   STLSOFT_NS_GLOBAL(LeaveCriticalSection)
+# define WINSTL_API_EXTERNAL_Synchronization_LeaveCriticalSection                                   STLSOFT_NS_GLOBAL_(LeaveCriticalSection)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_LeaveCriticalSection */
 
 #if WINSTL_WIN32_WINNT >= 0x0403
 # ifndef WINSTL_API_EXTERNAL_Synchronization_SetCriticalSectionSpinCount
-#  define WINSTL_API_EXTERNAL_Synchronization_SetCriticalSectionSpinCount                           STLSOFT_NS_GLOBAL(SetCriticalSectionSpinCount)
+#  define WINSTL_API_EXTERNAL_Synchronization_SetCriticalSectionSpinCount                           STLSOFT_NS_GLOBAL_(SetCriticalSectionSpinCount)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_SetCriticalSectionSpinCount */
 #endif
 
 #if WINSTL_WIN32_WINNT >= 0x0400
 # ifndef WINSTL_API_EXTERNAL_Synchronization_TryEnterCriticalSection
-#  define WINSTL_API_EXTERNAL_Synchronization_TryEnterCriticalSection                               STLSOFT_NS_GLOBAL(TryEnterCriticalSection)
+#  define WINSTL_API_EXTERNAL_Synchronization_TryEnterCriticalSection                               STLSOFT_NS_GLOBAL_(TryEnterCriticalSection)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_TryEnterCriticalSection */
 #endif
 
@@ -123,38 +123,38 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_CreateEventA
-# define WINSTL_API_EXTERNAL_Synchronisation_CreateEventA                                           STLSOFT_NS_GLOBAL(CreateEventA)
+# define WINSTL_API_EXTERNAL_Synchronisation_CreateEventA                                           STLSOFT_NS_GLOBAL_(CreateEventA)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_CreateEventA */
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_CreateEventW
-# define WINSTL_API_EXTERNAL_Synchronisation_CreateEventW                                           STLSOFT_NS_GLOBAL(CreateEventW)
+# define WINSTL_API_EXTERNAL_Synchronisation_CreateEventW                                           STLSOFT_NS_GLOBAL_(CreateEventW)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_CreateEventW */
 
 #if WINSTL_WIN32_WINNT >= 0x0600
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_CreateEventExA
-#  define WINSTL_API_EXTERNAL_Synchronisation_CreateEventExA                                        STLSOFT_NS_GLOBAL(CreateEventExA)
+#  define WINSTL_API_EXTERNAL_Synchronisation_CreateEventExA                                        STLSOFT_NS_GLOBAL_(CreateEventExA)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_CreateEventExA */
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_CreateEventExW
-#  define WINSTL_API_EXTERNAL_Synchronisation_CreateEventExW                                        STLSOFT_NS_GLOBAL(CreateEventExW)
+#  define WINSTL_API_EXTERNAL_Synchronisation_CreateEventExW                                        STLSOFT_NS_GLOBAL_(CreateEventExW)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_CreateEventExW */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_OpenEventA
-# define WINSTL_API_EXTERNAL_Synchronisation_OpenEventA                                             STLSOFT_NS_GLOBAL(OpenEventA)
+# define WINSTL_API_EXTERNAL_Synchronisation_OpenEventA                                             STLSOFT_NS_GLOBAL_(OpenEventA)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_OpenEventA */
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_OpenEventW
-# define WINSTL_API_EXTERNAL_Synchronisation_OpenEventW                                             STLSOFT_NS_GLOBAL(OpenEventW)
+# define WINSTL_API_EXTERNAL_Synchronisation_OpenEventW                                             STLSOFT_NS_GLOBAL_(OpenEventW)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_OpenEventW */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_PulseEvent
-# define WINSTL_API_EXTERNAL_Synchronisation_PulseEvent                                             STLSOFT_NS_GLOBAL(PulseEvent)
+# define WINSTL_API_EXTERNAL_Synchronisation_PulseEvent                                             STLSOFT_NS_GLOBAL_(PulseEvent)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_PulseEvent */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_ResetEvent
-# define WINSTL_API_EXTERNAL_Synchronisation_ResetEvent                                             STLSOFT_NS_GLOBAL(ResetEvent)
+# define WINSTL_API_EXTERNAL_Synchronisation_ResetEvent                                             STLSOFT_NS_GLOBAL_(ResetEvent)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_ResetEvent */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronisation_SetEvent
-# define WINSTL_API_EXTERNAL_Synchronisation_SetEvent                                               STLSOFT_NS_GLOBAL(SetEvent)
+# define WINSTL_API_EXTERNAL_Synchronisation_SetEvent                                               STLSOFT_NS_GLOBAL_(SetEvent)
 #endif /* !WINSTL_API_EXTERNAL_Synchronisation_SetEvent */
 
 
@@ -164,19 +164,19 @@
 
 #if WINSTL_WIN32_WINNT >= 0x0600
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_InitOnceInitialize
-#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceInitialize                                    STLSOFT_NS_GLOBAL(InitOnceInitialize)
+#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceInitialize                                    STLSOFT_NS_GLOBAL_(InitOnceInitialize)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_InitOnceInitialize */
 
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_InitOnceExecuteOnce
-#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceExecuteOnce                                   STLSOFT_NS_GLOBAL(InitOnceExecuteOnce)
+#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceExecuteOnce                                   STLSOFT_NS_GLOBAL_(InitOnceExecuteOnce)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_InitOnceExecuteOnce */
 
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_InitOnceBeginInitialize
-#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceBeginInitialize                               STLSOFT_NS_GLOBAL(InitOnceBeginInitialize)
+#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceBeginInitialize                               STLSOFT_NS_GLOBAL_(InitOnceBeginInitialize)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_InitOnceBeginInitialize */
 
 # ifndef WINSTL_API_EXTERNAL_Synchronisation_InitOnceComplete
-#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceComplete                                      STLSOFT_NS_GLOBAL(InitOnceComplete)
+#  define WINSTL_API_EXTERNAL_Synchronisation_InitOnceComplete                                      STLSOFT_NS_GLOBAL_(InitOnceComplete)
 # endif /* !WINSTL_API_EXTERNAL_Synchronisation_InitOnceComplete */
 #endif
 
@@ -186,68 +186,68 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchange
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchange                             STLSOFT_NS_GLOBAL(InterlockedCompareExchange)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchange                             STLSOFT_NS_GLOBAL_(InterlockedCompareExchange)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchange */
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeAcquire
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeAcquire                     STLSOFT_NS_GLOBAL(InterlockedCompareExchangeAcquire)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeAcquire                     STLSOFT_NS_GLOBAL_(InterlockedCompareExchangeAcquire)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeAcquire */
 #endif
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangePointer
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangePointer                     STLSOFT_NS_GLOBAL(InterlockedCompareExchangePointer)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangePointer                     STLSOFT_NS_GLOBAL_(InterlockedCompareExchangePointer)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangePointer */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeRelease
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeRelease                      STLSOFT_NS_GLOBAL(InterlockedCompareExchangeRelease)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeRelease                      STLSOFT_NS_GLOBAL_(InterlockedCompareExchangeRelease)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedCompareExchangeRelease */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrement
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrement                                   STLSOFT_NS_GLOBAL(InterlockedDecrement)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrement                                   STLSOFT_NS_GLOBAL_(InterlockedDecrement)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrement */
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementAcquire
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementAcquire                           STLSOFT_NS_GLOBAL(InterlockedDecrementAcquire)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementAcquire                           STLSOFT_NS_GLOBAL_(InterlockedDecrementAcquire)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementAcquire */
 #endif
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementRelease
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementRelease                           STLSOFT_NS_GLOBAL(InterlockedDecrementRelease)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementRelease                           STLSOFT_NS_GLOBAL_(InterlockedDecrementRelease)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedDecrementRelease */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedExchange
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchange                                    STLSOFT_NS_GLOBAL(InterlockedExchange)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchange                                    STLSOFT_NS_GLOBAL_(InterlockedExchange)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedExchange */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangeAdd
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangeAdd                                 STLSOFT_NS_GLOBAL(InterlockedExchangeAdd)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangeAdd                                 STLSOFT_NS_GLOBAL_(InterlockedExchangeAdd)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangeAdd */
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangePointer
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangePointer                            STLSOFT_NS_GLOBAL(InterlockedExchangePointer)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangePointer                            STLSOFT_NS_GLOBAL_(InterlockedExchangePointer)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedExchangePointer */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrement
-# define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrement                                   STLSOFT_NS_GLOBAL(InterlockedIncrement)
+# define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrement                                   STLSOFT_NS_GLOBAL_(InterlockedIncrement)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrement */
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementAcquire
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementAcquire                           STLSOFT_NS_GLOBAL(InterlockedIncrementAcquire)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementAcquire                           STLSOFT_NS_GLOBAL_(InterlockedIncrementAcquire)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementAcquire */
 #endif
 
 #if 0
 # ifndef WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementRelease
-#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementRelease                           STLSOFT_NS_GLOBAL(InterlockedIncrementRelease)
+#  define WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementRelease                           STLSOFT_NS_GLOBAL_(InterlockedIncrementRelease)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_InterlockedIncrementRelease */
 #endif
 
@@ -257,30 +257,30 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_CreateMutexA
-# define WINSTL_API_EXTERNAL_Synchronization_CreateMutexA                                           STLSOFT_NS_GLOBAL(CreateMutexA)
+# define WINSTL_API_EXTERNAL_Synchronization_CreateMutexA                                           STLSOFT_NS_GLOBAL_(CreateMutexA)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_CreateMutexA */
 #ifndef WINSTL_API_EXTERNAL_Synchronization_CreateMutexW
-# define WINSTL_API_EXTERNAL_Synchronization_CreateMutexW                                           STLSOFT_NS_GLOBAL(CreateMutexW)
+# define WINSTL_API_EXTERNAL_Synchronization_CreateMutexW                                           STLSOFT_NS_GLOBAL_(CreateMutexW)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_CreateMutexW */
 
 #if WINSTL_WIN32_WINNT >= 0x0600
 # ifndef WINSTL_API_EXTERNAL_Synchronization_CreateMutexExA
-#  define WINSTL_API_EXTERNAL_Synchronization_CreateMutexExA                                        STLSOFT_NS_GLOBAL(CreateMutexExA)
+#  define WINSTL_API_EXTERNAL_Synchronization_CreateMutexExA                                        STLSOFT_NS_GLOBAL_(CreateMutexExA)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_CreateMutexExA */
 # ifndef WINSTL_API_EXTERNAL_Synchronization_CreateMutexExW
-#  define WINSTL_API_EXTERNAL_Synchronization_CreateMutexExW                                        STLSOFT_NS_GLOBAL(CreateMutexExW)
+#  define WINSTL_API_EXTERNAL_Synchronization_CreateMutexExW                                        STLSOFT_NS_GLOBAL_(CreateMutexExW)
 # endif /* !WINSTL_API_EXTERNAL_Synchronization_CreateMutexExW */
 #endif
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_OpenMutexA
-# define WINSTL_API_EXTERNAL_Synchronization_OpenMutexA                                             STLSOFT_NS_GLOBAL(OpenMutexA)
+# define WINSTL_API_EXTERNAL_Synchronization_OpenMutexA                                             STLSOFT_NS_GLOBAL_(OpenMutexA)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_OpenMutexA */
 #ifndef WINSTL_API_EXTERNAL_Synchronization_OpenMutexW
-# define WINSTL_API_EXTERNAL_Synchronization_OpenMutexW                                             STLSOFT_NS_GLOBAL(OpenMutexW)
+# define WINSTL_API_EXTERNAL_Synchronization_OpenMutexW                                             STLSOFT_NS_GLOBAL_(OpenMutexW)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_OpenMutexW */
 
 #ifndef WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex
-# define WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex                                           STLSOFT_NS_GLOBAL(ReleaseMutex)
+# define WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex                                           STLSOFT_NS_GLOBAL_(ReleaseMutex)
 #endif /* !WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex */
 
 

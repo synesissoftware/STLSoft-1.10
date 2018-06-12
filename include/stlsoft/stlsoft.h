@@ -6,11 +6,11 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     15th May 2017
+ * Updated:     12th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    45
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 13
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     491
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 14
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     492
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -304,12 +304,13 @@
 # define _STLSOFT_VER_1_10_1_B03    0x010a0183  /*!< Version 1.10.1 beta 3 (15th February 2017) */
 # define _STLSOFT_VER_1_10_1_B04    0x010a0184  /*!< Version 1.10.1 beta 4 (23rd March 2017) */
 # define _STLSOFT_VER_1_10_1_B05    0x010a0185  /*!< Version 1.10.1 beta 5 (15th May 2017) */
+# define _STLSOFT_VER_1_10_1_B06    0x010a0186  /*!< Version 1.10.1 beta 6 (8th June 2018) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B05
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B06
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -1795,6 +1796,11 @@ namespace stlsoft
 #else /* ? __cplusplus */
 # define STLSOFT_NS_GLOBAL(symbol)                          symbol
 #endif /* __cplusplus */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+# define STLSOFT_NS_GLOBAL_(symbol)                         STLSOFT_NS_GLOBAL(symbol)
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 
 /* This stuff allows worker namespaces to be declared and used regardless of
  * whether namespaces are supported and allowed

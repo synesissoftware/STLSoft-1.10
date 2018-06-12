@@ -1,15 +1,15 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        winstl/api/external/SystemInformation.h
+ * File:        winstl/api/external/ErrorHandling.h
  *
- * Purpose:     External preprocessor aliases for external Windows' System
- *              Information Functions API.
+ * Purpose:     External preprocessor aliases for external Windows' Error
+ *              Handling Functions API.
  *
- * Created:     24th December 2016
+ * Created:     20th August 2017
  * Updated:     23rd August 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,8 @@
  * subject to change at any time, so if you use them it is at your own risk.
  */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
-#define WINSTL_INCL_WINSTL_API_external_h_SystemInformation
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+#define WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -63,90 +63,92 @@
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Windows' System Information Functions
+ * Windows' Error Handling Functions
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+Beep
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+CaptureStackBackTrace
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+FatalAppExit
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+FlashWindow
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+FlashWindowEx
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+FormatMessageA
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+GetErrorMode
  */
 
+#ifndef WINSTL_API_EXTERNAL_ErrorHandling_GetLastError
+# define WINSTL_API_EXTERNAL_ErrorHandling_GetLastError                         STLSOFT_NS_GLOBAL_(GetLastError)
+#endif /* !WINSTL_API_EXTERNAL_ErrorHandling_GetLastError */
 
-/* *************************************
- * XXXX functions
+/*
+GetThreadErrorMode
  */
 
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
-
-
-/* *************************************
- * XXXX functions
+/*
+MessageBeep
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+RtlLookupFunctionEntry
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+RtlNtStatusToDosError
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+RtlPcToFileHeader
  */
 
-
-/* *************************************
- * XXXX functions
+/*
+RtlUnwind
  */
 
+/*
+RtlUnwind2
+ */
+
+/*
+RtlUnwindEx
+ */
+
+/*
+RtlVirtualUnwind
+ */
+
+/*
+SetErrorMode
+ */
+
+#ifndef WINSTL_API_EXTERNAL_ErrorHandling_SetLastError
+# define WINSTL_API_EXTERNAL_ErrorHandling_SetLastError                         STLSOFT_NS_GLOBAL_(SetLastError)
+#endif /* !WINSTL_API_EXTERNAL_ErrorHandling_SetLastError */
+
+/*
+SetLastErrorEx
+ */
+
+/*
+SetThreadErrorMode
+ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -156,6 +158,7 @@
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

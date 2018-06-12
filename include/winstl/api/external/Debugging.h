@@ -1,15 +1,15 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        winstl/api/external/SystemInformation.h
+ * File:        winstl/api/external/Debugging.h
  *
- * Purpose:     External preprocessor aliases for external Windows' System
- *              Information Functions API.
+ * Purpose:     External preprocessor aliases for external Windows'
+ *              Debugging API.
  *
- * Created:     24th December 2016
- * Updated:     23rd August 2017
+ * Created:     20th August 2017
+ * Updated:     24th August 2017
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,8 @@
  * subject to change at any time, so if you use them it is at your own risk.
  */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
-#define WINSTL_INCL_WINSTL_API_external_h_SystemInformation
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Debugging
+#define WINSTL_INCL_WINSTL_API_external_h_Debugging
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -63,90 +63,22 @@
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Windows' System Information Functions
+ * Windows' Debugging Functions
  */
 
+#ifndef WINSTL_API_EXTERNAL_Debugging_DebugBreak
+# define WINSTL_API_EXTERNAL_Debugging_DebugBreak                               STLSOFT_NS_GLOBAL_(DebugBreak)
+#endif /* !WINSTL_API_EXTERNAL_Debugging_DebugBreak */
 
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
-
-
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
-#ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
-#endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
-
-/* *************************************
- * XXXX functions
- */
-
+#ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugString
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugString                        STLSOFT_NS_GLOBAL_(OutputDebugString)
+#endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugString */
+#ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA                       STLSOFT_NS_GLOBAL_(OutputDebugStringA)
+#endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA */
+#ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW                       STLSOFT_NS_GLOBAL_(OutputDebugStringW)
+#endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -156,6 +88,7 @@
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
