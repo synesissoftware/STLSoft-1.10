@@ -4,7 +4,7 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     9th June 2018
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 4
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     7
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 5
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -270,8 +270,19 @@ try_parse_to_bool(
     return false;
 }
 
-
-
+/** Parses a partial/whole multibyte string slice for a Boolean
+ * representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -323,6 +334,18 @@ try_parse_to_bool(
             );
 }
 
+/** Parses a partial/whole wide string slice for a Boolean representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -374,9 +397,16 @@ try_parse_to_bool(
             );
 }
 
-
-
-
+/** Parses a partial/whole multibyte string slice for a Boolean
+ * representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -388,6 +418,15 @@ try_parse_to_bool(
     return try_parse_to_bool(s, n, result, static_cast<ss_char_a_t const**>(NULL));
 }
 
+/** Parses a partial/whole wide string slice for a Boolean representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -399,8 +438,18 @@ try_parse_to_bool(
     return try_parse_to_bool(s, n, result, static_cast<ss_char_w_t const**>(NULL));
 }
 
-
-
+/** Parses a partial/whole multibyte C-style string for a Boolean
+ * representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -451,6 +500,17 @@ try_parse_to_bool(
             );
 }
 
+/** Parses a partial/whole wide C-style string for a Boolean representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -502,7 +562,19 @@ try_parse_to_bool(
 }
 
 
-
+/** Parses a partial/whole multibyte C-style string for a Boolean
+ * representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the whole C-style string contains a recognised
+ *   value (such as "true", "False", and so on)
+ *
+ * \note If the string begins with a recognised true value - such
+ *   as "true" - and has additional non-nul characters then the return value
+ *   will be \c false but the value of <code>*result</code> will be \c true.
+ */
 inline
 bool
 try_parse_to_bool(
@@ -510,9 +582,34 @@ try_parse_to_bool(
 ,   bool*               result
 )
 {
-    return try_parse_to_bool(s, result, static_cast<ss_char_a_t const**>(NULL));
+    ss_char_a_t const*  endptr;
+
+    if(!try_parse_to_bool(s, result, &endptr))
+    {
+        return false;
+    }
+
+    if( ss_nullptr_k != endptr &&
+        '\0' != 0[endptr])
+    {
+        return false;
+    }
+
+    return true;
 }
 
+/** Parses a partial/whole wide C-style string for a Boolean representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the whole C-style string contains a recognised
+ *   value (such as "true", "False", and so on)
+ *
+ * \note If the string begins with a recognised true value - such
+ *   as "true" - and has additional non-nul characters then the return value
+ *   will be \c false but the value of <code>*result</code> will be \c true.
+ */
 inline
 bool
 try_parse_to_bool(
@@ -520,7 +617,20 @@ try_parse_to_bool(
 ,   bool*               result
 )
 {
-    return try_parse_to_bool(s, result, static_cast<ss_char_w_t const**>(NULL));
+    ss_char_w_t const*  endptr;
+
+    if(!try_parse_to_bool(s, result, &endptr))
+    {
+        return false;
+    }
+
+    if( ss_nullptr_k != endptr &&
+        '\0' != 0[endptr])
+    {
+        return false;
+    }
+
+    return true;
 }
 
 /* /////////////////////////////////////////////////////////////////////////
