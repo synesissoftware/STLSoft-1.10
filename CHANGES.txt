@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  11th June 2018
+; Updated:  20th December 2018
 
 ============================================================================
 
@@ -16,6 +16,91 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+============================================================================
+
+Changes for 1.10.1 beta 10 (20th December 2018)
+
+General:
+========
+
+ * winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
+ * special_string_instance now provides generic (SAS) (in)equality operators automatically
+ * try_parse_to_bool() semantics firmed up
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/shims/access/string/cwindow.hpp:
+ ~ atlstl/shims/attribute/get_HWND.hpp:
+ ~ atlstl/window/about_dialog.hpp:
+ ~ atlstl/window/window.hpp:
+    ~ STRICT compatibility
+
+ COMSTL:
+ =======
+
+ ~ comstl/util/GUID_functions.h:
+    ~ kicking #pragma message exhortation down the road
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/api/external/string.h:
+    ~ dealing with C4996 / _CRT_ secure stuff
+
+ ~ stlsoft/conversion/number/grouping_functions.hpp:
+    stlsoft::format_thousands() : ~ slight optimisation/simplification; ~ documentation
+
+ ~ stlsoft/conversion/string_to_bool.hpp:
+    ~ try_parse_to_bool() semantics firmed up
+
+ ~ stlsoft/smartptr/ref_ptr.hpp:
+    ref_ptr : - removed dead code
+    ref_ptr : ~ minor tidying
+
+ ~ stlsoft/string/special_string_instance.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ UNIXSTL:
+ =======
+
+ ~ unixstl/filesystem/current_directory.hpp:
+ ~ unixstl/system/home_directory.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Synchronization.h:
+ ~ winstl/registry/util/shared_handles.hpp:
+ ~ winstl/synch/event.hpp:
+ ~ winstl/synch/semaphore.hpp:
+ ~ winstl/synch/wait_functions.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/clipboard/clipboard_scope.hpp:
+    ~ STRICT compatibility
+
+ ~ winstl/filesystem/absolute_path.hpp:
+ ~ winstl/filesystem/current_directory.hpp:
+ ~ winstl/system/home_directory.hpp:
+ ~ winstl/system/host_name.hpp:
+ ~ winstl/system/module_directory.hpp:
+ ~ winstl/system/module_filename.hpp:
+ ~ winstl/system/system_directory.hpp:
+ ~ winstl/system/temporary_directory.hpp:
+ ~ winstl/system/temporary_file_name.hpp:
+ ~ winstl/system/user_name.hpp:
+ ~ winstl/system/windows_directory.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ ~ winstl/synch/process_mutex.hpp:
+    + winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
+    ~ refactored in terms of external API
 
 ============================================================================
 
