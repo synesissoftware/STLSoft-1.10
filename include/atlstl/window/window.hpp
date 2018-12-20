@@ -5,11 +5,11 @@
  *              operations.
  *
  * Created:     25th November 2006
- * Updated:     19th February 2017
+ * Updated:     19th December 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2007-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2007-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MAJOR      1
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MINOR      0
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_REVISION   7
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       17
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_REVISION   8
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,14 @@
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
 
+#ifndef STRICT
+# error ATL window components are not compatible with non-STRICT configuration
+#endif
+
+#ifndef STLSOFT_INCL_SYS_H_ATLWIN
+# define STLSOFT_INCL_SYS_H_ATLWIN
 # include <atlwin.h>
+#endif /* !STLSOFT_INCL_SYS_H_ATLWIN */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

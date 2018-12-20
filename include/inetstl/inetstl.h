@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     24th April 2004
- * Updated:     19th February 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,9 +47,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_H_INETSTL_MAJOR    3
-# define INETSTL_VER_INETSTL_H_INETSTL_MINOR    8
-# define INETSTL_VER_INETSTL_H_INETSTL_REVISION 2
-# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     564
+# define INETSTL_VER_INETSTL_H_INETSTL_MINOR    9
+# define INETSTL_VER_INETSTL_H_INETSTL_REVISION 1
+# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     565
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file inetstl/inetstl.h
@@ -127,12 +127,13 @@
 # define _INETSTL_VER_1_3_7      0x010307ff  /*!< Version 1.3.7 (with STLSoft 1.9.119) */
 # define _INETSTL_VER_1_3_8      0x010308ff  /*!< Version 1.3.8 (with STLSoft 1.9.121) */
 # define _INETSTL_VER_1_4_1_B01  0x01040181  /*!< Version 1.4.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _INETSTL_VER_1_4_1_B02  0x01040182  /*!< Version 1.4.1 beta 2 (with STLSoft 1.10.1 beta 10) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _INETSTL_VER_MAJOR       1
 #define _INETSTL_VER_MINOR       4
 #define _INETSTL_VER_REVISION    1
-#define _INETSTL_VER             _INETSTL_VER_1_4_1_B01
+#define _INETSTL_VER             _INETSTL_VER_1_4_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -140,13 +141,15 @@
 
 /* Strict */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# ifndef STRICT
-#  if defined(_INETSTL_STRICT) || \
-      (   !defined(_INETSTL_NO_STRICT) && \
-          !defined(NO_STRICT))
+# if 1 &&\
+     !defined(STRICT) &&\
+     !defined(_INETSTL_NO_STRICT) &&\
+     !defined(NO_STRICT) &&\
+     1
+#  ifdef _INETSTL_STRICT
 #   define STRICT 1
-#  endif /* !NO_STRICT && !_INETSTL_NO_STRICT */
-# endif /* STRICT */
+#  endif /* _INETSTL_STRICT */
+# endif /* !NO_STRICT && !_INETSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT

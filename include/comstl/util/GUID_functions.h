@@ -4,11 +4,11 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     23rd August 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   5
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       19
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -485,10 +485,11 @@ GUID_compare(
     {
         if(NULL == comparisonSucceeded)
         {
-# if defined(STLSOFT_PPF_pragma_message_SUPPORT)
-#  pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): Should make comstl_exception abstract, and throw here a comparison_exception instead")
+# if _STLSOFT_VER >= 0x010a01ff
+#  if defined(STLSOFT_PPF_pragma_message_SUPPORT)
+#   pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): Should make comstl_exception abstract, and throw here a comparison_exception instead")
+#  endif
 # endif
-
             STLSOFT_THROW_X(comstl_exception("comparison failed", succeeded));
         }
         else

@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for string functions.
  *
  * Created:     15th November 2002
- * Updated:     9th June 2018
+ * Updated:     20th December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -72,6 +72,39 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC)
+
+# ifdef STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_
+#  undef STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_
+# endif
+
+  // Whether we use ANSI
+
+  // If __STDC__ is defined then we use compiler-extension forms
+  // If VC++ 10+ and neither "secure" deprecation nor CRT deprecation is
+  //  suppressed then we use compiler-extension forms
+
+# if 0
+# elif defined(__STDC__)
+#  define STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_
+# elif 1&&\
+       _MSC_VER >= 1600 &&\
+       !defined(_CRT_SECURE_NO_WARNINGS) &&\
+       !defined(_CRT_NONSTDC_NO_WARNINGS) &&\
+       1
+#  define STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_
+# else
+# endif
+
+#else
+
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * String Functions
@@ -184,7 +217,7 @@
 # elif defined(STLSOFT_COMPILER_IS_MSVC)
 
 #  if 0
-#  elif !defined(__STDC__)
+#  elif !defined(STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_)
 #   define STLSOFT_API_EXTERNAL_string_stricmp                              STLSOFT_NS_GLOBAL_(stricmp)
 #  else
 #   define STLSOFT_API_EXTERNAL_string_stricmp                              STLSOFT_NS_GLOBAL_(_stricmp)
@@ -256,7 +289,7 @@
 # elif defined(STLSOFT_COMPILER_IS_MSVC)
 
 #  if 0
-#  elif !defined(__STDC__)
+#  elif !defined(STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_)
 #   define STLSOFT_API_EXTERNAL_string_wcsicmp                              STLSOFT_NS_GLOBAL_(wcsicmp)
 #  else
 #   define STLSOFT_API_EXTERNAL_string_wcsicmp                              STLSOFT_NS_GLOBAL_(_wcsicmp)
@@ -326,7 +359,7 @@
 # elif defined(STLSOFT_COMPILER_IS_MSVC)
 
 #  if 0
-#  elif !defined(__STDC__)
+#  elif !defined(STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_)
 #   define STLSOFT_API_EXTERNAL_string_strnicmp                             STLSOFT_NS_GLOBAL_(strnicmp)
 #  else
 #   define STLSOFT_API_EXTERNAL_string_strnicmp                             STLSOFT_NS_GLOBAL_(_strnicmp)
@@ -392,7 +425,7 @@
 # elif defined(STLSOFT_COMPILER_IS_MSVC)
 
 #  if 0
-#  elif !defined(__STDC__)
+#  elif !defined(STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_)
 #   define STLSOFT_API_EXTERNAL_string_wcsnicmp                             STLSOFT_NS_GLOBAL_(wcsnicmp)
 #  else
 #   define STLSOFT_API_EXTERNAL_string_wcsnicmp                             STLSOFT_NS_GLOBAL_(_wcsnicmp)

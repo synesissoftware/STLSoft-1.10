@@ -4,11 +4,11 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     12th January 2017
+ * Updated:     19th December 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   3
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       505
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   4
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       507
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -177,6 +177,7 @@ private: // implementation
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER == 1300
+
     /// Helper function to effect upcast from const counted type to interface type
     static interface_type* i_from_const_c(counted_type const* cc)
     {
@@ -230,6 +231,7 @@ public: // construction
 
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER > 1100
+
     /// Copy constructs from an instance with different interface and/or
     ///   counted type
     ///
@@ -242,12 +244,15 @@ public: // construction
     >
 # if defined(STLSOFT_COMPILER_IS_MSVC) && \
      _MSC_VER == 1300
+
     ref_ptr(ref_ptr<T2, I2, U2> const& rhs)
 #  if 0
+
         // We cannot use this form, as it would lead to instances with different
         // counted_type being cross cast invisibly. This would be a *very bad thing*
         : m_pi(rhs.m_pi)
 #  else /* ? 0 */
+
         : m_pi(i_from_const_c(rhs.get()))
 #  endif /* 0 */
     {
@@ -257,6 +262,7 @@ public: // construction
         }
     }
 # else /* ? compiler */
+
     ref_ptr(ref_ptr<T2, I2, U2>& rhs)
 #  if 0
         // We cannot use this form, as it would lead to instances with different
@@ -272,24 +278,6 @@ public: // construction
         }
     }
 # endif /* compiler */
-#endif /* compiler */
-
-#if !defined(STLSOFT_COMPILER_IS_INTEL) && \
-    !defined(STLSOFT_COMPILER_IS_MWERKS) && \
-    0
-    template<
-        ss_typename_param_k I2
-    ,   ss_typename_param_k U2
-    >
-    ss_explicit_k
-    ref_ptr(ref_ptr<T, I2, U2>& rhs)
-        : m_pi(rhs.m_pi)
-    {
-        if(NULL != m_pi)
-        {
-            add_reference(m_pi);
-        }
-    }
 #endif /* compiler */
 
     /// Destructor
@@ -321,6 +309,7 @@ public: // construction
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     (   _MSC_VER > 1100 && \
         _MSC_VER != 1300)
+
     /// Copy assignment from an instance of ref_ptr with a different counted_type (but
     /// the same interface type).
     ///
@@ -335,23 +324,6 @@ public: // construction
     ,   ss_typename_param_k U2
     >
     class_type& operator =(ref_ptr<T2, I, U2>& rhs)
-    {
-        class_type  t(rhs);
-
-        t.swap(*this);
-
-        return *this;
-    }
-#endif /* compiler */
-
-#if !defined(STLSOFT_COMPILER_IS_INTEL) && \
-    !defined(STLSOFT_COMPILER_IS_MWERKS) && \
-    0
-    template<
-        ss_typename_param_k I2
-    ,   ss_typename_param_k U2
-    >
-    class_type& operator =(ref_ptr<T, I2, U2>& rhs)
     {
         class_type  t(rhs);
 
@@ -494,7 +466,12 @@ template<
 ,   ss_typename_param_k I
 ,   ss_typename_param_k U
 >
-inline ss_bool_t operator ==(ref_ptr<T, I, U> const& lhs, ref_ptr<T, I, U> const& rhs)
+inline
+ss_bool_t
+operator ==(
+    ref_ptr<T, I, U> const& lhs
+,   ref_ptr<T, I, U> const& rhs
+)
 {
     return lhs.equal(rhs);
 }
@@ -504,7 +481,12 @@ template<
 ,   ss_typename_param_k I
 ,   ss_typename_param_k U
 >
-inline ss_bool_t operator !=(ref_ptr<T, I, U> const& lhs, ref_ptr<T, I, U> const& rhs)
+inline
+ss_bool_t
+operator !=(
+    ref_ptr<T, I, U> const& lhs
+,   ref_ptr<T, I, U> const& rhs
+)
 {
     return !lhs.equal(rhs);
 }
@@ -625,6 +607,7 @@ operator <<(
 # if ( ( defined(STLSOFT_COMPILER_IS_INTEL) && \
          defined(_MSC_VER))) && \
      _MSC_VER < 1310
+
 namespace std
 {
     template<

@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     23rd March 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,9 +47,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     6
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  2
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      117
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     7
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  1
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      118
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
@@ -131,12 +131,13 @@
 # define _ATLSTL_VER_1_6_3      0x010603ff  /*!< Version 1.6.3 (with STLSoft 1.9.113) */
 # define _ATLSTL_VER_1_7_1_B01  0x01070181  /*!< Version 1.7.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _ATLSTL_VER_1_7_1_B02  0x01070182  /*!< Version 1.7.1 beta 2 (with STLSoft 1.10.1 beta 4) */
+# define _ATLSTL_VER_1_7_1_B03  0x01070183  /*!< Version 1.7.1 beta 3 (with STLSoft 1.10.1 beta 10) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _ATLSTL_VER_MAJOR       1
 #define _ATLSTL_VER_MINOR       7
 #define _ATLSTL_VER_REVISION    1
-#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B02
+#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B03
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -144,13 +145,15 @@
 
 /* Strict */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# ifndef STRICT
-#  if defined(_ATLSTL_STRICT) || \
-      (   !defined(_ATLSTL_NO_STRICT) && \
-          !defined(NO_STRICT))
+# if 1 &&\
+     !defined(STRICT) &&\
+     !defined(_ATLSTL_NO_STRICT) &&\
+     !defined(NO_STRICT) &&\
+     1
+#  ifdef _ATLSTL_STRICT
 #   define STRICT 1
-#  endif /* !NO_STRICT && !_INETSTL_NO_STRICT */
-# endif /* STRICT */
+#  endif /* _ATLSTL_STRICT */
+# endif /* !NO_STRICT && !_ATLSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT

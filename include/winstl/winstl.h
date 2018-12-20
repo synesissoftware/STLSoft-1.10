@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     19th February 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,9 +47,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_WINSTL_MAJOR       3
-# define WINSTL_VER_WINSTL_H_WINSTL_MINOR       16
-# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    2
-# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        209
+# define WINSTL_VER_WINSTL_H_WINSTL_MINOR       17
+# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    1
+# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        210
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file winstl/winstl.h
@@ -157,12 +157,13 @@
 # define _WINSTL_VER_1_11_11    0x010b0bff  /*!< Version 1.11.11 (with STLSoft 1.9.121) */
 # define _WINSTL_VER_1_11_12    0x010b0cff  /*!< Version 1.11.11 (with STLSoft 1.9.126) */
 # define _WINSTL_VER_1_12_1_B01 0x010c0181  /*!< Version 1.12.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _WINSTL_VER_1_12_1_B02 0x010c0182  /*!< Version 1.12.1 beta 2 (with STLSoft 1.10.1 beta 10) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _WINSTL_VER_MAJOR       1
 #define _WINSTL_VER_MINOR       12
 #define _WINSTL_VER_REVISION    1
-#define _WINSTL_VER             _WINSTL_VER_1_12_1_B01
+#define _WINSTL_VER             _WINSTL_VER_1_12_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -170,13 +171,15 @@
 
 /* Strict */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# ifndef STRICT
-#  if defined(_WINSTL_STRICT) || \
-      (   !defined(_WINSTL_NO_STRICT) && \
-          !defined(NO_STRICT))
+# if 1 &&\
+     !defined(STRICT) &&\
+     !defined(_WINSTL_NO_STRICT) &&\
+     !defined(NO_STRICT) &&\
+     1
+#  ifdef _WINSTL_STRICT
 #   define STRICT 1
-#  endif /* !NO_STRICT && !_WINSTL_NO_STRICT */
-# endif /* STRICT */
+#  endif /* _WINSTL_STRICT */
+# endif /* !NO_STRICT && !_WINSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
