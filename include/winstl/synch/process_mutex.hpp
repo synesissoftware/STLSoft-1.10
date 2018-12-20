@@ -4,7 +4,7 @@
  * Purpose:     Inter-process mutex, based on Windows MUTEX.
  *
  * Created:     15th May 2002
- * Updated:     16th June 2018
+ * Updated:     20th December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MAJOR    4
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 13
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     77
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR    4
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 2
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,6 +133,7 @@ public:
         : m_mx(create_mutex_(ss_nullptr_k, false, static_cast<ws_char_a_t const*>(0), m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// Conversion constructor, taking control of the native MUTEX handle in
     /// the constructed instance
@@ -143,6 +144,7 @@ public:
         , m_bOwnHandle(bTakeOwnership)
         , m_bCreated(false)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {
         WINSTL_ASSERT(ss_nullptr_k != mx);
     }
@@ -151,12 +153,14 @@ public:
         : m_mx(create_mutex_(ss_nullptr_k, false, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// Creates an instance of the mutex with the given name
     ss_explicit_k process_mutex(ws_char_w_t const* name)
         : m_mx(create_mutex_(ss_nullptr_k, false, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// [DEPRECATED] Creates an instance of the mutex with the given
     /// initial ownership
@@ -169,6 +173,7 @@ public:
         : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, static_cast<ws_char_a_t const*>(0), m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// [DEPRECATED] Creates an instance of the mutex with the given name
     /// and initial ownership
@@ -180,6 +185,7 @@ public:
         : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// [DEPRECATED] Creates an instance of the mutex with the given name
     /// and initial ownership
@@ -191,6 +197,7 @@ public:
         : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// [DEPRECATED] Creates an instance of the mutex with the given name,
     /// initial ownership, and security attributes
@@ -202,6 +209,7 @@ public:
         : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
     {}
     /// [DEPRECATED] Creates an instance of the mutex with the given name,
     /// initial ownership, and security attributes
@@ -213,6 +221,21 @@ public:
         : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
+        , m_evAbandoned(ss_nullptr_k)
+    {}
+    /// Creates an instance of the mutex
+    process_mutex(ws_char_a_t const* name, bool_type bInitialOwer, LPSECURITY_ATTRIBUTES psa, HANDLE hevAbandoned)
+        : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
+        , m_bOwnHandle(true)
+        , m_bAbandoned(false)
+        , m_evAbandoned(hevAbandoned)
+    {}
+    /// Creates an instance of the mutex
+    process_mutex(ws_char_w_t const* name, bool_type bInitialOwer, LPSECURITY_ATTRIBUTES psa, HANDLE hevAbandoned)
+        : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
+        , m_bOwnHandle(true)
+        , m_bAbandoned(false)
+        , m_evAbandoned(hevAbandoned)
     {}
 
     /// Destroys an instance of the mutex
@@ -241,6 +264,11 @@ public:
 
         if(WAIT_ABANDONED == dwRes)
         {
+            if(ss_nullptr_k != m_evAbandoned)
+            {
+                ::SetEvent(m_evAbandoned);
+            }
+
             m_bAbandoned = true;
         }
         else
@@ -268,6 +296,11 @@ public:
 
         if(WAIT_ABANDONED == dwRes)
         {
+            if(ss_nullptr_k != m_evAbandoned)
+            {
+                ::SetEvent(m_evAbandoned);
+            }
+
             m_bAbandoned = true;
 
             return true;
@@ -450,6 +483,7 @@ private:
     bool_type const m_bOwnHandle;   // Does the instance own the handle?
     bool_type       m_bCreated;     // Did this object (thread) create the underlying mutex object?
     bool_type       m_bAbandoned;   // Did the previous owner abandon the underlying mutex object?
+    resource_type   m_evAbandoned;  // Optional event that is signalled if the muted is abandoned
 /// @}
 };
 
