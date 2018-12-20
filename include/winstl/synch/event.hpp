@@ -4,11 +4,11 @@
  * Purpose:     event class, based on Windows EVENT.
  *
  * Created:     3rd July 2003
- * Updated:     23rd August 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 5
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     76
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 6
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -320,7 +320,7 @@ lock_instance(
 {
     HANDLE h = ev.get();
 
-    DWORD const dwRes = ::WaitForSingleObject(h, INFINITE);
+    DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(h, INFINITE);
 
     if(WAIT_OBJECT_0 != dwRes)
     {

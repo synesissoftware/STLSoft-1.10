@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     23rd August 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 15
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     39
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 16
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -208,7 +208,7 @@ public:
     {
         WINSTL_ASSERT(NULL != m_sem);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_sem, INFINITE);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, INFINITE);
 
         if(WAIT_OBJECT_0 != dwRes)
         {
@@ -226,7 +226,7 @@ public:
     {
         WINSTL_ASSERT(NULL != m_sem);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_sem, wait);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, wait);
 
         if( WAIT_OBJECT_0 != dwRes &&
             WAIT_TIMEOUT != dwRes)

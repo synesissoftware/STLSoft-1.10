@@ -5,11 +5,11 @@
  *              API.
  *
  * Created:     22nd October 2016
- * Updated:     23rd August 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -313,6 +313,66 @@
  * Wait functions
  */
 
+#ifndef WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjects
+# define WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjects                              STLSOFT_NS_GLOBAL_(MsgWaitForMultipleObjects)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjects */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjectsEx
+# define WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjectsEx                            STLSOFT_NS_GLOBAL_(MsgWaitForMultipleObjectsEx)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_MsgWaitForMultipleObjectsEx */
+
+#if WINSTL_WIN32_WINNT >= 0x0500
+# ifndef WINSTL_API_EXTERNAL_Synchronization_RegisterWaitForSingleObject
+#  define WINSTL_API_EXTERNAL_Synchronization_RegisterWaitForSingleObject                           STLSOFT_NS_GLOBAL_(RegisterWaitForSingleObject)
+# endif /* !WINSTL_API_EXTERNAL_Synchronization_RegisterWaitForSingleObject */
+#endif
+
+#if WINSTL_WIN32_WINNT >= 0x0400
+# ifndef WINSTL_API_EXTERNAL_Synchronization_SignalObjectAndWait
+#  define WINSTL_API_EXTERNAL_Synchronization_SignalObjectAndWait                                   STLSOFT_NS_GLOBAL_(SignalObjectAndWait)
+# endif /* !WINSTL_API_EXTERNAL_Synchronization_SignalObjectAndWait */
+#endif
+
+#if WINSTL_WIN32_WINNT >= 0x0500
+# ifndef WINSTL_API_EXTERNAL_Synchronization_UnregisterWait
+#  define WINSTL_API_EXTERNAL_Synchronization_UnregisterWait                                        STLSOFT_NS_GLOBAL_(UnregisterWait)
+# endif /* !WINSTL_API_EXTERNAL_Synchronization_UnregisterWait */
+
+# ifndef WINSTL_API_EXTERNAL_Synchronization_UnregisterWaitEx
+#  define WINSTL_API_EXTERNAL_Synchronization_UnregisterWaitEx                                      STLSOFT_NS_GLOBAL_(UnregisterWaitEx)
+# endif /* !WINSTL_API_EXTERNAL_Synchronization_UnregisterWaitEx */
+#endif
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjects
+# define WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjects                                 STLSOFT_NS_GLOBAL_(WaitForMultipleObjects)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjects */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjectsEx
+# define WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjectsEx                               STLSOFT_NS_GLOBAL_(WaitForMultipleObjectsEx)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WaitForMultipleObjectsEx */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject
+# define WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject                                    STLSOFT_NS_GLOBAL_(WaitForSingleObject)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObjectEx
+# define WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObjectEx                                  STLSOFT_NS_GLOBAL_(WaitForSingleObjectEx)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObjectEx */
+
+#if 0
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WaitOnAddress
+# define WINSTL_API_EXTERNAL_Synchronization_WaitOnAddress                                          STLSOFT_NS_GLOBAL_(WaitOnAddress)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WaitOnAddress */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WakeByAddressAll
+# define WINSTL_API_EXTERNAL_Synchronization_WakeByAddressAll                                       STLSOFT_NS_GLOBAL_(WakeByAddressAll)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WakeByAddressAll */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WakeByAddressSingle
+# define WINSTL_API_EXTERNAL_Synchronization_WakeByAddressSingle                                    STLSOFT_NS_GLOBAL_(WakeByAddressSingle)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WakeByAddressSingle */
+#endif
 
 /* *************************************
  * Waitable Timer functions

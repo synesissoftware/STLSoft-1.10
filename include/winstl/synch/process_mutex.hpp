@@ -4,11 +4,11 @@
  * Purpose:     Inter-process mutex, based on Windows MUTEX.
  *
  * Created:     15th May 2002
- * Updated:     23rd August 2017
+ * Updated:     16th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 12
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     76
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 13
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ namespace winstl_project
 
 // class process_mutex
 /** This class acts as an inter-process mutex based on the Win32
- *   mutex kernel object
+ *   MUTEX kernel object
  *
  * \ingroup group__library__Synch
  */
@@ -130,56 +130,85 @@ public:
 public:
     /// Creates an instance of the mutex
     process_mutex()
-        : m_mx(create_mutex_(NULL, false, static_cast<ws_char_a_t const*>(0), m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, false, static_cast<ws_char_a_t const*>(0), m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Conversion constructor
-    process_mutex(resource_type mx, bool_type bTakeOwnership)
+    /// Conversion constructor, taking control of the native MUTEX handle in
+    /// the constructed instance
+    ///
+    /// \exception noexcept
+    process_mutex(resource_type mx, bool_type bTakeOwnership) STLSOFT_NOEXCEPT
         : m_mx(mx)
         , m_bOwnHandle(bTakeOwnership)
         , m_bCreated(false)
         , m_bAbandoned(false)
     {
-        WINSTL_ASSERT(NULL != mx);
+        WINSTL_ASSERT(ss_nullptr_k != mx);
     }
-    /// Creates an instance of the mutex
+    /// Creates an instance of the mutex with the given name
     ss_explicit_k process_mutex(ws_char_a_t const* name)
-        : m_mx(create_mutex_(NULL, false, name, m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, false, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// Creates an instance of the mutex with the given name
     ss_explicit_k process_mutex(ws_char_w_t const* name)
-        : m_mx(create_mutex_(NULL, false, name, m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, false, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// [DEPRECATED] Creates an instance of the mutex with the given
+    /// initial ownership
+    ///
+    /// \deprecated This method uses a Boolean parameter, which means that
+    ///   it reduces transparency when used in client code. It will be
+    ///   replaced in a future version of the libraries
+    STLSOFT_DECLARE_DEPRECATION()
     ss_explicit_k process_mutex(bool_type bInitialOwer)
-        : m_mx(create_mutex_(NULL, bInitialOwer, static_cast<ws_char_a_t const*>(0), m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, static_cast<ws_char_a_t const*>(0), m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// [DEPRECATED] Creates an instance of the mutex with the given name
+    /// and initial ownership
+    ///
+    /// \deprecated This method uses a Boolean parameter, which means that
+    ///   it reduces transparency when used in client code. It will be
+    ///   replaced in a future version of the libraries
     process_mutex(ws_char_a_t const* name, bool_type bInitialOwer)
-        : m_mx(create_mutex_(NULL, bInitialOwer, name, m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// [DEPRECATED] Creates an instance of the mutex with the given name
+    /// and initial ownership
+    ///
+    /// \deprecated This method uses a Boolean parameter, which means that
+    ///   it reduces transparency when used in client code. It will be
+    ///   replaced in a future version of the libraries
     process_mutex(ws_char_w_t const* name, bool_type bInitialOwer)
-        : m_mx(create_mutex_(NULL, bInitialOwer, name, m_bCreated))
+        : m_mx(create_mutex_(ss_nullptr_k, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// [DEPRECATED] Creates an instance of the mutex with the given name,
+    /// initial ownership, and security attributes
+    ///
+    /// \deprecated This method uses a Boolean parameter, which means that
+    ///   it reduces transparency when used in client code. It will be
+    ///   replaced in a future version of the libraries
     process_mutex(ws_char_a_t const* name, bool_type bInitialOwer, LPSECURITY_ATTRIBUTES psa)
         : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
         , m_bAbandoned(false)
     {}
-    /// Creates an instance of the mutex
+    /// [DEPRECATED] Creates an instance of the mutex with the given name,
+    /// initial ownership, and security attributes
+    ///
+    /// \deprecated This method uses a Boolean parameter, which means that
+    ///   it reduces transparency when used in client code. It will be
+    ///   replaced in a future version of the libraries
     process_mutex(ws_char_w_t const* name, bool_type bInitialOwer, LPSECURITY_ATTRIBUTES psa)
         : m_mx(create_mutex_(psa, bInitialOwer, name, m_bCreated))
         , m_bOwnHandle(true)
@@ -189,7 +218,7 @@ public:
     /// Destroys an instance of the mutex
     ~process_mutex() STLSOFT_NOEXCEPT
     {
-        if( NULL != m_mx &&
+        if( ss_nullptr_k != m_mx &&
             m_bOwnHandle)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_mx);
@@ -206,9 +235,9 @@ public:
     /// Acquires a lock on the mutex, pending the thread until the lock is aquired
     void lock()
     {
-        WINSTL_ASSERT(NULL != m_mx);
+        WINSTL_ASSERT(ss_nullptr_k != m_mx);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_mx, INFINITE);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_mx, INFINITE);
 
         if(WAIT_ABANDONED == dwRes)
         {
@@ -233,9 +262,9 @@ public:
     /// Acquires a lock on the mutex, pending the thread until the lock is aquired
     bool_type lock(ws_dword_t wait)
     {
-        WINSTL_ASSERT(NULL != m_mx);
+        WINSTL_ASSERT(ss_nullptr_k != m_mx);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_mx, wait);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_mx, wait);
 
         if(WAIT_ABANDONED == dwRes)
         {
@@ -278,7 +307,7 @@ public:
     /// Releases an aquired lock on the mutex
     void unlock()
     {
-        WINSTL_ASSERT(NULL != m_mx);
+        WINSTL_ASSERT(ss_nullptr_k != m_mx);
 
         if(!WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex(m_mx))
         {
@@ -340,7 +369,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_CreateMutexA(psa, bInitialOwner, name);
 
-        if(NULL == mx)
+        if(ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -351,7 +380,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != ss_nullptr_k && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -359,7 +388,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_CreateMutexW(psa, bInitialOwner, name);
 
-        if(NULL == mx)
+        if(ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -370,7 +399,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != ss_nullptr_k && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -378,7 +407,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_OpenMutexA(access, bInheritHandle, name);
 
-        if(NULL == mx)
+        if(ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -389,7 +418,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != ss_nullptr_k && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
@@ -397,7 +426,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_OpenMutexW(access, bInheritHandle, name);
 
-        if(NULL == mx)
+        if(ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -408,7 +437,7 @@ private:
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
-        bCreated = (mx != NULL && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
+        bCreated = (mx != ss_nullptr_k && WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() != ERROR_ALREADY_EXISTS);
 
         return mx;
     }
