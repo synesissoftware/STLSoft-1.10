@@ -4,14 +4,14 @@
  * Purpose:     Special string instance class template.
  *
  * Created:     3rd June 2006
- * Updated:     19th February 2017
+ * Updated:     18th December 2018
  *
  * Thanks to:   Pablo Aguilar for spotting my omission of string access shims
  *              for special_string_instance_1.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MAJOR       1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        35
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -88,9 +88,16 @@
 #ifndef STLSOFT_INCL_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF
 # include <stlsoft/meta/select_first_type_if.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF */
+#ifndef STLSOFT_INCL_STLSOFT_META_HPP_YESNO
+# include <stlsoft/meta/yesno.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_META_HPP_YESNO */
 #ifndef STLSOFT_INCL_STLSOFT_SYNCH_HPP_LOCK_SCOPE
 # include <stlsoft/synch/lock_scope.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_HPP_LOCK_SCOPE */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -487,6 +494,132 @@ private:
 /// @}
 };
 
+template<
+    ss_typename_param_k T_policy
+,   ss_typename_param_k T_ssi
+>
+struct special_string_instance_base
+{
+public: // types
+    /// The policy type.
+    typedef T_policy                                        policy_type;
+    /// The SSI type
+    typedef T_ssi                                           ssi_type;
+    /// The character type
+    typedef ss_typename_type_k policy_type::char_type       char_type;
+    /// The size type
+    typedef ss_typename_type_k policy_type::size_type       size_type;
+
+private: // constants
+    enum { caseSensitive = policy_type::caseSensitive };
+
+public: // operations
+    template <ss_typename_param_k T_string>
+    bool
+    equal(
+        T_string const&   s
+    ) const
+    {
+        T_ssi const& ssi = static_cast<T_ssi const&>(*this);
+
+        return equal_n_(
+            ssi.data(), ssi.size()
+        ,   stlsoft::c_str_data(s), stlsoft::c_str_len(s)
+        );
+    }
+
+private: // implementation
+    bool
+    equal_n_(
+        char_type const*  s1
+    ,   size_type         cch1
+    ,   char_type const*  s2
+    ,   size_type         cch2
+    ) const
+    {
+        typedef ss_typename_type_k value_to_yesno_type<caseSensitive>::type   yesno_t;
+
+        if(cch1 != cch2)
+        {
+            return false;
+        }
+
+        return equal_iscasesensitive_(
+            s1, cch1
+        ,   s2, cch2
+        ,   yesno_t()
+        );
+    }
+
+    bool
+    equal_iscasesensitive_(
+        char_type const*      s1
+    ,   size_type             cch1
+    ,   char_type const*      s2
+    ,   size_type             cch2
+    ,   yes_type
+    ) const
+    {
+        return equal_casesensitive_(s1, cch1, s2, cch2);
+    }
+
+    bool
+    equal_iscasesensitive_(
+        char_type const*      s1
+    ,   size_type             cch1
+    ,   char_type const*      s2
+    ,   size_type             cch2
+    ,   no_type
+    ) const
+    {
+        return equal_caseinsensitive_(s1, cch1, s2, cch2);
+    }
+
+    bool
+    equal_casesensitive_(
+        ss_char_a_t const*    s1
+    ,   size_type             cch1
+    ,   ss_char_a_t const*    s2
+    ,   size_type          /* cch2 */
+    ) const
+    {
+        return 0 == ::strncmp(s1, s2, cch1);
+    }
+
+    bool
+    equal_casesensitive_(
+        ss_char_w_t const*    s1
+    ,   size_type             cch1
+    ,   ss_char_w_t const*    s2
+    ,   size_type          /* cch2 */
+    ) const
+    {
+        return 0 == ::wcsncmp(s1, s2, cch1);
+    }
+
+    bool
+    equal_caseinsensitive_(
+        ss_char_a_t const*    s1
+    ,   size_type             cch1
+    ,   ss_char_a_t const*    s2
+    ,   size_type          /* cch2 */
+    ) const
+    {
+        return 0 == STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch1);
+    }
+
+    bool
+    equal_caseinsensitive_(
+        ss_char_w_t const*    s1
+    ,   size_type             cch1
+    ,   ss_char_w_t const*    s2
+    ,   size_type          /* cch2 */
+    ) const
+    {
+        return 0 == STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch1);
+    }
+};
+
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** Base type for policies
@@ -522,6 +655,8 @@ private:
 public:
     enum { allowImplicitConversion = 0 };
 
+    enum { caseSensitive = 0 };
+
     enum { sharedState = 0 };
 
     enum { internalBufferSize = -1 };
@@ -551,6 +686,7 @@ template<
 ,   ss_typename_param_k T_initex = ss_template_void_k
 >
 class special_string_instance_0
+    : public special_string_instance_base<T_policy, special_string_instance_0<T_policy, T_initex> >
 {
 /// \name Member Types
 /// @{
@@ -769,6 +905,7 @@ template<
 ,   ss_typename_param_k T_initex = ss_template_void_k
 >
 class special_string_instance_1
+    : public special_string_instance_base<T_policy, special_string_instance_1<T_policy, T_initex> >
 {
 /// \name Member Types
 /// @{
@@ -952,6 +1089,66 @@ private:
     buffer_type_ m_buffer;
 /// @}
 };
+
+/* /////////////////////////////////////////////////////////////////////////
+ * operators
+ */
+
+template<
+    ss_typename_param_k T_policy
+,   ss_typename_param_k T_ssi
+,   ss_typename_param_k T_string
+>
+bool
+operator ==(
+    special_string_instance_base<T_policy, T_ssi> const&  lhs
+,   T_string const&                                       rhs
+)
+{
+    return lhs.equal(rhs);
+}
+
+template<
+    ss_typename_param_k T_policy
+,   ss_typename_param_k T_ssi
+,   ss_typename_param_k T_string
+>
+bool
+operator ==(
+    T_string const&                                       lhs
+,   special_string_instance_base<T_policy, T_ssi> const&  rhs
+)
+{
+    return rhs.equal(lhs);
+}
+
+template<
+    ss_typename_param_k T_policy
+,   ss_typename_param_k T_ssi
+,   ss_typename_param_k T_string
+>
+bool
+operator !=(
+    special_string_instance_base<T_policy, T_ssi> const&  lhs
+,   T_string const&                                       rhs
+)
+{
+    return !lhs.equal(rhs);
+}
+
+template<
+    ss_typename_param_k T_policy
+,   ss_typename_param_k T_ssi
+,   ss_typename_param_k T_string
+>
+bool
+operator !=(
+    T_string const&                                       lhs
+,   special_string_instance_base<T_policy, T_ssi> const&  rhs
+)
+{
+    return !rhs.equal(lhs);
+}
 
 /* /////////////////////////////////////////////////////////////////////////
  * shims
