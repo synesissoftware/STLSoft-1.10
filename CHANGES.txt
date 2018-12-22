@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  20th December 2018
+; Updated:  22nd December 2018
 
 ============================================================================
 
@@ -16,6 +16,34 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+============================================================================
+
+Changes for 1.10.1 beta 11 (22nd December 2018)
+
+General:
+========
+
+ * stlsoft::ref_ptr : + borrow(); + own()
+ * winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + exists(); + operators ==() and !=()
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/smartptr/ref_ptr.hpp:
+    stlsoft::ref_ptr : + borrow(); + own()
+    stlsoft::ref_ptr : ~ (in)equality operators declared noexcept
+
+ WinSTL:
+ =======
+
+ ~ winstl/system/environment_variable.hpp:
+    winstl::environment_variable : - reduced dependencies
+    winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + operators ==() and !=()
+    winstl::environment_variable : + refactored, and added exists() method
 
 ============================================================================
 
