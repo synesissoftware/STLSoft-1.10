@@ -4,7 +4,7 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     18th December 2018
+ * Updated:     22nd December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR     0
-# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION  10
-# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      23
+# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION  11
+# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -203,6 +203,8 @@ translate_thousands(
 ,   C           outputSep
 )
 {
+    typedef char_traits<C>  traits_t;
+
     ss_size_t const cchRawNumber = traits_t::length(rawNumber);
 
     return translate_thousands(dest, cchDest, picture, rawNumber, cchRawNumber, fmtSep, outputSep);

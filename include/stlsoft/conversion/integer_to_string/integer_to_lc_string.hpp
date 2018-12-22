@@ -5,11 +5,11 @@
  *              functions for decimal representation.
  *
  * Created:     1st November 2011
- * Updated:     11th January 2017
+ * Updated:     22nd December 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_MINOR    0
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_REVISION 12
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_EDIT     14
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_REVISION 13
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_EDIT     15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,7 +106,7 @@ integer_to_lc_string(
 )
 {
     STLSOFT_ASSERT(NULL != grouping);
-    STLSOFT_ASSERT('\0' == grouping[0] || NULL != thousands_sep);
+    STLSOFT_ASSERT('\0' == grouping[0] || 0 != thousands_sep);
     STLSOFT_ASSERT(NULL != dest);
 
     ss_size_t dummy;
