@@ -1,9 +1,18 @@
 # STLSoft-1.10
+
 Version 1.10 of STLSoft libraries
 
 # Releases
 
-## 1.10.1 beta-10 (Latest) - 20th December 2018
+## 1.10.1 beta-11 (Latest) - 22nd December 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.0.1-beta11>
+
+ * stlsoft::ref_ptr : + borrow(); + own()
+ * UNIXSTL special string instances : + added standard string access shims
+ * winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + exists(); + operators ==() and !=()
+
+## 1.10.1 beta-10 - 20th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.0.1-beta10>
 
