@@ -4,7 +4,7 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     19th December 2018
+ * Updated:     22nd December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       507
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      5
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   1
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       509
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,6 +116,35 @@ inline void release_reference(I* pi)
     STLSOFT_ASSERT(NULL != pi);
 
     pi->Release();
+}
+
+/** Degenerate implementation of instance borrowing, which adds a reference
+ * (via the matched add_reference() overload)
+ *
+ * \ingroup group__library__SmartPointer
+ */
+template<ss_typename_param_k I>
+inline void borrow_reference(I* pi)
+{
+    STLSOFT_ASSERT(NULL != pi);
+
+    add_reference(pi);
+}
+
+/** Degenerate implementation of instance owning, which DOES NOT add a
+ * reference, since the default assumption is that instances are created
+ * with an initial reference count of 1
+ *
+ * \ingroup group__library__SmartPointer
+ *
+ * \note The assumption of initial reference count of 1 is NOT what ATL does
+ */
+template<ss_typename_param_k I>
+inline void own_reference(I* pi)
+{
+    STLSOFT_ASSERT(NULL != pi);
+
+    STLSOFT_SUPPRESS_UNUSED(pi);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -206,6 +235,11 @@ public: // construction
     /// ownership of it. In such a case, \c false should be specified as the second
     /// parameter. If, however, a reference is being "borrowed", then \c true should
     /// be specified.
+    ///
+    /// \deprecated This is now deprecated in favour of the borrow() and own()
+    /// creation methods, for the reasons described in
+    /// <a href="https://accu.org/index.php/journals/2183" /> and
+    /// <a href="https://martinfowler.com/bliki/FlagArgument.html" />.
     ref_ptr(counted_type* c, bool_type bAddRef)
         : m_pi(i_from_c(c))
     {
@@ -332,6 +366,58 @@ public: // construction
         return *this;
     }
 #endif /* compiler */
+
+    /// Creates an instance by "borrowing" the given pointer to the counted
+    /// type, which means that it is assumed that the instance is already
+    /// owned
+    ///
+    /// \param c Pointer to a counted_type. May be nullptr
+    template<
+        ss_typename_param_k T_borrowedType
+    >
+    static
+    class_type
+    borrow(
+        T_borrowedType* c
+    )
+    {
+        class_type r;
+
+        if(ss_nullptr_k != c)
+        {
+            borrow_reference(c);
+
+            r.m_pi = c;
+        }
+
+        return r;
+    }
+
+    /// Creates an instance by "owning" the given pointer to the counted
+    /// type, which means that it is assumed that the instance is not (yet)
+    /// owned elsehwere
+    ///
+    /// \param c Pointer to a counted_type. May be nullptr
+    template<
+        ss_typename_param_k T_ownedType
+    >
+    static
+    class_type
+    own(
+        T_ownedType* c
+    )
+    {
+        class_type r;
+
+        if(ss_nullptr_k != c)
+        {
+            own_reference(c);
+
+            r.m_pi = c;
+        }
+
+        return r;
+    }
 /// @}
 
 /// \name Operations
@@ -471,7 +557,7 @@ ss_bool_t
 operator ==(
     ref_ptr<T, I, U> const& lhs
 ,   ref_ptr<T, I, U> const& rhs
-)
+) STLSOFT_NOEXCEPT
 {
     return lhs.equal(rhs);
 }
@@ -486,7 +572,7 @@ ss_bool_t
 operator !=(
     ref_ptr<T, I, U> const& lhs
 ,   ref_ptr<T, I, U> const& rhs
-)
+) STLSOFT_NOEXCEPT
 {
     return !lhs.equal(rhs);
 }
