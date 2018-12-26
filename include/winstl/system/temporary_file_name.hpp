@@ -5,7 +5,7 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     18th December 2018
+ * Updated:     26th December 2018
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      16
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -179,133 +179,133 @@ private:
 
     static size_type get_temporary_file_name(ws_char_a_t* buff, size_type cchBuff)
     {
-		WINSTL_ASSERT(0 == cchBuff || NULL != buff);
+        WINSTL_ASSERT(0 == cchBuff || NULL != buff);
 
         // No need for truncation test/cast here.
-		ws_char_a_t	dirPath_[1 + MAX_PATH] = { 0 } ;
-		ws_char_a_t	filePath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_a_t dirPath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_a_t filePath_[1 + MAX_PATH] = { 0 } ;
 
-		DWORD const	dw	=	::GetTempPathA(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
+        DWORD const dw = ::GetTempPathA(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-		if(0 == dw)
-		{
-			DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        if(0 == dw)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		UINT const	r	=	::GetTempFileNameA(&dirPath_[0], "wst", 0, &filePath_[0]);
+        UINT const  r   =   ::GetTempFileNameA(&dirPath_[0], "wst", 0, &filePath_[0]);
 
-		if(0 == r)
-		{
-			DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        if(0 == r)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		size_t		cch	=	traits_type_::str_len(filePath_);
+        size_t      cch =   traits_type_::str_len(filePath_);
 
-		if(0 != cchBuff)
-		{
-			if(cch > cchBuff)
-			{
-				cch = cchBuff;
-			}
+        if(0 != cchBuff)
+        {
+            if(cch > cchBuff)
+            {
+                cch = cchBuff;
+            }
 
-			traits_type_::char_copy(buff, filePath_, cch);
+            traits_type_::char_copy(buff, filePath_, cch);
 
-			if(cch < cchBuff)
-			{
-				buff[cch] = '\0';
-			}
-		}
+            if(cch < cchBuff)
+            {
+                buff[cch] = '\0';
+            }
+        }
 
-	    return cch;
+        return cch;
     }
     static size_type get_temporary_file_name(ws_char_w_t* buff, size_type cchBuff)
     {
-		WINSTL_ASSERT(0 == cchBuff || NULL != buff);
+        WINSTL_ASSERT(0 == cchBuff || NULL != buff);
 
         // No need for truncation test/cast here.
-		ws_char_w_t	dirPath_[1 + MAX_PATH] = { 0 } ;
-		ws_char_w_t	filePath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_w_t dirPath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_w_t filePath_[1 + MAX_PATH] = { 0 } ;
 
-		DWORD const	dw	=	::GetTempPathW(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
+        DWORD const dw  =   ::GetTempPathW(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-		if(0 == dw)
-		{
-			DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        if(0 == dw)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		UINT const	r	=	::GetTempFileNameW(&dirPath_[0], L"wst", 0, &filePath_[0]);
+        UINT const  r   =   ::GetTempFileNameW(&dirPath_[0], L"wst", 0, &filePath_[0]);
 
-		if(0 == r)
-		{
-			DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        if(0 == r)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		size_t		cch	=	traits_type_::str_len(filePath_);
+        size_t      cch =   traits_type_::str_len(filePath_);
 
-		if(0 != cchBuff)
-		{
-			if(cch > cchBuff)
-			{
-				cch = cchBuff;
-			}
+        if(0 != cchBuff)
+        {
+            if(cch > cchBuff)
+            {
+                cch = cchBuff;
+            }
 
-			traits_type_::char_copy(buff, filePath_, cch);
+            traits_type_::char_copy(buff, filePath_, cch);
 
-			if(cch < cchBuff)
-			{
-				buff[cch] = '\0';
-			}
-		}
+            if(cch < cchBuff)
+            {
+                buff[cch] = '\0';
+            }
+        }
 
-	    return cch;
+        return cch;
     }
 };
 

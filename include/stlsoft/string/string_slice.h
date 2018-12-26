@@ -4,11 +4,11 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     27th January 2017
+ * Updated:     26th December 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    3
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 2
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     21
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,13 +173,13 @@ struct string_slice_selection_traits_t;
 STLSOFT_TEMPLATE_SPECIALISATION
 struct string_slice_selection_traits_t<char>
 {
-	typedef stlsoft_C_string_slice_a_t	slice_type;
+    typedef stlsoft_C_string_slice_a_t  slice_type;
 };
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct string_slice_selection_traits_t<wchar_t>
 {
-	typedef stlsoft_C_string_slice_w_t	slice_type;
+    typedef stlsoft_C_string_slice_w_t  slice_type;
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */

@@ -4,11 +4,11 @@
  * Purpose:     Stopwatch scope class.
  *
  * Created:     20th July 2002
- * Updated:     13th January 2017
+ * Updated:     26th December 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_HPP_STOPWATCH_SCOPE_MAJOR      5
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_HPP_STOPWATCH_SCOPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_HPP_STOPWATCH_SCOPE_REVISION   2
-# define STLSOFT_VER_STLSOFT_DIAGNOSTICS_HPP_STOPWATCH_SCOPE_EDIT       49
+# define STLSOFT_VER_STLSOFT_DIAGNOSTICS_HPP_STOPWATCH_SCOPE_EDIT       50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -144,7 +144,7 @@ public: // Operations
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 private: // Fields
-    stopwatch_type&	m_stopwatch;
+    stopwatch_type& m_stopwatch;
 };
 
 /* ////////////////////////////////////////////////////////////////////// */

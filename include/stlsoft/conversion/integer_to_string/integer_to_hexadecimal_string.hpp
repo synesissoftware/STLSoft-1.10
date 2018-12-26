@@ -5,7 +5,7 @@
  *              hexadecimal representation.
  *
  * Created:     7th April 2002
- * Updated:     9th June 2018
+ * Updated:     26th December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MINOR       0
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    18
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        90
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -432,7 +432,7 @@ i2s_handle_signed_minimum_in_hexadecimal_(
 
     typedef size_type<sizeofI>      sized_t;
 
-	// Need to use ???_hexadecimal_2_ otherwise get ambiguities
+    // Need to use ???_hexadecimal_2_ otherwise get ambiguities
     return i2s_handle_signed_minimum_in_hexadecimal_2_(buf, cchBuf, sized_t());
 }
 
