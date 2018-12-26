@@ -4,7 +4,17 @@ Version 1.10 of STLSoft libraries
 
 # Releases
 
-## 1.10.1 beta-11 (Latest) - 22nd December 2018
+## 1.10.1 beta-12 (Latest) - 26th December 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.0.1-beta12>
+
+ * added sas_to_string() (and related) functions
+ * added stlsoft::errno_exception (from 1.12 branch)
+ * added stlsoft::locale_scope
+ * STLSoft's struct tm String Access Shims now work for arbitrary locale
+ * UNIXSTL's timeval String Access Shims now work for arbitrary locale
+
+## 1.10.1 beta-11 - 22nd December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.0.1-beta11>
 
