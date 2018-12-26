@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  22nd December 2018
+; Updated:  26th December 2018
 
 ============================================================================
 
@@ -15,6 +15,45 @@ STLSoft - Changes
    *   *  means a general bullet-point  *
    *                                    *
    **************************************
+
+
+============================================================================
+
+Changes for 1.10.1 beta 12 (26th December 2018)
+
+General:
+========
+
+ * added sas_to_string() (and related) functions
+ * added stlsoft::errno_exception (from 1.12 branch)
+ * added stlsoft::locale_scope
+ * STLSoft's struct tm String Access Shims now work for arbitrary locale
+ * UNIXSTL's timeval String Access Shims now work for arbitrary locale
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/conversion/sas_to_string.hpp:
+    + added sas_to_string() (and related) functions
+
+ ~ stlsoft/exception/special/errno_exception.hpp:
+    + stlsoft::errno_exception (from 1.12 branch)
+
+ + stlsoft/locale/exception/locale_exception.hpp:
+ + stlsoft/locale/locale_scope.hpp:
+    + stlsoft::locale_scope
+
+ ~ stlsoft/shims/access/string/std/time.hpp:
+    ~ STLSoft's struct tm String Access Shims now work for arbitrary locale
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/shims/access/string/timeval.hpp:
+    ~ UNIXSTL's timeval String Access Shims now work for arbitrary locale
 
 
 ============================================================================

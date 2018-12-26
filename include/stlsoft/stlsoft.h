@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     22nd December 2018
+ * Updated:     26th December 2018
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    46
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 4
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     499
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     501
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -310,12 +310,13 @@
 # define _STLSOFT_VER_1_10_1_B09    0x010a0189  /*!< Version 1.10.1 beta 9 (11th June 2018) */
 # define _STLSOFT_VER_1_10_1_B10    0x010a018a  /*!< Version 1.10.1 beta 10 (20th December 2018) */
 # define _STLSOFT_VER_1_10_1_B11    0x010a018b  /*!< Version 1.10.1 beta 11 (22nd December 2018) */
+# define _STLSOFT_VER_1_10_1_B12    0x010a018c  /*!< Version 1.10.1 beta 12 (26th December 2018) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B11
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B12
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -3001,7 +3002,7 @@ inline void stlsoft_suppress_unused_func(size_t )
 
 STLSOFT_INLINE
 # if defined(STLSOFT_CF_constexpr_KEYWORD_SUPPORT) && \
-	 !defined(STLSOFT_COMPILER_IS_MSVC)
+     !defined(STLSOFT_COMPILER_IS_MSVC)
 constexpr
 # endif
 ss_truthy_t
@@ -3016,7 +3017,7 @@ stlsoft_C_always_false_(void) STLSOFT_NOEXCEPT
 
 STLSOFT_INLINE
 # if defined(STLSOFT_CF_constexpr_KEYWORD_SUPPORT) && \
-	 !defined(STLSOFT_COMPILER_IS_MSVC)
+     !defined(STLSOFT_COMPILER_IS_MSVC)
 constexpr
 # endif
 ss_truthy_t
