@@ -4,11 +4,11 @@
  * Purpose:     Class that adapts a unary function to an output iterator.
  *
  * Created:     20th July 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_REVISION  4
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_EDIT      22
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_EDIT      23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -191,3 +191,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

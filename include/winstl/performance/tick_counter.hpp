@@ -4,11 +4,11 @@
  * Purpose:     WinSTL tick-count performance counter class.
  *
  * Created:     19th October 1998
- * Updated:     12th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_TICK_COUNTER_MAJOR       5
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_TICK_COUNTER_MINOR       0
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_TICK_COUNTER_REVISION    1
-# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_TICK_COUNTER_EDIT        52
+# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_TICK_COUNTER_EDIT        53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,3 +121,4 @@ typedef tick_stopwatch                          tick_counter;
 #endif /* !WINSTL_INCL_WINSTL_PERFORMANCE_HPP_TICK_COUNTER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

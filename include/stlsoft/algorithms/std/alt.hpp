@@ -5,11 +5,11 @@
  *              do or do not have a standard library.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MINOR       5
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        88
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -690,3 +690,4 @@ inline OI std_unique_copy(FI first, FI last, OI dest, BP pred)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_STD_HPP_ALT */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

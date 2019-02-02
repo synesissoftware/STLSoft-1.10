@@ -4,11 +4,11 @@
  * Purpose:     Windows console functions.
  *
  * Created:     6th August 2015
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        9
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -235,3 +235,4 @@ get_console_width()
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

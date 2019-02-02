@@ -4,11 +4,11 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     8
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,7 @@ namespace
 
     } instance;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
@@ -650,7 +650,7 @@ namespace
 
     } instance_posterior;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

@@ -5,11 +5,11 @@
  *              function template suite
  *
  * Created:     30th May 2006
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_REVISION    10
-# define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_EDIT        23
+# define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -530,3 +530,4 @@ wait_for_multiple_objects(
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

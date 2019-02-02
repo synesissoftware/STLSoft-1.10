@@ -4,11 +4,11 @@
  * Purpose:     Contains the get_ptr access shim.
  *
  * Created:     10th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_MAJOR      4
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_MINOR      0
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_REVISION   6
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_EDIT       53
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,7 @@ namespace stlsoft
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER != 1200
 /* pointer to const. */
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -92,7 +92,7 @@ inline T const* get_ptr(T const* p)
 }
 
 /* pointer to const volatile. */
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -102,7 +102,7 @@ inline T const volatile* get_ptr(T const volatile* p)
 }
 
 /* pointer to volatile. */
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -113,7 +113,7 @@ inline T volatile* get_ptr(T volatile* p)
 #endif /* VC++ 6.0  */
 
 /* pointer to non-const. */
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -139,3 +139,4 @@ inline T* get_ptr(T* p)
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

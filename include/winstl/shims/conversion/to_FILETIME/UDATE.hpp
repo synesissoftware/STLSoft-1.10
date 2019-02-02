@@ -4,11 +4,11 @@
  * Purpose:     winstl::to_FILETIME(UDATE const&) overload.
  *
  * Created:     15th January 2007
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2007-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE_MAJOR     1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE_MINOR     0
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE_REVISION  6
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE_EDIT      14
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE_EDIT      15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -153,3 +153,4 @@ inline const FILETIME to_FILETIME(UDATE const& rhs)
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_UDATE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

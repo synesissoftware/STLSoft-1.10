@@ -4,11 +4,11 @@
  * Purpose:     Deprecated algorithms.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_MAJOR    3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_MINOR    0
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_REVISION 8
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_EDIT     78
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -201,3 +201,4 @@ inline void remove_duplicates_from_unordered_sequence(C &container, P pred)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_HPP_DEPRECATED */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

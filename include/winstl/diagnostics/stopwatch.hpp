@@ -6,11 +6,11 @@
  *              otherwise using the tick-count facilities.
  *
  * Created:     31st July 2002
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR      5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION   2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT       42
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT       43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -738,3 +738,4 @@ stopwatch::stop_get_nanoseconds_and_restart()
 #endif /* !WINSTL_INCL_WINSTL_DIAGNOSTICS_HPP_STOPWATCH */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

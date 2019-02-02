@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     24th April 2004
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@
 # define INETSTL_VER_INETSTL_H_INETSTL_MAJOR    3
 # define INETSTL_VER_INETSTL_H_INETSTL_MINOR    9
 # define INETSTL_VER_INETSTL_H_INETSTL_REVISION 1
-# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     565
+# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     566
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file inetstl/inetstl.h
@@ -638,3 +638,4 @@ namespace inetstl = ::stlsoft::inetstl_project;
 #endif /* !INETSTL_INCL_INETSTL_H_INETSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

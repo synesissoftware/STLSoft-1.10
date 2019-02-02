@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     9th January 2017
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -152,3 +152,4 @@
 #endif /* !WINSTL_INCL_WINSTL_API_internal_h_Synchronization */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

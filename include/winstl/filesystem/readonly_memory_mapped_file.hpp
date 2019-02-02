@@ -4,11 +4,11 @@
  * Purpose:     Windows readonly (shareable) memory mapped file.
  *
  * Created:     30th August 2010
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR     2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR     0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION  2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT      13
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT      14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -503,3 +503,4 @@ get_memory_mapped_file_view_handle(
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

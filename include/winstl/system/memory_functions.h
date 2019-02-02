@@ -4,11 +4,11 @@
  * Purpose:     Memory functions.
  *
  * Created:     5th November 2014
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_REVISION   5
-# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       9
+# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,7 +106,7 @@ namespace winstl_project
  *   accessed, the returned value is obtained from
  *   <code>GlobalMemoryStatus</code> instead, which may truncate the actual
  *   physical memory size to its limit of 32-bits. This is detectable by use
- *   of <code>::GetLastError()</code> (which would return 
+ *   of <code>::GetLastError()</code> (which would return
  *   <code>ERROR_PROC_NOT_FOUND</code> if
  *   <code>GlobalMemoryStatusEx()</code> cannot be accessed), since
  *   <code>::GetLastError(0)</code> is invoked before attempting to load the
@@ -127,7 +127,7 @@ winstl_C_get_physical_memory_size(void)
     {
         return msex.ullTotalPhys;
     }
-#else 
+#else
 
     typedef struct MEMORYSTATUSEX_
     {
@@ -225,3 +225,4 @@ get_physical_memory_size()
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

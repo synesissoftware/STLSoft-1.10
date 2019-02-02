@@ -5,11 +5,11 @@
  *              information about the host system version.
  *
  * Created:     10th February 2002
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MAJOR      4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_REVISION   10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       69
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -269,3 +269,4 @@ system_version::get_versioninfo()
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_VERSION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

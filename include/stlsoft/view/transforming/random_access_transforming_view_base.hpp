@@ -4,11 +4,11 @@
  * Purpose:     Contains the random_access_transforming_view_base class template.
  *
  * Created:     4th January 2010
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_MINOR       1
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_REVISION    2
-# define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_EDIT        13
+# define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -338,3 +338,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

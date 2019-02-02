@@ -4,11 +4,11 @@
  * Purpose:     Platform header for the stopwatch components.
  *
  * Created:     20th March 2005
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR    3
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR    0
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION 1
-# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     22
+# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/diagnostics/stopwatch.hpp
@@ -165,3 +165,4 @@ namespace platformstl_project
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

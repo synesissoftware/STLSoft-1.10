@@ -4,11 +4,11 @@
  * Purpose:     VARIANT helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MINOR       2
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        15
+# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -381,3 +381,4 @@ comstl__VARIANT_equal(
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_VARIANT_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

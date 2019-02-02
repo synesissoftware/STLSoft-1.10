@@ -4,11 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     1st October 2016
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    8
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        12
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -289,3 +289,4 @@ get_home_directory(
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,14 +4,14 @@
  * Purpose:     UNIXSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     14th January 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Brad Cox, for helping out in testing and fixing the
  *              implementation for MAC OSX (Intel).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MAJOR     7
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      215
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      216
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -336,7 +336,7 @@ atomic_write(
   * Mac OS-X
   */
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -352,7 +352,7 @@ atomic_postadd(
 #  define UNIXSTL_HAS_atomic_postadd
 #  define UNIXSTL_HAS_ATOMIC_POSTADD
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -368,7 +368,7 @@ atomic_preadd(
 #  define UNIXSTL_HAS_atomic_preadd
 #  define UNIXSTL_HAS_ATOMIC_PREADD
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -383,7 +383,7 @@ atomic_decrement(
 #  define UNIXSTL_HAS_atomic_decrement
 #  define UNIXSTL_HAS_ATOMIC_DECREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -398,7 +398,7 @@ atomic_increment(
 #  define UNIXSTL_HAS_atomic_increment
 #  define UNIXSTL_HAS_ATOMIC_INCREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -413,7 +413,7 @@ atomic_postdecrement(
 #  define UNIXSTL_HAS_atomic_postdecrement
 #  define UNIXSTL_HAS_ATOMIC_POSTDECREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -428,7 +428,7 @@ atomic_predecrement(
 #  define UNIXSTL_HAS_atomic_predecrement
 #  define UNIXSTL_HAS_ATOMIC_PREDECREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -443,7 +443,7 @@ atomic_postincrement(
 #  define UNIXSTL_HAS_atomic_postincrement
 #  define UNIXSTL_HAS_ATOMIC_POSTINCREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -458,7 +458,7 @@ atomic_preincrement(
 #  define UNIXSTL_HAS_atomic_preincrement
 #  define UNIXSTL_HAS_ATOMIC_PREINCREMENT
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -475,7 +475,7 @@ atomic_read(
 #  define UNIXSTL_HAS_atomic_read
 #  define UNIXSTL_HAS_ATOMIC_READ
 
-/** 
+/**
  *
  * \ingroup group__library__Synch
  */
@@ -741,3 +741,4 @@ atomic_write(
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

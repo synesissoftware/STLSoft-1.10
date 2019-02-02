@@ -4,11 +4,11 @@
  * Purpose:     Control Panel functions.
  *
  * Created:     1st April 2006
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_REVISION   13
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       25
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -590,3 +590,4 @@ control_panel_stop(
 #endif /* !WINSTL_INCL_WINSTL_CONTROL_PANEL_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

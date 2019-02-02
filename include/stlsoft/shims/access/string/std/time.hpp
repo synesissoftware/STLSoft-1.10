@@ -4,11 +4,11 @@
  * Purpose:     String shims for standard time structures.
  *
  * Created:     25th July 2005
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MAJOR     3
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MINOR     0
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_REVISION  1
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      31
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -381,3 +381,4 @@ inline basic_shim_string<ss_char_a_t> c_str_ptr_null(struct tm const& t)
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Iterator generator classes, and helper macros.
  *
  * Created:     2nd January 2000
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS_MAJOR     3
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS_MINOR     3
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS_REVISION  4
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS_EDIT      101
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS_EDIT      102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -150,3 +150,4 @@ public:
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_GENERATORS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

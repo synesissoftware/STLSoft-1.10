@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     2nd March 1996
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    10
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        169
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        170
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -312,3 +312,4 @@ inline LPOLESTR olestring_dup(LPCOLESTR posz)
 #endif /* !COMSTL_INCL_COMSTL_STRING_H_OLESTRING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

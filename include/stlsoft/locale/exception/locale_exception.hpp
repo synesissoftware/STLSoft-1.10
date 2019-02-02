@@ -4,7 +4,7 @@
  * Purpose:     Defines the locale_exception exception class.
  *
  * Created:     25th December 2018
- * Updated:     25th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_MAJOR      1
 # define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_MINOR      0
 # define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_REVISION   1
-# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_EDIT       2
+# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,3 +149,4 @@ public: // fields
 #endif /* !STLSOFT_INCL_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

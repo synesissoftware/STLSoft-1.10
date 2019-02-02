@@ -5,11 +5,11 @@
  *              API.
  *
  * Created:     22nd October 2016
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -390,3 +390,4 @@
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Synchronization */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     7
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  1
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      118
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      119
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
@@ -595,3 +595,4 @@ namespace atlstl = ::stlsoft::atlstl_project;
 #endif /* !ATLSTL_INCL_ATLSTL_HPP_ATLSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

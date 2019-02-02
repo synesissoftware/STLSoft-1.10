@@ -5,11 +5,11 @@
  *              type methods.
  *
  * Created:     1st October 2014
- * Updated:     31st December 2016
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_MINOR       0
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_REVISION    1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_EDIT        3
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -211,3 +211,4 @@ is_null(
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

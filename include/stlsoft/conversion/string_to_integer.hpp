@@ -4,7 +4,7 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     18th November 2008
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Chris Oldwood for righteous criticism of one of my hastily-
  *              written articles, which led to the creation of the
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2008-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_REVISION  3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      61
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,7 +118,7 @@ namespace
 
     } instance;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -782,7 +782,7 @@ string_to_integer(
 
 /** Attempts to converts a decimal numeric string to an integer
  *
- * \retval true The string \c s contains a decimal number and ends with 
+ * \retval true The string \c s contains a decimal number and ends with
  * \retval false
  */
 template <
@@ -881,7 +881,7 @@ namespace
 
     } instance_posterior;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -902,3 +902,4 @@ namespace
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

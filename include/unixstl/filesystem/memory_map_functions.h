@@ -4,11 +4,11 @@
  * Purpose:     UNIX memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR    3
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR    1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION 1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT     102
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT     103
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -165,3 +165,4 @@ unmap_view_of_file(
 #endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     String utility functions for trimming and removing string contents.
  *
  * Created:     25th April 2005
- * Updated:     9th February 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MAJOR       2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MINOR       1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_REVISION    14
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        48
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -216,7 +216,7 @@ inline S& trim_left(S& str)
     return trim_left_impl(str, trimChars);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -308,7 +308,7 @@ inline S& trim_right(S& str)
     return trim_right_impl(str, trimChars);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -422,7 +422,7 @@ inline S& trim_all(S& str)
     return trim_all_impl(str, trimChars);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -472,7 +472,7 @@ inline S& remove_all_impl(S& str, ss_typename_type_k S::value_type const* remove
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -499,7 +499,7 @@ inline S& remove_all(S& str)
     return remove_all_impl(str, removeChars);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -528,3 +528,4 @@ inline S0& remove_all(S0& str, S1 const& removeChars)
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     errno scoping class.
  *
  * Created:     28th November 1998
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_MAJOR      3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_REVISION   7
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_EDIT       48
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_EDIT       49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,3 +171,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_ERROR_HPP_ERRNO_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

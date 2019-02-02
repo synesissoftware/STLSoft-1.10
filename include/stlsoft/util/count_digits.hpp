@@ -5,11 +5,11 @@
  *              number of (decimal) digits in an integer number.
  *
  * Created:     7th June 2011
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_REVISION  1
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      9
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -265,3 +265,4 @@ count_digits(
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_INCL_H_COUNT_DIGITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

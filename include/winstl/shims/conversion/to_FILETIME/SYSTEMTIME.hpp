@@ -4,11 +4,11 @@
  * Purpose:     winstl::to_FILETIME(SYSTEMTIME const&) overload.
  *
  * Created:     24th May 2002
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME_MAJOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME_MINOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME_REVISION 3
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME_EDIT     19
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,3 +162,4 @@ inline const FILETIME to_FILETIME(SYSTEMTIME const& rhs)
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_FILETIME_HPP_SYSTEMTIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

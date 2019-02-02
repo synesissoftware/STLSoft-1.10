@@ -4,11 +4,11 @@
  * Purpose:     COM-related exception classes, and their policy classes
  *
  * Created:     8th December 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@
 
 /** \file comstl/exception/variant_type_exception.hpp
  *
- * \brief [C++ only] Definition of the 
+ * \brief [C++ only] Definition of the
  *   comstl::variant_type_exception exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION_MAJOR       3
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION_MINOR       0
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION_REVISION    2
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION_EDIT        53
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION_EDIT        54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,3 +157,4 @@ private:
 #endif /* !COMSTL_INCL_COMSTL_EXCEPTION_HPP_VARIANT_TYPE_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

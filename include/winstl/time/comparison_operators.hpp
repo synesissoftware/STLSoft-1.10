@@ -4,11 +4,11 @@
  * Purpose:     Comparison operators for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_HPP_COMPARISON_OPERATORS_MAJOR      5
 # define WINSTL_VER_WINSTL_TIME_HPP_COMPARISON_OPERATORS_MINOR      0
 # define WINSTL_VER_WINSTL_TIME_HPP_COMPARISON_OPERATORS_REVISION   1
-# define WINSTL_VER_WINSTL_TIME_HPP_COMPARISON_OPERATORS_EDIT       58
+# define WINSTL_VER_WINSTL_TIME_HPP_COMPARISON_OPERATORS_EDIT       59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -468,3 +468,4 @@ operator >=(
 #endif /* !WINSTL_INCL_WINSTL_TIME_HPP_COMPARISON_OPERATORS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

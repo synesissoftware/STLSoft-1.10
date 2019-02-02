@@ -4,11 +4,11 @@
  * Purpose:     Error functions.
  *
  * Created:     20th October 1994
- * Updated:     24th August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_REVISION 6
-# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     145
+# define WINSTL_VER_WINSTL_WINDOW_H_GDI_FUNCTIONS_EDIT     146
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -233,3 +233,4 @@ inline LOGFONT get_LOGFONT(HFONT h)
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_H_GDI_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Range exceptions.
  *
  * Created:     30th December 2005
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MAJOR     2
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MINOR     0
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_REVISION  9
-# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      29
+# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -246,3 +246,4 @@ private:
 #endif /* !RANGELIB_INCL_RANGELIB_ERROR_HPP_EXCEPTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

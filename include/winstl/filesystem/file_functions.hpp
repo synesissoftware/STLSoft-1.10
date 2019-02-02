@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for file handling
  *
  * Created:     1st January 2005
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MINOR      3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   16
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       66
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -497,3 +497,4 @@ readlines(
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

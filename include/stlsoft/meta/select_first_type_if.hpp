@@ -4,11 +4,11 @@
  * Purpose:     Compile-time if component.
  *
  * Created:     19th November 1998
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MAJOR       3
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MINOR       18
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_REVISION    5
-# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        131
+# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        132
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -178,3 +178,4 @@ public:
 #endif /* !STLSOFT_INCL_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

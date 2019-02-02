@@ -4,11 +4,11 @@
  * Purpose:     Comparison functions for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MINOR    2
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     60
+# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -380,18 +380,18 @@ winstl_C_absolute_difference_in_microseconds_SYSTEMTIMEs(
 
             ss_uint64_t const   t1_us   =   0
                                         +   t1->wMilliseconds * us_in_ms
-                                        +   t1->wSecond * us_in_s   
-                                        +   t1->wMinute * us_in_m   
-                                        +   t1->wHour * us_in_h 
-                                        +   t1->wDay * us_in_d  
+                                        +   t1->wSecond * us_in_s
+                                        +   t1->wMinute * us_in_m
+                                        +   t1->wHour * us_in_h
+                                        +   t1->wDay * us_in_d
                                         ;
 
             ss_uint64_t const   t2_us   =   0
                                         +   t2->wMilliseconds * us_in_ms
-                                        +   t2->wSecond * us_in_s   
-                                        +   t2->wMinute * us_in_m   
-                                        +   t2->wHour * us_in_h 
-                                        +   t2->wDay * us_in_d  
+                                        +   t2->wSecond * us_in_s
+                                        +   t2->wMinute * us_in_m
+                                        +   t2->wHour * us_in_h
+                                        +   t2->wDay * us_in_d
                                         ;
 
             if(t1_us < t2_us)
@@ -749,3 +749,4 @@ STLSOFT_INLINE ws_sint_t winstl__compare_SYSTEMTIMEs(SYSTEMTIME const* lhs, SYST
 #endif /* !WINSTL_INCL_WINSTL_TIME_H_COMPARISON_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

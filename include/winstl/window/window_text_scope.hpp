@@ -4,11 +4,11 @@
  * Purpose:     Window text scoping class.
  *
  * Created:     21st August 2003
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MINOR    1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_REVISION 7
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     51
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -254,3 +254,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

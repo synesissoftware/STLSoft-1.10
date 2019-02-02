@@ -4,11 +4,11 @@
  * Purpose:     Algorithms for manipulating unordered sequences.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MAJOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MINOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_REVISION  6
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      81
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ find_first_duplicate(
     return STLSOFT_NS_QUAL_STD(make_pair)(last, last);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Algorithm
  *
@@ -171,7 +171,7 @@ inline STLSOFT_NS_QUAL_STD(pair)<I, I> find_first_duplicate(I first, I last, BP 
 #endif /* STLSOFT_CF_std_NAMESPACE */
 
 
-/** 
+/**
  *
  * \ingroup group__library__Algorithm
  *
@@ -213,7 +213,7 @@ inline FI unordered_unique(FI first, FI last)
     return first;
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Algorithm
  *
@@ -257,7 +257,7 @@ inline FI unordered_unique(FI first, FI last, BP pred)
     return first;
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Algorithm
  *
@@ -271,7 +271,7 @@ inline FI unordered_unique_if(FI first, FI last, BP pred)
     return unordered_unique(first, last, pred);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Algorithm
  *
@@ -480,3 +480,4 @@ inline ss_bool_t unordered_includes(I1 first1, I1 last1, I2 first2, I2 last2)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_HPP_UNORDERED */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,14 +4,14 @@
  * Purpose:     String slice functions.
  *
  * Created:     25th April 2005
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions, and
  *              collaboration on their implementation.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_MINOR      0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_REVISION   3
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_EDIT       20
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,3 +92,4 @@
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

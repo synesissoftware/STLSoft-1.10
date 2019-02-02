@@ -5,11 +5,11 @@
  *              Functions API.
  *
  * Created:     29th October 2016
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -224,3 +224,4 @@
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Time */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

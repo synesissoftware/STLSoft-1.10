@@ -5,13 +5,13 @@
  *              resource types.
  *
  * Created:     1st November 1994
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Adi Shavit, for requesting the indirect functionality
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MAJOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 2
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     678
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     679
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -943,3 +943,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

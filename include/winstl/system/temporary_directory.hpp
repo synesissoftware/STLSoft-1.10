@@ -5,13 +5,13 @@
  *              temporary directory.
  *
  * Created:     27th July 2010
- * Updated:     18th December 2018
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MINOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      12
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -237,3 +237,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,13 +5,13 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     24th August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Sam Fisher for requesting reg_delete_tree().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MAJOR    3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MINOR    5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 7
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     89
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,7 +187,7 @@ public:
     static result_type  reg_delete_value(hkey_type          hkey
                                     ,   char_type const*    valueName);
 
-    /// Deletes the key and all sub-keys, permissions allowing 
+    /// Deletes the key and all sub-keys, permissions allowing
     static result_type reg_delete_tree(
         hkey_type           hkey
     ,   char_type const*    sub_key_name
@@ -624,7 +624,7 @@ private:
 
         return r;
     }
-    
+
 };
 
 #endif /* STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -652,3 +652,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Defines the stlsoft::trip_bool class template.
  *
  * Created:     22nd October 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRIP_BOOL_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRIP_BOOL_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRIP_BOOL_REVISION    6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRIP_BOOL_EDIT        16
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRIP_BOOL_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ namespace stlsoft
 {
 #endif /* STLSOFT_NO_NAMESPACE */
 
-/** 
+/**
  *
  * \note This template was inspired by Bill Rubin's "Trip Switch Booleans in
  *  C++" article in August 2006 issue of CVu.
@@ -160,3 +160,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_TRIP_BOOL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

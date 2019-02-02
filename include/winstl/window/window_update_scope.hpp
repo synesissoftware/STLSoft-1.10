@@ -4,11 +4,11 @@
  * Purpose:     Window update-state scoping class.
  *
  * Created:     5th January 1996
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MAJOR      5
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_REVISION   6
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       87
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -168,3 +168,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

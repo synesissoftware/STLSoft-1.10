@@ -4,11 +4,11 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     22nd December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION  11
-# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      24
+# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,7 +90,7 @@ namespace stlsoft
  * functions
  */
 
-/** 
+/**
  *
  * \ingroup group__library__Conversion
  *
@@ -210,7 +210,7 @@ translate_thousands(
     return translate_thousands(dest, cchDest, picture, rawNumber, cchRawNumber, fmtSep, outputSep);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Conversion
  *
@@ -244,7 +244,7 @@ format_thousands(
     return translate_thousands(dest, cchDest, picture, rawNumber, cchRawNumber, fmtSep, outputSep);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Conversion
  *
@@ -291,3 +291,4 @@ format_thousands(
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

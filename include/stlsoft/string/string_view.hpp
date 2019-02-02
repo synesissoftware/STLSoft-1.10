@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    10
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        104
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        105
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1888,3 +1888,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_VIEW */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

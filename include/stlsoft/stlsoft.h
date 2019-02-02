@@ -6,11 +6,11 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    46
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     501
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     502
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -311,6 +311,7 @@
 # define _STLSOFT_VER_1_10_1_B10    0x010a018a  /*!< Version 1.10.1 beta 10 (20th December 2018) */
 # define _STLSOFT_VER_1_10_1_B11    0x010a018b  /*!< Version 1.10.1 beta 11 (22nd December 2018) */
 # define _STLSOFT_VER_1_10_1_B12    0x010a018c  /*!< Version 1.10.1 beta 12 (26th December 2018) */
+# define _STLSOFT_VER_1_10_1_B13    0x010a018d  /*!< Version 1.10.1 beta 13 (3rd February 2019) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1

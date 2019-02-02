@@ -4,11 +4,11 @@
  * Purpose:     Z-order iteration.
  *
  * Created:     11th July 2005
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MAJOR     2
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MINOR     0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_REVISION  10
-# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      53
+# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -476,3 +476,4 @@ inline bool zorder_iterator_tmpl<T>::equal(ss_typename_type_k zorder_iterator_tm
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_ZORDER_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

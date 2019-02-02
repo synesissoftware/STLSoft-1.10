@@ -4,11 +4,11 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR      3
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       119
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       120
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -881,3 +881,4 @@ map_readonly_view_of_file_by_name(
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

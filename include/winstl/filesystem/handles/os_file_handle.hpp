@@ -5,11 +5,11 @@
  *              Windows file handles.
  *
  * Created:     7th July 2010
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_MAJOR      1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_MINOR      0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_EDIT       11
+# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_EDIT       12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,7 +131,7 @@ public:
 
 public: // Construction
 
-    /// Creates an instance of the ref from the underlying 
+    /// Creates an instance of the ref from the underlying
     static Ref create(handle_type h)
     {
         return Ref(new class_type(h, true), false);
@@ -234,3 +234,4 @@ get_os_file_handle(
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

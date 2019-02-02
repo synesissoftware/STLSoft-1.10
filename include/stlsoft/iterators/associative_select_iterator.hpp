@@ -5,14 +5,14 @@
  *              underlying iterator in order to obtain the key/mapped type.
  *
  * Created:     28th January 2005
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Manfred Ehrhart, for detecting issues with iterator
  *              member types and select_second().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_MAJOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_MINOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_REVISION 5
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_EDIT     36
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_EDIT     37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -388,3 +388,4 @@ inline ss_bool_t operator !=(associative_select_iterator<I, F> const& lhs, assoc
 #endif /* !STLSOFT_INCL_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

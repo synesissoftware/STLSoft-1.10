@@ -4,11 +4,11 @@
  * Purpose:     Contains the proxy_ptr template class.
  *
  * Created:     17th January 1999
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1999-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MINOR       2
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_REVISION    1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        82
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -253,3 +253,4 @@ is_null(
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_PROXY_PTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

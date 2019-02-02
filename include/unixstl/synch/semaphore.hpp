@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on POSIX semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 13
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     34
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -394,3 +394,4 @@ public:
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_SEMAPHORE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

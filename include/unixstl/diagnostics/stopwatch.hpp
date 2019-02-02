@@ -4,11 +4,11 @@
  * Purpose:     stopwatch class.
  *
  * Created:     16th January 2002
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR    5
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR    0
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION 1
-# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     72
+# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -372,3 +372,4 @@ stopwatch::get_microseconds() const
 #endif /* !UNIXSTL_INCL_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

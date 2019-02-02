@@ -4,11 +4,11 @@
  * Purpose:     WinSTL high stopwatch class.
  *
  * Created:     19th October 1998
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_MAJOR      5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_REVISION   2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_EDIT       93
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_EDIT       94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -366,3 +366,4 @@ highperformance_stopwatch::get_nanoseconds() const
 #endif /* !WINSTL_INCL_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

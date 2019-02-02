@@ -4,11 +4,11 @@
  * Purpose:     integral_printf_traits classes.
  *
  * Created:     16th January 2002
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_MAJOR      6
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_REVISION   8
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_EDIT       81
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS_EDIT       82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -323,3 +323,4 @@ struct integral_printf_traits<char>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

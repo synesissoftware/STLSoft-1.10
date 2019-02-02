@@ -4,11 +4,11 @@
  * Purpose:     Contains the true_typedef class template.
  *
  * Created:     16th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_MAJOR     4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_REVISION  6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_EDIT      84
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_EDIT      85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -479,7 +479,7 @@ template<
 inline
 ss_bool_t
 operator >(
-    true_typedef<T, U> const&                                   lhs 
+    true_typedef<T, U> const&                                   lhs
 #ifdef STLSOFT_CF_TEMPLATE_OUTOFCLASSFN_QUALIFIED_TYPE_SUPPORT
 ,   ss_typename_type_k true_typedef<T, U>::value_type const&    rhs
 #else /* ? STLSOFT_CF_TEMPLATE_OUTOFCLASSFN_QUALIFIED_TYPE_SUPPORT */
@@ -1370,3 +1370,4 @@ operator |=(true_typedef<T, U> &v, true_typedef<T, U> const& rhs)
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_TRUE_TYPEDEF */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

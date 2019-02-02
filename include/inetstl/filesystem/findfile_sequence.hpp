@@ -5,11 +5,11 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     11th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1999-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR    3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR    0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 21
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     156
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     157
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1523,3 +1523,4 @@ using ::inetstl::c_str_ptr_null_w;
 #endif /* !INETSTL_INCL_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

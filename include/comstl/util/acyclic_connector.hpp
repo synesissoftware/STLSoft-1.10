@@ -4,11 +4,11 @@
  * Purpose:     A component for relating two COM objects without cycles.
  *
  * Created:     25th March 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_MAJOR     1
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_MINOR     2
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_REVISION  11
-# define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_EDIT      30
+# define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_EDIT      31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -455,3 +455,4 @@ inline ss_typename_type_ret_k acyclic_connector<MX>::class_type& acyclic_connect
 #endif /* !COMSTL_INCL_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

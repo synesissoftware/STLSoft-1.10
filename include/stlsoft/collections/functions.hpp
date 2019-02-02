@@ -4,11 +4,11 @@
  * Purpose:     Collection manipulation functions.
  *
  * Created:     11th November 2004
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_REVISION 7
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     44
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,3 +187,4 @@ inline ss_typename_type_ret_k M::mapped_type const& lookup(M const& m, K const& 
 #endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_HPP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

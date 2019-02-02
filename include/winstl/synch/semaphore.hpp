@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 16
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     40
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -532,3 +532,4 @@ public:
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_SEMAPHORE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

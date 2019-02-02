@@ -4,11 +4,11 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     15th May 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    6
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     18
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -441,3 +441,4 @@
 #include <stlsoft/internal/cccap/obsolete.h>
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

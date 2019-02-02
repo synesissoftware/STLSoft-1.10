@@ -5,11 +5,11 @@
  *              directory.
  *
  * Created:     5th June 2003
- * Updated:     18th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_REVISION 1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     69
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -238,3 +238,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_1)<moddir_policy<TCHAR> >       
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Options verification.
  *
  * Created:     9th November 2004
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_REVISION  9
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      54
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -386,3 +386,4 @@ inline options_verifier_comparison_ref<T, U1>& operator ||(options_verifier_comp
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

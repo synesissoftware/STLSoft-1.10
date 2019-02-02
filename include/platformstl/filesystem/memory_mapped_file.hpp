@@ -4,11 +4,11 @@
  * Purpose:     Platform header for the memory_mapped_file components.
  *
  * Created:     20th March 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION 4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT     26
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/memory_mapped_file.hpp
@@ -164,3 +164,4 @@ namespace platformstl_project
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

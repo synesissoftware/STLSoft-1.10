@@ -4,11 +4,11 @@
  * Purpose:     winstl::time_cast<>.
  *
  * Created:     26th May 2014
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MAJOR     2
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MINOR     0
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_REVISION  2
-# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      10
+# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -249,3 +249,4 @@ time_cast(T_from const& from)
 #endif /* !WINSTL_INCL_WINSTL_TIME_HPP_TIME_CAST */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

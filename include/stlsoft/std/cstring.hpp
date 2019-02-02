@@ -4,14 +4,14 @@
  * Purpose:     Mappings to std string functions
  *
  * Created:     2nd December 2004
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Anton Sekeris for providing good advice on the naming scheme
  *              for the stlsoft/std headers
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MAJOR      1
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MINOR      5
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_REVISION   10
-# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       43
+# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -532,3 +532,4 @@ inline ss_char_w_t* strdup(ss_char_w_t const* s)
 #endif /* !STLSOFT_INCL_STLSOFT_STD_HPP_CSTRING */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

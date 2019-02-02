@@ -4,11 +4,11 @@
  * Purpose:     Synchronisation API library exception(s).
  *
  * Created:     30th May 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_EXCEPTIONS_MAJOR     3
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_EXCEPTIONS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_EXCEPTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_EXCEPTIONS_EDIT      20
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_EXCEPTIONS_EDIT      21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,3 +149,4 @@ private:
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_EXCEPTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

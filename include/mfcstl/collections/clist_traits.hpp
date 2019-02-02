@@ -4,11 +4,11 @@
  * Purpose:     Definition of the CList_traits traits class.
  *
  * Created:     1st December 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MAJOR       3
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MINOR       0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_REVISION    5
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_EDIT        67
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_EDIT        68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -234,3 +234,4 @@ struct CList_specific_traits
 #endif /* !MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

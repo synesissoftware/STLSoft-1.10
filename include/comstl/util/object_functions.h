@@ -4,11 +4,11 @@
  * Purpose:     Reference-counting helper functions.
  *
  * Created:     2nd March 1996
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MAJOR    3
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MINOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_REVISION 1
-# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     75
+# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -371,3 +371,4 @@ is_interface_implemented(
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_OBJECT_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

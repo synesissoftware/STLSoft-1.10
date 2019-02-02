@@ -5,11 +5,11 @@
  *              home directory.
  *
  * Created:     30th September 2016
- * Updated:     22nd December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR    2
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 2
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     11
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -222,3 +222,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

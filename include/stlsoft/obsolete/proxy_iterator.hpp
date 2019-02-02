@@ -4,11 +4,11 @@
  * Purpose:     proxy_iterator template class.
  *
  * Created:     28th June 2004
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_REVISION   6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_EDIT       61
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_EDIT       62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -499,3 +499,4 @@ inline ss_ptrdiff_t operator >=(proxy_iterator<E, V, T, C, R, P> const& lhs, pro
 #endif /* !STLSOFT_INCL_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

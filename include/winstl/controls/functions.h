@@ -4,11 +4,11 @@
  * Purpose:     Various Windows control functions.
  *
  * Created:     13th November 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_MAJOR       4
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_MINOR       2
 # define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_REVISION    8
-# define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_EDIT        62
+# define WINSTL_VER_WINSTL_CONTROLS_H_FUNCTIONS_EDIT        63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -730,3 +730,4 @@ inline ws_int_t edit_getline(HWND hwnd, ws_int_t lineIndex, ws_char_w_t *buffer,
 #endif /* !WINSTL_INCL_WINSTL_CONTROLS_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

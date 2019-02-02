@@ -5,14 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     5th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        157
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        158
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1568,3 +1568,4 @@ namespace std
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_KEY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

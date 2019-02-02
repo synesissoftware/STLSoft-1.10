@@ -4,11 +4,11 @@
  * Purpose:     UNIXSTL time functions.
  *
  * Created:     2nd September 2005
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MAJOR      3
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_REVISION   7
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       30
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -211,3 +211,4 @@ micro_sleep(
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

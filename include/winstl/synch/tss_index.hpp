@@ -4,11 +4,11 @@
  * Purpose:     Wrapper class for Win32 TSS key.
  *
  * Created:     20th January 1999
- * Updated:     24th August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1999-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_MINOR    0
 # define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_REVISION 13
-# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_EDIT     50
+# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_EDIT     51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -285,3 +285,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_TSS_INDEX */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,13 +4,13 @@
  * Purpose:     String container slice functions.
  *
  * Created:     25th April 2005
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_MINOR    1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_REVISION 8
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_EDIT     34
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_EDIT     35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ inline ss_size_t left_len(S const& s, ss_size_t n)
  * string class functions
  */
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -134,7 +134,7 @@ inline S left(S const& s, ss_size_t n)
     return traits_t::construct(s, 0, left_len(s, n));
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -153,7 +153,7 @@ inline S right(S const& s, ss_size_t n)
     return traits_t::construct(s, len - n, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -191,7 +191,7 @@ inline S mid(S const& s, ss_size_t pos, ss_size_t n)
 #endif /* !STLSOFT_STRING_CONTAINER_SLICE_FNS_STRING_TEMPLATE */
 
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -202,7 +202,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> le
     return string_t(s, left_len(s, n));
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -211,7 +211,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> le
     return left(const_cast<ss_char_a_t const*>(s), n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -222,7 +222,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> le
     return string_t(s, left_len(s, n));
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -232,7 +232,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> le
 }
 
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -250,7 +250,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> ri
     return string_t(s + (len - n), n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -259,7 +259,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> ri
     return right(const_cast<ss_char_a_t const*>(s), n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -277,7 +277,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> ri
     return string_t(s + (len - n), n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -287,7 +287,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> ri
 }
 
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -310,7 +310,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> mi
     return string_t(s + pos, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -319,7 +319,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_a_t> mi
     return mid(const_cast<ss_char_a_t const*>(s), pos, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -342,7 +342,7 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> mi
     return string_t(s + pos, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -368,3 +368,4 @@ inline _STLSOFT_STRING_CONTAINER_SLICE_FUNCTIONS_RETURN_TEMPLATE<ss_char_w_t> mi
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

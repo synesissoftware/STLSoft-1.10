@@ -4,11 +4,11 @@
  * Purpose:     Definition of the ProjectIdentifier enumeration.
  *
  * Created:     12th May 2012
- * Updated:     13th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2012-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2012-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER_MAJOR      1
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER_MINOR      0
 # define STLSOFT_VER_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER_REVISION   3
-# define STLSOFT_VER_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER_EDIT       5
+# define STLSOFT_VER_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER_EDIT       6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -142,3 +142,4 @@ typedef enum STLSoftProjectIdentifier_t                     STLSoftProjectIdenti
 #endif /* !STLSOFT_INCL_STLSOFT_DIAGNOSTICS_H_PROJECTIDENTIFIER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

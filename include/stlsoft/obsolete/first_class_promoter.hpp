@@ -4,11 +4,11 @@
  * Purpose:     Class template that allows built-in & aggregate types to be treated as 1st-class types.
  *
  * Created:     8th September 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER_MAJOR     4
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER_MINOR     0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER_REVISION  8
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER_EDIT      60
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER_EDIT      61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -324,3 +324,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_OBSOLETE_HPP_FIRST_CLASS_PROMOTER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

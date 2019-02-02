@@ -4,7 +4,7 @@
  * Purpose:     Process Id sequence class.
  *
  * Created:     24th June 2005
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Adi Shavit for spotting a small inefficiency in the
  *              resize()-ing, during the review of Extended STL volume 1
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MAJOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_REVISION  10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      61
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -370,3 +370,4 @@ inline process_module_sequence::size_type process_module_sequence::size() const
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Validation functions for Windows time structures.
  *
  * Created:     1st June 2014
- * Updated:     24th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     9
+# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -361,3 +361,4 @@ time_validate(
 #endif /* !WINSTL_INCL_WINSTL_TIME_H_VALIDATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

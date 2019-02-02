@@ -4,7 +4,7 @@
  * Purpose:     Discriminates between standard library implementations
  *
  * Created:     2nd January 2000
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support. To Gabor Fischer for reporting problems with VC++
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MINOR       11
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_REVISION    3
-# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        118
+# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        119
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -512,3 +512,4 @@ namespace stlsoft
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

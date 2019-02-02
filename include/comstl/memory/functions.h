@@ -4,11 +4,11 @@
  * Purpose:     COM memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     5th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MAJOR     4
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MINOR     1
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  8
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      59
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -282,3 +282,4 @@ inline void CoTaskMemHeapMinimize()
 #endif /* !COMSTL_INCL_COMSTL_MEMORY_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

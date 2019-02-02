@@ -4,11 +4,11 @@
  * Purpose:     Policies for spin mutexes.
  *
  * Created:     25th November 2006
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@
 
 /** \file unixstl/synch/spin_mutex_policies.hpp
  *
- * \brief [C++ only] 
+ * \brief [C++ only]
  */
 
 #ifndef UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES
@@ -51,7 +51,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MAJOR      2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   4
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       14
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       15
 #endif /* !UNIXSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -454,3 +454,4 @@ public: // Operations
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     proxy_sequence template class.
  *
  * Created:     10th September 2003
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_MINOR      0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_REVISION   6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_EDIT       41
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE_EDIT       42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -230,3 +230,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_OBSOLETE_HPP_PROXY_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

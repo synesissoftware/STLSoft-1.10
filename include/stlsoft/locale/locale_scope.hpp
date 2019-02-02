@@ -4,7 +4,7 @@
  * Purpose:     Defines the locale_scope class.
  *
  * Created:     23rd December 2018
- * Updated:     25th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_MAJOR      1
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_REVISION   1
-# define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_EDIT       2
+# define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -195,3 +195,4 @@ private: // fields
 #endif /* !STLSOFT_INCL_STLSOFT_LOCALE_HPP_LOCALE_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

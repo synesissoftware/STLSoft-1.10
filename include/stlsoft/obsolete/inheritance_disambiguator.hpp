@@ -4,11 +4,11 @@
  * Purpose:     Class to disambiguate between parent classes of same type.
  *
  * Created:     1st September 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_MINOR      1
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_REVISION   4
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_EDIT       32
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_EDIT       33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -174,3 +174,4 @@ public:
 #endif /* !STLSOFT_INCL_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

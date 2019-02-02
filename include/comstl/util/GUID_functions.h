@@ -4,11 +4,11 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       20
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -655,3 +655,4 @@ GUID_to_string(
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_GUID_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

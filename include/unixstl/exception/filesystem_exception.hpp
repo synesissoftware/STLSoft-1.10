@@ -4,7 +4,7 @@
  * Purpose:     unixstl::filesystem_exception class
  *
  * Created:     1st January 2017
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION_REVISION    1
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION_EDIT        1
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,3 +127,4 @@ typedef STLSOFT_NS_QUAL(filesystem_exception_base)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_EXCEPTION_HPP_FILESYSTEM_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

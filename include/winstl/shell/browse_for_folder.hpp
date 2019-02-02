@@ -4,13 +4,13 @@
  * Purpose:     Shell browsing functions.
  *
  * Created:     2nd March 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Pablo Aguilar for default folder enhancements.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_MAJOR    4
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_MINOR    2
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_REVISION 10
-# define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_EDIT     73
+# define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_EDIT     74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -416,3 +416,4 @@ inline ws_bool_t browse_for_folder(S const& title, C* displayName)
 #endif /* !WINSTL_INCL_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

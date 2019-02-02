@@ -4,11 +4,11 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     2nd September 2008
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MAJOR    1
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MINOR    0
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_REVISION 3
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     10
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,3 +82,4 @@
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_W2M */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

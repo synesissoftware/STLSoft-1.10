@@ -4,11 +4,11 @@
  * Purpose:     COM memory functions.
  *
  * Created:     20th December 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MAJOR     2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MINOR     2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_REVISION  4
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      40
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@ inline R*& transfer_resource(R*& r, V* v)
 }
 
 
-/** 
+/**
  *
  * \ingroup group__library__Conversion
  */
@@ -181,7 +181,7 @@ inline R method_cast(C& c, HRESULT (C::*pfn)(V*))
     return r;
 }
 
-/** 
+/**
  *
  * \ingroup group__library__Conversion
  */
@@ -226,3 +226,4 @@ inline R method_cast(C *c, HRESULT (STDAPICALLTYPE C::*pfn)(V*))
 #endif /* !COMSTL_INCL_COMSTL_CONVERSION_HPP_METHOD_CAST */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

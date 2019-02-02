@@ -5,7 +5,7 @@
  *              class.
  *
  * Created:     2nd January 2017
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,7 +48,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_MAJOR     1
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_MINOR     0
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_REVISION  2
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_EDIT      2
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION_EDIT      3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/security_exception.hpp
@@ -136,3 +136,4 @@ typedef WINSTL_NS_QUAL(security_exception)                  security_exception;
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_EXCEPTION_HPP_SECURITY_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

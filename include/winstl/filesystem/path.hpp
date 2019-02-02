@@ -4,14 +4,14 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1993-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     279
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     280
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -2020,3 +2020,4 @@ using ::winstl::c_str_ptr_null_w;
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     unixstl::operating_environment_exception class
  *
  * Created:     13th May 2010
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_MAJOR     2
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_EDIT      77
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_EDIT      78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,3 +127,4 @@ typedef STLSOFT_NS_QUAL(status_code_propagating_exception_base)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

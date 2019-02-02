@@ -4,11 +4,11 @@
  * Purpose:     Contains the std_swap() function.
  *
  * Created:     27th June 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_SWAP_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_SWAP_MINOR    2
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_SWAP_REVISION 5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_SWAP_EDIT     28
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_STD_SWAP_EDIT     29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -211,3 +211,4 @@ namespace stlsoft
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

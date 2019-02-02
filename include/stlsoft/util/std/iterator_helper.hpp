@@ -5,14 +5,14 @@
  *              abstracting away standard library inconsistencies.
  *
  * Created:     2nd January 2000
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  5
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      125
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      126
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1133,3 +1133,4 @@ query_iterator_category
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

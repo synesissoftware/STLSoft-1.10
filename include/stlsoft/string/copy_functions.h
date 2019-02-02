@@ -4,11 +4,11 @@
  * Purpose:     String copy functions.
  *
  * Created:     29th September 2016
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MINOR      0
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_REVISION   2
-# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       7
+# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -513,3 +513,4 @@ string_copy_with_nul(
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_H_COPY_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

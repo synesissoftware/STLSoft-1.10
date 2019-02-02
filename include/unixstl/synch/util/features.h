@@ -4,11 +4,11 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     23rd October 1997
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_MAJOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_MINOR    0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_REVISION 3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_EDIT     17
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_EDIT     18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -273,3 +273,4 @@
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_UTIL_H_FEATURES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

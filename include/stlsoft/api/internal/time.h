@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for internal Time API.
  *
  * Created:     11th January 2017
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -172,3 +172,4 @@ STLSOFT_API_INTERNAL_Time_localtime(
 #endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_time */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

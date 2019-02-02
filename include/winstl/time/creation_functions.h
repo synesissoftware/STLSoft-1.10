@@ -4,7 +4,7 @@
  * Purpose:     Creation functions for Windows time structures.
  *
  * Created:     25th February 2017
- * Updated:     10th March 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_CREATION_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_TIME_H_CREATION_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_TIME_H_CREATION_FUNCTIONS_REVISION   2
-# define WINSTL_VER_WINSTL_TIME_H_CREATION_FUNCTIONS_EDIT       2
+# define WINSTL_VER_WINSTL_TIME_H_CREATION_FUNCTIONS_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -265,3 +265,4 @@ create_FILETIME_ms(
 #endif /* !WINSTL_INCL_WINSTL_TIME_H_CREATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

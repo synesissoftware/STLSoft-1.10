@@ -4,11 +4,11 @@
  * Purpose:     Basic functionals.
  *
  * Created:     19th January 2002
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_MAJOR      3
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_MINOR      0
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_REVISION   6
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_EDIT       55
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_EDIT       56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,3 +118,4 @@ public:
 #endif /* !STLSOFT_INCL_STLSOFT_FUNCTIONAL_HPP_NOOP */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

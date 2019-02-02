@@ -5,11 +5,11 @@
  *              exceptions.
  *
  * Created:     15th September 2010
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MAJOR    1
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MINOR    0
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_REVISION 6
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     98
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     99
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -286,3 +286,4 @@ using ::mfcstl::c_str_ptr_a;
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

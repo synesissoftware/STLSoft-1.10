@@ -4,11 +4,11 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     83
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     84
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -760,3 +760,4 @@ inline ss_size_t stlsoft_char_traits<wchar_t>::length(wchar_t const* s)
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

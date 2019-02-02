@@ -4,7 +4,7 @@
  * Purpose:     stlsoft::filesystem_exception_base class template
  *
  * Created:     1st January 2017
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE_MAJOR     1
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE_MINOR     0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE_REVISION  1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE_EDIT      1
+# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE_EDIT      2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,3 +204,4 @@ public: // Fields
 #endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_EXCEPTION_BASE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

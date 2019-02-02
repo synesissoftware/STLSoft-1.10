@@ -4,11 +4,11 @@
  * Purpose:     Windows version discrimination.
  *
  * Created:     4th August 2015
- * Updated:     24th August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 #define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__MAJOR     1
 #define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__MINOR     0
 #define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__REVISION  2
-#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__EDIT      11
+#define WINSTL_VER_WINSTL_INTERNAL_H_WINDOWS_VERSION__EDIT      12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -295,3 +295,4 @@ winstl_C_internal_GetVersionEx(
 #endif /* !WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_console_ctrl_handler_scope class.
  *
  * Created:     8th August 2004
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_MAJOR      4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_REVISION   9
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_EDIT       38
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE_EDIT       39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,3 +162,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_CONSOLE_CTRL_HANDLER_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

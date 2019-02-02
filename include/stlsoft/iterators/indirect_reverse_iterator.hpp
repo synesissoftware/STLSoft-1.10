@@ -4,11 +4,11 @@
  * Purpose:     indirect_reverse_iterator class template.
  *
  * Created:     7th June 2005
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_MINOR      2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_REVISION   11
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_EDIT       41
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR_EDIT       42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -364,3 +364,4 @@ inline bool operator >=(indirect_reverse_iterator<I, T, R, P, D, C> const& lhs, 
 #endif /* !STLSOFT_INCL_STLSOFT_ITERATORS_HPP_INDIRECT_REVERSE_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

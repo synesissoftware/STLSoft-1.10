@@ -5,7 +5,7 @@
  *              fixed_array_4d template classes.
  *
  * Created:     4th August 1998
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode,
  *              requesting the function call operator, and for requesting
@@ -16,7 +16,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MINOR      9
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   10
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       200
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       201
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -2447,3 +2447,4 @@ inline ss_size_t array_size(fixed_array_5d<T, A, P, R> const& ar)
 #endif /* !STLSOFT_INCL_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

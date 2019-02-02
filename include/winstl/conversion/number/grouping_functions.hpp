@@ -4,11 +4,11 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     19th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        22
+# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -203,3 +203,4 @@ format_thousands(
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

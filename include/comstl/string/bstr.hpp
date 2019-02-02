@@ -4,13 +4,13 @@
  * Purpose:     bstr class.
  *
  * Created:     20th December 1996
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Gabor Fischer for requesting attach().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MAJOR       2
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MINOR       8
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    14
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        77
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -975,3 +975,4 @@ struct string_traits< ::comstl::bstr>
 #endif /* !COMSTL_INCL_COMSTL_STRING_HPP_BSTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

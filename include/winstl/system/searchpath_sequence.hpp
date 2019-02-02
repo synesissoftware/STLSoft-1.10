@@ -5,11 +5,11 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     12th July 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_MAJOR    4
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_MINOR    2
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_REVISION 11
-# define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_EDIT     109
+# define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_EDIT     110
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -743,3 +743,4 @@ inline ss_typename_type_ret_k basic_searchpath_sequence<C, T>::value_type basic_
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SEARCHPATH_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

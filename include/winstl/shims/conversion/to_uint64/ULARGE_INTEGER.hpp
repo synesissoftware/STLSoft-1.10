@@ -4,11 +4,11 @@
  * Purpose:     Contains the to_uint64 access shim.
  *
  * Created:     6th June 2008
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER_MAJOR      1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER_MINOR      0
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER_REVISION   6
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER_EDIT       10
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,3 +118,4 @@ inline STLSOFT_NS_QUAL(ss_uint64_t) to_uint64(ULARGE_INTEGER const* puli)
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_UINT64_HPP_ULARGE_INTEGER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,11 +5,11 @@
  *              property methods of ATL COM server classes.
  *
  * Created:     25th June 2002
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_MAJOR    5
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_MINOR    0
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_REVISION 2
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_EDIT     85
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_EDIT     86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -261,7 +261,7 @@ inline HRESULT get_MemberValue(C* const cls, VARIANT_BOOL* ret, bool C::*mem)
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 /* Overloads for specific mismatches between interface and member types*/
 
-/* 
+/*
  * interface    :   long
  * member       :   size_t
  */
@@ -331,7 +331,7 @@ inline HRESULT get_MemberValue(C* const cls, T* ret, T2 (C::*pfn)() const)
 #if 0
 /* Overloads for specific mismatches between interface and method types*/
 
-/* 
+/*
  * interface    :   long
  * method       :   size_t
  */
@@ -557,3 +557,4 @@ inline HRESULT get_ConstantValue(T1* ret, T2 const& value)
 #endif /* !ATLSTL_INCL_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

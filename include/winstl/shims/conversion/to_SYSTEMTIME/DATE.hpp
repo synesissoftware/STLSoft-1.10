@@ -4,11 +4,11 @@
  * Purpose:     winstl::to_SYSTEMTIME(DATE const&) overload.
  *
  * Created:     15th January 2007
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2007-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE_MAJOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE_MINOR    0
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE_REVISION 9
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE_EDIT     13
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE_EDIT     14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,3 +169,4 @@ to_SYSTEMTIME(
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_DATE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

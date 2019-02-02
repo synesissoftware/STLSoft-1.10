@@ -4,11 +4,11 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     22nd December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       509
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       510
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -727,3 +727,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_REF_PTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

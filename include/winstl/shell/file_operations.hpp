@@ -4,13 +4,13 @@
  * Purpose:     Shell file operations.
  *
  * Created:     12th December 1996
- * Updated:     5th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Pablo Aguilar for default folder enhancements.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MINOR      1
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_REVISION   9
-# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       98
+# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       99
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1233,3 +1233,4 @@ shell_delete(
 #endif /* !WINSTL_INCL_WINSTL_SHELL_HPP_FILE_OPERATIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

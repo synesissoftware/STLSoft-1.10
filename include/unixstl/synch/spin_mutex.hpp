@@ -4,7 +4,7 @@
  * Purpose:     Intra-process mutex, based on spin waits.
  *
  * Created:     27th August 1997
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Rupert Kittinger, for pointing out that the prior
  *              implementation that always yielded was not really "spinning".
@@ -14,7 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_MAJOR     6
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      72
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -150,3 +150,4 @@ typedef STLSOFT_NS_QUAL(spin_mutex_base)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_SPIN_MUTEX */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

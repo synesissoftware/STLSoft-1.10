@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     12th May 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MAJOR    2
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MINOR    4
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_REVISION 2
-# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     55
+# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file wtlstl/wtlstl.hpp
@@ -593,3 +593,4 @@ namespace wtlstl = ::stlsoft::wtlstl_project;
 #endif /* !WTLSTL_INCL_WTLSTL_HPP_WTLSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

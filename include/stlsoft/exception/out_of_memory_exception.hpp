@@ -4,11 +4,11 @@
  * Purpose:     Definition of the stlsoft::out_of_memory_exception class.
  *
  * Created:     13th May 2010
- * Updated:     20th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_MAJOR    2
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_MINOR    0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_REVISION 4
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_EDIT     19
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -228,3 +228,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_OUT_OF_MEMORY_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

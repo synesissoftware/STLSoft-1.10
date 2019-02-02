@@ -4,11 +4,11 @@
  * Purpose:     char_alt_traits traits class.
  *
  * Created:     19th November 1998
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_EDIT     42
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS_EDIT     43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -135,3 +135,4 @@ struct char_alt_traits<ss_char_w_t>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_ALT_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

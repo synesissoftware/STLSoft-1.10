@@ -4,14 +4,14 @@
  * Purpose:     Contains the get_ptr access shim.
  *
  * Created:     10th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Nevin Liber for spotting a mistake in the get_ptr
  *              definition.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_MAJOR     4
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_MINOR     1
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_REVISION  6
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_EDIT      56
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_EDIT      57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ namespace stlsoft
 #ifndef _STLSOFT_PTR_ACCESS_NO_AUTO_PTR
 
 /* std::auto_ptr */
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -121,3 +121,4 @@ inline T *get_ptr(STLSOFT_NS_QUAL_STD(auto_ptr)<T> const& p)
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

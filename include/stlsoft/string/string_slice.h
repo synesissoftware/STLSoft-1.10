@@ -4,11 +4,11 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     26th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    3
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 2
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     22
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -357,3 +357,4 @@ c_str_len(
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_H_STRING_SLICE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

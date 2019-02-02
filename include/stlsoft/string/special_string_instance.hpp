@@ -4,14 +4,14 @@
  * Purpose:     Special string instance class template.
  *
  * Created:     3rd June 2006
- * Updated:     22nd December 2018
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Pablo Aguilar for spotting my omission of string access shims
  *              for special_string_instance_1.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        37
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1398,7 +1398,7 @@ c_str_ptr(
     STLSOFT_NS_QUAL(special_string_instance_1)<T_policy, T_initex> const& ssi
 )
 {
-    return 
+    return
     ssi.c_str()
 ;
 }
@@ -1441,7 +1441,7 @@ inline
 ss_typename_type_ret_k special_string_instance_1<T_policy, T_initex>::char_type const*
 c_str_data(STLSOFT_NS_QUAL(special_string_instance_1)<T_policy, T_initex> const& ssi)
 {
-    return 
+    return
     ssi.c_str()
 ;
 }
@@ -1548,3 +1548,4 @@ c_str_len_w(
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

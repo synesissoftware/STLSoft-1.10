@@ -4,11 +4,11 @@
  * Purpose:     Definition of the fixer_iterator type.
  *
  * Created:     9th February 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_ITERATOR_REVISION   4
-# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_ITERATOR_EDIT       27
+# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_ITERATOR_EDIT       28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,3 +169,4 @@ struct fixer_const_iterator<T, false>
 #endif /* !STLSOFT_INCL_STLSOFT_META_TYPEFIXER_HPP_ITERATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

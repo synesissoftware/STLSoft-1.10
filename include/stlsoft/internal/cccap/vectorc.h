@@ -4,11 +4,11 @@
  * Purpose:     Compiler feature discrimination for CodePlay Vector C.
  *
  * Created:     3rd October 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_VECTORC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_VECTORC_MINOR      19
 # define STLSOFT_VER_H_STLSOFT_CCCAP_VECTORC_REVISION   2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_VECTORC_EDIT       67
+# define STLSOFT_VER_H_STLSOFT_CCCAP_VECTORC_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -383,3 +383,4 @@
  */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

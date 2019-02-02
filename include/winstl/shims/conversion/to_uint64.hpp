@@ -4,11 +4,11 @@
  * Purpose:     Contains the to_uint64 conversion shim.
  *
  * Created:     4th July 2007
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2007-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64_MAJOR       1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64_MINOR       1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64_REVISION    4
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64_EDIT        8
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,3 +91,4 @@
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_HPP_TO_UINT64 */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,13 +4,13 @@
  * Purpose:     Contains the shared_handle and monitored_shared_handle classes.
  *
  * Created:     19th January 2002
- * Updated:     16th June 2018
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Austin Ziegler for fixes to defects evident on x64.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@
 
 /** \file winstl/registry/util/shared_handles.hpp
  *
- * \brief [C++ only] [IMPLEMENTATION] Contains the 
+ * \brief [C++ only] [IMPLEMENTATION] Contains the
  *  \link winstl::registry_util::shared_handle shared_handle\endlink
  *  and
  *  \link winstl::registry_util::monitored_shared_handle monitored_shared_handle\endlink
@@ -60,7 +60,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MAJOR       2
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MINOR       0
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    16
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        46
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -396,3 +396,4 @@ namespace registry_util
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

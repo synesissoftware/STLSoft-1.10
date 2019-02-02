@@ -5,11 +5,11 @@
  *              the host name.
  *
  * Created:     5th November 2014
- * Updated:     18th December 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MINOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        11
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -205,3 +205,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<hostname_policy<TCHAR> >     
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_HOST_NAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

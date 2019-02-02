@@ -4,7 +4,7 @@
  * Purpose:     Contains the pod_vector class.
  *
  * Created:     23rd December 2003
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Chris Newcombe for requesting sufficient enhancements to
  *              auto_buffer such that pod_vector was born.
@@ -14,7 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MINOR       2
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_REVISION    7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        86
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        87
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1259,3 +1259,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_CONTAINERS_HPP_POD_VECTOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

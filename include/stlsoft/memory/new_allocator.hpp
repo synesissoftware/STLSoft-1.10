@@ -4,11 +4,11 @@
  * Purpose:     stlsoft_new_allocator class - use new & delete operators.
  *
  * Created:     2nd January 2001
- * Updated:     22nd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2001-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR_MAJOR     4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR_REVISION  7
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR_EDIT      92
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR_EDIT      93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -240,3 +240,4 @@ inline ss_bool_t operator !=(const new_allocator<T> &/* lhs */, const new_alloca
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_NEW_ALLOCATOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

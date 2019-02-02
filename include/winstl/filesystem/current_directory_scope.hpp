@@ -4,11 +4,11 @@
  * Purpose:     Current working directory scoping class.
  *
  * Created:     12th November 1998
- * Updated:     23rd August 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MINOR     2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION  12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      135
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      136
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -403,3 +403,4 @@ using ::winstl::c_str_len;
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

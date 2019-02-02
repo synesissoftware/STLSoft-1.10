@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     9th June 2018
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2018, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  10
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      60
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,3 +173,4 @@ public:
 #endif /* !UNIXSTL_INCL_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

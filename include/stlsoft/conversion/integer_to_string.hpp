@@ -4,11 +4,11 @@
  * Purpose:     Very efficient integer to string conversion functions.
  *
  * Created:     7th April 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING_MAJOR     6
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING_REVISION  3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING_EDIT      91
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING_EDIT      92
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,3 +92,4 @@
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_INTEGER_TO_STRING */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
