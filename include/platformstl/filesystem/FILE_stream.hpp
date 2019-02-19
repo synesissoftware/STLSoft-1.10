@@ -4,7 +4,7 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     2nd February 2019
+ * Updated:     20th February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        19
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    3
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -223,7 +223,19 @@ public: // Operations
     /// Writes an empty line to the underlying stream.
     class_type& write_line()
     {
-        return write_line_(NULL, 0u);
+#if 0 ||\
+    defined(UNICODE) ||\
+    defined(_UNICODE) ||\
+    defined(FASTFORMAT_USE_WIDE_STRINGS) ||\
+    defined(PANTHEIOS_USE_WIDE_STRINGS) ||\
+    defined(STLSOFT_USE_WIDE_STRINGS) ||\
+    0
+
+        return write_line_(static_cast<wchar_t const*>(NULL), 0u);
+#else
+
+        return write_line_(static_cast<char const*>(NULL), 0u);
+#endif
     }
 
     /// Writes the given string to the underlying stream.
