@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     20th February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    46
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     502
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 6
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     503
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -317,7 +317,7 @@
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B12
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B13
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -3046,8 +3046,8 @@ stlsoft_C_always_true_(void) STLSOFT_NOEXCEPT
  * Resolves to a construct that is always true
  */
 
-# define STLSOFT_ALWAYS_FALSE()                             stlsoft_C_always_false_()
-# define STLSOFT_ALWAYS_TRUE()                              stlsoft_C_always_true_()
+# define STLSOFT_ALWAYS_FALSE()                             STLSOFT_NS_QUAL(stlsoft_C_always_false_)()
+# define STLSOFT_ALWAYS_TRUE()                              STLSOFT_NS_QUAL(stlsoft_C_always_true_)()
 
 /* /////////////////////////////////////////////////////////////////////////
  * pointer manipulation functions(s)
