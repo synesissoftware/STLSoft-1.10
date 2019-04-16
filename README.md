@@ -2,9 +2,13 @@
 
 Version 1.10 of STLSoft libraries
 
-# Releases
+## Current Status (April 2019)
 
-## 1.10.1 beta-12 (Latest) - 26th December 2018
+**NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its released.
+
+## Releases
+
+### 1.10.1 beta-12 (Latest) - 26th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta12>
 
@@ -14,7 +18,7 @@ Version 1.10 of STLSoft libraries
  * STLSoft's struct tm String Access Shims now work for arbitrary locale
  * UNIXSTL's timeval String Access Shims now work for arbitrary locale
 
-## 1.10.1 beta-11 - 22nd December 2018
+### 1.10.1 beta-11 - 22nd December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta11>
 
@@ -22,7 +26,7 @@ Version 1.10 of STLSoft libraries
  * UNIXSTL special string instances : + added standard string access shims
  * winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + exists(); + operators ==() and !=()
 
-## 1.10.1 beta-10 - 20th December 2018
+### 1.10.1 beta-10 - 20th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta10>
 
@@ -30,13 +34,13 @@ Version 1.10 of STLSoft libraries
  * special_string_instance now provides generic (SAS) (in)equality operators automatically
  * try_parse_to_bool() semantics firmed up
 
-## 1.10.1 beta-9 - 12th June 2018
+### 1.10.1 beta-9 - 12th June 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta9>
 
  * Borland compatibility
 
-## 1.10.1 beta-8 - 11th June 2018
+### 1.10.1 beta-8 - 11th June 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta8>
 
