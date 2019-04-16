@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  26th December 2018
+; Updated:  16th April 2019
 
 ============================================================================
 
@@ -15,6 +15,37 @@ STLSoft - Changes
    *   *  means a general bullet-point  *
    *                                    *
    **************************************
+
+
+============================================================================
+
+Changes for 1.10.1 beta 13 (16th April 2019)
+
+General:
+========
+
+ * fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
+ * platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+ * canonicalising source file structure
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/stlsoft.h:
+    ~ fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/FILE_stream.hpp:
+    ~ platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+
+ *:
+ ==
+   ~ canonicalising source file structure
 
 
 ============================================================================
