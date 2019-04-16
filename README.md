@@ -8,7 +8,15 @@ Version 1.10 of STLSoft libraries
 
 ## Releases
 
-### 1.10.1 beta-12 (Latest) - 26th December 2018
+### 1.10.1 beta-13 (Latest) - 16th April 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta13>
+
+ * fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
+ * platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+ * canonicalising source file structure
+
+### 1.10.1 beta-12 - 26th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta12>
 
