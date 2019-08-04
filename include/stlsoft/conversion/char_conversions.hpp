@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     31st July 2019
+ * Updated:     4th August 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    2
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 8
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     110
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 9
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     111
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,6 +102,97 @@ namespace stlsoft
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+template<
+    ss_typename_param_k T_character
+,   ss_typename_param_k T_characterAlt
+,   size_t              N_internalSize
+>
+class convertible_buffer_
+    : protected auto_buffer<T_character, N_internalSize>
+{
+public: // types
+    typedef auto_buffer<
+        T_character
+    ,   N_internalSize
+    >                                                           parent_class_type;
+public:
+    /// The character type
+    typedef T_character                                         char_type;
+    /// The alternate character type
+    typedef T_characterAlt                                      alt_char_type;
+    /// The size type
+    typedef ss_typename_type_k parent_class_type::size_type     size_type;
+    /// The pointer type
+    typedef ss_typename_type_k parent_class_type::pointer       pointer;
+
+protected: // construction
+    ss_explicit_k
+    convertible_buffer_(
+        size_type cch
+    )
+        : parent_class_type(cch)
+    {}
+
+/// \name Accessors
+/// @{
+protected:
+    char_type* data_()
+    {
+        return parent_class_type::data();
+    }
+
+public:
+    char_type const* data() const
+    {
+        return parent_class_type::data();
+    }
+    char_type const* c_str() const
+    {
+        return parent_class_type::data();
+    }
+
+    size_type size() const
+    {
+        size_type n = parent_class_type::size();
+
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+        STLSOFT_ASSERT(0 != n);
+#else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
+        if(0 == n)
+        {
+            return 0;
+        }
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+
+        return n - 1;
+    }
+/// @}
+
+/// \name Operators
+/// @{
+public:
+    operator char_type const* () const
+    {
+        return parent_class_type::data();
+    }
+/// @}
+
+protected: // helpers
+    size_type
+    estimated_length_() const
+    {
+        return parent_class_type::size() - 1;
+    }
+};
+
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
  * classes
  */
 
@@ -112,17 +203,21 @@ namespace stlsoft
  */
 template <ss_size_t CCH>
 class multibyte2wide
-    : public auto_buffer<ss_char_w_t, CCH>
+    : public convertible_buffer_<ss_char_w_t, ss_char_a_t, CCH>
 {
 /// \name Member Types
 /// @{
 private:
-    typedef auto_buffer<ss_char_w_t, CCH>                       parent_class_type;
+    typedef convertible_buffer_<
+        ss_char_w_t
+    ,   ss_char_a_t
+    ,   CCH
+    >                                                           parent_class_type;
 public:
     /// The character type
-    typedef ss_char_w_t                                         char_type;
+    typedef ss_typename_type_k parent_class_type::char_type     char_type;
     /// The alternate character type
-    typedef ss_char_a_t                                         alt_char_type;
+    typedef ss_typename_type_k parent_class_type::alt_char_type alt_char_type;
     /// The size type
     typedef ss_typename_type_k parent_class_type::size_type     size_type;
     /// The pointer type
@@ -136,14 +231,18 @@ public:
 
     template <ss_typename_param_k S>
     ss_explicit_k multibyte2wide(S const& s)
+        : parent_class_type(calc_length_(s) + 1)
+    {
+        prepare_(STLSOFT_NS_QUAL(c_str_data_a)(s), estimated_length_());
+    }
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
     ss_explicit_k multibyte2wide(alt_char_type const* s)
-#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
         : parent_class_type(calc_length_(s) + 1)
     {
         prepare_(STLSOFT_NS_QUAL(c_str_ptr_a)(s));
     }
+#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
 
@@ -172,12 +271,12 @@ private:
 
     void prepare_(alt_char_type const* s)
     {
-        prepare_(s, parent_class_type::size() - 1);
+        prepare_(s, estimated_length_());
     }
 
     void prepare_(alt_char_type const* s, size_type size)
     {
-        const pointer data = parent_class_type::data();
+        const pointer data = parent_class_type::data_();
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
@@ -217,44 +316,6 @@ private:
     }
 /// @}
 
-/// \name Accessors
-/// @{
-public:
-    char_type const* data() const
-    {
-        return parent_class_type::data();
-    }
-    char_type const* c_str() const
-    {
-        return parent_class_type::data();
-    }
-
-    size_type size() const
-    {
-        size_type n = parent_class_type::size();
-
-#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_ASSERT(0 != n);
-#else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(0 == n)
-        {
-            return 0;
-        }
-#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-
-        return n - 1;
-    }
-/// @}
-
-/// \name Operators
-/// @{
-public:
-    operator char_type const* () const
-    {
-        return parent_class_type::data();
-    }
-/// @}
-
 /// \name Not to be implemented
 /// @{
 private:
@@ -266,7 +327,7 @@ public:
     multibyte2wide(multibyte2wide const& rhs)
         : parent_class_type(rhs.parent_class_type::size())
     {
-        ::memcpy(this->parent_class_type::data(), rhs.parent_class_type::data(), this->parent_class_type::size());
+        ::memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
     }
 private:
 # else /* compiler */
@@ -285,17 +346,21 @@ private:
  */
 template <ss_size_t CCH>
 class wide2multibyte
-    : public auto_buffer<ss_char_a_t, CCH>
+    : public convertible_buffer_<ss_char_a_t, ss_char_w_t, CCH>
 {
 /// \name Member Types
 /// @{
 private:
-    typedef auto_buffer<ss_char_a_t, CCH>                       parent_class_type;
+    typedef convertible_buffer_<
+        ss_char_a_t
+    ,   ss_char_w_t
+    ,   CCH
+    >                                                           parent_class_type;
 public:
     /// The character type
-    typedef ss_char_a_t                                         char_type;
+    typedef ss_typename_type_k parent_class_type::char_type     char_type;
     /// The alternate character type
-    typedef ss_char_w_t                                         alt_char_type;
+    typedef ss_typename_type_k parent_class_type::alt_char_type alt_char_type;
     /// The size type
     typedef ss_typename_type_k parent_class_type::size_type     size_type;
     /// The pointer type
@@ -309,14 +374,18 @@ public:
 
     template <ss_typename_param_k S>
     ss_explicit_k wide2multibyte(S const& s)
+        : parent_class_type(calc_length_(s) + 1)
+    {
+        prepare_(STLSOFT_NS_QUAL(c_str_data_w)(s), estimated_length_());
+    }
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
     ss_explicit_k wide2multibyte(alt_char_type const* s)
-        : parent_class_type(STLSOFT_NS_QUAL(c_str_len)(s) + 1)
-#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+        : parent_class_type(calc_length_(s) + 1)
     {
         prepare_(STLSOFT_NS_QUAL(c_str_ptr_w)(s));
     }
+#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
 
@@ -336,14 +405,20 @@ public:
 
 // Implementation
 private:
+    template <ss_typename_param_k S>
+    static size_type calc_length_(S const& s)
+    {
+        return STLSOFT_NS_QUAL(c_str_len_w)(s);
+    }
+
     void prepare_(alt_char_type const* s)
     {
-        prepare_(s, parent_class_type::size() - 1);
+        prepare_(s, estimated_length_());
     }
 
     void prepare_(alt_char_type const* s, size_type size)
     {
-        const pointer data = parent_class_type::data();
+        const pointer data = parent_class_type::data_();
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
@@ -382,44 +457,6 @@ private:
         }
     }
 
-/// \name Accessors
-/// @{
-public:
-    char_type const* data() const
-    {
-        return parent_class_type::data();
-    }
-    char_type const* c_str() const
-    {
-        return parent_class_type::data();
-    }
-
-    size_type size() const
-    {
-        size_type n = parent_class_type::size();
-
-#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_ASSERT(0 != n);
-#else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(0 == n)
-        {
-            return 0;
-        }
-#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-
-        return n - 1;
-    }
-/// @}
-
-/// \name Operators
-/// @{
-public:
-    operator char_type const* () const
-    {
-        return parent_class_type::data();
-    }
-/// @}
-
 /// \name Not to be implemented
 /// @{
 private:
@@ -431,7 +468,7 @@ public:
     wide2multibyte(wide2multibyte const& rhs)
         : parent_class_type(rhs.parent_class_type::size())
     {
-        ::memcpy(this->parent_class_type::data(), rhs.parent_class_type::data(), this->parent_class_type::size());
+        ::memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
     }
 private:
 # else /* compiler */

@@ -4,7 +4,7 @@
  * Purpose:     Helper functions for file handling
  *
  * Created:     1st January 2005
- * Updated:     2nd February 2019
+ * Updated:     4th August 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   16
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       67
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   17
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -252,7 +252,7 @@ load_text_file_impl(
             buffer_t    buffer(static_cast<ss_typename_type_k buffer_t::size_type>(size));
             DWORD       dw;
 
-            if(!::ReadFile(h.get(), &buffer[0], buffer.size(), &dw, NULL))
+            if(!::ReadFile(h.get(), &buffer[0], DWORD(buffer.size()), &dw, NULL))
             {
                 STLSOFT_THROW_X(winstl_exception("Read operation failed", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
             }
