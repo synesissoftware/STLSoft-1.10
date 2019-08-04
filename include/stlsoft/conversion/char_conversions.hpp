@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     2nd February 2019
+ * Updated:     31st July 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 8
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     109
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     110
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,9 +133,11 @@ public:
 /// @{
 public:
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+
     template <ss_typename_param_k S>
     ss_explicit_k multibyte2wide(S const& s)
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+
     ss_explicit_k multibyte2wide(alt_char_type const* s)
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
         : parent_class_type(calc_length_(s) + 1)
@@ -144,11 +146,13 @@ public:
     }
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+
     template <ss_typename_param_k S>
     multibyte2wide(S const& s, size_type cch)
-#else
+#else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+
     multibyte2wide(alt_char_type const* s, size_type cch)
-#endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
         : parent_class_type(cch + 1)
     {
         prepare_(STLSOFT_NS_QUAL(c_str_data_a)(s), cch);
@@ -302,22 +306,26 @@ public:
 /// @{
 public:
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+
     template <ss_typename_param_k S>
     ss_explicit_k wide2multibyte(S const& s)
-#else
+#else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+
     ss_explicit_k wide2multibyte(alt_char_type const* s)
-#endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
         : parent_class_type(STLSOFT_NS_QUAL(c_str_len)(s) + 1)
+#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
     {
         prepare_(STLSOFT_NS_QUAL(c_str_ptr_w)(s));
     }
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+
     template <ss_typename_param_k S>
     ss_explicit_k wide2multibyte(S const& s, size_type cch)
-#else
+#else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+
     ss_explicit_k wide2multibyte(alt_char_type const* s, size_type cch)
-#endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+#endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
         : parent_class_type(cch + 1)
     {
         prepare_(STLSOFT_NS_QUAL(c_str_data_w)(s), cch);
