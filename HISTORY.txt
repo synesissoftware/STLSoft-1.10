@@ -2,10 +2,16 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  16th April 2019
+; Updated:  4th August 2019
 
 ============================================================================
 
+
+4th August 2019 - 1.10.1 (beta 14) released
+-------------------------------------------
+
+ * added SECURITY_DESCRIPTOR helpers()
+ * stlsoft::w2m and stlsoft::m2w now more general
 
 16th April 2019 - 1.10.1 (beta 13) released
 -------------------------------------------

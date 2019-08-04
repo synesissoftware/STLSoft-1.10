@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  16th April 2019
+; Updated:  4th August 2019
 
 ============================================================================
 
@@ -15,6 +15,40 @@ STLSoft - Changes
    *   *  means a general bullet-point  *
    *                                    *
    **************************************
+
+
+
+============================================================================
+
+Changes for 1.10.1 beta 14 (4th August 2019)
+
+General:
+========
+
+ * added SECURITY_DESCRIPTOR helpers()
+ * stlsoft::w2m and stlsoft::m2w now more general
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/conversion/char_conversions.hpp:
+    ~ stlsoft::multibyte2wide and stlsoft::wide2multibyte now not implemented in terms of stlsoft::c_str_data(), stlsoft::c_str_ptr(), or stlsoft::c_str_len(), but their encoding-specific forms
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Synchronization.h:
+    + SRWLock-related macros
+
+ ~ winstl/filesystem/file_functions.hpp:
+    ~ 64-bit compatibility
+
+ + winstl/filesystem/file_information_functions.h:
+    + winstl::get_SECURITY_DESCRIPTOR()
+    + winstl::free_SECURITY_DESCRIPTOR()
 
 
 ============================================================================
