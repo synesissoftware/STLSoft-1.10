@@ -8,6 +8,13 @@ Version 1.10 of STLSoft libraries
 
 ## Releases
 
+### 1.10.1 beta-14 (Latest) - 4th August 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta14>
+
+ * added SECURITY_DESCRIPTOR helpers()
+ * stlsoft::w2m and stlsoft::m2w now more general
+
 ### 1.10.1 beta-13 (Latest) - 16th April 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta13>
