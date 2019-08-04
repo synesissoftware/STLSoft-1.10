@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     22nd October 2016
- * Updated:     19th February 2017
+ * Updated:     11th December 2017
  *
  * Home:        http://stlsoft.org/
  *
@@ -72,6 +72,60 @@
  * Condition Variable and SRW Lock functions
  */
 
+
+#if WINSTL_WIN32_WINNT >= 0x0600
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockExclusive
+# define WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockExclusive                                STLSOFT_NS_GLOBAL(AcquireSRWLockExclusive)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockExclusive */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockShared
+# define WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockShared                                   STLSOFT_NS_GLOBAL(AcquireSRWLockShared)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_AcquireSRWLockShared */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_InitializeSRWLock
+# define WINSTL_API_EXTERNAL_Synchronization_InitializeSRWLock                                      STLSOFT_NS_GLOBAL(InitializeSRWLock)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_InitializeSRWLock */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockExclusive
+# define WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockExclusive                                STLSOFT_NS_GLOBAL(ReleaseSRWLockExclusive)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockExclusive */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockShared
+# define WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockShared                                   STLSOFT_NS_GLOBAL(ReleaseSRWLockShared)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_ReleaseSRWLockShared */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockExclusive
+# define WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockExclusive                             STLSOFT_NS_GLOBAL(TryAcquireSRWLockExclusive)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockExclusive */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockShared
+# define WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockShared                                STLSOFT_NS_GLOBAL(TryAcquireSRWLockShared)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_TryAcquireSRWLockShared */
+
+
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_InitializeConditionVariable
+# define WINSTL_API_EXTERNAL_Synchronization_InitializeConditionVariable                            STLSOFT_NS_GLOBAL(InitializeConditionVariable)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_InitializeConditionVariable */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WakeConditionVariable
+# define WINSTL_API_EXTERNAL_Synchronization_WakeConditionVariable                                  STLSOFT_NS_GLOBAL(WakeConditionVariable)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WakeConditionVariable */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_WakeAllConditionVariable
+# define WINSTL_API_EXTERNAL_Synchronization_WakeAllConditionVariable                               STLSOFT_NS_GLOBAL(WakeAllConditionVariable)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_WakeAllConditionVariable */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableCS
+# define WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableCS                               STLSOFT_NS_GLOBAL(SleepConditionVariableCS)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableCS */
+
+#ifndef WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableSRW
+# define WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableSRW                              STLSOFT_NS_GLOBAL(SleepConditionVariableSRW)
+#endif /* !WINSTL_API_EXTERNAL_Synchronization_SleepConditionVariableSRW */
+
+#endif
 
 /* *************************************
  * Critical Section functions
