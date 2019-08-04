@@ -5,7 +5,7 @@
  *              class.
  *
  * Created:     1st January 2017
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,7 +48,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT        2
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/file_not_found_exception.hpp
@@ -136,3 +136,4 @@ typedef WINSTL_NS_QUAL(file_not_found_exception)            file_not_found_excep
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

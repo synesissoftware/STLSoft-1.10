@@ -4,11 +4,11 @@
  * Purpose:     access_exception class
  *
  * Created:     19th June 2004
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MAJOR     5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MINOR     0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_REVISION  2
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT      72
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT      73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,3 +127,4 @@ typedef STLSOFT_NS_QUAL(status_code_propagating_exception_base)<
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

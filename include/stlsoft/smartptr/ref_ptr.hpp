@@ -4,11 +4,11 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     12th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   3
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       505
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      5
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   1
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       510
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,6 +118,35 @@ inline void release_reference(I* pi)
     pi->Release();
 }
 
+/** Degenerate implementation of instance borrowing, which adds a reference
+ * (via the matched add_reference() overload)
+ *
+ * \ingroup group__library__SmartPointer
+ */
+template<ss_typename_param_k I>
+inline void borrow_reference(I* pi)
+{
+    STLSOFT_ASSERT(NULL != pi);
+
+    add_reference(pi);
+}
+
+/** Degenerate implementation of instance owning, which DOES NOT add a
+ * reference, since the default assumption is that instances are created
+ * with an initial reference count of 1
+ *
+ * \ingroup group__library__SmartPointer
+ *
+ * \note The assumption of initial reference count of 1 is NOT what ATL does
+ */
+template<ss_typename_param_k I>
+inline void own_reference(I* pi)
+{
+    STLSOFT_ASSERT(NULL != pi);
+
+    STLSOFT_SUPPRESS_UNUSED(pi);
+}
+
 /* /////////////////////////////////////////////////////////////////////////
  * classes
  */
@@ -177,6 +206,7 @@ private: // implementation
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER == 1300
+
     /// Helper function to effect upcast from const counted type to interface type
     static interface_type* i_from_const_c(counted_type const* cc)
     {
@@ -205,6 +235,11 @@ public: // construction
     /// ownership of it. In such a case, \c false should be specified as the second
     /// parameter. If, however, a reference is being "borrowed", then \c true should
     /// be specified.
+    ///
+    /// \deprecated This is now deprecated in favour of the borrow() and own()
+    /// creation methods, for the reasons described in
+    /// <a href="https://accu.org/index.php/journals/2183" /> and
+    /// <a href="https://martinfowler.com/bliki/FlagArgument.html" />.
     ref_ptr(counted_type* c, bool_type bAddRef)
         : m_pi(i_from_c(c))
     {
@@ -230,6 +265,7 @@ public: // construction
 
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER > 1100
+
     /// Copy constructs from an instance with different interface and/or
     ///   counted type
     ///
@@ -242,12 +278,15 @@ public: // construction
     >
 # if defined(STLSOFT_COMPILER_IS_MSVC) && \
      _MSC_VER == 1300
+
     ref_ptr(ref_ptr<T2, I2, U2> const& rhs)
 #  if 0
+
         // We cannot use this form, as it would lead to instances with different
         // counted_type being cross cast invisibly. This would be a *very bad thing*
         : m_pi(rhs.m_pi)
 #  else /* ? 0 */
+
         : m_pi(i_from_const_c(rhs.get()))
 #  endif /* 0 */
     {
@@ -257,6 +296,7 @@ public: // construction
         }
     }
 # else /* ? compiler */
+
     ref_ptr(ref_ptr<T2, I2, U2>& rhs)
 #  if 0
         // We cannot use this form, as it would lead to instances with different
@@ -272,24 +312,6 @@ public: // construction
         }
     }
 # endif /* compiler */
-#endif /* compiler */
-
-#if !defined(STLSOFT_COMPILER_IS_INTEL) && \
-    !defined(STLSOFT_COMPILER_IS_MWERKS) && \
-    0
-    template<
-        ss_typename_param_k I2
-    ,   ss_typename_param_k U2
-    >
-    ss_explicit_k
-    ref_ptr(ref_ptr<T, I2, U2>& rhs)
-        : m_pi(rhs.m_pi)
-    {
-        if(NULL != m_pi)
-        {
-            add_reference(m_pi);
-        }
-    }
 #endif /* compiler */
 
     /// Destructor
@@ -321,6 +343,7 @@ public: // construction
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     (   _MSC_VER > 1100 && \
         _MSC_VER != 1300)
+
     /// Copy assignment from an instance of ref_ptr with a different counted_type (but
     /// the same interface type).
     ///
@@ -344,22 +367,57 @@ public: // construction
     }
 #endif /* compiler */
 
-#if !defined(STLSOFT_COMPILER_IS_INTEL) && \
-    !defined(STLSOFT_COMPILER_IS_MWERKS) && \
-    0
+    /// Creates an instance by "borrowing" the given pointer to the counted
+    /// type, which means that it is assumed that the instance is already
+    /// owned
+    ///
+    /// \param c Pointer to a counted_type. May be nullptr
     template<
-        ss_typename_param_k I2
-    ,   ss_typename_param_k U2
+        ss_typename_param_k T_borrowedType
     >
-    class_type& operator =(ref_ptr<T, I2, U2>& rhs)
+    static
+    class_type
+    borrow(
+        T_borrowedType* c
+    )
     {
-        class_type  t(rhs);
+        class_type r;
 
-        t.swap(*this);
+        if(ss_nullptr_k != c)
+        {
+            borrow_reference(c);
 
-        return *this;
+            r.m_pi = c;
+        }
+
+        return r;
     }
-#endif /* compiler */
+
+    /// Creates an instance by "owning" the given pointer to the counted
+    /// type, which means that it is assumed that the instance is not (yet)
+    /// owned elsehwere
+    ///
+    /// \param c Pointer to a counted_type. May be nullptr
+    template<
+        ss_typename_param_k T_ownedType
+    >
+    static
+    class_type
+    own(
+        T_ownedType* c
+    )
+    {
+        class_type r;
+
+        if(ss_nullptr_k != c)
+        {
+            own_reference(c);
+
+            r.m_pi = c;
+        }
+
+        return r;
+    }
 /// @}
 
 /// \name Operations
@@ -494,7 +552,12 @@ template<
 ,   ss_typename_param_k I
 ,   ss_typename_param_k U
 >
-inline ss_bool_t operator ==(ref_ptr<T, I, U> const& lhs, ref_ptr<T, I, U> const& rhs)
+inline
+ss_bool_t
+operator ==(
+    ref_ptr<T, I, U> const& lhs
+,   ref_ptr<T, I, U> const& rhs
+) STLSOFT_NOEXCEPT
 {
     return lhs.equal(rhs);
 }
@@ -504,7 +567,12 @@ template<
 ,   ss_typename_param_k I
 ,   ss_typename_param_k U
 >
-inline ss_bool_t operator !=(ref_ptr<T, I, U> const& lhs, ref_ptr<T, I, U> const& rhs)
+inline
+ss_bool_t
+operator !=(
+    ref_ptr<T, I, U> const& lhs
+,   ref_ptr<T, I, U> const& rhs
+) STLSOFT_NOEXCEPT
 {
     return !lhs.equal(rhs);
 }
@@ -625,6 +693,7 @@ operator <<(
 # if ( ( defined(STLSOFT_COMPILER_IS_INTEL) && \
          defined(_MSC_VER))) && \
      _MSC_VER < 1310
+
 namespace std
 {
     template<
@@ -658,3 +727,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_REF_PTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for file handling
  *
  * Created:     1st January 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       65
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   16
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,6 +90,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS
 # include <stlsoft/string/tokeniser_functions.hpp> // for find_next_token
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -224,7 +228,7 @@ load_text_file_impl(
 
     if(INVALID_HANDLE_VALUE == h.get())
     {
-        STLSOFT_THROW_X(winstl_exception("File does not exist", ::GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("File does not exist", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 
     ws_uint64_t             size    =   filesys_traits_t::get_file_size(h.get());
@@ -250,7 +254,7 @@ load_text_file_impl(
 
             if(!::ReadFile(h.get(), &buffer[0], buffer.size(), &dw, NULL))
             {
-                STLSOFT_THROW_X(winstl_exception("Read operation failed", ::GetLastError()));
+                STLSOFT_THROW_X(winstl_exception("Read operation failed", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
             }
             else
             {
@@ -493,3 +497,4 @@ readlines(
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

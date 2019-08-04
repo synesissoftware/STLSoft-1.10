@@ -4,11 +4,11 @@
  * Purpose:     Functions for manipulating COM Type Libraries.
  *
  * Created:     5th April 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@
 # define COMSTL_VER_COMSTL_TYPELIB_HPP_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_TYPELIB_HPP_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_TYPELIB_HPP_FUNCTIONS_REVISION   3
-# define COMSTL_VER_COMSTL_TYPELIB_HPP_FUNCTIONS_EDIT       81
+# define COMSTL_VER_COMSTL_TYPELIB_HPP_FUNCTIONS_EDIT       82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -214,7 +214,7 @@ typelib_load(
  * \return A code indicating the success/failure of the operation
  */
 HRESULT
-typelib_load(             
+typelib_load(
     REFGUID                     guid
 ,   USHORT                      verMajor
 ,   USHORT                      verMinor
@@ -345,3 +345,4 @@ typeinfo_get_name(
 #endif /* !COMSTL_INCL_COMSTL_TYPELIB_HPP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Scopes the console colour (and intensity).
  *
  * Created:     20th July 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_REVISION 11
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_EDIT     20
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_REVISION 14
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_EDIT     24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,9 +72,12 @@
 # endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-#ifndef WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Console
 # include <winstl/api/external/Console.h>
-#endif /* !WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Console */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -146,6 +149,9 @@ public:
             WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute(m_hBuffer, static_cast<WORD>(m_attributes));
         }
     }
+private:
+    console_colour_scope(class_type const&);    // copy-construction proscribed
+    void operator =(class_type const&);         // copy-assignment proscribed
 
 /// \name Implementation
 /// @{
@@ -158,7 +164,7 @@ private:
         if(!WINSTL_API_EXTERNAL_Console_GetConsoleScreenBufferInfo(hBuffer, &bufferInfo))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(winstl_exception("Could not retrieve console buffer information", ::GetLastError()));
+            STLSOFT_THROW_X(winstl_exception("Could not retrieve console buffer information", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
         else
@@ -166,7 +172,7 @@ private:
             if(!WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute(hBuffer, textAttributes))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-                STLSOFT_THROW_X(winstl_exception("Could not set console text attributes", ::GetLastError()));
+                STLSOFT_THROW_X(winstl_exception("Could not set console text attributes", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
             }
             else
@@ -184,13 +190,6 @@ private:
 private:
     HANDLE      m_hBuffer;
     ws_uint32_t m_attributes;
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    console_colour_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 /// @}
 };
 
@@ -217,3 +216,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

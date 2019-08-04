@@ -4,11 +4,11 @@
  * Purpose:     Control Panel functions.
  *
  * Created:     1st April 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_REVISION   12
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       24
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_REVISION   13
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -70,6 +70,10 @@
 # define STLSOFT_INCL_H_CPL
 # include <cpl.h>
 #endif /* !STLSOFT_INCL_H_CPL */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -232,9 +236,9 @@ winstl_C_control_panel_newinquire(
 
             STLSOFT_STATIC_CAST(void, (*entry)(hwnd, CPL_NEWINQUIRE, STLSOFT_STATIC_CAST(LPARAM, index), STLSOFT_REINTERPRET_CAST(LPARAM, &u.infoa_)));
 
-            STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, u.infoa_.szName, -1, infow->szName, STLSOFT_NUM_ELEMENTS(u.infow_.szName));
-            STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, u.infoa_.szInfo, -1, infow->szInfo, STLSOFT_NUM_ELEMENTS(u.infow_.szInfo));
-            STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, u.infoa_.szHelpFile, -1, infow->szHelpFile, STLSOFT_NUM_ELEMENTS(u.infow_.szHelpFile));
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, u.infoa_.szName, -1, infow->szName, STLSOFT_NUM_ELEMENTS(u.infow_.szName));
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, u.infoa_.szInfo, -1, infow->szInfo, STLSOFT_NUM_ELEMENTS(u.infow_.szInfo));
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, u.infoa_.szHelpFile, -1, infow->szHelpFile, STLSOFT_NUM_ELEMENTS(u.infow_.szHelpFile));
         }
     }
     else
@@ -258,9 +262,9 @@ winstl_C_control_panel_newinquire(
 
             STLSOFT_STATIC_CAST(void, (*entry)(hwnd, CPL_NEWINQUIRE, STLSOFT_STATIC_CAST(LPARAM, index), STLSOFT_REINTERPRET_CAST(LPARAM, &u.infow_)));
 
-            STLSOFT_NS_GLOBAL(WideCharToMultiByte)(0, 0, u.infow_.szName, -1, infoa->szName, STLSOFT_NUM_ELEMENTS(u.infoa_.szName), NULL, NULL);
-            STLSOFT_NS_GLOBAL(WideCharToMultiByte)(0, 0, u.infow_.szInfo, -1, infoa->szInfo, STLSOFT_NUM_ELEMENTS(u.infoa_.szInfo), NULL, NULL);
-            STLSOFT_NS_GLOBAL(WideCharToMultiByte)(0, 0, u.infow_.szHelpFile, -1, infoa->szHelpFile, STLSOFT_NUM_ELEMENTS(u.infoa_.szHelpFile), NULL, NULL);
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, u.infow_.szName, -1, infoa->szName, STLSOFT_NUM_ELEMENTS(u.infoa_.szName), NULL, NULL);
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, u.infow_.szInfo, -1, infoa->szInfo, STLSOFT_NUM_ELEMENTS(u.infoa_.szInfo), NULL, NULL);
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, u.infow_.szHelpFile, -1, infoa->szHelpFile, STLSOFT_NUM_ELEMENTS(u.infoa_.szHelpFile), NULL, NULL);
         }
     }
 }
@@ -586,3 +590,4 @@ control_panel_stop(
 #endif /* !WINSTL_INCL_WINSTL_CONTROL_PANEL_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

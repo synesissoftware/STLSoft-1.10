@@ -4,11 +4,11 @@
  * Purpose:     Windows console functions.
  *
  * Created:     3rd December 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR     4
-# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT      33
+# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION  7
+# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT      40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,9 +66,21 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Console
 # include <winstl/api/external/Console.h>
-#endif /* !WINSTL_INCL_WINSTL_API_EXTERNAL_Console_h_Console */
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Console */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -103,8 +115,8 @@ winstl_C_console_read_silent_character_from_(
 {
     DWORD   currMode;
 
-    if( !STLSOFT_NS_GLOBAL(GetConsoleMode)(h, &currMode) ||
-        !STLSOFT_NS_GLOBAL(SetConsoleMode)(h, 0))
+    if( !WINSTL_API_EXTERNAL_Console_GetConsoleMode(h, &currMode) ||
+        !WINSTL_API_EXTERNAL_Console_SetConsoleMode(h, 0))
     {
         return -1;
     }
@@ -117,7 +129,7 @@ winstl_C_console_read_silent_character_from_(
             INPUT_RECORD    ir;
             DWORD           numRead;
 
-            if(!STLSOFT_NS_GLOBAL(ReadConsoleInput)(h, &ir, 1, &numRead))
+            if(!WINSTL_API_EXTERNAL_Console_ReadConsoleInput(h, &ir, 1, &numRead))
             {
                 c = -1;
                 break;
@@ -154,7 +166,7 @@ winstl_C_console_read_silent_character_from_(
             }
         }
 
-        STLSOFT_NS_GLOBAL(SetConsoleMode)(h, currMode);
+        WINSTL_API_EXTERNAL_Console_SetConsoleMode(h, currMode);
 
         return c;
     }
@@ -174,7 +186,7 @@ STLSOFT_INLINE
 ws_size_t
 winstl_C_get_console_width(void)
 {
-    HANDLE hStdOut = STLSOFT_NS_GLOBAL(GetStdHandle)(STD_OUTPUT_HANDLE);
+    HANDLE hStdOut = WINSTL_API_EXTERNAL_Console_GetStdHandle(STD_OUTPUT_HANDLE);
 
     if(INVALID_HANDLE_VALUE != hStdOut)
     {
@@ -187,7 +199,7 @@ winstl_C_get_console_width(void)
     }
 
 #ifdef STLSOFT_DEBUG
-    STLSOFT_NS_GLOBAL(GetLastError)();
+    WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 #endif /* STLSOFT_DEBUG */
 
     return ~stlsoft_static_cast(ws_size_t, 0);
@@ -205,7 +217,7 @@ GetConsoleWindow()
 {
     typedef HWND (WINAPI *GCW_t)();
 
-    HMODULE Kernel32    =   STLSOFT_NS_GLOBAL(LoadLibraryA)("KERNEL32");
+    HMODULE Kernel32    =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32");
     GCW_t   pfn         =   stlsoft_reinterpret_cast(GCW_t, STLSOFT_NS_GLOBAL(GetProcAddress)(Kernel32, "GetConsoleWindow"));
 
     if(NULL == pfn)
@@ -216,7 +228,7 @@ GetConsoleWindow()
     {
         HWND hwnd = (*pfn)();
 
-        STLSOFT_NS_GLOBAL(FreeLibrary)(Kernel32);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(Kernel32);
 
         return hwnd;
     }
@@ -243,7 +255,7 @@ STLSOFT_INLINE
 long
 winstl_C_console_read_silent_character_from_stdin(void)
 {
-    HANDLE h = STLSOFT_NS_GLOBAL(GetStdHandle)(STD_INPUT_HANDLE);
+    HANDLE h = WINSTL_API_EXTERNAL_Console_GetStdHandle(STD_INPUT_HANDLE);
 
     return winstl_C_console_read_silent_character_from_(h);
 }
@@ -252,7 +264,7 @@ STLSOFT_INLINE
 long
 winstl_C_console_read_silent_character_from_CONIO(void)
 {
-    HANDLE hConin = STLSOFT_NS_GLOBAL(CreateFileA)(
+    HANDLE hConin = WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
                         "CONIN$"
                     ,   GENERIC_READ | GENERIC_WRITE
                     ,   FILE_SHARE_READ | FILE_SHARE_WRITE
@@ -269,11 +281,11 @@ winstl_C_console_read_silent_character_from_CONIO(void)
     else
     {
         long const  l   =   winstl_C_console_read_silent_character_from_(hConin);
-        DWORD const e   =   STLSOFT_NS_GLOBAL(GetLastError());
+        DWORD const e   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(hConin);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(hConin);
 
-        STLSOFT_NS_GLOBAL(SetLastError(e));
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         return l;
     }
@@ -388,3 +400,4 @@ console_read_silent_character_from_CONIO()
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

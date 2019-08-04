@@ -4,13 +4,13 @@
  * Purpose:     bstr class.
  *
  * Created:     20th December 1996
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Gabor Fischer for requesting attach().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MAJOR       2
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MINOR       8
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    11
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        73
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    14
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,9 +92,20 @@
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 # include <stdexcept>
 #endif /* !STLSOFT_CF_EXCEPTION_SUPPORT */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -467,7 +478,7 @@ inline /* explicit */ bstr::bstr(cs_char_a_t const* s, ssize_type len /* = -1 */
             int buffLen = actualLen + 1;
 # endif /* _WIN64 */
 
-            ::MultiByteToWideChar(0, 0, s, buffLen, m_bstr, buffLen);
+            WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, buffLen, m_bstr, buffLen);
         }
     }
     else
@@ -486,7 +497,7 @@ inline /* explicit */ bstr::bstr(cs_char_a_t const* s, ssize_type len /* = -1 */
         0 != len &&
         '\0' != 0[s])
     {
-        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(::GetLastError())));
+        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -535,7 +546,7 @@ inline /* explicit */ bstr::bstr(cs_char_w_t const* s, ssize_type len /* = -1 */
         0 != len &&
         '\0' != 0[s])
     {
-        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(::GetLastError())));
+        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -548,7 +559,7 @@ inline bstr::bstr(bstr::size_type n, bstr::char_type ch)
         if(0 != n)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(::GetLastError())));
+            STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
     }
@@ -568,7 +579,7 @@ inline bstr::bstr(bstr::class_type const& rhs)
     if( NULL == m_bstr &&
         !rhs.empty())
     {
-        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(::GetLastError())));
+        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -596,7 +607,7 @@ inline bstr::bstr(bstr::class_type const& rhs, bstr::size_type pos, bstr::size_t
     if( NULL == m_bstr &&
         !rhs.empty())
     {
-        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(::GetLastError())));
+        STLSOFT_THROW_X(comstl_exception("failed to allocate string", HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -964,3 +975,4 @@ struct string_traits< ::comstl::bstr>
 #endif /* !COMSTL_INCL_COMSTL_STRING_HPP_BSTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

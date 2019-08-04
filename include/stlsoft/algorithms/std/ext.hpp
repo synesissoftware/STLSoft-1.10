@@ -4,11 +4,11 @@
  * Purpose:     Extensions to standard algorithms.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MINOR       2
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_REVISION    9
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        80
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -215,3 +215,4 @@ inline void fill_if(O first, O last, V const& value, UP pred)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_STD_HPP_EXT */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

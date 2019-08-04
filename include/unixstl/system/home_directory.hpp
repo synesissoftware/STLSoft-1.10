@@ -5,11 +5,11 @@
  *              home directory.
  *
  * Created:     30th September 2016
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR    2
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    0
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 3
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     9
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    1
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 2
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_ALLOCATOR_SELECTOR
 # include <stlsoft/memory/util/allocator_selector.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_ALLOCATOR_SELECTOR */
+#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
+# include <stlsoft/shims/access/string.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE
 # include <stlsoft/string/special_string_instance.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE */
@@ -135,6 +138,8 @@ public:
     enum { internalBufferSize       =   64  };
 
     enum { allowImplicitConversion  =   1   };
+
+    enum { caseSensitive            =   1   };
 
     enum { sharedState              =   1   };
 /// @}
@@ -217,3 +222,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

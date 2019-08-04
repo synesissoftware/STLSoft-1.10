@@ -4,13 +4,13 @@
  * Purpose:     basic_static_string class template.
  *
  * Created:     11th June 1994
- * Updated:     12th January 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Cláudio Albuquerque for supplying the pop_back() member.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_REVISION 3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     213
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     214
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -246,8 +246,8 @@ public:
     ///   internal size
     ///
     /// \exception std::length_error If exception-support is enable, this
-    ///   method 
-    ///   
+    ///   method
+    ///
 #if !defined(STLSOFT_CF_MEMBER_TEMPLATE_RANGE_METHOD_SUPPORT)
     basic_static_string(char_type const* first, char_type const* last);
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_RANGE_METHOD_SUPPORT */
@@ -991,7 +991,7 @@ inline ss_bool_t basic_static_string<C, CCH, T>::is_valid() const
     {
         return false;
     }
-    
+
     if( m_length != static_cast<ss_size_t>(-1) &&
         m_length > max_size())
     {
@@ -2136,3 +2136,4 @@ namespace std
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STATIC_STRING */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

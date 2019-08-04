@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -23,7 +23,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,8 +67,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  9
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      122
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  10
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -107,10 +107,6 @@
 # include <stlsoft/collections/util/collections.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
 
-#ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
-# include <winstl/api/external/Registry.h>
-#endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
-
 #ifndef STLSOFT_INCL_ALGORITHM
 # define STLSOFT_INCL_ALGORITHM
 # include <algorithm>
@@ -121,6 +117,13 @@
 #  include <vector>
 # endif /* !STLSOFT_INCL_VECTOR */
 #endif /* !WINSTL_REG_VALUE_NO_MULTI_SZ */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
+# include <winstl/api/external/Registry.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -537,7 +540,7 @@ inline /* static */ ss_typename_type_ret_k basic_reg_value<C, T, A>::hkey_type b
                 STLSOFT_THROW_X(key_not_duplicated_exception(message, res));
             }
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-            ::SetLastError(res);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(res);
             hkeyDup = NULL;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
@@ -640,7 +643,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 static const char   message[]   =   "could not expand environment strings";
-                DWORD               res         =   ::GetLastError();
+                DWORD const         res         =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
                 if(ERROR_ACCESS_DENIED == res)
                 {
@@ -922,3 +925,4 @@ inline ss_typename_type_ret_k reg_blob<A>::const_reverse_iterator reg_blob<A>::r
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_VALUE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

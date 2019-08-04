@@ -4,7 +4,7 @@
  * Purpose:     Clipboard scoping and facade class.
  *
  * Created:     26th May 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Martin Moene for reporting the problem with the data type
  *              in set_data_or_deallocate_and_throw_(), and for calling for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MAJOR      2
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MINOR      0
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_REVISION   14
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       47
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MINOR      1
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_REVISION   1
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,6 +90,10 @@
 # define STLSOFT_INCL_H_SHELLAPI
 # include <shellapi.h>
 #endif /* !STLSOFT_INCL_H_SHELLAPI */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -246,6 +250,18 @@ public:
     /// Sets the given text to the clipboard with CF_UNICODETEXT format.
     void    set_data(wchar_t const* str, ws_size_t n) stlsoft_throw_1(clipboard_scope_exception);
 
+
+    /// Sets the bitmap to the clipboard with CF_BITMAP format.
+    void    set_bitmap_data(HBITMAP hBmp) stlsoft_throw_1(clipboard_scope_exception);
+    /// Sets the bitmap to the clipboard with CF_HDROP format.
+    void    set_drop_data(HDROP hDrop) stlsoft_throw_1(clipboard_scope_exception);
+    /// Sets the bitmap to the clipboard with CF_ENHMETAFILE format.
+    void    set_emf_data(HENHMETAFILE hEmf) stlsoft_throw_1(clipboard_scope_exception);
+    /// Sets the bitmap to the clipboard with CF_PALETTE format.
+    void    set_palette_data(HPALETTE hPal) stlsoft_throw_1(clipboard_scope_exception);
+
+#ifdef STRICT
+
     /// Sets the bitmap to the clipboard with CF_BITMAP format.
     void    set_data(HBITMAP hBmp) stlsoft_throw_1(clipboard_scope_exception);
     /// Sets the bitmap to the clipboard with CF_HDROP format.
@@ -254,6 +270,7 @@ public:
     void    set_data(HENHMETAFILE hEmf) stlsoft_throw_1(clipboard_scope_exception);
     /// Sets the bitmap to the clipboard with CF_PALETTE format.
     void    set_data(HPALETTE hPal) stlsoft_throw_1(clipboard_scope_exception);
+#endif
 
     /// Gets the data with the requested format from the clipboard
     ///
@@ -277,22 +294,42 @@ public:
     ///
     /// \note The bitmap handle must be used before the clipboard_scope destructor is
     ///   invoked, or its contents copied
-    void    get_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception);
+    void    get_bitmap_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception);
     /// Gets the clipboard data with the CF_HDROP format.
     ///
     /// \note The drop handle must be used before the clipboard_scope destructor is
     ///   invoked, or its contents copied
-    void    get_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception);
+    void    get_drop_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception);
     /// Gets the clipboard data with the CF_ENHMETAFILE format.
     ///
     /// \note The metafile handle must be used before the clipboard_scope destructor is
     ///   invoked, or its contents copied
-    void    get_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception);
+    void    get_emf_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception);
     /// Gets the clipboard data with the CF_PALETTE format.
     ///
     /// \note The palette handle must be used before the clipboard_scope destructor is
     ///   invoked, or its contents copied
+    void    get_palette_data(HPALETTE& hPal) const stlsoft_throw_1(clipboard_scope_exception);
+
+#ifdef STRICT
+
+    /// Gets the clipboard data with the CF_BITMAP format.
+    ///
+    /// \see get_bitmap_data()
+    void    get_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception);
+    /// Gets the clipboard data with the CF_HDROP format.
+    ///
+    /// \see get_drop_data()
+    void    get_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception);
+    /// Gets the clipboard data with the CF_ENHMETAFILE format.
+    ///
+    /// \see get_emf_data()
+    void    get_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception);
+    /// Gets the clipboard data with the CF_PALETTE format.
+    ///
+    /// \see get_palette_data()
     void    get_data(HPALETTE& hPal) const stlsoft_throw_1(clipboard_scope_exception);
+#endif
 /// @}
 
 /// \name Members
@@ -359,7 +396,7 @@ inline clipboard_scope::clipboard_scope(HWND hwndOwner /* = NULL */) stlsoft_thr
 {
     if(!::OpenClipboard(hwndOwner))
     {
-        STLSOFT_THROW_X(clipboard_scope_exception("Cannot open clipboard", ::GetLastError()));
+        STLSOFT_THROW_X(clipboard_scope_exception("Cannot open clipboard", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 }
 
@@ -379,7 +416,7 @@ inline void clipboard_scope::clear() stlsoft_throw_1(clipboard_scope_exception)
 {
     if(!::EmptyClipboard())
     {
-        STLSOFT_THROW_X(clipboard_scope_exception("Cannot empty clipboard", ::GetLastError()));
+        STLSOFT_THROW_X(clipboard_scope_exception("Cannot empty clipboard", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 }
 
@@ -388,9 +425,9 @@ inline HWND clipboard_scope::owner() const
     HWND hwnd = ::GetClipboardOwner();
 
     if( NULL == hwnd &&
-        ERROR_SUCCESS != ::GetLastError())
+        ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
     {
-        STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard owner", ::GetLastError()));
+        STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard owner", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 
     return hwnd;
@@ -405,7 +442,7 @@ inline void clipboard_scope::set_data(UINT fmt, HANDLE hData) stlsoft_throw_1(cl
 {
     if(NULL == ::SetClipboardData(fmt, hData))
     {
-        STLSOFT_THROW_X(clipboard_scope_exception("Cannot set clipboard data", ::GetLastError()));
+        STLSOFT_THROW_X(clipboard_scope_exception("Cannot set clipboard data", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 }
 
@@ -459,34 +496,54 @@ inline void clipboard_scope::set_data(wchar_t const* str, ws_size_t n) stlsoft_t
     set_data_or_deallocate_and_throw_(CF_UNICODETEXT, memory, n, ator);
 }
 
-inline void clipboard_scope::set_data(HBITMAP hBmp) stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::set_bitmap_data(HBITMAP hBmp) stlsoft_throw_1(clipboard_scope_exception)
 {
     set_data(CF_BITMAP, hBmp);
 }
 
-inline void clipboard_scope::set_data(HDROP hDrop) stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::set_drop_data(HDROP hDrop) stlsoft_throw_1(clipboard_scope_exception)
 {
     set_data(CF_HDROP, hDrop);
 }
 
-inline void clipboard_scope::set_data(HENHMETAFILE hEmf) stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::set_emf_data(HENHMETAFILE hEmf) stlsoft_throw_1(clipboard_scope_exception)
 {
     set_data(CF_ENHMETAFILE, hEmf);
 }
 
-inline void clipboard_scope::set_data(HPALETTE hPal) stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::set_palette_data(HPALETTE hPal) stlsoft_throw_1(clipboard_scope_exception)
 {
     set_data(CF_PALETTE, hPal);
 }
+
+#ifdef STRICT
+
+inline void clipboard_scope::set_data(HBITMAP hBmp) stlsoft_throw_1(clipboard_scope_exception)
+{
+    set_bitmap_data(hBmp);
+}
+inline void clipboard_scope::set_data(HDROP hDrop) stlsoft_throw_1(clipboard_scope_exception)
+{
+    set_drop_data(hDrop);
+}
+inline void clipboard_scope::set_data(HENHMETAFILE hEmf) stlsoft_throw_1(clipboard_scope_exception)
+{
+    set_emf_data(hEmf);
+}
+inline void clipboard_scope::set_data(HPALETTE hPal) stlsoft_throw_1(clipboard_scope_exception)
+{
+    set_palette_data(hPal);
+}
+#endif
 
 inline HANDLE clipboard_scope::get_data(UINT fmt) const stlsoft_throw_1(clipboard_scope_exception)
 {
     HANDLE hData = ::GetClipboardData(fmt);
 
     if( NULL == hData &&
-        ERROR_SUCCESS != ::GetLastError())
+        ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
     {
-        STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard data", ::GetLastError()));
+        STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard data", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 
     return hData;
@@ -502,25 +559,48 @@ inline void clipboard_scope::get_data(wchar_t const*& str) const stlsoft_throw_1
     str = static_cast<wchar_t const*>(get_data(CF_UNICODETEXT));
 }
 
-inline void clipboard_scope::get_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::get_bitmap_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception)
 {
     hBmp = static_cast<HBITMAP>(get_data(CF_BITMAP));
 }
 
-inline void clipboard_scope::get_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::get_drop_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception)
 {
     hDrop = static_cast<HDROP>(get_data(CF_HDROP));
 }
 
-inline void clipboard_scope::get_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::get_emf_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception)
 {
     hEmf = static_cast<HENHMETAFILE>(get_data(CF_ENHMETAFILE));
 }
 
-inline void clipboard_scope::get_data(HPALETTE& hPal) const stlsoft_throw_1(clipboard_scope_exception)
+inline void clipboard_scope::get_palette_data(HPALETTE& hPal) const stlsoft_throw_1(clipboard_scope_exception)
 {
     hPal = static_cast<HPALETTE>(get_data(CF_PALETTE));
 }
+
+#ifdef STRICT
+
+inline void clipboard_scope::get_data(HBITMAP& hBmp) const stlsoft_throw_1(clipboard_scope_exception)
+{
+    get_bitmap_data(hBmp);
+}
+
+inline void clipboard_scope::get_data(HDROP& hDrop) const stlsoft_throw_1(clipboard_scope_exception)
+{
+    get_drop_data(hDrop);
+}
+
+inline void clipboard_scope::get_data(HENHMETAFILE& hEmf) const stlsoft_throw_1(clipboard_scope_exception)
+{
+    get_emf_data(hEmf);
+}
+
+inline void clipboard_scope::get_data(HPALETTE& hPal) const stlsoft_throw_1(clipboard_scope_exception)
+{
+    get_palette_data(hPal);
+}
+#endif
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -550,3 +630,4 @@ inline void clipboard_scope::get_data(HPALETTE& hPal) const stlsoft_throw_1(clip
 #endif /* !WINSTL_INCL_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

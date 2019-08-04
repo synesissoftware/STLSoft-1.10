@@ -4,14 +4,14 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,9 +65,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     31
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     32
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      141
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      143
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -286,6 +286,7 @@
  *     - type disambiguation inside initialiser lists in class template constructors
  *     - type disambiguation the return types in templates
  * - argument-dependent lookup
+ * - rvalue references
  * - static array-size determination
  * - empty-derived optimisation
  *    -
@@ -403,6 +404,10 @@
 #if _MSC_VER >= 1310
 # define STLSOFT_CF_ADL_SUPPORT
 #endif /* compiler */
+
+#if _MSC_VER >= 1600
+# define STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+#endif
 
 #if _MSC_VER >= 1300
 # define STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
@@ -969,3 +974,4 @@
 #include <stlsoft/internal/cccap/obsolete.h>
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

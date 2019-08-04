@@ -4,11 +4,11 @@
  * Purpose:     Window text scoping class.
  *
  * Created:     21st August 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MINOR    1
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_REVISION 6
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     50
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_REVISION 7
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -218,6 +218,9 @@ public:
     {
         traits_type::set_window_text(m_hwnd, m_oldText);
     }
+private:
+    window_text_scope(class_type const&);   // copy-construction proscribed
+    void operator =(class_type const&);     // copy-assignment proscribed
 /// @}
 
 /// \name Members
@@ -225,13 +228,6 @@ public:
 private:
     HWND        m_hwnd;
     string_type m_oldText;
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    window_text_scope(class_type const& rhs);
-    class_type const& operator =(class_type const& rhs);
 /// @}
 };
 
@@ -258,3 +254,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

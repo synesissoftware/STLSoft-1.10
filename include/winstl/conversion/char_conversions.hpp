@@ -4,11 +4,11 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     31st May 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    4
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 9
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     105
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 11
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     109
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -94,6 +94,13 @@
 # endif /* !WINSTL_INCL_WINSTL_ERROR_HPP_CONVERSION_ERROR */
 # include <errno.h>
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -205,10 +212,10 @@ private:
         {
             // Note: cannot use -1 for length, since s might be a type that
             // could change length
-            if(0 == ::MultiByteToWideChar(0, 0, s, static_cast<int>(size), data, static_cast<int>(size)))
+            if(0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, static_cast<int>(size), data, static_cast<int>(size)))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-                STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", ::GetLastError()));
+                STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
                 data[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -358,10 +365,10 @@ private:
         {
             // Note: cannot use -1 for length, since s might be a type that
             // could change length
-            if(0 == ::WideCharToMultiByte(0, 0, s, static_cast<int>(size), data, static_cast<int>(size), NULL, NULL))
+            if(0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, s, static_cast<int>(size), data, static_cast<int>(size), NULL, NULL))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-                STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", ::GetLastError()));
+                STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
                 data[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -844,3 +851,4 @@ operator <<(
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

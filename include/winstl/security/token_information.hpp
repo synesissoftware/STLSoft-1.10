@@ -4,11 +4,11 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     20th June 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MAJOR     4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     4
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  2
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      70
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  4
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,6 +90,10 @@
 # define STLSOFT_INCL_UTILITY
 # include <utility>
 #endif /* !STLSOFT_INCL_UTILITY */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -253,7 +257,7 @@ WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationAllowed, DWORD);
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenVirtualizationEnabled, DWORD);
 
-WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIntegrityLevel, TOKEN_MANDATORY_LEVEL);
+WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenIntegrityLevel, TOKEN_MANDATORY_LABEL);
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenUIAccess, DWORD);
 
@@ -387,7 +391,7 @@ private:
         DWORD   dwError;
 
         ::GetTokenInformation(hToken, C, NULL, 0, &cbRequired);
-        dwError = ::GetLastError();
+        dwError = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
         if(ERROR_INSUFFICIENT_BUFFER != dwError)
         {
             // Report error
@@ -404,7 +408,7 @@ private:
                 exception_thrower_type()(ERROR_NOT_ENOUGH_MEMORY);
 
                 // Set the last error, in case the client code is not using exception reporting
-                ::SetLastError(ERROR_NOT_ENOUGH_MEMORY);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
             }
             else
             {
@@ -525,3 +529,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_SECURITY_HPP_TOKEN_INFORMATION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

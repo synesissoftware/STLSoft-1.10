@@ -5,7 +5,7 @@
  *              components.
  *
  * Created:     1st January 2017
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,7 +48,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        4
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/readonly_memory_mapped_file.hpp
@@ -161,3 +161,4 @@ WINSTL_NS_USING(readonly_memory_mapped_file_base)
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

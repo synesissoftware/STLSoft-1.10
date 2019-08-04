@@ -4,11 +4,11 @@
  * Purpose:     Modification functions for Windows time structures.
  *
  * Created:     2nd February 2011
- * Updated:     12th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_MODIFICATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_TIME_H_MODIFICATION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_TIME_H_MODIFICATION_FUNCTIONS_REVISION 1
-# define WINSTL_VER_WINSTL_TIME_H_MODIFICATION_FUNCTIONS_EDIT     9
+# define WINSTL_VER_WINSTL_TIME_H_MODIFICATION_FUNCTIONS_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -141,23 +141,23 @@ winstl_C_increment_FILETIME_us(
 
     if(0 != microseconds)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10) * microseconds;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10) * microseconds;
     }
     if(0 != seconds)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * seconds;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * seconds;
     }
     if(0 != minutes)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * minutes;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * minutes;
     }
     if(0 != hours)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * hours;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * hours;
     }
     if(0 != days)
     {
-      puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * 24 * days;
+        puliResult->QuadPart += stlsoft_static_cast(ULONGLONG, 10000) * 1000 * 60 * 60 * 24 * days;
     }
 }
 
@@ -380,3 +380,4 @@ increment_SYSTEMTIME(
 #endif /* !WINSTL_INCL_WINSTL_TIME_H_MODIFICATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

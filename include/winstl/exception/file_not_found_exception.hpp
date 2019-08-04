@@ -4,7 +4,7 @@
  * Purpose:     winstl::file_not_found_exception class
  *
  * Created:     1st January 2017
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MAJOR     1
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MINOR     0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_REVISION  1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT      1
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT      2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,3 +127,4 @@ typedef STLSOFT_NS_QUAL(filesystem_propagating_exception_base)<
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

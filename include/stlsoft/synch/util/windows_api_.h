@@ -4,14 +4,11 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     19th February 2017
+ * Updated:     11th June 2018
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
- * All rights reserved.
- *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2018, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
-# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__REVISION 2
-# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__EDIT     6
+# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__REVISION 3
+# define STLSOFT_VER_STLSOFT_SYNCH_UTIL_H_WINDOWS_API__EDIT     7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,9 +78,8 @@
 # elif defined(STLSOFT_CF_SUPPORT___declspec)
 
 #  if 0
-#  elif 1 &&\
-        defined(STLSOFT_COMPILER_IS_BORLAND) &&\
-        1
+#  elif defined(STLSOFT_COMPILER_IS_BORLAND) &&\
+        __BORLANDC__ <= 0x0550
 #   define STLSOFT_INTERNAL_SYNCH_WindowsAPI_declimport_    __declspec(__dllimport)
 #  else
 #   define STLSOFT_INTERNAL_SYNCH_WindowsAPI_declimport_    __declspec(dllimport)
@@ -321,3 +317,4 @@ Sleep(
 #endif /* !STLSOFT_INCL_STLSOFT_SYNCH_UTIL_H_WINDOWS_API_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

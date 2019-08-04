@@ -4,11 +4,11 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     7
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  9
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      56
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  10
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -98,6 +98,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_VIEW
 # include <stlsoft/string/string_view.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_VIEW */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -537,7 +541,7 @@ inline dl_call_traits::entry_point_type lookup_symbol_(dl_call_traits::library_h
 
     if(NULL == fp)
     {
-        STLSOFT_THROW_X(missing_entry_point_exception(functionName, ::GetLastError()));
+        STLSOFT_THROW_X(missing_entry_point_exception(functionName, WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 
     return fp;
@@ -5872,3 +5876,4 @@ inline R dl_call(L const& library, FD const& fd, A0 a0, A1 a1, A2 a2, A3 a3, A4 
 #endif /* !WINSTL_INCL_WINSTL_DL_HPP_DL_CALL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

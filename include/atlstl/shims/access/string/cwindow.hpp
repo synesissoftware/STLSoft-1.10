@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     27th May 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MAJOR    4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MINOR    0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 8
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     111
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 10
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,6 +73,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_CSTRING_MAKER
 # include <stlsoft/string/cstring_maker.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CSTRING_MAKER */
+
+#ifndef STRICT
+# error ATL window components are not compatible with non-STRICT configuration
+#endif
 
 #ifndef STLSOFT_INCL_SYS_H_ATLWIN
 # define STLSOFT_INCL_SYS_H_ATLWIN
@@ -249,6 +253,8 @@ public:
     {
         string_maker_type::free(m_buffer);
     }
+private:
+    void operator =(class_type const&); // copy-assignment operator proscribed
 
 // Accessors
 public:
@@ -262,10 +268,6 @@ public:
 // Members
 private:
     LPTSTR  m_buffer;
-
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -512,3 +514,4 @@ using ::atlstl::c_str_ptr_null_a;
 #endif /* !ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     winstl::to_SYSTEMTIME(FILETIME const&) overload.
  *
  * Created:     24th May 2002
- * Updated:     12th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_MAJOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_MINOR    1
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_REVISION 2
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_EDIT     18
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_REVISION 3
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,6 +75,9 @@
 # include <winstl/util/struct_initialisers.hpp>
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Time
 # include <winstl/api/external/Time.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Time */
@@ -122,7 +125,7 @@ inline const SYSTEMTIME to_SYSTEMTIME(FILETIME const& rhs)
     if(!WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(&rhs, &st))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(conversion_error("failed to convert time value", ::GetLastError()));
+        STLSOFT_THROW_X(conversion_error("failed to convert time value", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* STLSOFT_CF_EXCEPTION_SUPPORT */
         zero_struct(st);
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
@@ -158,3 +161,4 @@ inline const SYSTEMTIME to_SYSTEMTIME(FILETIME const& rhs)
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

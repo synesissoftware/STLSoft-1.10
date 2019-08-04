@@ -4,11 +4,11 @@
  * Purpose:     Definition of the atomic types.
  *
  * Created:     22nd March 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES_MAJOR     3
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES_MINOR     0
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES_REVISION  7
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES_EDIT      37
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES_EDIT      38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -165,3 +165,4 @@ namespace platformstl_project
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_SYNCH_H_ATOMIC_TYPES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

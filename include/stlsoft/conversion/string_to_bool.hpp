@@ -4,11 +4,11 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     13th January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     6
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 5
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,7 @@ namespace
 
     } instance;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
@@ -270,8 +270,19 @@ try_parse_to_bool(
     return false;
 }
 
-
-
+/** Parses a partial/whole multibyte string slice for a Boolean
+ * representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -283,15 +294,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_a_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("true", 4)
         ,   stlsoft_C_string_slice_a_t::create("True", 4)
         ,   stlsoft_C_string_slice_a_t::create("TRUE", 4)
+#else
+
+            { 4, "true" }
+        ,   { 4, "True" }
+        ,   { 4, "TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_a_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("false", 5)
         ,   stlsoft_C_string_slice_a_t::create("False", 5)
         ,   stlsoft_C_string_slice_a_t::create("FALSE", 5)
+#else
+
+            { 5, "false" }
+        ,   { 5, "False" }
+        ,   { 5, "FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -307,6 +334,18 @@ try_parse_to_bool(
             );
 }
 
+/** Parses a partial/whole wide string slice for a Boolean representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -318,15 +357,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_w_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"true", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"True", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"TRUE", 4)
+#else
+
+            { 4, L"true" }
+        ,   { 4, L"True" }
+        ,   { 4, L"TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_w_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"false", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"False", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"FALSE", 5)
+#else
+
+            { 5, L"false" }
+        ,   { 5, L"False" }
+        ,   { 5, L"FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -342,9 +397,16 @@ try_parse_to_bool(
             );
 }
 
-
-
-
+/** Parses a partial/whole multibyte string slice for a Boolean
+ * representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -356,6 +418,15 @@ try_parse_to_bool(
     return try_parse_to_bool(s, n, result, static_cast<ss_char_a_t const**>(NULL));
 }
 
+/** Parses a partial/whole wide string slice for a Boolean representation
+ *
+ * \param s The first character in the slice
+ * \param n The number of characters in the slice
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -367,8 +438,18 @@ try_parse_to_bool(
     return try_parse_to_bool(s, n, result, static_cast<ss_char_w_t const**>(NULL));
 }
 
-
-
+/** Parses a partial/whole multibyte C-style string for a Boolean
+ * representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -379,15 +460,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_a_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("true", 4)
         ,   stlsoft_C_string_slice_a_t::create("True", 4)
         ,   stlsoft_C_string_slice_a_t::create("TRUE", 4)
+#else
+
+            { 4, "true" }
+        ,   { 4, "True" }
+        ,   { 4, "TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_a_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_a_t::create("false", 5)
         ,   stlsoft_C_string_slice_a_t::create("False", 5)
         ,   stlsoft_C_string_slice_a_t::create("FALSE", 5)
+#else
+
+            { 5, "false" }
+        ,   { 5, "False" }
+        ,   { 5, "FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -403,6 +500,17 @@ try_parse_to_bool(
             );
 }
 
+/** Parses a partial/whole wide C-style string for a Boolean representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ * \param endptr Pointer to the first character that ends the parsing. Will
+ *   be set to \c nullptr in the case that a whole recognised (sub-)string
+ *   is found
+ *
+ * \return Indicates that the C-style string begins with a recognised
+ *   value (such as "true", "False", and so on)
+ */
 inline
 bool
 try_parse_to_bool(
@@ -413,15 +521,31 @@ try_parse_to_bool(
 {
     static stlsoft_C_string_slice_w_t const trueSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"true", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"True", 4)
         ,   stlsoft_C_string_slice_w_t::create(L"TRUE", 4)
+#else
+
+            { 4, L"true" }
+        ,   { 4, L"True" }
+        ,   { 4, L"TRUE" }
+#endif
     };
     static stlsoft_C_string_slice_w_t const falseSlices[] =
     {
+#if 0
+
             stlsoft_C_string_slice_w_t::create(L"false", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"False", 5)
         ,   stlsoft_C_string_slice_w_t::create(L"FALSE", 5)
+#else
+
+            { 5, L"false" }
+        ,   { 5, L"False" }
+        ,   { 5, L"FALSE" }
+#endif
     };
 
     return try_parse_to_bool(
@@ -438,7 +562,19 @@ try_parse_to_bool(
 }
 
 
-
+/** Parses a partial/whole multibyte C-style string for a Boolean
+ * representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the whole C-style string contains a recognised
+ *   value (such as "true", "False", and so on)
+ *
+ * \note If the string begins with a recognised true value - such
+ *   as "true" - and has additional non-nul characters then the return value
+ *   will be \c false but the value of <code>*result</code> will be \c true.
+ */
 inline
 bool
 try_parse_to_bool(
@@ -446,9 +582,34 @@ try_parse_to_bool(
 ,   bool*               result
 )
 {
-    return try_parse_to_bool(s, result, static_cast<ss_char_a_t const**>(NULL));
+    ss_char_a_t const*  endptr;
+
+    if(!try_parse_to_bool(s, result, &endptr))
+    {
+        return false;
+    }
+
+    if( ss_nullptr_k != endptr &&
+        '\0' != 0[endptr])
+    {
+        return false;
+    }
+
+    return true;
 }
 
+/** Parses a partial/whole wide C-style string for a Boolean representation
+ *
+ * \param s The C-style string
+ * \param result Pointer to the result. May not be \c nullptr
+ *
+ * \return Indicates that the whole C-style string contains a recognised
+ *   value (such as "true", "False", and so on)
+ *
+ * \note If the string begins with a recognised true value - such
+ *   as "true" - and has additional non-nul characters then the return value
+ *   will be \c false but the value of <code>*result</code> will be \c true.
+ */
 inline
 bool
 try_parse_to_bool(
@@ -456,7 +617,20 @@ try_parse_to_bool(
 ,   bool*               result
 )
 {
-    return try_parse_to_bool(s, result, static_cast<ss_char_w_t const**>(NULL));
+    ss_char_w_t const*  endptr;
+
+    if(!try_parse_to_bool(s, result, &endptr))
+    {
+        return false;
+    }
+
+    if( ss_nullptr_k != endptr &&
+        '\0' != 0[endptr])
+    {
+        return false;
+    }
+
+    return true;
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -476,7 +650,7 @@ namespace
 
     } instance_posterior;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -494,8 +668,7 @@ namespace
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-/* ////////////////////////////////////////////////////////////////////// */
-
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

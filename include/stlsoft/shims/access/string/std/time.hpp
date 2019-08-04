@@ -4,11 +4,11 @@
  * Purpose:     String shims for standard time structures.
  *
  * Created:     25th July 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,10 +50,10 @@
 #define STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MAJOR     2
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MINOR     1
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_REVISION  9
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      30
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MAJOR     3
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MINOR     0
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_REVISION  1
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,26 +102,41 @@ namespace stlsoft
  * \return None-NULL, non-mutating pointer to a C-style
  *   string of <code>char</code>.
  */
-inline basic_shim_string<ss_char_a_t> c_str_data_a(struct tm const* t)
+inline
+basic_shim_string<ss_char_a_t>
+c_str_data_a(
+  struct tm const* t
+)
 {
     typedef basic_shim_string<ss_char_a_t>  shim_string_t;
 
-    shim_string_t   s(20);
-
     if(NULL == t)
     {
-        s.truncate(0);
+        return shim_string_t();
     }
     else
     {
-        const ss_size_t cch = ::strftime(s.data(), 1 + s.size(), "%b %d %H:%M:%S %Y", t);
+        ss_char_a_t         fmt[101];
+        ss_size_t const     n0  =   STLSOFT_NS_GLOBAL(strftime)(&fmt[0], STLSOFT_NUM_ELEMENTS(fmt), "%a %b %%d %%H:%%M:%%S %%Y", t);
 
-        STLSOFT_ASSERT(20 == cch);
+        if(0 != n0)
+        {
+            shim_string_t       s(n0 + 2);
 
-        s.truncate(cch);
+            ss_size_t const     n1  =   STLSOFT_NS_GLOBAL(strftime)(s.data(), 1 + s.size(), fmt, t);
+
+            if(0 != n1)
+            {
+                STLSOFT_ASSERT(n1 <= s.size());
+
+                s.truncate(n1);
+
+                return s;
+            }
+        }
     }
 
-    return s;
+    return shim_string_t("(invalid time)");
 }
 
 /** \ref group__concept__Shim__string_access__c_str_data function
@@ -131,7 +146,11 @@ inline basic_shim_string<ss_char_a_t> c_str_data_a(struct tm const* t)
  *
  * \return None-NULL, non-mutating pointer to a C-style string.
  */
-inline basic_shim_string<ss_char_a_t> c_str_data(struct tm const* t)
+inline
+basic_shim_string<ss_char_a_t>
+c_str_data(
+  struct tm const* t
+)
 {
     return c_str_data_a(t);
 }
@@ -145,9 +164,29 @@ inline basic_shim_string<ss_char_a_t> c_str_data(struct tm const* t)
  *
  * \return Length (in bytes) of the string <code>s</code>.
  */
-inline ss_size_t c_str_len_a(struct tm const* t)
+inline
+ss_size_t
+c_str_len_a(
+    struct tm const* t
+)
 {
-    return static_cast<ss_size_t>((NULL != t) ? 20 : 0);
+    if(NULL == t)
+    {
+        return 0;
+    }
+    else
+    {
+        ss_char_a_t         sz[101];
+        ss_size_t const     n1  =   STLSOFT_NS_GLOBAL(strftime)(&sz[0], STLSOFT_NUM_ELEMENTS(sz), "%a %b", t);
+
+        if(0 != n1)
+        {
+            // See implementation of c_str_data_a(struct tm const*)
+            return 17 + n1;
+        }
+
+        return 14;
+    }
 }
 
 /** \ref group__concept__Shim__string_access__c_str_len function
@@ -325,7 +364,6 @@ inline basic_shim_string<ss_char_a_t> c_str_ptr_null(struct tm const& t)
     return c_str_ptr_null(&t);
 }
 
-
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef STLSOFT_NO_NAMESPACE
@@ -343,3 +381,4 @@ inline basic_shim_string<ss_char_a_t> c_str_ptr_null(struct tm const& t)
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     2nd March 1996
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1996-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MINOR       1
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    8
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        167
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    10
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        170
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,10 +73,13 @@
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>
-#endif /* !STLSOFT_INCL_H_WCHAR */
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -120,14 +123,14 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_a(cs_char_a_t const* s)
     {
         /* NOTE: All this posz2 hoop jumping is needed because BC++ gets confused. Ahh, bless it ... */
 
-        cs_size_t       cch     =   stlsoft_static_cast(cs_size_t, STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, s, -1, NULL, 0));
+        cs_size_t       cch     =   stlsoft_static_cast(cs_size_t, WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, NULL, 0));
         const LPOLESTR  posz2   =   stlsoft_static_cast(LPOLESTR, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)(sizeof(OLECHAR) * (cch + 1)));
 
         posz = posz2;
 
         if(NULL != posz)
         {
-            cs_size_t n = stlsoft_static_cast(cs_size_t, STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, s, -1, posz2, stlsoft_static_cast(int, cch + 1)));
+            cs_size_t n = stlsoft_static_cast(cs_size_t, WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, posz2, stlsoft_static_cast(int, cch + 1)));
 
             if(n < cch)
             {
@@ -309,3 +312,4 @@ inline LPOLESTR olestring_dup(LPCOLESTR posz)
 #endif /* !COMSTL_INCL_COMSTL_STRING_H_OLESTRING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

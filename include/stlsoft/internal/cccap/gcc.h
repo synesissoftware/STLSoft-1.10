@@ -4,13 +4,13 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,9 +60,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      26
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   4
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       102
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      27
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       104
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -254,6 +254,7 @@
  *    - type disambiguation inside initialiser lists in class template constructors
  *    - type disambiguation the return types in templates
  * - argument-dependent lookup
+ * - rvalue references
  * - static array-size determination
  * - empty-derived optimisation
  *    -
@@ -330,6 +331,12 @@
 #define STLSOFT_CF_TYPENAME_TYPE_RET_KEYWORD_SUPPORT
 
 #define STLSOFT_CF_ADL_SUPPORT
+
+#if __GNUC__ > 4 || \
+    (   __GNUC__ == 4 && \
+        __GNUC_MINOR__ >= 3)
+# define STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+#endif
 
 #if __GNUC__ >= 3
 # define STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
@@ -647,3 +654,4 @@
 #include <stlsoft/internal/cccap/obsolete.h>
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

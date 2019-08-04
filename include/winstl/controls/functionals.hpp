@@ -4,11 +4,11 @@
  * Purpose:     Functionals for application to controls.
  *
  * Created:     8th October 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,21 +51,9 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MAJOR    4
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MINOR    2
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 7
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     89
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 8
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_DMC:    __DMC__<0x0850
-STLSOFT_COMPILER_IS_GCC:  __GNUC__<3
-STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1100
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -108,6 +96,10 @@ STLSOFT_COMPILER_IS_MSVC: _MSC_VER<1100
 #ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <winstl/system/system_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 #ifndef _WINSTL_CONTROL_FUNCTIONALS_NO_STD
 # include <functional>
@@ -303,14 +295,14 @@ private:
         ws_char_w_t szw[256];
 
         return  ::GetClassNameW(hwnd, &szw[0], STLSOFT_NUM_ELEMENTS(szw)) &&
-                0 == ::lstrcmpiW(&szw[0], &m_name.szw[0]);
+                0 == STLSOFT_API_EXTERNAL_string_wcsicmp(&szw[0], &m_name.szw[0]);
     }
     BOOL is_class_a_(HWND hwnd) const
     {
         ws_char_a_t sza[256];
 
         return  ::GetClassNameA(hwnd, &sza[0], STLSOFT_NUM_ELEMENTS(sza)) &&
-                0 == ::lstrcmpiA(&sza[0], &m_name.sza[0]);
+                0 == STLSOFT_API_EXTERNAL_string_stricmp(&sza[0], &m_name.sza[0]);
     }
 
 private:
@@ -807,3 +799,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_CONTROL_HPP_FUNCTIONALS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

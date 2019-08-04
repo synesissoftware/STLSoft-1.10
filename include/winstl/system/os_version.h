@@ -4,11 +4,11 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1995-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1995-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 4
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     8
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 6
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,14 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -196,7 +204,7 @@ winstl_C_identify_operating_system(
 #else /* ? XP+ */
         typedef void (WINAPI *GNSI_fn_t)(LPSYSTEM_INFO);
 
-        HMODULE     h   =   STLSOFT_NS_GLOBAL(LoadLibrary)("KERNEL32");
+        HMODULE     h   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32");
         GNSI_fn_t   pfn =   NULL;
 
         if(NULL != h)
@@ -208,7 +216,7 @@ winstl_C_identify_operating_system(
                 (*pfn)(&si);
             }
 
-            STLSOFT_NS_GLOBAL(FreeLibrary)(h);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(h);
         }
 
         if(NULL == pfn)
@@ -283,7 +291,7 @@ winstl_C_identify_operating_system(
                             {
                                 return WinSTL_OperatingSystemIdentifier_Windows_Server_2003_R2;
                             }
-                            else 
+                            else
                             {
                                 return WinSTL_OperatingSystemIdentifier_Windows_Server_2003;
                             }
@@ -456,3 +464,4 @@ c_str_len_a(
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_OS_VERSION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

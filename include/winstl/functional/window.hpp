@@ -4,11 +4,11 @@
  * Purpose:     Window function classes and predicates.
  *
  * Created:     19th January 2001
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2001-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_MAJOR      4
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_MINOR      1
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_REVISION   6
-# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_EDIT       52
+# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_EDIT       53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -275,3 +275,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_FUNCTIONAL_HPP_WINDOW */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

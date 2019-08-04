@@ -5,11 +5,11 @@
  *              Information Functions API.
  *
  * Created:     24th December 2016
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -108,18 +108,18 @@
 
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL(GetComputerNameA)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA             STLSOFT_NS_GLOBAL_(GetComputerNameA)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA */
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL(GetComputerNameW)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW             STLSOFT_NS_GLOBAL_(GetComputerNameW)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW */
 
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL(GetUserNameA)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL(GetUserNameW)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
 
 
@@ -159,3 +159,4 @@
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

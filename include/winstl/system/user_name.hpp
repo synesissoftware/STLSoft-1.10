@@ -5,11 +5,11 @@
  *              the user name.
  *
  * Created:     13th September 2014
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_MAJOR       1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_REVISION    4
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_EDIT        10
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_MINOR       1
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_REVISION    1
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_USER_NAME_EDIT        12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -144,6 +144,8 @@ public:
 
     enum { allowImplicitConversion  =   1   };
 
+    enum { caseSensitive            =   0   };
+
     enum { sharedState              =   0   };
 /// @}
 
@@ -203,3 +205,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<username_policy<TCHAR> >     
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_USER_NAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

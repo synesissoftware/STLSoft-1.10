@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  19th February 2017
+; Updated:  16th April 2019
 
 ============================================================================
 
@@ -17,6 +17,793 @@ STLSoft - Changes
    **************************************
 
 
+============================================================================
+
+Changes for 1.10.1 beta 13 (16th April 2019)
+
+General:
+========
+
+ * fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
+ * platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+ * canonicalising source file structure
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/stlsoft.h:
+    ~ fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/FILE_stream.hpp:
+    ~ platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+
+ *:
+ ==
+   ~ canonicalising source file structure
+
+
+============================================================================
+
+Changes for 1.10.1 beta 12 (26th December 2018)
+
+General:
+========
+
+ * added sas_to_string() (and related) functions
+ * added stlsoft::errno_exception (from 1.12 branch)
+ * added stlsoft::locale_scope
+ * STLSoft's struct tm String Access Shims now work for arbitrary locale
+ * UNIXSTL's timeval String Access Shims now work for arbitrary locale
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/conversion/sas_to_string.hpp:
+    + added sas_to_string() (and related) functions
+
+ ~ stlsoft/exception/special/errno_exception.hpp:
+    + stlsoft::errno_exception (from 1.12 branch)
+
+ + stlsoft/locale/exception/locale_exception.hpp:
+ + stlsoft/locale/locale_scope.hpp:
+    + stlsoft::locale_scope
+
+ ~ stlsoft/shims/access/string/std/time.hpp:
+    ~ STLSoft's struct tm String Access Shims now work for arbitrary locale
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/shims/access/string/timeval.hpp:
+    ~ UNIXSTL's timeval String Access Shims now work for arbitrary locale
+
+
+============================================================================
+
+Changes for 1.10.1 beta 11 (22nd December 2018)
+
+General:
+========
+
+ * stlsoft::ref_ptr : + borrow(); + own()
+ * winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + exists(); + operators ==() and !=()
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/smartptr/ref_ptr.hpp:
+    stlsoft::ref_ptr : + borrow(); + own()
+    stlsoft::ref_ptr : ~ (in)equality operators declared noexcept
+
+ WinSTL:
+ =======
+
+ ~ winstl/system/environment_variable.hpp:
+    winstl::environment_variable : - reduced dependencies
+    winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + operators ==() and !=()
+    winstl::environment_variable : + refactored, and added exists() method
+
+============================================================================
+
+Changes for 1.10.1 beta 10 (20th December 2018)
+
+General:
+========
+
+ * winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
+ * special_string_instance now provides generic (SAS) (in)equality operators automatically
+ * try_parse_to_bool() semantics firmed up
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/shims/access/string/cwindow.hpp:
+ ~ atlstl/shims/attribute/get_HWND.hpp:
+ ~ atlstl/window/about_dialog.hpp:
+ ~ atlstl/window/window.hpp:
+    ~ STRICT compatibility
+
+ COMSTL:
+ =======
+
+ ~ comstl/util/GUID_functions.h:
+    ~ kicking #pragma message exhortation down the road
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/api/external/string.h:
+    ~ dealing with C4996 / _CRT_ secure stuff
+
+ ~ stlsoft/conversion/number/grouping_functions.hpp:
+    stlsoft::format_thousands() : ~ slight optimisation/simplification; ~ documentation
+
+ ~ stlsoft/conversion/string_to_bool.hpp:
+    ~ try_parse_to_bool() semantics firmed up
+
+ ~ stlsoft/smartptr/ref_ptr.hpp:
+    ref_ptr : - removed dead code
+    ref_ptr : ~ minor tidying
+
+ ~ stlsoft/string/special_string_instance.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ UNIXSTL:
+ =======
+
+ ~ unixstl/filesystem/current_directory.hpp:
+ ~ unixstl/system/home_directory.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Synchronization.h:
+ ~ winstl/registry/util/shared_handles.hpp:
+ ~ winstl/synch/event.hpp:
+ ~ winstl/synch/semaphore.hpp:
+ ~ winstl/synch/wait_functions.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/clipboard/clipboard_scope.hpp:
+    ~ STRICT compatibility
+
+ ~ winstl/filesystem/absolute_path.hpp:
+ ~ winstl/filesystem/current_directory.hpp:
+ ~ winstl/system/home_directory.hpp:
+ ~ winstl/system/host_name.hpp:
+ ~ winstl/system/module_directory.hpp:
+ ~ winstl/system/module_filename.hpp:
+ ~ winstl/system/system_directory.hpp:
+ ~ winstl/system/temporary_directory.hpp:
+ ~ winstl/system/temporary_file_name.hpp:
+ ~ winstl/system/user_name.hpp:
+ ~ winstl/system/windows_directory.hpp:
+    special_string_instance now provides generic (SAS) (in)equality operators automatically
+
+ ~ winstl/synch/process_mutex.hpp:
+    + winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
+    ~ refactored in terms of external API
+
+============================================================================
+
+Changes for 1.10.1 beta 9 (11th June 2018)
+
+General:
+========
+
+ * Borland compatibility
+
+Changes:
+========
+
+ ACESTL:
+ =======
+
+ ~ acestl/shims/access/string/inet_addr.hpp:
+    + Borland compatibility
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/string/ccombstr_veneer.hpp:
+    + Borland compatibility
+
+ COMSTL:
+ =======
+
+ ~ comstl/error/errorinfo_functions.h:
+ ~ comstl/shims/access/string/VARIANT.hpp:
+ ~ comstl/string/BSTR_functions.h:
+ ~ comstl/string/bstr.hpp:
+ ~ comstl/string/olestring_functions.h:
+    + Borland compatibility
+
+ InetSTL:
+ ========
+
+ ~ inetstl/filesystem/filesystem_traits.hpp:
+    + Borland compatibility
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/path_functions.h:
+ ~ platformstl/system/environment_map.hpp:
+ ~ platformstl/system/environment_variable_traits.hpp:
+    + Borland compatibility
+
+ RangeLib:
+ =========
+
+ ~ rangelib/associative_range.hpp:
+ ~ rangelib/error/exceptions.hpp:
+    + Borland compatibility
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/api/external/string.h:
+ ~ stlsoft/conversion/byte_format_functions.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_hexadecimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_octal_string.hpp:
+ ~ stlsoft/conversion/string_to_bool.hpp:
+ ~ stlsoft/error/error_desc.hpp:
+ ~ stlsoft/shims/access/string/std/c_string.h:
+ ~ stlsoft/shims/access/string/std/exception.hpp:
+ ~ stlsoft/shims/access/string/std/type_info.hpp:
+ ~ stlsoft/std/cstring.hpp:
+ ~ stlsoft/string/char_traits.hpp:
+ ~ stlsoft/string/copy_functions.h:
+ ~ stlsoft/string/functionals.hpp:
+ ~ stlsoft/string/trim_functions.hpp:
+ ~ stlsoft/synch/util/windows_api_.h:
+ ~ stlsoft/util/integral_printf_traits.hpp:
+ ~ stlsoft/util/std/iterator_helper.hpp:
+ ~ stlsoft/util/string_switch.hpp:
+    + Borland compatibility
+
+ UNIXSTL:
+ =======
+
+ ~ unixstl/exception/throw_policies.hpp:
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+ ~ unixstl/filesystem/glob_sequence.hpp:
+ ~ unixstl/system/directory_functions.h:
+ ~ unixstl/system/system_traits.hpp:
+    + Borland compatibility
+
+ WinSTL:
+ =======
+
+ ~ winstl/controls/listbox_data_sequence.hpp:
+ ~ winstl/filesystem/filesystem_traits.hpp:
+ ~ winstl/security/token_information.hpp:
+ ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
+ ~ winstl/system/os_version.h:
+ ~ winstl/system/system_traits.hpp:
+ ~ winstl/window/message_functions.h:
+    + Borland compatibility
+
+
+============================================================================
+
+Changes for 1.10.1 beta 8 (11th June 2018)
+
+General:
+========
+
+ * fixing break to UNIX-compatibility introduced in beta-6/7
+
+Changes:
+========
+
+ InetSTL:
+ ========
+
+ ~ inetstl/exception/throw_policies.hpp:
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+ ~ inetstl/network/connection.hpp:
+ ~ inetstl/network/session.hpp:
+    ~ fixing break to UNIX-compatibility introduced in beta-6/7
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    ~ fixing break to UNIX-compatibility introduced in beta-6/7
+
+============================================================================
+
+Changes for 1.10.1 beta 7 (9th June 2018)
+
+General:
+========
+
+ * auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+ * added subscript operator for auto_array_destructor<>
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/memory/auto_buffer.hpp:
+    + auto_buffer<> now supports limited form of pointer arithmethic via operator -()
+    ~ refactoring of copy-proscriptions
+
+ ~ stlsoft/memory/auto_destructor.hpp:
+    + added subscript operator for auto_array_destructor<>
+    ~ minor tidying/canonicalisation
+    ~ whitespace
+
+ ~ stlsoft/stlsoft.h:
+    + VC++ 14.1x compatibility
+
+ ~ stlsoft/string/split_functions.hpp:
+    ~ trivial boilerplate changes
+
+ WinSTL:
+ =======
+
+ ~ winstl/diagnostics/output_debug_line.h:
+ ~ winstl/diagnostics/output_debug_line.hpp:
+    ~ trivial boilerplate changes
+
+============================================================================
+
+Changes for 1.10.1 beta 6 (9th June 2018)
+
+General:
+========
+
+ * refactored in terms of external API
+ * removed empty/meaningless "compatibility" sections
+ * canonicalising proscribed construction methods
+ * simplifying, and prospective changes (for getting to 1.12)
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/shims/access/string/cwindow.hpp:
+    ~ canonicalising proscribed construction methods
+
+ COMSTL:
+ =======
+
+ ~ comstl/collections/enumeration_policies.hpp:
+ ~ comstl/collections/enumerator_sequence.hpp:
+ ~ comstl/collections/safearray_sequence.hpp:
+ ~ comstl/conversion/interface_cast.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/error/errorinfo_desc.hpp:
+ ~ comstl/error/errorinfo_functions.h:
+ ~ comstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ comstl/memory/functions.h:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/memory/task_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ comstl/shims/access/string/VARIANT.hpp:
+ ~ comstl/string/BSTR_functions.h:
+ ~ comstl/string/bstr.hpp:
+ ~ comstl/string/olestring_functions.h:
+ ~ comstl/util/GUID_functions.h:
+ ~ comstl/util/guid.hpp:
+ ~ comstl/util/variant.hpp:
+    ~ refactored in terms of external API
+
+ InetSTL:
+ =======
+
+ ~ inetstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ inetstl/filesystem/ftpdir_sequence.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ inetstl/network/connection.hpp:
+ ~ inetstl/network/session.hpp:
+    ~ refactored in terms of external API
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/collections/carray_adaptors.hpp:
+ ~ mfcstl/collections/carray_traits.hpp:
+ ~ mfcstl/collections/clist_adaptors.hpp:
+ ~ mfcstl/memory/afx_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ PlatformSTL:
+ =======
+
+ ~ platformstl/error/error_desc.hpp:
+ ~ platformstl/filesystem/directory_functions.hpp:
+ ~ platformstl/synch/semaphore.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ RangeLib:
+ =======
+
+ ~ rangelib/operator_adaptors.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/algorithms.hpp:
+ ~ stlsoft/algorithms/bounded.hpp:
+ ~ stlsoft/algorithms/debug.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/api/external/string.h:
+ ~ stlsoft/api/internal/time.h:
+    ~ refactored in terms of external API
+
+ ~ stlsoft/collections/array_view.hpp:
+ ~ stlsoft/collections/associative_adaptor_sequences.hpp:
+ ~ stlsoft/collections/associative_container_veneer.hpp:
+ ~ stlsoft/collections/associative_key_sequence.hpp:
+ ~ stlsoft/collections/associative_value_sequence.hpp:
+ ~ stlsoft/collections/functions.hpp:
+ ~ stlsoft/collections/sequence_container_veneer.hpp:
+ ~ stlsoft/containers/environment_block.hpp:
+ ~ stlsoft/containers/fixed_array.hpp:
+ ~ stlsoft/containers/pod_vector.hpp:
+ ~ stlsoft/containers/static_array.hpp:
+ ~ stlsoft/containers/util/array_policies.hpp:
+ ~ stlsoft/conversion/m2w.hpp:
+ ~ stlsoft/conversion/ptr_cast.hpp:
+ ~ stlsoft/conversion/w2m.hpp:
+ ~ stlsoft/error/errno_scope.hpp:
+ ~ stlsoft/filesystem/searchspec_sequence.hpp:
+ ~ stlsoft/functional/noop.hpp:
+ ~ stlsoft/iterators/adapted_iterator_traits.hpp:
+ ~ stlsoft/iterators/associative_select_iterator.hpp:
+ ~ stlsoft/iterators/c_str_inserter.hpp:
+ ~ stlsoft/iterators/contiguous_diluter_iterator.hpp:
+ ~ stlsoft/iterators/cstring_concatenator_iterator.hpp:
+ ~ stlsoft/iterators/filter_iterator.hpp:
+ ~ stlsoft/iterators/filter_transform_iterator.hpp:
+ ~ stlsoft/iterators/index_iterator.hpp:
+ ~ stlsoft/iterators/indirect_reverse_iterator.hpp:
+ ~ stlsoft/iterators/member_selector_iterator.hpp:
+ ~ stlsoft/iterators/null_output_iterator.hpp:
+ ~ stlsoft/iterators/string_concatenator_iterator.hpp:
+ ~ stlsoft/iterators/transform_filter_iterator.hpp:
+ ~ stlsoft/iterators/transform_iterator.hpp:
+ ~ stlsoft/memory/allocator_base.hpp:
+ ~ stlsoft/memory/auto_buffer.hpp:
+ ~ stlsoft/memory/auto_destructor.hpp:
+ ~ stlsoft/memory/malloc_allocator.hpp:
+ ~ stlsoft/memory/new_allocator.hpp:
+ ~ stlsoft/memory/null_allocator.hpp:
+ ~ stlsoft/meta/is_same_type.hpp:
+ ~ stlsoft/meta/select_first_type_if.hpp:
+ ~ stlsoft/obsolete/functional.hpp:
+ ~ stlsoft/obsolete/functionals.hpp:
+ ~ stlsoft/obsolete/meta.hpp:
+ ~ stlsoft/obsolete/proxy_iterator.hpp:
+ ~ stlsoft/obsolete/proxy_sequence.hpp:
+ ~ stlsoft/properties/field_properties.hpp:
+ ~ stlsoft/properties/method_properties.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/stlsoft.h:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ stlsoft/string/charset_tokeniser.hpp:
+ ~ stlsoft/string/container_slice_functions.hpp:
+ ~ stlsoft/string/cstring_functions.hpp:
+ ~ stlsoft/string/fast_string_concatenator.hpp:
+ ~ stlsoft/string/functionals.hpp:
+ ~ stlsoft/string/simple_string.hpp:
+ ~ stlsoft/string/slice_functions.hpp:
+ ~ stlsoft/string/split_functions.hpp:
+ ~ stlsoft/string/string_tokeniser.hpp:
+ ~ stlsoft/string/string_traits.hpp:
+ ~ stlsoft/string/trim_functions.hpp:
+ ~ stlsoft/string/view_slice_functions.hpp:
+ ~ stlsoft/system/cmdargs.hpp:
+ ~ stlsoft/system/commandline_parser.hpp:
+ ~ stlsoft/util/inert.hpp:
+ ~ stlsoft/util/options_verifier.hpp:
+ ~ stlsoft/util/std/dinkumware_iterator_traits.hpp:
+ ~ stlsoft/util/std/iterator_helper.hpp:
+ ~ stlsoft/util/std/library_discriminator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ unixstl/synch/sleep_functions.h:
+ ~ unixstl/synch/spin_mutex_policies.hpp:
+ ~ unixstl/synch/util/windows_api_.h:
+ ~ unixstl/system/console_functions.h:
+    ~ refactored in terms of external API
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Console.h:
+ + winstl/api/external/Debugging.h:
+ + winstl/api/external/DeviceContext.h:
+ + winstl/api/external/DynamicLinkLibrary.h:
+ + winstl/api/external/ErrorHandling.h:
+ + winstl/api/external/FileManagement.h:
+ + winstl/api/external/HandleAndObject.h:
+ ~ winstl/api/external/MemoryManagement.h:
+ + winstl/api/external/ProcessAndThread.h:
+ ~ winstl/api/external/Registry.h:
+ ~ winstl/api/external/Synchronization.h:
+ ~ winstl/api/external/SystemInformation.h:
+ ~ winstl/api/external/Time.h:
+ + winstl/api/external/UnicodeAndCharacterSet.h:
+ ~ winstl/clipboard/clipboard_scope.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/clipboard/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/control_panel/applet_module.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/control_panel/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/control_panel/functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/controls/commctrl_functionals.hpp:
+ ~ winstl/controls/dialog_functionals.hpp:
+ ~ winstl/controls/listbox_data_sequence.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/conversion/char_conversions.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/conversion/w2m.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/diagnostics/output_debug_line.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/dl/dl_call.hpp:
+ ~ winstl/dl/module.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/error/error_desc.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/error/last_error_scope.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/exception/throw_policies.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/filesystem/current_directory_scope.hpp:
+ ~ winstl/filesystem/file_creation_functions.h:
+ ~ winstl/filesystem/file_functions.hpp:
+ ~ winstl/filesystem/filesystem_traits.hpp:
+ ~ winstl/filesystem/findfile_sequence.hpp:
+ ~ winstl/filesystem/handles/os_file_handle.hpp:
+ ~ winstl/filesystem/link_functions.h:
+ ~ winstl/filesystem/memory_map_functions.h:
+ ~ winstl/filesystem/memory_map_sparse_region_functions.h:
+ ~ winstl/filesystem/memory_mapped_file.hpp:
+ ~ winstl/filesystem/path.hpp:
+ ~ winstl/filesystem/pipe.hpp:
+ ~ winstl/filesystem/readonly_memory_mapped_file.hpp:
+ ~ winstl/internal/windows_version_.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/memory/global_allocator.hpp:
+ ~ winstl/memory/heapwalk_sequence.hpp:
+ ~ winstl/memory/netapi_allocator.hpp:
+ ~ winstl/memory/processheap_allocator.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/process/functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/error/exceptions.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/registry/reg_key.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_key_sequence.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_traits.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_value.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/registry/reg_value_sequence.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/security/token_information.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/shell/file_operations.hpp:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+
+ ~ winstl/shell/memory/functions.h:
+    ~ fixed application of external API
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/shims/access/string/HWND.hpp:
+    ~ tightening up
+
+ ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/shims/access/string/time.hpp:
+ ~ winstl/shims/conversion/to_FILETIME/SYSTEMTIME.hpp:
+ ~ winstl/shims/conversion/to_SYSTEMTIME/DATE.hpp:
+ ~ winstl/shims/conversion/to_SYSTEMTIME/FILETIME.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/shims/conversion/to_uint64/WIN32_FIND_DATA.hpp:
+    ~ reformatting
+
+ ~ winstl/string/resource_string.hpp:
+ ~ winstl/synch/diagnostics/failure_handling.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/event.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/process_mutex.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/semaphore.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/synch/sleep_functions.h:
+ ~ winstl/synch/spin_mutex_policies.hpp:
+ ~ winstl/synch/tss_index.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/console_colour_scope.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+
+ ~ winstl/system/console_ctrl_handler_scope.hpp:
+    ~ canonicalising proscribed construction methods
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/console_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/environment_block.hpp:
+ ~ winstl/system/environment_variable.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/memory_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/module_directory.hpp:
+ ~ winstl/system/module_filename.hpp:
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/os_version.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/pid_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/process_module_sequence.hpp:
+    ~ refactored in terms of external API
+    - removed empty/meaningless "compatibility" sections
+
+ ~ winstl/system/system_information_functions.h:
+ ~ winstl/system/system_traits.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/system_version.hpp:
+    ~ simplifying, and prospective changes (for getting to 1.12)
+
+ ~ winstl/system/temporary_file_name.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/system/version_info.hpp:
+    ~ refactored in terms of external API
+    ~ canonicalising proscribed construction methods
+
+ ~ winstl/time/comparison_functions.h:
+ ~ winstl/time/localisation_functions.h:
+ ~ winstl/time/time_cast.hpp:
+ ~ winstl/toolhelp/sequence_base.hpp:
+    ~ refactored in terms of external API
+
+ ~ winstl/window/functions.h:
+    ~ simplifying, and prospective changes (for getting to 1.12)
+
+ ~ winstl/window/gdi_functions.h:
+    ~ refactored in terms of external API
+
+ ~ winstl/window/window_enable_scope.hpp:
+ ~ winstl/window/window_icon_scope.hpp:
+ ~ winstl/window/window_redraw_scope.hpp:
+ ~ winstl/window/window_text_scope.hpp:
+ ~ winstl/window/window_update_scope.hpp:
+ ~ winstl/window/window_visible_scope.hpp:
+    ~ canonicalising proscribed construction methods
+
+ ~ winstl/window/zorder_iterator.hpp:
+    ~ refactored in terms of external API
+
+============================================================================
+
+Changes for 1.10.1 beta 5 (15th May 2017)
+
+General:
+========
+
+ * enhanced STLSOFT_SUPPRESS_UNUSED() to work with rvalues
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/stlsoft.h:
+ ~ stlsoft/internal/cccap/borland.h:
+ ~ stlsoft/internal/cccap/clang.h:
+ ~ stlsoft/internal/cccap/gcc.h:
+ ~ stlsoft/internal/cccap/msvc.h:
+    ~ enhanced STLSOFT_SUPPRESS_UNUSED() to work with rvalues
 
 
 ============================================================================

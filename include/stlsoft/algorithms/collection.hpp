@@ -4,11 +4,11 @@
  * Purpose:     Whole collection algorithms.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MAJOR    3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MINOR    1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_REVISION 5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     78
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -227,3 +227,4 @@ inline O copy_all(T (&ar)[N], O dest)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_HPP_COLLECTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

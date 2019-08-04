@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    2
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        73
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    3
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,6 +76,10 @@
 #ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION
 # include <winstl/exception/winstl_exception.hpp>
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -126,7 +130,7 @@ public:
     /// Function call operator, taking no parameters
     void operator ()() const
     {
-        STLSOFT_THROW_X(thrown_type(::GetLastError()));
+        STLSOFT_THROW_X(thrown_type(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
     /// Function call operator, taking one parameter
     void operator ()(status_code_type sc) const
@@ -238,3 +242,4 @@ public:
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_THROW_POLICIES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

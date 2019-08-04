@@ -5,13 +5,13 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Sam Fisher for requesting reg_delete_tree().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MAJOR    3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MINOR    5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     87
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 7
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,6 +76,12 @@
 # include <winstl/system/system_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
 # include <winstl/api/external/Registry.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
@@ -181,7 +187,7 @@ public:
     static result_type  reg_delete_value(hkey_type          hkey
                                     ,   char_type const*    valueName);
 
-    /// Deletes the key and all sub-keys, permissions allowing 
+    /// Deletes the key and all sub-keys, permissions allowing
     static result_type reg_delete_tree(
         hkey_type           hkey
     ,   char_type const*    sub_key_name
@@ -396,11 +402,11 @@ private:
     )
     {
         result_type r       =   ERROR_SUCCESS;
-        HINSTANCE   hinst   =   ::LoadLibraryA(module);
+        HINSTANCE   hinst   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(module);
 
         if(NULL == hinst)
         {
-            r = static_cast<result_type>(::GetLastError());
+            r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
         else
         {
@@ -414,14 +420,14 @@ private:
 
             if(NULL == u.fp)
             {
-                r = static_cast<result_type>(::GetLastError());
+                r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {
                 r = static_cast<result_type>((*u.pfn)(a1, a2));
             }
 
-            ::FreeLibrary(hinst);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hinst);
         }
 
         return r;
@@ -588,11 +594,11 @@ private:
     )
     {
         result_type r       =   ERROR_SUCCESS;
-        HINSTANCE   hinst   =   ::LoadLibraryA(module);
+        HINSTANCE   hinst   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(module);
 
         if(NULL == hinst)
         {
-            r = static_cast<result_type>(::GetLastError());
+            r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
         else
         {
@@ -606,19 +612,19 @@ private:
 
             if(NULL == u.fp)
             {
-                r = static_cast<result_type>(::GetLastError());
+                r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {
                 r = static_cast<result_type>((*u.pfn)(a1, a2));
             }
 
-            ::FreeLibrary(hinst);
+            WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hinst);
         }
 
         return r;
     }
-    
+
 };
 
 #endif /* STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -646,3 +652,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

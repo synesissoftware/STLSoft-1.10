@@ -4,11 +4,11 @@
  * Purpose:     event class, based on Windows EVENT.
  *
  * Created:     3rd July 2003
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2003-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     73
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 6
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,13 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON
 # include <winstl/synch/common.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -141,12 +148,12 @@ public:
         if( NULL != m_ev &&
             m_bOwnHandle)
         {
-            ::CloseHandle(m_ev);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_ev);
         }
     }
 private:
-    event(class_type const& rhs);                   // copy-construction proscribed
-    class_type& operator =(class_type const& rhs);  // copy-assignment proscribed
+    event(class_type const&);           // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Operations
@@ -159,7 +166,7 @@ public:
 
         if(!WINSTL_API_EXTERNAL_Synchronisation_SetEvent(m_ev))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "event set operation failed", Synchronisation_EventSetFailed));
@@ -175,7 +182,7 @@ public:
 
         if(!WINSTL_API_EXTERNAL_Synchronisation_ResetEvent(m_ev))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "event reset operation failed", Synchronisation_EventResetFailed));
@@ -209,7 +216,7 @@ private:
 
         if(NULL == h)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel event object"));
@@ -226,7 +233,7 @@ private:
 
         if(NULL == h)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel event object"));
@@ -313,11 +320,11 @@ lock_instance(
 {
     HANDLE h = ev.get();
 
-    DWORD const dwRes = ::WaitForSingleObject(h, INFINITE);
+    DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(h, INFINITE);
 
     if(WAIT_OBJECT_0 != dwRes)
     {
-        DWORD const e = ::GetLastError();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(WINSTL_NS_QUAL(wait_failed_logic_exception)(e, "event wait failed"));
@@ -416,3 +423,4 @@ public:
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_EVENT */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

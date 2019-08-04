@@ -4,13 +4,13 @@
  * Purpose:     Contains the shared_handle and monitored_shared_handle classes.
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Austin Ziegler for fixes to defects evident on x64.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@
 
 /** \file winstl/registry/util/shared_handles.hpp
  *
- * \brief [C++ only] [IMPLEMENTATION] Contains the 
+ * \brief [C++ only] [IMPLEMENTATION] Contains the
  *  \link winstl::registry_util::shared_handle shared_handle\endlink
  *  and
  *  \link winstl::registry_util::monitored_shared_handle monitored_shared_handle\endlink
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MAJOR       2
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MINOR       0
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    15
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        45
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    16
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -252,7 +252,7 @@ namespace registry_util
         virtual void test_reset_and_throw()
         {
             // 1. Test, . . .
-            if(WAIT_OBJECT_0 == ::WaitForSingleObject(m_monitor.handle(), 0))
+            if(WAIT_OBJECT_0 == WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_monitor.handle(), 0))
             {
                 // Must set to watch again here, because several iterators from the same
                 // same reg_key_sequence could be open simultaneously
@@ -396,3 +396,4 @@ namespace registry_util
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Memory functions.
  *
  * Created:     5th November 2014
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MINOR      0
-# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_REVISION   3
-# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       6
+# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_REVISION   5
+# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,13 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -92,17 +99,17 @@ namespace winstl_project
 /**
  *
  * \retval 0xFFFFFFFFFFFFFFFF The function failed. Qualifying information is
- *   available via ::<code>GetLastError()</code>
+ *   available via <code>::GetLastError()</code>
  * \return The number of bytes of physical memory available on the system.
  *
  * \note If the kernel symbol <code>GlobalMemoryStatusEx()</code> cannot be
  *   accessed, the returned value is obtained from
  *   <code>GlobalMemoryStatus</code> instead, which may truncate the actual
  *   physical memory size to its limit of 32-bits. This is detectable by use
- *   of <code>GetLastError()</code> (which would return 
+ *   of <code>::GetLastError()</code> (which would return
  *   <code>ERROR_PROC_NOT_FOUND</code> if
  *   <code>GlobalMemoryStatusEx()</code> cannot be accessed), since
- *   <code>GetLastError(0)</code> is invoked before attempting to load the
+ *   <code>::GetLastError(0)</code> is invoked before attempting to load the
  *   symbol.
  */
 STLSOFT_INLINE
@@ -116,11 +123,11 @@ winstl_C_get_physical_memory_size(void)
 
     msex.dwLength = sizeof(msex);
 
-	if(GlobalMemoryStatusEx(&msex))
+    if(GlobalMemoryStatusEx(&msex))
     {
         return msex.ullTotalPhys;
     }
-#else 
+#else
 
     typedef struct MEMORYSTATUSEX_
     {
@@ -137,7 +144,7 @@ winstl_C_get_physical_memory_size(void)
 
     typedef BOOL (WINAPI *GMSEx_fn_t)(MEMORYSTATUSEX_*);
 
-    HMODULE         hModule                 =   (STLSOFT_NS_GLOBAL(SetLastError)(0), STLSOFT_NS_GLOBAL(LoadLibrary)("KERNEL32"));
+    HMODULE         hModule                 =   (WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(0), WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32"));
     GMSEx_fn_t      GlobalMemoryStatusEx    =   (NULL != hModule) ? (GMSEx_fn_t)STLSOFT_NS_GLOBAL(GetProcAddress)(hModule, "GlobalMemoryStatusEx") : NULL;
     MEMORYSTATUSEX_ msex = { 0 };
 
@@ -153,7 +160,7 @@ winstl_C_get_physical_memory_size(void)
 
     if(NULL != hModule)
     {
-        STLSOFT_NS_GLOBAL(FreeLibrary)(hModule);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hModule);
     }
 
     if(NULL != GlobalMemoryStatusEx)
@@ -163,12 +170,12 @@ winstl_C_get_physical_memory_size(void)
 #endif
     else
     {
-        DWORD const   e = STLSOFT_NS_GLOBAL(GetLastError)();
+        DWORD const   e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
         MEMORYSTATUS  ms;
 
         STLSOFT_NS_GLOBAL(GlobalMemoryStatus)(&ms);
 
-        STLSOFT_NS_GLOBAL(SetLastError)(e);
+        WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
         return ms.dwTotalPhys;
     }
@@ -183,7 +190,7 @@ winstl_C_get_physical_memory_size(void)
 /**
  *
  * \retval 0xFFFFFFFFFFFFFFFF The function failed. Qualifying information is
- *   available via ::<code>GetLastError()</code>
+ *   available via <code>::GetLastError()</code>
  * \return The number of bytes of physical memory available on the system.
  */
 inline
@@ -218,3 +225,4 @@ get_physical_memory_size()
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

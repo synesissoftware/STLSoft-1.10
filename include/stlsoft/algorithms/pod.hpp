@@ -4,11 +4,11 @@
  * Purpose:     Algorithms for Plain-Old Data types.
  *
  * Created:     17th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_MINOR       5
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_REVISION    7
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_EDIT        99
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_EDIT        100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -466,3 +466,4 @@ inline void pod_fill_n(unsigned char *dest, ss_size_t n, int value)
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHMS_HPP_POD */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

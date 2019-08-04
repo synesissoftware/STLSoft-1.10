@@ -4,11 +4,11 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        16
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    12
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,16 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
+# include <winstl/api/external/DynamicLinkLibrary.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -108,7 +118,7 @@ winstl_C_call_CreateHardLinkA_(
     typedef BOOL (WINAPI* pfn_t)(LPCSTR, LPCSTR, LPSECURITY_ATTRIBUTES);
 
     BOOL            r   =   FALSE;
-    HMODULE const   h   =   STLSOFT_NS_GLOBAL(LoadLibraryA)("KERNEL32");
+    HMODULE const   h   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32");
 
     if(NULL != h)
     {
@@ -128,7 +138,7 @@ winstl_C_call_CreateHardLinkA_(
             }
         }
 
-        STLSOFT_NS_GLOBAL(FreeLibrary)(h);
+        WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(h);
     }
 
     return r;
@@ -153,7 +163,7 @@ winstl_C_call_CreateHardLinkW_(
     typedef BOOL (WINAPI* pfn_t)(LPCWSTR, LPCWSTR, LPSECURITY_ATTRIBUTES);
 
     BOOL            r   =   FALSE;
-    HMODULE const   h   =   STLSOFT_NS_GLOBAL(LoadLibraryW)(L"KERNEL32");
+    HMODULE const   h   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryW(L"KERNEL32");
 
     if(NULL != h)
     {
@@ -254,7 +264,7 @@ winstl_C_hard_link_get_link_information_a(
 )
 {
     ss_truthy_t     r   =   ws_false_v;
-    HANDLE const    h   =   STLSOFT_NS_GLOBAL(CreateFileA)(
+    HANDLE const    h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
                                 path
                             ,   0
                             ,   FILE_SHARE_READ | FILE_SHARE_WRITE
@@ -278,7 +288,7 @@ winstl_C_hard_link_get_link_information_a(
     {
         r = winstl_C_hard_link_get_link_information_by_handle(h, fileIndexHigh, fileIndexLow, volumeSerialNumber, numLinks);
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(h);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 
     return r;
@@ -295,7 +305,7 @@ winstl_C_hard_link_get_link_information_w(
 )
 {
     ss_truthy_t     r   =   ws_false_v;
-    HANDLE const    h   =   STLSOFT_NS_GLOBAL(CreateFileW)(
+    HANDLE const    h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
                                 path
                             ,   0
                             ,   FILE_SHARE_READ | FILE_SHARE_WRITE
@@ -319,7 +329,7 @@ winstl_C_hard_link_get_link_information_w(
     {
         r = winstl_C_hard_link_get_link_information_by_handle(h, fileIndexHigh, fileIndexLow, volumeSerialNumber, numLinks);
 
-        STLSOFT_NS_GLOBAL(CloseHandle)(h);
+        WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(h);
     }
 
     return r;
@@ -450,3 +460,4 @@ hard_link_count_links(
 #endif /* !WINSTL_INCL_WINSTL_H_LINK_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

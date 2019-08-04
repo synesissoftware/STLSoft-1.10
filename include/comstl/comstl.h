@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_H_COMSTL_MAJOR       3
 # define COMSTL_VER_COMSTL_H_COMSTL_MINOR       9
 # define COMSTL_VER_COMSTL_H_COMSTL_REVISION    5
-# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        123
+# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file comstl/comstl.h
@@ -620,7 +620,7 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
 #  define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
 # endif /* NONAMELESSUNION */
 #else /* ? compiler */
-   /* Other compilers use the MS headers, which test against __STDC__, 
+   /* Other compilers use the MS headers, which test against __STDC__,
     * _FORCENAMELESSUNION and NONAMELESSUNION
     */
 # if (  __STDC__ && \
@@ -634,7 +634,7 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
  *
  * \ingroup group__project__comstl__language_agnostic_macros
  *
- *  
+ *
  */
 # if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
      !defined(COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_)
@@ -664,7 +664,7 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
  *
  * \ingroup group__project__comstl__language_agnostic_macros
  *
- *  
+ *
  */
 
 # if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
@@ -695,7 +695,7 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
  *
  * \ingroup group__project__comstl__language_agnostic_macros
  *
- *  
+ *
  */
 # if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
      !defined(COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_)
@@ -708,7 +708,7 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
  *
  * \ingroup group__project__comstl__language_agnostic_macros
  *
- *  
+ *
  */
 #define COMSTL_ACCESS_VARIANT_decVal_BYREF(var)         COMSTL_ACCESS_VARIANT_decVal_BYPTR(&(var))
 
@@ -877,3 +877,4 @@ namespace comstl = ::stlsoft::comstl_project;
 #endif /* !COMSTL_INCL_COMSTL_H_COMSTL */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,13 +4,13 @@
  * Purpose:     Integral constants.
  *
  * Created:     16th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Jonathan Wakely for help with Solaris compatibility.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_LIMITS_H_INTEGRAL_LIMITS_MAJOR     5
 # define STLSOFT_VER_STLSOFT_LIMITS_H_INTEGRAL_LIMITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_LIMITS_H_INTEGRAL_LIMITS_REVISION  6
-# define STLSOFT_VER_STLSOFT_LIMITS_H_INTEGRAL_LIMITS_EDIT      68
+# define STLSOFT_VER_STLSOFT_LIMITS_H_INTEGRAL_LIMITS_EDIT      69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -268,11 +268,11 @@ namespace stlsoft
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define   STLSOFT_LIMIT_TRAITS__SINT8_MIN       STLSOFT_INTEGRAL_LIMIT_SINT8_MIN 
-#define   STLSOFT_LIMIT_TRAITS__SINT8_MAX       STLSOFT_INTEGRAL_LIMIT_SINT8_MAX 
+#define   STLSOFT_LIMIT_TRAITS__SINT8_MIN       STLSOFT_INTEGRAL_LIMIT_SINT8_MIN
+#define   STLSOFT_LIMIT_TRAITS__SINT8_MAX       STLSOFT_INTEGRAL_LIMIT_SINT8_MAX
 
-#define   STLSOFT_LIMIT_TRAITS__UINT8_MIN       STLSOFT_INTEGRAL_LIMIT_UINT8_MIN 
-#define   STLSOFT_LIMIT_TRAITS__UINT8_MAX       STLSOFT_INTEGRAL_LIMIT_UINT8_MAX 
+#define   STLSOFT_LIMIT_TRAITS__UINT8_MIN       STLSOFT_INTEGRAL_LIMIT_UINT8_MIN
+#define   STLSOFT_LIMIT_TRAITS__UINT8_MAX       STLSOFT_INTEGRAL_LIMIT_UINT8_MAX
 
 #define   STLSOFT_LIMIT_TRAITS__SINT16_MIN      STLSOFT_INTEGRAL_LIMIT_SINT16_MIN
 #define   STLSOFT_LIMIT_TRAITS__SINT16_MAX      STLSOFT_INTEGRAL_LIMIT_SINT16_MAX
@@ -344,3 +344,4 @@ namespace stlsoft
 #endif /* !STLSOFT_INCL_STLSOFT_LIMITS_H_INTEGRAL_LIMITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1998-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     82
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 6
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     84
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -100,6 +100,7 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_SIGN_TRAITS
 # include <stlsoft/util/sign_traits.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_SIGN_TRAITS */
+
 #if defined(STLSOFT_CF_std_char_traits_AVAILABLE) && \
     defined(STLSOFT_NO_NAMESPACE) && \
     !defined(STLSOFT_CF_std_NAMESPACE)
@@ -108,6 +109,11 @@
       !defined(STLSOFT_CF_std_NAMESPACE)
 # include <string>                  // for std::char_traits
 #endif /* !::stlsoft && !::std */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #if !defined(STLSOFT_NO_CHAR_TRAITS_LIBRARY_CALLS) || \
     defined(STLSOFT_DEBUG)
 # include <string.h>
@@ -754,3 +760,4 @@ inline ss_size_t stlsoft_char_traits<wchar_t>::length(wchar_t const* s)
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

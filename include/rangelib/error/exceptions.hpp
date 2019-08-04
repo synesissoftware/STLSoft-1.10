@@ -4,11 +4,11 @@
  * Purpose:     Range exceptions.
  *
  * Created:     30th December 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MAJOR     2
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MINOR     0
-# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_REVISION  8
-# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      28
+# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_REVISION  9
+# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,14 +82,14 @@
 # include <stlsoft/util/exception_string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_EXCEPTION_STRING */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #ifndef STLSOFT_INCL_STDEXCEPT
 # define STLSOFT_INCL_STDEXCEPT
 # include <stdexcept>
 #endif /* !STLSOFT_INCL_STDEXCEPT */
-
-#ifdef STLSOFT_UNITEST
-# include <string.h>
-#endif /* STLSOFT_UNITEST */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -246,3 +246,4 @@ private:
 #endif /* !RANGELIB_INCL_RANGELIB_ERROR_HPP_EXCEPTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

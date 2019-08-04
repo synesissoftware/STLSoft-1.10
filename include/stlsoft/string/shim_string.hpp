@@ -4,14 +4,14 @@
  * Purpose:     Contains the basic_shim_string template class.
  *
  * Created:     9th July 2004
- * Updated:     11th January 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Dimitri Kaparis, for spotting a typo in the string access
  *              shims.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_REVISION    7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        60
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ namespace
 
     } instance;
 }
-#endif 
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * classes
@@ -813,3 +813,4 @@ inline std::basic_ostream<C>& operator <<(std::basic_ostream<C> &s, stlsoft::bas
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SHIM_STRING */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

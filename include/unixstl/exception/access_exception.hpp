@@ -4,7 +4,7 @@
  * Purpose:     access_exception class
  *
  * Created:     2nd January 2017
- * Updated:     2nd January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_REVISION    1
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT        1
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,3 +127,4 @@ typedef STLSOFT_NS_QUAL(status_code_propagating_exception_base)<
 #endif /* !UNIXSTL_INCL_UNIXSTL_EXCEPTION_HPP_ACCESS_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

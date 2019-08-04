@@ -4,14 +4,14 @@
  * Purpose:     Helper functions for the Windows time types.
  *
  * Created:     2nd December 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   David Wang, for spotting an error in one of the shim
  *              functions.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_MAJOR       2
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_MINOR       3
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_REVISION    16
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_EDIT        71
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_REVISION    17
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,10 +85,15 @@
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_SHIM_STRING
 # include <stlsoft/string/shim_string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SHIM_STRING */
+
 #ifdef WINSTL_UDATE_DEFINED
 # include <objbase.h>
 # include <oleauto.h>
 #endif /* WINSTL_UDATE_DEFINED */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -154,7 +159,7 @@ struct ximpl_winstl_shims_access_string_time
         }
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        DWORD const e = ::GetLastError();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         // TODO: discriminate on e and on the values of t to determine
         // which condition (of invalid value, out-of-range, etc.)
@@ -189,7 +194,7 @@ struct ximpl_winstl_shims_access_string_time
         }
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        DWORD const e = ::GetLastError();
+        DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
         // TODO: discriminate on e and on the values of t to determine
         // which condition (of invalid value, out-of-range, etc.)
@@ -217,7 +222,7 @@ struct ximpl_winstl_shims_access_string_time
  *
  * \note If <code>ft</code> does not represent a valid time value, the
  *  return value is undefined. The caller may check
- *  <code>GetLastError()</code> to determine whether the conversion has been
+ *  <code>::GetLastError()</code> to determine whether the conversion has been
  *  successful.
  */
 inline
@@ -1303,3 +1308,4 @@ namespace winstl_project
 #endif /* !WINSTL_INCL_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

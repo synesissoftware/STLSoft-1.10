@@ -5,11 +5,11 @@
  *              classes.
  *
  * Created:     1st November 1994
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1994-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,18 +52,10 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MAJOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MINOR       1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_REVISION    7
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        81
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MINOR       2
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_REVISION    1
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[DocumentationStatus:Ready]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -146,7 +138,7 @@ struct move_proxy
         : m_value(value)
     {}
 
-    T   *m_value;
+    T* m_value;
 };
 
 
@@ -221,7 +213,7 @@ private:
 /// @{
 public:
     /// Constructs from the pointer to an instance whose lifetime will be managed
-    ss_explicit_k auto_destructor(value_type *t)
+    ss_explicit_k auto_destructor(value_type* t)
         : m_value(t)
     {}
 #if 0
@@ -250,11 +242,11 @@ public:
     /// Detaches the managed instance from the auto_destructor and returns a pointer to it to the caller
     ///
     /// \note The caller becomes responsible for destroying the instance.
-    value_type *detach()
+    value_type* detach() STLSOFT_NOEXCEPT
     {
-        value_type  *t = m_value;
+        value_type* t = m_value;
 
-        m_value = 0;
+        m_value = ss_nullptr_k;
 
         return t;
     }
@@ -329,6 +321,8 @@ public:
     typedef auto_array_destructor<T>                        class_type;
     /// The return value type
     typedef return_value_array_destructor<T>                return_value_type;
+    /// The size type
+    typedef STLSOFT_NS_QUAL(ss_size_t)                      size_type;
 private:
     /// The proxy type
     typedef move_proxy<T, return_value_type>                proxy_type;
@@ -367,11 +361,11 @@ public:
     /// Detaches the managed instance from the auto_array_destructor and returns a pointer to it to the caller
     ///
     /// \note The caller becomes responsible for destroying the instance.
-    value_type *detach()
+    value_type* detach() STLSOFT_NOEXCEPT
     {
-        value_type  *t = m_value;
+        value_type* t = m_value;
 
-        m_value = 0;
+        m_value = ss_nullptr_k;
 
         return t;
     }
@@ -402,6 +396,32 @@ public:
     value_type* get() const
     {
         return m_value;
+    }
+
+    /// Obtains a mutating reference to the given element
+    ///
+    /// \param index The 0-based index of the element within the array
+    ///   passed to the constructor. NOTE: this is not checked
+    ///
+    /// \pre index is in the range [0, array-size)
+    value_type& operator [](size_type index)
+    {
+        STLSOFT_ASSERT(ss_nullptr_k != get());
+
+        return get()[index];
+    }
+
+    /// Obtains a non-mutating reference to the given element
+    ///
+    /// \param index The 0-based index of the element within the array
+    ///   passed to the constructor. NOTE: this is not checked
+    ///
+    /// \pre index is in the range [0, array-size)
+    value_type const& operator [](size_type index) const
+    {
+        STLSOFT_ASSERT(ss_nullptr_k != get());
+
+        return get()[index];
     }
 /// @}
 
@@ -445,7 +465,7 @@ private:
 public:
 #ifdef STLSOFT_RETURN_VALUE_DESTRUCTOR_ENABLE_DIRECT_CTOR
     /// Constructs from the pointer to an instance whose lifetime will be managedd
-    return_value_destructor(value_type *pt)
+    return_value_destructor(value_type* pt)
         : m_value(pt)
     {}
 #endif /* STLSOFT_RETURN_VALUE_DESTRUCTOR_ENABLE_DIRECT_CTOR */
@@ -472,9 +492,9 @@ public:
 
 #ifndef STLSOFT_RETURN_VALUE_DESTRUCTOR_DISABLE_UNUSED_ASSERT
 # if defined(STLSOFT_COMPILER_IS_WATCOM)
-        STLSOFT_ASSERT(m_value == 0);
+        STLSOFT_ASSERT(m_value == ss_nullptr_k);
 # else /* ? compiler */
-        STLSOFT_MESSAGE_ASSERT("This return value was not used", m_value == 0);
+        STLSOFT_MESSAGE_ASSERT("This return value was not used", m_value == ss_nullptr_k);
 # endif /* compiler */
 #endif /* !STLSOFT_RETURN_VALUE_DESTRUCTOR_DISABLE_UNUSED_ASSERT */
 
@@ -497,11 +517,11 @@ private:
     /// Detaches the managed instance from the return_value_destructor and returns a pointer to it to the caller
     ///
     /// \note The caller becomes responsible for destroying the instance.
-    value_type *detach()
+    value_type* detach() STLSOFT_NOEXCEPT
     {
-        value_type  *t = m_value;
+        value_type* t = m_value;
 
-        m_value = 0;
+        m_value = ss_nullptr_k;
 
         return t;
     }
@@ -510,7 +530,7 @@ private:
 /// \name Members
 /// @{
 private:
-    value_type  *m_value;
+    value_type* m_value;
 /// @}
 };
 
@@ -575,9 +595,9 @@ public:
 
 #ifndef _STLSOFT_RETURN_VALUE_DESTRUCTOR_DISABLE_UNUSED_ASSERT
 # if defined(STLSOFT_COMPILER_IS_WATCOM)
-        STLSOFT_ASSERT(m_value == 0);
+        STLSOFT_ASSERT(m_value == ss_nullptr_k);
 # else /* ? compiler */
-        STLSOFT_MESSAGE_ASSERT("This return value was not used", m_value == 0);
+        STLSOFT_MESSAGE_ASSERT("This return value was not used", m_value == ss_nullptr_k);
 # endif /* compiler */
 #endif /* !_STLSOFT_RETURN_VALUE_DESTRUCTOR_DISABLE_UNUSED_ASSERT */
 
@@ -600,11 +620,11 @@ private:
     /// Detaches the managed instance from the return_value_array_destructor and returns a pointer to it to the caller
     ///
     /// \note The caller becomes responsible for destroying the instance.
-    value_type *detach()
+    value_type* detach() STLSOFT_NOEXCEPT
     {
-        value_type  *t = m_value;
+        value_type* t = m_value;
 
-        m_value = 0;
+        m_value = ss_nullptr_k;
 
         return t;
     }
@@ -613,7 +633,7 @@ private:
 /// \name Members
 /// @{
 private:
-    value_type  *m_value;
+    value_type* m_value;
 /// @}
 };
 
@@ -621,7 +641,7 @@ private:
  * shims
  */
 
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -630,7 +650,7 @@ inline T *get_ptr(auto_destructor<T> const& ad)
     return ad.get();
 }
 
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -639,7 +659,7 @@ inline T* get_ptr(return_value_destructor<T> const& ad)
     return ad.get();
 }
 
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -648,7 +668,7 @@ inline T* get_ptr(auto_array_destructor<T> const& ad)
     return ad.get();
 }
 
-/** 
+/**
  * \ingroup group__concept__Shim__Attribute__get_ptr
  */
 template <ss_typename_param_k T>
@@ -683,3 +703,4 @@ inline T* get_ptr(return_value_array_destructor<T> const& ad)
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

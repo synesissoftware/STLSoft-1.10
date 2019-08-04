@@ -4,11 +4,11 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MAJOR    6
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    3
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 8
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     232
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     233
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -428,3 +428,4 @@ inline module::module_handle_type module::get_module_handle() const
 #endif /* !UNIXSTL_INCL_UNIXSTL_DL_HPP_MODULE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

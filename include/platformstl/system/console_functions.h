@@ -4,11 +4,11 @@
  * Purpose:     Console functions.
  *
  * Created:     6th August 2015
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2015-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    3
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        6
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        7
 #endif /* !PLATFORMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -161,3 +161,4 @@ get_console_width()
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_SYSTEM_H_CONSOLE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

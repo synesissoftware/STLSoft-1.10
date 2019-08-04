@@ -4,14 +4,14 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
  * Copyright (c) 2017, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
- * Copyright (c) 1997-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     6
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 3
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,17 +125,17 @@ UNIXSTL_INTERNAL_SYNCH_32cast_v_(
 # define UNIXSTL_INTERNAL_SYNCH_32cast_(p)                          (p)
 #endif /* UNIXSTL_INTERNAL_SYNCH_32cast_ */
 
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedDecrement64       STLSOFT_NS_GLOBAL(InterlockedDecrement64)
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedDecrement(p)      STLSOFT_NS_GLOBAL(InterlockedDecrement)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)))
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedDecrement64       STLSOFT_NS_GLOBAL_(InterlockedDecrement64)
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedDecrement(p)      STLSOFT_NS_GLOBAL_(InterlockedDecrement)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)))
 
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchange64        STLSOFT_NS_GLOBAL(InterlockedExchange64)
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchange(p, n)    STLSOFT_NS_GLOBAL(InterlockedExchange)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)), (n))
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchange64        STLSOFT_NS_GLOBAL_(InterlockedExchange64)
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchange(p, n)    STLSOFT_NS_GLOBAL_(InterlockedExchange)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)), (n))
 
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchangeAdd64     STLSOFT_NS_GLOBAL(InterlockedExchangeAdd64)
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchangeAdd(p, n) STLSOFT_NS_GLOBAL(InterlockedExchangeAdd)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)), (n))
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchangeAdd64     STLSOFT_NS_GLOBAL_(InterlockedExchangeAdd64)
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedExchangeAdd(p, n) STLSOFT_NS_GLOBAL_(InterlockedExchangeAdd)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)), (n))
 
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement64       STLSOFT_NS_GLOBAL(InterlockedIncrement64)
-#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement(p)      STLSOFT_NS_GLOBAL(InterlockedIncrement)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)))
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement64       STLSOFT_NS_GLOBAL_(InterlockedIncrement64)
+#define UNIXSTL_INTERNAL_SYNCH_Windows_InterlockedIncrement(p)      STLSOFT_NS_GLOBAL_(InterlockedIncrement)(UNIXSTL_INTERNAL_SYNCH_32cast_((p)))
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -148,3 +148,4 @@ UNIXSTL_INTERNAL_SYNCH_32cast_v_(
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API_ */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

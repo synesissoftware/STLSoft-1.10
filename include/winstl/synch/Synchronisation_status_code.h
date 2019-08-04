@@ -4,11 +4,11 @@
  * Purpose:     Definition of the Synchronisation_status_code enumeration.
  *
  * Created:     13th May 2014
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE_MINOR    2
 # define WINSTL_VER_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE_REVISION 2
-# define WINSTL_VER_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE_EDIT     8
+# define WINSTL_VER_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -158,3 +158,4 @@ enum Synchronisation_status_code_t
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_H_SYNCHRONISATION_STATUS_CODE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

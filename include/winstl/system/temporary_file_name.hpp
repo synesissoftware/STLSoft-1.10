@@ -5,13 +5,13 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  4
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      14
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     2
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  1
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,6 +87,10 @@
 #ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <winstl/system/system_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -148,6 +152,8 @@ public:
 
     enum { allowImplicitConversion  =   1   };
 
+    enum { caseSensitive            =   0   };
+
     enum { sharedState              =   0   };
 /// @}
 
@@ -173,133 +179,133 @@ private:
 
     static size_type get_temporary_file_name(ws_char_a_t* buff, size_type cchBuff)
     {
-		WINSTL_ASSERT(0 == cchBuff || NULL != buff);
+        WINSTL_ASSERT(0 == cchBuff || NULL != buff);
 
         // No need for truncation test/cast here.
-		ws_char_a_t	dirPath_[1 + MAX_PATH] = { 0 } ;
-		ws_char_a_t	filePath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_a_t dirPath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_a_t filePath_[1 + MAX_PATH] = { 0 } ;
 
-		DWORD const	dw	=	::GetTempPathA(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
+        DWORD const dw = ::GetTempPathA(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-		if(0 == dw)
-		{
-			DWORD const e = ::GetLastError();
+        if(0 == dw)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		UINT const	r	=	::GetTempFileNameA(&dirPath_[0], "wst", 0, &filePath_[0]);
+        UINT const  r   =   ::GetTempFileNameA(&dirPath_[0], "wst", 0, &filePath_[0]);
 
-		if(0 == r)
-		{
-			DWORD const e = ::GetLastError();
+        if(0 == r)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		size_t		cch	=	traits_type_::str_len(filePath_);
+        size_t      cch =   traits_type_::str_len(filePath_);
 
-		if(0 != cchBuff)
-		{
-			if(cch > cchBuff)
-			{
-				cch = cchBuff;
-			}
+        if(0 != cchBuff)
+        {
+            if(cch > cchBuff)
+            {
+                cch = cchBuff;
+            }
 
-			traits_type_::char_copy(buff, filePath_, cch);
+            traits_type_::char_copy(buff, filePath_, cch);
 
-			if(cch < cchBuff)
-			{
-				buff[cch] = '\0';
-			}
-		}
+            if(cch < cchBuff)
+            {
+                buff[cch] = '\0';
+            }
+        }
 
-	    return cch;
+        return cch;
     }
     static size_type get_temporary_file_name(ws_char_w_t* buff, size_type cchBuff)
     {
-		WINSTL_ASSERT(0 == cchBuff || NULL != buff);
+        WINSTL_ASSERT(0 == cchBuff || NULL != buff);
 
         // No need for truncation test/cast here.
-		ws_char_w_t	dirPath_[1 + MAX_PATH] = { 0 } ;
-		ws_char_w_t	filePath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_w_t dirPath_[1 + MAX_PATH] = { 0 } ;
+        ws_char_w_t filePath_[1 + MAX_PATH] = { 0 } ;
 
-		DWORD const	dw	=	::GetTempPathW(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
+        DWORD const dw  =   ::GetTempPathW(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-		if(0 == dw)
-		{
-			DWORD const e = ::GetLastError();
+        if(0 == dw)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		UINT const	r	=	::GetTempFileNameW(&dirPath_[0], L"wst", 0, &filePath_[0]);
+        UINT const  r   =   ::GetTempFileNameW(&dirPath_[0], L"wst", 0, &filePath_[0]);
 
-		if(0 == r)
-		{
-			DWORD const e = ::GetLastError();
+        if(0 == r)
+        {
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-			if(0 != cchBuff)
-			{
-				buff[0] = '\0';
-			}
+            if(0 != cchBuff)
+            {
+                buff[0] = '\0';
+            }
 
-			return 0;
+            return 0;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-		}
+        }
 
-		size_t		cch	=	traits_type_::str_len(filePath_);
+        size_t      cch =   traits_type_::str_len(filePath_);
 
-		if(0 != cchBuff)
-		{
-			if(cch > cchBuff)
-			{
-				cch = cchBuff;
-			}
+        if(0 != cchBuff)
+        {
+            if(cch > cchBuff)
+            {
+                cch = cchBuff;
+            }
 
-			traits_type_::char_copy(buff, filePath_, cch);
+            traits_type_::char_copy(buff, filePath_, cch);
 
-			if(cch < cchBuff)
-			{
-				buff[cch] = '\0';
-			}
-		}
+            if(cch < cchBuff)
+            {
+                buff[cch] = '\0';
+            }
+        }
 
-	    return cch;
+        return cch;
     }
 };
 
@@ -372,3 +378,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)<
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

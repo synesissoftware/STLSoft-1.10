@@ -4,13 +4,13 @@
  * Purpose:     Handles detection of safe string library.
  *
  * Created:     24th March 2008
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Author:      Matthew Wilson
  *
  * Home:        http://www.stlsoft.org/
  *
- * Copyright (c) 2008-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_MINOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_REVISION  2
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      7
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_H_SAFESTR_EDIT      8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,3 +93,4 @@
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

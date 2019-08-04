@@ -14,11 +14,11 @@
  *              basic_reg_value_sequence).
  *
  * Created:     19th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,8 +62,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_MAJOR    3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_MINOR    7
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_REVISION 11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_EDIT     140
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_REVISION 12
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE_EDIT     142
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,6 +111,9 @@
 # include <stlsoft/smartptr/scoped_handle.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
 # include <winstl/api/external/Registry.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
@@ -543,7 +546,7 @@ basic_reg_value_sequence<C, T, A>::create_shared_handle_(
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char   message[]   =   "could not create shared enumeration context";
-            DWORD const         err         =   ::GetLastError();
+            DWORD const         err         =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             if(ERROR_ACCESS_DENIED == err)
             {
@@ -672,7 +675,7 @@ inline basic_reg_value_sequence<C, T, A>::basic_reg_value_sequence(ss_typename_t
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hkey)
     {
-        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", ::GetLastError()));
+        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -687,7 +690,7 @@ inline basic_reg_value_sequence<C, T, A>::basic_reg_value_sequence( ss_typename_
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hkey)
     {
-        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", ::GetLastError()));
+        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -703,7 +706,7 @@ inline basic_reg_value_sequence<C, T, A>::basic_reg_value_sequence( ss_typename_
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     if(NULL == m_hkey)
     {
-        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", ::GetLastError()));
+        STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
@@ -1230,3 +1233,4 @@ inline ws_bool_t basic_reg_value_sequence_iterator<C, T, V, A>::operator !=(clas
 #endif /* !WINSTL_INCL_WINSTL_REGISTRY_HPP_REG_VALUE_SEQUENCE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

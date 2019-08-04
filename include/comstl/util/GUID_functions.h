@@ -4,11 +4,11 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2010-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   3
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       17
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,6 +86,13 @@
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>              /* for wcscmp() */
 #endif /* !STLSOFT_INCL_H_WCHAR */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -301,14 +308,14 @@ comstl_C_GUID_from_string_a(
     STLSOFT_CONTRACT_ENFORCE_PRECONDITION_PARAMS_API(NULL != str, "string parameter may not be null");
     STLSOFT_CONTRACT_ENFORCE_PRECONDITION_PARAMS_API(NULL != pguid, "return value out parameter may not be null");
 
-    switch(STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, str, -1, &ws[0], 1 + COMSTL_CCH_GUID))
+    switch(WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, str, -1, &ws[0], 1 + COMSTL_CCH_GUID))
     {
         case    1 + COMSTL_CCH_GUID:
             ws[COMSTL_CCH_GUID] = L'\0';
             hr = comstl_C_GUID_from_string_w(ws, pguid);
             break;
         default:
-            if(S_OK == (hr = HRESULT_FROM_WIN32(STLSOFT_NS_GLOBAL(GetLastError)())))
+            if(S_OK == (hr = HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())))
             {
                 hr = E_INVALIDARG;
             }
@@ -478,10 +485,11 @@ GUID_compare(
     {
         if(NULL == comparisonSucceeded)
         {
-# if defined(STLSOFT_PPF_pragma_message_SUPPORT)
-#  pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): Should make comstl_exception abstract, and throw here a comparison_exception instead")
+# if _STLSOFT_VER >= 0x010a01ff
+#  if defined(STLSOFT_PPF_pragma_message_SUPPORT)
+#   pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): Should make comstl_exception abstract, and throw here a comparison_exception instead")
+#  endif
 # endif
-
             STLSOFT_THROW_X(comstl_exception("comparison failed", succeeded));
         }
         else
@@ -647,3 +655,4 @@ GUID_to_string(
 #endif /* !COMSTL_INCL_COMSTL_UTIL_H_GUID_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       14
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        147
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        151
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -94,22 +94,25 @@
 # include <winstl/internal/windows_version_.h>
 #endif /* !WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_ */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #ifndef STLSOFT_INCL_H_CTYPE
 # define STLSOFT_INCL_H_CTYPE
 # include <ctype.h>
 #endif /* !STLSOFT_INCL_H_CTYPE */
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
-#ifndef STLSOFT_INCL_H_WCHAR
-# define STLSOFT_INCL_H_WCHAR
-# include <wchar.h>
-#endif /* !STLSOFT_INCL_H_WCHAR */
 #ifndef STLSOFT_INCL_H_WCTYPE
 # define STLSOFT_INCL_H_WCTYPE
 # include <wctype.h>
 #endif /* !STLSOFT_INCL_H_WCTYPE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+# include <winstl/api/external/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * findvolume API declarations
@@ -571,7 +574,7 @@ public:
         DWORD   dwLow = ::GetFileSize(h, &dwHigh);
 
         if( 0xFFFFFFFF == dwLow &&
-            ERROR_SUCCESS != ::GetLastError())
+            ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
         {
             dwHigh = 0xFFFFFFFF;
         }
@@ -1022,13 +1025,13 @@ private:
         else
         {
 #if 0
-            DWORD dw = ::GetLastError();
+            DWORD dw = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             if( 0 == r &&
                 0 == dw &&
                 str_len(fileName) > WINSTL_CONST_MAX_PATH)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
 #endif /* 0 */
 
@@ -1082,7 +1085,7 @@ public:
 
         if(NULL != class_type::str_pbrk(fileName, "<>|*?"))
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return 0;
         }
@@ -1172,10 +1175,10 @@ public:
         // Paths that exceed _MAX_PATH (aka WINSTL_CONST_MAX_PATH) cause GetFullPathNameA() to fail, but it
         // does not (appear to) call SetLastError()
         if( 0 == n &&
-            0 == ::GetLastError() &&
+            0 == WINSTL_API_EXTERNAL_ErrorHandling_GetLastError() &&
             str_len(fileName) > WINSTL_CONST_MAX_PATH)
         {
-            ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
         }
 
         return n;
@@ -1302,7 +1305,7 @@ private:
 
         if(0 == cchPath)
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return false;
         }
@@ -1585,7 +1588,7 @@ private:
 
             if(requiredLen > maxPathLength)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
         }
 
@@ -2114,7 +2117,7 @@ private:
 
         if(0 == cchPath)
         {
-            ::SetLastError(ERROR_INVALID_NAME);
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_NAME);
 
             return false;
         }
@@ -2394,7 +2397,7 @@ private:
 
             if(requiredLen > maxPathLength)
             {
-                ::SetLastError(ERROR_FILENAME_EXCED_RANGE);
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
         }
 
@@ -2486,3 +2489,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

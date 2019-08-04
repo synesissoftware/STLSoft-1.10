@@ -4,11 +4,11 @@
  * Purpose:     string_traits traits class.
  *
  * Created:     16th January 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,17 +52,8 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MAJOR     4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      87
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -411,3 +402,4 @@ struct string_traits<STLSOFT_NS_QUAL_STD(basic_string)<ss_char_w_t> >
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

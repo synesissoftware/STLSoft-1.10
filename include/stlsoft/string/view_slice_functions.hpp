@@ -4,14 +4,14 @@
  * Purpose:     String view slice functions.
  *
  * Created:     25th April 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions, and
  *              collaboration on their implementation.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2005, Pablo Aguilar
  * All rights reserved.
  *
@@ -56,19 +56,8 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_MAJOR     2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_MINOR     1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_REVISION  12
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_EDIT      38
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_EDIT      40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_MWERKS: __MWERKS__<0x3000
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
- */
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -209,7 +198,7 @@ inline basic_string_view<C> left_view_helper(C const* s, ss_size_t n)
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -218,7 +207,7 @@ inline basic_string_view<ss_char_a_t> left_view(ss_char_a_t const* s, ss_size_t 
     return left_view_helper(s, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -265,7 +254,7 @@ inline basic_string_view<C> right_view_helper(C const* s, ss_size_t n)
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -274,7 +263,7 @@ inline basic_string_view<ss_char_a_t> right_view(ss_char_a_t const* s, ss_size_t
     return right_view_helper(s, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -332,7 +321,7 @@ inline basic_string_view<C> mid_view_helper(C const* s, ss_size_t start, ss_size
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -341,7 +330,7 @@ inline basic_string_view<ss_char_a_t> mid_view(ss_char_a_t const* s, ss_size_t s
     return mid_view_helper(s, start, n);
 }
 
-/** 
+/**
  *
  * \ingroup group__library__String
  */
@@ -395,3 +384,4 @@ inline ss_typename_type_ret_k string_view_helper_traits<S>::view_type mid_view(S
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

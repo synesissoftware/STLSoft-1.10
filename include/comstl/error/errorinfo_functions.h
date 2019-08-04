@@ -4,11 +4,11 @@
  * Purpose:     Error info functions.
  *
  * Created:     5th Feburary 2004
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_MAJOR    4
 # define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_MINOR    2
-# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_REVISION 8
-# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_EDIT     51
+# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_REVISION 11
+# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_EDIT     55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,6 +66,10 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
 #ifndef STLSOFT_INCL_H_OLEAUTO
 # define STLSOFT_INCL_H_OLEAUTO
 # include <oleauto.h>
@@ -74,6 +78,13 @@
 # define STLSOFT_INCL_H_OAIDL
 # include <oaidl.h>
 #endif /* !STLSOFT_INCL_H_OAIDL */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet
+# include <winstl/api/external/UnicodeAndCharacterSet.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_UnicodeAndCharacterSet */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -179,11 +190,11 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_a_helper_(cs_char_a_t const* s_a, 
         }
         else
         {
-            int n = STLSOFT_NS_GLOBAL(MultiByteToWideChar)(0, 0, s_a, -1, *ps_w, stlsoft_static_cast(int, 1 + len));
+            int n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s_a, -1, *ps_w, stlsoft_static_cast(int, 1 + len));
 
             if(0 == n)
             {
-                return HRESULT_FROM_WIN32(STLSOFT_NS_GLOBAL(GetLastError)());
+                return HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {
@@ -438,3 +449,4 @@ inline HRESULT set_error_info(cs_char_w_t const* description, cs_char_w_t const*
 #endif /* !COMSTL_INCL_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

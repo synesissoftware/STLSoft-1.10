@@ -4,11 +4,11 @@
  * Purpose:     winstl::resource_exception class
  *
  * Created:     19th June 2004
- * Updated:     1st January 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION_MAJOR       5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION_MINOR       0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION_REVISION    1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION_EDIT        71
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION_EDIT        72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -186,3 +186,4 @@ private:
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_RESOURCE_EXCEPTION */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

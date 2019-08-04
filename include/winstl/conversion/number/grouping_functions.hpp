@@ -4,11 +4,11 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@
 
 /** \file winstl/conversion/number/grouping_functions.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::format_thousands() formatting
+ * \brief [C++ only] Definition of the winstl::format_thousands() formatting
  *   function
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION    8
-# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        21
+# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION    9
+# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,42 +104,52 @@ namespace winstl_project
  */
 
 #if 0
-template<   typename C
-        ,   typename N
-        >
-ws_size_t format_thousands( C       *dest
-                        ,   ws_size_t   cchDest
-                        ,   N const& number
-                        );
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k N
+>
+ws_size_t
+format_thousands(
+    C*                  dest
+,   ws_size_t           cchDest
+,   N const&            number
+);
 #endif /* 0 */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   typename C
-        ,   typename I
-        >
-inline ws_size_t format_thousands_3_impl(   C                   *dest
-                                        ,   ws_size_t           cchDest
-                                        ,   I const             &number
-                                        ,   stlsoft::yes_type
-                                        )
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k I
+>
+inline
+ws_size_t
+format_thousands_3_impl(
+    C*                  dest
+,   ws_size_t           cchDest
+,   I const&            number
+,   stlsoft::yes_type
+)
 {
     typedef system_traits<C>    traits_t;
 
     int                     cch =   traits_t::get_locale_info(LOCALE_USER_DEFAULT, LOCALE_SGROUPING, NULL, 0);
     stlsoft::auto_buffer<C> picture(1 + cch);
 
-    cch = traits_t::get_locale_info(LOCALE_USER_DEFAULT, LOCALE_SGROUPING, &picture[0], picture.size());
+    cch = traits_t::get_locale_info(LOCALE_USER_DEFAULT, LOCALE_SGROUPING, &picture[0], int(picture.size()));
 
     return stlsoft::format_thousands(dest, cchDest, picture.data(), number);
 }
 
-template<typename C>
-inline ws_size_t format_thousands_3_impl(   C                   *dest
-                                    ,   ws_size_t               cchDest
-                                    ,   C const             *number
-                                    ,   stlsoft::no_type
-                                    )
+template <ss_typename_param_k C>
+inline
+ws_size_t
+format_thousands_3_impl(
+    C*                  dest
+,   ws_size_t           cchDest
+,   C const*            number
+,   stlsoft::no_type
+)
 {
     typedef system_traits<C>    traits_t;
 
@@ -153,17 +163,21 @@ inline ws_size_t format_thousands_3_impl(   C                   *dest
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-template<   typename C
-        ,   typename N
-        >
-inline ws_size_t format_thousands(  C       *dest
-                                ,   ws_size_t   cchDest
-                                ,   N const& number
-                                )
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k N
+>
+inline
+ws_size_t
+format_thousands(
+    C*                  dest
+,   ws_size_t           cchDest
+,   N const&            number
+)
 {
-    typedef ss_typename_type_k stlsoft::is_integral_type<N>::type   yesno_type;
+    typedef ss_typename_type_k stlsoft::is_integral_type<N>::type   yesno_t;
 
-    return format_thousands_3_impl(dest, cchDest, number, yesno_type());
+    return format_thousands_3_impl(dest, cchDest, number, yesno_t());
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -189,3 +203,4 @@ inline ws_size_t format_thousands(  C       *dest
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

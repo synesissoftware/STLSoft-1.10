@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     20th March 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     3
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     0
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  3
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      26
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/throw_policies.hpp
@@ -134,3 +134,4 @@ typedef WINSTL_NS_QUAL(windows_exception_policy)            platform_exception_p
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

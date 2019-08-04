@@ -4,7 +4,7 @@
  * Purpose:     Forward declarations.
  *
  * Created:     18th December 2016
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_MINOR    0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_REVISION 3
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_EDIT     4
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_EDIT     5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,3 +118,4 @@ class applet_module;
 #endif /* !WINSTL_INCL_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -5,11 +5,11 @@
  *              directory.
  *
  * Created:     10th December 2002
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_MAJOR    4
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_MINOR    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_REVISION 6
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_EDIT     79
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_MINOR    4
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_REVISION 1
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY_EDIT     81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,6 +130,8 @@ public:
 
     enum { allowImplicitConversion  =   1   };
 
+    enum { caseSensitive            =   0   };
+
     enum { sharedState              =   1   };
 /// @}
 
@@ -189,3 +191,4 @@ typedef STLSOFT_NS_QUAL(special_string_instance_0)< sysdir_policy<TCHAR> >      
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_DIRECTORY */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

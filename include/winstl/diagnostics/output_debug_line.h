@@ -4,11 +4,11 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2011-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    1
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 3
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     13
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 4
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,6 +85,10 @@
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
 #endif /* !STLSOFT_INCL_H_STRING */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_Debugging
+# include <winstl/api/external/Debugging.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -226,7 +230,7 @@ winstl_C_call_OutputDebugStringA_(
     {
         STLSOFT_COVER_MARK_LINE();
 
-        STLSOFT_NS_GLOBAL(OutputDebugStringA)(s);
+        WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA(s);
     }
 }
 
@@ -1036,8 +1040,7 @@ namespace winstl = ::stlsoft::winstl_project;
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-/* ////////////////////////////////////////////////////////////////////// */
-
 #endif /* !WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

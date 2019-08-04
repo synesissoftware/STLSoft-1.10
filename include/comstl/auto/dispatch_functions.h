@@ -4,11 +4,11 @@
  * Purpose:     Automation (IDispatch) helper functions.
  *
  * Created:     24th May 2002
- * Updated:     29th December 2016
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_AUTO_H_DISPATCH_FUNCTIONS_MAJOR      2
 # define COMSTL_VER_COMSTL_AUTO_H_DISPATCH_FUNCTIONS_MINOR      0
 # define COMSTL_VER_COMSTL_AUTO_H_DISPATCH_FUNCTIONS_REVISION   1
-# define COMSTL_VER_COMSTL_AUTO_H_DISPATCH_FUNCTIONS_EDIT       12
+# define COMSTL_VER_COMSTL_AUTO_H_DISPATCH_FUNCTIONS_EDIT       13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -223,3 +223,4 @@ IDispatch_get_property(
 #endif /* !COMSTL_INCL_COMSTL_AUTO_H_DISPATCH_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,7 +4,7 @@
  * Purpose:     Define the project_identifier_provider inteface.
  *
  * Created:     29th December 2016
- * Updated:     29th December 2016
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,7 +47,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER_MAJOR    1
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER_MINOR    0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER_REVISION 1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER_EDIT     2
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER_EDIT     3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -132,3 +132,4 @@ private:
 #endif /* !STLSOFT_INCL_STLSOFT_EXCEPTION_HPP_PROJECT_IDENTIFIER_PROVIDER */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

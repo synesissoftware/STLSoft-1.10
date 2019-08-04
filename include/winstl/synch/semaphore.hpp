@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 12
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     36
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 16
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,13 @@
 #ifndef WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON
 # include <winstl/synch/common.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_COMMON */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
+# include <winstl/api/external/HandleAndObject.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -185,9 +192,12 @@ public:
         if( NULL != m_sem &&
             m_bOwnHandle)
         {
-            ::CloseHandle(m_sem);
+            WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_sem);
         }
     }
+private:
+    semaphore(class_type const&);       // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Operations
@@ -198,11 +208,11 @@ public:
     {
         WINSTL_ASSERT(NULL != m_sem);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_sem, INFINITE);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, INFINITE);
 
         if(WAIT_OBJECT_0 != dwRes)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(wait_failed_logic_exception(e, "semaphore wait failed"));
@@ -216,12 +226,12 @@ public:
     {
         WINSTL_ASSERT(NULL != m_sem);
 
-        DWORD const dwRes = ::WaitForSingleObject(m_sem, wait);
+        DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, wait);
 
         if( WAIT_OBJECT_0 != dwRes &&
             WAIT_TIMEOUT != dwRes)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(wait_failed_logic_exception(e, "semaphore wait failed"));
@@ -249,7 +259,7 @@ public:
 
         if(!::ReleaseSemaphore(m_sem, 1, NULL))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "semaphore release failed", Synchronisation_SemaphoreReleaseFailed));
@@ -280,7 +290,7 @@ public:
 
         if(!::ReleaseSemaphore(m_sem, static_cast<LONG>(numLocksToRelease), &previousCount))
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_object_state_change_failed_exception(e, "semaphore release failed", Synchronisation_SemaphoreReleaseFailed));
@@ -346,7 +356,7 @@ private:
 
         if(NULL == sem)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel semaphore object"));
@@ -371,7 +381,7 @@ private:
 
         if(NULL == sem)
         {
-            DWORD const e = ::GetLastError();
+            DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_creation_exception(e, "failed to create kernel semaphore object"));
@@ -388,11 +398,6 @@ private:
     synch_handle_type   m_sem;          // The underlying semaphore object
     count_type const    m_maxCount;     // Record of the maximum counter value
     bool_type const     m_bOwnHandle;   // Does the instance own the handle?
-
-// Not to be implemented
-private:
-    semaphore(class_type const& rhs);
-    semaphore& operator =(class_type const& rhs);
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -527,3 +532,4 @@ public:
 #endif /* !WINSTL_INCL_WINSTL_SYNCH_HPP_SEMAPHORE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

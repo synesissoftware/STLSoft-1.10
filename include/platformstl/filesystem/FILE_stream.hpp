@@ -4,11 +4,11 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     15th February 2017
+ * Updated:     20th February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2009-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2009-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        18
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    3
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -175,9 +175,9 @@ public:
     >                                                           handle_adaptor_type;  // Optional type
     /// The Handle::Ref+Wrapper <strong>Handle</strong> type
     typedef ss_typename_type_k handle_adaptor_type::handle_type handle_type;          // Mandatory types for HRW
-    /// The Handle::Ref+Wrapper <strong>Ref</strong> type                             
+    /// The Handle::Ref+Wrapper <strong>Ref</strong> type
     typedef ss_typename_type_k handle_adaptor_type::Ref         ref_type;             // Mandatory types for HRW
-    /// The Handle::Ref+Wrapper <strong>Wrapper</strong> type: this type              
+    /// The Handle::Ref+Wrapper <strong>Wrapper</strong> type: this type
     typedef FILE_stream_base<R, I>                              wrapper_type;         // Mandatory types for HRW
 
     /// The Handle::Ref+Wrapper ref type
@@ -223,7 +223,19 @@ public: // Operations
     /// Writes an empty line to the underlying stream.
     class_type& write_line()
     {
-        return write_line_(NULL, 0u);
+#if 0 ||\
+    defined(UNICODE) ||\
+    defined(_UNICODE) ||\
+    defined(FASTFORMAT_USE_WIDE_STRINGS) ||\
+    defined(PANTHEIOS_USE_WIDE_STRINGS) ||\
+    defined(STLSOFT_USE_WIDE_STRINGS) ||\
+    0
+
+        return write_line_(static_cast<wchar_t const*>(NULL), 0u);
+#else
+
+        return write_line_(static_cast<char const*>(NULL), 0u);
+#endif
     }
 
     /// Writes the given string to the underlying stream.
@@ -752,3 +764,4 @@ namespace stlsoft
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     UNIXSTL time functions.
  *
  * Created:     2nd September 2005
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2005-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MAJOR      3
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MINOR      0
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_REVISION   6
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       29
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_REVISION   7
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,6 +82,12 @@
 # define STLSOFT_INCL_SYS_H_TIME
 # include <sys/time.h>
 #endif /* !STLSOFT_INCL_SYS_H_TIME */
+
+#ifdef _WIN32
+# ifndef WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread
+#  include <winstl/api/external/ProcessAndThread.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_ProcessAndThread */
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -129,7 +135,7 @@ unixstl_C_micro_sleep(
 {
 #ifdef _WIN32
 
-    return (STLSOFT_NS_GLOBAL(Sleep)(microseconds / 1000), us_true_v);
+    return (WINSTL_API_EXTERNAL_ProcessAndThread_Sleep(microseconds / 1000), us_true_v);
 #else /* ? _WIN32 */
 
     struct timeval  ts;
@@ -205,3 +211,4 @@ micro_sleep(
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

@@ -4,11 +4,11 @@
  * Purpose:     Window functions.
  *
  * Created:     7th May 2000
- * Updated:     19th February 2017
+ * Updated:     2nd February 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2000-2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MINOR     0
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  14
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      76
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  16
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,10 @@
 # include <winstl/conversion/windows_type_conversions.hpp>
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_HPP_WINDOWS_TYPE_CONVERSIONS */
 #endif /* __cplusplus */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -99,7 +103,12 @@ namespace winstl_project
 
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-STLSOFT_INLINE ws_sptrint_t winstl__get_window_sptrint_(HWND h, int index)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_get_window_sptrint_(
+    HWND    h
+,   int     index
+)
 {
 #if defined(WINSTL_OS_IS_WIN64) || \
     defined(_Wp64)
@@ -108,7 +117,13 @@ STLSOFT_INLINE ws_sptrint_t winstl__get_window_sptrint_(HWND h, int index)
     return STLSOFT_NS_GLOBAL(GetWindowLong)(h, index);
 #endif /* width */
 }
-STLSOFT_INLINE ws_sptrint_t winstl__set_window_sptrint_(HWND h, int index, ws_sptrint_t newData)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_set_window_sptrint_(
+    HWND            h
+,   int             index
+,   ws_sptrint_t    newData
+)
 {
 #if defined(WINSTL_OS_IS_WIN64) || \
     defined(_Wp64)
@@ -119,56 +134,88 @@ STLSOFT_INLINE ws_sptrint_t winstl__set_window_sptrint_(HWND h, int index, ws_sp
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * C functions
+ */
 
-
-STLSOFT_INLINE ws_sptrint_t winstl__GetStyle(HWND h)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_GetStyle(
+    HWND h
+)
 {
-    return winstl__get_window_sptrint_(h, GWL_STYLE);
+    return winstl_C_get_window_sptrint_(h, GWL_STYLE);
 }
 
 /** Gets the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_sptrint_t winstl__GetExStyle(HWND h)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_GetExStyle(
+    HWND h
+)
 {
-    return winstl__get_window_sptrint_(h, GWL_EXSTYLE);
+    return winstl_C_get_window_sptrint_(h, GWL_EXSTYLE);
 }
 
 /** Sets the style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_sptrint_t winstl__SetStyle(HWND h, ws_sptrint_t s)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_SetStyle(
+    HWND            h
+,   ws_sptrint_t    s
+)
 {
-    return winstl__set_window_sptrint_(h, GWL_STYLE, s);
+    return winstl_C_set_window_sptrint_(h, GWL_STYLE, s);
 }
 
 /** Sets the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_sptrint_t winstl__SetExStyle(HWND h, ws_sptrint_t x)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_SetExStyle(
+    HWND            h
+,   ws_sptrint_t    x
+)
 {
-    return winstl__set_window_sptrint_(h, GWL_EXSTYLE, x);
+    return winstl_C_set_window_sptrint_(h, GWL_EXSTYLE, x);
 }
 
 /** Modifies the style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_sptrint_t winstl__ModifyStyle(HWND h, ws_sptrint_t sRem, ws_sptrint_t sAdd)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_ModifyStyle(
+    HWND            h
+,   ws_sptrint_t    sRem
+,   ws_sptrint_t    sAdd
+)
 {
-    return winstl__SetStyle(h, (winstl__GetStyle(h) & ~sRem) | sAdd);
+    return winstl_C_SetStyle(h, (winstl_C_GetStyle(h) & ~sRem) | sAdd);
 }
 
 /** Modifies the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_sptrint_t winstl__ModifyExStyle(HWND h, ws_sptrint_t sRem, ws_sptrint_t sAdd)
+STLSOFT_INLINE
+ws_sptrint_t
+winstl_C_ModifyExStyle(
+    HWND            h
+,   ws_sptrint_t    sRem
+,   ws_sptrint_t    sAdd
+)
 {
-    return winstl__SetExStyle(h, (winstl__GetExStyle(h) & ~sRem) | sAdd);
+    return winstl_C_SetExStyle(h, (winstl_C_GetExStyle(h) & ~sRem) | sAdd);
 }
 
 #endif /* !NOWINOFFSETS */
@@ -178,7 +225,12 @@ STLSOFT_INLINE ws_sptrint_t winstl__ModifyExStyle(HWND h, ws_sptrint_t sRem, ws_
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_int_t winstl__IsWindowClassA(HWND hwnd, ws_char_a_t const* name)
+STLSOFT_INLINE
+ws_int_t
+winstl_C_IsWindowClassA(
+    HWND                hwnd
+,   ws_char_a_t const*  name
+)
 {
     ws_char_a_t szName[256];
 
@@ -187,14 +239,19 @@ STLSOFT_INLINE ws_int_t winstl__IsWindowClassA(HWND hwnd, ws_char_a_t const* nam
 
     stlsoft_static_cast(void, STLSOFT_NS_GLOBAL(GetClassNameA)(hwnd, szName, STLSOFT_NUM_ELEMENTS(szName)));
 
-    return 0 == STLSOFT_NS_GLOBAL(lstrcmpiA)(szName, name);
+    return 0 == STLSOFT_API_EXTERNAL_string_stricmp(szName, name);
 }
 
 /** Tests whether the given window has the given window class
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_int_t winstl__IsWindowClassW(HWND hwnd, ws_char_w_t const* name)
+STLSOFT_INLINE
+ws_int_t
+winstl_C_IsWindowClassW(
+    HWND                hwnd
+,   ws_char_w_t const*  name
+)
 {
     ws_char_w_t szName[256];
 
@@ -203,7 +260,7 @@ STLSOFT_INLINE ws_int_t winstl__IsWindowClassW(HWND hwnd, ws_char_w_t const* nam
 
     stlsoft_static_cast(void, STLSOFT_NS_GLOBAL(GetClassNameW)(hwnd, szName, STLSOFT_NUM_ELEMENTS(szName)));
 
-    return 0 == STLSOFT_NS_GLOBAL(lstrcmpiW)(szName, name);
+    return 0 == STLSOFT_API_EXTERNAL_string_wcsicmp(szName, name);
 }
 
 #ifndef NOCTLMGR
@@ -212,7 +269,13 @@ STLSOFT_INLINE ws_int_t winstl__IsWindowClassW(HWND hwnd, ws_char_w_t const* nam
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE void winstl__EnableDlgItem(HWND hwnd, int id, BOOL bEnable)
+STLSOFT_INLINE
+void
+winstl_C_EnableDlgItem(
+    HWND    hwnd
+,   int     id
+,   BOOL    bEnable
+)
 {
     STLSOFT_NS_GLOBAL(EnableWindow)(STLSOFT_NS_GLOBAL(GetDlgItem)(hwnd, id), bEnable);
 }
@@ -221,7 +284,12 @@ STLSOFT_INLINE void winstl__EnableDlgItem(HWND hwnd, int id, BOOL bEnable)
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_int_t winstl__IsDlgItemEnabled(HWND hwnd, int id)
+STLSOFT_INLINE
+ws_int_t
+winstl_C_IsDlgItemEnabled(
+    HWND    hwnd
+,   int     id
+)
 {
     return STLSOFT_NS_GLOBAL(IsWindowEnabled)(STLSOFT_NS_GLOBAL(GetDlgItem)(hwnd, id));
 }
@@ -230,7 +298,12 @@ STLSOFT_INLINE ws_int_t winstl__IsDlgItemEnabled(HWND hwnd, int id)
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE ws_int_t winstl__GetDlgItemTextLength(HWND hwnd, int id)
+STLSOFT_INLINE
+ws_int_t
+winstl_C_GetDlgItemTextLength(
+    HWND    hwnd
+,   int     id
+)
 {
     return STLSOFT_NS_GLOBAL(GetWindowTextLength)(STLSOFT_NS_GLOBAL(GetDlgItem)(hwnd, id));
 }
@@ -243,7 +316,11 @@ STLSOFT_INLINE ws_int_t winstl__GetDlgItemTextLength(HWND hwnd, int id)
  *
  * \ingroup group__library__Windows_Window
  */
-STLSOFT_INLINE HINSTANCE winstl__GetWindowInstance(HWND hwnd)
+STLSOFT_INLINE
+HINSTANCE
+winstl_C_GetWindowInstance(
+    HWND hwnd
+)
 {
 #if defined(WINSTL_OS_IS_WIN64) || \
     defined(_Wp64)
@@ -253,7 +330,7 @@ STLSOFT_INLINE HINSTANCE winstl__GetWindowInstance(HWND hwnd)
 #endif /* width */
 
     /* When compiling for Win32 with -Wp64, the conversion that we've catered
-     * for - by the use of winstl__get_window_sptrint_(), and by the above
+     * for - by the use of winstl_C_get_window_sptrint_(), and by the above
      * discrimination - is mistakenly reported as a truncation, so we need to
      * suppress the warning nonetheless.
      */
@@ -262,7 +339,7 @@ STLSOFT_INLINE HINSTANCE winstl__GetWindowInstance(HWND hwnd)
 # pragma warning(push)
 # pragma warning(disable : 4312)
 #endif
-    return stlsoft_reinterpret_cast(HINSTANCE, winstl__get_window_sptrint_(hwnd, index));
+    return stlsoft_reinterpret_cast(HINSTANCE, winstl_C_get_window_sptrint_(hwnd, index));
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     defined(_Wp64)
 # pragma warning(pop)
@@ -270,6 +347,109 @@ STLSOFT_INLINE HINSTANCE winstl__GetWindowInstance(HWND hwnd)
 }
 
 #endif /* !NOWINOFFSETS */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * obsolete symbols
+ *
+ * NOTE: these are only defined if:
+ *
+ * - we're generating documentation, or
+ * - STLSOFT_OBSOLETE is specified, or
+ * - it's STLSoft 1.9 (or earlier)
+ */
+
+#if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
+    defined(STLSOFT_OBSOLETE) || \
+    _STLSOFT_VER < 0x010a0000
+
+/** \def winstl__GetStyle
+ *
+ * \deprecated Use winstl_C_GetStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_GetStyle, winstl__GetStyle)
+# define winstl__GetStyle                                   winstl_C_GetStyle
+
+/** \def winstl__GetExStyle
+ *
+ * \deprecated Use winstl_C_GetExStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_GetExStyle, winstl__GetExStyle)
+# define winstl__GetExStyle                                 winstl_C_GetExStyle
+
+/** \def winstl__SetStyle
+ *
+ * \deprecated Use winstl_C_SetStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_SetStyle, winstl__SetStyle)
+# define winstl__SetStyle                                   winstl_C_SetStyle
+
+/** \def winstl__SetExStyle
+ *
+ * \deprecated Use winstl_C_SetExStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_SetExStyle, winstl__SetExStyle)
+# define winstl__SetExStyle                                 winstl_C_SetExStyle
+
+/** \def winstl__ModifyStyle
+ *
+ * \deprecated Use winstl_C_ModifyStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_ModifyStyle, winstl__ModifyStyle)
+# define winstl__ModifyStyle                                winstl_C_ModifyStyle
+
+/** \def winstl__ModifyExStyle
+ *
+ * \deprecated Use winstl_C_ModifyExStyle
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_ModifyExStyle, winstl__ModifyExStyle)
+# define winstl__ModifyExStyle                              winstl_C_ModifyExStyle
+
+/** \def winstl__IsWindowClassA
+ *
+ * \deprecated Use winstl_C_IsWindowClassA
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_IsWindowClassA, winstl__IsWindowClassA)
+# define winstl__IsWindowClassA                             winstl_C_IsWindowClassA
+
+/** \def winstl__IsWindowClassW
+ *
+ * \deprecated Use winstl_C_IsWindowClassW
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_IsWindowClassW, winstl__IsWindowClassW)
+# define winstl__IsWindowClassW                             winstl_C_IsWindowClassW
+
+/** \def winstl__EnableDlgItem
+ *
+ * \deprecated Use winstl_C_EnableDlgItem
+ */
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_EnableDlgItem, winstl__EnableDlgItem)
+# define winstl__EnableDlgItem                              winstl_C_EnableDlgItem
+
+/** \def winstl__IsDlgItemEnabled
+ *
+ * \deprecated Use winstl_C_IsDlgItemEnabled
+ */
+
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_IsDlgItemEnabled, winstl__IsDlgItemEnabled)
+# define winstl__IsDlgItemEnabled                           winstl_C_IsDlgItemEnabled
+
+/** \def winstl__GetDlgItemTextLength
+ *
+ * \deprecated Use winstl_C_GetDlgItemTextLength
+ */
+
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_GetDlgItemTextLength, winstl__GetDlgItemTextLength)
+# define winstl__GetDlgItemTextLength                       winstl_C_GetDlgItemTextLength
+
+/** \def winstl__GetWindowInstance
+ *
+ * \deprecated Use winstl_C_GetWindowInstance
+ */
+
+STLSOFT_DECLARE_MACRO_DEPRECATION_IN_FAVOUR_OF(winstl_C_GetWindowInstance, winstl__GetWindowInstance)
+# define winstl__GetWindowInstance                          winstl_C_GetWindowInstance
+
+#endif /* obsolete || 1.9 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -292,54 +472,84 @@ namespace winstl
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t GetStyle(HWND h)
+inline
+ws_sptrint_t
+GetStyle(
+    HWND h
+)
 {
-    return winstl__GetStyle(h);
+    return winstl_C_GetStyle(h);
 }
 
 /** Gets the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t GetExStyle(HWND h)
+inline
+ws_sptrint_t
+GetExStyle(
+    HWND h
+)
 {
-    return winstl__GetExStyle(h);
+    return winstl_C_GetExStyle(h);
 }
 
 /** Sets the style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t SetStyle(HWND h, ws_sptrint_t s)
+inline
+ws_sptrint_t
+SetStyle(
+    HWND            h
+,   ws_sptrint_t    s
+)
 {
-    return winstl__SetStyle(h, s);
+    return winstl_C_SetStyle(h, s);
 }
 
 /** Sets the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t SetExStyle(HWND h, ws_sptrint_t x)
+inline
+ws_sptrint_t
+SetExStyle(
+    HWND            h
+,   ws_sptrint_t    x
+)
 {
-    return winstl__SetExStyle(h, x);
+    return winstl_C_SetExStyle(h, x);
 }
 
 /** Modifies the style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t ModifyStyle(HWND h, ws_sptrint_t sRem, ws_sptrint_t sAdd)
+inline
+ws_sptrint_t
+ModifyStyle(
+    HWND            h
+,   ws_sptrint_t    sRem
+,   ws_sptrint_t    sAdd
+)
 {
-    return winstl__ModifyStyle(h, sRem, sAdd);
+    return winstl_C_ModifyStyle(h, sRem, sAdd);
 }
 
 /** Modifies the extended style of the window
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_sptrint_t ModifyExStyle(HWND h, ws_sptrint_t sRem, ws_sptrint_t sAdd)
+inline
+ws_sptrint_t
+ModifyExStyle(
+    HWND            h
+,   ws_sptrint_t    sRem
+,   ws_sptrint_t    sAdd
+)
 {
-    return winstl__ModifyExStyle(h, sRem, sAdd);
+    return winstl_C_ModifyExStyle(h, sRem, sAdd);
 }
 
 # endif /* !NOWINOFFSETS */
@@ -348,18 +558,28 @@ inline ws_sptrint_t ModifyExStyle(HWND h, ws_sptrint_t sRem, ws_sptrint_t sAdd)
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_bool_t IsWindowClass(HWND hwnd, ws_char_a_t const* name)
+inline
+ws_bool_t
+IsWindowClass(
+    HWND                hwnd
+,   ws_char_a_t const*  name
+)
 {
-    return BOOL2bool(winstl__IsWindowClassA(hwnd, name));
+    return BOOL2bool(winstl_C_IsWindowClassA(hwnd, name));
 }
 
 /** Tests whether the given window has the given window class
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_bool_t IsWindowClass(HWND hwnd, ws_char_w_t const* name)
+inline
+ws_bool_t
+IsWindowClass(
+    HWND                hwnd
+,   ws_char_w_t const*  name
+)
 {
-    return BOOL2bool(winstl__IsWindowClassW(hwnd, name));
+    return BOOL2bool(winstl_C_IsWindowClassW(hwnd, name));
 }
 
 # ifndef NOCTLMGR
@@ -368,27 +588,43 @@ inline ws_bool_t IsWindowClass(HWND hwnd, ws_char_w_t const* name)
  *
  * \ingroup group__library__Windows_Window
  */
-inline void EnableDlgItem(HWND hwnd, int id, ws_bool_t bEnable)
+inline
+void
+EnableDlgItem(
+    HWND        hwnd
+,   int         id
+,   ws_bool_t   bEnable
+)
 {
-    winstl__EnableDlgItem(hwnd, id, bEnable);
+    winstl_C_EnableDlgItem(hwnd, id, bEnable);
 }
 
 /** Elicits the enable status of a dialog item
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_bool_t IsDlgItemEnabled(HWND hwnd, int id)
+inline
+ws_bool_t
+IsDlgItemEnabled(
+    HWND    hwnd
+,   int     id
+)
 {
-    return BOOL2bool(winstl__IsDlgItemEnabled(hwnd, id));
+    return BOOL2bool(winstl_C_IsDlgItemEnabled(hwnd, id));
 }
 
 /** Gets the text length of a dialog item's window contents
  *
  * \ingroup group__library__Windows_Window
  */
-inline ws_int_t GetDlgItemTextLength(HWND hwnd, int id)
+inline
+ws_int_t
+GetDlgItemTextLength(
+    HWND    hwnd
+,   int     id
+)
 {
-    return winstl__GetDlgItemTextLength(hwnd, id);
+    return winstl_C_GetDlgItemTextLength(hwnd, id);
 }
 
 # endif /* !NOCTLMGR */
@@ -402,16 +638,26 @@ inline ws_int_t GetDlgItemTextLength(HWND hwnd, int id)
 #ifdef GetWindowInstance
 # undef GetWindowInstance
 #endif /* GetWindowInstance */
-inline HINSTANCE GetWindowInstance(HWND hwnd)
+inline
+HINSTANCE
+GetWindowInstance(
+    HWND hwnd
+)
 {
-    return winstl__GetWindowInstance(hwnd);
+    return winstl_C_GetWindowInstance(hwnd);
 }
 
 # endif /* !NOWINOFFSETS */
 
 # ifndef NOWINMESSAGES
 
-inline HICON set_window_icon(HWND hwnd, int iconType, HICON hicon)
+inline
+HICON
+set_window_icon(
+    HWND    hwnd
+,   int     iconType
+,   HICON   hicon
+)
 {
     WINSTL_ASSERT(ICON_BIG == iconType || ICON_SMALL == iconType);
 
@@ -437,12 +683,26 @@ inline HICON set_window_icon(HWND hwnd, int iconType, HICON hicon)
 # endif /* VC++ + Win32 + _Wp32 */
 }
 
-inline HICON set_window_icon(HWND hwnd, int iconType, HINSTANCE hinst, LPCTSTR iconName)
+inline
+HICON
+set_window_icon(
+    HWND        hwnd
+,   int         iconType
+,   HINSTANCE   hinst
+,   LPCTSTR     iconName
+)
 {
     return set_window_icon(hwnd, iconType, ::LoadIcon(hinst, iconName));
 }
 
-inline HICON set_window_icon(HWND hwnd, int iconType, HINSTANCE hinst, int iconId)
+inline
+HICON
+set_window_icon(
+    HWND        hwnd
+,   int         iconType
+,   HINSTANCE   hinst
+,   int         iconId
+)
 {
     return set_window_icon(hwnd, iconType, ::LoadIcon(hinst, MAKEINTRESOURCE(iconId)));
 }
@@ -494,17 +754,32 @@ inline HICON set_window_icon(HWND hwnd, int iconType, HINSTANCE hinst, int iconI
 #  if defined(WINSTL_FINDFIRSTCHILDBYID_SLF_FORM2)
 /* declare the template function */
 template <int N>
-inline HWND FindFirstChildById_N(HWND hwndParent, int id);
+inline
+HWND
+FindFirstChildById_N(
+    HWND    hwndParent
+,   int     id
+);
 #   endif /* WINSTL_FINDFIRSTCHILDBYID_SLF_FORM2 */
 
-inline HWND FindFirstChildById(HWND hwndParent, int id)
+inline
+HWND
+FindFirstChildById(
+    HWND    hwndParent
+,   int     id
+)
 #  if defined(WINSTL_FINDFIRSTCHILDBYID_SLF_FORM2)
 {
     return FindFirstChildById_N<1>(hwndParent, id);
 }
 
 template <int N>
-inline HWND FindFirstChildById_N(HWND hwndParent, int id)
+inline
+HWND
+FindFirstChildById_N(
+    HWND    hwndParent
+,   int     id
+)
 #   endif /* WINSTL_FINDFIRSTCHILDBYID_SLF_FORM2 */
 {
     if(::GetDlgCtrlID(hwndParent) == id)
@@ -520,7 +795,11 @@ inline HWND FindFirstChildById_N(HWND hwndParent, int id)
                 : m_hwndChild(NULL)
                 , m_id(id)
             {
-                ::EnumChildWindows(hwndParent, (WNDENUMPROC)EnumProc, reinterpret_cast<LPARAM>(this));
+#ifdef STRICT
+                ::EnumChildWindows(hwndParent, EnumProc, reinterpret_cast<LPARAM>(this));
+#else
+                ::EnumChildWindows(hwndParent, reinterpret_cast<WNDENUMPROC>(EnumProc), reinterpret_cast<LPARAM>(this));
+#endif
             }
 
         public:
@@ -560,7 +839,11 @@ struct FindFirstChildById_class
             : m_hwndChild(NULL)
             , m_id(id)
         {
+#ifdef STRICT
             ::EnumChildWindows(hwndParent, EnumProc, reinterpret_cast<LPARAM>(this));
+#else
+            ::EnumChildWindows(hwndParent, reinterpret_cast<WNDENUMPROC>(EnumProc), reinterpret_cast<LPARAM>(this));
+#endif
         }
 
     public:
@@ -602,9 +885,14 @@ struct FindFirstChildById_class
     }
 };
 
-inline HWND FindFirstChildById(HWND hwndParent, int id)
+inline
+HWND
+FindFirstChildById(
+    HWND    hwndParent
+,   int     id
+)
 {
-  return FindFirstChildById_class/* <int> */::FindFirstChildById_N(hwndParent, id);
+    return FindFirstChildById_class/* <int> */::FindFirstChildById_N(hwndParent, id);
 }
 
 #  else /* ? WINSTL_FINDFIRSTCHILDBYID_SLF_FORM?? */
@@ -638,3 +926,4 @@ inline HWND FindFirstChildById(HWND hwndParent, int id)
 #endif /* !WINSTL_INCL_WINSTL_WINDOW_H_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
