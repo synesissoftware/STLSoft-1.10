@@ -6,9 +6,16 @@ Version 1.10 of STLSoft libraries
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its released.
 
+### Impending 1.10 release
+
+Working now (Sept 2019) on getting documentation updated and existing
+automated tests included into the GitHub-released project, and then
+we'll be at it.
+
+
 ## Releases
 
-### 1.10.1 beta-14 (Latest) - 13th September 2019
+### 1.10.1 beta-15 (Latest) - 13th September 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta15>
 
