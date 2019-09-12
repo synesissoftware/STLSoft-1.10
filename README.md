@@ -12,12 +12,12 @@ Version 1.10 of STLSoft libraries
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta15>
 
- * added stlsoft::fast_strftime() and stlsoft::fast_wcsftime() as drop-in replacements for std::strftime() and std::wcsftime()
- * added get_ptr() shim overload for std::shared_ptr and std::unique_ptr
- * added stlsoft::get_top() attribute shim
- * stlsoft::basic_string_view<>::substr()
- * added winstl_C_format_message_strerror_w()
- * removed stlsoft::literal_cast<>
+ * added ``stlsoft::fast_strftime()`` and ``stlsoft::fast_wcsftime()`` as (partial) drop-in replacements for ``std::strftime()`` and ``std::wcsftime()``
+ * added ``stlsoft::get_ptr()`` attribute shim overloads for ``std::shared_ptr`` and ``std::unique_ptr``
+ * added ``stlsoft::get_top()`` attribute shim
+ * added ``stlsoft::basic_string_view<>::substr()``
+ * added ``winstl_C_format_message_strerror_w()``
+ * removed ``stlsoft::literal_cast<>``
  * various portability improvements to newer compilers
 
 ### 1.10.1 beta-14 - 4th August 2019
