@@ -4,7 +4,7 @@
  * Purpose:     Shell file operations.
  *
  * Created:     12th December 1996
- * Updated:     2nd February 2019
+ * Updated:     12th September 2019
  *
  * Thanks:      To Pablo Aguilar for default folder enhancements.
  *
@@ -55,11 +55,11 @@
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_MINOR      1
 # define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_REVISION   9
-# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       99
+# define WINSTL_VER_WINSTL_SHELL_HPP_FILE_OPERATIONS_EDIT       100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes.
+ * includes.
  */
 
 #ifndef WINSTL_INCL_WINSTL_H_WINSTL

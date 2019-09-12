@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        stlsoft/shims/attribute/get_ptr/std/fundamental.hpp
+ * File:        stlsoft/shims/attribute/get_top/std/priority_queue.hpp
  *
- * Purpose:     Contains the get_ptr attribute shim.
+ * Purpose:     Contains the get_top attribute shim.
  *
- * Created:     10th January 2002
+ * Created:     8th September 2019
  * Updated:     10th September 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,20 +39,20 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file stlsoft/shims/attribute/get_ptr/std/fundamental.hpp
+/** \file stlsoft/shims/attribute/get_top/std/priority_queue.hpp
  *
- * \brief [C++] Pointer attribute shims for built-in types
- *   (\ref group__concept__Shim__Attribute__get_ptr "get_ptr Pointer Attribute Shim").
+ * \brief [C++] get_top attribute shims for std::priority_queue
+ *   (\ref group__concept__Shim__Attribute__get_top "Top Attribute Shims").
  */
 
-#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL
-#define STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL
+#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE
+#define STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_MAJOR      4
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_MINOR      0
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_REVISION   6
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL_EDIT       55
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE_MAJOR       1
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE_MINOR       0
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE_REVISION    1
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE_EDIT        1
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,11 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef STLSOFT_INCL_QUEUE
+# define STLSOFT_INCL_QUEUE
+# include <queue>
+#endif /* !STLSOFT_INCL_QUEUE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -79,47 +84,28 @@ namespace stlsoft
  * get_ptr functions
  */
 
-#if !defined(STLSOFT_COMPILER_IS_MSVC) || \
-    _MSC_VER != 1200
-/* pointer to const. */
+/* std::priority_queue */
 /**
- * \ingroup group__concept__Shim__Attribute__get_ptr
+ * \ingroup group__concept__Shim__Attribute__get_top
  */
-template <ss_typename_param_k T>
-inline T const* get_ptr(T const* p)
+template <
+    typename T_value
+,   typename T_container
+,   typename T_compare
+>
+inline
+T_value const&
+get_top(
+    STLSOFT_NS_QUAL_STD(priority_queue)<
+        T_value
+    ,   T_container
+    ,   T_compare
+    > const& pq
+)
 {
-    return p;
-}
+    STLSOFT_ASSERT(!pq.empty());
 
-/* pointer to const volatile. */
-/**
- * \ingroup group__concept__Shim__Attribute__get_ptr
- */
-template <ss_typename_param_k T>
-inline T const volatile* get_ptr(T const volatile* p)
-{
-    return p;
-}
-
-/* pointer to volatile. */
-/**
- * \ingroup group__concept__Shim__Attribute__get_ptr
- */
-template <ss_typename_param_k T>
-inline T volatile* get_ptr(T volatile* p)
-{
-    return p;
-}
-#endif /* VC++ 6.0  */
-
-/* pointer to non-const. */
-/**
- * \ingroup group__concept__Shim__Attribute__get_ptr
- */
-template <ss_typename_param_k T>
-inline T* get_ptr(T* p)
-{
-    return p;
+    return pq.top();
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -136,7 +122,8 @@ inline T* get_ptr(T* p)
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL */
+#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
 

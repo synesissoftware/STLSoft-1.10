@@ -4,11 +4,11 @@
  * Purpose:     File  functions.
  *
  * Created:     7th November 2014
- * Updated:     18th October 2016
+ * Updated:     16th April 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2014-2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,17 +49,16 @@
 #define WINSTL_INCL_WINSTL_H_FILE_INFORMATION_FUNCTIONS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_MAJOR       1
+# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_REVISION    4
-# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_EDIT        4
+# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_REVISION    1
+# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_EDIT        5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Includes
+ * includes
  */
 
-#include <winstl/winstl_1_10.h> /* Requires STLSoft 1.10 alpha header during alpha phase */
 #ifndef WINSTL_INCL_WINSTL_H_WINSTL
 # include <winstl/winstl.h>
 #endif /* !WINSTL_INCL_WINSTL_H_WINSTL */
@@ -68,7 +67,7 @@
 #endif /* STLSOFT_TRACE_INCLUDE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Namespace
+ * namespace
  */
 
 #if !defined(WINSTL_NO_NAMESPACE) && \
@@ -87,7 +86,7 @@ namespace winstl_project
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Helper functions
+ * helper functions
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -193,7 +192,7 @@ WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w(
 ;
 
 /* /////////////////////////////////////////////////////////////////////////
- * Namespace
+ * namespace
  */
 
 #ifdef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -258,15 +257,14 @@ get_SECURITY_DESCRIPTOR(
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-/* ////////////////////////////////////////////////////////////////////// */
-
 #endif /* WINSTL_INCL_WINSTL_H_FILE_INFORMATION_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+

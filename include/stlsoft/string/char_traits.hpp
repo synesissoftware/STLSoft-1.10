@@ -4,7 +4,7 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     11th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     84
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -243,7 +243,7 @@ public:
         return 0;
     }
 
-    /// Compares, using compare(), \c s1 with \c s2, either or both of which may be \c null
+    /// Compares, using compare(), \c s1 with \c s2, either or both of which may be \c nullptr
     static int_type compare_null(char_type const* s1, char_type const* s2, size_type cch)
     {
         int_type    result;
@@ -260,7 +260,7 @@ public:
         return result;
     }
 
-    /// Compares, using compare_max(), \c s1 with \c s2, either or both of which may be \c null
+    /// Compares, using compare_max(), \c s1 with \c s2, either or both of which may be \c nullptr
     static int_type compare_maxnull(char_type const* s1, char_type const* s2, size_type cch)
     {
         int_type    result;
@@ -292,7 +292,7 @@ public:
         return cch;
     }
 
-    /// Evaluates the length of the string \c s, which may be \c null
+    /// Evaluates the length of the string \c s, which may be \c nullptr
     static size_type length_null(char_type const* s)
     {
         return (NULL != s) ? length(s) : 0;
@@ -317,7 +317,7 @@ public:
         return cch;
     }
 
-    /// Evaluates the length of the string \c s, which may be \c null, up to a given number of characters
+    /// Evaluates the length of the string \c s, which may be \c nullptr, up to a given number of characters
     ///
     /// \param s The string to be evaluated. It may be null
     /// \param limit The maximum number of characters to evaluate
@@ -501,13 +501,13 @@ public:
         return compare_maxnull(s1, s2, cch);
     }
 
-    /// Compares, using compare(), \c s1 with \c s2, either or both of which may be \c null
+    /// Compares, using compare(), \c s1 with \c s2, either or both of which may be \c nullptr
     static int_type compare_null(char_type const* s1, char_type const* s2, size_type cch)
     {
         return parent_class_type::compare(s1, s2, cch);
     }
 
-    /// Compares, using compare_max(), \c s1 with \c s2, either or both of which may be \c null
+    /// Compares, using compare_max(), \c s1 with \c s2, either or both of which may be \c nullptr
     static int_type compare_maxnull(char_type const* s1, char_type const* s2, size_type cch)
     {
         return parent_class_type::compare_maxnull(s1, s2, cch);
@@ -523,7 +523,7 @@ public:
         return (NULL == s) ? 0 : parent_class_type::length_max(s, limit);
     }
 
-    /// Evaluates the length of the string \c s, which may be \c null, up to a given number of characters
+    /// Evaluates the length of the string \c s, which may be \c nullptr, up to a given number of characters
     ///
     /// \param s The string to be evaluated. It may be null
     /// \param limit The maximum number of characters to evaluate
@@ -533,7 +533,7 @@ public:
         return length_max_null(s, limit);
     }
 
-    /// Evaluates the length of the string \c s, which may be \c null
+    /// Evaluates the length of the string \c s, which may be \c nullptr
     static size_type length_null(char_type const* s)
     {
         return (NULL == s) ? 0 : parent_class_type::length(s);

@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     2nd February 2019
+ * Updated:     6th September 2019
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
@@ -66,8 +66,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     32
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      143
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      144
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -821,17 +821,22 @@
 # define STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 #elif !defined(STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS)
 
-# if (_MSC_VER == 1200) || \
-     (_MSC_VER >= 1600)
+# if 0 || \
+     (_MSC_VER == 1200) || \
+     (_MSC_VER == 1500) || \
+     0
+
 #  define STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 # endif
+#else
+
 #endif
 
 
 /* Suppresses: "'identifier' : has bad storage class" */
 #pragma warning(disable : 4042)
 
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "typedef-name 'identifier1' used as synonym for class-name 'identifier2'" */
 # pragma warning(disable : 4097)
@@ -842,7 +847,7 @@
  /* Suppresses: "qualifier applied to reference type ignored" */
 # pragma warning(disable : 4181)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 
  /* Suppresses: "'<function>' has C-linkage specified, but returns UDT '<udt>' which is incompatible with C" */
@@ -850,12 +855,12 @@
 # pragma warning(disable : 4190)
 #endif /* compiler */
 
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "nonstandard extension used : nameless struct/union" */
 # pragma warning(disable : 4201)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 /* Suppresses: "nonstandard extension used : 'xxxx' keyword is reserved for future use" */
 #if _MSC_VER < 1100
@@ -867,12 +872,12 @@
 # pragma warning(disable : 4284)
 #endif /* compiler */
 
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "C++ Exception Specification ignored" */
 # pragma warning(disable : 4290)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 #if defined(_MSC_EXTENSIONS)
 /* Suppresses: nonstandard extension used : 'argument' : conversion from 'X' to 'X&' */
@@ -885,25 +890,24 @@
 #endif
 
 
-
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "'' decorated name length exceeded, name was truncated" */
 # pragma warning(disable : 4503)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 #if _MSC_VER < 1300 && \
     !defined(STLSOFT_STRICT)
 # pragma warning(disable : 4512)
 #endif /* _MSC_VER < 1300 && STLSOFT_STRICT */
 
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "unreferenced inline function has been removed" */
 # pragma warning(disable : 4514)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 #if _MSC_VER >= 1310
  /* Suppresses: "expression before comma has no effect; expected expression with side-effect" */
@@ -923,12 +927,12 @@
 # pragma warning(disable : 4675)
 #endif /* compiler */
 
-#ifndef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
+#ifdef STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS
 
  /* Suppresses: "function not expanded" */
 # pragma warning(disable : 4710)
 
-#endif /* !STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
+#endif /* STLSOFT_MSVC_SUPPRESS_CLASSIC_WARNINGS */
 
 #if _MSC_VER < 1600
  /* Suppresses: "identifier was truncated to '255' characters in the browser information" */

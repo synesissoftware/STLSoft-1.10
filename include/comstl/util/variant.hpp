@@ -4,7 +4,7 @@
  * Purpose:     variant class.
  *
  * Created:     12th December 1996
- * Updated:     2nd February 2019
+ * Updated:     11th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_MAJOR      2
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_MINOR      3
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_REVISION   12
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_EDIT       171
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_REVISION   13
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_EDIT       172
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -379,7 +379,7 @@ public:
     variant(LPDISPATCH pdisp, bool_type bAddRef);
     variant(cs_char_a_t const* s, int len = -1);
     variant(cs_char_w_t const* s, int len = -1);
-    variant(VARIANT const& var, VARTYPE vt);
+    variant(VARIANT const& var, VARTYPE vType);
 
     /** Releases any resources associated with the underlying
      *   <code>VARIANT</code>
@@ -399,9 +399,9 @@ public:
 
 /// Operations
 public:
-    HRESULT     try_conversion_copy(VARIANT const& var, VARTYPE vt);
-    HRESULT     try_convert(VARTYPE vt);
-    class_type& convert(VARTYPE vt);
+    HRESULT     try_conversion_copy(VARIANT const& var, VARTYPE vType);
+    HRESULT     try_convert(VARTYPE vType);
+    class_type& convert(VARTYPE vType);
 
     /** Returns a pointer to a specified interface on an object to which
      * a client currently holds an interface pointer.
@@ -776,12 +776,12 @@ inline variant::variant(cs_char_w_t const* s, int len /* = -1 */)
     }
 }
 
-inline variant::variant(VARIANT const& var, VARTYPE vt)
+inline variant::variant(VARIANT const& var, VARTYPE vType)
 {
     ::VariantInit(this);
 
     class_type  copy;
-    HRESULT     hr = ::VariantChangeType(&copy, const_cast<VARIANT*>(&var), 0, vt);
+    HRESULT     hr = ::VariantChangeType(&copy, const_cast<VARIANT*>(&var), 0, vType);
 
     if(FAILED(hr))
     {
@@ -798,11 +798,11 @@ inline void variant::clear()
     ::VariantClear(this);
 }
 
-inline HRESULT variant::try_conversion_copy(VARIANT const& var, VARTYPE vt)
+inline HRESULT variant::try_conversion_copy(VARIANT const& var, VARTYPE vType)
 {
     HRESULT hr;
 
-    if(vt == this->vt)
+    if(vType == this->vt)
     {
         hr = S_FALSE;
     }
@@ -810,7 +810,7 @@ inline HRESULT variant::try_conversion_copy(VARIANT const& var, VARTYPE vt)
     {
         class_type  copy;
 
-        hr  =   ::VariantChangeType(&copy, const_cast<VARIANT*>(&var), 0, vt);
+        hr  =   ::VariantChangeType(&copy, const_cast<VARIANT*>(&var), 0, vType);
 
         if(SUCCEEDED(hr))
         {
@@ -821,14 +821,14 @@ inline HRESULT variant::try_conversion_copy(VARIANT const& var, VARTYPE vt)
     return hr;
 }
 
-inline HRESULT variant::try_convert(VARTYPE vt)
+inline HRESULT variant::try_convert(VARTYPE vType)
 {
-    return try_conversion_copy(*this, vt);
+    return try_conversion_copy(*this, vType);
 }
 
-inline variant::class_type& variant::convert(VARTYPE vt)
+inline variant::class_type& variant::convert(VARTYPE vType)
 {
-    HRESULT hr  =   try_convert(vt);
+    HRESULT hr  =   try_convert(vType);
 
     if(FAILED(hr))
     {

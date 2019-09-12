@@ -4,7 +4,7 @@
  * Purpose:     Error functions.
  *
  * Created:     7th May 2000
- * Updated:     2nd February 2019
+ * Updated:     11th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MAJOR     4
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MINOR     4
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  9
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      80
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MINOR     5
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  1
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -67,6 +67,9 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_MemoryManagement
 # include <winstl/api/external/MemoryManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_MemoryManagement */
@@ -107,9 +110,7 @@ namespace winstl_project
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-
-
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  */
@@ -122,7 +123,20 @@ winstl_C_fmtmsg_empty_reason_unknown_a()
     return s_reason_unknown;
 }
 
-/**
+/** [UNDOCUMENTED]
+ *
+ * \ingroup group__library__error
+ */
+STLSOFT_INLINE
+ws_char_w_t const*
+winstl_C_fmtmsg_empty_reason_unknown_w()
+{
+    static ws_char_w_t const s_reason_unknown[] = L"reason unknown";
+
+    return s_reason_unknown;
+}
+
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  */
@@ -135,7 +149,20 @@ winstl_C_fmtmsg_empty_string_a()
     return s_empty;
 }
 
-/**
+/** [UNDOCUMENTED]
+ *
+ * \ingroup group__library__error
+ */
+STLSOFT_INLINE
+ws_char_w_t const*
+winstl_C_fmtmsg_empty_string_w()
+{
+    static ws_char_w_t const s_empty[1] = { '\0' };
+
+    return s_empty;
+}
+
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  */
@@ -193,7 +220,7 @@ winstl_C_fmtmsg_elide_message_a_(
     return last;
 }
 
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  */
@@ -251,8 +278,7 @@ winstl_C_fmtmsg_elide_message_w_(
     return last;
 }
 
-/**
- *
+/** [UNDOCUMENTED]
  *
  * \param flags. Automatically added to this are FORMAT_MESSAGE_ALLOCATE_BUFFER and, if source is NULL, FORMAT_MESSAGE_FROM_SYSTEM
  * \param source
@@ -282,7 +308,7 @@ winstl_C_FormatMessageA_INVOKE_for_alloc_(
     }
     flags |= FORMAT_MESSAGE_ALLOCATE_BUFFER;
 
-    return STLSOFT_NS_GLOBAL(FormatMessageA)(
+    return WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA(
         flags
     ,   source
     ,   code
@@ -293,8 +319,7 @@ winstl_C_FormatMessageA_INVOKE_for_alloc_(
     );
 }
 
-/**
- *
+/** [UNDOCUMENTED]
  *
  * \param flags. Automatically added to this are FORMAT_MESSAGE_ALLOCATE_BUFFER and, if source is NULL, FORMAT_MESSAGE_FROM_SYSTEM
  * \param source
@@ -324,7 +349,7 @@ winstl_C_FormatMessageW_INVOKE_for_alloc_(
     }
     flags |= FORMAT_MESSAGE_ALLOCATE_BUFFER;
 
-    return STLSOFT_NS_GLOBAL(FormatMessageW)(
+    return WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW(
         flags
     ,   source
     ,   code
@@ -336,8 +361,7 @@ winstl_C_FormatMessageW_INVOKE_for_alloc_(
 }
 
 
-/**
- *
+/** [UNDOCUMENTED]
  *
  * \param flags. Automatically removed from this is FORMAT_MESSAGE_ALLOCATE_BUFFER and added to this, if source is NULL, is FORMAT_MESSAGE_FROM_SYSTEM
  * \param source
@@ -367,7 +391,7 @@ winstl_C_FormatMessageA_INVOKE_in_buffer_(
     }
     flags &= ~(FORMAT_MESSAGE_ALLOCATE_BUFFER);
 
-    return STLSOFT_NS_GLOBAL(FormatMessageA)(
+    return WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA(
         flags
     ,   source
     ,   code
@@ -378,8 +402,7 @@ winstl_C_FormatMessageA_INVOKE_in_buffer_(
     );
 }
 
-/**
- *
+/** [UNDOCUMENTED]
  *
  * \param flags. Automatically removed from this is FORMAT_MESSAGE_ALLOCATE_BUFFER and added to this, if source is NULL, is FORMAT_MESSAGE_FROM_SYSTEM
  * \param source
@@ -409,7 +432,7 @@ winstl_C_FormatMessageW_INVOKE_in_buffer_(
     }
     flags &= ~(FORMAT_MESSAGE_ALLOCATE_BUFFER);
 
-    return STLSOFT_NS_GLOBAL(FormatMessageW)(
+    return WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW(
         flags
     ,   source
     ,   code
@@ -420,8 +443,15 @@ winstl_C_FormatMessageW_INVOKE_in_buffer_(
     );
 }
 
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/**
+/* /////////////////////////////////////////////////////////////////////////
+ * C functions (deprecated)
+ */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  *
@@ -461,7 +491,7 @@ winstl_C_FormatMessageA__buff_inst(
     );
 }
 
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  *
@@ -501,7 +531,7 @@ winstl_C_FormatMessageW__buff_inst(
     );
 }
 
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  *
@@ -540,7 +570,7 @@ winstl_C_FormatMessageA__alloc_inst(
     );
 }
 
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  *
@@ -579,7 +609,7 @@ winstl_C_FormatMessageW__alloc_inst(
     );
 }
 
-/**
+/** [UNDOCUMENTED]
  *
  * \ingroup group__library__error
  */
@@ -596,11 +626,23 @@ winstl_C_fmtmsg_LocalFree__(void *pv)
  * C functions
  */
 
-/** Translates the
+/** Obtains the translation of \c code form the message strings
+ * in \c hModule (or the system libraries, if \c nullptr), passing the
+ * created string to the caller via the pointer \c ppBuffer, according to
+ * the <code>FormatMessage()</code> \c flags and the \c elisionFlags
  *
  * \ingroup group__library__error
  *
+ * \param flags <code>FormatMessage()</code> flags
+ * \param hModule The message strings module. May be \c nullptr
+ * \param code The code to be translated
+ * \param ppBuffer Pointer to the pointer to receive the results. May not
+ *  be \c nullptr
+ * \param elisionFlags Any combination
+ *   of \c WINSTL_ERROR_FUNCTIONS_ELIDE_DOT
+ *   and \c WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY
  *
+ * \return The number of characters written to <code>*ppBuffer</code>
  */
 STLSOFT_INLINE
 ws_dword_t
@@ -638,11 +680,23 @@ winstl_C_format_message_from_module_to_allocated_buffer_a(
     return r;
 }
 
-/** Translates the
+/** Obtains the translation of \c code form the message strings
+ * in \c hModule (or the system libraries, if \c nullptr), passing the
+ * created string to the caller via the pointer \c ppBuffer, according to
+ * the <code>FormatMessage()</code> \c flags and the \c elisionFlags
  *
  * \ingroup group__library__error
  *
+ * \param flags <code>FormatMessage()</code> flags
+ * \param hModule The message strings module. May be \c nullptr
+ * \param code The code to be translated
+ * \param ppBuffer Pointer to the pointer to receive the results. May not
+ *  be \c nullptr
+ * \param elisionFlags Any combination
+ *   of \c WINSTL_ERROR_FUNCTIONS_ELIDE_DOT
+ *   and \c WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY
  *
+ * \return The number of characters written to <code>*ppBuffer</code>
  */
 STLSOFT_INLINE
 ws_dword_t
@@ -680,6 +734,9 @@ winstl_C_format_message_from_module_to_allocated_buffer_w(
     return r;
 }
 
+/* /////////////////////////////////////////////////////////////////////////
+ * C functions (deprecated)
+ */
 
 /** Translates the given error to an error string and
  *
@@ -826,6 +883,9 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_alloc_a(
  *
  * \ingroup group__library__error
  */
+#if _STLSOFT_VER >= 0x010a0000
+STLSOFT_DECLARE_FUNCTION_DEPRECATION(winstl_C_format_message_alloc_w)
+#endif
 STLSOFT_INLINE ws_dword_t winstl_C_format_message_alloc_w(
     DWORD           error
 ,   HINSTANCE       hinst
@@ -855,7 +915,6 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_alloc_w(
  *   returned pointer must be freed
  *   (by <code>winstl_C_format_message_free_buff_a()</code>) to avoid
  *   a memory leak.
- *
  *
  * \return Always a non-NULL pointer to a nul-terminated multibyte string.
  *
@@ -896,9 +955,43 @@ winstl_C_format_message_strerror_a(
     return p;
 }
 
+STLSOFT_INLINE
+ws_char_w_t*
+winstl_C_format_message_strerror_w(
+    DWORD           code
+)
+{
+    ws_char_w_t*    p;
+    DWORD const     n = winstl_C_format_message_from_module_to_allocated_buffer_w(0, NULL, code, &p, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT | WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY);
 
+    if(0 == n)
+    {
+        /* If nothing was retrieved, we try to write a number into it */
 
-/**
+        WINSTL_ASSERT(NULL == p);
+
+        p = stlsoft_static_cast(ws_char_w_t*, WINSTL_API_EXTERNAL_MemoryManagement_LocalAlloc(LMEM_FIXED, sizeof(ws_char_w_t) * 21));
+
+        if(NULL == p)
+        {
+            return stlsoft_const_cast(ws_char_w_t*, winstl_C_fmtmsg_empty_reason_unknown_w());
+        }
+        else
+        {
+            wsprintfW(p, L"%lu", stlsoft_static_cast(unsigned long, code));
+        }
+    }
+    else
+    {
+        WINSTL_ASSERT(NULL != p);
+    }
+
+    return p;
+}
+
+/** Releases an allocated string
+ *
+ * \param buffer The string to be released. May be \c nullptr
  *
  * \ingroup group__library__error
  */
@@ -918,7 +1011,9 @@ winstl_C_format_message_free_buff_a(ws_char_a_t* buffer)
     winstl_C_fmtmsg_LocalFree__(buffer);
 }
 
-/**
+/** Releases an allocated string
+ *
+ * \param buffer The string to be released. May be \c nullptr
  *
  * \ingroup group__library__error
  */

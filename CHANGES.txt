@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  4th August 2019
+; Updated:  13th September 2019
 
 ============================================================================
 
@@ -16,6 +16,89 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+
+============================================================================
+
+Changes for 1.10.1 beta 15 (13th September 2019)
+
+General:
+========
+
+ * added stlsoft::fast_strftime() and stlsoft::fast_wcsftime() as drop-in replacements for std::strftime() and std::wcsftime()
+ * added get_ptr() shim overload for std::shared_ptr and std::unique_ptr
+ * added stlsoft::get_top() attribute shim
+ * stlsoft::basic_string_view<>::substr()
+ * added winstl_C_format_message_strerror_w()
+ * removed stlsoft::literal_cast<>
+ * various portability improvements to newer compilers
+
+Changes:
+========
+
+ COMSTL:
+ =======
+
+ ~ comstl/util/variant.hpp:
+    ~ changing parameter names to obviate compiler warnings
+
+ STLSoft:
+ ========
+
+ - stlsoft/conversion/literal_cast.hpp:
+    - removed stlsoft::literal_cast<>
+
+ + stlsoft/exception/special/errno_exception.hpp
+
+ ~ stlsoft/internal/cccap/msvc.h:
+    ~ fixed default suppression of warnings
+
+ + stlsoft/iterator/associative_eraser_iterator.hpp:
+ + stlsoft/iterator/associative_select_iterator.hpp:
+ + stlsoft/iterator/eraser_iterator.hpp:
+ + stlsoft/iterator/FILE_iterator.hpp:
+ + stlsoft/iterator/member_selector.hpp:
+ + stlsoft/iterator/push_insert_iterator.hpp:
+ + stlsoft/iterator/push_inserter.hpp:
+ + stlsoft/iterator/string_concatenator.hpp:
+ + stlsoft/iterator/string_concatenator_iterator.hpp:
+ + stlsoft/iterator/string_insert_iterator.hpp:
+ + stlsoft/iterator/transformer.hpp:
+    ~ ported over (from 1.10-delta)
+
+ ~ stlsoft/iterator/push_inserter.hpp:
+    ~ moved over from 1.10-delta
+
+ ~ stlsoft/shims/attribute/get_ptr.hpp:
+ + stlsoft/shims/attribute/get_ptr/std/shared_ptr.hpp:
+ + stlsoft/shims/attribute/get_ptr/std/unique_ptr.hpp:
+    + added get_ptr() shim overload for std::shared_ptr
+    + added get_ptr() shim overload for std::unique_ptr
+
+ ~ stlsoft/string/string_view.hpp:
+    ~ merging over from 1.10-delta (2010)
+	+ stlsoft::basic_string_view<>::substr()
+
+ + stlsoft/shims/attribute/get_top.hpp:
+ + stlsoft/shims/attribute/get_top/deque.hpp:
+ + stlsoft/shims/attribute/get_top/list.hpp:
+ + stlsoft/shims/attribute/get_top/priority_queue.hpp:
+ + stlsoft/shims/attribute/get_top/queue.hpp:
+ + stlsoft/shims/attribute/get_top/stack.hpp:
+ + stlsoft/shims/attribute/get_top/vector.hpp:
+    + added stlsoft::get_top() attribute shim
+
+ + stlsoft/time/fast_strftime.hpp:
+    + added stlsoft::fast_strftime() and stlsoft::fast_wcsftime() as drop-in replacements for std::strftime() and std::wcsftime()
+
+ WinSTL:
+ =======
+
+ ~ winstl/error/error_functions.h:
+    + added winstl_C_format_message_strerror_w()
+
+ ~ winstl/filesystem/file_information_functions.h:
+    ~ moved into 1.10
 
 
 ============================================================================

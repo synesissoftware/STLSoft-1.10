@@ -4,7 +4,7 @@
  * Purpose:     Contains the get_ptr attribute shim.
  *
  * Created:     10th January 2002
- * Updated:     2nd February 2019
+ * Updated:     10th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_MAJOR      4
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_MINOR      0
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_REVISION   3
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_EDIT       51
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_MINOR      1
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_REVISION   0
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_EDIT       52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -67,12 +67,31 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#include <stlsoft/internal/std/has/auto_ptr_.hpp>
+#include <stlsoft/internal/std/has/shared_ptr_.hpp>
+#include <stlsoft/internal/std/has/unique_ptr_.hpp>
+
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL
 # include <stlsoft/shims/attribute/get_ptr/std/fundamental.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_FUNDAMENTAL */
-#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR
-# include <stlsoft/shims/attribute/get_ptr/std/auto_ptr.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR */
+
+#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_auto_ptr_
+# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR
+#  include <stlsoft/shims/attribute/get_ptr/std/auto_ptr.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR */
+#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_auto_ptr_ */
+
+#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_shared_ptr_
+# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_SHARED_PTR
+#  include <stlsoft/shims/attribute/get_ptr/std/shared_ptr.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_SHARED_PTR */
+#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_shared_ptr_ */
+
+#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_unique_ptr_
+# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_UNIQUE_PTR
+#  include <stlsoft/shims/attribute/get_ptr/std/unique_ptr.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_UNIQUE_PTR */
+#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_unique_ptr_ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

@@ -5,11 +5,11 @@
  *              Handling Functions API.
  *
  * Created:     20th August 2017
- * Updated:     23rd August 2017
+ * Updated:     11th September 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,8 +86,19 @@ FlashWindow
 FlashWindowEx
  */
 
+#ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage                        STLSOFT_NS_GLOBAL_(FormatMessage)
+#endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage */
+#ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA                       STLSOFT_NS_GLOBAL_(FormatMessageA)
+#endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA */
+#ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW                       STLSOFT_NS_GLOBAL_(FormatMessageW)
+#endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW */
+
+
 /*
-FormatMessageA
+
  */
 
 /*

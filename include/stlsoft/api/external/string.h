@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for string functions.
  *
  * Created:     15th November 2002
- * Updated:     2nd February 2019
+ * Updated:     6th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -94,7 +94,7 @@
 # elif defined(__STDC__)
 #  define STLSOFT_API_EXTERNAL_string_USE_MSVC_COMPILER_EXTENSION_FORMS_
 # elif 1&&\
-       _MSC_VER >= 1600 &&\
+       _MSC_VER >= 1500 &&\
        !defined(_CRT_SECURE_NO_WARNINGS) &&\
        !defined(_CRT_NONSTDC_NO_WARNINGS) &&\
        1

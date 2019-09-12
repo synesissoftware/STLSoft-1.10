@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     2nd February 2019
+ * Updated:     11th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       14
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        151
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        152
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -274,7 +274,7 @@ public:
     ///
     /// \param dir Pointer to the buffer containing the path to be ensured
     /// \param pLenToIncrease Pointer to variable that will be incremented
-    ///   if a path name separator is appended. May NOT be \c NULL.
+    ///   if a path name separator is appended. May NOT be \c nullptr.
     /// \see \link #path_name_separator path_name_separator() \endlink
     static char_type*   ensure_dir_end(char_type* dir, size_type* pLenToIncrease);
     /// Removes the path name separator from the end of \c dir, if it has it
