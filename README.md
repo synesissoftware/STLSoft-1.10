@@ -2,20 +2,32 @@
 
 Version 1.10 of STLSoft libraries
 
-## Current Status (April 2019)
+## Current Status (September 2019)
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its released.
 
 ## Releases
 
-### 1.10.1 beta-14 (Latest) - 4th August 2019
+### 1.10.1 beta-14 (Latest) - 13th September 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta15>
+
+ * added stlsoft::fast_strftime() and stlsoft::fast_wcsftime() as drop-in replacements for std::strftime() and std::wcsftime()
+ * added get_ptr() shim overload for std::shared_ptr and std::unique_ptr
+ * added stlsoft::get_top() attribute shim
+ * stlsoft::basic_string_view<>::substr()
+ * added winstl_C_format_message_strerror_w()
+ * removed stlsoft::literal_cast<>
+ * various portability improvements to newer compilers
+
+### 1.10.1 beta-14 - 4th August 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta14>
 
  * added SECURITY_DESCRIPTOR helpers()
  * stlsoft::w2m and stlsoft::m2w now more general
 
-### 1.10.1 beta-13 (Latest) - 16th April 2019
+### 1.10.1 beta-13 - 16th April 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta13>
 
