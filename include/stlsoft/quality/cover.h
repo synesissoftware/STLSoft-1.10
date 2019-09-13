@@ -5,7 +5,7 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://www.stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/quality/cover.h
  *
- * [C, C++] Defines the code coverage constructs used in the
+ * \brief [C, C++] Defines the code coverage constructs used in the
  *   STLSoft libraries.
  */
 
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_MINOR       0
 # define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_REVISION    4
-# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        8
+# define STLSOFT_VER_STLSOFT_QUALITY_H_COVER_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

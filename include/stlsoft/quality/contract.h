@@ -5,7 +5,7 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://www.stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/quality/contract.h
  *
- * [C, C++] Defines the contract enforcement constructs used in the
+ * \brief [C, C++] Defines the contract enforcement constructs used in the
  *   \ref group__library__ContractEnforcement "Contract Enforcement"
  *   library.
  */
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MINOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        12
+# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
