@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MAJOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MINOR    1
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_REVISION 7
-# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     25
+# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Gets the size of a stream
+/** [C] Gets the size of a stream
  *
  * \ingroup group__library__COM_Utility
  *

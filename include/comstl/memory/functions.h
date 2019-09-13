@@ -4,7 +4,7 @@
  * Purpose:     COM memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MAJOR     4
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MINOR     1
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  8
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      60
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Gives the size of a memory block
+/** [C] Gives the size of a memory block
  *
  * \ingroup group__library__Memory
  *
@@ -126,7 +126,7 @@ STLSOFT_INLINE cs_size_t comstl__CoTaskMemGetSize(void *pv)
     return ulRet;
 }
 
-/** [C only] Determines allocation ownership of a memory block
+/** [C] Determines allocation ownership of a memory block
  *
  * \ingroup group__library__Memory
  *
@@ -162,7 +162,7 @@ STLSOFT_INLINE cs_sint_t comstl__CoTaskMemDidAlloc(void *pv)
     return iRet;
 }
 
-/** [C only] Minimises the heap
+/** [C] Minimises the heap
  *
  * \ingroup group__library__Memory
  *

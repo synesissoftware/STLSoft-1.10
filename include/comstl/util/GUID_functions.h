@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       22
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -142,7 +142,7 @@ comstl_C_GUID_to_string_w(
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
-/** [C only] Compares two GUID instances
+/** [C] Compares two GUID instances
  *
  * \ingroup group__library__COM_Utility
  *
@@ -217,7 +217,7 @@ comstl_C_GUID_compare(
     }
 }
 
-/** [C only] Compares two GUID instances
+/** [C] Compares two GUID instances
  *
  * \ingroup group__library__COM_Utility
  *
@@ -258,7 +258,7 @@ comstl_C_GUID_binary_compare(
     }
 }
 
-/** [C only] Indicates whether two GUID structures are equal
+/** [C] Indicates whether two GUID structures are equal
  *
  * \ingroup group__library__COM_Utility
  *

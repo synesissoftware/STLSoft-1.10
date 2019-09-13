@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MAJOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MINOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       69
+# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Adds a reference on the interface pointer
+/** [C] Adds a reference on the interface pointer
  *
  * \ingroup group__library__COM_Utility
  *
@@ -104,7 +104,7 @@ STLSOFT_INLINE void comstl__addref(LPUNKNOWN punk)
     COMSTL_ITF_CALL(punk)->AddRef(COMSTL_ITF_THIS0(punk));
 }
 
-/** [C only] Releases a reference on the interface pointer
+/** [C] Releases a reference on the interface pointer
  *
  * \ingroup group__library__COM_Utility
  *
@@ -115,7 +115,7 @@ STLSOFT_INLINE void comstl__release(LPUNKNOWN punk)
     COMSTL_ITF_CALL(punk)->Release(COMSTL_ITF_THIS0(punk));
 }
 
-/** [C only] Adds a reference on the interface pointer
+/** [C] Adds a reference on the interface pointer
  *
  * \ingroup group__library__COM_Utility
  *
@@ -129,7 +129,7 @@ STLSOFT_INLINE void comstl__safe_addref(LPUNKNOWN punk)
     }
 }
 
-/** [C only] Releases a reference on the interface pointer
+/** [C] Releases a reference on the interface pointer
  *
  * \ingroup group__library__COM_Utility
  *

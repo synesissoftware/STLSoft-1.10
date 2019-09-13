@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     2nd March 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    10
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        170
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        171
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Creates an OLE string from an ANSI string
+/** [C] Creates an OLE string from an ANSI string
  *
  * \ingroup group__library__String
  *
@@ -142,7 +142,7 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_a(cs_char_a_t const* s)
     return posz;
 }
 
-/** [C only] Creates an OLE string from a Unicode string
+/** [C] Creates an OLE string from a Unicode string
  *
  * \ingroup group__library__String
  *
@@ -176,7 +176,7 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_w(cs_char_w_t const* s)
     return posz;
 }
 
-/** [C only] Destroys an OLE string
+/** [C] Destroys an OLE string
  *
  * \ingroup group__library__String
  *
@@ -189,7 +189,7 @@ STLSOFT_INLINE void comstl__olestring_destroy(LPOLESTR posz)
     STLSOFT_NS_GLOBAL(CoTaskMemFree)(stlsoft_static_cast(LPVOID, posz));
 }
 
-/** [C only] Duplicates an OLE string
+/** [C] Duplicates an OLE string
  *
  * \ingroup group__library__String
  *

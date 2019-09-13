@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MINOR       0
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_REVISION    7
-# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        14
+# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Compares two DECIMAL structures
+/** [C] Compares two DECIMAL structures
  *
  * \ingroup group__library__COM_Utility
  *

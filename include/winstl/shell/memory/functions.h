@@ -4,7 +4,7 @@
  * Purpose:     Shell memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MAJOR       6
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        65
+# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ namespace winstl_project
  * C functions
  */
 
-/** [C only] Allocates a block of shell memory.
+/** [C] Allocates a block of shell memory.
  *
  * \ingroup group__library__Memory
  *
@@ -140,7 +140,7 @@ STLSOFT_INLINE void *winstl__SHMemAlloc(ws_size_t cb)
     return pv;
 }
 
-/** [C only] Deallocates a block of shell memory previously allocated
+/** [C] Deallocates a block of shell memory previously allocated
  *    by a call to winstl__SHMemAlloc(), winstl__SHMemRealloc() or through
  *    the <code>IMalloc::Alloc()</code> or <code>IMalloc::Realloc()</code>
  *    methods on the shell allocator (obtained via <code>SHGetMalloc()</code>).
@@ -205,7 +205,7 @@ DECLARE_INTERFACE_(IMallocGcc32,IUnknown)
 
 
 
-/** [C only] Rellocates a block of shell memory.
+/** [C] Rellocates a block of shell memory.
  *
  * \ingroup group__library__Memory
  *
@@ -261,7 +261,7 @@ STLSOFT_INLINE void *winstl__SHMemRealloc(void *pv, ws_size_t cb)
     return pvNew;
 }
 
-/** [C only] Gives the size of a memory block
+/** [C] Gives the size of a memory block
  *
  * \ingroup group__library__Memory
  *
@@ -294,7 +294,7 @@ STLSOFT_INLINE ws_size_t winstl__SHMemGetSize(void *pv)
     return ulRet;
 }
 
-/** [C only] Determines allocation ownership of a memory block
+/** [C] Determines allocation ownership of a memory block
  *
  * \ingroup group__library__Memory
  *
@@ -330,7 +330,7 @@ STLSOFT_INLINE ws_sint_t winstl__SHMemDidAlloc(void *pv)
     return iRet;
 }
 
-/** [C only] Minimises the heap
+/** [C] Minimises the heap
  *
  * \ingroup group__library__Memory
  *

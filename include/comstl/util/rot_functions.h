@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_REVISION    8
-# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        75
+# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,7 +90,7 @@ namespace comstl_project
  */
 
 
-/** [C only] Registers an object in the Running Object Table
+/** [C] Registers an object in the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -122,7 +122,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_Register(
     return hr;
 }
 
-/** [C only] Removes an object from the Running Object Table
+/** [C] Removes an object from the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -147,7 +147,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_Revoke(DWORD dwRegister)
     return hr;
 }
 
-/** [C only] Determines if object current in the Running Object Table
+/** [C] Determines if object current in the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -173,7 +173,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_IsRunning(LPMONIKER pmkObjectName)
     return hr;
 }
 
-/** [C only] Retrieves the object from the Running Object Table
+/** [C] Retrieves the object from the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -204,7 +204,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_GetObject(
     return hr;
 }
 
-/** [C only] Retrieves the last modification time of a running object in the Running Object Table
+/** [C] Retrieves the last modification time of a running object in the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -234,7 +234,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_NoteChangeTime(
     return hr;
 }
 
-/** [C only] Retrieves the last modification time of an object in the Running Object Table
+/** [C] Retrieves the last modification time of an object in the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *
@@ -264,7 +264,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_GetTimeOfLastChange(
     return hr;
 }
 
-/** [C only] Queries the current set of objects in the Running Object Table
+/** [C] Queries the current set of objects in the Running Object Table
  *
  * \ingroup group__library__COM_Utility
  *

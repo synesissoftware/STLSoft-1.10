@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        13
+# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Compares two CY structures
+/** [C] Compares two CY structures
  *
  * \ingroup group__library__COM_Utility
  *

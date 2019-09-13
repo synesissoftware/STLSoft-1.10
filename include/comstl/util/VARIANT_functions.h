@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MINOR       2
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        17
+# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Indicates whether two VARIANT structures are equal
+/** [C] Indicates whether two VARIANT structures are equal
  *
  * \ingroup group__library__COM_Utility
  *
@@ -201,7 +201,7 @@ comstl_C_VARIANT_equal(
     return 0;
 }
 
-/** [C only] Converts a variant from one type to another
+/** [C] Converts a variant from one type to another
  *
  * \ingroup group__library__COM_Utility
  *

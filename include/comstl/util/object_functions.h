@@ -4,7 +4,7 @@
  * Purpose:     Reference-counting helper functions.
  *
  * Created:     2nd March 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MAJOR    3
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MINOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_REVISION 1
-# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     76
+# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ namespace comstl_project
  * C functions
  */
 
-/** [C only] Evaluates an object's identity
+/** [C] Evaluates an object's identity
  *
  * \param p The pointer to the object whose identity will be evaluated
  * \param identity Pointer to a pointer to receive the identity
@@ -132,7 +132,7 @@ comstl_C_get_object_identity(
     return hr;
 }
 
-/** [C only] Determines whether two interfaces refer to the same object
+/** [C] Determines whether two interfaces refer to the same object
  *
  * \return A status code indicating whether the two pointers refer to the same
  *          object
@@ -191,7 +191,7 @@ comstl_C_is_same_object(
     return hr;
 }
 
-/** [C only] Determines whether an object implements a given interface without adding a reference count
+/** [C] Determines whether an object implements a given interface without adding a reference count
  *
  * \return A status code indicating whether the given interface is implemented
  * \retval S_OK The interface is implemented and accessible
