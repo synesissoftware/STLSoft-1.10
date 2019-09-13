@@ -4,7 +4,7 @@
  * Purpose:     Special string instance class template.
  *
  * Created:     3rd June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Pablo Aguilar for spotting my omission of string access shims
  *              for special_string_instance_1.
@@ -44,7 +44,7 @@
 
 /** \file stlsoft/string/special_string_instance.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::special_string_instance
+ * \brief [C++] Definition of the stlsoft::special_string_instance
  *  class template
  *   (\ref group__library__String "String" Library).
  */
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        38
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

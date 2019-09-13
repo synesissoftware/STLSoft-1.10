@@ -5,7 +5,7 @@
  *              type methods.
  *
  * Created:     1st January 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/smartptr/scoped_method.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::scoped_method smart
+ * \brief [C++] Definition of the stlsoft::scoped_method smart
  *   pointer class template
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_MINOR       0
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_REVISION    4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_EDIT        7
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

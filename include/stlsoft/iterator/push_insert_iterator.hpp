@@ -4,7 +4,7 @@
  * Purpose:     Push insert iterator for sequence containers.
  *
  * Created:     6th April 2005
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/iterator/push_insert_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::push_insert_iterator
+ * \brief [C++] Definition of the stlsoft::push_insert_iterator
  *   class template
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_REVISION   5
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_EDIT       26
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_EDIT       27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

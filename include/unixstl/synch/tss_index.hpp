@@ -4,7 +4,7 @@
  * Purpose:     Wrapper class for UNIX PThreads TSS key.
  *
  * Created:     21st January 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/synch/tss_index.hpp
  *
- * \brief [C++ only] Definition of the unixstl::tss_index class
+ * \brief [C++] Definition of the unixstl::tss_index class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_TSS_INDEX_MAJOR      3
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_TSS_INDEX_MINOR      1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_TSS_INDEX_REVISION   9
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_TSS_INDEX_EDIT       59
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_TSS_INDEX_EDIT       60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

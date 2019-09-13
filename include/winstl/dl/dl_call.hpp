@@ -4,7 +4,7 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/dl/dl_call.hpp
  *
- * \brief [C++ only] Definition of the winstl::dl_call() function suite
+ * \brief [C++] Definition of the winstl::dl_call() function suite
  *   (\ref group__library__DL "DL" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     7
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  10
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      58
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

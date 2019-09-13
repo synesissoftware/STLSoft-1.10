@@ -4,7 +4,7 @@
  * Purpose:     event class, based on Windows EVENT.
  *
  * Created:     3rd July 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/synch/event.hpp
  *
- * \brief [C++ only] Definition of the winstl::event class
+ * \brief [C++] Definition of the winstl::event class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 6
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     78
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

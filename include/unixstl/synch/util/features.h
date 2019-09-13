@@ -4,7 +4,7 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     23rd October 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/synch/util/features.h
  *
- * \brief [C++ only] Discrimination of synchronisation features
+ * \brief [C++] Discrimination of synchronisation features
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_MAJOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_MINOR    0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_REVISION 3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_EDIT     18
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_FEATURES_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

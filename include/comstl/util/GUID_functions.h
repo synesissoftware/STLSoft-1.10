@@ -4,7 +4,7 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/GUID_functions.h
  *
- * \brief [C++ only; requires COM] GUID helper functions
+ * \brief [C++; requires COM] GUID helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       21
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -451,7 +451,7 @@ namespace comstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Compares two GUID instances in an architecture-independent manner
+/** [C++] Compares two GUID instances in an architecture-independent manner
  *
  * \ingroup group__library__COM_Utility
  *
@@ -501,7 +501,7 @@ GUID_compare(
     return result;
 }
 
-/** [C++ only] Compares two GUID instances in an architecture-dependent manner
+/** [C++] Compares two GUID instances in an architecture-dependent manner
  *
  * \ingroup group__library__COM_Utility
  *
@@ -523,7 +523,7 @@ GUID_binary_compare(
     return comstl_C_GUID_binary_compare(lhs, rhs);
 }
 
-/** [C++ only] Indicates whether two GUID structures are equal
+/** [C++] Indicates whether two GUID structures are equal
  *
  * \ingroup group__library__COM_Utility
  *
@@ -549,7 +549,7 @@ GUID_compare(
     return GUID_compare(&lhs, &rhs, comparisonSucceeded);
 }
 
-/** [C++ only] Indicates whether two GUID structures are equal
+/** [C++] Indicates whether two GUID structures are equal
  *
  * \ingroup group__library__COM_Utility
  *
@@ -570,7 +570,7 @@ GUID_equal(
     return 0 != comstl_C_GUID_equal(lhs, rhs);
 }
 
-/** [C++ only] Indicates whether two GUID structures are equal
+/** [C++] Indicates whether two GUID structures are equal
  *
  * \ingroup group__library__COM_Utility
  *

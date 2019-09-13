@@ -4,7 +4,7 @@
  * Purpose:     Combined header file for STLSoft's TypeFixer utility components.
  *
  * Created:     15th July 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/detectors.hpp
  *
- * \brief [C++ only] Common include file for all member detector class
+ * \brief [C++] Common include file for all member detector class
  *   templates
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_MINOR       0
 # define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_REVISION    4
-# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        12
+# define STLSOFT_VER_STLSOFT_META_HPP_DETECTORS_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

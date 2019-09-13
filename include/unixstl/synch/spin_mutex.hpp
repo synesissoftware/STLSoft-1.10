@@ -4,7 +4,7 @@
  * Purpose:     Intra-process mutex, based on spin waits.
  *
  * Created:     27th August 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Rupert Kittinger, for pointing out that the prior
  *              implementation that always yielded was not really "spinning".
@@ -47,7 +47,7 @@
 
 /** \file unixstl/synch/spin_mutex.hpp
  *
- * \brief [C++ only] Definition of the unixstl::spin_mutex class
+ * \brief [C++] Definition of the unixstl::spin_mutex class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -58,7 +58,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_MAJOR     6
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      73
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

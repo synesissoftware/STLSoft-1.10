@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/system/environment_block.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_environment_block class
+ * \brief [C++] Definition of the winstl::basic_environment_block class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MAJOR       4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_REVISION    8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        68
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     is_floating_point_type meta class.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/is_floating_point_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::is_floating_point_type meta
+ * \brief [C++] Definition of the stlsoft::is_floating_point_type meta
  *  class template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FLOATING_POINT_TYPE_MAJOR      1
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FLOATING_POINT_TYPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FLOATING_POINT_TYPE_REVISION   6
-# define STLSOFT_VER_STLSOFT_META_HPP_IS_FLOATING_POINT_TYPE_EDIT       17
+# define STLSOFT_VER_STLSOFT_META_HPP_IS_FLOATING_POINT_TYPE_EDIT       18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

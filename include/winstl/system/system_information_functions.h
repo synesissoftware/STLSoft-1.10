@@ -4,7 +4,7 @@
  * Purpose:     System information functions.
  *
  * Created:     5th November 2014
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/system/system_information_functions.h
  *
- * \brief [C++ only] System information functions
+ * \brief [C++] System information functions
  *   (\ref group__library__System "System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   3
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       9
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Definition of the stlsoft::os_exception class.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/exception/os_exception.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::os_exception exception
+ * \brief [C++] Definition of the stlsoft::os_exception exception
  *   class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OS_EXCEPTION_MAJOR       6
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OS_EXCEPTION_MINOR       0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OS_EXCEPTION_REVISION    1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OS_EXCEPTION_EDIT        57
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_OS_EXCEPTION_EDIT        58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

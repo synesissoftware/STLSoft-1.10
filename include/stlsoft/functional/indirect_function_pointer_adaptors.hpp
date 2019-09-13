@@ -4,7 +4,7 @@
  * Purpose:     Contains the stlsoft::ptr_ifun calling convention-aware function adaptors.
  *
  * Created:     13th June 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/functional/indirect_function_pointer_adaptors.hpp
  *
- * \brief [C++ only] Function classes that adapt indirect non-member
+ * \brief [C++] Function classes that adapt indirect non-member
  *   functions (and handle different calling conventions)
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_INDIRECT_FUNCTION_POINTER_ADAPTORS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_INDIRECT_FUNCTION_POINTER_ADAPTORS_MINOR    1
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_INDIRECT_FUNCTION_POINTER_ADAPTORS_REVISION 5
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_INDIRECT_FUNCTION_POINTER_ADAPTORS_EDIT     18
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_INDIRECT_FUNCTION_POINTER_ADAPTORS_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

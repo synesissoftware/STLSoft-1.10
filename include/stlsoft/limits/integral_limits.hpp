@@ -8,7 +8,7 @@
  *              macros.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Jonathan Wakely for help with Solaris compatibility.
  *
@@ -47,7 +47,7 @@
 
 /** \file stlsoft/limits/integral_limits.hpp
  *
- * \brief [C++ only] Integral macros, constants and
+ * \brief [C++] Integral macros, constants and
  *   traits (stlsoft::integral_limits) classes
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_MAJOR       5
 # define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_MINOR       0
 # define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_REVISION    6
-# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_EDIT        70
+# define STLSOFT_VER_STLSOFT_LIMITS_HPP_INTEGRAL_LIMITS_EDIT        71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

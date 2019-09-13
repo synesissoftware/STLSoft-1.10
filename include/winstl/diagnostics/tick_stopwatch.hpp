@@ -4,7 +4,7 @@
  * Purpose:     WinSTL tick-count stopwatch class.
  *
  * Created:     19th October 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/diagnostics/tick_stopwatch.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *  \link winstl::tick_stopwatch tick_stopwatch\endlink class
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_TICK_STOPWATCH_MAJOR     5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_TICK_STOPWATCH_MINOR     0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_TICK_STOPWATCH_REVISION  1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_TICK_STOPWATCH_EDIT      53
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_TICK_STOPWATCH_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

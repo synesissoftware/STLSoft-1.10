@@ -4,7 +4,7 @@
  * Purpose:     Collection manipulation functions.
  *
  * Created:     11th November 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/collections/functions.hpp
  *
- * \brief [C++ only] Definition of collection manipulation functions
+ * \brief [C++] Definition of collection manipulation functions
  *   (\ref group__library__Collection "Collection" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_REVISION 7
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     45
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

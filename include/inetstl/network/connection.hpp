@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_connection class.
  *
  * Created:     30th April 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file inetstl/network/connection.hpp
  *
- * \brief [C++ only] Definition of the inetstl::basic_connection class
+ * \brief [C++] Definition of the inetstl::basic_connection class
  *   template
  *   (\ref group__library__Network "Network" Library).
  */
@@ -53,7 +53,7 @@
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    11
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        82
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

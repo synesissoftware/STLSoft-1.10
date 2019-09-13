@@ -5,7 +5,7 @@
  *              temporary directory.
  *
  * Created:     27th July 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
@@ -44,7 +44,7 @@
 
 /** \file winstl/system/temporary_directory.hpp
  *
- * \brief [C++ only] Definition of the winstl::temporary_directory and
+ * \brief [C++] Definition of the winstl::temporary_directory and
  *  associated types
  *   (\ref group__library__System "System" Library).
  */
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_MINOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      13
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_DIRECTORY_EDIT      14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

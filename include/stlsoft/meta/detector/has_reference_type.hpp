@@ -4,7 +4,7 @@
  * Purpose:     Definition of the has_reference_type member type detector.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/detector/has_reference_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::has_reference_type member
+ * \brief [C++] Definition of the stlsoft::has_reference_type member
  *   type detector class template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_REFERENCE_TYPE_MAJOR     4
 # define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_REFERENCE_TYPE_MINOR     0
 # define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_REFERENCE_TYPE_REVISION  5
-# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_REFERENCE_TYPE_EDIT      138
+# define STLSOFT_VER_STLSOFT_META_DETECTOR_HPP_HAS_REFERENCE_TYPE_EDIT      139
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

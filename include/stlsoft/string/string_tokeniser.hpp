@@ -4,7 +4,7 @@
  * Purpose:     String token parsing class.
  *
  * Created:     6th January 2001
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/string_tokeniser.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_tokeniser class
+ * \brief [C++] Definition of the stlsoft::string_tokeniser class
  *  template
  *   (\ref group__library__String "String" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MINOR     1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_REVISION  14
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      234
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      235
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

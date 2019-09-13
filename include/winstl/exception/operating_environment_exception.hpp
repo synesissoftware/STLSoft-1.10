@@ -4,7 +4,7 @@
  * Purpose:     winstl::operating_environment_exception class
  *
  * Created:     13th May 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/exception/operating_environment_exception.hpp
  *
- * \brief [C++ only] Definition of the winstl::operating_environment_exception class
+ * \brief [C++] Definition of the winstl::operating_environment_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_MAJOR     2
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_MINOR     0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_REVISION  1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_EDIT      78
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_OPERATING_ENVIRONMENT_EXCEPTION_EDIT      79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

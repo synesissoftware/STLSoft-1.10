@@ -5,7 +5,7 @@
  *              components.
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,12 +48,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        5
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/readonly_memory_mapped_file.hpp
  *
- * \brief [C++ only] Definition of the platformstl::readonly_memory_mapped_file type
+ * \brief [C++] Definition of the platformstl::readonly_memory_mapped_file type
  *   (\ref group__library__FileSystem "File System" Library).
  *
  * When compiling on UNIX platforms, the platformstl::readonly_memory_mapped_file

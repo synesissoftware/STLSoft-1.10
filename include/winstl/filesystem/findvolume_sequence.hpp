@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,7 +47,7 @@
 
 /** \file winstl/filesystem/findvolume_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_findvolume_sequence
+ * \brief [C++] Definition of the winstl::basic_findvolume_sequence
  *  class template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_REVISION  15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      130
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      131
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

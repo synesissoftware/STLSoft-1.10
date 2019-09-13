@@ -4,7 +4,7 @@
  * Purpose:     Definition of the winstl::conversion_error exception class.
  *
  * Created:     16th December 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/error/conversion_error.hpp
  *
- * \brief [C++ only] Definition of the winstl::conversion_error
+ * \brief [C++] Definition of the winstl::conversion_error
  *   exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MAJOR     1
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MINOR     0
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_REVISION  6
-# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      19
+# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      20
 #endif /* !WINSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

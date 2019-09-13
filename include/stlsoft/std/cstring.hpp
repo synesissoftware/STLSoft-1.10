@@ -4,7 +4,7 @@
  * Purpose:     Mappings to std string functions
  *
  * Created:     2nd December 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Anton Sekeris for providing good advice on the naming scheme
  *              for the stlsoft/std headers
@@ -44,7 +44,7 @@
 
 /** \file stlsoft/std/cstring.hpp
  *
- * \brief [C++ only] Mappings of &lt;cstring> string functions that use
+ * \brief [C++] Mappings of &lt;cstring> string functions that use
  *   \ref group__concept__Shim__string_access string
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MAJOR      1
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MINOR      5
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_REVISION   10
-# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       44
+# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

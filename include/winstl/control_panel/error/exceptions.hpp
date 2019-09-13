@@ -4,7 +4,7 @@
  * Purpose:     Control Panel Library exception classes.
  *
  * Created:     1st April 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/control_panel/error/exceptions.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *  \link winstl::control_panel_exception control_panel_exception\endlink
  *  and
  *  \link winstl::applet_entry_not_found_exception applet_entry_not_found_exception\endlink
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_ERROR_HPP_EXCEPTIONS_MAJOR     2
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_ERROR_HPP_EXCEPTIONS_MINOR     0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_ERROR_HPP_EXCEPTIONS_REVISION  6
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_ERROR_HPP_EXCEPTIONS_EDIT      27
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_ERROR_HPP_EXCEPTIONS_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

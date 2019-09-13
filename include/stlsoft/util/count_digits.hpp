@@ -5,7 +5,7 @@
  *              number of (decimal) digits in an integer number.
  *
  * Created:     7th June 2011
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/util/count_digits.hpp
  *
- * \brief [C++ only] Definition of the function suite count_digits()
+ * \brief [C++] Definition of the function suite count_digits()
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_REVISION  1
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      10
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

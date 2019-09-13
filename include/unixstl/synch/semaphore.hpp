@@ -4,7 +4,7 @@
  * Purpose:     Semaphore class, based on POSIX semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/synch/semaphore.hpp
  *
- * \brief [C++ only] Definition of unixstl::semaphore class
+ * \brief [C++] Definition of unixstl::semaphore class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 13
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     35
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

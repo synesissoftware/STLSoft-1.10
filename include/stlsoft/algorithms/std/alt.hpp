@@ -5,7 +5,7 @@
  *              do or do not have a standard library.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/algorithms/std/alt.hpp
  *
- * \brief [C++ only] Contains various standard functions, or their
+ * \brief [C++] Contains various standard functions, or their
  *   equivalents
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MINOR       5
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        89
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

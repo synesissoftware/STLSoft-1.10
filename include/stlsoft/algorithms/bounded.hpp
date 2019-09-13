@@ -4,7 +4,7 @@
  * Purpose:     Bounded algorithms.
  *
  * Created:     23rd October 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/bounded.hpp
  *
- * \brief [C++ only] Bounded algorithms
+ * \brief [C++] Bounded algorithms
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MINOR       1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        33
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

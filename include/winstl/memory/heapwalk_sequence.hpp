@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,7 +47,7 @@
 
 /** \file winstl/memory/heapwalk_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::heapwalk_sequence class
+ * \brief [C++] Definition of the winstl::heapwalk_sequence class
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_MINOR       0
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_REVISION    12
-# define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_EDIT        78
+# define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_EDIT        79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

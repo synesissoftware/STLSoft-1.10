@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL time functions.
  *
  * Created:     2nd September 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MAJOR      3
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_REVISION   7
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       31
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,7 +162,7 @@ namespace unixstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Puts the calling thread to sleep for the given number of
+/** [C++] Puts the calling thread to sleep for the given number of
  *   microseconds.
 \code
   unixstl::micro_sleep(100000); // Sleep for 0.1 seconds

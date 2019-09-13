@@ -5,7 +5,7 @@
  *              classes.
  *
  * Created:     1st November 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/memory/auto_destructor.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::auto_destructor and
+ * \brief [C++] Definition of the stlsoft::auto_destructor and
  *  stlsoft::auto_array_destructor class templates
  *   (\ref group__library__Memory "Memory" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MINOR       2
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_REVISION    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        86
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        87
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

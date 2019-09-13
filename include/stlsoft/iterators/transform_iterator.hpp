@@ -6,7 +6,7 @@
  *              sequence.
  *
  * Created:     6th February 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -43,7 +43,7 @@
 
 /** \file stlsoft/iterators/transform_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::transform_iterator
+ * \brief [C++] Definition of the stlsoft::transform_iterator
  *   iterator adaptor class template
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MINOR     1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_REVISION  6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      131
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      132
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

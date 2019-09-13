@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with BSTR strings.
  *
  * Created:     24th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_MAJOR    4
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_MINOR    4
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_REVISION 8
-# define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_EDIT     101
+# define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_EDIT     102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -340,7 +340,7 @@ namespace comstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Retrieves the length of a BSTR
+/** [C++] Retrieves the length of a BSTR
  *
  * \ingroup group__library__String
  *
@@ -357,7 +357,7 @@ BSTR_len(
     return comstl_C_BSTR_len(bstr);
 }
 
-/** [C++ only] Creates a BSTR from a Unicode string
+/** [C++] Creates a BSTR from a Unicode string
  *
  * \ingroup group__library__String
  *
@@ -374,7 +374,7 @@ BSTR_create_w(
     return comstl_C_BSTR_create_w(s);
 }
 
-/** [C++ only] Creates a BSTR from a Unicode string
+/** [C++] Creates a BSTR from a Unicode string
  *
  * \ingroup group__library__String
  *
@@ -393,7 +393,7 @@ BSTR_create_w(
     return comstl_C_BSTR_create_len_w(s, len);
 }
 
-/** [C++ only] Creates a BSTR from an ANSI string
+/** [C++] Creates a BSTR from an ANSI string
  *
  * \ingroup group__library__String
  *
@@ -410,7 +410,7 @@ BSTR_create_a(
     return comstl_C_BSTR_create_a(s);
 }
 
-/** [C++ only] Creates a BSTR from an ANSI string
+/** [C++] Creates a BSTR from an ANSI string
  *
  * \ingroup group__library__String
  *
@@ -429,7 +429,7 @@ BSTR_create_a(
     return comstl_C_BSTR_create_len_a(s, len);
 }
 
-/** [C++ only] Creates a BSTR from an ANSI string
+/** [C++] Creates a BSTR from an ANSI string
  *
  * \ingroup group__library__String
  *
@@ -446,7 +446,7 @@ BSTR_create(
     return BSTR_create_a(s);
 }
 
-/** [C++ only] Creates a BSTR from an ANSI string
+/** [C++] Creates a BSTR from an ANSI string
  *
  * \ingroup group__library__String
  *
@@ -465,7 +465,7 @@ BSTR_create(
     return BSTR_create_a(s, len);
 }
 
-/** [C++ only] Creates a BSTR from a Unicode string
+/** [C++] Creates a BSTR from a Unicode string
  *
  * \ingroup group__library__String
  *
@@ -482,7 +482,7 @@ BSTR_create(
     return BSTR_create_w(s);
 }
 
-/** [C++ only] Creates a BSTR from a Unicode string
+/** [C++] Creates a BSTR from a Unicode string
  *
  * \ingroup group__library__String
  *
@@ -501,7 +501,7 @@ BSTR_create(
     return BSTR_create_w(s, len);
 }
 
-/** [C++ only] Destroys a BSTR
+/** [C++] Destroys a BSTR
  *
  * \ingroup group__library__String
  *
@@ -516,7 +516,7 @@ BSTR_destroy(
     comstl_C_BSTR_destroy(bstr);
 }
 
-/** [C++ only] Duplicates a BSTR
+/** [C++] Duplicates a BSTR
  *
  * \ingroup group__library__String
  *
@@ -532,7 +532,7 @@ BSTR_dup(
     return comstl_C_BSTR_dup(bstr);
 }
 
-/** [C++ only] Compares two BSTR strings
+/** [C++] Compares two BSTR strings
  *
  * \ingroup group__library__String
  *

@@ -5,7 +5,7 @@
  *              information about the host system version.
  *
  * Created:     10th February 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/system/system_version.hpp
  *
- * \brief [C++ only] Definition of the winstl::system_version class
+ * \brief [C++] Definition of the winstl::system_version class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MAJOR      4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_REVISION   10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       70
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_VERSION_EDIT       71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

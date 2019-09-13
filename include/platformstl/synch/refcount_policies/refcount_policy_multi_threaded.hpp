@@ -5,7 +5,7 @@
  *              policy class.
  *
  * Created:     31st May 2009
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file platformstl/synch/refcount_policies/refcount_policy_multi_threaded.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::refcount_policy_multi_threaded
+ * \brief [C++] Definition of the stlsoft::refcount_policy_multi_threaded
  *   policy class (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -53,7 +53,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_REFCOUNT_POLICIES_HPP_REFCOUNT_POLICY_MULTI_THREADED_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_REFCOUNT_POLICIES_HPP_REFCOUNT_POLICY_MULTI_THREADED_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_REFCOUNT_POLICIES_HPP_REFCOUNT_POLICY_MULTI_THREADED_REVISION    3
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_REFCOUNT_POLICIES_HPP_REFCOUNT_POLICY_MULTI_THREADED_EDIT        16
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_REFCOUNT_POLICIES_HPP_REFCOUNT_POLICY_MULTI_THREADED_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

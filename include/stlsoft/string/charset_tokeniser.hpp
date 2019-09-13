@@ -4,7 +4,7 @@
  * Purpose:     String token parsing class using char-sets.
  *
  * Created:     17th October 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/charset_tokeniser.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::charset_tokeniser class
+ * \brief [C++] Definition of the stlsoft::charset_tokeniser class
  *  template
  *   (\ref group__library__String "String" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_MINOR     0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_REVISION  8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_EDIT      35
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_EDIT      36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

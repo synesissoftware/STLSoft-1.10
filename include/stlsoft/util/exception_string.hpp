@@ -4,7 +4,7 @@
  * Purpose:     Contains the exception_string limited functionality string class.
  *
  * Created:     26th December 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/exception_string.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::exception_string class
+ * \brief [C++] Definition of the stlsoft::exception_string class
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_MINOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_REVISION 5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_EDIT     29
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_EDIT     30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

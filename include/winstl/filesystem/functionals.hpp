@@ -4,7 +4,7 @@
  * Purpose:     File-system related functions and predicates.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/filesystem/functionals.hpp
  *
- * \brief [C++ only] Definition of the winstl::path_compare,
+ * \brief [C++] Definition of the winstl::path_compare,
  *  winstl::path_compare_env, winstl::path_exists, winstl::path_exists_env
  *  and winstl::path_contains_file function classes
  *   (\ref group__library__FileSystem "File System" Library).
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR     1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION  10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      95
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      96
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Contains the listbox_const_iterator class.
  *
  * Created:     10th November 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for some patches.
  *
@@ -43,7 +43,7 @@
 
 /** \file winstl/controls/listbox_const_iterator.hpp
  *
- * \brief [C++ only] Definition of the winstl::listbox_const_iterator class
+ * \brief [C++] Definition of the winstl::listbox_const_iterator class
  *   (\ref group__library__Windows_Control "Windows Control" Library).
  */
 
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_CONST_ITERATOR_MAJOR    4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_CONST_ITERATOR_MINOR    3
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_CONST_ITERATOR_REVISION 6
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_CONST_ITERATOR_EDIT     86
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_CONST_ITERATOR_EDIT     87
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

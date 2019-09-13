@@ -15,7 +15,7 @@
  *              2003 issue of Windows Developer Network (http://windevnet.com).
  *
  * Created:     1st May 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 
 /** \file inetstl/filesystem/searchspec_sequence.hpp
  *
- * \brief [C++ only] Definition of the inetstl::searchspec_sequence
+ * \brief [C++] Definition of the inetstl::searchspec_sequence
  *   class template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -64,7 +64,7 @@
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR      5
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR      1
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION   12
-# define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT       67
+# define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

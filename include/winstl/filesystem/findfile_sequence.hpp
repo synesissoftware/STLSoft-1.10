@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -59,7 +59,7 @@
 
 /** \file winstl/filesystem/findfile_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_findfile_sequence class
+ * \brief [C++] Definition of the winstl::basic_findfile_sequence class
  *  template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -71,7 +71,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       9
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        235
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        236
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

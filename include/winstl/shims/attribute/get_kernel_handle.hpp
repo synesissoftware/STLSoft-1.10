@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 handles.
  *
  * Created:     3rd July 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/shims/attribute/get_kernel_handle.hpp
  *
- * \brief [C++ only] Definition of stlsoft::get_kernel_handle attribute shim
+ * \brief [C++] Definition of stlsoft::get_kernel_handle attribute shim
  *   functions for Win32 types
  *   (\ref group__library__Shims_Attribute_Windows_KernelHandle "Kernel Handle Attribute Shims").
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_MAJOR      2
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_MINOR      0
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_REVISION   5
-# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_EDIT       29
+# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_EDIT       30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

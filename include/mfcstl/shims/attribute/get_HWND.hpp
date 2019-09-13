@@ -4,7 +4,7 @@
  * Purpose:     Contains access shims for windows.
  *
  * Created:     10th January 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file mfcstl/shims/attribute/get_HWND.hpp
  *
- * \brief [C++ only] Definition of stlsoft::get_HWND attribute shim
+ * \brief [C++] Definition of stlsoft::get_HWND attribute shim
  *   functions for MFC types
  *   (\ref group__library__Shims_Attribute_Windows_Window "Window Attribute Shims").
  */
@@ -53,7 +53,7 @@
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_HWND_MAJOR       4
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_HWND_MINOR       1
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_HWND_REVISION    5
-# define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_HWND_EDIT        54
+# define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_HWND_EDIT        55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

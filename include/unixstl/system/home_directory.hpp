@@ -5,7 +5,7 @@
  *              home directory.
  *
  * Created:     30th September 2016
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file unixstl/system/home_directory.hpp
  *
- * \brief [C++ only] Definition of the unixstl::home_directory and
+ * \brief [C++] Definition of the unixstl::home_directory and
  *  associated types
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR    2
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 2
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     12
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

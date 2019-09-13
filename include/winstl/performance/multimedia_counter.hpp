@@ -4,7 +4,7 @@
  * Purpose:     WinSTL multimedia performance counter class.
  *
  * Created:     31st July 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/performance/multimedia_counter.hpp
  *
- * \brief [C++ only] Backwards-compatible file defining the typedef
+ * \brief [C++] Backwards-compatible file defining the typedef
  *  <code>winstl::multimedia_counter</code>
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_MULTIMEDIA_COUNTER_MAJOR     5
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_MULTIMEDIA_COUNTER_MINOR     0
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_MULTIMEDIA_COUNTER_REVISION  1
-# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_MULTIMEDIA_COUNTER_EDIT      51
+# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_MULTIMEDIA_COUNTER_EDIT      52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Definition of minimum() and maximum() template functions.
  *
  * Created:     11th April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/minmax.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::minimum() and
+ * \brief [C++] Definition of the stlsoft::minimum() and
  *   stlsoft::maximum() function templates
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MINMAX_MAJOR       2
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MINMAX_MINOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MINMAX_REVISION    4
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_MINMAX_EDIT        23
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_MINMAX_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

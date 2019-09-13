@@ -5,7 +5,7 @@
  *              streams.
  *
  * Created:     31st May 2009
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/filesystem/handles/FILE_stream_handle.hpp
  *
- * \brief [C++ only] Definition of the platformstl::FILE_stream_handle class
+ * \brief [C++] Definition of the platformstl::FILE_stream_handle class
  *   template (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_MINOR    0
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_REVISION 10
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_EDIT     19
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

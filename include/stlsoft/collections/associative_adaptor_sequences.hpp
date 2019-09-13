@@ -4,7 +4,7 @@
  * Purpose:     Include file for all associative sequences.
  *
  * Created:     28th January 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/collections/associative_adaptor_sequences.hpp
  *
- * \brief [C++ only] Include file for all associative sequences
+ * \brief [C++] Include file for all associative sequences
  *   (\ref group__library__Collection "Collection" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_REVISION 4
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_EDIT     23
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_ADAPTOR_SEQUENCES_EDIT     24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

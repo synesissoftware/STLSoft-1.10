@@ -5,7 +5,7 @@
  *              policy class
  *
  * Created:     8th January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file comstl/exception/policy/HRESULT_to_string_translation_policy.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *   comstl::HRESULT_to_string_translation_policy policy class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_EXCEPTION_POLICY_HPP_HRESULT_TO_STRING_TRANSLATION_POLICY_MAJOR      1
 # define COMSTL_VER_COMSTL_EXCEPTION_POLICY_HPP_HRESULT_TO_STRING_TRANSLATION_POLICY_MINOR      0
 # define COMSTL_VER_COMSTL_EXCEPTION_POLICY_HPP_HRESULT_TO_STRING_TRANSLATION_POLICY_REVISION   1
-# define COMSTL_VER_COMSTL_EXCEPTION_POLICY_HPP_HRESULT_TO_STRING_TRANSLATION_POLICY_EDIT       2
+# define COMSTL_VER_COMSTL_EXCEPTION_POLICY_HPP_HRESULT_TO_STRING_TRANSLATION_POLICY_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

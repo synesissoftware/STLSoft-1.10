@@ -4,7 +4,7 @@
  * Purpose:     Statically sized multidimensional class template.
  *
  * Created:     4th August 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
@@ -43,7 +43,7 @@
 
 /** \file stlsoft/containers/static_array.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::static_array_1d,
+ * \brief [C++] Definition of the stlsoft::static_array_1d,
  *    stlsoft::static_array_2d, stlsoft::static_array_3d, and
  *    stlsoft::static_array_4d multidimensional array class templates
  *   (\ref group__library__Container "Container" Library).
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MAJOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MINOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_REVISION  7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      199
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      200
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

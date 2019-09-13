@@ -4,7 +4,7 @@
  * Purpose:     Contains the true_typedef class template.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/true_typedef.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::true_typedef class template
+ * \brief [C++] Definition of the stlsoft::true_typedef class template
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_MAJOR     4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_REVISION  6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_EDIT      85
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_TRUE_TYPEDEF_EDIT      86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

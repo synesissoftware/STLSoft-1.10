@@ -4,7 +4,7 @@
  * Purpose:     Deprecated algorithms.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/deprecated.hpp
  *
- * \brief [C++ only] Deprecated algorithms
+ * \brief [C++] Deprecated algorithms
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_MAJOR    3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_MINOR    0
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_REVISION 8
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_EDIT     79
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEPRECATED_EDIT     80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

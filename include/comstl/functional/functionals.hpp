@@ -4,7 +4,7 @@
  * Purpose:     Interface-specific predicates and functions.
  *
  * Created:     14th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/functional/functionals.hpp
  *
- * \brief [C++ only] Main include for COM type manipulating function classes,
+ * \brief [C++] Main include for COM type manipulating function classes,
  *   including interface pointers, and release of various COM resoures
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_MAJOR     4
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_MINOR     0
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_REVISION  3
-# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_EDIT      71
+# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_INTERFACE_FUNCTIONALS_EDIT      72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

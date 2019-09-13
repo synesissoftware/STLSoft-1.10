@@ -4,7 +4,7 @@
  * Purpose:     Exception thrown when interface casts fail.
  *
  * Created:     22nd December 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/exception/bad_interface_cast.hpp
  *
- * \brief [C++ only] Definition of the comstl::bad_interface_cast class
+ * \brief [C++] Definition of the comstl::bad_interface_cast class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_BAD_INTERFACE_CAST_MAJOR       6
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_BAD_INTERFACE_CAST_MINOR       0
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_BAD_INTERFACE_CAST_REVISION    2
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_BAD_INTERFACE_CAST_EDIT        49
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_BAD_INTERFACE_CAST_EDIT        50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

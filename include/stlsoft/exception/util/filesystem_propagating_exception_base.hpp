@@ -5,7 +5,7 @@
  *              template
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/exception/util/filesystem_propagating_exception_base.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::filesystem_propagating_exception_base
+ * \brief [C++] Definition of the stlsoft::filesystem_propagating_exception_base
  *   class template
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_PROPAGATING_EXCEPTION_BASE_MAJOR     1
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_PROPAGATING_EXCEPTION_BASE_MINOR     0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_PROPAGATING_EXCEPTION_BASE_REVISION  1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_PROPAGATING_EXCEPTION_BASE_EDIT      2
+# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_FILESYSTEM_PROPAGATING_EXCEPTION_BASE_EDIT      3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

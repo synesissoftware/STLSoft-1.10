@@ -45,7 +45,7 @@
 
 /** \file stlsoft/string/string_view.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::basic_string_view class
+ * \brief [C++] Definition of the stlsoft::basic_string_view class
  *  template
  *   (\ref group__library__String "String" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        106
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        107
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

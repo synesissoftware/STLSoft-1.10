@@ -4,7 +4,7 @@
  * Purpose:     Process Id sequence class.
  *
  * Created:     24th June 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Adi Shavit for spotting a small inefficiency in the
  *              resize()-ing, during the review of Extended STL volume 1
@@ -45,7 +45,7 @@
 
 /** \file winstl/system/process_module_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::process_module_sequence
+ * \brief [C++] Definition of the winstl::process_module_sequence
  *  class
  *   (\ref group__library__System "System" Library).
  */
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MAJOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_REVISION  10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      62
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

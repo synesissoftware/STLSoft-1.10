@@ -4,7 +4,7 @@
  * Purpose:     GDI scope class.
  *
  * Created:     20th October 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/window/hdc_scope.hpp
  *
- * \brief [C++ only] Definition of the winstl::HDC_scope class
+ * \brief [C++] Definition of the winstl::HDC_scope class
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_MAJOR      3
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_MINOR      0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_REVISION   5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_EDIT       53
+# define WINSTL_VER_WINSTL_WINDOW_HPP_HDC_SCOPE_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

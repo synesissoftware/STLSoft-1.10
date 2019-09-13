@@ -4,7 +4,7 @@
  * Purpose:     Windows identification.
  *
  * Created:     11th March 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/window/util/ident_.hpp
  *
- * \brief [C++ only] Windows identification
+ * \brief [C++] Windows identification
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__REVISION   3
-# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       56
+# define WINSTL_VER_WINSTL_WINDOW_UTIL_HPP_IDENT__EDIT       57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

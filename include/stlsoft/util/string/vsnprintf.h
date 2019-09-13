@@ -4,7 +4,7 @@
  * Purpose:     vsn(w)printf() variants.
  *
  * Created:     15th July 2012
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/string/vsnprintf.h
  *
- * \brief [C++ only] vsn(w)printf() variants
+ * \brief [C++] vsn(w)printf() variants
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_VSNPRINTF_MAJOR      1
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_VSNPRINTF_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_STRING_H_VSNPRINTF_REVISION   3
-# define STLSOFT_VER_STLSOFT_UTIL_STRING_H_VSNPRINTF_EDIT       7
+# define STLSOFT_VER_STLSOFT_UTIL_STRING_H_VSNPRINTF_EDIT       8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

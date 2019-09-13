@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file inetstl/filesystem/findfile_sequence.hpp
  *
- * \brief [C++ only] Definition of the inetstl::findfile_sequence
+ * \brief [C++] Definition of the inetstl::findfile_sequence
  *   class template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -54,7 +54,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR    3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR    0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 21
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     157
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     158
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

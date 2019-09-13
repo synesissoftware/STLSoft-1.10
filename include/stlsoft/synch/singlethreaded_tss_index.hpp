@@ -6,7 +6,7 @@
  *              single-threaded contexts.
  *
  * Created:     3rd February 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -43,7 +43,7 @@
 
 /** \file stlsoft/synch/singlethreaded_tss_index.hpp
  *
- * \brief [C++ only] An interface-compatible replacement for the tss_index
+ * \brief [C++] An interface-compatible replacement for the tss_index
  *   classes defined elsewhere in the libraries, for use in single-threaded
  *   contexts.
  *   (\ref group__library__Synch "Synchronisation" Library).
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SINGLE_THREADED_TSS_INDEX_MAJOR      1
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SINGLE_THREADED_TSS_INDEX_MINOR      0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SINGLE_THREADED_TSS_INDEX_REVISION   6
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SINGLE_THREADED_TSS_INDEX_EDIT       12
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SINGLE_THREADED_TSS_INDEX_EDIT       13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

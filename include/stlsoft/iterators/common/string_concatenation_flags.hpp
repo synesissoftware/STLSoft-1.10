@@ -5,7 +5,7 @@
  *              c_string_concatenator_iterator.
  *
  * Created:     31st July 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/iterators/common/string_concatenation_flags.hpp
  *
- * \brief [C++ only] Common flags for use with string_concatenator_iterator and
+ * \brief [C++] Common flags for use with string_concatenator_iterator and
  *   c_string_concatenator_iterator.
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_COMMON_HPP_STRING_CONCATENATION_FLAGS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_ITERATORS_COMMON_HPP_STRING_CONCATENATION_FLAGS_MINOR    0
 # define STLSOFT_VER_STLSOFT_ITERATORS_COMMON_HPP_STRING_CONCATENATION_FLAGS_REVISION 4
-# define STLSOFT_VER_STLSOFT_ITERATORS_COMMON_HPP_STRING_CONCATENATION_FLAGS_EDIT     9
+# define STLSOFT_VER_STLSOFT_ITERATORS_COMMON_HPP_STRING_CONCATENATION_FLAGS_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

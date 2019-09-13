@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the processtimes_counter components.
  *
  * Created:     9th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,12 +47,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MAJOR     1
 # define PLATFORMSTL_VER_PLATFORMSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MINOR     1
 # define PLATFORMSTL_VER_PLATFORMSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_REVISION  4
-# define PLATFORMSTL_VER_PLATFORMSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT      15
+# define PLATFORMSTL_VER_PLATFORMSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT      16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/performance/processtimes_counter.hpp
  *
- * \brief [C++ only] Definition of the <code>platformstl::processtimes_counter</code>
+ * \brief [C++] Definition of the <code>platformstl::processtimes_counter</code>
  *  type
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  *

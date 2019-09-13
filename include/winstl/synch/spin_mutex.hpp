@@ -4,7 +4,7 @@
  * Purpose:     Intra-process mutex, based on spin waits.
  *
  * Created:     27th August 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Rupert Kittinger, for pointing out that the prior
  *              implementation that always yielded was not really "spinning".
@@ -44,7 +44,7 @@
 
 /** \file winstl/synch/spin_mutex.hpp
  *
- * \brief [C++ only] Definition of winstl::spin_index class
+ * \brief [C++] Definition of winstl::spin_index class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_MAJOR       5
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_MINOR       1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_REVISION    2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_EDIT        74
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_EDIT        75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

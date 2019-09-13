@@ -4,7 +4,7 @@
  * Purpose:     Forward declaration of the string_traits traits class.
  *
  * Created:     1st April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/string_traits_fwd.hpp
  *
- * \brief [C++ only] Forward definition of the stlsoft::string_traits traits
+ * \brief [C++] Forward definition of the stlsoft::string_traits traits
  *  class
  *   (\ref group__library__String "String" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD_MAJOR       2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD_MINOR       0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD_REVISION    5
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD_EDIT        26
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD_EDIT        27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

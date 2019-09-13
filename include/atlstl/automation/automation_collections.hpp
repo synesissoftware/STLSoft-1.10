@@ -4,7 +4,7 @@
  * Purpose:     Adaptor classes for creating COM collection instances.
  *
  * Created:     16th April 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -40,7 +40,7 @@
 
 
 /** \file atlstl/automation/automation_collections.hpp
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *  atlstl::generic_automation_collection class template, with which
  *  COM Collections may be readily defined
  *   (\ref group__library__COM_Automation "COM Automation" Library).
@@ -53,7 +53,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_MAJOR     3
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_MINOR     2
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_REVISION  7
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_EDIT      119
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_EDIT      120
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

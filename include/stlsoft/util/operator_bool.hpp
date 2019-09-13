@@ -4,7 +4,7 @@
  * Purpose:     A robust and portable operator bool generator class.
  *
  * Created:     5th November 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/operator_bool.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::operator_bool_generator
+ * \brief [C++] Definition of the stlsoft::operator_bool_generator
  *   class template
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_REVISION 5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_EDIT     45
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_EDIT     46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

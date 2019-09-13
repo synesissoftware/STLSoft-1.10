@@ -4,7 +4,7 @@
  * Purpose:     shell_allocator class.
  *
  * Created:     2nd March 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/memory/shell_allocator.hpp
  *
- * \brief [C++ only] Definition of the winstl::shell_allocator class
+ * \brief [C++] Definition of the winstl::shell_allocator class
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_MAJOR     4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_MINOR     1
 # define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_REVISION  10
-# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_EDIT      95
+# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_EDIT      96
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

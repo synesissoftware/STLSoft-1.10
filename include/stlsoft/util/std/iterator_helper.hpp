@@ -5,7 +5,7 @@
  *              abstracting away standard library inconsistencies.
  *
  * Created:     2nd January 2000
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support.
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/util/std/iterator_helper.hpp
  *
- * \brief [C++ only] Definition of iterator class templates and macros for
+ * \brief [C++] Definition of iterator class templates and macros for
  *    abstracting away standard library inconsistencies
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  5
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      126
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      127
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

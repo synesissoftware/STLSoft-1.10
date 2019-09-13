@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the processtimes_stopwatch components.
  *
  * Created:     9th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,12 +47,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT        14
+# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/diagnostics/processtimes_stopwatch.hpp
  *
- * \brief [C++ only] Definition of the <code>platformstl::processtimes_stopwatch</code>
+ * \brief [C++] Definition of the <code>platformstl::processtimes_stopwatch</code>
  *  type
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  *

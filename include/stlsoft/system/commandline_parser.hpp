@@ -4,7 +4,7 @@
  * Purpose:     commandline_parser class.
  *
  * Created:     20th May 2000
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/system/commandline_parser.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::basic_commandline_parser
+ * \brief [C++] Definition of the stlsoft::basic_commandline_parser
  *  class template
  *   (\ref group__library__System "System" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MAJOR    2
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MINOR    1
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_REVISION 8
-# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     48
+# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

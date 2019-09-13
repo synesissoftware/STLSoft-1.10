@@ -41,7 +41,7 @@
 
 /** \file stlsoft/system/cmdargs.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::cmdargs class
+ * \brief [C++] Definition of the stlsoft::cmdargs class
  *   (\ref group__library__System "System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_MAJOR       3
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_MINOR       0
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_REVISION    8
-# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_EDIT        42
+# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_CMDARGS_EDIT        43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

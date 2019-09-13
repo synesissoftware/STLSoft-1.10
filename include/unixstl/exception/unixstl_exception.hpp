@@ -4,7 +4,7 @@
  * Purpose:     unixstl::unixstl_exception class
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/exception/unixstl_exception.hpp
  *
- * \brief [C++ only] Definition of the unixstl::unixstl_exception class
+ * \brief [C++] Definition of the unixstl::unixstl_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_UNIXSTL_EXCEPTION_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_UNIXSTL_EXCEPTION_MINOR     4
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_UNIXSTL_EXCEPTION_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_UNIXSTL_EXCEPTION_EDIT      64
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_UNIXSTL_EXCEPTION_EDIT      65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

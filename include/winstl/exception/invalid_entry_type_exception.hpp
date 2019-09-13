@@ -4,11 +4,11 @@
  * Purpose:     winstl::invalid_entry_type_exception class
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@
 
 /** \file winstl/exception/invalid_entry_type_exception.hpp
  *
- * \brief [C++ only] Definition of the winstl::invalid_entry_type_exception class
+ * \brief [C++] Definition of the winstl::invalid_entry_type_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_MAJOR     1
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_MINOR     0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_REVISION  1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_EDIT      2
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_INVALID_ENTRY_TYPE_EXCEPTION_EDIT      3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

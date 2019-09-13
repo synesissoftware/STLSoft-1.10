@@ -5,7 +5,7 @@
  *              operations.
  *
  * Created:     25th November 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 
 /** \file atlstl/window/window.hpp
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *   atlstl::Window class, which is an enhancement of ATL's CWindow,
  *   supporting shims for common operations
  *   (\ref group__library__Windows_Window "Windows Window" Library).
@@ -54,7 +54,7 @@
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MAJOR      1
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_MINOR      0
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_REVISION   8
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       19
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_WINDOW_EDIT       20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

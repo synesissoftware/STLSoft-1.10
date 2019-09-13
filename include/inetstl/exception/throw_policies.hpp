@@ -4,7 +4,7 @@
  * Purpose:     Contains the internet_exception class.
  *
  * Created:     25th April 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file inetstl/exception/throw_policies.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *    inetstl::throw_internet_exception_policy exception policy class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  7
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      53
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

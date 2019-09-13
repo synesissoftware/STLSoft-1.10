@@ -4,7 +4,7 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,12 +47,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     3
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     0
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  3
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      27
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/throw_policies.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *   platformstl::platform_exception_policy class
  *   (\ref group__library__Exception "Exception" Library).
  */

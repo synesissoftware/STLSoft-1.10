@@ -4,7 +4,7 @@
  * Purpose:     COM instance creation helper functions
  *
  * Created:     21st September 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Adi Shavit for demanding more usability in these
  *              functions, which led to the adoption of stlsoft::ref_ptr<X>
@@ -45,7 +45,7 @@
 
 /** \file comstl/util/creation_functions.hpp
  *
- * \brief [C++ only; requires COM] COM instance creation helper functions
+ * \brief [C++; requires COM] COM instance creation helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -56,7 +56,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_CREATION_FUNCTIONS_MAJOR    2
 # define COMSTL_VER_COMSTL_UTIL_HPP_CREATION_FUNCTIONS_MINOR    3
 # define COMSTL_VER_COMSTL_UTIL_HPP_CREATION_FUNCTIONS_REVISION 6
-# define COMSTL_VER_COMSTL_UTIL_HPP_CREATION_FUNCTIONS_EDIT     34
+# define COMSTL_VER_COMSTL_UTIL_HPP_CREATION_FUNCTIONS_EDIT     35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

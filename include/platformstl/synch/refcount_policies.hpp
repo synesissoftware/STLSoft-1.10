@@ -4,7 +4,7 @@
  * Purpose:     Reference-counting policies.
  *
  * Created:     31st May 2009
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/synch/refcount_policies.hpp
  *
- * \brief [C++ only] Reference-counting policies
+ * \brief [C++] Reference-counting policies
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_REFCOUNT_POLICIES_MAJOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_REFCOUNT_POLICIES_MINOR      0
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_REFCOUNT_POLICIES_REVISION   3
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_REFCOUNT_POLICIES_EDIT       15
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_REFCOUNT_POLICIES_EDIT       16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

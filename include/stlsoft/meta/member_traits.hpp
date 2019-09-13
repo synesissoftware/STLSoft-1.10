@@ -5,7 +5,7 @@
  *              for too long.
  *
  * Created:     11th October 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/meta/member_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::member_traits component
+ * \brief [C++] Definition of the stlsoft::member_traits component
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
 
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_MEMBER_TRAITS_MAJOR       2
 # define STLSOFT_VER_STLSOFT_META_HPP_MEMBER_TRAITS_MINOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_MEMBER_TRAITS_REVISION    4
-# define STLSOFT_VER_STLSOFT_META_HPP_MEMBER_TRAITS_EDIT        45
+# define STLSOFT_VER_STLSOFT_META_HPP_MEMBER_TRAITS_EDIT        46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

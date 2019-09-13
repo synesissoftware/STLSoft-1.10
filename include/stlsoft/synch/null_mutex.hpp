@@ -4,7 +4,7 @@
  * Purpose:     Mutual exclusion model class.
  *
  * Created:     19th December 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/synch/null_mutex.hpp
  *
- * \brief [C++ only] Definition of stlsoft::null_mutex class
+ * \brief [C++] Definition of stlsoft::null_mutex class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_NULL_MUTEX_MAJOR     4
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_NULL_MUTEX_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_NULL_MUTEX_REVISION  7
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_NULL_MUTEX_EDIT      53
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_NULL_MUTEX_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

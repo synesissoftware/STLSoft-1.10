@@ -4,7 +4,7 @@
  * Purpose:     Class that adapts a unary function to an output iterator.
  *
  * Created:     20th July 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/iterators/unary_function_output_iterator_adaptor.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::unary_function_output_iterator_adaptor
+ * \brief [C++] Definition of the stlsoft::unary_function_output_iterator_adaptor
  *   class template
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_REVISION  4
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_EDIT      23
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_UNARY_FUNCTION_OUTPUT_ITERATOR_ADAPTOR_EDIT      24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

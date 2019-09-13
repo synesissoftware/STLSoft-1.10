@@ -4,7 +4,7 @@
  * Purpose:     printf_traits classes.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/printf_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::printf_traits class
+ * \brief [C++] Definition of the stlsoft::printf_traits class
  *   template
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PRINTF_TRAITS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PRINTF_TRAITS_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PRINTF_TRAITS_REVISION 5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_PRINTF_TRAITS_EDIT     70
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_PRINTF_TRAITS_EDIT     71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

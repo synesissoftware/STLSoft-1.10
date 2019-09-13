@@ -4,7 +4,7 @@
  * Purpose:     Simple 'about' dialog, that shell-executes hyperlinks.
  *
  * Created:     30th January 2000
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file atlstl/window/about_dialog.hpp
  *
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *   atlstl::AboutDialog and atlstl::AboutDialogId dialog implementation
  *   class templates
  *   (\ref group__library__Windows_Window "Windows Window" Library).
@@ -54,7 +54,7 @@
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_MAJOR      4
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_MINOR      0
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_REVISION   7
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_EDIT       65
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_EDIT       66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

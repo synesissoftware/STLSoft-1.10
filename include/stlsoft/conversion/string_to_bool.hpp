@@ -4,7 +4,7 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/string_to_bool.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_to_bool conversion
+ * \brief [C++] Definition of the stlsoft::string_to_bool conversion
  *   function suite
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     9
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

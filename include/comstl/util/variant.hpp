@@ -4,7 +4,7 @@
  * Purpose:     variant class.
  *
  * Created:     12th December 1996
- * Updated:     11th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/variant.hpp
  *
- * \brief [C++ only; requires COM] Definition of the comstl::variant class
+ * \brief [C++; requires COM] Definition of the comstl::variant class
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_MAJOR      2
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_MINOR      3
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_REVISION   13
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_EDIT       172
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_VARIANT_EDIT       173
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

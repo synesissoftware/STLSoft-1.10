@@ -4,7 +4,7 @@
  * Purpose:     Adds a const or volatile qualifier to a type.
  *
  * Created:     30th December 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/add_qualifier.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::add_const,
+ * \brief [C++] Definition of the stlsoft::add_const,
  *   stlsoft::add_volatile, stlsoft::add_const_ref and
  *   stlsoft::add_volatile_ref meta-programming type adjuster components
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_ADD_QUALIFIER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_ADD_QUALIFIER_MINOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_ADD_QUALIFIER_REVISION    5
-# define STLSOFT_VER_STLSOFT_META_HPP_ADD_QUALIFIER_EDIT        19
+# define STLSOFT_VER_STLSOFT_META_HPP_ADD_QUALIFIER_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

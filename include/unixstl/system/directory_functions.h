@@ -4,7 +4,7 @@
  * Purpose:     Directory functions.
  *
  * Created:     1st October 2016
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/system/directory_functions.h
  *
- * \brief [C++ only] Directory functions
+ * \brief [C++] Directory functions
  *   (\ref group__library__System "System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    8
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        13
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

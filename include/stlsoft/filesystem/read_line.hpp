@@ -4,7 +4,7 @@
  * Purpose:     Definition of stlsoft::read_line() function template.
  *
  * Created:     2nd January 2007
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/filesystem/read_line.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::read_line() function
+ * \brief [C++] Definition of the stlsoft::read_line() function
  *   template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_READ_LINE_MAJOR     2
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_READ_LINE_MINOR     1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_READ_LINE_REVISION  5
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_READ_LINE_EDIT      22
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_READ_LINE_EDIT      23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Miscellaneous undocumented features.
  *
  * Created:     20th October 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/util/undocumented.hpp
  *
- * \brief [C++ only] Miscellaneous undocumented features
+ * \brief [C++] Miscellaneous undocumented features
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MAJOR       4
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MINOR       0
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_REVISION    5
-#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        46
+#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

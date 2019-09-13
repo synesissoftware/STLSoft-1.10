@@ -4,7 +4,7 @@
  * Purpose:     Definition of stlsoft::equal_ptr predicate class.
  *
  * Created:     7th November 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/functional/equal_ptr.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::equal_ptr predicate, which
+ * \brief [C++] Definition of the stlsoft::equal_ptr predicate, which
  *   uses attribute shims to generalise comparison of raw/smart pointers
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_EQUAL_PTR_MAJOR     3
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_EQUAL_PTR_MINOR     0
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_EQUAL_PTR_REVISION  5
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_EQUAL_PTR_EDIT      33
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_EQUAL_PTR_EDIT      34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

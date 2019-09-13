@@ -4,7 +4,7 @@
  * Purpose:     ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/zero.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::ZERO_v class
+ * \brief [C++] Definition of the stlsoft::ZERO_v class
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_MINOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_REVISION    5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_EDIT        54
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_EDIT        55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

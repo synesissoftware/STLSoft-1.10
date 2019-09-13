@@ -5,7 +5,7 @@
  *              form via string access shims.
  *
  * Created:     6th April 2005
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/iterator/string_insert_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_insert_iterator
+ * \brief [C++] Definition of the stlsoft::string_insert_iterator
  *   class template
  *   (\ref group__library__iterators "Iterators" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_STRING_INSERT_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_STRING_INSERT_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_STRING_INSERT_ITERATOR_REVISION   7
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_STRING_INSERT_ITERATOR_EDIT       28
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_STRING_INSERT_ITERATOR_EDIT       29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

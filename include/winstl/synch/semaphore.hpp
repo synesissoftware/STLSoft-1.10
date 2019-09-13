@@ -4,7 +4,7 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/synch/semaphore.hpp
  *
- * \brief [C++ only] Definition of winstl::semaphore class
+ * \brief [C++] Definition of winstl::semaphore class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 16
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     41
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

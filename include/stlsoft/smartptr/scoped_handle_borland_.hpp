@@ -5,7 +5,7 @@
  *              resource types; special implementation for Borland.
  *
  * Created:     1st November 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Maciej Kaniewski, for requesting Borland compatibility (in
  *              order to use FastFormat and Pantheios)
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/smartptr/scoped_handle_borland_.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::scoped_handle smart
+ * \brief [C++] Definition of the stlsoft::scoped_handle smart
  *   pointer class template
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__MAJOR      6
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__MINOR      2
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__REVISION   1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__EDIT       680
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__EDIT       681
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

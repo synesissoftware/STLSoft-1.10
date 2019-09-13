@@ -4,7 +4,7 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/smartptr/ref_ptr.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::ref_ptr smart
+ * \brief [C++] Definition of the stlsoft::ref_ptr smart
  *   pointer class template
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       510
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       511
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

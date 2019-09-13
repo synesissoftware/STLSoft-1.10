@@ -4,7 +4,7 @@
  * Purpose:     Definition of the fixer_pointer and fixer_const_pointer types.
  *
  * Created:     9th February 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/typefixer/pointer.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::typefixer::pointer
+ * \brief [C++] Definition of the stlsoft::typefixer::pointer
  *   typefixer class template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_MAJOR       4
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_MINOR       0
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_REVISION    4
-# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_EDIT        39
+# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_POINTER_EDIT        40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

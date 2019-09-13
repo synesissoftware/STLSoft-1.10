@@ -4,7 +4,7 @@
  * Purpose:     Definition of SAPI types and constants.
  *
  * Created:     31st August 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/speech/sapi_util.hpp
  *
- * \brief [C++ only; requires COM] Definition of SAPI types and constants.
+ * \brief [C++; requires COM] Definition of SAPI types and constants.
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MAJOR       1
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MINOR       0
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_REVISION    8
-# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        17
+# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

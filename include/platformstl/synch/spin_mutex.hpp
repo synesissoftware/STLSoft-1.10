@@ -4,7 +4,7 @@
  * Purpose:     Definition of the spin_mutex type.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/synch/spin_mutex.hpp
  *
- * \brief [C++ only] Definition of the platformstl::spin_mutex type
+ * \brief [C++] Definition of the platformstl::spin_mutex type
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_MAJOR     2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_MINOR     3
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_REVISION  2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      27
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_HPP_SPIN_MUTEX_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

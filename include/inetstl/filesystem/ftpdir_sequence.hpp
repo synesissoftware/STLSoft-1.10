@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     18th January 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file inetstl/filesystem/ftpdir_sequence.hpp
  *
- * \brief [C++ only] Definition of the inetstl::ftpdir_sequence
+ * \brief [C++] Definition of the inetstl::ftpdir_sequence
  *   class template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -54,7 +54,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_MAJOR      2
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_MINOR      1
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_REVISION   9
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_EDIT       41
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FTPDIR_SEQUENCE_EDIT       42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

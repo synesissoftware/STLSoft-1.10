@@ -4,7 +4,7 @@
  * Purpose:     Window visible-state scoping class.
  *
  * Created:     26th May 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/window/window_visible_scope.hpp
  *
- * \brief [C++ only] Definition of the winstl::window_visible_scope class
+ * \brief [C++] Definition of the winstl::window_visible_scope class
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_MAJOR       4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_MINOR       1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_REVISION    7
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_EDIT        52
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_VISIBLE_SCOPE_EDIT        53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

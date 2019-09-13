@@ -4,7 +4,7 @@
  * Purpose:     afx_allocator class.
  *
  * Created:     5th August 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file mfcstl/memory/afx_allocator.hpp
  *
- * \brief [C++ only] Definition of the mfcstl::afx_allocator class
+ * \brief [C++] Definition of the mfcstl::afx_allocator class
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -52,7 +52,7 @@
 # define MFCSTL_VER_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR_MAJOR       2
 # define MFCSTL_VER_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR_MINOR       0
 # define MFCSTL_VER_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR_REVISION    9
-# define MFCSTL_VER_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR_EDIT        34
+# define MFCSTL_VER_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR_EDIT        35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

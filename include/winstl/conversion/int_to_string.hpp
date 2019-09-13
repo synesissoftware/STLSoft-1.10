@@ -4,7 +4,7 @@
  * Purpose:     WinSTL integer to string conversions.
  *
  * Created:     31st July 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/conversion/int_to_string.hpp
  *
- * \brief [C++ only] Very efficient integer to string conversion functions
+ * \brief [C++] Very efficient integer to string conversion functions
  *   for the Windows platform
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MAJOR      2
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MINOR      1
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   14
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       56
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

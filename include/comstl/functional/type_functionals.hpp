@@ -4,7 +4,7 @@
  * Purpose:     Type-specific predicates and functions.
  *
  * Created:     14th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/functional/type_functionals.hpp
  *
- * \brief [C++ only] Function classes for releasing instances of
+ * \brief [C++] Function classes for releasing instances of
  *   COM-specific resource types
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS_MAJOR    4
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS_MINOR    0
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS_REVISION 7
-# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS_EDIT     75
+# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_TYPE_FUNCTIONALS_EDIT     76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     An exception thrown when an active end iterator is exhausted.
  *
  * Created:     13th January 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/error/external_iterator_invalidation.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::external_iterator_invalidation
+ * \brief [C++] Definition of the stlsoft::external_iterator_invalidation
  *   exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_EXTERNAL_ITERATOR_INVALIDATION_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_EXTERNAL_ITERATOR_INVALIDATION_MINOR     0
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_EXTERNAL_ITERATOR_INVALIDATION_REVISION  5
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_EXTERNAL_ITERATOR_INVALIDATION_EDIT      18
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_EXTERNAL_ITERATOR_INVALIDATION_EDIT      19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

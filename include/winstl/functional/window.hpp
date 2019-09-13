@@ -4,7 +4,7 @@
  * Purpose:     Window function classes and predicates.
  *
  * Created:     19th January 2001
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/functional/window.hpp
  *
- * \brief [C++ only] Window function classes and predicates
+ * \brief [C++] Window function classes and predicates
  *   (\ref group__library__Functional "Functional" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_MAJOR      4
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_MINOR      1
 # define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_REVISION   6
-# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_EDIT       53
+# define WINSTL_VER_WINSTL_FUNCTIONAL_HPP_WINDOW_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

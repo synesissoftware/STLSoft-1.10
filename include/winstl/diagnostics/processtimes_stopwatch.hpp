@@ -4,7 +4,7 @@
  * Purpose:     WinSTL process-time stopwatch class.
  *
  * Created:     22nd March 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/diagnostics/processtimes_stopwatch.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *  \link winstl::processtimes_stopwatch processtimes_stopwatch\endlink class
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MAJOR     5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MINOR     0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_REVISION  1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT      63
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT      64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

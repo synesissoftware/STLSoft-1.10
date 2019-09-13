@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
@@ -45,7 +45,7 @@
 
 /** \file winstl/registry/reg_key.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_reg_key class template
+ * \brief [C++] Definition of the winstl::basic_reg_key class template
  *   (\ref group__library__Windows_Registry "Windows Registry" Library).
  */
 
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        158
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        159
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

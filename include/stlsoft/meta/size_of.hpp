@@ -4,7 +4,7 @@
  * Purpose:     Size determination.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/size_of.hpp
  *
- * \brief [C++ only] Definition of the void-compatible sizeof() operator
+ * \brief [C++] Definition of the void-compatible sizeof() operator
  *  template: stlsoft::size_of
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_SIZE_OF_MAJOR     4
 # define STLSOFT_VER_STLSOFT_META_HPP_SIZE_OF_MINOR     0
 # define STLSOFT_VER_STLSOFT_META_HPP_SIZE_OF_REVISION  4
-# define STLSOFT_VER_STLSOFT_META_HPP_SIZE_OF_EDIT      132
+# define STLSOFT_VER_STLSOFT_META_HPP_SIZE_OF_EDIT      133
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

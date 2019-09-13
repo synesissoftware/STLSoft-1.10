@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Brad Cox, for helping out in testing and fixing the
  *              implementation for MAC OSX (Intel).
@@ -44,7 +44,7 @@
 
 /** \file unixstl/synch/atomic_functions.h
  *
- * \brief [C++ only] Definition of the atomic functions
+ * \brief [C++] Definition of the atomic functions
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MAJOR     7
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      216
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      217
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

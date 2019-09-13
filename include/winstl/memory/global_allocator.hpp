@@ -4,7 +4,7 @@
  * Purpose:     global_allocator class.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/memory/global_allocator.hpp
  *
- * \brief [C++ only] Definition of the winstl::global_allocator class
+ * \brief [C++] Definition of the winstl::global_allocator class
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_GLOBAL_ALLOCATOR_MAJOR    4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_GLOBAL_ALLOCATOR_MINOR    1
 # define WINSTL_VER_WINSTL_MEMORY_HPP_GLOBAL_ALLOCATOR_REVISION 7
-# define WINSTL_VER_WINSTL_MEMORY_HPP_GLOBAL_ALLOCATOR_EDIT     89
+# define WINSTL_VER_WINSTL_MEMORY_HPP_GLOBAL_ALLOCATOR_EDIT     90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

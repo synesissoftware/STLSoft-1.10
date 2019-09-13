@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP heap sequence class.
  *
  * Created:     21st May 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -45,7 +45,7 @@
 
 /** \file winstl/toolhelp/heap_sequence.hpp
  *
- * \brief [C++ only] Definition of the \link winstl::heap_sequence heap_sequence\endlink class
+ * \brief [C++] Definition of the \link winstl::heap_sequence heap_sequence\endlink class
  *   (\ref group__library__Windows_Toolhelp "Windows ToolHelp" Library).
  */
 
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_MINOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_REVISION  5
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_EDIT      19
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_HEAP_SEQUENCE_EDIT      20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

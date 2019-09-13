@@ -4,7 +4,7 @@
  * Purpose:     Helper functions for ACE_Message_Block (and ACE_Data_Block) classes.
  *
  * Created:     23rd September 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file acestl/memory/message_block_functions.hpp
  *
- * \brief [C++ only] Helper functions for use with the ACE_Message_Block
+ * \brief [C++] Helper functions for use with the ACE_Message_Block
  *   and ACE_Data_Block classes
  *   (\ref group__library__Memory "Memory" Library).
  */
@@ -53,7 +53,7 @@
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_MAJOR      2
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_MINOR      0
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_REVISION   7
-# define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_EDIT       39
+# define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_EDIT       40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     stlsoft::spin_mutex_base class template.
  *
  * Created:     27th August 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Rupert Kittinger, for pointing out that the prior
  *              implementation that always yielded was not really "spinning".
@@ -44,7 +44,7 @@
 
 /** \file stlsoft/synch/spin_mutex_base.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::spin_mutex_base class
+ * \brief [C++] Definition of the stlsoft::spin_mutex_base class
  *   template
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_MAJOR     6
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_REVISION  3
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_EDIT      74
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_EDIT      75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

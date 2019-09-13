@@ -4,7 +4,7 @@
  * Purpose:     Contains string_traits for MFC.
  *
  * Created:     25th April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file mfcstl/string/string_traits.hpp
  *
- * \brief [C++ only] Specialisations of the stlsoft::string_traits traits
+ * \brief [C++] Specialisations of the stlsoft::string_traits traits
  *   class for the MFC CString class
  *   (\ref group__library__String "String" Library).
  */
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_STRING_HPP_STRING_TRAITS_MAJOR       2
 # define MFCSTL_VER_MFCSTL_STRING_HPP_STRING_TRAITS_MINOR       0
 # define MFCSTL_VER_MFCSTL_STRING_HPP_STRING_TRAITS_REVISION    6
-# define MFCSTL_VER_MFCSTL_STRING_HPP_STRING_TRAITS_EDIT        26
+# define MFCSTL_VER_MFCSTL_STRING_HPP_STRING_TRAITS_EDIT        27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

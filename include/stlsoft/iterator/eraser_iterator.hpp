@@ -4,7 +4,7 @@
  * Purpose:     Eraser iterator.
  *
  * Created:     16th June 2010
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/iterator/eraser_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::erase_iterator class
+ * \brief [C++] Definition of the stlsoft::erase_iterator class
  *   template
  *   (\ref group__library__iterators "Iterators" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ERASER_ITERATOR_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ERASER_ITERATOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ERASER_ITERATOR_REVISION  4
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ERASER_ITERATOR_EDIT      7
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ERASER_ITERATOR_EDIT      8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

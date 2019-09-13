@@ -4,7 +4,7 @@
  * Purpose:     Collection types.
  *
  * Created:     10th January 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/collections/util/collections.hpp
  *
- * \brief [C++ only] Definition of collection tag types
+ * \brief [C++] Definition of collection tag types
  *   (\ref group__library__Collection "Collection" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS_MAJOR     2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS_MINOR     0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS_REVISION  6
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS_EDIT      20
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS_EDIT      21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

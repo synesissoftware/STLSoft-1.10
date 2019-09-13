@@ -4,7 +4,7 @@
  * Purpose:     Scoped thread-safe access locking class.
  *
  * Created:     7th November 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/synch/checkout_token.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::checkout_token class
+ * \brief [C++] Definition of the stlsoft::checkout_token class
  *  template
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_CHECKOUT_TOKEN_MAJOR     2
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_CHECKOUT_TOKEN_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_CHECKOUT_TOKEN_REVISION  5
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_CHECKOUT_TOKEN_EDIT      30
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_CHECKOUT_TOKEN_EDIT      31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     inetstl::inetstl_exception class
  *
  * Created:     25th April 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file inetstl/exception/inetstl_exception.hpp
  *
- * \brief [C++ only] Definition of the inetstl::inetstl_exception class
+ * \brief [C++] Definition of the inetstl::inetstl_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_MAJOR     4
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_MINOR     5
 # define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_REVISION  2
-# define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_EDIT      54
+# define INETSTL_VER_INETSTL_EXCEPTION_HPP_INETSTL_EXCEPTION_EDIT      55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

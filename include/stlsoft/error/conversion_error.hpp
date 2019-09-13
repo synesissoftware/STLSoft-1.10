@@ -4,7 +4,7 @@
  * Purpose:     Definition of the stlsoft::conversion_error exception class.
  *
  * Created:     15th December 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/error/conversion_error.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::conversion_error
+ * \brief [C++] Definition of the stlsoft::conversion_error
  *   exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_MAJOR       1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_MINOR       0
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_REVISION    10
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_EDIT        20
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_EDIT        21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

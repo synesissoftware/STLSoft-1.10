@@ -4,7 +4,7 @@
  * Purpose:     Contains the random_access_transforming_view_base class template.
  *
  * Created:     4th January 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/view/transforming/random_access_transforming_view_base.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::random_access_transforming_view_base
+ * \brief [C++] Definition of the stlsoft::random_access_transforming_view_base
  *   class template
  *   (\ref group__library__View "View" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_MINOR       1
 # define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_REVISION    2
-# define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_EDIT        14
+# define STLSOFT_VER_STLSOFT_VIEW_TRANSFORMING_HPP_RANDOM_ACCESS_TRANSFORMING_VIEW_BASE_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

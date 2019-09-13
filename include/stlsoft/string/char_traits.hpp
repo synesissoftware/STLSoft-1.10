@@ -4,7 +4,7 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     11th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/char_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::stlsoft_char_traits and
+ * \brief [C++] Definition of the stlsoft::stlsoft_char_traits and
  *  stlsoft::stlsoft_char_traits_safe traits classes
  *   (\ref group__library__String "String" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     85
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

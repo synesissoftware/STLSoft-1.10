@@ -5,7 +5,7 @@
  *              components.
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,12 +48,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MINOR    0
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_REVISION 2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT     3
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT     4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/handles/memory_mapped_file_view_handle.hpp
  *
- * \brief [C++ only] Definition of the platformstl::memory_mapped_file_view_handle type
+ * \brief [C++] Definition of the platformstl::memory_mapped_file_view_handle type
  *   (\ref group__library__FileSystem "File System" Library).
  *
  * When compiling on UNIX platforms, the platformstl::memory_mapped_file_view_handle

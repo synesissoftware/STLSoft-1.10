@@ -5,7 +5,7 @@
  *              class.
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,12 +48,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_MINOR       0
 # define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_REVISION    2
-# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT        3
+# define PLATFORMSTL_VER_PLATFORMSTL_EXCEPTION_HPP_FILE_NOT_FOUND_EXCEPTION_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/exception/file_not_found_exception.hpp
  *
- * \brief [C++ only] Discrimination of the
+ * \brief [C++] Discrimination of the
  *   platformstl::file_not_found_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */

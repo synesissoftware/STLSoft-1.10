@@ -5,7 +5,7 @@
  *              identifiers.
  *
  * Created:     11th April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/conversion/resource_id.hpp
  *
- * \brief [C++ only] Definition of the winstl::resource_id class
+ * \brief [C++] Definition of the winstl::resource_id class
  *   (\ref group__library__Conversion "Conversion" Library).
  */
 
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_MAJOR     2
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_MINOR     0
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_REVISION  4
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_EDIT      24
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_RESOURCE_ID_EDIT      25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

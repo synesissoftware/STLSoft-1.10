@@ -4,7 +4,7 @@
  * Purpose:     get_HKEY attribute shim.
  *
  * Created:     1st June 2007
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/shims/attribute/get_HKEY.hpp
  *
- * \brief [C++ only] Definition of stlsoft::get_HKEY attribute shim
+ * \brief [C++] Definition of stlsoft::get_HKEY attribute shim
  *   functions for Win32 types
  *   (\ref group__library__Shims_Attribute_Windows_HKEY "Window Attribute Shims").
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_MAJOR     1
 # define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_MINOR     0
 # define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_REVISION  5
-# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_EDIT      12
+# define WINSTL_VER_SHIMS_ATTRIBUTE_HPP_GET_HKEY_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

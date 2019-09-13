@@ -4,11 +4,11 @@
  * Purpose:     Forward declarations.
  *
  * Created:     18th December 2016
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2016, Matthew Wilson and Synesis Software
+ * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@
 
 /** \file winstl/control_panel/control_panel.fwd.hpp
  *
- * \brief [C++ only] Forward declarations of types from the
+ * \brief [C++] Forward declarations of types from the
  *   \ref group__library__Windows_ControlPanel "Windows Control Panel" Library.
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_MINOR    0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_REVISION 3
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_EDIT     5
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_CONTROL_PANEL_FWD_EDIT     6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

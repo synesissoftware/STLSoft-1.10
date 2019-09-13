@@ -4,7 +4,7 @@
  * Purpose:     Collection of the peers of a given window.
  *
  * Created:     11th July 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/window/zorder_sequences.hpp
  *
- * \brief [C++ only] Definition of the winstl::child_window_sequence and
+ * \brief [C++] Definition of the winstl::child_window_sequence and
  *   winstl::window_peer_sequence sequence classes
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_SEQUENCES_MAJOR    2
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_SEQUENCES_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_SEQUENCES_REVISION 7
-# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_SEQUENCES_EDIT     26
+# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_SEQUENCES_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

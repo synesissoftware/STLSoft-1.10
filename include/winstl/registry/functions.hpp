@@ -4,7 +4,7 @@
  * Purpose:     Registry functions.
  *
  * Created:     20th November 1995
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/registry/functions.hpp
  *
- * \brief [C++ only] Simple and discrete registry functions, used by
+ * \brief [C++] Simple and discrete registry functions, used by
  *   the \ref group__library__Windows_Registry "Windows Registry" Library.
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MINOR     1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_REVISION  7
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      59
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

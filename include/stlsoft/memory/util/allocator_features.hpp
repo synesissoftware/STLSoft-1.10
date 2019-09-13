@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/memory/util/allocator_features.hpp
  *
- * \brief [C++ only] Discrimination of allocator features
+ * \brief [C++] Discrimination of allocator features
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MAJOR       6
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MINOR       0
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_REVISION    2
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        50
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

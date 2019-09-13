@@ -4,7 +4,7 @@
  * Purpose:     Declares the Registry Library.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/registry/registry.hpp
  *
- * \brief [C++ only] Main include file for
+ * \brief [C++] Main include file for
  *   the \ref group__library__Windows_Registry "Windows Registry" Library.
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_MAJOR      1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_MINOR      0
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_REVISION   7
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_EDIT       65
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REGISTRY_EDIT       66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

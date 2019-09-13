@@ -4,7 +4,7 @@
  * Purpose:     Stream functions.
  *
  * Created:     22nd October 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/stream_functions.h
  *
- * \brief [C++ only; requires COM] COM stream functions
+ * \brief [C++; requires COM] COM stream functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MAJOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MINOR    1
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_REVISION 7
-# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     24
+# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

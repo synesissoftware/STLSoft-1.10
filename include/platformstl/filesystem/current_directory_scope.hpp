@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the current_directory_scope components.
  *
  * Created:     13th June 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/filesystem/current_directory_scope.hpp
  *
- * \brief [C++ only] Definition of the platformstl::basic_current_directory_scope
+ * \brief [C++] Definition of the platformstl::basic_current_directory_scope
  *  type
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -54,7 +54,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MINOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION    4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT        19
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

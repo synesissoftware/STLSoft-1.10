@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     24th August 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/window/window_traits.hpp
  *
- * \brief [C++ only] Definition of the winstl::window_traits traits class
+ * \brief [C++] Definition of the winstl::window_traits traits class
  *   template, and ANSI and Unicode specialisations thereof
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TRAITS_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TRAITS_MINOR    1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TRAITS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TRAITS_EDIT     42
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TRAITS_EDIT     43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

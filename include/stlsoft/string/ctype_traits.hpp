@@ -4,7 +4,7 @@
  * Purpose:     Traits for ctype functions.
  *
  * Created:     1st April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/ctype_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::ctype_traits traits class
+ * \brief [C++] Definition of the stlsoft::ctype_traits traits class
  *   (\ref group__library__String "String" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CTYPE_TRAITS_MAJOR     2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CTYPE_TRAITS_MINOR     0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CTYPE_TRAITS_REVISION  6
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CTYPE_TRAITS_EDIT      28
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CTYPE_TRAITS_EDIT      29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

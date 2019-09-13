@@ -4,7 +4,7 @@
  * Purpose:     Contains the stlsoft::ptr_fun calling convention-aware function adaptors.
  *
  * Created:     13th June 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/functional/function_pointer_adaptors.hpp
  *
- * \brief [C++ only] Function classes that adapt non-member functions (and
+ * \brief [C++] Function classes that adapt non-member functions (and
  *   handle different calling conventions)
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_FUNCTION_POINTER_ADAPTORS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_FUNCTION_POINTER_ADAPTORS_MINOR    2
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_FUNCTION_POINTER_ADAPTORS_REVISION 5
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_FUNCTION_POINTER_ADAPTORS_EDIT     70
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_FUNCTION_POINTER_ADAPTORS_EDIT     71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

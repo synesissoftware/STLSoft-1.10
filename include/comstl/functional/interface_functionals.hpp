@@ -4,7 +4,7 @@
  * Purpose:     Interface-specific predicates and functions.
  *
  * Created:     14th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/functional/interface_functionals.hpp
  *
- * \brief [C++ only] Function classes for manipulating interfaces pointers
+ * \brief [C++] Function classes for manipulating interfaces pointers
  *   (\ref group__library__Functional "Functional" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_MAJOR     4
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_MINOR     0
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_REVISION  7
-# define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_EDIT      78
+# define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_EDIT      79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

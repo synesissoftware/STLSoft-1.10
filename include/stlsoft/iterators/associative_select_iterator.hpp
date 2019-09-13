@@ -5,7 +5,7 @@
  *              underlying iterator in order to obtain the key/mapped type.
  *
  * Created:     28th January 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Manfred Ehrhart, for detecting issues with iterator
  *              member types and select_second().
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/iterators/associative_select_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::contiguous_diluter_iterator
+ * \brief [C++] Definition of the stlsoft::contiguous_diluter_iterator
  *   class template
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_MAJOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_MINOR    2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_REVISION 5
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_EDIT     37
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_ASSOCIATIVE_SELECT_ITERATOR_EDIT     38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

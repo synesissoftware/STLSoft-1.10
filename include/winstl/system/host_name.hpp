@@ -5,7 +5,7 @@
  *              the host name.
  *
  * Created:     5th November 2014
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/system/host_name.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_host_name class
+ * \brief [C++] Definition of the winstl::basic_host_name class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_MINOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        12
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOST_NAME_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

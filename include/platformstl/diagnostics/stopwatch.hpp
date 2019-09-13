@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the stopwatch components.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,12 +47,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR    3
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR    0
 # define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION 1
-# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     23
+# define PLATFORMSTL_VER_PLATFORMSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/diagnostics/stopwatch.hpp
  *
- * \brief [C++ only] Definition of the platformstl::stopwatch
+ * \brief [C++] Definition of the platformstl::stopwatch
  *  type
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  *

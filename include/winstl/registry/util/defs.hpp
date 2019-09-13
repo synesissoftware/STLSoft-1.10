@@ -4,7 +4,7 @@
  * Purpose:     Contains common type and feature discriminations for the Registry Library.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/registry/util/defs.hpp
  *
- * \brief [C++ only] Common type and feature discriminations for
+ * \brief [C++] Common type and feature discriminations for
  *   the \ref group__library__Windows_Registry "Windows Registry" Library.
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_DEFS_MAJOR     4
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_DEFS_MINOR     0
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_DEFS_REVISION  6
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_DEFS_EDIT      69
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_DEFS_EDIT      70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

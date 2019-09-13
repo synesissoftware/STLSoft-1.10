@@ -4,7 +4,7 @@
  * Purpose:     Contains the CArray_swap utility function.
  *
  * Created:     4th August 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file mfcstl/collections/carray_swap.hpp
  *
- * \brief [C++ only] Definition of the mfcstl::CArray_swap utility function
+ * \brief [C++] Definition of the mfcstl::CArray_swap utility function
  *   (\ref group__library__Collection "Collection" Library).
  */
 
@@ -52,7 +52,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_ARRAY_SWAP_MAJOR     2
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_ARRAY_SWAP_MINOR     0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_ARRAY_SWAP_REVISION  5
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_ARRAY_SWAP_EDIT      24
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_ARRAY_SWAP_EDIT      25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

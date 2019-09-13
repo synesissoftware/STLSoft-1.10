@@ -4,7 +4,7 @@
  * Purpose:     Contains macros for forward declaring enums.
  *
  * Created:     3rd November 2000
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/forward_enums.hpp
  *
- * \brief [C++ only] Macros for declaring and defining forward enums
+ * \brief [C++] Macros for declaring and defining forward enums
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_HPP_FORWARD_ENUM_MAJOR      3
 # define STLSOFT_VER_STLSOFT_HPP_FORWARD_ENUM_MINOR      0
 # define STLSOFT_VER_STLSOFT_HPP_FORWARD_ENUM_REVISION   5
-# define STLSOFT_VER_STLSOFT_HPP_FORWARD_ENUM_EDIT       54
+# define STLSOFT_VER_STLSOFT_HPP_FORWARD_ENUM_EDIT       55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

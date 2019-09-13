@@ -4,7 +4,7 @@
  * Purpose:     Enumerates clipboard formats.
  *
  * Created:     11th May 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Martin Moene for reporting the lack of iterator traits
  *              of the const_iterator nested class
@@ -44,7 +44,7 @@
 
 /** \file winstl/clipboard/clipboard_format_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::clipboard_format_sequence
+ * \brief [C++] Definition of the winstl::clipboard_format_sequence
  *  class
  *   (\ref group__library__Windows_Clipboard "Windows Clipboard" Library).
  */
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_MAJOR    4
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_MINOR    0
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_REVISION 9
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_EDIT     45
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_EDIT     46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

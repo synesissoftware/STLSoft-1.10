@@ -4,7 +4,7 @@
  * Purpose:     String function classes
  *
  * Created:     22nd April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/functionals.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::quoter and
+ * \brief [C++] Definition of the stlsoft::quoter and
  *  stlsoft::string_begins_with_function function class templates
  *   (\ref group__library__String "String" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MAJOR       2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MINOR       2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_REVISION    10
-# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        45
+# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

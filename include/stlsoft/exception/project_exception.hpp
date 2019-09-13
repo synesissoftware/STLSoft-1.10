@@ -4,7 +4,7 @@
  * Purpose:     Basic exception classes.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/error/project_exception.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::project_exception root
+ * \brief [C++] Definition of the stlsoft::project_exception root
  *   exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_EXCEPTION_MAJOR      6
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_EXCEPTION_MINOR      0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_EXCEPTION_REVISION   2
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_EXCEPTION_EDIT       58
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_PROJECT_EXCEPTION_EDIT       59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

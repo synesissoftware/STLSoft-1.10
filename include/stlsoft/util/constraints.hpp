@@ -4,7 +4,7 @@
  * Purpose:     Compile-time template constraints templates.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Peter Bannister for having the clear thinking to see the
  *              obvious (but only in hindsight) tactic of overloading the
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/util/constraints.hpp
  *
- * \brief [C++ only] Definition of compile-time template constraints
+ * \brief [C++] Definition of compile-time template constraints
  *   templates
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_MAJOR      5
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_REVISION   9
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_EDIT       109
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_EDIT       110
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

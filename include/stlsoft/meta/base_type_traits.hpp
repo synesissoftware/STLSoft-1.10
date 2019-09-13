@@ -4,7 +4,7 @@
  * Purpose:     type traits classes.
  *
  * Created:     24th August 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/base_type_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::base_type_traits component
+ * \brief [C++] Definition of the stlsoft::base_type_traits component
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_MINOR    2
 # define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_REVISION 5
-# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_EDIT     45
+# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_EDIT     46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

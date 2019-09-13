@@ -4,7 +4,7 @@
  * Purpose:     Cursor scoping class.
  *
  * Created:     4th May 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/window/setfocus_scope.hpp
  *
- * \brief [C++ only] Definition of the winstl::setfocus_scope class
+ * \brief [C++] Definition of the winstl::setfocus_scope class
  *   (\ref group__library__Windows_Window "Windows Window" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_SETFOCUS_SCOPE_MAJOR      4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_SETFOCUS_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_SETFOCUS_SCOPE_REVISION   5
-# define WINSTL_VER_WINSTL_WINDOW_HPP_SETFOCUS_SCOPE_EDIT       52
+# define WINSTL_VER_WINSTL_WINDOW_HPP_SETFOCUS_SCOPE_EDIT       53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Eraser iterator for associative containers.
  *
  * Created:     28th January 2005
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/iterator/associative_eraser_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::associative_eraser_iterator
+ * \brief [C++] Definition of the stlsoft::associative_eraser_iterator
  *   class template
  *   (\ref group__library__iterators "Iterators" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MAJOR      1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MINOR      3
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_REVISION   2
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       23
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Policies for spin mutexes.
  *
  * Created:     25th November 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/synch/spin_mutex_policies.hpp
  *
- * \brief [C++ only]
+ * \brief [C++]
  */
 
 #ifndef UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES
@@ -51,7 +51,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MAJOR      2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   4
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       15
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       16
 #endif /* !UNIXSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

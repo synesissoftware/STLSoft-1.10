@@ -4,7 +4,7 @@
  * Purpose:     Adapts associative containers into a sequence of their values.
  *
  * Created:     28th January 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/collections/associative_value_sequence.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::associative_value_sequence
+ * \brief [C++] Definition of the stlsoft::associative_value_sequence
  *   class template
  *   (\ref group__library__Collection "Collection" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_MAJOR       2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_REVISION    5
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_EDIT        36
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_EDIT        37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

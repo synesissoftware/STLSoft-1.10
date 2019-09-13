@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     12th May 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,12 +49,12 @@
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MAJOR    2
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MINOR    4
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_REVISION 2
-# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     56
+# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file wtlstl/wtlstl.hpp
  *
- * \brief [C++ only; requires WTL library] Root header for the
+ * \brief [C++; requires WTL library] Root header for the
  * \ref group__project__wtlstl "WTLSTL" project.
  */
 

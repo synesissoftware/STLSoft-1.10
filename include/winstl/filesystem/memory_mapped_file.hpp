@@ -4,7 +4,7 @@
  * Purpose:     Memory mapped file class.
  *
  * Created:     15th December 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for requesting multibyte / wide string
  *              ambivalence. To Joe Mariadassou for requesting swap().
@@ -44,7 +44,7 @@
 
 /** \file winstl/filesystem/memory_mapped_file.hpp
  *
- * \brief [C++ only] Definition of the winstl::memory_mapped_file class
+ * \brief [C++] Definition of the winstl::memory_mapped_file class
  *   (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR     12
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      123
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -47,7 +47,7 @@
 
 /** \file unixstl/filesystem/filesystem_traits.hpp
  *
- * \brief [C++ only] Definition of the unixstl::filesystem_traits traits
+ * \brief [C++] Definition of the unixstl::filesystem_traits traits
  *  class
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -59,7 +59,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  16
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      151
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      152
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

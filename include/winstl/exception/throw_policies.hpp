@@ -4,7 +4,7 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/exception/throw_policies.hpp
  *
- * \brief [C++ only] Definition of the winstl::windows_exception_policy and
+ * \brief [C++] Definition of the winstl::windows_exception_policy and
  * winstl::resource_exception_policy exception policy classes
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR       5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR       1
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION    3
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        75
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT        76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

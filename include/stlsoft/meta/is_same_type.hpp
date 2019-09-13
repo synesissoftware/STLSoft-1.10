@@ -4,7 +4,7 @@
  * Purpose:     is_same_type class.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Pablo Aguilar for providing the basis for the version that
  *              works for the Borland compiler.
@@ -46,7 +46,7 @@
 
 /** \file stlsoft/meta/is_same_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::is_same_type meta class
+ * \brief [C++] Definition of the stlsoft::is_same_type meta class
  *  template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_SAME_TYPE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_SAME_TYPE_MINOR       4
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_SAME_TYPE_REVISION    6
-# define STLSOFT_VER_STLSOFT_META_HPP_IS_SAME_TYPE_EDIT        131
+# define STLSOFT_VER_STLSOFT_META_HPP_IS_SAME_TYPE_EDIT        132
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

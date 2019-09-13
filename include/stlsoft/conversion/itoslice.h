@@ -4,7 +4,7 @@
  * Purpose:     integer to string slice conversions.
  *
  * Created:     18th December 2016
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/itoslice.h
  *
- * \brief [C++ only] integer to slice conversion
+ * \brief [C++] integer to slice conversion
  *   function suite
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_MINOR    0
 # define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_REVISION 1
-# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_EDIT     4
+# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_EDIT     5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

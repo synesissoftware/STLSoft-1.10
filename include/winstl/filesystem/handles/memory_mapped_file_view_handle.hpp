@@ -5,7 +5,7 @@
  *              Windows memory mapped file view handles.
  *
  * Created:     30th August 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/filesystem/handles/memory_mapped_file_view_handle.hpp
  *
- * \brief [C++ only] Definition of the winstl::memory_mapped_file_view_handle class
+ * \brief [C++] Definition of the winstl::memory_mapped_file_view_handle class
  *   template (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MAJOR      1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MINOR      0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       10
+# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     26th June 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/security/acl_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::acl_sequence class
+ * \brief [C++] Definition of the winstl::acl_sequence class
  *   (\ref group__library__Security "Security" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MAJOR      4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MINOR      0
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_REVISION   6
-# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       42
+# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

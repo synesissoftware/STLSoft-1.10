@@ -4,7 +4,7 @@
  * Purpose:     Extensions to standard algorithms.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/std/ext.hpp
  *
- * \brief [C++ only] Extensions to standard algorithms
+ * \brief [C++] Extensions to standard algorithms
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_MINOR       2
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_REVISION    9
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        81
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_EXT_EDIT        82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

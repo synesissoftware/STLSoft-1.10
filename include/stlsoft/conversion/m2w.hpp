@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     27th October 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/m2w.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::wide2multibyte class
+ * \brief [C++] Definition of the stlsoft::wide2multibyte class
  *  template
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_MAJOR       1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_MINOR       0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_REVISION    3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_EDIT        9
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_M2W_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

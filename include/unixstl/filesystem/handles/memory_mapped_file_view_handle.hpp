@@ -5,11 +5,11 @@
  *              UNIX memory mapped file view handles.
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@
 
 /** \file unixstl/filesystem/handles/memory_mapped_file_view_handle.hpp
  *
- * \brief [C++ only] Definition of the unixstl::memory_mapped_file_view_handle class
+ * \brief [C++] Definition of the unixstl::memory_mapped_file_view_handle class
  *   template (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MAJOR      1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_REVISION   6
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       10
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

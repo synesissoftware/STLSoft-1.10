@@ -5,7 +5,7 @@
  *              template
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/exception/util/status_code_propagating_exception_base.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::status_code_propagating_exception_base
+ * \brief [C++] Definition of the stlsoft::status_code_propagating_exception_base
  *   class template
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_STATUS_CODE_PROPAGATING_EXCEPTION_BASE_MAJOR      6
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_STATUS_CODE_PROPAGATING_EXCEPTION_BASE_MINOR      0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_STATUS_CODE_PROPAGATING_EXCEPTION_BASE_REVISION   1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_STATUS_CODE_PROPAGATING_EXCEPTION_BASE_EDIT       77
+# define STLSOFT_VER_STLSOFT_EXCEPTION_UTIL_HPP_STATUS_CODE_PROPAGATING_EXCEPTION_BASE_EDIT       78
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

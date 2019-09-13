@@ -5,7 +5,7 @@
  *              function template.
  *
  * Created:     29th October 2016
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/conversion/integer_to_string/integer_to_zeropadded_decimal_string.hpp
  *
- * \brief [C++ only] Definitionn of stlsoft::integer_to_zeropadded_decimal_string()
+ * \brief [C++] Definitionn of stlsoft::integer_to_zeropadded_decimal_string()
  *   function template
  *  (\ref group__library__Conversion "Conversion" Library.)
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_ZEROPADDED_DECIMAL_STRING_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_ZEROPADDED_DECIMAL_STRING_MINOR    0
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_ZEROPADDED_DECIMAL_STRING_REVISION 2
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_ZEROPADDED_DECIMAL_STRING_EDIT     5
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_ZEROPADDED_DECIMAL_STRING_EDIT     6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

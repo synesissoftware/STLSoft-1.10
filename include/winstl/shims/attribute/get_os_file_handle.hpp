@@ -5,7 +5,7 @@
  *              operating system-specific file handles.
  *
  * Created:     27th August 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/shims/attribute/get_os_file_handle.hpp
  *
- * \brief [C++ only] Definition of stlsoft::get_os_file_handle attribute shim
+ * \brief [C++] Definition of stlsoft::get_os_file_handle attribute shim
  *   functions for Win32 file handle types
  *   (\ref group__library__Shims_Attribute_OsFileHandle "Operating-system Specific File Handle Attribute Shims").
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_OS_FILE_HANDLE_MAJOR     1
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_OS_FILE_HANDLE_MINOR     0
 # define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_OS_FILE_HANDLE_REVISION  4
-# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_OS_FILE_HANDLE_EDIT      6
+# define WINSTL_VER_WINSTL_SHIMS_ATTRIBUTE_HPP_GET_OS_FILE_HANDLE_EDIT      7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

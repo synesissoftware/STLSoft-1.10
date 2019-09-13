@@ -5,7 +5,7 @@
  *              through multiple IDispatch interfaces visible to script clients.
  *
  * Created:     15th May 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 
 /** \file atlstl/automation/multiple_dispatch.hpp
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *  atlstl::IDispatchImpl2 and atlstl::IDispatchImpl3
  *  class templates, which make the methods and properties exhibited through
  *  multiple IDispatch interfaces visible to scripting clients
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_MAJOR      2
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_MINOR      1
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_REVISION   5
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_EDIT       25
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

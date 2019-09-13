@@ -4,7 +4,7 @@
  * Purpose:     Basic functionals.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/functional/noop.hpp
  *
- * \brief [C++ only] Defines the stlsoft::noop function class
+ * \brief [C++] Defines the stlsoft::noop function class
  *   (\ref group__library__Functional "Functional" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_MAJOR      3
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_MINOR      0
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_REVISION   6
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_EDIT       56
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_NOOP_EDIT       57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

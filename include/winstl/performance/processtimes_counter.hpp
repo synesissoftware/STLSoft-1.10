@@ -4,7 +4,7 @@
  * Purpose:     WinSTL process-time performance counter class.
  *
  * Created:     22nd March 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/performance/processtimes_counter.hpp
  *
- * \brief [C++ only] Backwards-compatible file defining the typedef
+ * \brief [C++] Backwards-compatible file defining the typedef
  *  <code>winstl::processtimes_counter</code>
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MAJOR       5
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MINOR       0
 # define WINSTL_VER_WINSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_REVISION    2
-# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT        64
+# define WINSTL_VER_WINSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT        65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

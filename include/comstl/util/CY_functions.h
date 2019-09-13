@@ -4,7 +4,7 @@
  * Purpose:     CY helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/CY_functions.h
  *
- * \brief [C++ only; requires COM] CY helper functions
+ * \brief [C++; requires COM] CY helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        12
+# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -166,7 +166,7 @@ namespace comstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Compares two CY structures
+/** [C++] Compares two CY structures
  *
  * \ingroup group__library__COM_Utility
  *
@@ -186,7 +186,7 @@ CY_compare(
     return comstl_C_CY_compare(lhs, rhs);
 }
 
-/** [C++ only] Compares two CY structures
+/** [C++] Compares two CY structures
  *
  * \ingroup group__library__COM_Utility
  *

@@ -4,7 +4,7 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file acestl/reactor/custom_event_handler.hpp
  *
- * \brief [C++ only] Definition of the acestl::custom_event_handler
+ * \brief [C++] Definition of the acestl::custom_event_handler
  *   class template
  *   (\ref group__library__ACE_Reactor "ACE Reactor" Library).
  */
@@ -53,7 +53,7 @@
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  9
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      34
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     String utility functions for manipulating case.
  *
  * Created:     1st April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/case_functions.hpp
  *
- * \brief [C++ only] String utility functions for manipulating case
+ * \brief [C++] String utility functions for manipulating case
  *   (\ref group__library__String "String" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CASE_FUNCTIONS_MAJOR       2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CASE_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CASE_FUNCTIONS_REVISION    5
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CASE_FUNCTIONS_EDIT        27
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CASE_FUNCTIONS_EDIT        28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

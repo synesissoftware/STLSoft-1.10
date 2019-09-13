@@ -4,7 +4,7 @@
  * Purpose:     Enumerator classes.
  *
  * Created:     11th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -40,7 +40,7 @@
 
 
 /** \file atlstl/automation/enumerators.hpp
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *  atlstl::copy_enumerator class template (and its supporting components),
  *  which provides a copying alternative to the stock <code>CComEnum</code>
  *  ATL component that may be initialised from any range and whose contents
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_MAJOR    4
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_MINOR    0
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_REVISION 9
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_EDIT     78
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 ////////////////////////////////////////////////////////////////////////////

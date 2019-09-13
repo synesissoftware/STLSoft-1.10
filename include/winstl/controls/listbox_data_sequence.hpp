@@ -4,7 +4,7 @@
  * Purpose:     Contains the listbox_data_sequence class.
  *
  * Created:     16th March 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/controls/listbox_data_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::listbox_data_sequence class
+ * \brief [C++] Definition of the winstl::listbox_data_sequence class
  *  template
  *   (\ref group__library__Windows_Control "Windows Control" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_MAJOR     1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_MINOR     2
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_REVISION  8
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_EDIT      19
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_SEQUENCE_EDIT      20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

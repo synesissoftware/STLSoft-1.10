@@ -4,7 +4,7 @@
  * Purpose:     .
  *
  * Created:     2nd February 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file mfcstl/util/memory_exception_translation_policies.hpp
  *
- * \brief [C++ only] Definition of the mfcstl::bad_alloc_throwing_policy
+ * \brief [C++] Definition of the mfcstl::bad_alloc_throwing_policy
  *   and mfcstl::CMemoryException_throwing_policy exception translation
  *   policy classes
  *   (\ref group__library__Utility "Utility" Library).
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES_MAJOR     1
 # define MFCSTL_VER_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES_MINOR     0
 # define MFCSTL_VER_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES_REVISION  9
-# define MFCSTL_VER_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES_EDIT      22
+# define MFCSTL_VER_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES_EDIT      23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

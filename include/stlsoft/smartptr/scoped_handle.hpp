@@ -5,7 +5,7 @@
  *              resource types.
  *
  * Created:     1st November 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Adi Shavit, for requesting the indirect functionality
  *
@@ -44,7 +44,7 @@
 
 /** \file stlsoft/smartptr/scoped_handle.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::scoped_handle smart
+ * \brief [C++] Definition of the stlsoft::scoped_handle smart
  *   pointer class template
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
  */
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MAJOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 2
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     679
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     680
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@
  *              Synchronisation library.
  *
  * Created:     9th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/synch/synchfwd.hpp
  *
- * \brief [C++ only] Definition of the winstl::event class
+ * \brief [C++] Definition of the winstl::event class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SYNCHFWD_MAJOR     1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SYNCHFWD_MINOR     1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SYNCHFWD_REVISION  2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SYNCHFWD_EDIT      14
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SYNCHFWD_EDIT      15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

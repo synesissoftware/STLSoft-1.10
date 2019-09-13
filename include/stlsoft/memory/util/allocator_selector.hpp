@@ -4,7 +4,7 @@
  * Purpose:     Selects the most appropriate allocator.
  *
  * Created:     20th August 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/memory/util/allocator_selector.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::allocator_selector class
+ * \brief [C++] Definition of the stlsoft::allocator_selector class
  *   (\ref group__library__Memory "Memory" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR_MAJOR       3
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR_MINOR       0
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR_REVISION    5
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR_EDIT        33
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR_EDIT        34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

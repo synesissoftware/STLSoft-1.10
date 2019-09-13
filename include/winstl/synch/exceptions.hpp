@@ -4,7 +4,7 @@
  * Purpose:     Synchronisation library exception(s).
  *
  * Created:     30th May 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -40,7 +40,7 @@
 
 /** \file winstl/synch/exceptions.hpp
  *
- * \brief [C++ only] Definition of winstl::synchronisation_exception class
+ * \brief [C++] Definition of winstl::synchronisation_exception class
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -51,7 +51,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_MAJOR     2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_MINOR     5
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_REVISION  2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_EDIT      27
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EXCEPTIONS_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@
  *              non_mutating_operator_adaptor classes.
  *
  * Created:     4th November 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file rangelib/operator_adaptors.hpp
  *
- * \brief [C++ only] Definition of the rangelib::mutating_operator_adaptor
+ * \brief [C++] Definition of the rangelib::mutating_operator_adaptor
  *   and rangelib::non_mutating_operator_adaptor classes, which are used to
  *   bolt in Range operators to classes that implement the range methods
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
@@ -55,7 +55,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MAJOR       1
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MINOR       5
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_REVISION    8
-# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        41
+# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

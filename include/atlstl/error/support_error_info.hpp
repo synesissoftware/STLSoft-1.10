@@ -4,7 +4,7 @@
  * Purpose:     SupportErrorInfoImpl class.
  *
  * Created:     17th April 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file atlstl/error/support_error_info.hpp
  *
- * \brief [C++ only] Definition of the atlstl::SupportErrorInfoImpl,
+ * \brief [C++] Definition of the atlstl::SupportErrorInfoImpl,
  *   atlstl::SupportErrorInfoImpl2, atlstl::SupportErrorInfoImpl3
  *   atlstl::SupportErrorInfoImpl4 and atlstl::SupportErrorInfoImpl5
  *   class templates
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_ERROR_HPP_SUPPORT_ERROR_INFO_MAJOR     5
 # define ATLSTL_VER_ATLSTL_ERROR_HPP_SUPPORT_ERROR_INFO_MINOR     0
 # define ATLSTL_VER_ATLSTL_ERROR_HPP_SUPPORT_ERROR_INFO_REVISION  4
-# define ATLSTL_VER_ATLSTL_ERROR_HPP_SUPPORT_ERROR_INFO_EDIT      74
+# define ATLSTL_VER_ATLSTL_ERROR_HPP_SUPPORT_ERROR_INFO_EDIT      75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

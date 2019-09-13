@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the filesystem_traits components.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/filesystem/filesystem_traits.hpp
  *
- * \brief [C++ only] Definition of the platformstl::filesystem_traits
+ * \brief [C++] Definition of the platformstl::filesystem_traits
  *  type
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -54,7 +54,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  6
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      29
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

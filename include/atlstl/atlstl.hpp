@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,12 +49,12 @@
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     7
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  1
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      119
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      120
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
  *
- * \brief [C++ only; requires ATL library] Root header for the
+ * \brief [C++; requires ATL library] Root header for the
  * \ref group__project__atlstl "ATLSTL" project.
  */
 

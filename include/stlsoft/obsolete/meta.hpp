@@ -4,7 +4,7 @@
  * Purpose:     Meta programming primitives.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/obsolete/meta.hpp
  *
- * \brief [C++ only; OBSOLETE] Contains obsolete Meta programming primitives
+ * \brief [C++; OBSOLETE] Contains obsolete Meta programming primitives
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_MAJOR    4
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_MINOR    0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_REVISION 6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_EDIT     141
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_META_EDIT     142
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

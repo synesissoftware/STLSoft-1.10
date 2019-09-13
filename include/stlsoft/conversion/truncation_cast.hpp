@@ -4,7 +4,7 @@
  * Purpose:     Runtime checking for numeric conversions.
  *
  * Created:     10th August 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/truncation_cast.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::truncation_cast cast class
+ * \brief [C++] Definition of the stlsoft::truncation_cast cast class
  *   (\ref group__library__Conversion "Conversion" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST_MAJOR      2
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST_MINOR      0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST_REVISION   5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST_EDIT       54
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST_EDIT       55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

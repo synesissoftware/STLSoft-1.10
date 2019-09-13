@@ -4,7 +4,7 @@
  * Purpose:     Definition of the \c contract_violation exception class.
  *
  * Created:     17th October 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/error/contract_violation.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::contract_violation
+ * \brief [C++] Definition of the stlsoft::contract_violation
  *   exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONTRACT_VIOLATION_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONTRACT_VIOLATION_MINOR     0
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONTRACT_VIOLATION_REVISION  6
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONTRACT_VIOLATION_EDIT      30
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONTRACT_VIOLATION_EDIT      31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

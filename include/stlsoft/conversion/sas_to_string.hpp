@@ -4,7 +4,7 @@
  * Purpose:     String creation functions (from String Access Shims)
  *
  * Created:     25th December 2018
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/sas_to_string.hpp
  *
- * \brief [C++ only] String creation functions (from String Access Shims)
+ * \brief [C++] String creation functions (from String Access Shims)
  *   (\ref group__library__String "String" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MAJOR    1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MINOR    0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_REVISION 1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_EDIT     2
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_EDIT     3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

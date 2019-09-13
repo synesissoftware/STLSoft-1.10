@@ -4,7 +4,7 @@
  * Purpose:     access_exception class
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/exception/access_exception.hpp
  *
- * \brief [C++ only] Definition of the winstl::access_exception class
+ * \brief [C++] Definition of the winstl::access_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MAJOR     5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_MINOR     0
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_REVISION  2
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT      73
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_ACCESS_EXCEPTION_EDIT      74
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

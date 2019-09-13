@@ -4,7 +4,7 @@
  * Purpose:     Thread marshalling functions.
  *
  * Created:     25th May 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/thread_marshal.hpp
  *
- * \brief [C++ only; requires COM] Thread marshalling functions
+ * \brief [C++; requires COM] Thread marshalling functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_THREAD_MARSHAL_MAJOR    4
 # define COMSTL_VER_COMSTL_UTIL_HPP_THREAD_MARSHAL_MINOR    0
 # define COMSTL_VER_COMSTL_UTIL_HPP_THREAD_MARSHAL_REVISION 7
-# define COMSTL_VER_COMSTL_UTIL_HPP_THREAD_MARSHAL_EDIT     67
+# define COMSTL_VER_COMSTL_UTIL_HPP_THREAD_MARSHAL_EDIT     68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

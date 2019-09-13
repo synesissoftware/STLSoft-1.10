@@ -4,7 +4,7 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/dl/dl_call.hpp
  *
- * \brief [C++ only] Definition of the unixstl::dl_call() function suite
+ * \brief [C++] Definition of the unixstl::dl_call() function suite
  *   (\ref group__library__DL "DL" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_MAJOR       2
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_MINOR       3
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_REVISION    12
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_EDIT        53
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_DL_CALL_EDIT        54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

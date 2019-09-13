@@ -5,7 +5,7 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
@@ -44,7 +44,7 @@
 
 /** \file winstl/system/temporary_file_name.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_temporary_file_name class
+ * \brief [C++] Definition of the winstl::basic_temporary_file_name class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      18
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

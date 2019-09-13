@@ -4,7 +4,7 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/exception/throw_policies.hpp
  *
- * \brief [C++ only] Definition of the unixstl::unix_exception_policy
+ * \brief [C++] Definition of the unixstl::unix_exception_policy
  *   exception policy class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_MINOR     2
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_REVISION  10
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      61
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_THROW_POLICIES_EDIT      62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

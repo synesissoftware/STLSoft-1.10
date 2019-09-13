@@ -4,7 +4,7 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/conversion/number/grouping_functions.hpp
  *
- * \brief [C++ only] Definition of the winstl::format_thousands() formatting
+ * \brief [C++] Definition of the winstl::format_thousands() formatting
  *   function
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        23
+# define WINSTL_VER_WINSTL_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

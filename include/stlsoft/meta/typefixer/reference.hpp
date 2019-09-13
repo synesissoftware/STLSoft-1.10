@@ -4,7 +4,7 @@
  * Purpose:     Definition of the fixer_reference and fixer_const_reference types.
  *
  * Created:     9th February 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/typefixer/reference.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::typefixer::reference
+ * \brief [C++] Definition of the stlsoft::typefixer::reference
  *   typefixer class template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_REFERENCE_MAJOR     4
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_REFERENCE_MINOR     0
 # define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_REFERENCE_REVISION  4
-# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_REFERENCE_EDIT      39
+# define STLSOFT_VER_STLSOFT_META_TYPEFIXER_HPP_REFERENCE_EDIT      40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

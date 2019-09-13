@@ -4,7 +4,7 @@
  * Purpose:     Definition of the macro dimensionof().
  *
  * Created:     10th February 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/dimensionof.h
  *
- * \brief [C++ only] Definition of the macro dimensionof()
+ * \brief [C++] Definition of the macro dimensionof()
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_H_DIMENSIONOF_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_H_DIMENSIONOF_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_H_DIMENSIONOF_REVISION    7
-# define STLSOFT_VER_STLSOFT_UTIL_H_DIMENSIONOF_EDIT        15
+# define STLSOFT_VER_STLSOFT_UTIL_H_DIMENSIONOF_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

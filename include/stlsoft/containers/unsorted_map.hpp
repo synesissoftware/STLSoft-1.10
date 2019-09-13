@@ -4,7 +4,7 @@
  * Purpose:     An associative container that maintains the order of element insertion.
  *
  * Created:     12th February 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/containers/unsorted_map.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::unsorted_map container
+ * \brief [C++] Definition of the stlsoft::unsorted_map container
  *   class template
  *   (\ref group__library__Container "Container" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_MAJOR      1
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_MINOR      3
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_REVISION   7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_EDIT       31
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_EDIT       32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

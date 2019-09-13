@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -56,7 +56,7 @@
 
 /** \file winstl/registry/reg_value.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_reg_value class
+ * \brief [C++] Definition of the winstl::basic_reg_value class
  *   template
  *   (\ref group__library__Windows_Registry "Windows Registry" Library).
  */
@@ -68,7 +68,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      124
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      125
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

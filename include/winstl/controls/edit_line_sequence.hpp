@@ -4,7 +4,7 @@
  * Purpose:     Contains the edit_line_sequence class.
  *
  * Created:     23rd March 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/controls/edit_line_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::edit_line_sequence class
+ * \brief [C++] Definition of the winstl::edit_line_sequence class
  *  template
  *   (\ref group__library__Windows_Control "Windows Control" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_MINOR    0
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_REVISION 12
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_EDIT     26
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

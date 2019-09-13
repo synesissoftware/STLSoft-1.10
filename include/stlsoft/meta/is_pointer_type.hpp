@@ -4,7 +4,7 @@
  * Purpose:     Tests whether a type is a pointer.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/is_pointer_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::is_pointer_type meta class
+ * \brief [C++] Definition of the stlsoft::is_pointer_type meta class
  *  template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_POINTER_TYPE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_POINTER_TYPE_MINOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_POINTER_TYPE_REVISION    4
-# define STLSOFT_VER_STLSOFT_META_HPP_IS_POINTER_TYPE_EDIT        128
+# define STLSOFT_VER_STLSOFT_META_HPP_IS_POINTER_TYPE_EDIT        129
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Contains the pair template.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/pair.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::pair class template
+ * \brief [C++] Definition of the stlsoft::pair class template
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PAIR_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PAIR_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PAIR_REVISION  7
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_PAIR_EDIT      64
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_PAIR_EDIT      65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

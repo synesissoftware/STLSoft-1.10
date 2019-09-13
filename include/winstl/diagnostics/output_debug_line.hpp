@@ -4,7 +4,7 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/diagnostics/output_debug_line.hpp
  *
- * \brief [C++ only] Functions to write lines to the Windows debugger.
+ * \brief [C++] Functions to write lines to the Windows debugger.
  *   (\ref group__library__Diagnostic "Diagnostics" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MAJOR      2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_REVISION   1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       10
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

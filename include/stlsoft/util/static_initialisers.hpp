@@ -4,7 +4,7 @@
  * Purpose:     Initialiser classes for the STLSoft libraries.
  *
  * Created:     17th February 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/static_initialisers.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::static_initialiser,
+ * \brief [C++] Definition of the stlsoft::static_initialiser,
  *   stlsoft::api_constructor classes, and the stlsoft::class_constructor
  *   class template
  *   (\ref group__library__Utility "Utility" Library).
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STATIC_INITIALISERS_MAJOR     4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STATIC_INITIALISERS_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_STATIC_INITIALISERS_REVISION  5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_STATIC_INITIALISERS_EDIT      226
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_STATIC_INITIALISERS_EDIT      227
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

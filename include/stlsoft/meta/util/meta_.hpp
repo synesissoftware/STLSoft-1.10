@@ -4,7 +4,7 @@
  * Purpose:     Basic meta programming constructs.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/util/meta_.hpp
  *
- * \brief [C++ only] Definition of basic meta programming constructs
+ * \brief [C++] Definition of basic meta programming constructs
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_META_UTIL_HPP_META__MAJOR      4
 # define STLSOFT_VER_STLSOFT_META_UTIL_HPP_META__MINOR      1
 # define STLSOFT_VER_STLSOFT_META_UTIL_HPP_META__REVISION   4
-# define STLSOFT_VER_STLSOFT_META_UTIL_HPP_META__EDIT       136
+# define STLSOFT_VER_STLSOFT_META_UTIL_HPP_META__EDIT       137
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

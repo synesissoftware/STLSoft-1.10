@@ -6,7 +6,7 @@
  *              page size.
  *
  * Created:     7th February 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -43,7 +43,7 @@
 
 /** \file winstl/system/system_info.hpp
  *
- * \brief [C++ only] Definition of the winstl::system_info class
+ * \brief [C++] Definition of the winstl::system_info class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_MAJOR     4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_MINOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_REVISION  8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_EDIT      72
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_INFO_EDIT      73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Cláudio Albuquerque for suggesting the inclusion of
  *              atlstr.h.
@@ -53,12 +53,12 @@
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MAJOR     3
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MINOR     5
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_REVISION  5
-# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      103
+# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      104
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file mfcstl/mfcstl.hpp
  *
- * \brief [C++ only; requires MFC library] Root header for the
+ * \brief [C++; requires MFC library] Root header for the
  * \ref group__project__mfcstl "MFCSTL" project.
  */
 

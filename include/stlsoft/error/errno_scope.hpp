@@ -4,7 +4,7 @@
  * Purpose:     errno scoping class.
  *
  * Created:     28th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/error/errno_scope.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::errno_scope class
+ * \brief [C++] Definition of the stlsoft::errno_scope class
  *   (\ref group__library__error "Error" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_MAJOR      3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_REVISION   7
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_EDIT       49
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERRNO_SCOPE_EDIT       50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Bit XOR functions
  *
  * Created:     2nd June 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/bits/xor_functions.h
  *
- * \brief [C++ only] Functions to calculate XOR
+ * \brief [C++] Functions to calculate XOR
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_EDIT     10
+# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_XOR_FUNCTIONS_EDIT     11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

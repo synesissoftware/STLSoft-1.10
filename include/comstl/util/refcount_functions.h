@@ -4,7 +4,7 @@
  * Purpose:     Reference-counting helper functions.
  *
  * Created:     25th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/refcount_functions.h
  *
- * \brief [C++ only; requires COM] Reference-counting helper functions
+ * \brief [C++; requires COM] Reference-counting helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MAJOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MINOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       68
+# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

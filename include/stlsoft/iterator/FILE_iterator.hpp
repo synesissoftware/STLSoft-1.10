@@ -4,7 +4,7 @@
  * Purpose:     FILE* output iterator.
  *
  * Created:     21st April 2009
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/iterator/FILE_iterator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::FILE_iterator class
+ * \brief [C++] Definition of the stlsoft::FILE_iterator class
  *   template
  *   (\ref group__library__iterators "Iterators" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_MAJOR       1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_MINOR       0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_REVISION    8
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_EDIT        13
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

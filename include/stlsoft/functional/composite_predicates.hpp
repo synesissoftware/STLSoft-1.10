@@ -4,7 +4,7 @@
  * Purpose:     Definition of composite predicates function templates.
  *
  * Created:     27th March 2007
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/functional/composite_predicates.hpp
  *
- * \brief [C++ only] Definition of the composite predicates function templates
+ * \brief [C++] Definition of the composite predicates function templates
  *   (\ref group__library__Functional "Functional" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_COMPOSITE_PREDICATES_MAJOR      1
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_COMPOSITE_PREDICATES_MINOR      1
 # define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_COMPOSITE_PREDICATES_REVISION   5
-# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_COMPOSITE_PREDICATES_EDIT       13
+# define STLSOFT_VER_STLSOFT_FUNCTIONAL_HPP_COMPOSITE_PREDICATES_EDIT       14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

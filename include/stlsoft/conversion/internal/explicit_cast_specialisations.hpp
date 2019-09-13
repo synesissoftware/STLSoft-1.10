@@ -4,7 +4,7 @@
  * Purpose:     Specialisations of explicit_cast
  *
  * Created:     13th August 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/internal/explicit_cast_specialisations.hpp
  *
- * \brief [C++ only] Explicit specialisations of stlsoft::explicit_cast
+ * \brief [C++] Explicit specialisations of stlsoft::explicit_cast
  *   (\ref group__library__Conversion "Conversion" Library).
  */
 
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTERNAL_HPP_EXPLICIT_CAST_SPECIALISATIONS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTERNAL_HPP_EXPLICIT_CAST_SPECIALISATIONS_MINOR    0
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTERNAL_HPP_EXPLICIT_CAST_SPECIALISATIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTERNAL_HPP_EXPLICIT_CAST_SPECIALISATIONS_EDIT     26
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTERNAL_HPP_EXPLICIT_CAST_SPECIALISATIONS_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

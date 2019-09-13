@@ -4,7 +4,7 @@
  * Purpose:     comstl::comstl_exception class
  *
  * Created:     8th December 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/exception/comstl_exception.hpp
  *
- * \brief [C++ only] Definition of the comstl::comstl_exception
+ * \brief [C++] Definition of the comstl::comstl_exception
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_COMSTL_EXCEPTION_MAJOR     3
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_COMSTL_EXCEPTION_MINOR     2
 # define COMSTL_VER_COMSTL_EXCEPTION_HPP_COMSTL_EXCEPTION_REVISION  2
-# define COMSTL_VER_COMSTL_EXCEPTION_HPP_COMSTL_EXCEPTION_EDIT      57
+# define COMSTL_VER_COMSTL_EXCEPTION_HPP_COMSTL_EXCEPTION_EDIT      58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

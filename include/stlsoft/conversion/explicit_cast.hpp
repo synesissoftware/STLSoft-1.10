@@ -4,7 +4,7 @@
  * Purpose:     Class to provide explicit cast operators.
  *
  * Created:     20th September 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/conversion/explicit_cast.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::explicit_cast cast class
+ * \brief [C++] Definition of the stlsoft::explicit_cast cast class
  *   (\ref group__library__Conversion "Conversion" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_EXPLICIT_CAST_MAJOR     4
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_EXPLICIT_CAST_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_EXPLICIT_CAST_REVISION  6
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_EXPLICIT_CAST_EDIT      47
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_EXPLICIT_CAST_EDIT      48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing version information.
  *
  * Created:     16th February 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/system/version_info.hpp
  *
- * \brief [C++ only] Definition of the winstl::version_info class
+ * \brief [C++] Definition of the winstl::version_info class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MAJOR    5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 14
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     147
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     148
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

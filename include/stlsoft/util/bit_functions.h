@@ -4,7 +4,7 @@
  * Purpose:     Functions to manipulate bit patterns.
  *
  * Created:     2nd June 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/bit_functions.h
  *
- * \brief [C++ only] Functions to manipulate bit patterns
+ * \brief [C++] Functions to manipulate bit patterns
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_REVISION 2
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_EDIT     9
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_BIT_FUNCTIONS_EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

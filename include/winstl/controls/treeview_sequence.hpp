@@ -4,7 +4,7 @@
  * Purpose:     Contains the treeview sequence classes.
  *
  * Created:     1st December 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/controls/treeview_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::treeview_child_sequence,
+ * \brief [C++] Definition of the winstl::treeview_child_sequence,
  *  winstl::treeview_peer_sequence and winstl::treeview_visible_sequence
  *  classes, and their supporting types
  *   (\ref group__library__Windows_Control "Windows Control" Library).
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_TREEVIEW_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_TREEVIEW_SEQUENCE_MINOR     0
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_TREEVIEW_SEQUENCE_REVISION  12
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_TREEVIEW_SEQUENCE_EDIT      84
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_TREEVIEW_SEQUENCE_EDIT      85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

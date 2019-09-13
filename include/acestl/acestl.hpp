@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th September 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -48,12 +48,12 @@
 # define ACESTL_VER_ACESTL_HPP_ACESTL_MAJOR     1
 # define ACESTL_VER_ACESTL_HPP_ACESTL_MINOR     8
 # define ACESTL_VER_ACESTL_HPP_ACESTL_REVISION  1
-# define ACESTL_VER_ACESTL_HPP_ACESTL_EDIT      50
+# define ACESTL_VER_ACESTL_HPP_ACESTL_EDIT      51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file acestl/acestl.hpp
  *
- * \brief [C++ only] Root header for the
+ * \brief [C++] Root header for the
  * \ref group__project__acestl "ACESTL" project.
  */
 

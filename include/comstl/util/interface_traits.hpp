@@ -4,7 +4,7 @@
  * Purpose:     Interface traits.
  *
  * Created:     25th May 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/interface_traits.hpp
  *
- * \brief [C++ only] Definition of the comstl::IID_traits traits class
+ * \brief [C++] Definition of the comstl::IID_traits traits class
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_INTERFACE_TRAITS_MAJOR      5
 # define COMSTL_VER_COMSTL_UTIL_HPP_INTERFACE_TRAITS_MINOR      0
 # define COMSTL_VER_COMSTL_UTIL_HPP_INTERFACE_TRAITS_REVISION   5
-# define COMSTL_VER_COMSTL_UTIL_HPP_INTERFACE_TRAITS_EDIT       66
+# define COMSTL_VER_COMSTL_UTIL_HPP_INTERFACE_TRAITS_EDIT       67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

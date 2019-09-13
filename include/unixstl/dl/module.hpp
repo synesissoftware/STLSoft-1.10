@@ -4,7 +4,7 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/dl/module.hpp
  *
- * \brief [C++ only] Definition of the unixstl::module class
+ * \brief [C++] Definition of the unixstl::module class
  *   (\ref group__library__DL "DL" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MAJOR    6
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    3
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 8
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     233
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     234
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

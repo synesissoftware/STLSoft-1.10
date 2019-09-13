@@ -4,7 +4,7 @@
  * Purpose:     Contains the comstl::com_SUCCEEDED and comstl::com_S_OK.
  *
  * Created:     3rd April 2007
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://comstl.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/functional/com_predicate_adaptors.hpp
  *
- * \brief [C++ only] Contains predicates adaptors that interpret the
+ * \brief [C++] Contains predicates adaptors that interpret the
  *   success of COM functions (that return HRESULT).
  *   (\ref group__library__Functional "Functional" Library).
  */
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_COM_PREDICATE_ADAPTORS_MAJOR    1
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_COM_PREDICATE_ADAPTORS_MINOR    0
 # define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_COM_PREDICATE_ADAPTORS_REVISION 5
-# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_COM_PREDICATE_ADAPTORS_EDIT     13
+# define COMSTL_VER_COMSTL_FUNCTIONAL_HPP_COM_PREDICATE_ADAPTORS_EDIT     14
 #endif /* !COMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

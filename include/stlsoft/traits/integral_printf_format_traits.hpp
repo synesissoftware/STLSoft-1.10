@@ -4,7 +4,7 @@
  * Purpose:     integral_printf_format_traits classes.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/traits/integral_printf_format_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::integral_printf_format_traits class
+ * \brief [C++] Definition of the stlsoft::integral_printf_format_traits class
  *   template
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_FORMAT_TRAITS_MAJOR       7
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_FORMAT_TRAITS_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_FORMAT_TRAITS_REVISION    2
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_FORMAT_TRAITS_EDIT        80
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_INTEGRAL_PRINTF_FORMAT_TRAITS_EDIT        81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

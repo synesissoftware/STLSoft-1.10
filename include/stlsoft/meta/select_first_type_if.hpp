@@ -4,7 +4,7 @@
  * Purpose:     Compile-time if component.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/select_first_type_if.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::select_first_type_if
+ * \brief [C++] Definition of the stlsoft::select_first_type_if
  *  meta if component
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MAJOR       3
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_MINOR       18
 # define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_REVISION    5
-# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        132
+# define STLSOFT_VER_STLSOFT_META_HPP_SELECT_FIRST_TYPE_IF_EDIT        133
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

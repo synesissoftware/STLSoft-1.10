@@ -5,7 +5,7 @@
  *              home directory.
  *
  * Created:     29th January 2013
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/system/home_directory.hpp
  *
- * \brief [C++ only] Definition of the winstl::home_directory and
+ * \brief [C++] Definition of the winstl::home_directory and
  *  associated types
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION   1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       10
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

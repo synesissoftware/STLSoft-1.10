@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the pipe components.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,12 +47,12 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PIPE_MAJOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PIPE_MINOR      1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PIPE_REVISION   4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PIPE_EDIT       27
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PIPE_EDIT       28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/pipe.hpp
  *
- * \brief [C++ only] Definition of the platformstl::pipe type
+ * \brief [C++] Definition of the platformstl::pipe type
  *   (\ref group__library__FileSystem "File System" Library).
  *
  * When compiling on UNIX platforms, the platformstl::pipe

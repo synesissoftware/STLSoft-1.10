@@ -4,7 +4,7 @@
  * Purpose:     string_traits traits class.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/string_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_traits traits class
+ * \brief [C++] Definition of the stlsoft::string_traits traits class
  *   (\ref group__library__String "String" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MAJOR     4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      89
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     winstl::winstl_exception class
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/exception/winstl_exception.hpp
  *
- * \brief [C++ only] Definition of the winstl::winstl_exception class
+ * \brief [C++] Definition of the winstl::winstl_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION_MAJOR     5
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION_MINOR     3
 # define WINSTL_VER_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION_REVISION  1
-# define WINSTL_VER_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION_EDIT      78
+# define WINSTL_VER_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION_EDIT      79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     6th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/filesystem/squeeze_functions.hpp
  *
- * \brief [C++ only] Path squeeze functions
+ * \brief [C++] Path squeeze functions
  *   (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        27
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

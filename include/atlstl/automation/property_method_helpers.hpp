@@ -5,7 +5,7 @@
  *              property methods of ATL COM server classes.
  *
  * Created:     25th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 
 /** \file atlstl/automation/property_method_helpers.hpp
- * \brief [C++ only; requires ATL library] Definition of the
+ * \brief [C++; requires ATL library] Definition of the
  *  atlstl::get_MemberValue(), atlstl::put_MemberValue() and
  *  atlstl::get_ConstantValue() function suites, which simplify the
  *  definition of property methods in ATL COM servers
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_MAJOR    5
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_MINOR    0
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_REVISION 2
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_EDIT     86
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_PROPERTY_METHOD_HELPERS_EDIT     87
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

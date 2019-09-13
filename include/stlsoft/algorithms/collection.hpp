@@ -4,7 +4,7 @@
  * Purpose:     Whole collection algorithms.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/collection.hpp
  *
- * \brief [C++ only] Whole collection algorithms
+ * \brief [C++] Whole collection algorithms
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MAJOR    3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MINOR    1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_REVISION 5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     79
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     WinSTL multimedia stopwatch class.
  *
  * Created:     31st July 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/diagnostics/multimedia_stopwatch.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *  \link winstl::multimedia_stopwatch multimedia_stopwatch\endlink class
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_MULTIMEDIA_STOPWATCH_MAJOR       5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_MULTIMEDIA_STOPWATCH_MINOR       0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_MULTIMEDIA_STOPWATCH_REVISION    1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_MULTIMEDIA_STOPWATCH_EDIT        51
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_MULTIMEDIA_STOPWATCH_EDIT        52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Clipboard scoping and facade class.
  *
  * Created:     26th May 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Martin Moene for reporting the problem with the data type
  *              in set_data_or_deallocate_and_throw_(), and for calling for
@@ -45,7 +45,7 @@
 
 /** \file winstl/clipboard/clipboard_scope.hpp
  *
- * \brief [C++ only] Definition of the winstl::clipboard_scope class
+ * \brief [C++] Definition of the winstl::clipboard_scope class
  *   (\ref group__library__Windows_Clipboard "Windows Clipboard" Library).
  */
 
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MAJOR      2
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_REVISION   1
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       50
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

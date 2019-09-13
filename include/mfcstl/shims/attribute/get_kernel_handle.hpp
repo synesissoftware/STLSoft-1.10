@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 handles.
  *
  * Created:     24th December 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file mfcstl/shims/attribute/get_kernel_handle.hpp
  *
- * \brief [C++ only] Definition of stlsoft::get_kernel_handle attribute shim
+ * \brief [C++] Definition of stlsoft::get_kernel_handle attribute shim
  *   functions for MFC synchronisation types
  *   (\ref group__library__Shims_Attribute_Windows_KernelHandle "Kernel Handle Attribute Shims").
  */
@@ -53,7 +53,7 @@
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_MAJOR      1
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_MINOR      1
 # define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_REVISION   7
-# define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_EDIT       21
+# define MFCSTL_VER_MFCSTL_SHIMS_ATTRIBUTE_HPP_GET_KERNEL_HANDLE_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/exception/throw_policies.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::nothrow_exception_policy and
+ * \brief [C++] Definition of the stlsoft::nothrow_exception_policy and
  *   stlsoft::throw_exception_policy exception policy classes
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_MAJOR     6
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_MINOR     0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_REVISION  1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_EDIT      58
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_EDIT      59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

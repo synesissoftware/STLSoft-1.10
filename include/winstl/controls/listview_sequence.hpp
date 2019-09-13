@@ -4,7 +4,7 @@
  * Purpose:     Contains the listview_sequence class template.
  *
  * Created:     8th May 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for making the requisite feature requests.
  *
@@ -43,7 +43,7 @@
 
 /** \file winstl/controls/listview_sequence.hpp
  *
- * \brief [C++ only] Definition of the winstl::listview_sequence class
+ * \brief [C++] Definition of the winstl::listview_sequence class
  *   (\ref group__library__Windows_Control "Windows Control" Library).
  */
 
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_REVISION  9
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_EDIT      89
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_EDIT      90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

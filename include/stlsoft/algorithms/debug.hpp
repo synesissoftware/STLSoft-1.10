@@ -4,7 +4,7 @@
  * Purpose:     Debug algorithms.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/debug.hpp
  *
- * \brief [C++ only] Debug algorithms
+ * \brief [C++] Debug algorithms
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_MAJOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_MINOR     1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_REVISION  5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_EDIT      78
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_EDIT      79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

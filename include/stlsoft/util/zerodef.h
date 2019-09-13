@@ -4,7 +4,7 @@
  * Purpose:     Include for defining ZERO to be the ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/zerodef.h
  *
- * \brief [C++ only] Defines the ZERO preprocessor symbol as
+ * \brief [C++] Defines the ZERO preprocessor symbol as
  *   stlsoft::ZERO_v()
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 7
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     34
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

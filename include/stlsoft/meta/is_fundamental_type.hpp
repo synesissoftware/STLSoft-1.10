@@ -4,7 +4,7 @@
  * Purpose:     is_fundamental_type meta class.
  *
  * Created:     19th November 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/is_fundamental_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::is_fundamental_type meta class
+ * \brief [C++] Definition of the stlsoft::is_fundamental_type meta class
  *  template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FUNDAMENTAL_TYPE_MAJOR     1
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FUNDAMENTAL_TYPE_MINOR     1
 # define STLSOFT_VER_STLSOFT_META_HPP_IS_FUNDAMENTAL_TYPE_REVISION  5
-# define STLSOFT_VER_STLSOFT_META_HPP_IS_FUNDAMENTAL_TYPE_EDIT      19
+# define STLSOFT_VER_STLSOFT_META_HPP_IS_FUNDAMENTAL_TYPE_EDIT      20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

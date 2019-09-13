@@ -4,7 +4,7 @@
  * Purpose:     String slice functions.
  *
  * Created:     25th April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions, and
  *              collaboration on their implementation.
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/string/slice_functions.hpp
  *
- * \brief [C++ only] String slice functions
+ * \brief [C++] String slice functions
  *   (\ref group__library__String "String" Library).
  */
 
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_MINOR      0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_REVISION   3
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_EDIT       21
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SLICE_FUNCTIONS_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

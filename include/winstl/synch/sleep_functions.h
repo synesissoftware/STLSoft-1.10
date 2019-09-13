@@ -4,7 +4,7 @@
  * Purpose:     WinSTL time functions.
  *
  * Created:     11th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_H_SLEEP_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_SYNCH_H_SLEEP_FUNCTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_SYNCH_H_SLEEP_FUNCTIONS_REVISION   4
-# define WINSTL_VER_WINSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       26
+# define WINSTL_VER_WINSTL_SYNCH_H_SLEEP_FUNCTIONS_EDIT       27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,7 +157,7 @@ namespace winstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Puts the calling thread to sleep for the given number of
+/** [C++] Puts the calling thread to sleep for the given number of
  *   microseconds.
 \code
 winstl::micro_sleep(100000);  // Sleep for 0.1 seconds

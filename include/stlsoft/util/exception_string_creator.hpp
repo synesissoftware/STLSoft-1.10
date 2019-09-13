@@ -4,7 +4,7 @@
  * Purpose:     Contains the exception_string_creator class.
  *
  * Created:     25th May 2010
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/exception_string_creator.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::exception_string_creator class
+ * \brief [C++] Definition of the stlsoft::exception_string_creator class
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MINOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_REVISION 8
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     25
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

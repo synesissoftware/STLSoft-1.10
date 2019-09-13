@@ -4,7 +4,7 @@
  * Purpose:     Functions for initialising Win32 structures.
  *
  * Created:     20th October 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/util/struct_initialisers.hpp
  *
- * \brief [C++ only] Definition of the winstl::zero_struct and
+ * \brief [C++] Definition of the winstl::zero_struct and
  *   winstl::init_struct structure initialiser functions
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_UTIL_HPP_STRUCT_INITIALISERS_MAJOR       4
 # define WINSTL_VER_WINSTL_UTIL_HPP_STRUCT_INITIALISERS_MINOR       1
 # define WINSTL_VER_WINSTL_UTIL_HPP_STRUCT_INITIALISERS_REVISION    8
-# define WINSTL_VER_WINSTL_UTIL_HPP_STRUCT_INITIALISERS_EDIT        233
+# define WINSTL_VER_WINSTL_UTIL_HPP_STRUCT_INITIALISERS_EDIT        234
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

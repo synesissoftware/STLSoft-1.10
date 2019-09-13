@@ -5,7 +5,7 @@
  *              policy class
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/exception/policy/windows_status_code_to_string_translation_policy.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *   winstl::windows_status_code_to_string_translation_policy policy class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_EXCEPTION_POLICY_HPP_WINDOWS_STATUS_CODE_TO_STRING_TRANSLATION_POLICY_MAJOR      6
 # define WINSTL_VER_WINSTL_EXCEPTION_POLICY_HPP_WINDOWS_STATUS_CODE_TO_STRING_TRANSLATION_POLICY_MINOR      0
 # define WINSTL_VER_WINSTL_EXCEPTION_POLICY_HPP_WINDOWS_STATUS_CODE_TO_STRING_TRANSLATION_POLICY_REVISION   1
-# define WINSTL_VER_WINSTL_EXCEPTION_POLICY_HPP_WINDOWS_STATUS_CODE_TO_STRING_TRANSLATION_POLICY_EDIT       78
+# define WINSTL_VER_WINSTL_EXCEPTION_POLICY_HPP_WINDOWS_STATUS_CODE_TO_STRING_TRANSLATION_POLICY_EDIT       79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Contains classes for initialising COM/OLE.
  *
  * Created:     8th February 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Adi Shavit, for demanding better documentation of COMSTL.
  *
@@ -43,7 +43,7 @@
 
 /** \file comstl/util/initialisers.hpp
  *
- * \brief [C++ only; requires COM] Definition of the comstl::initialiser
+ * \brief [C++; requires COM] Definition of the comstl::initialiser
  *   class template, and its associated policies and specialisations
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
@@ -55,7 +55,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MAJOR      3
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MINOR      3
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_REVISION   9
-# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       92
+# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

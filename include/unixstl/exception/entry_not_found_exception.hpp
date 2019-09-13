@@ -4,7 +4,7 @@
  * Purpose:     unixstl::entry_not_found_exception class
  *
  * Created:     1st January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/exception/entry_not_found_exception.hpp
  *
- * \brief [C++ only] Definition of the unixstl::entry_not_found_exception class
+ * \brief [C++] Definition of the unixstl::entry_not_found_exception class
  *   (\ref group__library__Exception "Exception" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ENTRY_NOT_FOUND_EXCEPTION_MAJOR      1
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ENTRY_NOT_FOUND_EXCEPTION_MINOR      0
 # define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ENTRY_NOT_FOUND_EXCEPTION_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ENTRY_NOT_FOUND_EXCEPTION_EDIT       2
+# define UNIXSTL_VER_UNIXSTL_EXCEPTION_HPP_ENTRY_NOT_FOUND_EXCEPTION_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

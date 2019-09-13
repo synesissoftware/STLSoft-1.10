@@ -4,7 +4,7 @@
  * Purpose:     VARIANT helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/VARIANT_functions.h
  *
- * \brief [C++ only; requires COM] VARIANT helper functions
+ * \brief [C++; requires COM] VARIANT helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MINOR       2
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        16
+# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -270,7 +270,7 @@ namespace comstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Indicates whether two VARIANT structures are equal
+/** [C++] Indicates whether two VARIANT structures are equal
  *
  * \ingroup group__library__COM_Utility
  *
@@ -298,7 +298,7 @@ VARIANT_equal(
     return 0 != comstl_C_VARIANT_equal(lhs, rhs, comparisonSucceeded);
 }
 
-/** [C++ only] Indicates whether two VARIANT structures are equal
+/** [C++] Indicates whether two VARIANT structures are equal
  *
  * \ingroup group__library__COM_Utility
  *

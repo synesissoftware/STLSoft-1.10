@@ -4,7 +4,7 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/system/os_version.h
  *
- * \brief [C++ only] winstl_C_identify_operating_system() function
+ * \brief [C++] winstl_C_identify_operating_system() function
  *   (\ref group__library__System "System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 6
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     11
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

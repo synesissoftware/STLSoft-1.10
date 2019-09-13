@@ -4,7 +4,7 @@
  * Purpose:     Contains the shared_handle and monitored_shared_handle classes.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Austin Ziegler for fixes to defects evident on x64.
  *
@@ -43,7 +43,7 @@
 
 /** \file winstl/registry/util/shared_handles.hpp
  *
- * \brief [C++ only] [IMPLEMENTATION] Contains the
+ * \brief [C++] [IMPLEMENTATION] Contains the
  *  \link winstl::registry_util::shared_handle shared_handle\endlink
  *  and
  *  \link winstl::registry_util::monitored_shared_handle monitored_shared_handle\endlink
@@ -60,7 +60,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MAJOR       2
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MINOR       0
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    16
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        47
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

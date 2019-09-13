@@ -5,7 +5,7 @@
  *              as references.
  *
  * Created:     28th December 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/conversion/ptr_cast.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::ptr_cast cast class
+ * \brief [C++] Definition of the stlsoft::ptr_cast cast class
  *   (\ref group__library__Conversion "Conversion" Library).
  */
 
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_MINOR      0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_REVISION   13
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_EDIT       51
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_PTR_CAST_EDIT       52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

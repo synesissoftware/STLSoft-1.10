@@ -4,7 +4,7 @@
  * Purpose:     Shell browsing functions.
  *
  * Created:     2nd March 2002
- * Updated:     12th September 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for default folder enhancements.
  *
@@ -44,7 +44,7 @@
 
 /** \file winstl/shell/browse_for_folder.hpp
  *
- * \brief [C++ only] Definition of Windows Shell folder browsing functions
+ * \brief [C++] Definition of Windows Shell folder browsing functions
  *   (\ref group__library__Windows_Shell "Windows Shell" Library).
  */
 
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_MAJOR    4
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_MINOR    2
 # define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_REVISION 10
-# define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_EDIT     75
+# define WINSTL_VER_WINSTL_SHELL_HPP_BROWSE_FOR_FOLDER_EDIT     76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

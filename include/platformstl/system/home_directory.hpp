@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the home_directory components.
  *
  * Created:     9th January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/system/home_directory.hpp
  *
- * \brief [C++ only] Definition of the platformstl::home_directory
+ * \brief [C++] Definition of the platformstl::home_directory
  *  type
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_HOME_DIRECTORY_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_HOME_DIRECTORY_MINOR    0
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_HOME_DIRECTORY_REVISION 2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     6
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_HOME_DIRECTORY_EDIT     7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

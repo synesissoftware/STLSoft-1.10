@@ -5,7 +5,7 @@
  *              module filename.
  *
  * Created:     31st March 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file winstl/system/module_filename.hpp
  *
- * \brief [C++ only] Definition of the winstl::basic_module_filename class
+ * \brief [C++] Definition of the winstl::basic_module_filename class
  *  template
  *   (\ref group__library__System "System" Library).
  */
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_MAJOR     4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_MINOR     3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_EDIT      87
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_FILENAME_EDIT      88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

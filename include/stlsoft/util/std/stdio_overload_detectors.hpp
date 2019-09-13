@@ -5,7 +5,7 @@
  *              will be, subject to upgrade in standardisation.
  *
  * Created:     30th May 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -42,7 +42,7 @@
 
 /** \file stlsoft/util/std/stdio_overload_detectors.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::vswprintf_detector and
+ * \brief [C++] Definition of the stlsoft::vswprintf_detector and
  *   stlsoft:: swprintf_detector classes, which detects characteristics of
  *   certain stdio functions that are, or will be, subject to upgrade in
  *   standardisation
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_STDIO_OVERLOAD_DETECTORS_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_STDIO_OVERLOAD_DETECTORS_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_STDIO_OVERLOAD_DETECTORS_REVISION 7
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_STDIO_OVERLOAD_DETECTORS_EDIT     23
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_STDIO_OVERLOAD_DETECTORS_EDIT     24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

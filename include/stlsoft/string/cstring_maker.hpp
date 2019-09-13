@@ -4,7 +4,7 @@
  * Purpose:     Simple utility class for creating (constant) C-strings.
  *
  * Created:     14th May 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/string/cstring_maker.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_maker class template
+ * \brief [C++] Definition of the stlsoft::string_maker class template
  *   (\ref group__library__String "String" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     55
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

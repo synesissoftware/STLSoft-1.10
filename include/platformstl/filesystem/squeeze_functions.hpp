@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     12th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/filesystem/squeeze_functions.hpp
  *
- * \brief [C++ only] Path squeeze functions
+ * \brief [C++] Path squeeze functions
  *   (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -53,7 +53,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR     2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR     0
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      18
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Brad Cox, for helping out in testing and fixing the
  *              implementation for MAC OSX (Intel).
@@ -44,7 +44,7 @@
 
 /** \file unixstl/synch/atomic_types.h
  *
- * \brief [C++ only] Definition of atomic types
+ * \brief [C++] Definition of atomic types
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_MAJOR     8
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_EDIT      215
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_TYPES_EDIT      216
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

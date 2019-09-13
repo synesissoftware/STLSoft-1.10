@@ -4,7 +4,7 @@
  * Purpose:     Algorithms for Plain-Old Data types.
  *
  * Created:     17th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/algorithms/pod.hpp
  *
- * \brief [C++ only] Algorithms for use with POD types
+ * \brief [C++] Algorithms for use with POD types
  *   (\ref group__library__Algorithm "Algorithm" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_MINOR       5
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_REVISION    7
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_EDIT        100
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_POD_EDIT        101
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

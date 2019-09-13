@@ -4,7 +4,7 @@
  * Purpose:     Contains the STLSOFT_REMOVE_FROM_SCOPE() macro.
  *
  * Created:     10th June 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/remove_from_scope.hpp
  *
- * \brief [C++ only] Definition of the STLSOFT_REMOVE_FROM_SCOPE() macro
+ * \brief [C++] Definition of the STLSOFT_REMOVE_FROM_SCOPE() macro
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_REVISION    5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_EDIT        47
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_REMOVE_FROM_SCOPE_EDIT        48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

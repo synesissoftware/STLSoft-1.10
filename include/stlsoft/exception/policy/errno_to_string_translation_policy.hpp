@@ -4,7 +4,7 @@
  * Purpose:     stlsoft::errno_to_string_translation_policy policy class
  *
  * Created:     19th June 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/exception/policy/errno_to_string_translation_policy.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *   errno_to_string_translation_policy policy class
  *   (\ref group__library__Exception "Exception" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_MAJOR      5
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_MINOR      0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_REVISION   1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_EDIT       64
+# define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_EDIT       65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

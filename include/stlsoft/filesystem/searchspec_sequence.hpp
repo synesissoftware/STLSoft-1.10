@@ -8,7 +8,7 @@
  *              one of the typedefs
  *
  * Created:     1st May 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/filesystem/searchspec_sequence.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::searchspec_sequence class
+ * \brief [C++] Definition of the stlsoft::searchspec_sequence class
  *  template
  *   (\ref group__library__FileSystem "File System" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION    11
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        70
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

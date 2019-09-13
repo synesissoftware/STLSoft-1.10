@@ -4,7 +4,7 @@
  * Purpose:     yes / no classes.
  *
  * Created:     16th May 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/yesno.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::yes_type and
+ * \brief [C++] Definition of the stlsoft::yes_type and
  *  stlsoft::no_type meta boolean "constants"
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_YESNO_MAJOR       1
 # define STLSOFT_VER_STLSOFT_META_HPP_YESNO_MINOR       3
 # define STLSOFT_VER_STLSOFT_META_HPP_YESNO_REVISION    4
-# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_EDIT        22
+# define STLSOFT_VER_STLSOFT_META_HPP_YESNO_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

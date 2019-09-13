@@ -4,7 +4,7 @@
  * Purpose:     sign_traits classes.
  *
  * Created:     16th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/sign_traits.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::sign_traits traits class
+ * \brief [C++] Definition of the stlsoft::sign_traits traits class
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_SIGN_TRAITS_MAJOR      4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_SIGN_TRAITS_MINOR      1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_SIGN_TRAITS_REVISION   7
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_SIGN_TRAITS_EDIT       57
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_SIGN_TRAITS_EDIT       58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

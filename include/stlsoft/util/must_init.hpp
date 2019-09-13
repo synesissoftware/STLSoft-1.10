@@ -9,7 +9,7 @@
  *              code coverage.
  *
  * Created:     18th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -46,7 +46,7 @@
 
 /** \file stlsoft/util/must_init.hpp
  *
- * \brief [C++ only] Definition of stlsoft::must_init class template
+ * \brief [C++] Definition of stlsoft::must_init class template
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_MINOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_REVISION    8
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_EDIT        26
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_MUST_INIT_EDIT        27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     DECIMAL helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/DECIMAL_functions.h
  *
- * \brief [C++ only; requires COM] DECIMAL helper functions
+ * \brief [C++; requires COM] DECIMAL helper functions
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MINOR       0
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_REVISION    7
-# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        13
+# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -250,7 +250,7 @@ namespace comstl
 
 #ifdef __cplusplus
 
-/** [C++ only] Compares two DECIMAL structures
+/** [C++] Compares two DECIMAL structures
  *
  * \ingroup group__library__COM_Utility
  *
@@ -270,7 +270,7 @@ DECIMAL_compare(
     return comstl_C_DECIMAL_compare(lhs, rhs);
 }
 
-/** [C++ only] Compares two DECIMAL structures
+/** [C++] Compares two DECIMAL structures
  *
  * \ingroup group__library__COM_Utility
  *

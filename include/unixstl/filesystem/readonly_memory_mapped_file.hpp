@@ -4,7 +4,7 @@
  * Purpose:     UNIX readonly (shareable) memory mapped file.
  *
  * Created:     15th December 1996
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/filesystem/readonly_memory_mapped_file.hpp
  *
- * \brief [C++ only] Definition of the unixstl::readonly_memory_mapped_file class
+ * \brief [C++] Definition of the unixstl::readonly_memory_mapped_file class
  *   template (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR       2
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        14
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

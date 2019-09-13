@@ -4,7 +4,7 @@
  * Purpose:     Type assistor classes.
  *
  * Created:     5th December 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/meta/make_value_type.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::make_value_type class
+ * \brief [C++] Definition of the stlsoft::make_value_type class
  *   template
  *   (\ref group__library__Metaprogramming "Metaprogramming" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_META_HPP_MAKE_VALUE_TYPE_MAJOR     4
 # define STLSOFT_VER_STLSOFT_META_HPP_MAKE_VALUE_TYPE_MINOR     0
 # define STLSOFT_VER_STLSOFT_META_HPP_MAKE_VALUE_TYPE_REVISION  4
-# define STLSOFT_VER_STLSOFT_META_HPP_MAKE_VALUE_TYPE_EDIT      31
+# define STLSOFT_VER_STLSOFT_META_HPP_MAKE_VALUE_TYPE_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

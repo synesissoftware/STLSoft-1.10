@@ -4,7 +4,7 @@
  * Purpose:     Synchronisation object lock scoping class.
  *
  * Created:     1st October 1994
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/synch/lock_scope.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::lock_scope class template
+ * \brief [C++] Definition of the stlsoft::lock_scope class template
  *   (\ref group__library__Synch "Synchronisation" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_MAJOR     6
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_REVISION  6
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_EDIT      123
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_EDIT      124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

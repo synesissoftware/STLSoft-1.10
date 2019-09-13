@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL process-time performance counter class.
  *
  * Created:     9th June 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file unixstl/performance/processtimes_counter.hpp
  *
- * \brief [C++ only] Backwards-compatible file defining the typedef
+ * \brief [C++] Backwards-compatible file defining the typedef
  *  <code>winstl::processtimes_counter</code>
  *   (\ref group__library__Diagnostic "Diagnostic" Library).
  */
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MAJOR     2
 # define UNIXSTL_VER_UNIXSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT      21
+# define UNIXSTL_VER_UNIXSTL_PERFORMANCE_HPP_PROCESSTIMES_COUNTER_EDIT      22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

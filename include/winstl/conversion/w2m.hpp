@@ -4,7 +4,7 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     2nd September 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file winstl/conversion/w2m.hpp
  *
- * \brief [C++ only] Definition of the winstl::wide2multibyte class
+ * \brief [C++] Definition of the winstl::wide2multibyte class
  *  template
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MAJOR    1
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_MINOR    0
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_REVISION 3
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     11
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_W2M_EDIT     12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

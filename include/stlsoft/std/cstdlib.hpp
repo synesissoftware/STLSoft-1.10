@@ -4,7 +4,7 @@
  * Purpose:     Mappings to stdlib string functions
  *
  * Created:     2nd December 2004
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/std/cstdlib.hpp
  *
- * \brief [C++ only] Mappings of stdlib string functions that use
+ * \brief [C++] Mappings of stdlib string functions that use
  *   \ref group__concept__Shim__string_access string
  *   (\ref group__library__Utility "Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTDLIB_MAJOR      2
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTDLIB_MINOR      0
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTDLIB_REVISION   6
-# define STLSOFT_VER_STLSOFT_STD_HPP_CSTDLIB_EDIT       36
+# define STLSOFT_VER_STLSOFT_STD_HPP_CSTDLIB_EDIT       37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

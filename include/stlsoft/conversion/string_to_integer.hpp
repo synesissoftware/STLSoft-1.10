@@ -4,7 +4,7 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     18th November 2008
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks to:   Chris Oldwood for righteous criticism of one of my hastily-
  *              written articles, which led to the creation of the
@@ -45,7 +45,7 @@
 
 /** \file stlsoft/conversion/string_to_integer.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::string_to_integer conversion
+ * \brief [C++] Definition of the stlsoft::string_to_integer conversion
  *   function suite
  *   (\ref group__library__Conversion "Conversion" Library).
  */
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_REVISION  3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      62
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

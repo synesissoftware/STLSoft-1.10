@@ -4,7 +4,7 @@
  * Purpose:     Contains the pod_veneer template class.
  *
  * Created:     19th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/util/pod_veneer.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::pod_veneer class template
+ * \brief [C++] Definition of the stlsoft::pod_veneer class template
  *   (\ref group__library__Utility "Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_POD_VENEER_MAJOR      4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_POD_VENEER_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_POD_VENEER_REVISION   5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_POD_VENEER_EDIT       59
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_POD_VENEER_EDIT       60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

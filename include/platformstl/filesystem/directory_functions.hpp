@@ -4,7 +4,7 @@
  * Purpose:     Platform header for directory manipulation functions.
  *
  * Created:     29th May 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file platformstl/filesystem/directory_functions.hpp
  *
- * \brief [C++ only] Functions for manipulating directories
+ * \brief [C++] Functions for manipulating directories
  *   (\ref group__library__FileSystem "File System" Library).
  */
 
@@ -53,7 +53,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    5
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        21
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

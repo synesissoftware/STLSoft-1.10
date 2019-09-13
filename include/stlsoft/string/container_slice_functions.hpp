@@ -4,7 +4,7 @@
  * Purpose:     String container slice functions.
  *
  * Created:     25th April 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions.
  *
@@ -43,7 +43,7 @@
 
 /** \file stlsoft/string/container_slice_functions.hpp
  *
- * \brief [C++ only] String container slice functions
+ * \brief [C++] String container slice functions
  *   (\ref group__library__String "String" Library).
  */
 
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_MINOR    1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_REVISION 8
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_EDIT     35
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_CONTAINER_SLICE_FUNCTIONS_EDIT     36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

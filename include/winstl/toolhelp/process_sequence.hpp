@@ -4,7 +4,7 @@
  * Purpose:     TOOLHELP process sequence class.
  *
  * Created:     21st May 2005
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -45,7 +45,7 @@
 
 /** \file winstl/toolhelp/process_sequence.hpp
  *
- * \brief [C++ only] Definition of the
+ * \brief [C++] Definition of the
  *  \link winstl::process_sequence process_sequence\endlink class
  *   (\ref group__library__Windows_Toolhelp "Windows ToolHelp" Library).
  */
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MAJOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MINOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_REVISION   4
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       18
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

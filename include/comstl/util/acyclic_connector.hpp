@@ -4,7 +4,7 @@
  * Purpose:     A component for relating two COM objects without cycles.
  *
  * Created:     25th March 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/acyclic_connector.hpp
  *
- * \brief [C++ only; requires COM] Definition of the
+ * \brief [C++; requires COM] Definition of the
  *   comstl::acyclic_connector class template
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_MAJOR     1
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_MINOR     2
 # define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_REVISION  11
-# define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_EDIT      31
+# define COMSTL_VER_COMSTL_UTIL_HPP_ACYCLIC_CONNECTOR_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

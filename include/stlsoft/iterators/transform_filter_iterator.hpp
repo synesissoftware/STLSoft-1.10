@@ -4,7 +4,7 @@
  * Purpose:     A combination of the transform_iterator and the filter_iterator.
  *
  * Created:     2nd January 2006
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/iterators/transform_filter_iterator.hpp
  *
- * \brief [C++ only] Functions for simultaneous transformation and filtering
+ * \brief [C++] Functions for simultaneous transformation and filtering
  *   of iterator ranges
  *   (\ref group__library__Iterator "Iterator" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_FILTER_ITERATOR_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_FILTER_ITERATOR_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_FILTER_ITERATOR_REVISION  7
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_FILTER_ITERATOR_EDIT      22
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_FILTER_ITERATOR_EDIT      23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

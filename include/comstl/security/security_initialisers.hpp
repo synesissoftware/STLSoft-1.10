@@ -4,7 +4,7 @@
  * Purpose:     Contains classes for initialising COM/OLE.
  *
  * Created:     1st February 1998
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/security/security_initialisers.hpp
  *
- * \brief [C++ only] Functions for initialising COM security
+ * \brief [C++] Functions for initialising COM security
  *   (\ref group__library__Security "Security" Library).
  */
 
@@ -52,7 +52,7 @@
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_MAJOR      4
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_MINOR      1
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_REVISION   7
-# define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_EDIT       57
+# define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_EDIT       58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

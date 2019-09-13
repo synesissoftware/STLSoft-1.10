@@ -4,7 +4,7 @@
  * Purpose:     Contains the proxy_ptr template class.
  *
  * Created:     17th January 1999
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file stlsoft/smartptr/proxy_ptr.hpp
  *
- * \brief [C++ only] Definition of the stlsoft::proxy_ptr smart
+ * \brief [C++] Definition of the stlsoft::proxy_ptr smart
  *   pointer class template
  *   (\ref group__library__SmartPointer "Smart Pointer" Library).
  */
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MINOR       2
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_REVISION    1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        83
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        84
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

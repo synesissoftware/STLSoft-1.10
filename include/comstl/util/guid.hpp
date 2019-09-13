@@ -4,7 +4,7 @@
  * Purpose:     guid class.
  *
  * Created:     10th May 2000
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
 
 /** \file comstl/util/guid.hpp
  *
- * \brief [C++ only; requires COM] Definition of the comstl::guid class
+ * \brief [C++; requires COM] Definition of the comstl::guid class
  *   (\ref group__library__COM_Utility "COM Utility" Library).
  */
 
@@ -52,7 +52,7 @@
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_MAJOR      4
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_MINOR      3
 # define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_REVISION   11
-# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_EDIT       61
+# define _COMSTL_VER_COMSTL_UTIL_HPP_COMSTL_GUID_EDIT       62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
