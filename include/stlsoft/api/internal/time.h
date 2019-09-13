@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for internal Time API.
  *
  * Created:     11th January 2017
- * Updated:     2nd February 2019
+ * Updated:     13th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -78,7 +78,7 @@
 #endif /* !STLSOFT_INCL_H_TIME */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Time functions
+ * time functions
  */
 
 STLSOFT_INLINE
