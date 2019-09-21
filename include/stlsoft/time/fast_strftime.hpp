@@ -4,7 +4,7 @@
  * Purpose:     Efficient drop-in replacement for strftime().
  *
  * Created:     23rd December 2018
- * Updated:     13th September 2019
+ * Updated:     14th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -43,7 +43,7 @@
  *
  * \brief [C++] Efficient drop-in replacement for
  *   <code>strftime()</code>
- *  (\ref group__library__Time "Time" Library.)
+ *  (\ref group__library__Time "Time" Library).
  */
 
 #ifndef STLSOFT_INCL_STLSOFT_TIME_HPP_FAST_STRFTIME

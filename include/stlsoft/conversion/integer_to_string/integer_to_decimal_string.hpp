@@ -5,7 +5,7 @@
  *              decimal representation.
  *
  * Created:     7th April 2002
- * Updated:     13th September 2019
+ * Updated:     14th September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -44,7 +44,7 @@
  *
  * \brief [C++] Very efficient integer to string conversion functions
  *   for decimal representation
- *  (\ref group__library__Conversion "Conversion" Library.)
+ *  (\ref group__library__Conversion "Conversion" Library).
  */
 
 #ifndef STLSOFT_INCL_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_DECIMAL_STRING
