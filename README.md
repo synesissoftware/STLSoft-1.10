@@ -8,7 +8,7 @@ Version 1.10 of STLSoft libraries
 
 ### Impending 1.10 release
 
-Working now (Sept 2019) on getting documentation updated and existing
+Working now (October 2019) on getting documentation updated and existing
 automated tests included into the GitHub-released project, and then
 we'll be at it.
 
