@@ -15,7 +15,20 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-15 (Latest) - 13th September 2019
+### 1.10.1 beta-16 (Latest) - 13th October 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta16>
+
+* added ``stlsoft_C_environment_variable_exists_a()`` / ``environment_variable_exists()`` (from STLSoft 1.10-alpha)
+* added ``stlsoft::count_bits(int)`` overload
+* added ``cbegin()``, ``cend()``, ``crbegin()``, ``crend()`` to ``platformstl::environment_map``
+* significant additions and removals of WinSTL file creation functions
+* added WinSTL security functions (from STLSoft 1.10-alpha)
+* automatic recognising Mac OSX architecture as UNIX
+* canonicalising '\file' description sections
+* suppresses deprecation warning from reporting use of deprecated functions inside other deprecated functions
+
+### 1.10.1 beta-15 - 13th September 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta15>
 
