@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  13th September 2019
+; Updated:  13th October 2019
 
 ============================================================================
 
@@ -16,6 +16,88 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+
+============================================================================
+
+Changes for 1.10.1 beta 16 (13th October 2019)
+
+General:
+========
+
+ * added stlsoft_C_environment_variable_exists_a() / environment_variable_exists() (from STLSoft 1.10-alpha)
+ * added stlsoft::count_bits(int) overload
+ * added cbegin(), cend(), crbegin(), crend() to platformstl::environment_map
+ * significant additions and removals of WinSTL file creation functions
+ * added WinSTL security functions (from STLSoft 1.10-alpha)
+ * recognising Mac OSX architecture as UNIX
+ * canonicalising '\file' description sections
+ * suppresses deprecation warning from reporting use of deprecated functions inside other deprecated functions
+
+Changes:
+========
+
+ *:
+    ~ canonicalising '\file' description sections
+    ~ tidying section comments
+
+ STLSoft:
+ ========
+
+ + stlsoft/system/environment/functions.h:
+    ~ merged from STLSoft 1.10-alpha (2016)
+    + added stlsoft_C_environment_variable_exists_a() / environment_variable_exists()
+
+ ~ stlsoft/util/bits/count_functions.h:
+    + added count_bits(int) overload
+
+ Platform:
+ =========
+
+ ~ platformstl/platformstl.h:
+    + recognising Mac OSX architecture as UNIX
+
+ ~ platformstl/system/environment_map.hpp:
+    platformstl::environment_map : + added cbegin(), cend(), crbegin(), crend()
+
+ WinSTL:
+ =======
+
+ + winstl/api/external/Authorization.h:
+    ~ merged from STLSoft 1.10-alpha (2016)
+
+ + winstl/api/internal/FileManagement.h:
+    + added
+
+ ~ winstl/error/error_functions.h:
+    ~ suppresses deprecation warning from reporting use of deprecated functions inside other deprecated functions
+
+ ~ winstl/filesystem/file_creation_functions.h:
+    + winstl_C_file_create_or_open_m() / winstl_C_file_create_or_open_w() / winstl_C_file_create_or_open()
+    + winstl_C_file_create_new_m() / winstl_C_file_create_new_w() / winstl_C_file_create_or_open()
+    + winstl_C_file_create_always_m() / winstl_C_file_create_always_w() / winstl_C_file_create_always()
+    + winstl_C_file_open_existing_m() / winstl_C_file_open_existing_w() / winstl_C_file_open_existing()
+    + winstl_C_file_open_always_m() / winstl_C_file_open_always_w() / winstl_C_file_open_always()
+    + winstl_C_file_truncate_existing_m() / winstl_C_file_truncate_existing_w() / winstl_C_file_truncate_existing()
+    + winstl::file_create_or_open()
+    + winstl::file_create_new()
+    + winstl::file_create_always()
+    + winstl::file_open_existing()
+    + winstl::file_open_always()
+    - winstl__open_file_read_shared_a() / winstl__open_file_read_shared_w()
+    - winstl__open_file_exclusive_a() / winstl__open_file_exclusive_w()
+    - winstl::open_file_read_shared()
+    - winstl::open_file_exclusive()
+    ~ merged from STLSoft 1.10-alpha (2016)
+
+ ~ winstl/filesystem/filesystem_traits.hpp:
+ ~ winstl/filesystem/memory_mapped_file.hpp:
+    ~ refactored in terms of external API
+
+ + winstl/security/functions.h:
+    ~ merged from STLSoft 1.10-alpha (2016)
+    + winstl_C_Security_free_string_m() / free_string()
+    + winstl_C_Security_lookup_account_SID_info_m() / lookup_account_SID_info()
 
 
 ============================================================================
@@ -9613,6 +9695,5 @@ Diffs:
   root-dir-1: H:\3Pty\stlsoft\1.8.3\include
   root-dir-2: H:\3Pty\stlsoft\1.8.4-beta1
 
+=============================== end of file ================================
 
-
-=============================== End of file ================================

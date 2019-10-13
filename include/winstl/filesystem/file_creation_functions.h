@@ -4,7 +4,7 @@
  * Purpose:     File creation functions.
  *
  * Created:     12th September 2005
- * Updated:     2nd February 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,10 +49,10 @@
 #define WINSTL_INCL_WINSTL_H_FILE_CREATION_FUNCTIONS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MAJOR      2
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MAJOR      3
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_REVISION   1
-# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       24
+# define WINSTL_VER_WINSTL_H_FILE_CREATION_FUNCTIONS_EDIT       25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,9 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
 # include <winstl/api/external/FileManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+#ifndef WINSTL_INCL_WINSTL_API_internal_h_FileManagement
+# include <winstl/api/internal/FileManagement.h>
+#endif /* !WINSTL_INCL_WINSTL_API_internal_h_FileManagement */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -90,95 +93,740 @@ namespace winstl_project
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * C functions
+ * API functions
  */
 
-/** [DEPRECATED] Opens an existing file for shared read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-STLSOFT_INLINE HANDLE winstl__open_file_read_shared_a(ws_char_a_t const* fileName, DWORD dwShareMode)
-{
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
-}
+/* file : create or open */
 
-/** [DEPRECATED] Opens an existing file for shared read access.
+/** A short-cut for <code>CreateFileA()</code> that does not require the
+ * security attributes or template file parameters.
  *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-STLSOFT_INLINE HANDLE winstl__open_file_read_shared_w(ws_char_w_t const* fileName, DWORD dwShareMode)
-{
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, dwShareMode, NULL, OPEN_ALWAYS, 0, NULL);
-}
-
-/** [DEPRECATED] Opens an existing file for exclusive read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-STLSOFT_INLINE HANDLE winstl__open_file_exclusive_a(ws_char_a_t const* fileName)
-{
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
-}
-
-/** [DEPRECATED] Opens an existing file for exclusive read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-STLSOFT_INLINE HANDLE winstl__open_file_exclusive_w(ws_char_w_t const* fileName)
-{
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, GENERIC_READ, 0, NULL, OPEN_ALWAYS, 0, NULL);
-}
-
-
-
-/** Opens an existing file for shared read access.
- *
- * \ingroup group__library__FileSystem
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
  */
 STLSOFT_INLINE
 HANDLE
-winstl_C_open_existing_file_for_read_with_sharemode_m(
-    ws_char_a_t const*      path
-,   DWORD                   shareMode
-)
+winstl_C_file_create_or_open_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
 {
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(path, GENERIC_READ, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    ,   NULL
+    );
 }
 
-/** Opens an existing file for shared read access.
+/** A short-cut for <code>CreateFileW()</code> that does not require the
+ * security attributes or template file parameters.
  *
- * \ingroup group__library__FileSystem
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
  */
 STLSOFT_INLINE
 HANDLE
-winstl_C_open_existing_file_for_read_with_sharemode_w(
-    ws_char_w_t const*      path
-,   DWORD                   shareMode
-)
+winstl_C_file_create_or_open_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
 {
-    return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(path, GENERIC_READ, shareMode, NULL, OPEN_EXISTING, 0, NULL);
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    ,   NULL
+    );
 }
 
-#ifdef UNICODE
 
-# define winstl_C_open_existing_file_for_read_with_sharemode    winstl_C_open_existing_file_for_read_with_sharemode_w
-#else /* ? UNICODE */
+/* file : create new (or fail) */
 
-# define winstl_C_open_existing_file_for_read_with_sharemode    winstl_C_open_existing_file_for_read_with_sharemode_m
-#endif /* UNICODE */
+/** Creates a new file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_create_new_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   CREATE_NEW
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
 
+/** Creates a new file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_create_new_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   CREATE_NEW
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+
+/* file : create/truncate */
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_create_always_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   CREATE_ALWAYS
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_create_always_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   CREATE_ALWAYS
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+
+/* file : open existing (or fail) */
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_open_existing_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   OPEN_EXISTING
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_open_existing_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   OPEN_EXISTING
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+
+/* file : open/create */
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_open_always_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   OPEN_ALWAYS
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_open_always_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   OPEN_ALWAYS
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+
+/* file : truncate existing (or fail) */
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_truncate_existing_m(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileA(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   TRUNCATE_EXISTING
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+STLSOFT_INLINE
+HANDLE
+winstl_C_file_truncate_existing_w(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return WINSTL_API_INTERNAL_FileManagement_CreateFileW(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   NULL
+    ,   TRUNCATE_EXISTING
+    ,   flagsAndAttributes
+    ,   NULL
+    );
+}
+
+
+#ifdef __cplusplus
+
+/** A short-cut for <code>CreateFileA()</code> that does not require the
+ * security attributes or template file parameters.
+ *
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_or_open(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes
+)
+{
+    return winstl_C_file_create_or_open_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    );
+}
+
+/** A short-cut for <code>CreateFileA()</code> that does not require the
+ * security attributes or template file parameters.
+ *
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_or_open(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes
+)
+{
+    return winstl_C_file_create_or_open_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    );
+}
+
+/* file : create new (or fail) */
+
+/** Creates a new file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_new(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_new_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Creates a new file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_new(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_new_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/* file : create/truncate */
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_always(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_always_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_create_always(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_always_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/* file : open existing (or fail) */
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_open_existing(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_existing_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_open_existing(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_existing_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/* file : open/create */
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_open_always(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_always_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_open_always(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_always_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/* file : truncate existing (or fail) */
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_truncate_existing(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_truncate_existing_m(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+winstl_C_file_truncate_existing(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_truncate_existing_w(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+#else /* ? __cplusplus */
+
+# ifdef UNICODE
+
+#  define winstl_C_file_create_or_open                      winstl_C_file_create_or_open_w
+#  define winstl_C_file_create_new                          winstl_C_file_create_new_w
+#  define winstl_C_file_create_always                       winstl_C_file_create_always_w
+#  define winstl_C_file_open_existing                       winstl_C_file_open_existing_w
+#  define winstl_C_file_open_always                         winstl_C_file_open_always_w
+#  define winstl_C_file_truncate_existing                   winstl_C_file_truncate_existing_w
+# else /* ? UNICODE */
+
+#  define winstl_C_file_create_or_open                      winstl_C_file_create_or_open_m
+#  define winstl_C_file_create_new                          winstl_C_file_create_new_m
+#  define winstl_C_file_create_always                       winstl_C_file_create_always_m
+#  define winstl_C_file_open_existing                       winstl_C_file_open_existing_m
+#  define winstl_C_file_open_always                         winstl_C_file_open_always_m
+#  define winstl_C_file_truncate_existing                   winstl_C_file_truncate_existing_m
+# endif /* UNICODE */
+#endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -190,88 +838,339 @@ namespace winstl
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * C++ functions
+ * C++ API functions
  */
 
 #ifdef __cplusplus
 
-/** [DEPRECATED] Opens an existing file for shared read access.
+/** A short-cut for <code>CreateFileA()</code> that does not require the
+ * security attributes or template file parameters.
  *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-inline HANDLE open_file_read_shared(ws_char_a_t const* fileName, DWORD dwShareMode)
-{
-    return winstl__open_file_read_shared_a(fileName, dwShareMode);
-}
-/** [DEPRECATED] Opens an existing file for shared read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-inline HANDLE open_file_read_shared(ws_char_w_t const* fileName, DWORD dwShareMode)
-{
-    return winstl__open_file_read_shared_w(fileName, dwShareMode);
-}
-
-/** [DEPRECATED] Opens an existing file for exclusive read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-inline HANDLE open_file_exclusive(ws_char_a_t const* fileName)
-{
-    return winstl__open_file_exclusive_a(fileName);
-}
-/** [DEPRECATED] Opens an existing file for exclusive read access.
- *
- * \ingroup group__library__FileSystem
- *
- * \deprecated This function is deprecated because it always creates the
- *   file
- */
-inline HANDLE open_file_exclusive(ws_char_w_t const* fileName)
-{
-    return winstl__open_file_exclusive_w(fileName);
-}
-
-
-
-
-/** Opens an existing file for shared read access.
- *
- * \ingroup group__library__FileSystem
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
  */
 inline
 HANDLE
-open_existing_file_for_read_with_sharemode(
-    ws_char_a_t const*      path
-,   DWORD                   shareMode
-)
+file_create_or_open(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
 {
-    return winstl_C_open_existing_file_for_read_with_sharemode_m(path, shareMode);
+    return winstl_C_file_create_or_open(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    );
 }
 
-/** Opens an existing file for shared read access.
+/** A short-cut for <code>CreateFileA()</code> that does not require the
+ * security attributes or template file parameters.
  *
- * \ingroup group__library__FileSystem
+ * \param path The path - relative or absolute - of the file to be
+ *   created/opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param creationDisposition The creation/open action to be performed.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
  */
 inline
 HANDLE
-open_existing_file_for_read_with_sharemode(
-    ws_char_w_t const*      path
-,   DWORD                   shareMode
-)
+file_create_or_open(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   creationDisposition
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
 {
-    return winstl_C_open_existing_file_for_read_with_sharemode_w(path, shareMode);
+    return winstl_C_file_create_or_open(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   creationDisposition
+    ,   flagsAndAttributes
+    );
 }
 
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_create_new(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_new(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_NEW for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_create_new(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_new(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_create_always(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_always(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Creates/truncates a file, according to the given access, share and flags
+ * parameters, specifying \c CREATE_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be created.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_create_always(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_create_always(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_open_existing(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_existing(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Opens an existing file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_EXISTING for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_open_existing(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_existing(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_open_always(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_always(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Opens/creates a file, according to the given access, share and flags
+ * parameters, specifying \c OPEN_ALWAYS for the creation distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_open_always(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_open_always(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+
+/* file : truncate existing (or fail) */
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_truncate_existing(
+    LPCSTR  path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_truncate_existing(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
+
+/** Truncates an existing file, according to the given access, share and
+ * flags parameters, specifying \c TRUNCATE_EXISTING for the creation
+ * distribution
+ *
+ * \param path The path - relative or absolute - of the file to be opened.
+ * \param desiredAccess The desired file access.
+ * \param shareMode The share mode.
+ * \param flagsAndAttributes Flags and attributes that affect the operation
+ *   and/or the file.
+ */
+inline
+HANDLE
+file_truncate_existing(
+    LPCWSTR path
+,   DWORD   desiredAccess
+,   DWORD   shareMode
+,   DWORD   flagsAndAttributes      =   0
+) STLSOFT_NOEXCEPT
+{
+    return winstl_C_file_truncate_existing(
+        path
+    ,   desiredAccess
+    ,   shareMode
+    ,   flagsAndAttributes
+    );
+}
 #endif /* __cplusplus */
 
 /* ////////////////////////////////////////////////////////////////////// */

@@ -4,7 +4,7 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     13th September 2019
+ * Updated:     21st September 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -110,16 +110,6 @@ enum WinSTL_OperatingSystemIdentifier_t
         WinSTL_OperatingSystemIdentifier_Invalid  = -1
     ,   WinSTL_OperatingSystemIdentifier_Unknown  = 0
 
-#if 0
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-    ,   WinSTL_OperatingSystemIdentifier_Windows_
-#endif /* 0 */
     ,   WinSTL_OperatingSystemIdentifier_Windows_95
     ,   WinSTL_OperatingSystemIdentifier_Windows_98
     ,   WinSTL_OperatingSystemIdentifier_Windows_ME
@@ -140,16 +130,29 @@ enum WinSTL_OperatingSystemIdentifier_t
     ,   WinSTL_OperatingSystemIdentifier_Windows_Server_2012_R2
     ,   WinSTL_OperatingSystemIdentifier_Windows_8_1
 
+#if 0
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+    ,   WinSTL_OperatingSystemIdentifier_Windows_
+#endif /* 0 */
 };
 
 #ifdef __cplusplus
+
 } /* namespace os_version_constants */
 /* typedef os_version_constants::WinSTL_OperatingSystemIdentifier_t      WinSTL_OperatingSystemIdentifier_t; */
     using namespace ::winstl::os_version_constants;
 # ifndef WINSTL_NO_NAMESPACE
+
 typedef WinSTL_OperatingSystemIdentifier_t                            OperatingSystemIdentifier_t;
 # endif /* !WINSTL_NO_NAMESPACE */
 #else /* ? __cplusplus */
+
 typedef enum WinSTL_OperatingSystemIdentifier_t                       WinSTL_OperatingSystemIdentifier_t;
 #endif /* __cplusplus */
 
@@ -164,9 +167,12 @@ winstl_C_identify_operating_system(
 )
 {
 #if defined(__cplusplus)
+
 # ifndef WINSTL_NO_NAMESPACE
+
     using namespace ::winstl::os_version_constants;
 # else /* ? WINSTL_NO_NAMESPACE */
+
     using namespace os_version_constants;
 # endif /* !WINSTL_NO_NAMESPACE */
 #endif /* __cplusplus */
@@ -200,6 +206,7 @@ winstl_C_identify_operating_system(
     {
 #if defined(_WIN32_WINNT) && \
     _WIN32_WINNT >= 0x0501
+
         STLSOFT_NS_GLOBAL(GetNativeSystemInfo)(&si);
 #else /* ? XP+ */
         typedef void (WINAPI *GNSI_fn_t)(LPSYSTEM_INFO);
@@ -358,6 +365,7 @@ winstl_C_identify_operating_system(
 
 
 #ifdef __cplusplus
+
 inline
 WinSTL_OperatingSystemIdentifier_t
 identify_operating_system(
@@ -383,9 +391,12 @@ c_str_data_a(
 )
 {
 #if defined(__cplusplus)
+
 # ifndef WINSTL_NO_NAMESPACE
+
     using namespace ::winstl::os_version_constants;
 # else /* ? WINSTL_NO_NAMESPACE */
+
     using namespace os_version_constants;
 # endif /* !WINSTL_NO_NAMESPACE */
 #endif /* __cplusplus */
@@ -451,7 +462,6 @@ c_str_len_a(
 #ifdef __cplusplus
 #else /* ? __cplusplus */
 #endif /* __cplusplus */
-
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

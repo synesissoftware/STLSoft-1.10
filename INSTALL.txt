@@ -2,7 +2,7 @@
 STLSoft - Install
 
 ; Created:  29th March 2002
-; Updated:  14th January 2017
+; Updated:  13th October 2019
 
 ============================================================================
 
@@ -25,22 +25,22 @@ STLSoft - Install
  The makefiles / project files of several other open-source projects expect
  this symbol, including:
 
-  * b64             http://github.com/synesissoftware/b64/
-  * CLASP           http://github.com/synesissoftware/sf.net/projects/systemtools/
-  * FastFormat      http://github.com/synesissoftware/fastformat/
-  * flecxx          http://flecxx.org/
-  * libCLImate      http://github.com/synesissoftware/libclimate/
-  * Open-RJ         http://openrj.org/
-  * Pantheios       http://github.com/synesissoftware/pantheios/
-  * recls           http://github.com/synesissoftware/recls/
-  * shwild          http://github.com/synesissoftware/shwild/
-  * VOLE            http://github.com/synesissoftware/vole/
-  * xContract       http://github.com/synesissoftware/xcontract/
-  * xCover          http://github.com/synesissoftware/xcover/
-  * xTests          http://github.com/synesissoftware/xtests/
+  * b64             https://github.com/synesissoftware/b64
+  * CLASP           https://github.com/synesissoftware/CLASP
+  * FastFormat      https://github.com/synesissoftware/FastFormat
+  * flecxx          https://flecxx.sourceforge.net/
+  * libCLImate      https://github.com/synesissoftware/libCLImate
+  * Pantheios       https://github.com/synesissoftware/Pantheios
+  * recls           https://github.com/synesissoftware/recls
+  * shwild          https://github.com/synesissoftware/shwild
+  * VOLE            https://github.com/synesissoftware/VOLE
+  * xContract       https://github.com/synesissoftware/xcontract
+  * xCover          https://github.com/synesissoftware/xcover
+  * xTests          https://github.com/synesissoftware/xtests
 
  If you're using STLSoft on UNIX, you might want to apply dos2unix over all
  the files before using it. You *must* do this if you're using the SunPro
  C compiler.
 
-=============================== End of file ================================
+=============================== end of file ================================
+

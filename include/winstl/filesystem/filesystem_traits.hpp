@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     13th September 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       14
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        153
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    8
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        154
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1519,7 +1519,7 @@ public:
 
     static file_handle_type create_file(char_type const* fileName, ws_uint32_t desiredAccess, ws_uint32_t shareMode, LPSECURITY_ATTRIBUTES sa, ws_uint32_t creationDisposition, ws_uint32_t flagAndAttributes, file_handle_type hTemplateFile)
     {
-        return ::CreateFileA(fileName, desiredAccess, shareMode, sa, creationDisposition, flagAndAttributes, hTemplateFile);
+        return WINSTL_API_EXTERNAL_FileManagement_CreateFileA(fileName, desiredAccess, shareMode, sa, creationDisposition, flagAndAttributes, hTemplateFile);
     }
 
     static bool_type close_file(file_handle_type h)
@@ -2328,7 +2328,7 @@ public:
 
     static file_handle_type create_file(char_type const* fileName, ws_uint32_t desiredAccess, ws_uint32_t shareMode, LPSECURITY_ATTRIBUTES sa, ws_uint32_t creationDisposition, ws_uint32_t flagAndAttributes, file_handle_type hTemplateFile)
     {
-        return ::CreateFileW(fileName, desiredAccess, shareMode, sa, creationDisposition, flagAndAttributes, hTemplateFile);
+        return WINSTL_API_EXTERNAL_FileManagement_CreateFileW(fileName, desiredAccess, shareMode, sa, creationDisposition, flagAndAttributes, hTemplateFile);
     }
 
     static bool_type close_file(file_handle_type h)

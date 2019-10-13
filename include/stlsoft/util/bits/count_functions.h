@@ -4,7 +4,7 @@
  * Purpose:     Bit count functions.
  *
  * Created:     2nd June 2010
- * Updated:     13th September 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,9 +50,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_MAJOR    1
-# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_MINOR    2
+# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_MINOR    3
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_EDIT     13
+# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_COUNT_FUNCTIONS_EDIT     15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -559,6 +559,51 @@ count_bits(
 # endif
 }
 
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+template <size_t N_bytes>
+unsigned
+count_bits_int_(
+	int v
+);
+
+STLSOFT_TEMPLATE_SPECIALISATION
+inline
+unsigned
+count_bits_int_<4>(
+	int v
+)
+{
+	return count_bits(static_cast<ss_uint32_t>(v));
+}
+
+STLSOFT_TEMPLATE_SPECIALISATION
+inline
+unsigned
+count_bits_int_<8>(
+	int v
+)
+{
+	return count_bits(static_cast<ss_uint64_t>(v));
+}
+
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/** Counts the number of bits in an integer
+ *
+ * \param v The number whose bits are to be counted
+ *
+ * \return The number of bits in \c v
+ */
+inline
+unsigned
+count_bits(
+	int v
+)
+{
+	return count_bits_int_<sizeof(int)>(v);
+}
 #endif /* __cplusplus */
 
 /* ////////////////////////////////////////////////////////////////////// */

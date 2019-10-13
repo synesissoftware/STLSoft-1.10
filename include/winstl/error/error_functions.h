@@ -4,7 +4,7 @@
  * Purpose:     Error functions.
  *
  * Created:     7th May 2000
- * Updated:     11th September 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MINOR     5
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  1
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      81
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  2
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1162,7 +1162,9 @@ inline ws_dword_t winstl_C_format_message_alloc(
 ,   ws_char_w_t**   buffer
 )
 {
+#include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
     return winstl_C_format_message_alloc_w(error, hinst, buffer);
+#include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 }
 
 inline void winstl_C_format_message_free_buff(ws_char_a_t* buffer)
@@ -1422,7 +1424,9 @@ format_message(
 ,   ws_char_w_t**   buffer
 )
 {
+#include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
     return winstl_C_format_message_alloc_w(error, hinst, buffer);
+#include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 }
 
 /**

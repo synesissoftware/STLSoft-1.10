@@ -4,7 +4,7 @@
  * Purpose:     Memory mapped file class.
  *
  * Created:     15th December 1996
- * Updated:     13th September 2019
+ * Updated:     13th October 2019
  *
  * Thanks:      To Pablo Aguilar for requesting multibyte / wide string
  *              ambivalence. To Joe Mariadassou for requesting swap().
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR     12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      124
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  6
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      125
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -200,16 +200,18 @@ private:
     ,   size_type           requestSize
     )
     {
-        scoped_handle<HANDLE>   hfile(  ::CreateFileA(  fileName
-                                                    ,   GENERIC_READ
-                                                    ,   FILE_SHARE_READ
-                                                    ,   NULL
-                                                    ,   OPEN_EXISTING
-                                                    ,   FILE_FLAG_RANDOM_ACCESS
-                                                    ,   NULL)
-                            ,   CloseHandle
-                            ,   INVALID_HANDLE_VALUE);
-
+        scoped_handle<HANDLE>   hfile(
+            WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
+                                    fileName
+                                ,   GENERIC_READ
+                                ,   FILE_SHARE_READ
+                                ,   NULL
+                                ,   OPEN_EXISTING
+                                ,   FILE_FLAG_RANDOM_ACCESS
+                                ,   NULL)
+        ,   CloseHandle
+        ,   INVALID_HANDLE_VALUE
+        );
 
         open_helper_(hfile.get(), offset, requestSize);
     }
@@ -220,16 +222,18 @@ private:
     ,   size_type           requestSize
     )
     {
-        scoped_handle<HANDLE>   hfile(  ::CreateFileW(  fileName
-                                                    ,   GENERIC_READ
-                                                    ,   FILE_SHARE_READ
-                                                    ,   NULL
-                                                    ,   OPEN_EXISTING
-                                                    ,   FILE_FLAG_RANDOM_ACCESS
-                                                    ,   NULL)
-                            ,   CloseHandle
-                            ,   INVALID_HANDLE_VALUE);
-
+        scoped_handle<HANDLE>   hfile(
+            WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
+                                    fileName
+                                ,   GENERIC_READ
+                                ,   FILE_SHARE_READ
+                                ,   NULL
+                                ,   OPEN_EXISTING
+                                ,   FILE_FLAG_RANDOM_ACCESS
+                                ,   NULL)
+        ,   CloseHandle
+        ,   INVALID_HANDLE_VALUE
+        );
 
         open_helper_(hfile.get(), offset, requestSize);
     }

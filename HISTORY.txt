@@ -2,11 +2,23 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  13th September 2019
+; Updated:  13th October 2019
 
 ============================================================================
 
 
+13th October 2019 - 1.10.1 (beta 16) released
+---------------------------------------------
+
+ * added stlsoft_C_environment_variable_exists_a() / environment_variable_exists() (from STLSoft 1.10-alpha)
+ * added stlsoft::count_bits(int) overload
+ * added cbegin(), cend(), crbegin(), crend() to platformstl::environment_map
+ * significant additions and removals of WinSTL file creation functions
+ * added WinSTL security functions (from STLSoft 1.10-alpha)
+ * recognising Mac OSX architecture as UNIX
+ * canonicalising '\file' description sections
+ * suppresses deprecation warning from reporting use of deprecated functions inside other deprecated functions
+ 
 13th September 2019 - 1.10.1 (beta 15) released
 -----------------------------------------------
 
@@ -1168,5 +1180,5 @@ STLSoft - History
 
    comstl/string/bstr_functions.h
 
+=============================== end of file ================================
 
-=============================== End of file ================================

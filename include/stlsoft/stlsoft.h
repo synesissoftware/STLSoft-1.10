@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     13th September 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    46
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 8
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     505
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 9
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     506
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -314,12 +314,13 @@
 # define _STLSOFT_VER_1_10_1_B13    0x010a018d  /*!< Version 1.10.1 beta 13 (3rd February 2019) */
 # define _STLSOFT_VER_1_10_1_B14    0x010a018e  /*!< Version 1.10.1 beta 14 (4th August 2019) */
 # define _STLSOFT_VER_1_10_1_B15    0x010a018f  /*!< Version 1.10.1 beta 15 (13th September 2019) */
+# define _STLSOFT_VER_1_10_1_B16    0x010a0190  /*!< Version 1.10.1 beta 16 (13th October 2019) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B15
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B16
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -1055,8 +1056,10 @@
 #endif /* STLSOFT_TEMPLATE_SPECIALISATION */
 
 #ifdef STLSOFT_CF_TEMPLATE_SPECIALISATION_SYNTAX
-# define STLSOFT_TEMPLATE_SPECIALISATION                template <>
+
+# define STLSOFT_TEMPLATE_SPECIALISATION                    template <>
 #else /* ? STLSOFT_CF_TEMPLATE_SPECIALISATION_SYNTAX */
+
 # define STLSOFT_TEMPLATE_SPECIALISATION
 #endif /* STLSOFT_CF_TEMPLATE_SPECIALISATION_SYNTAX */
 
@@ -1367,34 +1370,45 @@
  *  details.
  */
 #if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define STLSOFT_ASSERT(expr)                   assert(expr)
+
+# define STLSOFT_ASSERT(expr)                               assert(expr)
 #elif defined(STLSOFT_CF_ASSERT_SUPPORT)
+
 # ifdef __STLSOFT_CF_USE_cassert
+
   /* Using the standard assertion mechanism, located in <cassert> */
 #  ifdef __cplusplus
+
 #   include <cassert>
 #  else /* ? __cplusplus */
+
 #   include <assert.h>
 #  endif /* __cplusplus */
-#  define STLSOFT_ASSERT(expr)                  assert(expr)
+#  define STLSOFT_ASSERT(expr)                              assert(expr)
 # else /* ? __STLSOFT_CF_USE_cassert */
   /* Using either a custom or proprietary assertion mechanism, so must
    * provide the header include name
    */
+
 #  ifndef __STLSOFT_CF_ASSERT_INCLUDE_NAME
+
 #   error Must supply an assert include filename with custom or proprietary assertion mechanism
 #  else /* ? __STLSOFT_CF_ASSERT_INCLUDE_NAME */
+
 #   include __STLSOFT_CF_ASSERT_INCLUDE_NAME
 #  endif /* !__STLSOFT_CF_ASSERT_INCLUDE_NAME */
 # endif /* __STLSOFT_CF_USE_cassert */
 # if !defined(STLSOFT_ASSERT) && \
      defined(stlsoft_assert)
-#  define STLSOFT_ASSERT                        stlsoft_assert
+
+#  define STLSOFT_ASSERT                                    stlsoft_assert
 # elif defined(STLSOFT_ASSERT) && \
        defined(stlsoft_assert)
+
 #  error Your compiler discrimination file cannot define both STLSOFT_ASSERT and stlsoft_assert. The former is the new version, and replaces the latter
 # endif /* STLSOFT_ASSERT / stlsoft_assert */
 # ifndef STLSOFT_ASSERT
+
 #  error If your compiler discrimination file supports assertions, it must define STLSOFT_ASSERT() (taking a single parameter)
 # endif /* !STLSOFT_ASSERT */
 #endif /* !STLSOFT_CF_ASSERT_SUPPORT */
@@ -1415,7 +1429,8 @@
  * \note This is a simple \#define for STLSOFT_ASSERT()
  */
 #ifndef stlsoft_assert
-# define stlsoft_assert(expr)                   STLSOFT_ASSERT(expr)
+
+# define stlsoft_assert(expr)                               STLSOFT_ASSERT(expr)
 #endif /* !stlsoft_assert */
 
 
@@ -1427,15 +1442,19 @@
  */
 #if defined(STLSOFT_CF_ASSERT_SUPPORT)
 # if defined(__WATCOMC__)
-#  define STLSOFT_MESSAGE_ASSERT(msg, expr)     STLSOFT_ASSERT(expr)
+
+#  define STLSOFT_MESSAGE_ASSERT(msg, expr)                 STLSOFT_ASSERT(expr)
 # elif defined(__COMO__) || \
        defined(__GNUC__) || \
        defined(__MWERKS__)
-#  define STLSOFT_MESSAGE_ASSERT(msg, expr)     STLSOFT_ASSERT((msg && (expr)))
+
+#  define STLSOFT_MESSAGE_ASSERT(msg, expr)                 STLSOFT_ASSERT((msg && (expr)))
 # else /* ? compiler */
-#  define STLSOFT_MESSAGE_ASSERT(msg, expr)     STLSOFT_ASSERT((msg, expr))
+
+#  define STLSOFT_MESSAGE_ASSERT(msg, expr)                 STLSOFT_ASSERT((msg, expr))
 # endif /* __WATCOMC__ */
 #else /* ? STLSOFT_CF_ASSERT_SUPPORT */
+
 # define STLSOFT_MESSAGE_ASSERT(msg, expr)
 #endif /* STLSOFT_CF_ASSERT_SUPPORT */
 
@@ -1450,7 +1469,7 @@
  *
  * \note This is a simple \#define for STLSOFT_MESSAGE_ASSERT()
  */
-#define stlsoft_message_assert(msg, expr)       STLSOFT_MESSAGE_ASSERT(msg, expr)
+#define stlsoft_message_assert(msg, expr)                   STLSOFT_MESSAGE_ASSERT(msg, expr)
 
 /*
  * TODO: decide on a form of static_assert with message (as the C++11 static_assert does)
@@ -1463,25 +1482,31 @@
  * \param expr A compile-time evaluatable condition that must be non-zero, or compilation will fail.
  */
 #if defined(STLSOFT_CF_static_assert_SUPPORT)
-# define STLSOFT_STATIC_ASSERT(expr)        static_assert((expr), #expr)
+
+# define STLSOFT_STATIC_ASSERT(expr)                        static_assert((expr), #expr)
 #elif defined(STLSOFT_CF_STATIC_ASSERT_SUPPORT)
+
 # if 0
-# elif defined(STLSOFT_COMPILER_IS_GCC) && \
-       (   __GNUC__ > 4 || \
-           (   __GNUC__ == 4 && \
-               __GNUC_MINOR__ >= 8))
-#  define STLSOFT_STATIC_ASSERT(expr)       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while(0)
+# elif 0 || \
+       (    defined(STLSOFT_COMPILER_IS_GCC) && \
+            STLSOFT_GCC_VER >= 40800) || \
+       0
+       
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while(0)
 # elif 0 || \
      defined(STLSOFT_COMPILER_IS_CLANG) || \
      defined(STLSOFT_COMPILER_IS_GCC) || \
      defined(STLSOFT_COMPILER_IS_INTEL) || \
      0
-#  define STLSOFT_STATIC_ASSERT(expr)       do { typedef int ai[(expr) ? 1 : -1]; } while(0)
+
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1]; } while(0)
 # else /* ? compiler */
-#  define STLSOFT_STATIC_ASSERT(expr)       do { typedef int ai[(expr) ? 1 : 0]; } while(0)
+
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : 0]; } while(0)
 # endif /* compiler */
 #else /* ? STLSOFT_CF_STATIC_ASSERT_SUPPORT */
-# define STLSOFT_STATIC_ASSERT(expr)        STLSOFT_MESSAGE_ASSERT("Static assertion failed: ", (expr))
+
+# define STLSOFT_STATIC_ASSERT(expr)                        STLSOFT_MESSAGE_ASSERT("Static assertion failed: ", (expr))
 #endif /* STLSOFT_CF_STATIC_ASSERT_SUPPORT */
 
 /** \def STLSOFT_MESSAGE_STATIC_ASSERT(expr, msg)
@@ -1489,9 +1514,11 @@
  */
 
 #if defined(STLSOFT_CF_static_assert_SUPPORT)
-# define STLSOFT_MESSAGE_STATIC_ASSERT(expr, msg)       static_assert((expr), msg)
+
+# define STLSOFT_MESSAGE_STATIC_ASSERT(expr, msg)           static_assert((expr), msg)
 #else
-# define STLSOFT_MESSAGE_STATIC_ASSERT(expr, msg)       STLSOFT_STATIC_ASSERT((expr))
+
+# define STLSOFT_MESSAGE_STATIC_ASSERT(expr, msg)           STLSOFT_STATIC_ASSERT((expr))
 #endif
 
 
@@ -1505,7 +1532,7 @@
  *
  * \deprecated This is <b>heavily</b> deprecated in favour of \ref STLSOFT_STATIC_ASSERT().
  */
-#define stlsoft_static_assert(expr)         STLSOFT_STATIC_ASSERT(expr)
+#define stlsoft_static_assert(expr)                         STLSOFT_STATIC_ASSERT(expr)
 
 /** @} */
 
@@ -2016,34 +2043,34 @@ typedef long                            ss_streampos_t;     /*!< streampos      
 typedef long                            ss_streamoff_t;     /*!< streamoff                  */
 
 #ifndef STLSOFT_NO_NAMESPACE
-typedef ss_char_a_t                 char_a_t;           /*!< Ansi char type             */
-typedef ss_char_w_t                 char_w_t;           /*!< Unicode char type          */
-typedef ss_int8_t                   int8_t;             /*!< 8-bit integer              */
-typedef ss_sint8_t                  sint8_t;            /*!< 8-bit signed integer       */
-typedef ss_uint8_t                  uint8_t;            /*!< 8-bit unsigned integer     */
-typedef ss_int16_t                  int16_t;            /*!< 16-bit integer             */
-typedef ss_sint16_t                 sint16_t;           /*!< 16-bit signed integer      */
-typedef ss_uint16_t                 uint16_t;           /*!< 16-bit unsigned integer    */
-typedef ss_int32_t                  int32_t;            /*!< 32-bit integer             */
-typedef ss_sint32_t                 sint32_t;           /*!< 32-bit signed integer      */
-typedef ss_uint32_t                 uint32_t;           /*!< 32-bit unsigned integer    */
+typedef ss_char_a_t                     char_a_t;           /*!< Ansi char type             */
+typedef ss_char_w_t                     char_w_t;           /*!< Unicode char type          */
+typedef ss_int8_t                       int8_t;             /*!< 8-bit integer              */
+typedef ss_sint8_t                      sint8_t;            /*!< 8-bit signed integer       */
+typedef ss_uint8_t                      uint8_t;            /*!< 8-bit unsigned integer     */
+typedef ss_int16_t                      int16_t;            /*!< 16-bit integer             */
+typedef ss_sint16_t                     sint16_t;           /*!< 16-bit signed integer      */
+typedef ss_uint16_t                     uint16_t;           /*!< 16-bit unsigned integer    */
+typedef ss_int32_t                      int32_t;            /*!< 32-bit integer             */
+typedef ss_sint32_t                     sint32_t;           /*!< 32-bit signed integer      */
+typedef ss_uint32_t                     uint32_t;           /*!< 32-bit unsigned integer    */
 # ifdef STLSOFT_CF_64BIT_INT_SUPPORT
-typedef ss_int64_t                  int64_t;            /*!< 64-bit integer             */
-typedef ss_sint64_t                 sint64_t;           /*!< 64-bit signed integer      */
-typedef ss_uint64_t                 uint64_t;           /*!< 64-bit unsigned integer    */
+typedef ss_int64_t                      int64_t;            /*!< 64-bit integer             */
+typedef ss_sint64_t                     sint64_t;           /*!< 64-bit signed integer      */
+typedef ss_uint64_t                     uint64_t;           /*!< 64-bit unsigned integer    */
 # endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
-typedef ss_short_t                  short_t;            /*!< short integer              */
-typedef ss_int_t STLSOFT_WARN_64    int_t;              /*!< integer                    */
-typedef ss_sint_t STLSOFT_WARN_64   sint_t;             /*!< signed integer             */
-typedef ss_uint_t STLSOFT_WARN_64   uint_t;             /*!< unsigned integer           */
-typedef ss_long_t STLSOFT_WARN_64   long_t;             /*!< long integer               */
-typedef ss_byte_t                   byte_t;             /*!< Byte                       */
+typedef ss_short_t                      short_t;            /*!< short integer              */
+typedef ss_int_t STLSOFT_WARN_64        int_t;              /*!< integer                    */
+typedef ss_sint_t STLSOFT_WARN_64       sint_t;             /*!< signed integer             */
+typedef ss_uint_t STLSOFT_WARN_64       uint_t;             /*!< unsigned integer           */
+typedef ss_long_t STLSOFT_WARN_64       long_t;             /*!< long integer               */
+typedef ss_byte_t                       byte_t;             /*!< Byte                       */
 # if defined(__cplusplus)
-typedef ss_bool_t                   bool_t;             /*!< bool                       */
+typedef ss_bool_t                       bool_t;             /*!< bool                       */
 # endif /* __cplusplus */
 # if !defined(STLSOFT_COMPILER_IS_DMC)
-typedef ss_streampos_t              streampos_t;        /*!< streampos                  */
-typedef ss_streamoff_t              streamoff_t;        /*!< streamoff                  */
+typedef ss_streampos_t                  streampos_t;        /*!< streampos                  */
+typedef ss_streamoff_t                  streamoff_t;        /*!< streamoff                  */
 # endif /* compiler */
 #endif /* !STLSOFT_NO_NAMESPACE */
 
@@ -2080,7 +2107,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_explicit_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_explicit_k              explicit
+# define ss_explicit_k                                      explicit
 #else /* ? STLSOFT_CF_explicit_KEYWORD_SUPPORT */
 # define ss_explicit_k
 #endif /* STLSOFT_CF_explicit_KEYWORD_SUPPORT */
@@ -2091,7 +2118,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_final_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_final_k                 final
+# define ss_final_k                                         final
 #else /* ? STLSOFT_CF_final_KEYWORD_SUPPORT */
 # define ss_final_k
 #endif /* STLSOFT_CF_final_KEYWORD_SUPPORT */
@@ -2102,7 +2129,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_mutable_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_mutable_k               mutable
+# define ss_mutable_k                                       mutable
 #else /* ? STLSOFT_CF_mutable_KEYWORD_SUPPORT */
 # define ss_mutable_k
 #endif /* STLSOFT_CF_mutable_KEYWORD_SUPPORT */
@@ -2113,7 +2140,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_noexcept_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_noexcept_k              noexcept
+# define ss_noexcept_k                                      noexcept
 #else /* ? STLSOFT_CF_noexcept_KEYWORD_SUPPORT */
 # define ss_noexcept_k
 #endif /* STLSOFT_CF_noexcept_KEYWORD_SUPPORT */
@@ -2124,9 +2151,9 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_nullptr_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_nullptr_k               nullptr
+# define ss_nullptr_k                                       nullptr
 #else /* ? STLSOFT_CF_nullptr_KEYWORD_SUPPORT */
-# define ss_nullptr_k               NULL
+# define ss_nullptr_k                                       NULL
 #endif /* STLSOFT_CF_nullptr_KEYWORD_SUPPORT */
 
 /** \def ss_override_k
@@ -2135,7 +2162,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_override_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_override_k              override
+# define ss_override_k                                      override
 #else /* ? STLSOFT_CF_override_KEYWORD_SUPPORT */
 # define ss_override_k
 #endif /* STLSOFT_CF_override_KEYWORD_SUPPORT */
@@ -2148,9 +2175,9 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TYPENAME_PARAM_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_typename_param_k        typename
+# define ss_typename_param_k                                typename
 #else /* ? STLSOFT_CF_TYPENAME_PARAM_KEYWORD_SUPPORT */
-# define ss_typename_param_k        class
+# define ss_typename_param_k                                class
 #endif /* STLSOFT_CF_TYPENAME_PARAM_KEYWORD_SUPPORT */
 
 /** \def ss_typename_type_k
@@ -2161,7 +2188,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TYPENAME_TYPE_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_typename_type_k         typename
+# define ss_typename_type_k                                 typename
 #else /* ? STLSOFT_CF_TYPENAME_TYPE_KEYWORD_SUPPORT */
 # define ss_typename_type_k
 #endif /* STLSOFT_CF_TYPENAME_TYPE_KEYWORD_SUPPORT */
@@ -2175,7 +2202,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TYPENAME_TYPE_DEF_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_typename_type_def_k     typename
+# define ss_typename_type_def_k                             typename
 #else /* ? STLSOFT_CF_TYPENAME_TYPE_DEF_KEYWORD_SUPPORT */
 # define ss_typename_type_def_k
 #endif /* STLSOFT_CF_TYPENAME_TYPE_DEF_KEYWORD_SUPPORT */
@@ -2189,7 +2216,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TYPENAME_TYPE_MIL_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_typename_type_mil_k     typename
+# define ss_typename_type_mil_k                             typename
 #else /* ? STLSOFT_CF_TYPENAME_TYPE_MIL_KEYWORD_SUPPORT */
 # define ss_typename_type_mil_k
 #endif /* STLSOFT_CF_TYPENAME_TYPE_MIL_KEYWORD_SUPPORT */
@@ -2203,7 +2230,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TYPENAME_TYPE_RET_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_typename_type_ret_k     typename
+# define ss_typename_type_ret_k                             typename
 #else /* ? STLSOFT_CF_TYPENAME_TYPE_RET_KEYWORD_SUPPORT */
 # define ss_typename_type_ret_k
 #endif /* STLSOFT_CF_TYPENAME_TYPE_RET_KEYWORD_SUPPORT */
@@ -2214,7 +2241,7 @@ typedef ss_streamoff_t              streamoff_t;        /*!< streamoff          
  */
 #if defined(STLSOFT_CF_TEMPLATE_QUALIFIER_KEYWORD_SUPPORT) || \
     defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-# define ss_template_qual_k         template
+# define ss_template_qual_k                                 template
 #else /* ? STLSOFT_CF_TEMPLATE_QUALIFIER_KEYWORD_SUPPORT */
 # define ss_template_qual_k
 #endif /* STLSOFT_CF_TEMPLATE_QUALIFIER_KEYWORD_SUPPORT */
@@ -2465,11 +2492,14 @@ size_t            s_vi  = STLSOFT_NUM_ELEMENTS(vi);   // Error
  * ss_array_size_struct, rather than ss_array_size_struct, so as to avoid Visual C++ (7.1)'s C4686 warning
  */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_NUM_ELEMENTS_(ar)                      (sizeof(ar) / sizeof(0[(ar)]))
+
+# define STLSOFT_NUM_ELEMENTS_(ar)                          (sizeof(ar) / sizeof(0[(ar)]))
 
 # if defined(__cplusplus) && \
      defined(STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT)
+
 #  if 0/* defined(STLSOFT_COMPILER_IS_GCC) */
+
 #   pragma pack(push, 1)
 template <int N>
 struct ss_array_size_struct
@@ -2850,12 +2880,15 @@ inline void stlsoft_suppress_unused_func(size_t )
 {}
 # endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
-# define STLSOFT_SUPPRESS_UNUSED(x)     STLSOFT_NS_QUAL(stlsoft_suppress_unused_func)(x)
+# define STLSOFT_SUPPRESS_UNUSED(x)                         STLSOFT_NS_QUAL(stlsoft_suppress_unused_func)(x)
 #else /* ? compiler */
+
 # ifdef __cplusplus
-#  define STLSOFT_SUPPRESS_UNUSED(x)    (static_cast<void>(x))
+
+#  define STLSOFT_SUPPRESS_UNUSED(x)                        (static_cast<void>(x))
 # else /* ? __cplusplus */
-#  define STLSOFT_SUPPRESS_UNUSED(x)    ((void)(x))
+
+#  define STLSOFT_SUPPRESS_UNUSED(x)                        ((void)(x))
 # endif /* __cplusplus */
 #endif /* compiler */
 
@@ -2866,9 +2899,11 @@ inline void stlsoft_suppress_unused_func(size_t )
  */
 #if defined(__cplusplus) && \
     !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
+
 # define STLSOFT_UNNAMED_PARAM(p)
 #else /* ? __cplusplus */
-# define STLSOFT_UNNAMED_PARAM(p)           p
+
+# define STLSOFT_UNNAMED_PARAM(p)                           p
 #endif /* __cplusplus */
 
 /** \def STLSOFT_SUPPRESS_UNNAMED_PARAM
@@ -2878,9 +2913,11 @@ inline void stlsoft_suppress_unused_func(size_t )
  */
 #if defined(__cplusplus) && \
     !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
+
 # define STLSOFT_SUPPRESS_UNNAMED_PARAM(p)
 #else /* ? __cplusplus */
-# define STLSOFT_SUPPRESS_UNNAMED_PARAM(p)  ((void)p);
+
+# define STLSOFT_SUPPRESS_UNNAMED_PARAM(p)                  ((void)(p))
 #endif /* __cplusplus */
 
 /** @} */
@@ -3290,8 +3327,8 @@ address(
 inline
 void*
 operator new(
-    ss_size_t   /* si */
-,   void*       pv
+    ss_size_t    /* si */
+,   void*           pv
 )
 {
     return pv;

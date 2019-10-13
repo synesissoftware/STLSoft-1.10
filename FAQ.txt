@@ -2,7 +2,7 @@
 STLSoft - FAQ
 
 ; Created:  29th March 2002
-; Updated:  14th January 2017
+; Updated:  13th October 2019
 
 ============================================================================
 
@@ -50,8 +50,10 @@ A3:
 Q4: "Does STLSoft have unit-tests?"
 
 A4:
-  Yes, and they use a mix of xTests and Catch unit-test libraries, both of
-  which are bundled with the distribution.
+  Yes, but for various reasons they're not available with the STLSoft 1.10
+  distribution. When STLSoft 1.11 is released it will include unit-tests,
+  which will likely be a mix of xTests and Catch unit-test libraries, both
+  of which will be bundled with the distribution.
 
+=============================== end of file ================================
 
-=============================== End of file ================================

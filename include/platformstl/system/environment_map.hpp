@@ -4,7 +4,7 @@
  * Purpose:     Definition of the environment_map class.
  *
  * Created:     14th November 2005
- * Updated:     13th September 2019
+ * Updated:     13th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,20 +51,10 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_MAJOR       2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_MINOR       4
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_REVISION    7
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_EDIT        70
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_MINOR       5
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_REVISION    1
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_EDIT        71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * Auto-generation and compatibility
- */
-
-/*
-[Incompatibilies-start]
-STLSOFT_COMPILER_IS_WATCOM:
-[Incompatibilies-end]
-*/
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -183,6 +173,7 @@ public:
     class                                                   const_iterator;
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT) && \
     !defined(STLSOFT_COMPILER_IS_BORLAND)
+
     typedef const_reverse_bidirectional_iterator_base<  const_iterator
                                                     ,   value_type
                                                     ,   const_reference
@@ -201,9 +192,11 @@ private:
         typedef STLSOFT_NS_QUAL(shared_ptr)<snapshot>   ref_type;
 #if defined(STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC) && \
     STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION == STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0
+
         // VC7 libs get confused with const key type here
         typedef STLSOFT_NS_QUAL_STD(map)<         first_type
 #else /* ? library */
+
         typedef STLSOFT_NS_QUAL_STD(map)<   const first_type
 #endif /* library */
                                         ,   second_type
@@ -291,6 +284,7 @@ public:
 /// @{
 public:
 #ifdef PLATFORMSTL_ENVVAR_SET_SUPPORTED
+
     /// Inserts or updates and environment variable
     ///
     /// \note This method is strongly exception-safe. The insertion into the
@@ -307,6 +301,7 @@ public:
     void insert(char const* name, char const* value);
 #endif /* PLATFORMSTL_ENVVAR_SET_SUPPORTED */
 #ifdef PLATFORMSTL_ENVVAR_ERASE_SUPPORTED
+
     /// Removes the entry of the given name
     ///
     /// \note If the given entry does not exist
@@ -326,6 +321,16 @@ public:
 /// @{
 public:
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
+    /// Begins the iteration
+    ///
+    /// \return A non-mutating (const) iterator representing the start of the sequence
+    const_iterator  cbegin() const;
+    /// Ends the iteration
+    ///
+    /// \return A non-mutating (const) iterator representing (one past) the end of the sequence
+    const_iterator  cend() const;
+
     /// Begins the iteration
     ///
     /// \return A non-mutating (const) iterator representing the start of the sequence
@@ -336,6 +341,16 @@ public:
     const_iterator  end() const;
 # if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT) && \
      !defined(STLSOFT_COMPILER_IS_BORLAND)
+
+    /// Begins the reverse iteration
+    ///
+    /// \return A non-mutating (const) iterator representing the start of the reverse sequence
+    const_reverse_iterator  crbegin() const;
+    /// Ends the reverse iteration
+    ///
+    /// \return A non-mutating (const) iterator representing (one past) the end of the reverse sequence
+    const_reverse_iterator  crend() const;
+
     /// Begins the reverse iteration
     ///
     /// \return A non-mutating (const) iterator representing the start of the reverse sequence
@@ -352,6 +367,7 @@ public:
 /// @{
 public:
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
     /// const_iterator class
     ///
     /// \note Even though the const_iterator class, in and of itself, supports Invalidatable
@@ -417,6 +433,7 @@ public:
 /// @{
 private:
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
     void check_refresh_snapshot_() const;
 #endif /* PLATFORMSTL_ENVVAR_HAS_ENVIRON */
 /// @}
@@ -425,6 +442,7 @@ private:
 /// @{
 private:
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
     mutable snapshot::ref_type     m_snapshot;
 #endif /* PLATFORMSTL_ENVVAR_HAS_ENVIRON */
 /// @}
@@ -507,6 +525,7 @@ namespace platformstl_project
 // environment_map::const_iterator
 
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
 inline environment_map::const_iterator::const_iterator()
     : m_it()
 {}
@@ -606,6 +625,7 @@ inline void environment_map::refresh()
 }
 
 #ifdef PLATFORMSTL_ENVVAR_SET_SUPPORTED
+
 inline void environment_map::insert(environment_map::first_type const& name, environment_map::second_type const& value)
 {
     // Preconditions
@@ -670,6 +690,7 @@ inline void environment_map::insert(char const* name, char const* value)
 #endif /* PLATFORMSTL_ENVVAR_SET_SUPPORTED */
 
 #ifdef PLATFORMSTL_ENVVAR_ERASE_SUPPORTED
+
 inline environment_map::size_type environment_map::erase(environment_map::first_type const& name)
 {
     // Preconditions
@@ -752,7 +773,13 @@ inline void environment_map::erase(environment_map::const_iterator it)
 #endif /* PLATFORMSTL_ENVVAR_ERASE_SUPPORTED */
 
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
 inline environment_map::const_iterator environment_map::begin() const
+{
+	return cbegin();
+}
+
+inline environment_map::const_iterator environment_map::cbegin() const
 {
     check_refresh_snapshot_();
 
@@ -767,6 +794,11 @@ inline environment_map::const_iterator environment_map::begin() const
 
 inline environment_map::const_iterator environment_map::end() const
 {
+	return cend();
+}
+
+inline environment_map::const_iterator environment_map::cend() const
+{
     check_refresh_snapshot_();
 
 #if 0
@@ -780,12 +812,23 @@ inline environment_map::const_iterator environment_map::end() const
 
 # if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT) && \
      !defined(STLSOFT_COMPILER_IS_BORLAND)
+
 inline environment_map::const_reverse_iterator environment_map::rbegin() const
+{
+    return crbegin();
+}
+
+inline environment_map::const_reverse_iterator environment_map::crbegin() const
 {
     return const_reverse_iterator(end());
 }
 
 inline environment_map::const_reverse_iterator environment_map::rend() const
+{
+    return crend();
+}
+
+inline environment_map::const_reverse_iterator environment_map::crend() const
 {
     return const_reverse_iterator(begin());
 }
@@ -793,6 +836,7 @@ inline environment_map::const_reverse_iterator environment_map::rend() const
 #endif /* PLATFORMSTL_ENVVAR_HAS_ENVIRON */
 
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
 inline void environment_map::check_refresh_snapshot_() const
 {
     if(m_snapshot.use_count() < 2)

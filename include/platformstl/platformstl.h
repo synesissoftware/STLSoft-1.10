@@ -5,7 +5,7 @@
  *              platform discriminations, and definitions of types.
  *
  * Created:     20th March 2005
- * Updated:     2nd February 2019
+ * Updated:     11th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,8 +47,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MINOR    15
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 1
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     51
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 2
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/platformstl.h
@@ -126,12 +126,13 @@
 # define _PLATFORMSTL_VER_1_8_3     0x010803ff  /*!< Version 1.8.3 (with STLSoft 1.9.110) */
 # define _PLATFORMSTL_VER_1_8_4     0x010804ff  /*!< Version 1.8.4 (with STLSoft 1.9.119) */
 # define _PLATFORMSTL_VER_1_9_1_B01 0x01090181  /*!< Version 1.9.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _PLATFORMSTL_VER_1_9_1_B02 0x01090182  /*!< Version 1.9.1 beta 2 (with STLSoft 1.10.1 beta 16) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _PLATFORMSTL_VER_MAJOR      1
 #define _PLATFORMSTL_VER_MINOR      9
 #define _PLATFORMSTL_VER_REVISION   1
-#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B01
+#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -148,26 +149,34 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0181
-# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 1, or later
+#if _STLSOFT_VER < 0x010a0190
+# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 16, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////
  * operating system identification
  */
 
-#if defined(unix) || \
-    defined(UNIX) || \
-    defined(__unix__) || \
-    defined(__unix)
+#if 0
+#elif 0 || \
+      defined(unix) || \
+      defined(UNIX) || \
+      defined(__unix__) || \
+      defined(__unix) || \
+      defined(__MACH__) || \
+      0
 # define PLATFORMSTL_OS_IS_UNIX
-#elif defined(WIN64) || \
+#elif 0 || \
+      defined(WIN64) || \
       defined(_WIN64) || \
-      defined(__WIN64__)
+      defined(__WIN64__) || \
+      0
 # define PLATFORMSTL_OS_IS_WIN64
-#elif defined(WIN32) || \
+#elif 0 || \
+      defined(WIN32) || \
       defined(_WIN32) || \
-      defined(__WIN32__)
+      defined(__WIN32__) || \
+      0
 # define PLATFORMSTL_OS_IS_WIN32
 #else /* ? operating system */
 # error Operating system not discriminated. Only UNIX, Win32 and Win64 are currently recognised by PlatformSTL
