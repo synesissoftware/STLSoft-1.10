@@ -71,7 +71,7 @@ we'll be at it.
 
  * ``stlsoft::ref_ptr`` : + ``borrow()``; + ``own()``
  * UNIXSTL special string instances : + added standard string access shims
- * ``winstl::environment_variable`` : + ``data()``; + ``equal()``; + ``equal_ignore_case()``; + ``exists()``; + ``operator``s ``==()`` and ``!=()``
+ * ``winstl::environment_variable`` : + ``data()``; + ``equal()``; + ``equal_ignore_case()``; + ``exists()``; + ``operator`` ``==()`` and ``!=()``
 
 ### 1.10.1 beta-10 - 20th December 2018
 
