@@ -93,3 +93,21 @@ we'll be at it.
 
  * fixing break to UNIX-compatibility introduced in beta-6/7
 
+### 1.10.1 beta-7 - 9th June 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta7>
+
+ * ``auto_buffer<>`` now supports limited form of pointer arithmethic via ``operator -()``
+ * added subscript operator for ``auto_array_destructor<>``
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
+
+### 1.10.1 beta-6 - 9th June 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta6>
+
+ * refactored in terms of external API
+ * removed empty/meaningless "compatibility" sections
+ * canonicalising proscribed construction methods
+ * simplifying, and prospective changes (for getting to 1.12)
+
