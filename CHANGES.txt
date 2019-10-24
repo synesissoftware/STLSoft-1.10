@@ -33,6 +33,9 @@ General:
 Changes:
 ========
 
+ *:
+    ~ added '#ifndef _STLSOFT_SUPPRESS_WARNING_IN_OBSOLETE_FILES' into obsolete headers
+
  STLSoft:
  ========
 
