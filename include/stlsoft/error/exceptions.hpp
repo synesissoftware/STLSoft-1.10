@@ -12,10 +12,10 @@
 #  endif
 # endif
 
-# include <STLSOFT/exception/os_exception.hpp>
-# include <STLSOFT/exception/project_exception.hpp>
-# include <STLSOFT/exception/root_exception.hpp>
-# include <STLSOFT/exception/throw_policies.hpp>
+# include <stlsoft/exception/os_exception.hpp>
+# include <stlsoft/exception/project_exception.hpp>
+# include <stlsoft/exception/root_exception.hpp>
+# include <stlsoft/exception/throw_policies.hpp>
 #endif
 
 /* ///////////////////////////// end of file //////////////////////////// */
