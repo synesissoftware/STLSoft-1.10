@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  13th October 2019
+; Updated:  24th October 2019
 
 ============================================================================
 
@@ -51,8 +51,8 @@ Changes:
  ~ stlsoft/util/bits/count_functions.h:
     + added count_bits(int) overload
 
- Platform:
- =========
+ PlatformSTL:
+ ============
 
  ~ platformstl/platformstl.h:
     + recognising Mac OSX architecture as UNIX
@@ -1084,7 +1084,7 @@ General:
    and library identifiers, status-code, and message translation
  * several new special-string-instance types, including home_directory,
    host_name, temporary_directory, temporary_file_name
- * new string access shims, for types including timeval, type_info   
+ * new string access shims, for types including timeval, type_info
  * new attribute shims, including: get_synch_handle, get_FILE_ptr
  * new logical shims, including: is_empty, is_null
  * new high-performance conversion functions (based around the extant
@@ -1147,7 +1147,7 @@ Changes:
     ~ stlsoft_throw_0() => STLSOFT_NOEXCEPT
 
  ~ winstl/registry/reg_key.hpp:
-    + added 0-param (unnamed) overload of get_value() 
+    + added 0-param (unnamed) overload of get_value()
 
 
 ============================================================================
@@ -2155,7 +2155,7 @@ Summary:
  * numerous improvements to unixstl::filesystem_traits::glob_sequence
  * unixstl::readdir_sequence correction to elide sockets from search results
  * winstl/time/conversion_functions.h renaming (and deprecation) of non-standard C function names
-    
+
 Changes:
 ========
 
@@ -2231,7 +2231,7 @@ Summary:
  * added winstl_C_format_message_strerror_a(), an analogue of strerror() for Windows API "error" codes
  * adjusted discrimination of exception-support macros, based on presence of GCC compiler's __EXCEPTIONS symbol
  * minor VC++ compatibility fix for stlsoft/shims/access/string/std/exception.hpp
-    
+
 Changes:
 ========
 
@@ -2261,7 +2261,7 @@ Summary:
 ========
 
  * fix for GCC 4.5+ unixstl::filesystem_traits
-    
+
 Changes:
 ========
 
@@ -2285,7 +2285,7 @@ Summary:
  * correction(s)/enhancement(s) to which of MFCSTL's string access shim headers are automatically included
  * added discrimination of new pre-processor symbol PLATFORMSTL_NO_PLATFORM_NAMESPACE, to ease dependent library implementation
  * avoidance of false memory-leak reports in use of stlsoft::truncation_test
-    
+
 Changes:
 ========
 
@@ -2343,7 +2343,7 @@ Summary:
  * added is_path_rooted(), is_path_absolute(), and is_path_UNC() methods to unixstl::filesystem_traits<>
  * added two-parameters overloads of is_path_rooted(), is_path_absolute(), and is_path_UNC() methods to winstl::filesystem_traits<>
  * include/winstl/error/error_functions.h: substantial refactoring of format_message()-family of functions (and their C analogues)
-    
+
 Changes:
 ========
 
