@@ -53,42 +53,42 @@ we'll be at it.
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta14>
 
- * added SECURITY_DESCRIPTOR helpers()
- * stlsoft::w2m and stlsoft::m2w now more general
+ * added ``SECURITY_DESCRIPTOR`` helpers()
+ * ``stlsoft::w2m`` and ``stlsoft::m2w`` now more general
 
 ### 1.10.1 beta-13 - 16th April 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta13>
 
- * fixed STLSOFT_ALWAYS_FALSE() / STLSOFT_ALWAYS_TRUE()
- * platformstl::FILE_stream : ~ fixing character-encoding function selection defect
+ * fixed ``STLSOFT_ALWAYS_FALSE()`` / ``STLSOFT_ALWAYS_TRUE()``
+ * ``platformstl::FILE_stream`` : ~ fixing character-encoding function selection defect
  * canonicalising source file structure
 
 ### 1.10.1 beta-12 - 26th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta12>
 
- * added sas_to_string() (and related) functions
- * added stlsoft::errno_exception (from 1.12 branch)
- * added stlsoft::locale_scope
- * STLSoft's struct tm String Access Shims now work for arbitrary locale
- * UNIXSTL's timeval String Access Shims now work for arbitrary locale
+ * added ``sas_to_string()`` (and related) functions
+ * added ``stlsoft::errno_exception`` (from 1.12 branch)
+ * added ``stlsoft::locale_scope``
+ * STLSoft's ``struct tm`` String Access Shims now work for arbitrary locale
+ * UNIXSTL's ``timeval`` String Access Shims now work for arbitrary locale
 
 ### 1.10.1 beta-11 - 22nd December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta11>
 
- * stlsoft::ref_ptr : + borrow(); + own()
+ * ``stlsoft::ref_ptr`` : + ``borrow()``; + ``own()``
  * UNIXSTL special string instances : + added standard string access shims
- * winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + exists(); + operators ==() and !=()
+ * ``winstl::environment_variable`` : + ``data()``; + ``equal()``; + ``equal_ignore_case()``; + ``exists()``; + ``operator`` ``==()`` and ``!=()``
 
 ### 1.10.1 beta-10 - 20th December 2018
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta10>
 
- * winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
- * special_string_instance now provides generic (SAS) (in)equality operators automatically
- * try_parse_to_bool() semantics firmed up
+ * ``winstl::process_mutex()`` now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
+ * ``special_string_instance`` now provides generic (SAS) (in)equality operators automatically
+ * ``try_parse_to_bool()`` semantics firmed up
 
 ### 1.10.1 beta-9 - 12th June 2018
 
@@ -101,4 +101,22 @@ we'll be at it.
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta8>
 
  * fixing break to UNIX-compatibility introduced in beta-6/7
+
+### 1.10.1 beta-7 - 9th June 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta7>
+
+ * ``auto_buffer<>`` now supports limited form of pointer arithmethic via ``operator -()``
+ * added subscript operator for ``auto_array_destructor<>``
+ * VC++ 14.1x compatibility
+ * refactoring of copy-proscriptions
+
+### 1.10.1 beta-6 - 9th June 2018
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta6>
+
+ * refactored in terms of external API
+ * removed empty/meaningless "compatibility" sections
+ * canonicalising proscribed construction methods
+ * simplifying, and prospective changes (for getting to 1.12)
 
