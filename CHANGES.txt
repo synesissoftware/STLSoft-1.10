@@ -42,6 +42,9 @@ Changes:
  ~ stlsoft/conversion/char_conversions.hpp:
     ~ GCC 8 compatibility
 
+ ~ stlsoft/error/exceptions.hpp:
+    ~ fixed non-portable include path
+
  ~ stlsoft/iterator/associative_eraser_iterator.hpp:
     ~ improved documentation
 
