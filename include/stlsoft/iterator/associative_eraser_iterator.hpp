@@ -4,7 +4,7 @@
  * Purpose:     Eraser iterator for associative containers.
  *
  * Created:     28th January 2005
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,7 +53,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MAJOR      1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MINOR      3
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_REVISION   2
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       24
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,7 +87,48 @@ namespace stlsoft
  * classes
  */
 
-/** Iterator class that 
+/** Iterator class that erases from an associative container an entry, if it
+ * exists, that is applied to the dereference operator, and therefore may be
+ * used with <code>std::copy()</code> to erase matching elements from a
+ * range, as in:
+\htmlonly
+<pre>
+  static char const* contained_strings[] =
+  {
+    "abc",
+    "def",
+    "ghi",
+    "jkl",
+  };
+
+  static char const* erased_strings[] =
+  {
+    "abc",
+    "ghi",
+    "mno",
+  };
+
+  std::set<std::string>  c;
+
+  // insert some strings
+
+  std::copy(
+    contained_strings, contained_strings + dimensionof(contained_strings)
+  , std::inserter(c, c.end())
+  );
+
+  assert(4 == c.size();
+
+  // now erase some other strings
+
+  std::copy(
+    erased_strings, erased_strings + dimensionof(erased_strings)
+  , stlsoft::assoc_eraser(c, nullptr, nullptr)
+  );
+
+  assert(2 == c.size();
+</pre>
+\endhtmlonly
  *
  */
 template <ss_typename_param_k T_container>

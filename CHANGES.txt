@@ -20,6 +20,56 @@ STLSoft - Changes
 
 ============================================================================
 
+Changes for 1.10.1 beta 17 (24th October 2019)
+
+General:
+========
+
+ * GCC 8 compatibility
+ * GCC 9 compatibility
+ * implemented WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w()
+ * improved documentation
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/conversion/char_conversions.hpp:
+    ~ GCC 8 compatibility
+
+ ~ stlsoft/iterator/associative_eraser_iterator.hpp:
+    ~ improved documentation
+
+ ~ stlsoft/stlsoft.h:
+    + GCC 9 compatibility
+    ~ GCC 8 compatibility
+
+ ~ stlsoft/string/string_view.hpp:
+ ~ stlsoft/time/fast_strftime.hpp:
+ ~ stlsoft/util/bits/count_functions.h:
+    ~ whitespace
+
+ COMSTL:
+ =======
+
+ ~ comstl/comstl.h:
+    ~ whitespace
+    ~ GCC 8 compatibility for nameless unions (see http://blog.stlsoft-musings.net/2019/10/com-variant-nameless-union.html)
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/Authorization.h:
+ ~ winstl/filesystem/file_information_functions.h:
+    ~ implemented WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w()
+
+ ~ winstl/filesystem/findfile_sequence.hpp:
+    ~ GCC 8 compatibility
+
+============================================================================
+
 Changes for 1.10.1 beta 16 (13th October 2019)
 
 General:

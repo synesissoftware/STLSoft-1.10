@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     13th October 2019
+ * Updated:     24th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,9 +53,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    46
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 9
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     506
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    48
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 1
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     508
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -315,12 +315,13 @@
 # define _STLSOFT_VER_1_10_1_B14    0x010a018e  /*!< Version 1.10.1 beta 14 (4th August 2019) */
 # define _STLSOFT_VER_1_10_1_B15    0x010a018f  /*!< Version 1.10.1 beta 15 (13th September 2019) */
 # define _STLSOFT_VER_1_10_1_B16    0x010a0190  /*!< Version 1.10.1 beta 16 (13th October 2019) */
+# define _STLSOFT_VER_1_10_1_B17    0x010a0191  /*!< Version 1.10.1 beta 17 (24th October 2019) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B16
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B17
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -563,10 +564,11 @@
  /* ******************************** GCC ******************************** */
 # define STLSOFT_COMPILER_IS_GCC
 # define STLSOFT_COMPILER_LABEL_STRING          "GNU C/C++"
-# if __GNUC__ != 2 && \
-     __GNUC__ != 3 && \
-     __GNUC__ != 4
-#  error GNU C/C++ compilers whose major version is not 2, 3 or 4 are not currently supported by the STLSoft libraries
+# if 0 || \
+     __GNUC__ < 2 || \
+     __GNUC__ > 9 && \
+     0
+#  error GNU C/C++ compilers whose major version is not in the range 2-9 are not currently supported by the STLSoft libraries
 # elif __GNUC__ == 2
 #  if __GNUC_MINOR__ < 95
 #   error Currently only version 2.95 and above of the GNU C/C++ compiler is supported by the STLSoft libraries
@@ -587,12 +589,14 @@
 #  else /* ? __GNUC_MINOR__ */
 #   define STLSOFT_COMPILER_VERSION_STRING      "GNU C/C++ >3.4 - you should be aware that this version may not be supported correctly"
 #  endif /* __GNUC_MINOR__  */
-# elif __GNUC__ == 0
+# elif __GNUC__ == 4
 #  if __GNUC_MINOR__ == 0
 #   define STLSOFT_COMPILER_VERSION_STRING      "GNU C/C++ 4.0"
 #  else /* ? __GNUC_MINOR__ */
 #   define STLSOFT_COMPILER_VERSION_STRING      "GNU C/C++ >4.0 - you should be aware that this version may not be supported correctly"
 #  endif /* __GNUC__  */
+# else
+#   define STLSOFT_COMPILER_VERSION_STRING      "GNU C/C++ " STLSOFT_STRINGIZE(__GNUC__) "." STLSOFT_STRINGIZE(__GNUC_MINOR__)
 # endif /* __GNUC_MINOR__ */
 
 #elif defined(__INTEL_COMPILER)

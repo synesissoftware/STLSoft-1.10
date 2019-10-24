@@ -2,12 +2,14 @@
 STLSoft - News
 
 ; Created:  29th March 2002
-; Updated:  13th October 2019
+; Updated:  24th October 2019
 
 ============================================================================
 
 
 News:
+
+  24th October 2019     -   Release of STLSoft 1.10.1 beta 17
 
   13th October 2019     -   Release of STLSoft 1.10.1 beta 16
 

@@ -7,6 +7,15 @@ STLSoft - History
 ============================================================================
 
 
+24th October 2019 - 1.10.1 (beta 17) released
+---------------------------------------------
+
+ * GCC 8 compatibility
+ * GCC 9 compatibility
+ * implemented WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w()
+ * improved documentation
+
+
 13th October 2019 - 1.10.1 (beta 16) released
 ---------------------------------------------
 

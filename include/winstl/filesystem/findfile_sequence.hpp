@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     13th September 2019
+ * Updated:     16th October 2019
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -70,8 +70,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        236
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    13
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        237
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1488,7 +1488,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
 #endif /* FILE_ATTRIBUTE_REPARSE_POINT */
     };
 
-    STLSOFT_STATIC_ASSERT(reparsePointConstant); // Suppress silly Borland's warnings
+    STLSOFT_SUPPRESS_UNUSED(reparsePointConstant); // Suppress silly Borland's warnings
 
     for(; '\0' != *m_pattern0 || '\0' != *m_pattern1;)
     {

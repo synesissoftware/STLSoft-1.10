@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     24th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_H_COMSTL_MAJOR       3
 # define COMSTL_VER_COMSTL_H_COMSTL_MINOR       9
-# define COMSTL_VER_COMSTL_H_COMSTL_REVISION    5
-# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        124
+# define COMSTL_VER_COMSTL_H_COMSTL_REVISION    6
+# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        126
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file comstl/comstl.h
@@ -152,12 +152,13 @@
 # define _COMSTL_VER_1_9_1      0x010901ff  /*!< Version 1.9.1 (with STLSoft 1.9.98) */
 # define _COMSTL_VER_1_9_2      0x010902ff  /*!< Version 1.9.2 (with STLSoft 1.9.113) */
 # define _COMSTL_VER_1_10_1_B01 0x010a0181  /*!< Version 1.10.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _COMSTL_VER_1_10_1_B02 0x010a0182  /*!< Version 1.10.1 beta 2 (with STLSoft 1.10.1 beta 17) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _COMSTL_VER_MAJOR       1
 #define _COMSTL_VER_MINOR       10
 #define _COMSTL_VER_REVISION    1
-#define _COMSTL_VER             _COMSTL_VER_1_10_1_B01
+#define _COMSTL_VER             _COMSTL_VER_1_10_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -193,8 +194,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0181
-# error This version of the COMSTL libraries requires STLSoft version 1.10.1 beta 1, or later
+#if _STLSOFT_VER < 0x010a0191
+# error This version of the COMSTL libraries requires STLSoft version 1.10.1 beta 17, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -603,32 +604,133 @@ STLSOFT_NS_USING(move_lhs_from_rhs)
 # endif /* COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_ */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-#if !defined(COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES) && \
-    defined(_FORCENAMELESSUNION) && \
-    !defined(NONAMELESSUNION)
+/** \def COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES
+ *
+ * Define this to enforce COM unions having arms.
+ *
+ * An alternative to the general \c _FORCENAMELESSUNION
+ */
+
+#if 1 && \
+    !defined(COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES) && \
+    !defined(_FORCENAMELESSUNION) && \
+    defined(NONAMELESSUNION) && \
+    1
+
 # define COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES
-#endif /* !COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES) && _FORCENAMELESSUNION */
+#endif
 
 
-#if defined(COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES)
+#if 0
+#elif defined(_FORCENAMELESSUNION)
+
+#elif defined(COMSTL_ASSUME_VARIANT_UNION_FORCE_ARMS_HAVE_NAMES)
+
 # define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
-#elif defined(STLSOFT_COMPILER_IS_GCC)
-   /* GCC has different definitions to the other compilers, so have to treat
-    * differently
-    */
-# if defined(NONAMELESSUNION)
+#else
+
+ /* The observed extant discriminations are:
+  *
+  * 1 (VC++ 6):
+  *
+  *  (__STDC__ && !defined(_FORCENAMELESSUNION)) || defined(NONAMELESSUNION)
+  *
+  * 2 (*):
+  *
+  *  (__STDC__ && !defined(_FORCENAMELESSUNION)) || defined(NONAMELESSUNION) || (!defined(_MSC_EXTENSIONS) && !defined(_FORCENAMELESSUNION))
+  *
+  * 3 (MinGW GCC 4.9):
+  *
+  *  NONAMELESSUNION
+  *
+  * 4 (MinGW GCC 8.1):
+  *
+  *  (__STDC__ && !defined(__cplusplus) && !defined(_FORCENAMELESSUNION)) || defined(NONAMELESSUNION) || (defined (_MSC_VER) && !defined(_MSC_EXTENSIONS) && !defined(_FORCENAMELESSUNION))
+  *
+  * which may be better understood as:
+  *
+  * 1 (VC++ 6):
+
+    0 ||
+
+    defined(NONAMELESSUNION) ||
+
+    (  __STDC__ && \
+        !defined(_FORCENAMELESSUNION)) ||
+
+    0
+  *
+  * 2 (*):
+
+    0 ||
+
+    defined(NONAMELESSUNION) ||
+
+    (   __STDC__ &&
+        !defined(_FORCENAMELESSUNION)) ||
+
+    (   !defined(_MSC_EXTENSIONS) &&
+        !defined(_FORCENAMELESSUNION)) ||
+
+    0
+  *
+  * 3 (MinGW GCC 4.9):
+
+    0 ||
+
+    defined(NONAMELESSUNION) ||
+
+    0
+
+  * 4 (MinGW GCC 8.1):
+
+
+    0 ||
+
+    defined(NONAMELESSUNION) ||
+
+    (   __STDC__ &&
+        !defined(__cplusplus) &&
+        !defined(_FORCENAMELESSUNION)) ||
+
+    (   defined (_MSC_VER) &&
+        !defined(_MSC_EXTENSIONS) &&
+        !defined(_FORCENAMELESSUNION)) ||
+
+    0
+  */
+
+# if 0
+# elif defined(NONAMELESSUNION)
+
 #  define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
-# endif /* NONAMELESSUNION */
-#else /* ? compiler */
-   /* Other compilers use the MS headers, which test against __STDC__,
-    * _FORCENAMELESSUNION and NONAMELESSUNION
-    */
-# if (  __STDC__ && \
-        !defined(_FORCENAMELESSUNION)) || \
-     defined(NONAMELESSUNION)
+# elif defined(STLSOFT_COMPILER_IS_GCC)
+
+#  if STLSOFT_GCC_VER >= 80000 /* NOTE: this number may be wrong - too large, but still old way with 4.9 */
+
+#   if 0
+#   elif __STDC__ && \
+         !defined(__cplusplus) && \
+         !defined(_FORCENAMELESSUNION)
+
+#    define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
+#   elif defined(_MSC_VER) && \
+         !defined(_MSC_EXTENSIONS) && \
+         !defined(_FORCENAMELESSUNION)
+
+#    define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
+#   endif /* ? GCC version */
+#  endif
+# elif __STDC__ && \
+       defined(_FORCENAMELESSUNION)
+
 #  define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
-# endif /* (  __STDC__ && !_FORCENAMELESSUNION) || NONAMELESSUNION */
-#endif /* compiler */
+# elif !defined(_MSC_EXTENSIONS) && \
+       !defined(_FORCENAMELESSUNION)
+
+#  define COMSTL_VARIANT_UNION_ARMS_HAVE_NAMES_
+# endif
+#endif
 
 /** \def COMSTL_ACCESS_VARIANT_MEM_BYPTR(pvar, mem)
  *
