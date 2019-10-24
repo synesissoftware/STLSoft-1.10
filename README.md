@@ -15,7 +15,16 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-16 (Latest) - 13th October 2019
+### 1.10.1 beta-17 (Latest) - 24th October 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta17>
+
+* GCC 8 compatibility
+* GCC 9 compatibility
+* implemented ``WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w()``
+* improved documentation
+
+### 1.10.1 beta-16 - 13th October 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta16>
 
