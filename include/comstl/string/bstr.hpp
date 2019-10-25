@@ -4,7 +4,7 @@
  * Purpose:     bstr class.
  *
  * Created:     20th December 1996
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Thanks:      To Gabor Fischer for requesting attach().
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MAJOR       2
 # define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_MINOR       8
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    14
-# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        79
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_REVISION    15
+# define _COMSTL_VER_COMSTL_STRING_HPP_BSTR_EDIT        80
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -910,6 +910,8 @@ using ::comstl::c_str_ptr_null_o;
  * traits
  */
 
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 /** Specialisation for comstl::bstr
  */
 STLSOFT_TEMPLATE_SPECIALISATION
@@ -954,7 +956,7 @@ struct string_traits< ::comstl::bstr>
         return (str = string_type(first, last - first), str);
     }
 };
-
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 # if !defined(STLSOFT_NO_NAMESPACE) && \
      !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)

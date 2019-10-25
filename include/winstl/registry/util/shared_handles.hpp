@@ -4,7 +4,7 @@
  * Purpose:     Contains the shared_handle and monitored_shared_handle classes.
  *
  * Created:     19th January 2002
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Thanks:      To Austin Ziegler for fixes to defects evident on x64.
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MAJOR       2
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MINOR       0
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    16
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        48
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    17
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,23 +131,26 @@ namespace winstl_project
  * classes
  */
 
-#ifndef STLSOFT_NO_NAMESPACES
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+# ifndef STLSOFT_NO_NAMESPACES
+
 /** Internal/implementation namespace containing shared handles.
  *
  * \ingroup group__library__Windows_Registry
  */
 namespace registry_util
 {
-#endif /* !STLSOFT_NO_NAMESPACES */
+# endif /* !STLSOFT_NO_NAMESPACES */
 
     /// [IMPLEMENTATION] Non-monitoring shared registry key context
     ///
     /// \ingroup group__library__Windows_Registry
-#ifdef STLSOFT_NO_NAMESPACES
+# ifdef STLSOFT_NO_NAMESPACES
     struct registry_util::shared_handle
-#else /* ? STLSOFT_NO_NAMESPACES */
+# else /* ? STLSOFT_NO_NAMESPACES */
     struct shared_handle
-#endif /* STLSOFT_NO_NAMESPACES */
+# endif /* STLSOFT_NO_NAMESPACES */
     {
     /// \name Member Types
     /// @{
@@ -367,9 +370,10 @@ namespace registry_util
         }
     }
 
-#ifndef STLSOFT_NO_NAMESPACES
+# ifndef STLSOFT_NO_NAMESPACES
 } /* namespace registry_util */
-#endif /* !STLSOFT_NO_NAMESPACES */
+# endif /* !STLSOFT_NO_NAMESPACES */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

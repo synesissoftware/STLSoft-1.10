@@ -4,7 +4,7 @@
  * Purpose:     Contains the definition of the ccombstr_veneer template.
  *
  * Created:     1st October 2002
- * Updated:     2nd February 2019
+ * Updated:     24th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_MAJOR    5
 # define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_MINOR    3
-# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_REVISION 7
-# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_EDIT     88
+# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_REVISION 8
+# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_EDIT     89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -777,6 +777,8 @@ using ::atlstl::c_str_ptr_null_w;
  * traits
  */
 
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 /** Specialisation for atlstl::ccombstr_veneer
  */
 STLSOFT_TEMPLATE_SPECIALISATION
@@ -821,7 +823,7 @@ struct string_traits< ::atlstl::ccombstr_veneer>
         return (str = string_type(last - first, first), str);
     }
 };
-
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 # if !defined(STLSOFT_NO_NAMESPACE) && \
      !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)

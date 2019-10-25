@@ -4,7 +4,7 @@
  * Purpose:     Definition of SAPI types and constants.
  *
  * Created:     31st August 2006
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MAJOR       1
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MINOR       0
-# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_REVISION    8
-# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        18
+# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_REVISION    9
+# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,7 +113,9 @@ namespace comstl_project
  * sapi
  */
 
-#ifndef COMSTL_SPEECH_SAPI_UTIL_USE_MS_SAPI_HEADERS
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+# ifndef COMSTL_SPEECH_SAPI_UTIL_USE_MS_SAPI_HEADERS
 
 /** Interface that emulates the vtable of ISpNotifySource
  */
@@ -210,7 +212,8 @@ namespace
 COMSTL_IID_TRAITS_DEFINE__(ISpVoice_, ISpVoice_)
 
 
-#endif /* !COMSTL_SPEECH_SAPI_UTIL_USE_MS_SAPI_HEADERS */
+# endif /* !COMSTL_SPEECH_SAPI_UTIL_USE_MS_SAPI_HEADERS */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
