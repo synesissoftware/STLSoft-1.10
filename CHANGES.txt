@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  24th October 2019
+; Updated:  31st October 2019
 
 ============================================================================
 
@@ -17,6 +17,59 @@ STLSoft - Changes
    **************************************
 
 
+
+============================================================================
+
+Changes for 1.10.1 beta 18 (31st October 2019)
+
+General:
+========
+
+ * added stlsoft/system/environment/functions.hpp to enhances stlsoft::environment_variable_exists() with string access shims to support arbitrary string type
+ * remove vestigial (and erroneous) winstl/string/spin_policies.hpp
+ * various documentation fixes
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/string/ccombstr_veneer.hpp:
+    ~ documentation fixes
+
+ COMSTL:
+ =======
+
+ ~ comstl/speech/sapi_util.hpp:
+ ~ comstl/string/bstr.hpp:
+    ~ documentation fixes
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/collections/cstring_adaptors.hpp:
+    ~ documentation fixes
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/system/environment/functions.h:
+    ~ fixing documentation
+
+ + stlsoft/system/environment/functions.hpp:
+    + enhances stlsoft::environment_variable_exists() with string access shims to support arbitrary string type
+
+ WinSTL:
+ =======
+
+ ~ winstl/filesystem/memory_map_sparse_region_functions.h:
+ ~ winstl/registry/util/shared_handles.hpp:
+ ~ winstl/toolhelp/sequence_value_traits.hpp:
+    ~ documentation fixes
+
+ - winstl/string/spin_policies.hpp:
+    - removed vestigial (and erroneous) file
 
 ============================================================================
 
