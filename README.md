@@ -15,7 +15,15 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-17 (Latest) - 24th October 2019
+### 1.10.1 beta-18 (Latest) - 31st October 2019
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta18>
+
+* added stlsoft/system/environment/functions.hpp to enhance ``stlsoft::environment_variable_exists()`` with string access shims to support arbitrary string type
+* remove vestigial (and erroneous) winstl/string/spin_policies.hpp
+* various documentation fixes
+
+### 1.10.1 beta-17 - 24th October 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta17>
 
