@@ -6,8 +6,10 @@
 # error This file is now obsolete. Instead include the precise header file that you require
 #else
 
-# ifdef STLSOFT_PPF_pragma_message_SUPPORT
-#  pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): This file is now obsolete and will be removed in a forthcoming version. Instead include the precise header file that you require")
+# ifndef _STLSOFT_SUPPRESS_WARNING_IN_OBSOLETE_FILES
+#  ifdef STLSOFT_PPF_pragma_message_SUPPORT
+#   pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): This file is now obsolete and will be removed in a forthcoming version. Instead include the precise header file that you require")
+#  endif
 # endif
 
 # include <stlsoft/error/active_end_iterator_exhaustion.hpp>

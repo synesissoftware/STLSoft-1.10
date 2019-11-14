@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        stlsoft/synch/spin_policies.hpp
+ * File:        stlsoft/system/environment/functions.hpp
  *
- * Purpose:     Policies for spin mutexes.
+ * Purpose:     Environment functions.
  *
- * Created:     25th November 2006
- * Updated:     13th September 2019
+ * Created:     31st October 2019
+ * Updated:     31st October 2019
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,21 +39,20 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file stlsoft/synch/spin_policies.hpp
+/** \file stlsoft/system/cmdargs.hpp
  *
- * \brief [C++] Definition of stlsoft::spin_yield and
- *    stlsoft::spin_no_yield policy classes
- *   (\ref group__library__Synch "Synchronisation" Library).
+ * \brief [C++] Environment functions
+ *   (\ref group__library__System "System" Library).
  */
 
-#ifndef STLSOFT_INCL_STLSOFT_SYNCH_HPP_SPIN_POLICIES
-#define STLSOFT_INCL_STLSOFT_SYNCH_HPP_SPIN_POLICIES
+#ifndef STLSOFT_INCL_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS
+#define STLSOFT_INCL_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_POLICIES_MAJOR      1
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_POLICIES_MINOR      0
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_POLICIES_REVISION   4
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_POLICIES_EDIT       14
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS_MAJOR     1
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS_MINOR     0
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS_REVISION  1
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS_EDIT      1
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -67,9 +66,12 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef STLSOFT_INCL_STLSOFT_SYNCH_HPP_CONCEPTS
-# include <stlsoft/synch/concepts.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_SYNCH_HPP_CONCEPTS */
+#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_H_FWD
+# include <stlsoft/shims/access/string/fwd.h>
+#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_H_FWD */
+#ifndef STLSOFT_INCL_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS
+# include <stlsoft/system/environment/functions.h>
+#endif /* !STLSOFT_INCL_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -81,35 +83,55 @@ namespace stlsoft
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * classes
+ * helper functions
  */
 
-/** This policy causes spin mutex types default behaviour to be to
- *    yield the current time slice when the spin variable cannot be acquired.
- *
- * \ingroup group__library__Synch
- */
-struct spin_yield
-{
-    enum
-    {
-        value = true
-    };
-};
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-/** This policy causes spin mutex types default behaviour to be to
- *    <b>not</b> yield the current time slice when the spin variable cannot
- *    be acquired.
- *
- * \ingroup group__library__Synch
- */
-struct spin_no_yield
+struct ximpl_stlsoft_environment_functions_hpp_
 {
-    enum
+    static
+    ss_truthy_t
+    env_var_exists_(
+        char const* name
+    )
     {
-        value = false
-    };
-};
+        return stlsoft_C_environment_variable_exists_a(name);
+    }
+#if 0
+
+    static
+    ss_truthy_t
+    env_var_exists_(
+        wchar_t const* name
+    )
+    {
+        return stlsoft_C_environment_variable_exists_w(name);
+    }
+#endif
+}; /* struct ximpl_stlsoft_environment_functions_hpp_ */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * API functions
+ */
+
+/** Indicates whether the named environment variable exists
+ *
+ * \retval 0 The environment variable does not exist
+ * \retval !0 The environment variable does exist
+ *
+ * \pre (NULL != name)
+ */
+template <ss_typename_param_k T>
+inline
+ss_truthy_t
+environment_variable_exists(
+    T const& name
+)
+{
+    return ximpl_stlsoft_environment_functions_hpp_::env_var_exists_(STLSOFT_NS_QUAL(c_str_ptr)(name));
+}
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -125,7 +147,7 @@ struct spin_no_yield
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !STLSOFT_INCL_STLSOFT_SYNCH_HPP_SPIN_POLICIES */
+#endif /* !STLSOFT_INCL_STLSOFT_SYSTEM_ENVIRONMENT_HPP_FUNCTIONS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

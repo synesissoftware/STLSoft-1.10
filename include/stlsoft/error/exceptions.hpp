@@ -6,14 +6,16 @@
 # error This file is now obsolete. Instead include the precise header file that you require
 #else
 
-# ifdef STLSOFT_PPF_pragma_message_SUPPORT
-#  pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): This file is now obsolete and will be removed in a forthcoming version. Instead include the precise header file that you require")
+# ifndef _STLSOFT_SUPPRESS_WARNING_IN_OBSOLETE_FILES
+#  ifdef STLSOFT_PPF_pragma_message_SUPPORT
+#   pragma message(__FILE__ "(" STLSOFT_STRINGIZE(__LINE__) "): This file is now obsolete and will be removed in a forthcoming version. Instead include the precise header file that you require")
+#  endif
 # endif
 
-# include <STLSOFT/exception/os_exception.hpp>
-# include <STLSOFT/exception/project_exception.hpp>
-# include <STLSOFT/exception/root_exception.hpp>
-# include <STLSOFT/exception/throw_policies.hpp>
+# include <stlsoft/exception/os_exception.hpp>
+# include <stlsoft/exception/project_exception.hpp>
+# include <stlsoft/exception/root_exception.hpp>
+# include <stlsoft/exception/throw_policies.hpp>
 #endif
 
 /* ///////////////////////////// end of file //////////////////////////// */

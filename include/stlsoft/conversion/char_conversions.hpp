@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     13th September 2019
+ * Updated:     14th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    2
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 9
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     112
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 10
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     113
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -233,7 +233,7 @@ public:
     ss_explicit_k multibyte2wide(S const& s)
         : parent_class_type(calc_length_(s) + 1)
     {
-        prepare_(STLSOFT_NS_QUAL(c_str_data_a)(s), estimated_length_());
+        prepare_(STLSOFT_NS_QUAL(c_str_data_a)(s), parent_class_type::estimated_length_());
     }
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
@@ -271,7 +271,7 @@ private:
 
     void prepare_(alt_char_type const* s)
     {
-        prepare_(s, estimated_length_());
+        prepare_(s, parent_class_type::estimated_length_());
     }
 
     void prepare_(alt_char_type const* s, size_type size)
@@ -376,7 +376,7 @@ public:
     ss_explicit_k wide2multibyte(S const& s)
         : parent_class_type(calc_length_(s) + 1)
     {
-        prepare_(STLSOFT_NS_QUAL(c_str_data_w)(s), estimated_length_());
+        prepare_(STLSOFT_NS_QUAL(c_str_data_w)(s), parent_class_type::estimated_length_());
     }
 #else /* ? STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 
@@ -413,7 +413,7 @@ private:
 
     void prepare_(alt_char_type const* s)
     {
-        prepare_(s, estimated_length_());
+        prepare_(s, parent_class_type::estimated_length_());
     }
 
     void prepare_(alt_char_type const* s, size_type size)

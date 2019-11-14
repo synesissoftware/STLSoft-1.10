@@ -2,10 +2,25 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  13th October 2019
+; Updated:  31st October 2019
 
 ============================================================================
 
+
+31st October 2019 - 1.10.1 (beta 18) released
+---------------------------------------------
+
+ * added stlsoft/system/environment/functions.hpp to enhances stlsoft::environment_variable_exists() with string access shims to support arbitrary string type
+ * remove vestigial (and erroneous) winstl/string/spin_policies.hpp
+ * various documentation fixes
+
+24th October 2019 - 1.10.1 (beta 17) released
+---------------------------------------------
+
+ * GCC 8 compatibility
+ * GCC 9 compatibility
+ * implemented WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w()
+ * improved documentation
 
 13th October 2019 - 1.10.1 (beta 16) released
 ---------------------------------------------
@@ -18,7 +33,7 @@ STLSoft - History
  * recognising Mac OSX architecture as UNIX
  * canonicalising '\file' description sections
  * suppresses deprecation warning from reporting use of deprecated functions inside other deprecated functions
- 
+
 13th September 2019 - 1.10.1 (beta 15) released
 -----------------------------------------------
 

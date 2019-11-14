@@ -4,7 +4,7 @@
  * Purpose:     Instantiations of th_sequence_value_traits<>.
  *
  * Created:     21st May 2005
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Thanks:      To Pablo for contributing this great library.
  *
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_MINOR     1
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_REVISION  5
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_EDIT      15
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_REVISION  6
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_VALUE_TRAITS_EDIT      16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifndef WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE
@@ -73,6 +73,8 @@
 #ifndef WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG
 # error This file cannot be included independently, but only within one of the toolhelp sequence specialisation headers
 #endif /* !WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct th_sequence_value_traits<WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE>
@@ -111,6 +113,7 @@ struct th_sequence_value_traits<WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE>
         return WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_CREATE_SNAPSHOT_FAIL_MESSAGE;
     }
 };
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 // #undef here so we don't have to repeat this each time we include this file
 #undef WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE

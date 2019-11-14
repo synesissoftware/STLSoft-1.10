@@ -4,7 +4,7 @@
  * Purpose:     Environment functions.
  *
  * Created:     4th March 2011
- * Updated:     13th October 2019
+ * Updated:     31st October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -39,7 +39,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file stlsoft/system/cmdargs.hpp
+/** \file stlsoft/system/environment/functions.h
  *
  * \brief [C, C++] Environment functions
  *   (\ref group__library__System "System" Library).
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_REVISION    1
-# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_EDIT        8
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

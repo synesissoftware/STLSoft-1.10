@@ -5,7 +5,7 @@
  *              API.
  *
  * Created:     13th October 2019
- * Updated:     13th October 2019
+ * Updated:     14th October 2019
  *
  * Home:        http://stlsoft.org/
  *
@@ -62,9 +62,17 @@
  * authorization functions
  */
 
+#ifndef WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA
+# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA                                 STLSOFT_NS_GLOBAL_(GetFileSecurityA)
+#endif /* !WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA */
+#ifndef WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW
+# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW                                 STLSOFT_NS_GLOBAL_(GetFileSecurityW)
+#endif /* !WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW */
+
 #ifndef WINSTL_API_EXTERNAL_Authorization_LookupAccountSid
 # define WINSTL_API_EXTERNAL_Authorization_LookupAccountSid                                 STLSOFT_NS_GLOBAL_(LookupAccountSid)
 #endif /* !WINSTL_API_EXTERNAL_Authorization_LookupAccountSid */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

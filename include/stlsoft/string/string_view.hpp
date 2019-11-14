@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     13th September 2019
+ * Updated:     24th October 2019
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        107
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        108
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -430,7 +430,6 @@ private:
     // Closes the m_cstr member and sets to NULL
     void close_set_null_() STLSOFT_NOEXCEPT;
 
-    // 
     const_iterator          begin_() const;
     const_iterator          end_() const;
 #if 0
@@ -1485,7 +1484,7 @@ template<
 ,   ss_typename_param_k T
 ,   ss_typename_param_k A
 >
-inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type 
+inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type
   basic_string_view<C, T, A>::substr(
     ss_typename_type_k basic_string_view<C, T, A>::size_type pos
 ,   ss_typename_type_k basic_string_view<C, T, A>::size_type cch
