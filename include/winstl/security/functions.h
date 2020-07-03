@@ -4,10 +4,11 @@
  * Purpose:     Security functions.
  *
  * Created:     7th November 2014
- * Updated:     13th October 2019
+ * Updated:     12th June 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_H_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_H_FUNCTIONS_EDIT        3
+# define WINSTL_VER_WINSTL_H_FUNCTIONS_REVISION    4
+# define WINSTL_VER_WINSTL_H_FUNCTIONS_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,12 +107,12 @@ winstl_C_Security_alloc_(
 }
 
 STLSOFT_INLINE
-void*
+void
 winstl_C_Security_free_(
     void*       pv
 )
 {
-    return STLSOFT_C_CAST(SECURITY_DESCRIPTOR*, STLSOFT_NS_GLOBAL(HeapFree)(STLSOFT_NS_GLOBAL(GetProcessHeap)(), 0, pv));
+    STLSOFT_NS_GLOBAL(HeapFree)(STLSOFT_NS_GLOBAL(GetProcessHeap)(), 0, pv);
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
