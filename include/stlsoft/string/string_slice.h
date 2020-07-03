@@ -4,10 +4,11 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     2nd February 2019
+ * Updated:     24th May 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    3
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 2
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     23
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    4
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 1
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -335,6 +336,52 @@ c_str_len(
 }
 
 #endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * stream insertion shims
+ */
+
+#ifdef __cplusplus
+
+/** The \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft_C_string_slice_a_t
+ *
+ * \ingroup group__concept__Shim__stream_insertion
+ *
+ */
+template <ss_typename_param_k S>
+inline
+S&
+operator <<(
+    S&                                  s
+,   stlsoft_C_string_slice_a_t const&   slice
+)
+{
+    s.write(slice.ptr, slice.len);
+
+    return s;
+
+}
+
+/** The \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft_C_string_slice_w_t
+ *
+ * \ingroup group__concept__Shim__stream_insertion
+ *
+ */
+template <ss_typename_param_k S>
+inline
+S&
+operator <<(
+    S&                                  s
+,   stlsoft_C_string_slice_w_t const&   slice
+)
+{
+    s.write(slice.ptr, slice.len);
+
+    return s;
+
+}
+
+#endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
