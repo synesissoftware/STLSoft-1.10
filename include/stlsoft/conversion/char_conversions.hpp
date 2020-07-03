@@ -4,10 +4,11 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     14th October 2019
+ * Updated:     27th June 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    2
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 10
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     113
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    3
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 1
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -516,12 +517,12 @@ private:
  *
  * \ingroup group__library__Conversion
  */
-typedef multibyte2wide<256>               m2w;
+typedef multibyte2wide<256>                 m2w;
 /** Type that converts a wide string to a multibyte string.
  *
  * \ingroup group__library__Conversion
  */
-typedef wide2multibyte<256>               w2m;
+typedef wide2multibyte<256>                 w2m;
 
 /** [DEPRECATED] Type that converts a multibyte string to a wide string.
  *
@@ -529,26 +530,28 @@ typedef wide2multibyte<256>               w2m;
  *
  * \deprecated This name is deprecated in favour of stlsoft::m2w
  */
-typedef multibyte2wide<256>               a2w;
+typedef multibyte2wide<256>                 a2w;
 /** [DEPRECATED] Type that converts a wide string to a multibyte string.
  *
  * \ingroup group__library__Conversion
  *
  * \deprecated This name is deprecated in favour of stlsoft::w2m
  */
-typedef wide2multibyte<256>               w2a;
+typedef wide2multibyte<256>                 w2a;
 
-//#if defined(UNICODE)
-//typedef encoding2encoding<ss_char_w_t>  t2w;
-//typedef encoding2encoding<ss_char_w_t>  w2t;
-//typedef w2a                             t2a;
-//typedef a2w                             a2t;
-//#else /* ? UNICODE */
-//typedef encoding2encoding<ss_char_a_t>  t2a;
-//typedef encoding2encoding<ss_char_a_t>  a2t;
-//typedef a2w                             t2w;
-//typedef w2a                             w2t;
-//#endif /* UNICODE */
+#if defined(UNICODE)
+
+typedef encoding2encoding<ss_char_w_t>      t2w;
+typedef encoding2encoding<ss_char_w_t>      w2t;
+typedef w2a                                 t2a;
+typedef a2w                                 a2t;
+#else /* ? UNICODE */
+
+typedef encoding2encoding<ss_char_a_t>      t2a;
+typedef encoding2encoding<ss_char_a_t>      a2t;
+typedef a2w                                 t2w;
+typedef w2a                                 w2t;
+#endif /* UNICODE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * shims
