@@ -4,10 +4,11 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     22nd February 2010
- * Updated:     2nd February 2019
+ * Updated:     25th May 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_MAJOR      1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_MINOR      3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_REVISION   6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_EDIT       25
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_REVISION   7
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,17 +132,17 @@ public: // Construction
     {}
     /// Constructs instance from string pointer and length
     string_slice(char_type const* s, size_type n)
-        : parent_class_type(s, n)
+        : parent_class_type(parent_class_type::create(s, n))
     {
         STLSOFT_ASSERT(0u == n || NULL != s);
     }
     /// Constructs instance from string pointer and length
     ss_explicit_k string_slice(char_type const* s)
-        : parent_class_type( STLSOFT_NS_QUAL(c_str_data)(s), STLSOFT_NS_QUAL(c_str_len)(s))
+        : parent_class_type(parent_class_type::create( STLSOFT_NS_QUAL(c_str_data)(s), STLSOFT_NS_QUAL(c_str_len)(s)))
     {}
     /// Copy constructor
     string_slice(string_slice const& rhs)
-        : parent_class_type(rhs.ptr, rhs.len)
+        : parent_class_type(parent_class_type::create(rhs.ptr, rhs.len))
     {}
 
     /// Copy assignment operator
