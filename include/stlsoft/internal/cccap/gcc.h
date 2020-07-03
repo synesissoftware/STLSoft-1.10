@@ -4,12 +4,13 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     2nd February 2019
+ * Updated:     13th June 2020
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,9 +61,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      27
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      28
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       104
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       105
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -491,7 +492,8 @@
 # define _STLSOFT_SIZEOF_INT            (4)
 # define _STLSOFT_SIZEOF_LONG           (8)
 # define _STLSOFT_SIZEOF_LONG_LONG      (8)
-#elif defined(__LLP64__) || \
+#elif 0 || \
+      defined(__LLP64__) || \
       defined(_WIN32) || \
       defined(_WIN64) || \
       defined(__i386__) || \
@@ -501,7 +503,9 @@
       defined(__ppc__) || \
       defined(_ARCH_PPC) || \
       defined(__PPC__) || \
-      defined(__powerpc__)
+      defined(__powerpc__) || \
+      defined(__arm__) || \
+      0
  /* LLP64 */
 # define _STLSOFT_SIZEOF_SHORT          (2)
 # define _STLSOFT_SIZEOF_INT            (4)
