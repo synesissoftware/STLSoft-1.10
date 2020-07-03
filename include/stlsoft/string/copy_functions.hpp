@@ -4,10 +4,11 @@
  * Purpose:     String utility functions for copying.
  *
  * Created:     13th June 2006
- * Updated:     13th September 2019
+ * Updated:     10th June 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +53,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_REVISION    7
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        19
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -96,7 +97,14 @@ namespace stlsoft
  *
  */
 template <ss_typename_param_k C>
-inline ss_size_t copy_contents(C *dest, ss_size_t cchDest, C const* src, ss_size_t cchSource)
+inline
+ss_size_t
+copy_contents(
+    C*          dest
+,   ss_size_t   cchDest
+,   C const*    src
+,   ss_size_t   cchSource
+)
 {
     STLSOFT_ASSERT(NULL != src);
 
@@ -109,7 +117,7 @@ inline ss_size_t copy_contents(C *dest, ss_size_t cchDest, C const* src, ss_size
         typedef C                           char_t;
         typedef stlsoft_char_traits<char_t> traits_t;
 
-        const ss_size_t cchContent  =   (cchSource < cchDest) ? cchSource : cchDest;
+        const ss_size_t cchContent = (cchSource < cchDest) ? cchSource : cchDest;
 
         traits_t::copy(dest, src, cchContent);
 
