@@ -5,11 +5,11 @@
  *              Link Library Functions API.
  *
  * Created:     20th August 2017
- * Updated:     24th August 2017
+ * Updated:     9th June 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,9 +70,13 @@
 # define WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary                     STLSOFT_NS_GLOBAL_(FreeLibrary)
 #endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary */
 
-#ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibrary
-# define WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibrary                     STLSOFT_NS_GLOBAL_(LoadLibrary)
-#endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibrary */
+#ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameA
+# define WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameA              STLSOFT_NS_GLOBAL_(GetModuleFileNameA)
+#endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameA */
+#ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameW
+# define WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameW              STLSOFT_NS_GLOBAL_(GetModuleFileNameW)
+#endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameW */
+
 #ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA
 # define WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA                    STLSOFT_NS_GLOBAL_(LoadLibraryA)
 #endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA */

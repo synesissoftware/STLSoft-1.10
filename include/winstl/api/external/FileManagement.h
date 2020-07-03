@@ -5,11 +5,11 @@
  *              Management Functions API.
  *
  * Created:     20th August 2017
- * Updated:     23rd August 2017
+ * Updated:     9th June 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2017, Matthew Wilson and Synesis Software
+ * Copyright (c) 2017-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,6 @@
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CreateFileW
 # define WINSTL_API_EXTERNAL_FileManagement_CreateFileW                         STLSOFT_NS_GLOBAL_(CreateFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CreateFileW */
-
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
