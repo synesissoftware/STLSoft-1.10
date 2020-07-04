@@ -6,10 +6,11 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     31st October 2019
+ * Updated:     4th July 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    48
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 2
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     509
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 3
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     510
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -317,12 +318,13 @@
 # define _STLSOFT_VER_1_10_1_B16    0x010a0190  /*!< Version 1.10.1 beta 16 (13th October 2019) */
 # define _STLSOFT_VER_1_10_1_B17    0x010a0191  /*!< Version 1.10.1 beta 17 (24th October 2019) */
 # define _STLSOFT_VER_1_10_1_B18    0x010a0192  /*!< Version 1.10.1 beta 18 (31st October 2019) */
+# define _STLSOFT_VER_1_10_1_B19    0x010a0193  /*!< Version 1.10.1 beta 19 (4th July 2020) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B18
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B19
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -734,8 +736,15 @@
 #  define STLSOFT_COMPILER_VERSION_STRING       "Visual C++ 12.0"
 # elif (_MSC_VER == 1900)
 #  define STLSOFT_COMPILER_VERSION_STRING       "Visual C++ 14.0"
-# elif ((_MSC_VER & 0xFFF0) == 0x1910)
-#  define STLSOFT_COMPILER_VERSION_STRING       "Visual C++ 14.1x"
+# elif _MSC_VER >= 1910
+#  if 0
+#  elif _MSC_VER < 1920
+#   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 15.x"
+#  elif _MSC_VER <= 1926
+#   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 16.x"
+#  else
+#   error Visual C++ version that is >= vc16 is not recognised
+#  endif
 # else /* ? _MSC_VER */
 #  error Currently only versions 5.0, 6.0, 7.0, 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0, and 14.1x of the Visual C++ compiler are supported by the STLSoft libraries
 # endif /* _MSC_VER */
