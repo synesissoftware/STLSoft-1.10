@@ -2,7 +2,7 @@
 
 Version 1.10 of STLSoft libraries
 
-## Current Status (October 2019)
+## Current Status (July 2020)
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its released.
 
@@ -15,7 +15,16 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-18 (Latest) - 31st October 2019
+### 1.10.1 beta-19 (Latest) - 4th July 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta19>
+
+* added stlsoft::t2w, stlsoft::w2t, stlsoft::t2a, stlsoft::a2t for upcoming Pantheios release
+* added stream insertion operator (generic) for string slice types
+* added compatibility with Visual C++ 15.x and 16.x
+* added support for the ARM architecture (christopherplawrence)
+
+### 1.10.1 beta-18 - 31st October 2019
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta18>
 
