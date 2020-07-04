@@ -19,7 +19,7 @@ we'll be at it.
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta19>
 
-* added stlsoft::t2w, stlsoft::w2t, stlsoft::t2a, stlsoft::a2t for upcoming Pantheios release
+* added ``stlsoft::t2w``, ``stlsoft::w2t``, ``stlsoft::t2a``, ``stlsoft::a2t`` for upcoming Pantheios release
 * added stream insertion operator (generic) for string slice types
 * added compatibility with Visual C++ 15.x and 16.x
 * added support for the ARM architecture (christopherplawrence)
