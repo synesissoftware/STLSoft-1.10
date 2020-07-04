@@ -15,7 +15,13 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-19 (Latest) - 4th July 2020
+### 1.10.1 beta-20 (Latest) - 4th July 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta20>
+
+* fixed detecton of shared_ptr and unique_ptr
+
+### 1.10.1 beta-19 - 4th July 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta19>
 
