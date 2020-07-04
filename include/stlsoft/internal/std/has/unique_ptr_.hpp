@@ -14,7 +14,9 @@
 # error STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_unique_ptr_ should not be defined already
 #endif
 
-#if __cplusplus >= 197711L
+#if 0
+#elif __cplusplus >= 201103L
+
 # define STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_unique_ptr_
 #endif
 

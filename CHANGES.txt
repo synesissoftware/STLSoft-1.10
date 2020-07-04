@@ -20,6 +20,25 @@ STLSoft - Changes
 
 ============================================================================
 
+Changes for 1.10.1 beta 20 (4th July 2020)
+
+General:
+========
+
+ * fixed detecton of shared_ptr and unique_ptr
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/internal/std/has/shared_ptr_.hpp:
+ ~ stlsoft/internal/std/has/unique_ptr_.hpp:
+    ~ fixed detecton of shared_ptr and unique_ptr
+
+============================================================================
+
 Changes for 1.10.1 beta 19 (4th July 2020)
 
 General:
