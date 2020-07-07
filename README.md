@@ -19,7 +19,7 @@ we'll be at it.
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta20>
 
-* fixed detecton of shared_ptr and unique_ptr
+* fixed detecton of ``std::shared_ptr`` and ``std::unique_ptr``
 
 ### 1.10.1 beta-19 - 4th July 2020
 
