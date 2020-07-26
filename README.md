@@ -15,7 +15,14 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-20 (Latest) - 4th July 2020
+### 1.10.1 beta-21 (Latest) - 27th July 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta21>
+
+* VC++ 15/16 compatibility
+* fixed ``unixstl::readdir_sequence::empty()``
+
+### 1.10.1 beta-20 - 4th July 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta20>
 
