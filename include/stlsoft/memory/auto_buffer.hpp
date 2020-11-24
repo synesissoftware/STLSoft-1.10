@@ -270,7 +270,7 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
                                     , stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
                                     , size_t(0));
     char    buff[2048];
-    char    *buffer = (n < 2048) ? &buff[0] : new char[1 + n];
+    char*   buffer = (n < 2048) ? &buff[0] : new char[1 + n];
 
     . . .
 
@@ -537,7 +537,7 @@ protected:
 /// \name Construction
 /// @{
 public:
-    /// Constructs an auto_buffer with the given number of elements
+    /// Constructs an auto_buffer instance with the given number of elements
     ///
     /// Constructs an auto_buffer with the given number of elements. If the
     /// allocation fails by throwing an exception, that exception is passed
