@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     13th September 2019
+ * Updated:     24th November 2020
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -13,6 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -25,9 +26,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -55,9 +57,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       3
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    11
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        181
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       4
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    2
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        185
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -579,6 +581,40 @@ public:
 
         STLSOFT_ASSERT(is_valid());
     }
+
+#ifdef STLSOFT_CF_MOVE_SEMANTICS_SUPPORT
+
+    /// Constructs an auto_buffer instance by taking over the state of the
+    /// the instance \c rhs
+    ///
+    /// \param rhs The instance whose state will be taken over. Upon return
+    ///   \c rhs will be <code>empty()</code>
+    ///
+    /// \note When \c rhs is using external memory, this is a (fast)
+    ///   constant-time operation; when using internal memory, a memory copy
+    ///   operation is required
+    auto_buffer(class_type&& rhs) STLSOFT_NOEXCEPT
+        : m_buffer(ss_nullptr_k)
+        , m_cItems(rhs.m_cItems)
+        , m_bExternal(rhs.m_bExternal)
+    {
+        if (rhs.m_bExternal)
+        {
+            m_buffer        =   rhs.m_buffer;
+            rhs.m_buffer    =   &rhs.m_internal[0];
+            rhs.m_bExternal =   false;
+        }
+        else
+        {
+            m_buffer        =   &m_internal[0];
+
+            block_copy(m_internal, rhs.m_internal, m_cItems);
+        }
+
+        rhs.m_cItems    =   0;
+    }
+#endif /* STLSOFT_CF_MOVE_SEMANTICS_SUPPORT */
+
     /// Releases the allocated element array
     ///
     /// Releases any allocated memory. If the internal memory buffer was
