@@ -4,10 +4,11 @@
  * Purpose:     String-switch functions.
  *
  * Created:     10th May 2010
- * Updated:     13th September 2019
+ * Updated:     1st November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MINOR    3
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_REVISION 3
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     29
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_REVISION 4
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1209,6 +1211,22 @@ string_switch_(
 ,   R                                               resultBase
 )
 ;
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k R
+,   ss_size_t           N
+,   ss_typename_param_k V
+>
+inline
+bool
+string_switch_(
+    C const*                                        s
+,   size_t                                          len
+,   R*                                              result
+,   ximpl::string_case_item_array_t<C, V, N> const& cases
+)
+;
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** Conducts a string-switch over the given string \c s, according to the
@@ -1222,6 +1240,15 @@ string_switch_(
  * \param resultBase The value to which the result is set before being
  *   combined with the result, if any, of the matched cases. This allows
  *   the function to act in a bit-flag combination mode
+ *
+ * \retval true <code>*result</code> is assigned to a combination of the
+ *   matching case's value and <code>resultBase</code>
+ * \retval true <code>*result</code> is assigned to <code>resultBase</code>
+ *
+ * \warning If this function is used with an enumeration type that does not
+ *   have flag-semantics, the use of the value of <code>resultBase</code>
+ *   in evaluating the value of the out-parameter <code>result<code>,
+ *   regardless of whether match occurs, can lead to confusing results.
  */
 template<
     ss_typename_param_k S
@@ -1234,10 +1261,50 @@ string_switch(
     S const&                                        s
 ,   R*                                              result
 ,   C const&                                        cases
-,   R                                               resultBase = R()
+,   R                                               resultBase
 )
 {
-    return string_switch_(stlsoft::c_str_data(s), stlsoft::c_str_len(s), result, cases, resultBase);
+    return string_switch_(
+        stlsoft::c_str_data(s)
+    ,   stlsoft::c_str_len(s)
+    ,   result
+    ,   cases
+    ,   resultBase
+    );
+}
+
+/** Conducts a string-switch over the given string \c s, according to the
+ * given cases, putting the matching value into the given \c result
+ *
+ * \param s The string whose value is to be tested
+ * \param result Pointer to the variable to receive the result, if any of
+ *   the cases are matched
+ * \param cases The sequence of cases, created via string_cases(), to be
+ *   tested against
+ *
+ * \retval true <code>*result</code> is assigned to the matching case's
+ *   value and <code>resultBase</code>
+ * \retval true <code>*result</code> is not assigned
+ */
+template<
+    ss_typename_param_k S
+,   ss_typename_param_k R
+,   ss_typename_param_k C
+>
+inline
+bool
+string_switch(
+    S const&                                        s
+,   R*                                              result
+,   C const&                                        cases
+)
+{
+    return string_switch_(
+        stlsoft::c_str_data(s)
+    ,   stlsoft::c_str_len(s)
+    ,   result
+    ,   cases
+    );
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -1277,6 +1344,53 @@ string_switch_(
             STLSOFT_COVER_MARK_LINE();
 
             *result = static_cast<R>(resultBase | case_.value);
+
+            return true;
+        }
+    }}
+
+    STLSOFT_COVER_MARK_LINE();
+
+    *result = resultBase;
+
+    return false;
+}
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k R
+,   ss_size_t           N
+,   ss_typename_param_k V
+>
+inline
+bool
+string_switch_(
+    C const*                                        s
+,   size_t                                          len
+,   R*                                              result
+,   ximpl::string_case_item_array_t<C, V, N> const& cases
+)
+{
+    STLSOFT_ASSERT(NULL != s);
+
+    STLSOFT_COVER_MARK_LINE();
+
+    typedef stlsoft_char_traits<C> char_traits_t;
+
+    { for(ss_size_t i = 0; i != cases.size(); ++i)
+    {
+        STLSOFT_COVER_MARK_LINE();
+
+        ximpl::string_case_item_t<C, V> const&  case_   =   cases[i];
+        size_t const                            caselen =   char_traits_t::length(case_.name);
+
+        if( caselen == len &&
+            0 == char_traits_t::compare(case_.name, s, len))
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            *result = case_.value;
+
             return true;
         }
     }}
