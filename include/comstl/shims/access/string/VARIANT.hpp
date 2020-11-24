@@ -53,7 +53,7 @@
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MAJOR    5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MINOR    4
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 6
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     143
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     144
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -344,7 +344,6 @@ public:
     {
         return string_equal_by_VT_(s1, cch1, s2, cch2, vt);
     }
-
 };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -405,7 +404,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_null_VARIANT_proxy_w() STLSOFT_NOEXCEPT
     {
         ::SysFreeString(m_bstr);
@@ -497,7 +496,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_null_VARIANT_proxy_a() STLSOFT_NOEXCEPT
     {
         ::SysFreeString(m_bstr);
@@ -647,7 +646,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_VARIANT_proxy_w() STLSOFT_NOEXCEPT
     {
         ::SysFreeString(m_bstr);
@@ -740,7 +739,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_VARIANT_proxy_a() STLSOFT_NOEXCEPT
     {
         ::SysFreeString(m_bstr);

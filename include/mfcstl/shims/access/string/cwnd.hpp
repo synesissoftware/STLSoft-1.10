@@ -303,7 +303,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_ptr_null_CWnd_proxy() STLSOFT_NOEXCEPT
     {
         string_maker_type::free(m_buffer);
@@ -389,7 +389,7 @@ public:
     {}
 #endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
-    /// Releases any storage aquired by the proxy
+    /// Releases any storage acquired by the proxy
     ~c_str_ptr_CWnd_proxy() STLSOFT_NOEXCEPT
     {
         string_maker_type::free(m_buffer);

@@ -4,10 +4,11 @@
  * Purpose:     Intra-process mutex, based on Windows CRITICAL_SECTION.
  *
  * Created:     17th December 1996
- * Updated:     13th September 2019
+ * Updated:     23rd November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_THREAD_MUTEX_MAJOR     4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_THREAD_MUTEX_MINOR     0
 # define WINSTL_VER_WINSTL_SYNCH_HPP_THREAD_MUTEX_REVISION  12
-# define WINSTL_VER_WINSTL_SYNCH_HPP_THREAD_MUTEX_EDIT      68
+# define WINSTL_VER_WINSTL_SYNCH_HPP_THREAD_MUTEX_EDIT      69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -161,7 +163,7 @@ private:
 
 // Operations
 public:
-    /// Acquires a lock on the mutex, pending the thread until the lock is aquired
+    /// Acquires a lock on the mutex, pending the thread until the lock is acquired
     void lock() STLSOFT_NOEXCEPT
     {
         WINSTL_API_EXTERNAL_Synchronization_EnterCriticalSection(&m_cs);
@@ -169,14 +171,14 @@ public:
 #if defined(__WINSTL_THREAD_MUTEX_TRY_LOCK_SUPPORT)
     /// Attempts to lock the mutex
     ///
-    /// \return <b>true</b> if the mutex was aquired, or <b>false</b> if not
+    /// \return <b>true</b> if the mutex was acquired, or <b>false</b> if not
     /// \note Only available with Windows NT 4 and later
     bool try_lock()
     {
         return WINSTL_API_EXTERNAL_Synchronization_TryEnterCriticalSection(&m_cs) != FALSE;
     }
 #endif /* __WINSTL_THREAD_MUTEX_TRY_LOCK_SUPPORT */
-    /// Releases an aquired lock on the mutex
+    /// Releases an acquired lock on the mutex
     void unlock() STLSOFT_NOEXCEPT
     {
         WINSTL_API_EXTERNAL_Synchronization_LeaveCriticalSection(&m_cs);
@@ -216,11 +218,11 @@ private:
  * control shims
  */
 
-/** This \ref group__concept__Shim "control shim" aquires a lock on the given mutex
+/** This \ref group__concept__Shim "control shim" acquires a lock on the given mutex
  *
  * \ingroup group__concept__Shim__synchronisation_control
  *
- * \param mx The mutex on which to aquire the lock.
+ * \param mx The mutex on which to acquire the lock.
  */
 inline
 void
