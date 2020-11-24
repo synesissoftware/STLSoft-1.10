@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MAJOR    5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 3
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     682
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    6
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 1
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     683
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -555,6 +555,21 @@ public:
 # endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 #endif /* STLSOFT_CF_STDCALL_SUPPORTED */
 
+#ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+
+    /// Constructs an instance by taking over the state of the
+    /// instance \c rhs
+    ///
+    /// \param rhs The instance whose state will be taken over. Upon return
+    ///   \c rhs will be <code>empty()</code>
+    scoped_handle(class_type&& rhs) STLSOFT_NOEXCEPT
+        : m_hh(rhs.detach())
+        , m_hNull(rhs.m_hNull)
+        , m_tfn(rhs.m_tfn)
+        , m_fn(rhs.m_fn)
+    {}
+#endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
+
     /// "Releases" the managed resource.
     ///
     /// Invokes the cleanup function, unless close() or detach() have
@@ -656,7 +671,7 @@ private:
 /// @{
 private:
     holder_type                 m_hh;                                           //!< The handle to the managed resource
-    resource_type const         m_hNull;                                        //!< The value for the null handle
+    resource_type /* const */   m_hNull;                                        //!< The value for the null handle
     void                      (*m_tfn)(holder_type&, degenerate_function_type); //!< The function translator function
     degenerate_function_type    m_fn;                                           //!< The actual resource release function
 /// @}
@@ -765,6 +780,22 @@ public:
     }
 # endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
 #endif /* STLSOFT_CF_STDCALL_SUPPORTED */
+
+#ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+
+    /// Constructs an instance by taking over the state of the
+    /// instance \c rhs
+    ///
+    /// \param rhs The instance whose state will be taken over. Upon return
+    ///   \c rhs will be <code>empty()</code>
+    scoped_handle(class_type&& rhs) STLSOFT_NOEXCEPT
+        : m_bInvoked(rhs.m_bInvoked)
+        , m_tfn(rhs.m_tfn)
+        , m_fn(rhs.m_fn)
+    {
+        rhs.detach();
+    }
+#endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
     /// "Releases" the managed resource.
     ///
