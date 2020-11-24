@@ -1,5 +1,5 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        stlsoft/api/internal/Time.h
+ * File:        stlsoft/api/internal/time.h
  *
  * Purpose:     External preprocessor aliases for internal Time API.
  *
