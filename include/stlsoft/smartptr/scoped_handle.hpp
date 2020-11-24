@@ -5,12 +5,13 @@
  *              resource types.
  *
  * Created:     1st November 1994
- * Updated:     13th September 2019
+ * Updated:     24th November 2020
  *
  * Thanks to:   Adi Shavit, for requesting the indirect functionality
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MAJOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    5
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 2
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     680
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 3
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     682
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,6 +81,7 @@
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER >= 1400
+
 # pragma warning(push)
 # pragma warning(disable : 4191)
 #endif /* compiler */
@@ -106,9 +108,9 @@ struct H_holder
 /// \name Member Types
 /// @{
 public:
-    typedef H           resource_type;
-    typedef H           handle_type;
-    typedef H_holder<H> class_type;
+    typedef H                                               resource_type;
+    typedef H                                               handle_type;
+    typedef H_holder<H>                                     class_type;
 /// @}
 
 /// \name Construction
@@ -124,6 +126,10 @@ public:
     {
         this->u.ph = ph;
     }
+
+private:
+    H_holder(class_type const&);
+    class_type& operator =(class_type const&);
 /// @}
 
 /// \name Operations
@@ -147,12 +153,8 @@ public:
         H   h;
         H*  ph;
     }           u;
-    const bool  bPointer;
+    bool const  bPointer;
 /// @}
-
-private:
-    H_holder(class_type const&);
-    class_type& operator =(class_type const&);
 };
 
 # ifdef STLSOFT_CF_CDECL_SUPPORTED
@@ -162,11 +164,11 @@ template<   ss_typename_param_k H
 struct function_translator_cdecl
 {
 private:
-    typedef void    (STLSOFT_CDECL* degenerate_function_type)();    // C++-98; 5.2.10;6
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();    // C++-98; 5.2.10;6
 public:
-    typedef R       (STLSOFT_CDECL* function_type)(H);
-    typedef R       (STLSOFT_CDECL* indirect_function_type)(H*);
-    typedef H_holder<H>             holder_type;
+    typedef R                               (STLSOFT_CDECL* function_type)(H);
+    typedef R                               (STLSOFT_CDECL* indirect_function_type)(H*);
+    typedef H_holder<H>                                     holder_type;
 
     static void translate(holder_type& h, degenerate_function_type pv)
     {
@@ -197,11 +199,11 @@ template<   ss_typename_param_k H
 struct function_translator_fastcall
 {
 private:
-    typedef void    (STLSOFT_CDECL*     degenerate_function_type)();
+    typedef void                         (STLSOFT_CDECL*    degenerate_function_type)();
 public:
-    typedef R       (STLSOFT_FASTCALL*  function_type)(H);
-    typedef R       (STLSOFT_FASTCALL*  indirect_function_type)(H*);
-    typedef H_holder<H>                 holder_type;
+    typedef R                            (STLSOFT_FASTCALL* function_type)(H);
+    typedef R                            (STLSOFT_FASTCALL* indirect_function_type)(H*);
+    typedef H_holder<H>                                     holder_type;
 
     static void translate(holder_type& h, degenerate_function_type pv)
     {
@@ -232,11 +234,11 @@ template<   ss_typename_param_k H
 struct function_translator_stdcall
 {
 private:
-    typedef void    (STLSOFT_CDECL*     degenerate_function_type)();
+    typedef void                          (STLSOFT_CDECL*   degenerate_function_type)();
 public:
-    typedef R       (STLSOFT_STDCALL*   function_type)(H);
-    typedef R       (STLSOFT_STDCALL*   indirect_function_type)(H*);
-    typedef H_holder<H>                 holder_type;
+    typedef R                             (STLSOFT_STDCALL* function_type)(H);
+    typedef R                             (STLSOFT_STDCALL* indirect_function_type)(H*);
+    typedef H_holder<H>                                     holder_type;
 
     static void translate(holder_type& h, degenerate_function_type pv)
     {
@@ -268,9 +270,9 @@ template<   ss_typename_param_k R
 struct function_translator_cdecl_void
 {
 private:
-    typedef void    (STLSOFT_CDECL *degenerate_function_type)();    // C++-98; 5.2.10;6
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();    // C++-98; 5.2.10;6
 public:
-    typedef R       (STLSOFT_CDECL *function_type)(void);
+    typedef R                               (STLSOFT_CDECL* function_type)(void);
 
     static void translate(degenerate_function_type pv)
     {
@@ -289,9 +291,9 @@ template<   ss_typename_param_k R
 struct function_translator_fastcall_void
 {
 private:
-    typedef void    (STLSOFT_CDECL *degenerate_function_type)();
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();
 public:
-    typedef R       (STLSOFT_FASTCALL *function_type)(void);
+    typedef R                            (STLSOFT_FASTCALL* function_type)(void);
 
     static void translate(degenerate_function_type pv)
     {
@@ -310,9 +312,9 @@ template<   ss_typename_param_k R
 struct function_translator_stdcall_void
 {
 private:
-    typedef void    (STLSOFT_CDECL *degenerate_function_type)();
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();
 public:
-    typedef R       (STLSOFT_STDCALL *function_type)(void);
+    typedef R                             (STLSOFT_STDCALL* function_type)(void);
 
     static void translate(degenerate_function_type pv)
     {
@@ -372,15 +374,15 @@ class scoped_handle
 /// \name Types
 /// @{
 private:
-    typedef void (STLSOFT_CDECL*    degenerate_function_type)();
-    typedef H_holder<H>             holder_type;
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();
+    typedef H_holder<H>                                     holder_type;
 public:
     /// The resource type
-    typedef H                   resource_type;
+    typedef H                                               resource_type;
     /// The handle type
-    typedef H                   handle_type;
+    typedef H                                               handle_type;
     /// The instantiation of the type
-    typedef scoped_handle<H>    class_type;
+    typedef scoped_handle<H>                                class_type;
 /// @}
 
 /// \name Construction
@@ -561,11 +563,15 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("Invariant violation: function pointer must not be NULL", NULL != m_fn);
 
-        if(!empty())
+        if (!empty())
         {
             m_tfn(m_hh, m_fn);
         }
     }
+
+private:
+    scoped_handle(class_type const&);           // copy-construction proscribed
+    class_type& operator =(class_type const&);  // copy-assignment proscribed
 /// @}
 
 /// \name Attributes
@@ -590,7 +596,7 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("Invariant violation: function pointer must not be NULL", NULL != m_fn);
 
-        if(!empty())
+        if (!empty())
         {
             m_tfn(m_hh, m_fn);
 
@@ -649,17 +655,10 @@ private:
 /// \name Members
 /// @{
 private:
-    holder_type                 m_hh;                                   //!< The handle to the managed resource
-    const resource_type         m_hNull;                                //!< The value for the null handle
-    void                        (*m_tfn)(holder_type&, degenerate_function_type); //!< The function translator function
-    degenerate_function_type    m_fn;                                   //!< The actual resource release function
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    scoped_handle(class_type const&);
-    class_type& operator =(class_type const&);
+    holder_type                 m_hh;                                           //!< The handle to the managed resource
+    resource_type const         m_hNull;                                        //!< The value for the null handle
+    void                      (*m_tfn)(holder_type&, degenerate_function_type); //!< The function translator function
+    degenerate_function_type    m_fn;                                           //!< The actual resource release function
 /// @}
 };
 
@@ -675,14 +674,14 @@ class scoped_handle<void>
 /// \name Types
 /// @{
 private:
-    typedef void (STLSOFT_CDECL *degenerate_function_type)();
+    typedef void                            (STLSOFT_CDECL* degenerate_function_type)();
 public:
     /// The resource type
-    typedef void                resource_type;
+    typedef void                                            resource_type;
     /// The handle type
-    typedef void                handle_type;
+    typedef void                                            handle_type;
     /// The instantiation of the type
-    typedef scoped_handle<void> class_type;
+    typedef scoped_handle<void>                             class_type;
 /// @}
 
 /// \name Construction
@@ -775,6 +774,10 @@ public:
     {
         close();
     }
+
+private:
+    scoped_handle(class_type const&);           // copy-construction proscribed
+    class_type& operator =(class_type const&);  // copy-assignment proscribed
 /// @}
 
 /// \name Attributes
@@ -795,7 +798,7 @@ public:
     /// \note Calling this method more than once has no effect.
     void close()
     {
-        if(!empty())
+        if (!empty())
         {
             m_tfn(m_fn);
             m_bInvoked = true;
@@ -833,15 +836,8 @@ public:
 /// @{
 private:
     ss_bool_t                   m_bInvoked;                         //!< Indicates whether the cleanup function has been invoked
-    void                        (*m_tfn)(degenerate_function_type); //!< The function translator function
+    void                      (*m_tfn)(degenerate_function_type);   //!< The function translator function
     degenerate_function_type    m_fn;                               //!< The actual resource release function
-/// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    scoped_handle(class_type const&);
-    class_type& operator =(class_type const&);
 /// @}
 };
 
@@ -927,6 +923,7 @@ namespace std
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER >= 1400
+
 # pragma warning(pop)
 #endif /* compiler */
 
@@ -937,8 +934,6 @@ namespace std
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
-
-/* ////////////////////////////////////////////////////////////////////// */
 
 #endif /* !STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE */
 
