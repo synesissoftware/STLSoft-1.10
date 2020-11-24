@@ -1,16 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        stlsoft/shims/access/string.hpp
+ * File:        stlsoft/shims/access/string/std/nullptr.hpp
  *
- * Purpose:     Primary include file for string access shims representing
- *              built-in and standard string types.
+ * Purpose:     Primary include file for string access shims for nullptr.
  *
- * Created:     16th January 2002
- * Updated:     12th November 2020
+ * Created:     12th November 2020
+ * Updated:     24th November 2020
  *
  * Home:        http://stlsoft.org/
  *
  * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
- * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,21 +40,20 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file stlsoft/shims/access/string.hpp
+/** \file stlsoft/shims/access/string/std/nullptr.hpp
  *
- * \brief [C++] Primary include file for string access shims representing
- *   built-in and standard string types
+ * \brief [C++] Primary include file for string access shims for nullptr
  *   (\ref group__concept__Shim__string_access "String Access Shims" Concept).
  */
 
-#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
-#define STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
+#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR
+#define STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_MAJOR       4
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_MINOR       4
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_REVISION    1
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_EDIT        100
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR_MAJOR      1
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR_MINOR      0
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR_REVISION   2
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR_EDIT       2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -70,36 +67,132 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef STLSOFT_CF_nullptr_KEYWORD_SUPPORT
+# error This file can only be included when compiler supports nullptr
+#endif
+
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_H_FWD
 # include <stlsoft/shims/access/string/fwd.h>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_H_FWD */
-#ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING
-# include <stlsoft/shims/access/string/std/c_string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING */
-#ifndef STLSOFT_MINIMUM_SAS_INCLUDES
-# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION
-#  include <stlsoft/shims/access/string/std/exception.hpp>
-# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION */
-# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING
-#  include <stlsoft/shims/access/string/std/basic_string.hpp>
-# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING */
-# if __cplusplus >= 201703L
-#  ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING_VIEW
-#   include <stlsoft/shims/access/string/std/basic_string_view.hpp>
-#  endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING_VIEW */
-# endif /* C++03 */
-# ifdef STLSOFT_CF_nullptr_KEYWORD_SUPPORT
-#  ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR
-#   include <stlsoft/shims/access/string/std/nullptr.hpp>
-#  endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR */
-# endif /* STLSOFT_CF_nullptr_KEYWORD_SUPPORT */
-# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME
-#  include <stlsoft/shims/access/string/std/time.hpp>
-# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME */
-# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO
-#  include <stlsoft/shims/access/string/std/type_info.hpp>
-# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO */
-#endif /* !STLSOFT_MINIMUM_SAS_INCLUDES */
+
+#ifndef STLSOFT_INCL_H_CSTDDEF
+# define STLSOFT_INCL_H_CSTDDEF
+# include <cstddef>
+#endif /* !STLSOFT_INCL_H_CSTDDEF */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_NO_NAMESPACE
+namespace stlsoft
+{
+#endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * c_str_data
+ */
+
+inline
+char const*
+c_str_data_a(
+    std::nullptr_t
+)
+{
+    return "";
+}
+
+inline
+wchar_t const*
+c_str_data_w(
+    std::nullptr_t
+)
+{
+    return L"";
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * c_str_len
+ */
+
+inline
+std::size_t
+c_str_len_a(
+    std::nullptr_t
+)
+{
+    return 0;
+}
+
+inline
+std::size_t
+c_str_len_w(
+    std::nullptr_t
+)
+{
+    return 0;
+}
+
+inline
+std::size_t
+c_str_len(
+    std::nullptr_t
+)
+{
+    return 0;
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * c_str_ptr
+ */
+
+inline
+char const*
+c_str_ptr_a(
+    std::nullptr_t
+)
+{
+    return "";
+}
+
+inline
+wchar_t const*
+c_str_ptr_w(
+    std::nullptr_t
+)
+{
+    return L"";
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * c_str_ptr_null
+ */
+
+inline
+char const*
+c_str_ptr_null_a(
+    std::nullptr_t
+)
+{
+    return ss_nullptr_k;
+}
+
+inline
+wchar_t const*
+c_str_ptr_null_w(
+    std::nullptr_t
+)
+{
+    return ss_nullptr_k;
+}
+
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_NO_NAMESPACE
+} /* namespace stlsoft */
+#endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
@@ -109,7 +202,7 @@
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
+#endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_NULLPTR */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
