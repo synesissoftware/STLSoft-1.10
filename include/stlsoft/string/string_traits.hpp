@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MAJOR     4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MINOR     0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  9
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      91
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MINOR     1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  2
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -80,6 +80,12 @@
 #  include <string>
 # endif /* !STLSOFT_INCL_STRING */
 #endif /* _STLSOFT_STRING_TRAITS_NO_STD_STRING */
+#if __cplusplus >= 201703L
+# ifndef STLSOFT_INCL_STRING_VIEW
+#  define STLSOFT_INCL_STRING_VIEW
+#  include <string_view>
+# endif /* !STLSOFT_INCL_STRING_VIEW */
+#endif /* C++ 17+ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -387,6 +393,50 @@ struct string_traits<STLSOFT_NS_QUAL_STD(basic_string)<ss_char_w_t> >
 #   endif /* STLSOFT_CF_std_NAMESPACE */
 #  endif /* STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT */
 # endif /* _STLSOFT_STRING_TRAITS_NO_STD_STRING */
+
+#if __cplusplus >= 201703L
+/* std::basic_string_view */
+template <ss_typename_param_k C>
+struct string_traits<std::basic_string_view<C> >
+{
+    // NOTE: Originally, what is string_type_ was defined as value_type, but
+    // Borland objects to value_type::value_type.
+    typedef std::basic_string_view<C>                               string_type_;
+    typedef ss_typename_type_k string_type_::value_type             char_type;
+    typedef ss_typename_type_k string_type_::size_type              size_type;
+    typedef char_type const                                         const_char_type;
+    typedef string_type_                                            string_type;
+    typedef string_type_                                            value_type;
+    typedef ss_typename_type_k string_type::pointer                 pointer;
+    typedef ss_typename_type_k string_type::const_pointer           const_pointer;
+    typedef ss_typename_type_k string_type::iterator                iterator;
+    typedef ss_typename_type_k string_type::const_iterator          const_iterator;
+    typedef ss_typename_type_k string_type::reverse_iterator        reverse_iterator;
+    typedef ss_typename_type_k string_type::const_reverse_iterator  const_reverse_iterator;
+    enum {  is_pointer          =   false               };
+    enum {  is_pointer_to_const =   false               };
+    enum {  char_type_size      =   sizeof(char_type)   };
+
+    static string_type empty_string()
+    {
+        return string_type();
+    }
+    static string_type construct(string_type const& src, size_type pos, size_type len)
+    {
+        return string_type(src, pos, len);
+    }
+    template <ss_typename_param_k I>
+    static string_type& assign_inplace(string_type& str, I first, I last)
+    {
+        if (first == last)
+        {
+            return (str = string_type(), str);
+        }
+
+        return (str = string_type(&*first, (last - first)), str);
+    }
+};
+#endif /* C++ 17+ */
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
