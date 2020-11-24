@@ -4,10 +4,11 @@
  * Purpose:     Contains the get_top attribute shim.
  *
  * Created:     8th September 2019
- * Updated:     10th September 2019
+ * Updated:     24th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_MAJOR      1
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_MINOR      0
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_REVISION   1
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_EDIT       1
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_REVISION   2
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_TOP_EDIT       2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -74,41 +76,41 @@
 #include <stlsoft/internal/std/has/stack_.hpp>
 #include <stlsoft/internal/std/has/vector_.hpp>
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_deque_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_deque_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_DEQUE
 #  include <stlsoft/shims/attribute/get_top/std/deque.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_DEQUE */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_deque_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_deque_ */
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_list_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_list_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_LIST
 #  include <stlsoft/shims/attribute/get_top/std/list.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_LIST */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_list_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_list_ */
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_priority_queue_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_priority_queue_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE
 #  include <stlsoft/shims/attribute/get_top/std/priority_queue.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_PRIORITY_QUEUE */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_priority_queue_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_priority_queue_ */
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_queue_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_queue_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_QUEUE
 #  include <stlsoft/shims/attribute/get_top/std/queue.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_QUEUE */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_queue_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_queue_ */
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_stack_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_stack_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_STACK
 #  include <stlsoft/shims/attribute/get_top/std/stack.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_STACK */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_stack_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_stack_ */
 
-#ifdef STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_vector_
+#ifdef STLSOFT_STANDARD_LIBRARY_HAS_vector_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_VECTOR
 #  include <stlsoft/shims/attribute/get_top/std/vector.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_TOP_STD_HPP_VECTOR */
-#endif /* !STLSOFT_SHIMS_ATTRIBUTE_STD_HAS_vector_ */
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_vector_ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
