@@ -4,10 +4,11 @@
  * Purpose:     string_traits traits class.
  *
  * Created:     16th January 2002
- * Updated:     13th September 2019
+ * Updated:     26th October 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MAJOR     4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_MINOR     0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      90
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_REVISION  9
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TRAITS_EDIT      91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -73,7 +75,10 @@
 # include <stlsoft/string/string_traits_fwd.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_TRAITS_FWD */
 #ifndef _STLSOFT_STRING_TRAITS_NO_STD_STRING
-# include <string>
+# ifndef STLSOFT_INCL_STRING
+#  define STLSOFT_INCL_STRING
+#  include <string>
+# endif /* !STLSOFT_INCL_STRING */
 #endif /* _STLSOFT_STRING_TRAITS_NO_STD_STRING */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,9 +107,9 @@ struct string_traits<ss_char_a_t *>
     typedef value_type const*       string_type;
     typedef value_type*             pointer;
     typedef value_type const*       const_pointer;
-    enum {  is_pointer          =   true                };
-    enum {  is_pointer_to_const =   false               };
-    enum {  char_type_size      =   int(sizeof(char_type))   };
+    enum {  is_pointer          =   true                    };
+    enum {  is_pointer_to_const =   false                   };
+    enum {  char_type_size      =   int(sizeof(char_type))  };
 
     static string_type empty_string()
     {
@@ -129,9 +134,9 @@ struct string_traits<ss_char_a_t const*>
     typedef value_type const*       string_type;
     typedef value_type*             pointer;
     typedef value_type const*       const_pointer;
-    enum {  is_pointer          =   true                };
-    enum {  is_pointer_to_const =   false               };
-    enum {  char_type_size      =   int(sizeof(char_type))   };
+    enum {  is_pointer          =   true                    };
+    enum {  is_pointer_to_const =   false                   };
+    enum {  char_type_size      =   int(sizeof(char_type))  };
 
     static string_type empty_string()
     {
@@ -215,9 +220,9 @@ struct string_traits<ss_char_w_t *>
     typedef value_type const*       string_type;
     typedef value_type*             pointer;
     typedef value_type const*       const_pointer;
-    enum {  is_pointer          =   true                };
-    enum {  is_pointer_to_const =   false               };
-    enum {  char_type_size      =   int(sizeof(char_type))   };
+    enum {  is_pointer          =   true                    };
+    enum {  is_pointer_to_const =   false                   };
+    enum {  char_type_size      =   int(sizeof(char_type))  };
 
     static string_type empty_string()
     {
@@ -242,9 +247,9 @@ struct string_traits<ss_char_w_t const*>
     typedef value_type const*       string_type;
     typedef value_type*             pointer;
     typedef value_type const*       const_pointer;
-    enum {  is_pointer          =   true                };
-    enum {  is_pointer_to_const =   false               };
-    enum {  char_type_size      =   int(sizeof(char_type))   };
+    enum {  is_pointer          =   true                    };
+    enum {  is_pointer_to_const =   false                   };
+    enum {  char_type_size      =   int(sizeof(char_type))  };
 
     static string_type empty_string()
     {
@@ -293,9 +298,9 @@ struct string_traits<STLSOFT_NS_QUAL_STD(basic_string)<C> >
     }
 #  ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
     template <ss_typename_param_k I>
-    static string_type &assign_inplace(string_type& str, I first, I last)
+    static string_type& assign_inplace(string_type& str, I first, I last)
 #  else /* ? STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
-    static string_type &assign_inplace(string_type& str, const_iterator first, const_iterator last)
+    static string_type& assign_inplace(string_type& str, const_iterator first, const_iterator last)
 #  endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
     {
         // std::basic_string cannot assign in-place (or rather not all implementations do so)
@@ -332,9 +337,9 @@ struct string_traits<STLSOFT_NS_QUAL_STD(basic_string)<ss_char_a_t> >
     }
 #  ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
     template <ss_typename_param_k I>
-    static string_type &assign_inplace(string_type& str, I first, I last)
+    static string_type& assign_inplace(string_type& str, I first, I last)
 #  else /* ? STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
-    static string_type &assign_inplace(string_type& str, const_iterator first, const_iterator last)
+    static string_type& assign_inplace(string_type& str, const_iterator first, const_iterator last)
 #  endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
     {
         // std::basic_string cannot assign in-place (or rather not all implementations do so)
@@ -370,9 +375,9 @@ struct string_traits<STLSOFT_NS_QUAL_STD(basic_string)<ss_char_w_t> >
     }
 #  ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
     template <ss_typename_param_k I>
-    static string_type &assign_inplace(string_type& str, I first, I last)
+    static string_type& assign_inplace(string_type& str, I first, I last)
 #  else /* ? STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
-    static string_type &assign_inplace(string_type& str, const_iterator first, const_iterator last)
+    static string_type& assign_inplace(string_type& str, const_iterator first, const_iterator last)
 #  endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
     {
         // std::basic_string cannot assign in-place (or rather not all implementations do so)
