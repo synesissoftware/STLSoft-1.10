@@ -4,10 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     27th May 2002
- * Updated:     2nd February 2019
+ * Updated:     23rd November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MAJOR    4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MINOR    0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 10
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     114
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 11
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     116
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,9 +119,11 @@ namespace atlstl_project
  */
 struct c_str_ptr_null_CWindow_proxy
 {
-private:
-    typedef cstring_maker<TCHAR>            string_maker_type;
-    typedef c_str_ptr_null_CWindow_proxy    class_type;
+private: // types
+    typedef cstring_maker<TCHAR>                            cstring_maker_type_;
+    typedef cstring_maker_type_::block                      block_type_;
+public:
+    typedef c_str_ptr_null_CWindow_proxy                    class_type;
 
 // Construction
 public:
@@ -127,50 +131,22 @@ public:
     ///
     /// \param w The CWindow instance from which the text will be retrieved
     ss_explicit_k c_str_ptr_null_CWindow_proxy(CWindow const& w)
-    {
-        int length  =   (NULL == w.m_hWnd) ? 0 : w.GetWindowTextLength();
+        : m_block(make_block_(w))
+    {}
 
-        if(length == 0)
-        {
-            m_buffer = NULL;
-        }
-        else
-        {
-            m_buffer = string_maker_type::alloc(length);
-
-            if(NULL != m_buffer)
-            {
-                w.GetWindowText(m_buffer, length + 1);
-            }
-        }
-    }
-
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_null_CWindow_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        rhs.m_buffer = 0;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_null_CWindow_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_null_CWindow_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
+
+private:
+    void operator =(class_type const& rhs); // copy-assignment proscribed
 
 // Accessors
 public:
@@ -178,16 +154,40 @@ public:
     /// NULL if the window contains no text.
     operator LPCTSTR () const
     {
-        return m_buffer;
+        if (NULL == m_block)
+        {
+            return NULL;
+        }
+
+        return &m_block->data[0];
     }
 
-// Members
-private:
-    LPTSTR  m_buffer;
+private: // implementation
+    static
+    block_type_*
+    make_block_(CWindow const& w)
+    {
+        int length  =   (NULL == w.m_hWnd) ? 0 : w.GetWindowTextLength();
 
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
+        if (length == 0)
+        {
+            return NULL;
+        }
+        else
+        {
+            block_type_* const block = cstring_maker_type_::alloc(NULL, length);
+
+            if (NULL != block)
+            {
+                w.GetWindowText(&block->data[0], length + 1);
+            }
+
+            return block;
+        }
+    }
+
+private: // fields
+    block_type_* const  m_block;
 };
 
 /** This class provides an intermediary object that may be returned by the
@@ -199,9 +199,11 @@ private:
  */
 struct c_str_ptr_CWindow_proxy
 {
-private:
-    typedef cstring_maker<TCHAR>        string_maker_type;
-    typedef c_str_ptr_CWindow_proxy     class_type;
+private: // types
+    typedef cstring_maker<TCHAR>                            cstring_maker_type_;
+    typedef cstring_maker_type_::block                      block_type_;
+public:
+    typedef c_str_ptr_CWindow_proxy                         class_type;
 
 // Construction
 public:
@@ -209,49 +211,18 @@ public:
     ///
     /// \param w The CWindow instance from which the text will be retrieved
     ss_explicit_k c_str_ptr_CWindow_proxy(CWindow const& w)
-    {
-        int length  =   (NULL == w.m_hWnd) ? 0 : w.GetWindowTextLength();
+        : m_block(make_block_(w))
+    {}
 
-        if(length == 0)
-        {
-            m_buffer = string_maker_type::dup("");
-        }
-        else
-        {
-            m_buffer = string_maker_type::alloc(length);
-
-            if(NULL != m_buffer)
-            {
-                w.GetWindowText(m_buffer, length + 1);
-            }
-        }
-    }
-
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_CWindow_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        rhs.m_buffer = 0;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_CWindow_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_CWindow_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
 private:
     void operator =(class_type const&); // copy-assignment operator proscribed
@@ -262,12 +233,29 @@ public:
     /// the empty string "" if the window contains no text.
     operator LPCTSTR () const
     {
-        return (NULL == m_buffer) ? "" : m_buffer;
+        return &m_block->data[0];
     }
 
-// Members
-private:
-    LPTSTR  m_buffer;
+private: // implementation
+    static
+    block_type_*
+    make_block_(CWindow const& w)
+    {
+        int length  =   (NULL == w.m_hWnd) ? 0 : w.GetWindowTextLength();
+
+        block_type_* const block = cstring_maker_type_::alloc(NULL, length);
+
+        if (NULL != block &&
+            length != 0)
+        {
+            w.GetWindowText(&block->data[0], length + 1);
+        }
+
+        return block;
+    }
+
+private: // fields
+    block_type_* const  m_block;
 };
 
 /* /////////////////////////////////////////////////////////////////////////

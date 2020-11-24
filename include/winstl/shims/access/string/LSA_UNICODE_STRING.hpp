@@ -53,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_MAJOR     4
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_MINOR     1
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_REVISION  11
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_EDIT      127
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_MINOR     2
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_REVISION  1
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_LSA_UNICODE_STRING_EDIT      130
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,69 +123,44 @@ namespace winstl_project
  */
 class c_str_ptr_LSA_UNICODE_STRING_proxy
 {
-    typedef cstring_maker<WCHAR>                string_maker_type;
+private: // types
+    typedef cstring_maker<WCHAR>                            cstring_maker_type_;
+    typedef cstring_maker_type_::block                      block_type_;
 public:
     /// This type
-    typedef c_str_ptr_LSA_UNICODE_STRING_proxy  class_type;
+    typedef c_str_ptr_LSA_UNICODE_STRING_proxy              class_type;
 
-// Construction
-public:
+public: // construction
     /// Constructs an instance of the proxy from the given LSA_UNICODE_STRING instance
     ///
     /// \param s The LSA_UNICODE_STRING instance from which the text will be retrieved
     ss_explicit_k c_str_ptr_LSA_UNICODE_STRING_proxy(LSA_UNICODE_STRING const& s)
-        : m_buffer(string_maker_type::alloc(s.Length))
-    {
-        if(NULL != m_buffer)
-        {
-            wcsncpy(m_buffer, s.Buffer, s.Length);
-            m_buffer[s.Length] = L'\0';
-        }
-    }
+        : m_block(cstring_maker_type_::alloc(s.Buffer, s.Length))
+    {}
 
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_LSA_UNICODE_STRING_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        rhs.m_buffer = NULL;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_LSA_UNICODE_STRING_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_LSA_UNICODE_STRING_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
+private:
+    void operator =(class_type const& rhs); // copy-assignment proscribed
 
-// Accessors
-public:
+public: // accessors
     /// Returns a null-terminated string representing the string contents, or
     /// the empty string "" if the string has no contents.
     operator LPCWSTR () const
     {
-        return m_buffer;
+        return &m_block->data[0];
     }
 
-// Members
-private:
-    LPWSTR  m_buffer;
-
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
+private: // fields
+    block_type_* const  m_block;
 };
 
 /** This class provides an intermediary object that may be returned by the
@@ -197,69 +172,49 @@ private:
  */
 class c_str_ptr_null_LSA_UNICODE_STRING_proxy
 {
-    typedef cstring_maker<WCHAR>                    string_maker_type;
+private: // types
+    typedef cstring_maker<WCHAR>                            cstring_maker_type_;
+    typedef cstring_maker_type_::block                      block_type_;
 public:
     /// This type
-    typedef c_str_ptr_null_LSA_UNICODE_STRING_proxy class_type;
+    typedef c_str_ptr_null_LSA_UNICODE_STRING_proxy         class_type;
 
-// Construction
-public:
+public: // construction
     /// Constructs an instance of the proxy from the given LSA_UNICODE_STRING instance
     ///
     /// \param s The LSA_UNICODE_STRING instance from which the text will be retrieved
     ss_explicit_k c_str_ptr_null_LSA_UNICODE_STRING_proxy(LSA_UNICODE_STRING const& s)
-        : m_buffer((s.Length != 0) ? string_maker_type::alloc(s.Length) : NULL)
-    {
-        if(m_buffer != NULL)
-        {
-            wcsncpy(m_buffer, s.Buffer, s.Length);
-            m_buffer[s.Length] = L'\0';
-        }
-    }
+        : m_block(cstring_maker_type_::alloc_null(s.Buffer, s.Length))
+    {}
 
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_null_LSA_UNICODE_STRING_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        rhs.m_buffer = NULL;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_null_LSA_UNICODE_STRING_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_null_LSA_UNICODE_STRING_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
+private:
+    void operator =(class_type const& rhs); // copy-assignment proscribed
 
-// Accessors
-public:
+public: // accessors
     /// Returns a null-terminated string representing the string contents, or
     /// NULL if the string has no contents.
     operator LPCWSTR () const
     {
-        return m_buffer;
+        if (NULL == m_block)
+        {
+            return NULL;
+        }
+
+        return &m_block->data[0];
     }
 
-// Members
-private:
-    LPWSTR  m_buffer;
-
-// Not to be implemented
-private:
-    void operator =(class_type const& rhs);
+private: // fields
+    block_type_* const  m_block;
 };
 
 /* /////////////////////////////////////////////////////////////////////////

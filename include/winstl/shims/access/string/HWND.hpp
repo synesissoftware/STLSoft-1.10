@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MAJOR       4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MINOR       1
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    8
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        126
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    9
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        127
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,11 +140,11 @@ GetWindowTextLength_T_(
     switch(ident)
     {
         case    WindowIdent_ListBox:
-            if(0 == (GetStyle(hwnd) & lbsStyle))
+            if (0 == (GetStyle(hwnd) & lbsStyle))
             {
                 sel = static_cast<int>(::SendMessage(hwnd, LB_GETCURSEL, 0, 0l));
 
-                if(LB_ERR != sel)
+                if (LB_ERR != sel)
                 {
                     return static_cast<ws_size_t>(::SendMessage(hwnd, LB_GETTEXTLEN, static_cast<WPARAM>(sel), 0L));
                 }
@@ -156,7 +156,7 @@ GetWindowTextLength_T_(
             break;
 #if 0
         case    WindowIdent_ListBox:
-            if(1 == SendMessage(hwnd, LVM_GETSELECTEDCOUNT, 0, 0L))
+            if (1 == SendMessage(hwnd, LVM_GETSELECTEDCOUNT, 0, 0L))
             {
                 sel =
             }
@@ -243,11 +243,11 @@ GetWindowText_A_(
     switch(ident)
     {
         case    WindowIdent_ListBox:
-            if(0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
+            if (0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
             {
                 sel = static_cast<int>(::SendMessage(hwnd, LB_GETCURSEL, 0, 0l));
 
-                if(LB_ERR != sel)
+                if (LB_ERR != sel)
                 {
                     cch =   static_cast<ws_size_t>(::SendMessage(hwnd, LB_GETTEXT, static_cast<WPARAM>(sel), reinterpret_cast<LPARAM>(buffer)));
 
@@ -293,13 +293,13 @@ GetWindowText_W_(
     switch(ident)
     {
         case    WindowIdent_ListBox:
-            if(0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
+            if (0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
             {
                 ws_size_t  cch;
 
                 sel = static_cast<int>(::SendMessage(hwnd, LB_GETCURSEL, 0, 0l));
 
-                if(LB_ERR != sel)
+                if (LB_ERR != sel)
                 {
                     cch =   static_cast<ws_size_t>(::SendMessage(hwnd, LB_GETTEXT, static_cast<WPARAM>(sel), reinterpret_cast<LPARAM>(buffer)));
                 }
@@ -342,12 +342,14 @@ GetWindowText_W_(
 template <ss_typename_param_k C>
 class c_str_ptr_null_HWND_proxy
 {
-    typedef cstring_maker<C>                            string_maker_type;
+private: // types
+    typedef cstring_maker<C>                                cstring_maker_type_;
+    typedef ss_typename_type_k cstring_maker_type_::block   block_type_;
 public:
     /// The character type
-    typedef C                                           char_type;
+    typedef C                                               char_type;
     /// This type
-    typedef c_str_ptr_null_HWND_proxy<C>                class_type;
+    typedef c_str_ptr_null_HWND_proxy<C>                    class_type;
 
 // Construction
 public:
@@ -358,49 +360,18 @@ public:
     c_str_ptr_null_HWND_proxy(
         HWND hwnd
     )
-    {
-        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
+        : m_block(make_block_(hwnd))
+    {}
 
-        if(0 == length)
-        {
-            m_buffer = NULL;
-        }
-        else
-        {
-            m_buffer = string_maker_type::alloc(length);
-
-            if(NULL != m_buffer)
-            {
-                get_window_text(hwnd, m_buffer, length + 1);
-            }
-        }
-    }
-
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_null_HWND_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        move_lhs_from_rhs(rhs).m_buffer = NULL;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_null_HWND_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::dup_null(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_null_HWND_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
 private:
     void operator =(class_type const&); // copy-assignment proscribed
@@ -411,16 +382,45 @@ public:
     /// the empty string "" if the window contains no text.
     operator char_type const* () const
     {
-        return m_buffer;
+        if (NULL == m_block)
+        {
+            return NULL;
+        }
+
+        return &m_block->data[0];
     }
 
-// Implementation
-private:
+private: // implementation
+    static
+    block_type_*
+    make_block_(
+        HWND hwnd
+    )
+    {
+        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
+
+        if (0 == length)
+        {
+            return NULL;
+        }
+        else
+        {
+            block_type_* block = cstring_maker_type_::alloc(NULL, length);
+
+            if (NULL != block)
+            {
+                get_window_text(hwnd, block->data, length + 1);
+            }
+
+            return block;
+        }
+    }
+
+    static
     ws_size_t get_window_text(HWND hwnd, char_type* buffer, ws_size_t cchBuffer);
 
-// Members
-private:
-    char_type   *m_buffer;
+private: // fields
+    block_type_* const m_block;
 };
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -460,12 +460,14 @@ c_str_ptr_null_HWND_proxy<ws_char_w_t>::get_window_text(
 template <ss_typename_param_k C>
 class c_str_ptr_HWND_proxy
 {
-    typedef cstring_maker<C>                            string_maker_type;
+private: // types
+    typedef cstring_maker<C>                                cstring_maker_type_;
+    typedef ss_typename_type_k cstring_maker_type_::block   block_type_;
 public:
     /// The character type
-    typedef C                                           char_type;
+    typedef C                                               char_type;
     /// This type
-    typedef c_str_ptr_HWND_proxy<C>                     class_type;
+    typedef c_str_ptr_HWND_proxy<C>                         class_type;
 
 // Construction
 public:
@@ -476,42 +478,18 @@ public:
     c_str_ptr_HWND_proxy(
         HWND hwnd
     )
-    {
-        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
+        : m_block(make_block_(hwnd))
+    {}
 
-        m_buffer = string_maker_type::alloc(length);
-
-        if(NULL != m_buffer)
-        {
-            get_window_text(hwnd, m_buffer, length + 1);
-        }
-    }
-
-#ifdef STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
-    /// Move constructor
-    ///
-    /// This <a href = "http://synesis.com.au/resources/articles/cpp/movectors.pdf">move constructor</a>
-    /// is for circumstances when the compiler does not, or cannot, apply the
-    /// return value optimisation. It causes the contents of \c rhs to be
-    /// transferred into the constructing instance. This is completely safe
-    /// because the \c rhs instance will never be accessed in its own right, so
-    /// does not need to maintain ownership of its contents.
-    c_str_ptr_HWND_proxy(class_type& rhs)
-        : m_buffer(rhs.m_buffer)
-    {
-        move_lhs_from_rhs(rhs).m_buffer = NULL;
-    }
-#else /* ? STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
     // Copy constructor
     c_str_ptr_HWND_proxy(class_type const& rhs)
-        : m_buffer(string_maker_type::dup_null(rhs.m_buffer))
+        : m_block(cstring_maker_type_::dup_null(rhs.m_block))
     {}
-#endif /* STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT */
 
     /// Releases any storage acquired by the proxy
     ~c_str_ptr_HWND_proxy() STLSOFT_NOEXCEPT
     {
-        string_maker_type::free(m_buffer);
+        cstring_maker_type_::free(m_block);
     }
 private:
     void operator =(class_type const&); // copy-assignment proscribed
@@ -522,18 +500,33 @@ public:
     /// the empty string "" if the window contains no text.
     operator char_type const* () const
     {
-        static char_type    s_ch[1] = { '\0' };
-
-        return (NULL == m_buffer) ? s_ch : m_buffer;
+        return &m_block->data[0];
     }
 
-// Implementation
-private:
+private: // implementation
+    static
+    block_type_*
+    make_block_(
+        HWND hwnd
+    )
+    {
+        ws_size_t const length = WindowTextLength_traits<C>::get_length(hwnd);
+
+        block_type_* const block = cstring_maker_type_::alloc(NULL, length);
+
+        if (NULL != block)
+        {
+            get_window_text(hwnd, &block->data[0], length + 1);
+        }
+
+        return block;
+    }
+
+    static
     ws_size_t get_window_text(HWND hwnd, char_type* buffer, ws_size_t cchBuffer);
 
-// Members
-private:
-    char_type*  m_buffer;
+private: // fields
+    block_type_* const m_block;
 };
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION

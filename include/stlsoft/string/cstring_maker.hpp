@@ -4,10 +4,11 @@
  * Purpose:     Simple utility class for creating (constant) C-strings.
  *
  * Created:     14th May 2004
- * Updated:     13th September 2019
+ * Updated:     24th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -49,10 +51,10 @@
 #define STLSOFT_INCL_STLSOFT_STRING_HPP_CSTRING_MAKER
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    4
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     56
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 2
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +79,22 @@
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
+
+#if 0 || \
+    (   defined(STLSOFT_COMPILER_IS_GCC) && \
+        __GNUC__ < 4) || \
+    (   defined(STLSOFT_COMPILER_IS_MSVC) && \
+        _MSC_VER < 1200) || \
+    0
+# ifndef STLSOFT_cstring_maker_REQUIRE_PER_COMPILER_
+#  define STLSOFT_cstring_maker_REQUIRE_PER_COMPILER_
+# endif /* !STLSOFT_cstring_maker_REQUIRE_PER_COMPILER_ */
+#endif
+
+/* /////////////////////////////////////////////////////////////////////////
  * namespace
  */
 
@@ -86,17 +104,12 @@ namespace stlsoft
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * classes
+ * helpers
  */
 
-#if !defined(STLSOFT_NO_NAMESPACE) && \
-    (   !defined(STLSOFT_COMPILER_IS_MSVC) || \
-        _MSC_VER > 1200)
-namespace
-{
-#endif /* STLSOFT_NO_NAMESPACE */
-
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+STLSOFT_OPEN_WORKER_NS_(ximpl_cstring_maker_)
 
 template <ss_typename_param_k C>
 struct char_to_byte__traits_
@@ -116,13 +129,12 @@ struct char_to_byte__traits_<ss_char_a_t>
     }
 };
 
+STLSOFT_CLOSE_WORKER_NS_(ximpl_cstring_maker_)
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-#if !defined(STLSOFT_NO_NAMESPACE) && \
-    (   !defined(STLSOFT_COMPILER_IS_MSVC) || \
-        _MSC_VER > 1200)
-} // anonymous namespace
-#endif /* STLSOFT_NO_NAMESPACE */
+/* /////////////////////////////////////////////////////////////////////////
+ * classes
+ */
 
 /** Utility class that creates/destroys fixed-size C-strings for
  *   other classes.
@@ -131,43 +143,66 @@ struct char_to_byte__traits_<ss_char_a_t>
  */
 
 #if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
-    (   (   !defined(STLSOFT_COMPILER_IS_GCC) || \
-        __GNUC__ >= 3) && \
-        (   !defined(STLSOFT_COMPILER_IS_MSVC) || \
-            _MSC_VER != 1100))
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<C>::allocator_type
-        ,   ss_typename_param_k T = stlsoft_char_traits<C>
-        >
+    !defined(STLSOFT_cstring_maker_REQUIRE_PER_COMPILER_)
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<C>::allocator_type
+,   ss_typename_param_k T = stlsoft_char_traits<C>
+>
 struct cstring_maker
 {
-    typedef C                       char_type;
-    typedef A                       allocator_type;
-    typedef T                       traits_type;
-    typedef ss_size_t               size_type;
-    typedef cstring_maker<C, A, T>  class_type;
-
+public: // types
+    typedef C                                               char_type;
+    typedef A                                               allocator_type;
+    typedef T                                               traits_type;
+    typedef ss_size_t                                       size_type;
+    typedef cstring_maker<C, A, T>                          class_type;
 private:
+    typedef long                                            count_type;
+
+public:
+    /// Shared block type
     struct block
     {
         size_type   n;
+        count_type  rc;
         char_type   data[1];
     };
 
+private: // constants
+    enum
+    {
+        // Must be power of 2
+        AllocationGranularity = 32
+    };
+
 public:
-    /// Allocates uninitialised storage for writing into a string
+    /// Allocates storage for writing into a string, optionally initialising
     ///
     /// \note Includes space for a nul-terminator character
     ///
+    /// \param s The optional string to be copied into the block. May be
+    ///   \c null; if not, must be of at least \c cch characters long
     /// \param cch The number of characters to allocate
-    static char_type* alloc(size_type cch)
+    ///
+    /// \return the allocated block
+    /// \retval nullptr Only if space cannot be allocated AND the current
+    ///   compilation mode does not support exceptions
+    static
+    block*
+    alloc(
+        char_type const*    s
+    ,   size_type           cch
+    ) STLSOFT_NOEXCEPT
     {
 #if defined(WIN32) || \
     defined(_WIN32)
-        cch = char_to_byte__traits_<char_type>::byte_size_(cch);
+
+        cch = STLSOFT_WORKER_NS_QUAL_(ximpl_cstring_maker_, char_to_byte__traits_)<char_type>::byte_size_(cch);
 #endif /* WIN32 || _WIN32 */
 
-        size_type   cb      =   offsetof(block, data) + sizeof(char_type) * (1 + cch);
+        size_type       cb      =   offsetof(block, data) + sizeof(char_type) * (1 + cch);
 
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
         ss_typename_type_k allocator_type::ss_template_qual_k rebind<ss_byte_t>::other  byte_ator;
@@ -175,9 +210,9 @@ public:
         allocator_selector<ss_byte_t>::allocator_type                                   byte_ator;
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 
-        cb = (cb + 31) & ~31;
+        cb = (cb + (AllocationGranularity - 1)) & ~(AllocationGranularity - 1);
 
-        block       *pblock =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb, NULL)));
+        block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb, NULL)));
 
         if(NULL == pblock)
         {
@@ -186,43 +221,59 @@ public:
         else
         {
             pblock->n = cch;
+            pblock->rc = 1;
             pblock->data[cch] = '\0';
 
-            return &pblock->data[0];
+            if (NULL != s)
+            {
+                traits_type::copy(&pblock->data[0], s, cch);
+            }
+
+            return pblock;
         }
     }
-    /// Allocates a new copy of the given string
+
+    /// Allocates storage for writing into a string, optionally
+    /// initialising, or returns \c nullptr if \c cch is 0
     ///
-    /// \note Includes nul-terminator character
+    /// \note Includes space for a nul-terminator character
     ///
-    /// \param s The string to copy. Cannot be null pointer
-    static char_type* dup(char_type const* s)
+    /// \param s The optional string to be copied into the block. May be
+    ///   \c null; if not, must be of at least \c cch characters long
+    /// \param cch The number of characters to allocate
+    static
+    block*
+    alloc_null(
+        char_type const*    s
+    ,   size_type           cch
+    ) STLSOFT_NOEXCEPT
     {
-        STLSOFT_ASSERT(NULL != s);
+        return (0 == cch) ? NULL : alloc(s, cch);
+    }
 
-        size_type   len =   traits_type::length(s);
-        char_type   *s_ =   alloc(len);
-
-        if(NULL != s_)
+    /// Shares the (reference to the) block
+    static
+    block*
+    share(
+        block* pblock
+    ) STLSOFT_NOEXCEPT
+    {
+        if (NULL != pblock)
         {
-            traits_type::copy(s_, s, 1 + len);
+            ++pblock->rc;
         }
 
-        return s_;
+        return pblock;
     }
-    /// Allocates a new copy of the given string, or returns NULL if given null string
-    ///
-    /// \note Includes nul-terminator character
-    ///
-    /// \param s The string to copy. Can be null pointer, in which case NULL is returned
-    static char_type* dup_null(char_type const* s)
-    {
-        return (NULL == s) ? NULL : dup(s);
-    }
+
     /// Releases the storage associated with the string
     ///
     /// \param s The string to free
-    static void free(char_type* s)
+    static
+    void
+    free(
+        block* pblock
+    ) STLSOFT_NOEXCEPT
     {
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
         ss_typename_type_k allocator_type::ss_template_qual_k rebind<ss_byte_t>::other  byte_ator;
@@ -230,91 +281,120 @@ public:
         allocator_selector<ss_byte_t>::allocator_type                                   byte_ator;
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 
-        if(NULL != s)
+        if(NULL != pblock)
         {
-            union
+            if (0 == --pblock->rc)
             {
-                ss_byte_t   *py;
-                block       *pblock;
-            }   u;
+                STLSOFT_MESSAGE_ASSERT("block is overwritten!", pblock->data[pblock->n] == '\0');
 
-            u.py = static_cast<ss_byte_t*>(static_cast<void*>(s)) - offsetof(block, data);
-
-            STLSOFT_ASSERT(u.pblock->data[u.pblock->n] == '\0');
-
-            byte_ator.deallocate(u.py, u.pblock->n);
+                byte_ator.deallocate(static_cast<ss_byte_t*>(static_cast<void*>(pblock)), 0);
+            }
         }
     }
 };
-#else /* ? _MSC_VER */
-template<   ss_typename_param_k C
-        >
-struct cstring_maker;
+#else /* ? per-compiler */
 
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct cstring_maker<char>
+template<
+    ss_typename_param_k C
+>
+struct cstring_maker
 {
 public:
-    typedef char                                            char_type;
-    typedef allocator_selector<char_type>::allocator_type   allocator_type;
-    typedef char_traits<char_type>                          traits_type;
+    typedef C                                               char_type;
     typedef ss_size_t                                       size_type;
     typedef cstring_maker<char_type>                        class_type;
+private:
+    typedef long                                            count_type;
 
 public:
-    static char_type* alloc(size_type cch)
+    /// Shared block type
+    struct block
     {
-        return static_cast<char_type*>(malloc((1 + cch) * sizeof(char_type)));
+        size_type   n;
+        count_type  rc;
+        char_type   data[1];
+    };
+
+private: // constants
+    enum
+    {
+        // Must be power of 2
+        AllocationGranularity = 32
+    };
+
+public:
+    static
+    block*
+    alloc(
+        char_type const*    s
+    ,   size_type           cch
+    )
+    {
+        size_type       cb      =   offsetof(block, data) + sizeof(char_type) * (1 + cch);
+
+        cb = (cb + (AllocationGranularity - 1)) & ~(AllocationGranularity - 1);
+
+        block* const    pblock  =   static_cast<block*>(malloc(cb));
+
+        if(NULL == pblock)
+        {
+            return NULL;
+        }
+        else
+        {
+            pblock->n = cch;
+            pblock->rc = 1;
+            pblock->data[cch] = '\0';
+
+            if (NULL != s)
+            {
+                ::memcpy(&pblock->data[0], s, cch * sizeof(char_type));
+            }
+
+            return pblock;
+        }
     }
-    static char_type* dup(char_type const* s)
+
+    static
+    block*
+    alloc_null(
+        char_type const*    s
+    ,   size_type           cch
+    )
     {
-        return strdup(s);
+        return (0 == cch) ? NULL : alloc(s, cch);
     }
-    static char_type* dup_null(char_type const* s)
+
+    static
+    block*
+    share(
+        block* pblock
+    )
     {
-        return (NULL == s) ? NULL : dup(s);
+        if (NULL == pblock)
+        {
+            ++pblock->rc;
+        }
+
+        return pblock;
     }
-    static void free(char_type* s)
+
+    static
+    void
+    free(
+        block* pblock
+    )
     {
-        ::free(s);
+        if (NULL != pblock)
+        {
+            if (0 == --pblock->rc)
+            {
+                ::free(pblock);
+            }
+        }
     }
 };
-
-
-# if !defined(STLSOFT_COMPILER_IS_GCC)
-
-STLSOFT_TEMPLATE_SPECIALISATION
-struct cstring_maker<wchar_t>
-{
-public:
-    typedef wchar_t                                         char_type;
-    typedef allocator_selector<char_type>::allocator_type   allocator_type;
-    typedef char_traits<char_type>                          traits_type;
-    typedef ss_size_t                                       size_type;
-    typedef cstring_maker<char_type>                        class_type;
-
-public:
-    static char_type* alloc(size_type cch)
-    {
-        return static_cast<char_type*>(malloc((1 + cch) * sizeof(char_type)));
-    }
-    static char_type* dup(char_type const* s)
-    {
-        return _wcsdup(s);
-    }
-    static char_type* dup_null(char_type const* s)
-    {
-        return (NULL == s) ? NULL : dup(s);
-    }
-    static void free(char_type* s)
-    {
-        ::free(s);
-    }
-};
-# endif /* compiler */
-
-#endif /* _MSC_VER != 1100 */
+#endif /* compiler */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
