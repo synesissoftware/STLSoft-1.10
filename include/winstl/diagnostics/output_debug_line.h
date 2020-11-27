@@ -4,10 +4,11 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     13th September 2019
+ * Updated:     26th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -49,10 +51,10 @@
 #define WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 4
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     17
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    2
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    0
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 1
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,32 +93,12 @@
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
 
 /* /////////////////////////////////////////////////////////////////////////
- * namespace
- */
-
-#ifndef WINSTL_NO_NAMESPACE
-# if defined(STLSOFT_NO_NAMESPACE) || \
-         defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-/* There is no stlsoft namespace, so must define ::winstl */
-namespace winstl
-{
-# else
-/* Define stlsoft::winstl_project */
-namespace stlsoft
-{
-namespace winstl_project
-{
-# endif /* STLSOFT_NO_NAMESPACE */
-namespace diagnostics
-{
-#endif /* !WINSTL_NO_NAMESPACE */
-
-/* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
+/* TODO: move to separate file */
 STLSOFT_INLINE
 STLSOFT_NS_QUAL(ss_size_t)
 stlsoft_C_concatenate_N_m(
@@ -155,11 +137,11 @@ stlsoft_C_concatenate_N_m(
             ss_size_t       i;
             ss_char_a_t*    dest;
 
-            if(total + 1 > cchBuff)
+            if (total + 1 > cchBuff)
             {
                 dest = STLSOFT_STATIC_CAST(STLSOFT_NS_QUAL(ss_char_a_t)*, STLSOFT_NS_GLOBAL(malloc)(sizeof(ss_char_a_t) * (1 + total)));
 
-                if(NULL == dest)
+                if (NULL == dest)
                 {
                     *psz = NULL;
 
@@ -201,7 +183,7 @@ stlsoft_C_concatenate_free_m(
 {
     STLSOFT_COVER_MARK_LINE();
 
-    if(buff != psz)
+    if (buff != psz)
     {
         STLSOFT_COVER_MARK_LINE();
 
@@ -226,7 +208,7 @@ winstl_C_call_OutputDebugStringA_(
 {
     STLSOFT_COVER_MARK_LINE();
 
-    if(NULL != s)
+    if (NULL != s)
     {
         STLSOFT_COVER_MARK_LINE();
 
@@ -272,7 +254,7 @@ winstl_C_diagnostics_output_debug_line_1_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 2u, s0, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 2u, s0, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -322,7 +304,7 @@ winstl_C_diagnostics_output_debug_line_2_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 3u, s0, s1, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 3u, s0, s1, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -375,7 +357,7 @@ winstl_C_diagnostics_output_debug_line_3_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 4u, s0, s1, s2, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 4u, s0, s1, s2, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -431,7 +413,7 @@ winstl_C_diagnostics_output_debug_line_4_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 5u, s0, s1, s2, s3, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 5u, s0, s1, s2, s3, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -490,7 +472,7 @@ winstl_C_diagnostics_output_debug_line_5_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 6u, s0, s1, s2, s3, s4, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 6u, s0, s1, s2, s3, s4, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -552,7 +534,7 @@ winstl_C_diagnostics_output_debug_line_6_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 7u, s0, s1, s2, s3, s4, s5, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 7u, s0, s1, s2, s3, s4, s5, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -617,7 +599,7 @@ winstl_C_diagnostics_output_debug_line_7_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 8u, s0, s1, s2, s3, s4, s5, s6, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 8u, s0, s1, s2, s3, s4, s5, s6, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -685,7 +667,7 @@ winstl_C_diagnostics_output_debug_line_8_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 9u, s0, s1, s2, s3, s4, s5, s6, s7, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 9u, s0, s1, s2, s3, s4, s5, s6, s7, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -756,7 +738,7 @@ winstl_C_diagnostics_output_debug_line_9_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 10u, s0, s1, s2, s3, s4, s5, s6, s7, s8, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 10u, s0, s1, s2, s3, s4, s5, s6, s7, s8, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -830,7 +812,7 @@ winstl_C_diagnostics_output_debug_line_10_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 11u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 11u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -907,7 +889,7 @@ winstl_C_diagnostics_output_debug_line_11_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 12u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 12u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -987,7 +969,7 @@ winstl_C_diagnostics_output_debug_line_12_m(
 #endif /* STLSOFT_DEBUG */
         ws_char_a_t const*  psz;
 
-        if(0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 13u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, "\n"))
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 13u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, "\n"))
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -1016,21 +998,359 @@ winstl_C_diagnostics_output_debug_line_12_m(
     }
 }
 
-/* /////////////////////////////////////////////////////////////////////////
- * namespace
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
  */
+STLSOFT_INLINE
+void
+winstl_C_diagnostics_output_debug_line_13_m(
+    WINSTL_NS_QUAL(ws_char_a_t) const* s0
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s1
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s2
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s3
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s4
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s5
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s6
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s7
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s8
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s9
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s10
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+)
+{
+    WINSTL_NS_USING(ws_char_a_t);
 
-#ifndef WINSTL_NO_NAMESPACE
-} /* namespace diagnostics */
-# if defined(STLSOFT_NO_NAMESPACE) || \
-         defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
-} /* namespace winstl */
-# else
-} /* namespace winstl_project */
-} /* namespace stlsoft */
-namespace winstl = ::stlsoft::winstl_project;
-# endif /* STLSOFT_NO_NAMESPACE */
-#endif /* !WINSTL_NO_NAMESPACE */
+    STLSOFT_COVER_MARK_LINE();
+
+    {
+#ifdef STLSOFT_DEBUG
+        ws_char_a_t         buff[10];
+#else /* ? STLSOFT_DEBUG */
+        ws_char_a_t         buff[1000];
+#endif /* STLSOFT_DEBUG */
+        ws_char_a_t const*  psz;
+
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 14u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, "\n"))
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(s0);
+            winstl_C_call_OutputDebugStringA_(s1);
+            winstl_C_call_OutputDebugStringA_(s2);
+            winstl_C_call_OutputDebugStringA_(s3);
+            winstl_C_call_OutputDebugStringA_(s4);
+            winstl_C_call_OutputDebugStringA_(s5);
+            winstl_C_call_OutputDebugStringA_(s6);
+            winstl_C_call_OutputDebugStringA_(s7);
+            winstl_C_call_OutputDebugStringA_(s8);
+            winstl_C_call_OutputDebugStringA_(s9);
+            winstl_C_call_OutputDebugStringA_(s10);
+            winstl_C_call_OutputDebugStringA_(s11);
+            winstl_C_call_OutputDebugStringA_(s12);
+            winstl_C_call_OutputDebugStringA_("\n");
+        }
+        else
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(psz);
+
+            stlsoft_C_concatenate_free_m(buff, psz);
+        }
+    }
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ */
+STLSOFT_INLINE
+void
+winstl_C_diagnostics_output_debug_line_14_m(
+    WINSTL_NS_QUAL(ws_char_a_t) const* s0
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s1
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s2
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s3
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s4
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s5
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s6
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s7
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s8
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s9
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s10
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+)
+{
+    WINSTL_NS_USING(ws_char_a_t);
+
+    STLSOFT_COVER_MARK_LINE();
+
+    {
+#ifdef STLSOFT_DEBUG
+        ws_char_a_t         buff[10];
+#else /* ? STLSOFT_DEBUG */
+        ws_char_a_t         buff[1000];
+#endif /* STLSOFT_DEBUG */
+        ws_char_a_t const*  psz;
+
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 15u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, "\n"))
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(s0);
+            winstl_C_call_OutputDebugStringA_(s1);
+            winstl_C_call_OutputDebugStringA_(s2);
+            winstl_C_call_OutputDebugStringA_(s3);
+            winstl_C_call_OutputDebugStringA_(s4);
+            winstl_C_call_OutputDebugStringA_(s5);
+            winstl_C_call_OutputDebugStringA_(s6);
+            winstl_C_call_OutputDebugStringA_(s7);
+            winstl_C_call_OutputDebugStringA_(s8);
+            winstl_C_call_OutputDebugStringA_(s9);
+            winstl_C_call_OutputDebugStringA_(s10);
+            winstl_C_call_OutputDebugStringA_(s11);
+            winstl_C_call_OutputDebugStringA_(s12);
+            winstl_C_call_OutputDebugStringA_(s13);
+            winstl_C_call_OutputDebugStringA_("\n");
+        }
+        else
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(psz);
+
+            stlsoft_C_concatenate_free_m(buff, psz);
+        }
+    }
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ * \param s14 String fragment to combine and emit
+ */
+STLSOFT_INLINE
+void
+winstl_C_diagnostics_output_debug_line_15_m(
+    WINSTL_NS_QUAL(ws_char_a_t) const* s0
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s1
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s2
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s3
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s4
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s5
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s6
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s7
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s8
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s9
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s10
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+,   winstl_ns_qual(ws_char_a_t) const* s14
+)
+{
+    WINSTL_NS_USING(ws_char_a_t);
+
+    STLSOFT_COVER_MARK_LINE();
+
+    {
+#ifdef STLSOFT_DEBUG
+        ws_char_a_t         buff[10];
+#else /* ? STLSOFT_DEBUG */
+        ws_char_a_t         buff[1000];
+#endif /* STLSOFT_DEBUG */
+        ws_char_a_t const*  psz;
+
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 16u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, "\n"))
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(s0);
+            winstl_C_call_OutputDebugStringA_(s1);
+            winstl_C_call_OutputDebugStringA_(s2);
+            winstl_C_call_OutputDebugStringA_(s3);
+            winstl_C_call_OutputDebugStringA_(s4);
+            winstl_C_call_OutputDebugStringA_(s5);
+            winstl_C_call_OutputDebugStringA_(s6);
+            winstl_C_call_OutputDebugStringA_(s7);
+            winstl_C_call_OutputDebugStringA_(s8);
+            winstl_C_call_OutputDebugStringA_(s9);
+            winstl_C_call_OutputDebugStringA_(s10);
+            winstl_C_call_OutputDebugStringA_(s11);
+            winstl_C_call_OutputDebugStringA_(s12);
+            winstl_C_call_OutputDebugStringA_(s13);
+            winstl_C_call_OutputDebugStringA_(s14);
+            winstl_C_call_OutputDebugStringA_("\n");
+        }
+        else
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(psz);
+
+            stlsoft_C_concatenate_free_m(buff, psz);
+        }
+    }
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ * \param s14 String fragment to combine and emit
+ * \param s15 String fragment to combine and emit
+ */
+STLSOFT_INLINE
+void
+winstl_C_diagnostics_output_debug_line_16_m(
+    WINSTL_NS_QUAL(ws_char_a_t) const* s0
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s1
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s2
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s3
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s4
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s5
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s6
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s7
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s8
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s9
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s10
+,   WINSTL_NS_QUAL(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+,   winstl_ns_qual(ws_char_a_t) const* s14
+,   winstl_ns_qual(ws_char_a_t) const* s15
+)
+{
+    WINSTL_NS_USING(ws_char_a_t);
+
+    STLSOFT_COVER_MARK_LINE();
+
+    {
+#ifdef STLSOFT_DEBUG
+        ws_char_a_t         buff[10];
+#else /* ? STLSOFT_DEBUG */
+        ws_char_a_t         buff[1000];
+#endif /* STLSOFT_DEBUG */
+        ws_char_a_t const*  psz;
+
+        if (0 == stlsoft_C_concatenate_N_m(buff, STLSOFT_NUM_ELEMENTS(buff), &psz, 17u, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, "\n"))
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(s0);
+            winstl_C_call_OutputDebugStringA_(s1);
+            winstl_C_call_OutputDebugStringA_(s2);
+            winstl_C_call_OutputDebugStringA_(s3);
+            winstl_C_call_OutputDebugStringA_(s4);
+            winstl_C_call_OutputDebugStringA_(s5);
+            winstl_C_call_OutputDebugStringA_(s6);
+            winstl_C_call_OutputDebugStringA_(s7);
+            winstl_C_call_OutputDebugStringA_(s8);
+            winstl_C_call_OutputDebugStringA_(s9);
+            winstl_C_call_OutputDebugStringA_(s10);
+            winstl_C_call_OutputDebugStringA_(s11);
+            winstl_C_call_OutputDebugStringA_(s12);
+            winstl_C_call_OutputDebugStringA_(s13);
+            winstl_C_call_OutputDebugStringA_(s14);
+            winstl_C_call_OutputDebugStringA_(s15);
+            winstl_C_call_OutputDebugStringA_("\n");
+        }
+        else
+        {
+            STLSOFT_COVER_MARK_LINE();
+
+            winstl_C_call_OutputDebugStringA_(psz);
+
+            stlsoft_C_concatenate_free_m(buff, psz);
+        }
+    }
+}
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion
