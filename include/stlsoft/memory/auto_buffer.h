@@ -4,10 +4,11 @@
  * Purpose:     auto_buffer functionality for C.
  *
  * Created:     5th August 2011
- * Updated:     13th September 2019
+ * Updated:     27th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MINOR     0
-# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_REVISION  1
-# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      14
+# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_REVISION  2
+# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +110,7 @@ namespace stlsoft
  * \param type The type of the arena element, e.g. \c char
  * \param internalSize The number of elements in the internal (stack)
  *   storage
- * \param name The name of the arena
+ * \param name The name of the arena. Must be a valid C identifier name
  *
  *
 \htmlonly
@@ -117,6 +119,7 @@ namespace stlsoft
   {
     STLSOFT_C_AUTO_BUFFER_DECLARE(char, 100, buff);
 
+    assert(NULL == buff.ptr);
   }
 </pre>
 \endhtmlonly
@@ -233,6 +236,8 @@ namespace stlsoft
  *
  * \param name The name of the arena
  *
+ * \return The macro cannot fail, and has a type of \c void
+ *
  * \see STLSOFT_C_AUTO_BUFFER_DECLARE, STLSOFT_C_AUTO_BUFFER_INITIALISE, STLSOFT_C_AUTO_BUFFER_INITIALISE_FROM_INTERNAL, STLSOFT_C_AUTO_BUFFER_RESIZE, STLSOFT_C_AUTO_BUFFER_RESIZE_FROM_INTERNAL
  */
 
@@ -331,9 +336,9 @@ stlsoft_C_auto_buffer_resize_ex(
     STLSOFT_MESSAGE_ASSERT("pointer out-parameter must not be null", NULL != pptr);
     STLSOFT_MESSAGE_ASSERT("reallocation function must not be null", NULL != pfnRealloc);
 
-    if(cRequired <= cInternal)
+    if (cRequired <= cInternal)
     {
-        if(*pptr != internal)
+        if (*pptr != internal)
         {
             (*pfnFree)(param, *pptr);
         }
@@ -348,7 +353,7 @@ stlsoft_C_auto_buffer_resize_ex(
         void* const pvOld = (*psize <= cInternal) ? NULL : *pptr;
         void* const pvNew = (*pfnRealloc)(param, pvOld, cRequired * cbElement);
 
-        if(NULL == pvNew)
+        if (NULL == pvNew)
         {
             *psize = 0;
 
@@ -387,7 +392,7 @@ stlsoft_C_auto_buffer_initialise_ex(
     STLSOFT_MESSAGE_ASSERT("pointer out-parameter must not be null", NULL != pptr);
     STLSOFT_MESSAGE_ASSERT("allocation function must not be null", NULL != pfnAlloc);
 
-    if(cRequired <= cInternal)
+    if (cRequired <= cInternal)
     {
         *pptr   =   internal;
         *psize  =   cRequired;
@@ -398,7 +403,7 @@ stlsoft_C_auto_buffer_initialise_ex(
     {
         *pptr = (*pfnAlloc)(param, cRequired * cbElement);
 
-        if(NULL == *pptr)
+        if (NULL == *pptr)
         {
             *psize = 0;
 
@@ -425,14 +430,13 @@ stlsoft_C_auto_buffer_free_ex(
 ,   void      (*pfnFree)(void* param, void* pv)
 )
 {
-    STLSOFT_MESSAGE_ASSERT("pointer parameter must not be null", NULL != ptr);
     STLSOFT_MESSAGE_ASSERT("deallocation function must not be null", NULL != pfnFree);
 
     STLSOFT_SUPPRESS_UNUSED(cbElement);
     STLSOFT_SUPPRESS_UNUSED(cInternal);
     STLSOFT_SUPPRESS_UNUSED(cAllocated);
 
-    if(ptr != internal)
+    if (ptr != internal)
     {
         (*pfnFree)(param, ptr);
     }
@@ -595,8 +599,6 @@ stlsoft_C_auto_buffer_free(
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
-
-/* ////////////////////////////////////////////////////////////////////// */
 
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_H_AUTO_BUFFER */
 
