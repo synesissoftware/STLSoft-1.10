@@ -4,10 +4,11 @@
  * Purpose:     Include for defining ZERO to be the ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     13th September 2019
+ * Updated:     25th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MINOR    0
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 7
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     35
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 8
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,9 +93,9 @@
  */
 
 #ifdef ZERO
-# ifdef STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+# ifdef STLSOFT_PPF_pragma_message_SUPPORT
 #  pragma message("ZERO is already defined in this compilation unit. Continuing is potentially dangerous. You are advised to verify that the redefinition is compatible, or to refrain from using stlsoft_zerodef.h")
-# endif /* STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT */
+# endif /* STLSOFT_PPF_pragma_message_SUPPORT */
 #endif /* !ZERO */
 
 #ifdef __cplusplus

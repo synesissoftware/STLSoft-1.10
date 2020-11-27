@@ -4,10 +4,11 @@
  * Purpose:     Include for defining NULL to be the NULL_v template class.
  *
  * Created:     17th December 2002
- * Updated:     13th September 2019
+ * Updated:     25th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_MINOR    1
-# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_EDIT     38
+# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_REVISION 2
+# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_EDIT     39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,9 +88,9 @@
  */
 
 #ifndef NULL
-# ifdef STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+# ifdef STLSOFT_PPF_pragma_message_SUPPORT
 #  pragma message("NULL not defined. This is potentially dangerous. You are advised to include its defining header before stlsoft_nulldef.h")
-# endif /* STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT */
+# endif /* STLSOFT_PPF_pragma_message_SUPPORT */
 #endif /* !NULL */
 
 #if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
