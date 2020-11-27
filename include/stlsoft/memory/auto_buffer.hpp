@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     24th November 2020
+ * Updated:     25th November 2020
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    2
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        185
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    3
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        186
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -87,9 +87,9 @@
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
 #ifdef _STLSOFT_AUTO_BUFFER_ALLOW_UDT
 # define _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD
-# ifdef STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+# ifdef STLSOFT_PPF_pragma_message_SUPPORT
 #  pragma message("_STLSOFT_AUTO_BUFFER_ALLOW_UDT is deprecated. Use _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD instead")
-# endif /* STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT */
+# endif /* STLSOFT_PPF_pragma_message_SUPPORT */
 #endif /* _STLSOFT_AUTO_BUFFER_ALLOW_UDT */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
 # include <stlsoft/util/std/iterator_helper.hpp>
@@ -585,7 +585,7 @@ public:
 #ifdef STLSOFT_CF_MOVE_SEMANTICS_SUPPORT
 
     /// Constructs an auto_buffer instance by taking over the state of the
-    /// the instance \c rhs
+    /// instance \c rhs
     ///
     /// \param rhs The instance whose state will be taken over. Upon return
     ///   \c rhs will be <code>empty()</code>
