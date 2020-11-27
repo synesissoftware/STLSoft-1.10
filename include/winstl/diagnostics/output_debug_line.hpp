@@ -4,10 +4,11 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     13th September 2019
+ * Updated:     26th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -50,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MAJOR      2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      0
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      1
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_REVISION   1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       11
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -508,6 +510,206 @@ output_debug_line(
     STLSOFT_COVER_MARK_LINE();
 
     winstl_C_diagnostics_output_debug_line_12_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11);
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ */
+inline
+void
+output_debug_line(
+    winstl_ns_qual(ws_char_a_t) const* s0
+,   winstl_ns_qual(ws_char_a_t) const* s1
+,   winstl_ns_qual(ws_char_a_t) const* s2
+,   winstl_ns_qual(ws_char_a_t) const* s3
+,   winstl_ns_qual(ws_char_a_t) const* s4
+,   winstl_ns_qual(ws_char_a_t) const* s5
+,   winstl_ns_qual(ws_char_a_t) const* s6
+,   winstl_ns_qual(ws_char_a_t) const* s7
+,   winstl_ns_qual(ws_char_a_t) const* s8
+,   winstl_ns_qual(ws_char_a_t) const* s9
+,   winstl_ns_qual(ws_char_a_t) const* s10
+,   winstl_ns_qual(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+)
+{
+    STLSOFT_COVER_MARK_LINE();
+
+    winstl_C_diagnostics_output_debug_line_13_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12);
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ */
+inline
+void
+output_debug_line(
+    winstl_ns_qual(ws_char_a_t) const* s0
+,   winstl_ns_qual(ws_char_a_t) const* s1
+,   winstl_ns_qual(ws_char_a_t) const* s2
+,   winstl_ns_qual(ws_char_a_t) const* s3
+,   winstl_ns_qual(ws_char_a_t) const* s4
+,   winstl_ns_qual(ws_char_a_t) const* s5
+,   winstl_ns_qual(ws_char_a_t) const* s6
+,   winstl_ns_qual(ws_char_a_t) const* s7
+,   winstl_ns_qual(ws_char_a_t) const* s8
+,   winstl_ns_qual(ws_char_a_t) const* s9
+,   winstl_ns_qual(ws_char_a_t) const* s10
+,   winstl_ns_qual(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+)
+{
+    STLSOFT_COVER_MARK_LINE();
+
+    winstl_C_diagnostics_output_debug_line_14_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13);
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ * \param s14 String fragment to combine and emit
+ */
+inline
+void
+output_debug_line(
+    winstl_ns_qual(ws_char_a_t) const* s0
+,   winstl_ns_qual(ws_char_a_t) const* s1
+,   winstl_ns_qual(ws_char_a_t) const* s2
+,   winstl_ns_qual(ws_char_a_t) const* s3
+,   winstl_ns_qual(ws_char_a_t) const* s4
+,   winstl_ns_qual(ws_char_a_t) const* s5
+,   winstl_ns_qual(ws_char_a_t) const* s6
+,   winstl_ns_qual(ws_char_a_t) const* s7
+,   winstl_ns_qual(ws_char_a_t) const* s8
+,   winstl_ns_qual(ws_char_a_t) const* s9
+,   winstl_ns_qual(ws_char_a_t) const* s10
+,   winstl_ns_qual(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+,   winstl_ns_qual(ws_char_a_t) const* s14
+)
+{
+    STLSOFT_COVER_MARK_LINE();
+
+    winstl_C_diagnostics_output_debug_line_15_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14);
+}
+
+/** Emits the given multibyte string fragments and a terminating line-feed
+ * as a single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param s0 String fragment to combine and emit
+ * \param s1 String fragment to combine and emit
+ * \param s2 String fragment to combine and emit
+ * \param s3 String fragment to combine and emit
+ * \param s4 String fragment to combine and emit
+ * \param s5 String fragment to combine and emit
+ * \param s6 String fragment to combine and emit
+ * \param s7 String fragment to combine and emit
+ * \param s8 String fragment to combine and emit
+ * \param s9 String fragment to combine and emit
+ * \param s10 String fragment to combine and emit
+ * \param s11 String fragment to combine and emit
+ * \param s12 String fragment to combine and emit
+ * \param s13 String fragment to combine and emit
+ * \param s14 String fragment to combine and emit
+ * \param s15 String fragment to combine and emit
+ */
+inline
+void
+output_debug_line(
+    winstl_ns_qual(ws_char_a_t) const* s0
+,   winstl_ns_qual(ws_char_a_t) const* s1
+,   winstl_ns_qual(ws_char_a_t) const* s2
+,   winstl_ns_qual(ws_char_a_t) const* s3
+,   winstl_ns_qual(ws_char_a_t) const* s4
+,   winstl_ns_qual(ws_char_a_t) const* s5
+,   winstl_ns_qual(ws_char_a_t) const* s6
+,   winstl_ns_qual(ws_char_a_t) const* s7
+,   winstl_ns_qual(ws_char_a_t) const* s8
+,   winstl_ns_qual(ws_char_a_t) const* s9
+,   winstl_ns_qual(ws_char_a_t) const* s10
+,   winstl_ns_qual(ws_char_a_t) const* s11
+,   winstl_ns_qual(ws_char_a_t) const* s12
+,   winstl_ns_qual(ws_char_a_t) const* s13
+,   winstl_ns_qual(ws_char_a_t) const* s14
+,   winstl_ns_qual(ws_char_a_t) const* s15
+)
+{
+    STLSOFT_COVER_MARK_LINE();
+
+    winstl_C_diagnostics_output_debug_line_16_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
