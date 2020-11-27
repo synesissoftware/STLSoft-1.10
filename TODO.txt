@@ -12,8 +12,11 @@ STLSoft 1.10 TODOs:
 
 * Documentation improvements        -   abandoned. Will be done for STLSoft 1.11
 * Website                           -   deferred until STLSoft 1.11 released
-* custom radix in integer_to_string -   abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
 * C++ 11/14/17/20 compatibility     -   partial; further coming in 1.11
+
+
+* widespread provision of move      -   partial; further coming in 1.11
+* custom radix in integer_to_string -   abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
 
 =============================== end of file ================================
 

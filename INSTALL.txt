@@ -2,7 +2,7 @@
 STLSoft - Install
 
 ; Created:  29th March 2002
-; Updated:  13th October 2019
+; Updated:  24th November 2020
 
 ============================================================================
 
@@ -27,6 +27,7 @@ STLSoft - Install
 
   * b64             https://github.com/synesissoftware/b64
   * CLASP           https://github.com/synesissoftware/CLASP
+  * ExpCxxLib
   * FastFormat      https://github.com/synesissoftware/FastFormat
   * flecxx          https://flecxx.sourceforge.net/
   * libCLImate      https://github.com/synesissoftware/libCLImate
