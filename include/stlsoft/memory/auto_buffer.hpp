@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    3
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        186
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    4
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        187
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -582,7 +582,7 @@ public:
         STLSOFT_ASSERT(is_valid());
     }
 
-#ifdef STLSOFT_CF_MOVE_SEMANTICS_SUPPORT
+#ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
 
     /// Constructs an auto_buffer instance by taking over the state of the
     /// instance \c rhs
@@ -613,7 +613,7 @@ public:
 
         rhs.m_cItems    =   0;
     }
-#endif /* STLSOFT_CF_MOVE_SEMANTICS_SUPPORT */
+#endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
     /// Releases the allocated element array
     ///

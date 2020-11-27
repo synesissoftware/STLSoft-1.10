@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     23rd November 2020
+ * Updated:     25th November 2020
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
@@ -68,8 +68,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     33
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      146
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      147
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -421,16 +421,12 @@
  * functionality. It is deprecated, and should not be used in any new
  * code
  *
- * STLSOFT_CF_MOVE_SEMANTICS_SUPPORT is the C++11 symbol
+ * STLSOFT_CF_RVALUE_REFERENCES_SUPPORT is the C++11 symbol
  */
 #if defined(_MSC_EXTENSIONS) && \
     _MSC_VER < 1310
 # define STLSOFT_CF_MOVE_CONSTRUCTOR_SUPPORT
 #endif /* _MSC_EXTENSIONS && _MSC_VER < 1310 */
-
-#if _MSC_VER >= 1700
-# define STLSOFT_CF_MOVE_SEMANTICS_SUPPORT
-#endif
 
 #if _MSC_VER >= 1300
 # define STLSOFT_CF_OPERATOR_BOOL_AS_OPERATOR_POINTER_TO_MEMBER_SUPPORT
