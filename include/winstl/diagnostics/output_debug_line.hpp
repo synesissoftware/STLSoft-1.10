@@ -4,7 +4,7 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     26th November 2020
+ * Updated:     27th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MAJOR      2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      1
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_REVISION   1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       12
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -68,9 +68,21 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE
-# include <winstl/diagnostics/output_debug_line.h>
-#endif /* !WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE */
+#ifdef STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
+# ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
+#  include <stlsoft/memory/auto_buffer.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
+# ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
+#  include <stlsoft/shims/access/string.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
+# ifndef WINSTL_INCL_WINSTL_API_external_h_Debugging
+#  include <winstl/api/external/Debugging.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
+#else /* ? STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT */
+# ifndef WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE
+#  include <winstl/diagnostics/output_debug_line.h>
+# endif /* !WINSTL_INCL_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE */
+#endif /* STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT */
 
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
@@ -103,6 +115,136 @@ namespace diagnostics
 /* /////////////////////////////////////////////////////////////////////////
  * functions
  */
+
+#ifdef STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
+
+# ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+namespace ximpl_odl_ {
+
+const size_t AllocationGranularity = 256;
+
+typedef stlsoft::auto_buffer<
+    char
+#ifdef NDEBUG
+,   2048
+#else
+,   256
+#endif
+//,   winstl::processheap_allocator<char>
+>                                                           buffer_t;
+
+void
+output_debug_line_append_(
+    buffer_t&           buff
+,   size_t*             pcchBuff
+,   char const*         s
+,   size_t              n
+)
+{
+    size_t const required = n + *pcchBuff;
+
+    if (required > buff.size())
+    {
+        size_t requested;
+
+        if (required < 4096)
+        {
+            requested = required * 11 / 8;
+        }
+        else
+        {
+            requested = required;
+        }
+
+        requested = (requested + (AllocationGranularity - 1)) & ~(AllocationGranularity - 1);
+
+        buff.resize(requested);
+    }
+
+    ::memcpy(&buff[0] + *pcchBuff, s, sizeof(buffer_t::value_type) * n);
+
+    *pcchBuff += n;
+}
+
+template<
+    typename    T_arg0
+>
+void
+output_debug_line_(
+    buffer_t&           buff
+,   size_t*             pcchBuff
+,   size_t              index
+,   size_t              count
+,   T_arg0 const&       arg0
+)
+{
+    STLSOFT_ASSERT(index < count);
+
+    output_debug_line_append_(buff, pcchBuff, stlsoft::c_str_data(arg0), stlsoft::c_str_len(arg0));
+
+    if (index + 1 == count)
+    {
+        output_debug_line_append_(buff, pcchBuff, "\n\0", 2);
+
+        WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA(buff.data());
+    }
+}
+
+template<
+    typename    T_arg0
+,   typename ...T_args
+>
+void
+output_debug_line_(
+    buffer_t&           buff
+,   size_t*             pcchBuff
+,   size_t              index
+,   size_t              count
+,   T_arg0 const&       arg0
+,   T_args const&...    args
+)
+{
+    output_debug_line_(buff, pcchBuff, index + 0, count, arg0);
+
+    output_debug_line_(buff, pcchBuff, index + 1, count, args...);
+}
+
+} /* namespace ximpl_odl_ */
+# endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/** Emits one or more arguments, interpreted via string access shims, in
+ * their string form concatenated along with a terminating line-feed as a
+ * single string to the Windows' Debugging API function
+ * <code>OutputDebugStringA()</code>
+ *
+ * \ingroup group__library__Diagnostic
+ *
+ * \note The function attempts to emit the combined string atomically,
+ *   defaulting to emitting the fragments separately if that cannot be
+ *   achieved
+ *
+ * \param arg0 first argument
+ * \param args parameter pack (of 0 or more arguments)
+ */
+template<
+    typename    T_arg0
+,   typename ...T_args
+>
+void
+output_debug_line(
+    T_arg0 const&       arg0
+,   T_args const&...    args
+)
+{
+    size_t const            n   =   1 + sizeof...(args);
+
+    ximpl_odl_::buffer_t    buff(ximpl_odl_::buffer_t::internal_size());
+
+    size_t                  cchBuff = 0;
+
+    ximpl_odl_::output_debug_line_(buff, &cchBuff, 0, n, arg0, args...);
+}
+#else /* ? STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT */
 
 /** Emits the given multibyte string fragment and a terminating line-feed
  * as a single string to the Windows' Debugging API function
@@ -711,6 +853,7 @@ output_debug_line(
 
     winstl_C_diagnostics_output_debug_line_16_m(s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15);
 }
+#endif /* STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

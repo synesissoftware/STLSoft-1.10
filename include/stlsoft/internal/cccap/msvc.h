@@ -67,9 +67,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     33
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      147
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     34
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      148
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -463,6 +463,7 @@
  *    - copy-constructor template overload is properly discriminated against
  *      other non-template copy-constructor
  *    - template void type parameter
+ *    - variadic templates
  */
 
 #if _MSC_VER >= 1100
@@ -552,6 +553,10 @@
 
 #if _MSC_VER >= 1310
 # define STLSOFT_CF_TEMPLATE_VOID_TYPE_PARAMETER
+#endif /* compiler */
+
+#if _MSC_VER >= 1800
+# define STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////

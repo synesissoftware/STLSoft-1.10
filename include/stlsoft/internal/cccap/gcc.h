@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     13th June 2020
+ * Updated:     25th November 2020
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -61,9 +61,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      28
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      29
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       105
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       106
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -374,6 +374,7 @@
  *    - copy-constructor template overload is properly discriminated against
  *      other non-template copy-constructor
  *    - template void type parameter
+ *    - variadic templates
  */
 
 #define STLSOFT_CF_TEMPLATE_SUPPORT
@@ -419,6 +420,11 @@
 /* #define STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
 
 #define STLSOFT_CF_TEMPLATE_VOID_TYPE_PARAMETER
+
+/* NOTE: required C++14 is a _punt_ - please let us know if can be 201103L */
+#if __cplusplus >= 201402L
+# define STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
+#endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inline assembler
