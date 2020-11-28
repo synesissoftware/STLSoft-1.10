@@ -289,33 +289,33 @@ public:
     void        clear();
 
     /// Converts the path to absolute form
-	///
-	/// \note In the case where compilation does not support exceptions, the
-	/// return type is Boolean and indicates whether the method failed to
-	/// make absolute (rather than indicating whether a conversion was
-	/// necessary)
+    ///
+    /// \note In the case where compilation does not support exceptions, the
+    /// return type is Boolean and indicates whether the method failed to
+    /// make absolute (rather than indicating whether a conversion was
+    /// necessary)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     class_type&
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
-	bool
+    bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-	make_absolute(
-		bool_type bRemoveTrailingPathNameSeparator = true
-	);
+    make_absolute(
+        bool_type bRemoveTrailingPathNameSeparator = true
+    );
     /// Canonicalises the path, removing all "./" parts and evaluating all "../" parts
-	///
-	/// \note In the case where compilation does not support exceptions, the
-	/// return type is Boolean and indicates whether the method failed to
-	/// make canonical (rather than indicating whether a conversion was
-	/// necessary)
+    ///
+    /// \note In the case where compilation does not support exceptions, the
+    /// return type is Boolean and indicates whether the method failed to
+    /// make canonical (rather than indicating whether a conversion was
+    /// necessary)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     class_type&
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
-	bool
+    bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-	canonicalise(
-		bool_type bRemoveTrailingPathNameSeparator = true
-	);
+    canonicalise(
+        bool_type bRemoveTrailingPathNameSeparator = true
+    );
 /// @}
 
 /// \name Attributes
@@ -1314,7 +1314,7 @@ basic_path<C, T, A>::canonicalise(us_bool_t bRemoveTrailingPathNameSeparator /* 
             }
         }
         else if(isalpha(m_buffer[0]) &&
-				':' == m_buffer[1])
+                ':' == m_buffer[1])
         {
             // Copy over the drive letter, colon and slash
             *dest++ = *p1++;

@@ -341,19 +341,19 @@ public:
     void        clear();
 
     /// Converts the path to absolute form
-	///
-	/// \note In the case where compilation does not support exceptions, the
-	/// return type is Boolean and indicates whether the method failed to
-	/// make absolute (rather than indicating whether a conversion was
-	/// necessary)
+    ///
+    /// \note In the case where compilation does not support exceptions, the
+    /// return type is Boolean and indicates whether the method failed to
+    /// make absolute (rather than indicating whether a conversion was
+    /// necessary)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     class_type&
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
-	bool
+    bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-	make_absolute(
-		bool_type bRemoveTrailingPathNameSeparator = true
-	);
+    make_absolute(
+        bool_type bRemoveTrailingPathNameSeparator = true
+    );
     /// Canonicalises the path
     ///
     /// Canonicalises the path, removing all "./" parts and evaluating all
@@ -363,19 +363,19 @@ public:
     ///
     /// \param bRemoveTrailingPathNameSeparator Removes any trailing
     ///   separator, even if no other changes have been made.
-	///
-	/// \note In the case where compilation does not support exceptions, the
-	/// return type is Boolean and indicates whether the method failed to
-	/// make canonical (rather than indicating whether a conversion was
-	/// necessary)
+    ///
+    /// \note In the case where compilation does not support exceptions, the
+    /// return type is Boolean and indicates whether the method failed to
+    /// make canonical (rather than indicating whether a conversion was
+    /// necessary)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     class_type&
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
-	bool
+    bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-	canonicalise(
-		bool_type bRemoveTrailingPathNameSeparator = true
-	);
+    canonicalise(
+        bool_type bRemoveTrailingPathNameSeparator = true
+    );
 /// @}
 
 /// \name Attributes
@@ -1590,10 +1590,10 @@ basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveTrailingPathNameSeparator /* 
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-		return *this;
+        return *this;
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
 
-	    return true;
+        return true;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
@@ -1975,25 +1975,25 @@ inline ws_bool_t basic_path<C, T, A>::equivalent(ss_typename_type_k basic_path<C
     return lhs_.make_absolute(false).canonicalise(true) == rhs_.make_absolute(false).canonicalise(true);
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
 
-	if (!lhs_.make_absolute(false))
-	{
-		return false;
-	}
-	if (!lhs_.canonicalise(false))
-	{
-		return false;
-	}
+    if (!lhs_.make_absolute(false))
+    {
+        return false;
+    }
+    if (!lhs_.canonicalise(false))
+    {
+        return false;
+    }
 
-	if (!rhs_.make_absolute(false))
-	{
-		return false;
-	}
-	if (!rhs_.canonicalise(false))
-	{
-		return false;
-	}
+    if (!rhs_.make_absolute(false))
+    {
+        return false;
+    }
+    if (!rhs_.canonicalise(false))
+    {
+        return false;
+    }
 
-	return lhs_.equal(rhs_);
+    return lhs_.equal(rhs_);
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
 
