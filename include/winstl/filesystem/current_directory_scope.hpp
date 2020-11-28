@@ -144,18 +144,18 @@ template<   ss_typename_param_k C
 class basic_current_directory_scope
 {
 public: // types
-    /// The character type
-    typedef C                                               char_type;
-    /// The traits type
-    typedef T                                               traits_type;
+	/// The character type
+    typedef C												char_type;
+	/// The traits type
+    typedef T												traits_type;
     /// This type
-    typedef basic_current_directory_scope<C, T>             class_type;
-    /// The size type
-    typedef ws_size_t                                       size_type;
+    typedef basic_current_directory_scope<C, T>				class_type;
+	/// The size type
+    typedef ws_size_t										size_type;
 private:
-    typedef basic_file_path_buffer<
-        char_type
-    >                                                       buffer_type_;
+	typedef basic_file_path_buffer<
+		char_type
+	>														buffer_type_;
 
 // Construction
 public:
@@ -176,9 +176,9 @@ public:
     /// Returns the current directory to its original location
     ~basic_current_directory_scope() STLSOFT_NOEXCEPT;
 private:
-    basic_current_directory_scope();                    // default-construction proscribed
-    basic_current_directory_scope(class_type const&);   // copy-construction proscribed
-    class_type const& operator =(class_type const&);    // copy-assignment proscribed
+    basic_current_directory_scope();					// default-construction proscribed
+    basic_current_directory_scope(class_type const&);	// copy-construction proscribed
+    class_type const& operator =(class_type const&);	// copy-assignment proscribed
 
 // Attributes
 public:
@@ -209,7 +209,7 @@ private: // implementation
     void init_(char_type const* dir);
 
 private: // fields
-    buffer_type_    m_previous;
+    buffer_type_	m_previous;
 };
 
 /* /////////////////////////////////////////////////////////////////////////
