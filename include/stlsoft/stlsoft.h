@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     27th November 2020
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -322,7 +322,7 @@
 # define _STLSOFT_VER_1_10_1_B19    0x010a0193  /*!< Version 1.10.1 beta 19 (4th July 2020) */
 # define _STLSOFT_VER_1_10_1_B20    0x010a0194  /*!< Version 1.10.1 beta 20 (5th July 2020) */
 # define _STLSOFT_VER_1_10_1_B21    0x010a0195  /*!< Version 1.10.1 beta 21 (27th July 2020) */
-# define _STLSOFT_VER_1_10_1_B22    0x010a0196  /*!< Version 1.10.1 beta 22 (27th November 2020) */
+# define _STLSOFT_VER_1_10_1_B22    0x010a0196  /*!< Version 1.10.1 beta 22 (28th November 2020) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
