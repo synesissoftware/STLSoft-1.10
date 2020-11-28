@@ -4,10 +4,11 @@
  * Purpose:     Functions for manipulating directories.
  *
  * Created:     7th February 2002
- * Updated:     13th September 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR     0
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      62
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,13 +113,13 @@ inline C* find_last_path_name_separator_(C const* s)
     ss_typename_type_k traits_t::char_type const*   slash  =   traits_t::str_rchr(s, '/');
     ss_typename_type_k traits_t::char_type const*   bslash =   traits_t::str_rchr(s, '\\');
 
-    if(NULL == slash)
+    if (NULL == slash)
     {
         slash = bslash;
     }
-    else if(NULL != bslash)
+    else if (NULL != bslash)
     {
-        if(slash < bslash)
+        if (slash < bslash)
         {
             slash = bslash;
         }
@@ -156,9 +158,9 @@ create_directory_recurse_impl(
     }
     else
     {
-        if(traits_t::file_exists(dir))
+        if (traits_t::file_exists(dir))
         {
-            if(traits_t::is_directory(dir))
+            if (traits_t::is_directory(dir))
             {
                 traits_t::set_last_error(ERROR_ALREADY_EXISTS);
 
@@ -208,7 +210,7 @@ create_directory_recurse_impl(
                     szParent[szLen] = '\0';
 
                     char_type* pszSlash = find_last_path_name_separator_<C>(szParent.c_str());
-                    if(pszSlash == NULL)
+                    if (pszSlash == NULL)
                     {
                         traits_t::set_last_error(ERROR_DIRECTORY);
 
@@ -264,7 +266,7 @@ remove_directory_recurse_impl(
 
     ws_dword_t dwRet = static_cast<ws_dword_t>(E_FAIL);
 
-    if(NULL != pfn)
+    if (NULL != pfn)
     {
         // starting: { param, dir, NULL, ~0 }
         (void)(*pfn)(param, dir, NULL, ~static_cast<ws_dword_t>(0)); // Entering
@@ -275,7 +277,7 @@ remove_directory_recurse_impl(
     {
         dwRet = ERROR_DIRECTORY;
 
-        if(NULL != pfn)
+        if (NULL != pfn)
         {
             // failed: { param, dir, NULL, error-code }
             (void)(*pfn)(param, dir, NULL, dwRet);
@@ -290,7 +292,7 @@ remove_directory_recurse_impl(
 
             dwRet = ERROR_PATH_NOT_FOUND;
 
-            if(NULL != pfn)
+            if (NULL != pfn)
             {
                 // failed: { param, dir, NULL, error-code }
                 (void)(*pfn)(param, dir, NULL, dwRet);
@@ -298,12 +300,12 @@ remove_directory_recurse_impl(
         }
         else
         {
-            if(traits_t::is_file(dir))
+            if (traits_t::is_file(dir))
             {
                 // The given path exists as a file. This is failure
                 dwRet = ERROR_FILE_EXISTS;
 
-                if(NULL != pfn)
+                if (NULL != pfn)
                 {
                     // failed: { param, dir, NULL, error-code }
                     (void)(*pfn)(param, dir, NULL, dwRet);
@@ -312,11 +314,11 @@ remove_directory_recurse_impl(
             else
             {
                 // Otherwise, we attempt to remove it
-                if(traits_t::remove_directory(dir))
+                if (traits_t::remove_directory(dir))
                 {
                     dwRet = ERROR_SUCCESS;
 
-                    if(NULL != pfn)
+                    if (NULL != pfn)
                     {
                         // succeeded: { param, dir, NULL, ERROR_SUCCESS }
                         (void)(*pfn)(param, dir, NULL, dwRet); // Deleted
@@ -331,7 +333,7 @@ remove_directory_recurse_impl(
                     {
                         dwRet = removeError;
 
-                        if(NULL != pfn)
+                        if (NULL != pfn)
                         {
                             // failed: { param, dir, NULL, error-code }
                             (void)(*pfn)(param, dir, NULL, dwRet);
@@ -357,7 +359,7 @@ remove_directory_recurse_impl(
                         sz[n + allLen] = '\0';
 
                         hSrch = traits_t::find_first_file(sz.c_str(), &st);
-                        if(INVALID_HANDLE_VALUE == hSrch)
+                        if (INVALID_HANDLE_VALUE == hSrch)
                         {
                             dwRet = traits_t::get_last_error();
                         }
@@ -367,13 +369,13 @@ remove_directory_recurse_impl(
 
                             do
                             {
-                                if(!traits_t::is_dots(st.cFileName))
+                                if (!traits_t::is_dots(st.cFileName))
                                 {
                                     ws_size_t filenameLen = traits_t::str_len(st.cFileName);
                                     traits_t::char_copy(&sz[n], st.cFileName, filenameLen);
                                     sz[n + filenameLen] = '\0';
 
-                                    if(traits_t::is_file(sz.c_str()))
+                                    if (traits_t::is_file(sz.c_str()))
                                     {
                                         // If it's a file, the pfn must be consulted, otherwise
                                         // it's an automatic failure
@@ -385,7 +387,7 @@ remove_directory_recurse_impl(
                                         {
                                             dwRet = ERROR_DIR_NOT_EMPTY;
 
-                                            if(NULL != pfn)
+                                            if (NULL != pfn)
                                             {
                                                 // failed: { param, dir, &entry, error-code }
                                                 (void)(*pfn)(param, dir, &st, dwRet);
@@ -395,13 +397,13 @@ remove_directory_recurse_impl(
                                         }
                                         else
                                         {
-                                            if(r > 0)
+                                            if (r > 0)
                                             {
-                                                if(!traits_t::delete_file(sz.c_str()))
+                                                if (!traits_t::delete_file(sz.c_str()))
                                                 {
                                                     dwRet = traits_t::get_last_error();
 
-                                                    if(NULL != pfn)
+                                                    if (NULL != pfn)
                                                     {
                                                         // failed: { param, dir, &entry, error-code }
                                                         (void)(*pfn)(param, dir, &st, dwRet);
@@ -423,7 +425,7 @@ remove_directory_recurse_impl(
                                         {
                                             dwRet = ERROR_DIR_NOT_EMPTY;
 
-                                            if(NULL != pfn)
+                                            if (NULL != pfn)
                                             {
                                                 // failed: { param, dir, &entry, error-code }
                                                 (void)(*pfn)(param, dir, &st, dwRet);
@@ -433,11 +435,11 @@ remove_directory_recurse_impl(
                                         }
                                         else
                                         {
-                                            if(r > 0)
+                                            if (r > 0)
                                             {
                                                 dwRet = remove_directory_recurse_impl(sz.c_str(), pfn, param);
 
-                                                if(ERROR_SUCCESS != dwRet)
+                                                if (ERROR_SUCCESS != dwRet)
                                                 {
                                                     break;
                                                 }
@@ -450,11 +452,11 @@ remove_directory_recurse_impl(
 
                             traits_t::find_file_close(hSrch);
 
-                            if(ERROR_SUCCESS == dwRet)
+                            if (ERROR_SUCCESS == dwRet)
                             {
-                                if(traits_t::remove_directory(dir))
+                                if (traits_t::remove_directory(dir))
                                 {
-                                    if(NULL != pfn)
+                                    if (NULL != pfn)
                                     {
                                         // succeeded: { param, dir, NULL, ERROR_SUCCESS }
                                         (void)(*pfn)(param, dir, NULL, ERROR_SUCCESS); // Deleted

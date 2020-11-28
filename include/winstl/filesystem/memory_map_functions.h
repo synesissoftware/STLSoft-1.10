@@ -4,10 +4,11 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     2nd February 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -49,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       120
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   7
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       121
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -255,7 +257,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
     WINSTL_ASSERT(INVALID_HANDLE_VALUE != hFile);
     WINSTL_ASSERT(NULL != viewSize);
 
-    if(NULL == viewSize)
+    if (NULL == viewSize)
     {
         viewSize = &dummy;
     }
@@ -264,7 +266,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
     fileSizeLow =   STLSOFT_NS_GLOBAL(GetFileSize)(hFile, &fileSizeHigh);
     error       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-    if( INVALID_FILE_SIZE == fileSizeLow &&
+    if (INVALID_FILE_SIZE == fileSizeLow &&
         ERROR_SUCCESS != error)
     {
         return NULL;
@@ -279,16 +281,16 @@ winstl_C_map_named_view_of_file_by_handle_v_(
         ws_uint64_t fileSize    =   (stlsoft_static_cast(ws_uint64_t, fileSizeHigh) << 32) | fileSizeLow;
         ws_uint64_t mapSize     =   offset + requestSize;
 
-        if(mapSize < offset) // Overflow?
+        if (mapSize < offset) // Overflow?
         {
             WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_PARAMETER);
 
             return NULL;
         }
 
-        if(offset > fileSize)
+        if (offset > fileSize)
         {
-            if(0 == requestSize)
+            if (0 == requestSize)
             {
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_PARAMETER);
 
@@ -299,7 +301,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
                 // Do nothing, because MapViewOfFile() will fail for us
             }
         }
-        else if(0 == requestSize)
+        else if (0 == requestSize)
         {
 #ifdef WINSTL_OS_IS_WIN64
 
@@ -313,7 +315,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 
             ws_uint64_t requestSize2 = fileSize - offset;
 
-            if(requestSize2 > stlsoft_static_cast(ws_uint64_t, 0xffffffff))
+            if (requestSize2 > stlsoft_static_cast(ws_uint64_t, 0xffffffff))
             {
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
@@ -326,7 +328,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 
             mapSize     =   offset + requestSize;
         }
-        else if(readOnly)
+        else if (readOnly)
         {
 #ifndef WINSTL_MMF_DONT_TRIM_REQUEST_SIZE
             // Work out how large the file mapping object has to be
@@ -341,7 +343,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
             // the user of MMFs, and nothing per se to do with this
             // component.
 
-            if(mapSize > fileSize)
+            if (mapSize > fileSize)
             {
                 WINSTL_ASSERT((mapSize - fileSize) <= stlsoft_static_cast(ws_uint64_t, 0xffffffff));
                 WINSTL_ASSERT(offset <= fileSize);
@@ -353,7 +355,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 #endif /* !WINSTL_MMF_DONT_TRIM_REQUEST_SIZE */
         }
 
-        if(0 == requestSize)
+        if (0 == requestSize)
         {
             // Windows CreateFileMapping() does not support mapping
             // zero-length files, so we catch this condition here
@@ -374,7 +376,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
                     ,   pvMapName
                     );
 
-            if(NULL == hmap)
+            if (NULL == hmap)
             {
                 return NULL;
             }
@@ -392,7 +394,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
 
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
-                if(NULL == memory)
+                if (NULL == memory)
                 {
                     return NULL;
                 }
@@ -467,7 +469,7 @@ winstl_C_map_view_and_close_mapping_(
 ,   ws_uintptr_t    requestSize
 )
 {
-    if(NULL == hmap)
+    if (NULL == hmap)
     {
         return NULL;
     }
@@ -485,7 +487,7 @@ winstl_C_map_view_and_close_mapping_(
 
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(e);
 
-        if(NULL == memory)
+        if (NULL == memory)
         {
             return NULL;
         }
@@ -582,7 +584,7 @@ winstl_C_unmap_view_of_file(
 ,   ws_size_t   length
 ) STLSOFT_NOEXCEPT
 {
-    if(NULL != view)
+    if (NULL != view)
     {
         STLSOFT_SUPPRESS_UNUSED(length);
 
@@ -603,7 +605,7 @@ winstl_C_map_readonly_view_of_file_by_name_a(
 {
     HANDLE hFile = WINSTL_API_EXTERNAL_FileManagement_CreateFileA(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
 
-    if(INVALID_HANDLE_VALUE == hFile)
+    if (INVALID_HANDLE_VALUE == hFile)
     {
         return NULL;
     }
@@ -639,7 +641,7 @@ winstl_C_map_readonly_view_of_file_by_name_w(
 {
     HANDLE hFile = WINSTL_API_EXTERNAL_FileManagement_CreateFileW(path, access, shareMode, NULL, OPEN_EXISTING, 0, NULL);
 
-    if(INVALID_HANDLE_VALUE == hFile)
+    if (INVALID_HANDLE_VALUE == hFile)
     {
         return NULL;
     }
