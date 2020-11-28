@@ -4,10 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with MFC strings.
  *
  * Created:     24th May 2002
- * Updated:     2nd February 2019
+ * Updated:     25th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_MAJOR    3
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_MINOR    6
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_REVISION 3
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_EDIT     92
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_REVISION 4
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_HPP_STRING_EDIT     93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,10 +72,10 @@
 # include <mfcstl/shims/access/string/CException.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION */
 #ifndef MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CSTRING
-# include <mfcstl/shims/access/string/cstring.hpp>
+# include <mfcstl/shims/access/string/CString.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CSTRING */
 #ifndef MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND
-# include <mfcstl/shims/access/string/cwnd.hpp>
+# include <mfcstl/shims/access/string/CWnd.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND */
 
 /* /////////////////////////////////////////////////////////////////////////

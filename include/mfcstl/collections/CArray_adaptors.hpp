@@ -1,11 +1,11 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        mfcstl/collections/carray_adaptors.hpp (derived from mfcstl_array_adaptor.h)
+ * File:        mfcstl/collections/CArray_adaptors.hpp (derived from mfcstl_array_adaptor.h)
  *
  * Purpose:     Contains the definition of the CArray_cadaptor and CArray_iadaptor
  *              class templates.
  *
  * Created:     1st December 2002
- * Updated:     13th September 2019
+ * Updated:     28th November 2020
  *
  * Thanks to:   Nevin Liber and Scott Meyers for kicking my lazy behind, and
  *              requiring that I implement the full complement of standard
@@ -13,6 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -25,9 +26,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -44,7 +46,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file mfcstl/collections/carray_adaptors.hpp
+/** \file mfcstl/collections/CArray_adaptors.hpp
  *
  * \brief [C++] Definition of the mfcstl::CArray_cadaptor and
  *   mfcstl::CArray_iadaptor traits class templates
@@ -57,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MAJOR    4
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MINOR    3
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_REVISION 9
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     99
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_REVISION 10
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,10 +78,10 @@
 # include <mfcstl/memory/afx_allocator.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_MEMORY_HPP_AFX_ALLOCATOR */
 #ifndef MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_SWAP
-# include <mfcstl/collections/carray_swap.hpp>
+# include <mfcstl/collections/CArray_swap.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_SWAP */
 #ifndef MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS
-# include <mfcstl/collections/carray_traits.hpp>
+# include <mfcstl/collections/CArray_traits.hpp>
 #endif /* !MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS */
 #ifndef MFCSTL_INCL_MFCSTL_UTIL_HPP_MEMORY_EXCEPTION_TRANSLATION_POLICIES
 # include <mfcstl/util/memory_exception_translation_policies.hpp>

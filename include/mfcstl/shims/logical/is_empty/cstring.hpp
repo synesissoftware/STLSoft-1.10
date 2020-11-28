@@ -1,13 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        mfcstl/shims/logical/is_empty/cstring.hpp
+ * File:        mfcstl/shims/logical/is_empty/CString.hpp
  *
- * Purpose:     Helper functions for CString class.
+ * Purpose:     is_empty attribute shims for MFC CString
  *
  * Created:     18th December 2006
- * Updated:     2nd February 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -39,9 +41,9 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file mfcstl/shims/logical/is_empty/cstring.hpp
+/** \file mfcstl/shims/logical/is_empty/CString.hpp
  *
- * \brief [C++] Primary include file for is_empty attribute shims
+ * \brief [C++] is_empty attribute shims for MFC CString
  *   for <code>CString</code>
  *   (\ref group__concept__Shim__Logical__is_empty "is_empty Collection Logical Shim").
  */
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_MAJOR     2
 # define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_MINOR     0
-# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_REVISION  5
-# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_EDIT      17
+# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_REVISION  6
+# define MFCSTL_VER_MFCSTL_SHIMS_LOGICAL_IS_EMPTY_HPP_CSTRING_EDIT      18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        mfcstl/shims/access/string/cwnd.hpp
+ * File:        mfcstl/shims/access/string/CWnd.hpp
  *
- * Purpose:     Contains classes and functions for dealing with MFC strings.
+ * Purpose:     String access shims for CWnd
  *
  * Created:     24th May 2002
- * Updated:     23rd November 2020
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,10 +41,9 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file mfcstl/shims/access/string/cwnd.hpp
+/** \file mfcstl/shims/access/string/CWnd.hpp
  *
- * \brief [C++] Definition of the string access shims for
- *   <code>CWnd</code>
+ * \brief [C++] String access shims for <code>CWnd</code>
  *   (\ref group__concept__Shim__string_access "String Access Shims" Concept).
  */
 
@@ -54,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_MAJOR       4
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_MINOR       0
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_REVISION    13
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_EDIT        106
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_REVISION    14
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CWND_EDIT        107
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

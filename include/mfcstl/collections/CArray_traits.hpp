@@ -1,13 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        mfcstl/collections/clist_traits.hpp
+ * File:        mfcstl/collections/CArray_traits.hpp (derived from mfcstl/CArray_adaptors.hpp)
  *
- * Purpose:     Definition of the CList_traits traits class.
+ * Purpose:     Definition of the CArray_traits traits class.
  *
  * Created:     1st December 2002
- * Updated:     13th September 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -39,20 +41,20 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file mfcstl/collections/clist_traits.hpp
+/** \file mfcstl/collections/CArray_traits.hpp
  *
- * \brief [C++] Definition of the mfcstl::CList_traits traits class
+ * \brief [C++] Definition of the mfcstl::CArray_traits traits class
  *   (\ref group__library__Collection "Collection" Library).
  */
 
-#ifndef MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS
-#define MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS
+#ifndef MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS
+#define MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MAJOR       3
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MINOR       0
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_REVISION    5
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_EDIT        69
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MAJOR      2
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MINOR      0
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_REVISION   6
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_EDIT       24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,75 +93,80 @@ namespace mfcstl_project
 #endif /* !MFCSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Pre-processor options
- *
- * Because the CObList, CPtrList, CStringList and CList<,> implementations all
- * internally represent their logical position indicators (of type POSTION) as
- * pointers to the nodes within the lists, it is workable to be able to copy
- * these position variables.
- *
- * However, nothing in the MFC documentation stipulates this to be a reliable
- * and documented part of the classes' interfaces, so this is a potentially
- * unsafe assumption.
- *
- * Therefore, the iterator model for the CList class is Input Iterator.
- * If you wish to use forward iterators, you may specify the preprocessor
- * symbol _MFCSTL_LIST_ADAPTOR_ENABLE_FWD_ITERATOR, in which case the iterator
- * classes will implement copy semantics, rather than the default move
- * semantics.
- */
-
-/* /////////////////////////////////////////////////////////////////////////
  * classes
  */
 
 #ifdef STLSOFT_DOCUMENTATION_SKIP_SECTION
-/** Traits for CList_adaptor_base
+/** Traits for CArray_adaptor_base
  *
  * \ingroup group__library__Collection
- *
- * Regrettably, since MFC's template classes do not define any member types,
- * it is not possible to generalise the traits, so we must just use
- * specialisations. Sigh!
  */
 template <ss_typename_param_k C>
-struct CList_traits
+struct CArray_traits
 {
-    /// Typedef that defines the type of the elements in the list
+    /// Typedef that defines the type of the elements in the array
     typedef ????            value_type;
-    /// Typedef that defines the type of the arguments to the methods of the list
+    /// Typedef that defines the type of the arguments to the methods of the array
     typedef ????            arg_type;
     /// Typedef that identifies the actual class type used to parameterise the traits
-    typedef ????            list_type;
+    typedef ????            array_type;
 };
 
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 template <ss_typename_param_k C>
-struct CList_traits;
+struct CArray_traits;
 
 STLSOFT_TEMPLATE_SPECIALISATION
-struct CList_traits<CObList>
+struct CArray_traits<CByteArray>
 {
-    typedef CObject*        value_type;
-    typedef CObject*        arg_type;
-    typedef CObList         list_type;
+    typedef BYTE            value_type;
+    typedef BYTE            arg_type;
+    typedef CByteArray      array_type;
 };
 
-// For CPtrList
+STLSOFT_TEMPLATE_SPECIALISATION
+struct CArray_traits<CDWordArray>
+{
+    typedef DWORD           value_type;
+    typedef DWORD           arg_type;
+    typedef CDWordArray     array_type;
+};
 
 STLSOFT_TEMPLATE_SPECIALISATION
-struct CList_traits<CPtrList>
+struct CArray_traits<CUIntArray>
+{
+    typedef UINT            value_type;
+    typedef UINT            arg_type;
+    typedef CUIntArray      array_type;
+};
+
+STLSOFT_TEMPLATE_SPECIALISATION
+struct CArray_traits<CWordArray>
+{
+    typedef WORD            value_type;
+    typedef WORD            arg_type;
+    typedef CWordArray      array_type;
+};
+
+STLSOFT_TEMPLATE_SPECIALISATION
+struct CArray_traits<CPtrArray>
 {
     typedef void*           value_type;
     typedef void*           arg_type;
-    typedef CPtrList        list_type;
+    typedef CPtrArray       array_type;
 };
 
-// For CStringList
+STLSOFT_TEMPLATE_SPECIALISATION
+struct CArray_traits<CObArray>
+{
+    typedef CObject*        value_type;
+    typedef CObject*        arg_type;
+    typedef CObArray        array_type;
+};
 
 STLSOFT_TEMPLATE_SPECIALISATION
-struct CList_traits<CStringList>
+struct CArray_traits<CStringArray>
 {
     typedef CString         value_type;
 # if 0
@@ -167,32 +174,18 @@ struct CList_traits<CStringList>
 # else /* ? 0 */
     typedef LPCTSTR         arg_type;
 # endif /* 0 */
-    typedef CStringList     list_type;
+    typedef CStringArray    array_type;
 };
-
-// For CList<, >
 
 # if defined(__AFXTEMPL_H__) && \
      defined(STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT)
-/* If your translator supports partial template specialisation, then you
- * should be fine with the following specialisation, otherwise you will need
- * to provide your own traits class, e.g
- *
- *  struct my_traits_type
- *  {
- *    typedef MyValType       value_type;
- *    typedef MyValType const& arg_type;
- *  };
- */
-
 template <class V, class A>
-struct CList_traits<CList<V, A> >
+struct CArray_traits<CArray<V, A> >
 {
     typedef V               value_type;
     typedef A               arg_type;
-    typedef CList<V, A>     list_type;
+    typedef CArray<V, A>    array_type;
 };
-
 # endif /* __AFXTEMPL_H__ && STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT */
 #endif /* STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -204,11 +197,11 @@ template<   ss_typename_param_k V
         ,   ss_typename_param_k A
         ,   ss_typename_param_k C
         >
-struct CList_specific_traits
+struct CArray_specific_traits
 {
     typedef V               value_type;
     typedef A               arg_type;
-    typedef C               list_type;
+    typedef C               array_type;
 };
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -231,7 +224,7 @@ struct CList_specific_traits
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS */
+#endif /* !MFCSTL_INCL_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

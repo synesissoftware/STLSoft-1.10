@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     27th May 2002
- * Updated:     2nd February 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_MAJOR      4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_MINOR      0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_REVISION   3
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_EDIT       102
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_REVISION   4
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_HPP_STRING_EDIT       103
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -68,11 +68,11 @@
 #endif /* STLSOFT_TRACE_INCLUDE */
 
 #ifndef ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR
-# include <atlstl/shims/access/string/ccombstr.hpp>
+# include <atlstl/shims/access/string/CComBstr.hpp>
 #endif /* !ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR */
 #ifdef __ATLWIN__
 # ifndef ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW
-#  include <atlstl/shims/access/string/cwindow.hpp>
+#  include <atlstl/shims/access/string/CWindow.hpp>
 # endif /* !ATLSTL_INCL_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW */
 #endif /* __ATLWIN__ */
 

@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        atlstl/shims/access/string/cwindow.hpp
+ * File:        atlstl/shims/access/string/CWindow.hpp
  *
- * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
+ * Purpose:     String access shims for CWindow
  *
  * Created:     27th May 2002
- * Updated:     23rd November 2020
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,10 +41,9 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file atlstl/shims/access/string/cwindow.hpp
+/** \file atlstl/shims/access/string/CWindow.hpp
  *
- * \brief [C++] Definition of the string access shims for
- *   <code>CWindow</code>
+ * \brief [C++] String access shims for <code>CWindow</code>
  *   (\ref group__concept__Shim__string_access "String Access Shims" Concept).
  */
 
@@ -54,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MAJOR    4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_MINOR    0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 11
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     116
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_REVISION 12
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CWINDOW_EDIT     117
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

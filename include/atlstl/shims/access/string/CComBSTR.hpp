@@ -1,10 +1,10 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        atlstl/shims/access/string/ccombstr.hpp
+ * File:        atlstl/shims/access/string/CComBSTR.hpp
  *
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     27th May 2002
- * Updated:     23rd November 2020
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,7 +41,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file atlstl/shims/access/string/ccombstr.hpp
+/** \file atlstl/shims/access/string/CComBSTR.hpp
  *
  * \brief [C++] Definition of the string access shims for
  *   <code>CComBSTR</code>
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_MAJOR       4
 # define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_MINOR       0
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_REVISION    6
-# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_EDIT        107
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_REVISION    7
+# define ATLSTL_VER_ATLSTL_SHIMS_ACCESS_STRING_HPP_CCOMBSTR_EDIT        108
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

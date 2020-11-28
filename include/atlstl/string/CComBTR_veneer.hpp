@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        atlstl/string/ccombstr_veneer.hpp
+ * File:        atlstl/string/CComBSTR_veneer.hpp
  *
- * Purpose:     Contains the definition of the ccombstr_veneer template.
+ * Purpose:     Contains the definition of the CComBSTR_veneer template.
  *
  * Created:     1st October 2002
- * Updated:     24th October 2019
+ * Updated:     28th November 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,9 +39,9 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file atlstl/string/ccombstr_veneer.hpp
+/** \file atlstl/string/CComBSTR_veneer.hpp
  *
- * \brief [C++] Definition of the atlstl::ccombstr_veneer class
+ * \brief [C++] Definition of the atlstl::CComBSTR_veneer class
  *   (\ref group__library__String "String" Library).
  */
 
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_MAJOR    5
 # define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_MINOR    3
-# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_REVISION 8
-# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_EDIT     89
+# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_REVISION 9
+# define ATLSTL_VER_ATLSTL_STRING_HPP_CCOMBSTR_VENEER_EDIT     90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,8 +125,8 @@ namespace atlstl_project
  *
  * \ingroup concepts_veneer
  */
-// [[synesis:class:string: atlstl::ccombstr_veneer]]
-class ccombstr_veneer
+// [[synesis:class:string: atlstl::CComBSTR_veneer]]
+class CComBSTR_veneer
 #ifdef _ATLSTL_CCOMBSTR_VENEER_INHERIT_AS_PUBLIC
     : public CComBSTR
 #else /* ? _ATLSTL_CCOMBSTR_VENEER_INHERIT_AS_PUBLIC */
@@ -139,7 +139,7 @@ class ccombstr_veneer
 {
 private:
     typedef CComBSTR        parent_class_type;
-    typedef ccombstr_veneer class_type;
+    typedef CComBSTR_veneer class_type;
 public:
     /// The value type
     typedef OLECHAR         value_type;
@@ -178,21 +178,21 @@ public:
 // Construction
 public:
     /// Default constructor
-    ccombstr_veneer();
+    CComBSTR_veneer();
     /// Copy constructor
-    ccombstr_veneer(class_type const& rhs);
+    CComBSTR_veneer(class_type const& rhs);
     /// Copy constructor
-    ss_explicit_k ccombstr_veneer(CComBSTR const& rhs);
+    ss_explicit_k CComBSTR_veneer(CComBSTR const& rhs);
     /// Construct from an ANSI string
-    ss_explicit_k ccombstr_veneer(LPCSTR s);
+    ss_explicit_k CComBSTR_veneer(LPCSTR s);
     /// Construct from a Unicode string
-    ss_explicit_k ccombstr_veneer(LPCWSTR s);
+    ss_explicit_k CComBSTR_veneer(LPCWSTR s);
     /// Construct from a range
-    ccombstr_veneer(LPCOLESTR from, LPCOLESTR to);
+    CComBSTR_veneer(LPCOLESTR from, LPCOLESTR to);
     /// Construct from a range
-    ccombstr_veneer(size_type length, LPCOLESTR from);
+    CComBSTR_veneer(size_type length, LPCOLESTR from);
     ///
-    ccombstr_veneer(as_size_t cch, OLECHAR ch);
+    CComBSTR_veneer(as_size_t cch, OLECHAR ch);
 
     /// Copy assignment operator
     class_type const& operator =(class_type const& rhs);
@@ -251,6 +251,15 @@ public:
     /// Returns a pointer to constant data representing the managed string
     const_pointer   data() const;
 };
+
+/* /////////////////////////////////////////////////////////////////////////
+* backwards compatibility
+*/
+
+#ifdef STLSOFT_OBSOLETE
+
+typedef CComBSTR_veneer                                     ccombstr_veneer;
+#endif /* !STLSOFT_OBSOLETE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -335,7 +344,7 @@ bool CComBSTR::operator==(LPCSTR pszSrc) const
  * operators
  */
 
-inline as_bool_t operator ==(ccombstr_veneer const& lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator ==(CComBSTR_veneer const& lhs, CComBSTR_veneer const& rhs)
 {
     CComBSTR const&  lhs_   =   lhs.get_base_type();
     CComBSTR const&  rhs_   =   rhs.get_base_type();
@@ -350,7 +359,7 @@ inline as_bool_t operator ==(ccombstr_veneer const& lhs, ccombstr_veneer const& 
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER >= 1200
 
-inline as_bool_t operator ==(LPCSTR lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator ==(LPCSTR lhs, CComBSTR_veneer const& rhs)
 {
     CComBSTR const&  rhs_ = rhs.get_base_type();
 
@@ -361,7 +370,7 @@ inline as_bool_t operator ==(LPCSTR lhs, ccombstr_veneer const& rhs)
 #endif /* _ATL_VER */
 }
 
-inline as_bool_t operator ==(ccombstr_veneer const& lhs, LPCSTR rhs)
+inline as_bool_t operator ==(CComBSTR_veneer const& lhs, LPCSTR rhs)
 {
     CComBSTR const&  lhs_ = lhs.get_base_type();
 
@@ -374,7 +383,7 @@ inline as_bool_t operator ==(ccombstr_veneer const& lhs, LPCSTR rhs)
 
 #endif /* !(_MSC_VER < 1200) */
 
-inline as_bool_t operator ==(LPCWSTR lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator ==(LPCWSTR lhs, CComBSTR_veneer const& rhs)
 {
     CComBSTR const&  rhs_   =   rhs.get_base_type();
 
@@ -385,7 +394,7 @@ inline as_bool_t operator ==(LPCWSTR lhs, ccombstr_veneer const& rhs)
 #endif // _ATL_VER
 }
 
-inline as_bool_t operator ==(ccombstr_veneer const& lhs, LPCWSTR rhs)
+inline as_bool_t operator ==(CComBSTR_veneer const& lhs, LPCWSTR rhs)
 {
     CComBSTR const&  lhs_   =   lhs.get_base_type();
 
@@ -396,7 +405,7 @@ inline as_bool_t operator ==(ccombstr_veneer const& lhs, LPCWSTR rhs)
 #endif // _ATL_VER
 }
 
-inline as_bool_t operator !=(ccombstr_veneer const& lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator !=(CComBSTR_veneer const& lhs, CComBSTR_veneer const& rhs)
 {
     return !operator ==(lhs, rhs);
 }
@@ -404,24 +413,24 @@ inline as_bool_t operator !=(ccombstr_veneer const& lhs, ccombstr_veneer const& 
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER >= 1200
 
-inline as_bool_t operator !=(LPCSTR lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator !=(LPCSTR lhs, CComBSTR_veneer const& rhs)
 {
     return !operator ==(lhs, rhs);
 }
 
-inline as_bool_t operator !=(ccombstr_veneer const& lhs, LPCSTR rhs)
+inline as_bool_t operator !=(CComBSTR_veneer const& lhs, LPCSTR rhs)
 {
     return !operator ==(lhs, rhs);
 }
 
 #endif /* !(_MSC_VER < 1200) */
 
-inline as_bool_t operator !=(LPCWSTR lhs, ccombstr_veneer const& rhs)
+inline as_bool_t operator !=(LPCWSTR lhs, CComBSTR_veneer const& rhs)
 {
     return !operator ==(lhs, rhs);
 }
 
-inline as_bool_t operator !=(ccombstr_veneer const& lhs, LPCWSTR rhs)
+inline as_bool_t operator !=(CComBSTR_veneer const& lhs, LPCWSTR rhs)
 {
     return !operator ==(lhs, rhs);
 }
@@ -430,7 +439,7 @@ inline as_bool_t operator !=(ccombstr_veneer const& lhs, LPCWSTR rhs)
  * swapping
  */
 
-inline void swap(ccombstr_veneer& lhs, ccombstr_veneer& rhs)
+inline void swap(CComBSTR_veneer& lhs, CComBSTR_veneer& rhs)
 {
     lhs.swap(rhs);
 }
@@ -439,70 +448,70 @@ inline void swap(ccombstr_veneer& lhs, ccombstr_veneer& rhs)
  * shims
  */
 
-/** \ref group__concept__Shim__string_access__c_str_data for comstl::ccombstr_veneer
+/** \ref group__concept__Shim__string_access__c_str_data for comstl::CComBSTR_veneer
  *
  * \ingroup group__concept__Shim__string_access
  */
-inline LPCOLESTR c_str_data(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
+inline LPCOLESTR c_str_data(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)
 {
     return str.data();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-inline LPCOLESTR c_str_data_w(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)       { return c_str_data(str); }
+inline LPCOLESTR c_str_data_w(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)       { return c_str_data(str); }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
-/** \ref group__concept__Shim__string_access__c_str_len for comstl::ccombstr_veneer
+/** \ref group__concept__Shim__string_access__c_str_len for comstl::CComBSTR_veneer
  *
  * \ingroup group__concept__Shim__string_access
  */
-inline as_size_t c_str_len(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
+inline as_size_t c_str_len(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)
 {
     return str.length();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-inline as_size_t c_str_len_w(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)        { return c_str_len(str); }
+inline as_size_t c_str_len_w(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)        { return c_str_len(str); }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
-/** \ref group__concept__Shim__string_access__c_str_ptr for comstl::ccombstr_veneer
+/** \ref group__concept__Shim__string_access__c_str_ptr for comstl::CComBSTR_veneer
  *
  * \ingroup group__concept__Shim__string_access
  */
-inline LPCOLESTR c_str_ptr(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
+inline LPCOLESTR c_str_ptr(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)
 {
     return str.c_str();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-inline LPCOLESTR c_str_ptr_w(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)        { return c_str_ptr(str); }
+inline LPCOLESTR c_str_ptr_w(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)        { return c_str_ptr(str); }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
-/** \ref group__concept__Shim__string_access__c_str_ptr_null for comstl::ccombstr_veneer
+/** \ref group__concept__Shim__string_access__c_str_ptr_null for comstl::CComBSTR_veneer
  *
  * \ingroup group__concept__Shim__string_access
  */
-inline LPCOLESTR c_str_ptr_null(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
+inline LPCOLESTR c_str_ptr_null(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)
 {
     return !str.empty() ? str.c_str() : NULL;
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-inline LPCOLESTR c_str_ptr_null_w(ATLSTL_NS_QUAL(ccombstr_veneer) const& str)   { return c_str_ptr_null(str); }
+inline LPCOLESTR c_str_ptr_null_w(ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)   { return c_str_ptr_null(str); }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
 
 
-/** \ref group__concept__Shim__stream_insertion "stream insertion shim" for comstl::ccombstr_veneer
+/** \ref group__concept__Shim__stream_insertion "stream insertion shim" for comstl::CComBSTR_veneer
  *
  * \ingroup group__concept__Shim__stream_insertion
  */
 template<ss_typename_param_k S>
-inline S& operator <<(S& s, ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
+inline S& operator <<(S& s, ATLSTL_NS_QUAL(CComBSTR_veneer) const& str)
 {
     s << str.c_str();
 
@@ -515,25 +524,25 @@ inline S& operator <<(S& s, ATLSTL_NS_QUAL(ccombstr_veneer) const& str)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-inline ccombstr_veneer::ccombstr_veneer()
+inline CComBSTR_veneer::CComBSTR_veneer()
     : parent_class_type()
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(class_type const& rhs)
+inline CComBSTR_veneer::CComBSTR_veneer(class_type const& rhs)
     : parent_class_type(rhs)
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(CComBSTR const& rhs)
+inline CComBSTR_veneer::CComBSTR_veneer(CComBSTR const& rhs)
     : parent_class_type(rhs)
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(LPCSTR s)
+inline CComBSTR_veneer::CComBSTR_veneer(LPCSTR s)
 /* There's a bug in some implementations of ATL 3.x, so we go for the assigment,
  * doing the conversion ourselves
  */
@@ -551,7 +560,7 @@ inline ccombstr_veneer::ccombstr_veneer(LPCSTR s)
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(LPCWSTR s)
+inline CComBSTR_veneer::CComBSTR_veneer(LPCWSTR s)
 #if _ATL_VER >= 0x0300
     : parent_class_type(s)
 #endif /* _ATL_VER */
@@ -566,24 +575,24 @@ inline ccombstr_veneer::ccombstr_veneer(LPCWSTR s)
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(LPCOLESTR from, LPCOLESTR to)
+inline CComBSTR_veneer::CComBSTR_veneer(LPCOLESTR from, LPCOLESTR to)
     : parent_class_type(static_cast<int>(to - from), from)
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline void ccombstr_veneer::swap(ccombstr_veneer::class_type& rhs)
+inline void CComBSTR_veneer::swap(CComBSTR_veneer::class_type& rhs)
 {
     std_swap(m_str, rhs.m_str);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(ccombstr_veneer::size_type length, LPCOLESTR from)
+inline CComBSTR_veneer::CComBSTR_veneer(CComBSTR_veneer::size_type length, LPCOLESTR from)
     : parent_class_type(static_cast<int>(length), from)
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 }
 
-inline ccombstr_veneer::ccombstr_veneer(as_size_t cch, OLECHAR ch)
+inline CComBSTR_veneer::CComBSTR_veneer(as_size_t cch, OLECHAR ch)
 {
     stlsoft_constraint_must_be_same_size(CComBSTR, class_type);
 
@@ -596,21 +605,21 @@ inline ccombstr_veneer::ccombstr_veneer(as_size_t cch, OLECHAR ch)
     class_type(cch, buffer.data()).swap(*this);
 }
 
-inline ccombstr_veneer::class_type const& ccombstr_veneer::operator =(ccombstr_veneer::class_type const& rhs)
+inline CComBSTR_veneer::class_type const& CComBSTR_veneer::operator =(CComBSTR_veneer::class_type const& rhs)
 {
     parent_class_type::operator =(rhs);
 
     return *this;
 }
 
-inline ccombstr_veneer::class_type const& ccombstr_veneer::operator =(CComBSTR const& rhs)
+inline CComBSTR_veneer::class_type const& CComBSTR_veneer::operator =(CComBSTR const& rhs)
 {
     parent_class_type::operator =(rhs);
 
     return *this;
 }
 
-inline ccombstr_veneer::class_type const& ccombstr_veneer::operator =(LPCSTR s)
+inline CComBSTR_veneer::class_type const& CComBSTR_veneer::operator =(LPCSTR s)
 {
 /* There's a bug in some implementations of ATL 3.x, so we go for the assigment,
  * doing the conversion ourselves
@@ -625,50 +634,50 @@ inline ccombstr_veneer::class_type const& ccombstr_veneer::operator =(LPCSTR s)
     return *this;
 }
 
-inline ccombstr_veneer::class_type const& ccombstr_veneer::operator =(LPCWSTR s)
+inline CComBSTR_veneer::class_type const& CComBSTR_veneer::operator =(LPCWSTR s)
 {
     parent_class_type::operator =(s);
 
     return *this;
 }
 
-inline ccombstr_veneer::const_iterator ccombstr_veneer::begin() const
+inline CComBSTR_veneer::const_iterator CComBSTR_veneer::begin() const
 {
     return *this;
 }
 
-inline ccombstr_veneer::const_iterator ccombstr_veneer::end() const
+inline CComBSTR_veneer::const_iterator CComBSTR_veneer::end() const
 {
     return begin() + Length();
 }
 
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
-inline ccombstr_veneer::const_reverse_iterator ccombstr_veneer::rbegin() const
+inline CComBSTR_veneer::const_reverse_iterator CComBSTR_veneer::rbegin() const
 {
     return const_reverse_iterator(end());
 }
 
-inline ccombstr_veneer::const_reverse_iterator ccombstr_veneer::rend() const
+inline CComBSTR_veneer::const_reverse_iterator CComBSTR_veneer::rend() const
 {
     return const_reverse_iterator(begin());
 }
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 
-inline ccombstr_veneer::reference ccombstr_veneer::operator [](ccombstr_veneer::size_type index)
+inline CComBSTR_veneer::reference CComBSTR_veneer::operator [](CComBSTR_veneer::size_type index)
 {
     ATLSTL_MESSAGE_ASSERT("Index out of range", index < length());
 
     return const_cast<reference>(data()[index]);
 }
 
-inline ccombstr_veneer::const_reference ccombstr_veneer::operator [](ccombstr_veneer::size_type index) const
+inline CComBSTR_veneer::const_reference CComBSTR_veneer::operator [](CComBSTR_veneer::size_type index) const
 {
     ATLSTL_MESSAGE_ASSERT("Index out of range", index < length());
 
     return data()[index];
 }
 
-inline CComBSTR &ccombstr_veneer::get_base_type()
+inline CComBSTR &CComBSTR_veneer::get_base_type()
 {
 #if defined(STLSOFT_COMPILER_IS_DMC)
     CComBSTR    *this_  =   STLSOFT_NS_QUAL(sap_cast)<CComBSTR*>(this);
@@ -679,7 +688,7 @@ inline CComBSTR &ccombstr_veneer::get_base_type()
     return *this_;
 }
 
-inline CComBSTR const& ccombstr_veneer::get_base_type() const
+inline CComBSTR const& CComBSTR_veneer::get_base_type() const
 {
 #if defined(STLSOFT_COMPILER_IS_DMC)
     CComBSTR const  *this_  =   STLSOFT_NS_QUAL(sap_cast)<CComBSTR const*>(this);
@@ -690,27 +699,27 @@ inline CComBSTR const& ccombstr_veneer::get_base_type() const
     return *this_;
 }
 
-inline ccombstr_veneer::size_type ccombstr_veneer::length() const
+inline CComBSTR_veneer::size_type CComBSTR_veneer::length() const
 {
     return Length();
 }
 
-inline ccombstr_veneer::size_type ccombstr_veneer::size() const
+inline CComBSTR_veneer::size_type CComBSTR_veneer::size() const
 {
     return length();
 }
 
-inline as_bool_t ccombstr_veneer::empty() const
+inline as_bool_t CComBSTR_veneer::empty() const
 {
     return length() == 0;
 }
 
-inline ccombstr_veneer::const_pointer ccombstr_veneer::c_str() const
+inline CComBSTR_veneer::const_pointer CComBSTR_veneer::c_str() const
 {
     return empty() ? L"" : static_cast<const_pointer>(*this);
 }
 
-inline ccombstr_veneer::const_pointer ccombstr_veneer::data() const
+inline CComBSTR_veneer::const_pointer CComBSTR_veneer::data() const
 {
     return empty() ? L"" : static_cast<const_pointer>(*this);
 }
@@ -735,8 +744,8 @@ namespace stlsoft
     inline
     void
     swap(
-        ATLSTL_NS_QUAL(ccombstr_veneer)&    lhs
-    ,   ATLSTL_NS_QUAL(ccombstr_veneer)&    rhs
+        ATLSTL_NS_QUAL(CComBSTR_veneer)&    lhs
+    ,   ATLSTL_NS_QUAL(CComBSTR_veneer)&    rhs
     )
     {
         lhs.swap(rhs);
@@ -779,13 +788,13 @@ using ::atlstl::c_str_ptr_null_w;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-/** Specialisation for atlstl::ccombstr_veneer
+/** Specialisation for atlstl::CComBSTR_veneer
  */
 STLSOFT_TEMPLATE_SPECIALISATION
-struct string_traits< ::atlstl::ccombstr_veneer>
+struct string_traits< ::atlstl::CComBSTR_veneer>
 {
-    typedef ::atlstl::ccombstr_veneer                       value_type;
-    typedef ::atlstl::ccombstr_veneer::value_type           char_type;  // NOTE: Can't use value_type::value_type here, because of BC++ 5.5.1
+    typedef ::atlstl::CComBSTR_veneer                       value_type;
+    typedef ::atlstl::CComBSTR_veneer::value_type           char_type;  // NOTE: Can't use value_type::value_type here, because of BC++ 5.5.1
     typedef value_type::size_type                           size_type;
     typedef char_type const                                 const_char_type;
     typedef value_type                                      string_type;
