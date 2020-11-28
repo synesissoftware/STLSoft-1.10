@@ -4,13 +4,14 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     13th September 2019
+ * Updated:     28th November 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -23,9 +24,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -53,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     281
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    8
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 1
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     283
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -186,7 +188,7 @@ public:
 /// \name Construction
 /// @{
 public:
-    /// Constructs an empty path.
+    /// Constructs an empty path
     ///
     /// \code
     /// winstl::path  p;
@@ -195,7 +197,7 @@ public:
     /// assert("" == p);
     /// \endcode
     basic_path();
-    /// Constructs a path from a nul-terminated character string.
+    /// Constructs a path from a nul-terminated character string
     ///
     /// \code
     /// winstl::path  p("C:\\Windows");
@@ -238,7 +240,7 @@ public:
         m_buffer[m_len] = '\0';
     }
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
-    /// Constructs a path from a slice of a character string.
+    /// Constructs a path from \c cch characters in \c path
     ///
     /// \code
     /// winstl::path  p("C:\\Windows\\system32", 10);
@@ -339,7 +341,19 @@ public:
     void        clear();
 
     /// Converts the path to absolute form
-    class_type& make_absolute(bool_type bRemoveTrailingPathNameSeparator = true);
+	///
+	/// \note In the case where compilation does not support exceptions, the
+	/// return type is Boolean and indicates whether the method failed to
+	/// make absolute (rather than indicating whether a conversion was
+	/// necessary)
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+    class_type&
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+	bool
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+	make_absolute(
+		bool_type bRemoveTrailingPathNameSeparator = true
+	);
     /// Canonicalises the path
     ///
     /// Canonicalises the path, removing all "./" parts and evaluating all
@@ -349,7 +363,19 @@ public:
     ///
     /// \param bRemoveTrailingPathNameSeparator Removes any trailing
     ///   separator, even if no other changes have been made.
-    class_type& canonicalise(bool_type bRemoveTrailingPathNameSeparator = true);
+	///
+	/// \note In the case where compilation does not support exceptions, the
+	/// return type is Boolean and indicates whether the method failed to
+	/// make canonical (rather than indicating whether a conversion was
+	/// necessary)
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+    class_type&
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+	bool
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+	canonicalise(
+		bool_type bRemoveTrailingPathNameSeparator = true
+	);
 /// @}
 
 /// \name Attributes
@@ -361,34 +387,34 @@ public:
     /// if the path is terminated by the path name separator
     ///
     /// \note If the path contains no path name separator, the full path will be returned
-    char_type const*  get_file() const;
+    char_type const*  get_file() const STLSOFT_NOEXCEPT;
     /// Returns a pointer to the extension, or to the empty string if there is no extension
-    char_type const*  get_ext() const;
+    char_type const*  get_ext() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
-    size_type         length() const;
+    size_type         length() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
     ///
     /// \remarks Equivalent to length()
-    size_type         size() const;
+    size_type         size() const STLSOFT_NOEXCEPT;
     /// The maximum possible length of a path
-    static size_type  max_size();
+    static size_type  max_size() STLSOFT_NOEXCEPT;
     /// Determines whether the path is empty
-    bool_type         empty() const;
+    bool_type         empty() const STLSOFT_NOEXCEPT;
     /// Conversion to a non-mutable (const) pointer to the path
-    char_type const*  c_str() const;
+    char_type const*  c_str() const STLSOFT_NOEXCEPT;
     /// Returns a non-mutable (const) reference to the character at
     ///  the given index
     ///
     /// \note The behaviour is undefined if <code>index >= size()</code>.
-    char_type const&  operator [](size_type index) const;
+    char_type const&  operator [](size_type index) const STLSOFT_NOEXCEPT;
     /// Indicates whether the path represents an existing file system entry
-    bool_type         exists() const;
+    bool_type         exists() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path is rooted
-    bool_type         is_rooted() const;
+    bool_type         is_rooted() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path is absolute
-    bool_type         is_absolute() const;
+    bool_type         is_absolute() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path has a trailing separator
-    bool_type         has_sep() const;
+    bool_type         has_sep() const STLSOFT_NOEXCEPT;
 
     /// Copies the contents into a caller supplied buffer
     ///
@@ -902,7 +928,7 @@ basic_path<C, T, A>::last_slash_(
     char_type*  slash   =   traits_type::str_rchr(buffer, path_name_separator());
     char_type*  slash_a =   traits_type::str_rchr(buffer, path_name_separator_alt());
 
-    if(slash_a > slash)
+    if (slash_a > slash)
     {
         slash = slash_a;
     }
@@ -917,7 +943,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ ss_typename_param_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::next_slash_or_end(ss_typename_param_k basic_path<C, T, A>::char_type const* p)
 {
-    for(; ; )
+    for (;;)
     {
         switch(*p)
         {
@@ -938,7 +964,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ ss_typename_param_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::next_part_or_end(ss_typename_param_k basic_path<C, T, A>::char_type const* p)
 {
-    for(; ; )
+    for (;;)
     {
         switch(*p)
         {
@@ -1009,15 +1035,15 @@ inline /* static */ ss_typename_param_k basic_path<C, T, A>::size_type basic_pat
     ss_typename_param_k part_buffer_type_::iterator src     =   parts.begin();
     ss_typename_param_k part_buffer_type_::iterator dest    =   parts.begin();
 
-    { for(size_type i = 0; i < parts.size(); ++i, ++src)
+    { for (size_type i = 0; i < parts.size(); ++i, ++src)
     {
-        if(0 == parts[i].len)
+        if (0 == parts[i].len)
         {
             ; // Skip/overwrite this element
         }
         else
         {
-            if(dest != src)
+            if (dest != src)
             {
                 *dest = *src;
             }
@@ -1051,7 +1077,7 @@ template<   ss_typename_param_k C
 inline /* ss_explicit_k */ basic_path<C, T, A>::basic_path(ss_typename_type_k basic_path<C, T, A>::char_type const* path)
     : m_len(0)
 {
-    if(NULL != path)
+    if (NULL != path)
     {
         size_type cch = traits_type::str_len(path);
 
@@ -1074,7 +1100,7 @@ inline basic_path<C, T, A>::basic_path(ss_typename_type_k basic_path<C, T, A>::c
 {
     WINSTL_ASSERT((NULL != path) || (0 == cch));
 
-    if(0 != cch)
+    if (0 != cch)
     {
         WINSTL_MESSAGE_ASSERT("path too long", cch < m_buffer.size());
 
@@ -1173,13 +1199,13 @@ basic_path<C, T, A>::push_(
 ,   ws_bool_t           bAddPathNameSeparator
 )
 {
-    if(0 != cch)
+    if (0 != cch)
     {
-        if(traits_type::is_path_rooted(rhs))
+        if (traits_type::is_path_rooted(rhs))
         {
             class_type newPath(rhs, cch);
 
-            if( bAddPathNameSeparator &&
+            if (bAddPathNameSeparator &&
                 !newPath.has_dir_end_())
             {
                 newPath.push_sep();
@@ -1200,7 +1226,7 @@ basic_path<C, T, A>::push_(
 
             newPath.push_sep_(sep);
             newPath.concat_(rhs, cch);
-            if(bAddPathNameSeparator)
+            if (bAddPathNameSeparator)
             {
                 newPath.push_sep();
             }
@@ -1233,14 +1259,14 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::push_ext(char_type const* rhs, 
     class_type  newPath(*this);
 
     newPath.pop_sep();
-    if('.' != *rhs)
+    if ('.' != *rhs)
     {
         static char_type const s_dot[] = { '.', '\0' };
 
         newPath.concat_(s_dot, 1u);
     }
     newPath.concat_(rhs, traits_type::str_len(rhs));
-    if(bAddPathNameSeparator)
+    if (bAddPathNameSeparator)
     {
         newPath.push_sep();
     }
@@ -1261,7 +1287,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::push_sep()
     char_type*  slash   =   traits_type::str_chr(m_buffer.c_str(), path_name_separator());
     char_type*  slash_a =   traits_type::str_chr(m_buffer.c_str(), path_name_separator_alt());
 
-    if( NULL == slash &&
+    if (NULL == slash &&
         NULL != slash_a)
     {
         sep = path_name_separator_alt();
@@ -1276,20 +1302,20 @@ template<   ss_typename_param_k C
         >
 inline basic_path<C, T, A>& basic_path<C, T, A>::push_sep_(ss_typename_type_k basic_path<C, T, A>::char_type sep)
 {
-    if(0 == sep)
+    if (0 == sep)
     {
         sep = path_name_separator();
     }
 
     WINSTL_MESSAGE_ASSERT("You can only push a path name separator character recognised by your operating system!", traits_type::is_path_name_separator(sep));
 
-    if(0 != m_len)
+    if (0 != m_len)
     {
         char_type&  last = m_buffer[m_len - 1];
 
-        if(traits_type::is_path_name_separator(last))
+        if (traits_type::is_path_name_separator(last))
         {
-            if(last != sep)
+            if (last != sep)
             {
                 last = sep;
             }
@@ -1315,43 +1341,43 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::pop(ws_bool_t bRemoveTrailingPa
 {
     char_type* slash = const_cast<char_type*>(last_slash_(m_buffer.data(), m_len));
 
-    if(NULL != slash)
+    if (NULL != slash)
     {
-        if(static_cast<size_type>(slash - m_buffer.data()) + 1 == m_len)
+        if (static_cast<size_type>(slash - m_buffer.data()) + 1 == m_len)
         {
             bool shouldRemoveTrailingSlash = true;
 
             // The last slash is just a trailing separator
             //
             // Is it just a volume, or just a UNC, or just a root slash
-            if(traits_type::is_path_rooted(m_buffer.c_str()))
+            if (traits_type::is_path_rooted(m_buffer.c_str()))
             {
-                if(traits_type::is_path_UNC(m_buffer.c_str()))
+                if (traits_type::is_path_UNC(m_buffer.c_str()))
                 {
                     char_type const* share = next_part_or_end(m_buffer.c_str() + 2);
 
-                    if(NULL == share)
+                    if (NULL == share)
                     {
                         shouldRemoveTrailingSlash = false;
                     }
                 }
-                else if(traits_type::is_path_absolute(m_buffer.c_str()))
+                else if (traits_type::is_path_absolute(m_buffer.c_str()))
                 {
-                    if(3 == m_len)
+                    if (3 == m_len)
                     {
                         shouldRemoveTrailingSlash = false;
                     }
                 }
                 else
                 {
-                    if(1 == m_len)
+                    if (1 == m_len)
                     {
                         shouldRemoveTrailingSlash = false;
                     }
                 }
             }
 
-            if(shouldRemoveTrailingSlash)
+            if (shouldRemoveTrailingSlash)
             {
                 m_buffer[--m_len] = '\0';
 
@@ -1360,13 +1386,13 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::pop(ws_bool_t bRemoveTrailingPa
         }
     }
 
-    if(NULL != slash)
+    if (NULL != slash)
     {
-        if(traits_type::is_path_UNC(m_buffer.c_str()))
+        if (traits_type::is_path_UNC(m_buffer.c_str()))
         {
             char_type const* shareSlash = next_slash_or_end(m_buffer.c_str() + 2);
 
-            if(shareSlash == slash)
+            if (shareSlash == slash)
             {
                 slash = NULL;
             }
@@ -1383,18 +1409,18 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::pop(ws_bool_t bRemoveTrailingPa
         }
     }
 
-    if(NULL != slash)
+    if (NULL != slash)
     {
         *(slash + 1) = '\0';
         m_len = static_cast<size_type>((slash + 1) - m_buffer.c_str());
 
-        if(bRemoveTrailingPathNameSeparator)
+        if (bRemoveTrailingPathNameSeparator)
         {
             this->pop_sep();
         }
     }
 
-    if(NULL == slash)
+    if (NULL == slash)
     {
         clear();
     }
@@ -1408,9 +1434,9 @@ template<   ss_typename_param_k C
         >
 inline basic_path<C, T, A>& basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
 {
-    if(0 != m_len)
+    if (0 != m_len)
     {
-        if( 1 == m_len &&
+        if (1 == m_len &&
             traits_type::is_path_name_separator(m_buffer[0]))
         {
             // It's / or \ - ignore
@@ -1426,11 +1452,11 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
             // We can pop a separator off anything else, including a UNC host
             char_type* last = &m_buffer[m_len - 1];
 
-            if(*last == path_name_separator())
+            if (*last == path_name_separator())
             {
                 m_buffer[m_len-- - 1] = '\0';
             }
-            else if(*last == path_name_separator_alt())
+            else if (*last == path_name_separator_alt())
             {
                 m_buffer[m_len-- - 1] = '\0';
             }
@@ -1446,15 +1472,15 @@ template<   ss_typename_param_k C
         >
 inline basic_path<C, T, A>& basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    { for(ws_size_t len = m_len; 0 != len; --len)
+    { for (ws_size_t len = m_len; 0 != len; --len)
     {
         char_type* last = &m_buffer[len - 1];
 
-        if(traits_type::is_path_name_separator(*last))
+        if (traits_type::is_path_name_separator(*last))
         {
             break;
         }
-        else if('.' == *last)
+        else if ('.' == *last)
         {
             m_len = len - 1;
 
@@ -1505,25 +1531,33 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_path<C, T, A>& basic_path<C, T, A>::make_absolute(ws_bool_t bRemoveTrailingPathNameSeparator /* = true */)
+inline
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+basic_path<C, T, A>&
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+bool
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+basic_path<C, T, A>::make_absolute(ws_bool_t bRemoveTrailingPathNameSeparator /* = true */)
 {
-    if(0 != size())
+    if (0 != size())
     {
         buffer_type_    buffer;
         size_type       cch = traits_type::get_full_path_name(c_str(), buffer.size(), &buffer[0]);
 
-        if(0 == cch)
+        if (0 == cch)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
             STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
-            return *this;
+
+            return false;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
 
         class_type      newPath(buffer.c_str(), cch);
 
-        if(bRemoveTrailingPathNameSeparator)
+        if (bRemoveTrailingPathNameSeparator)
         {
             newPath.pop_sep();
         }
@@ -1531,18 +1565,36 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::make_absolute(ws_bool_t bRemove
         swap(newPath);
     }
 
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
     return *this;
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+    return true;
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
 
 template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveTrailingPathNameSeparator /* = true */)
+inline
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+basic_path<C, T, A>&
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+bool
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveTrailingPathNameSeparator /* = true */)
 {
-    if(0 == size())
+    if (0 == size())
     {
-        return *this;
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
+		return *this;
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+	    return true;
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
     class_type  newPath(*this);
@@ -1560,7 +1612,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
     char_type const*    p1     =   this->c_str();
     char_type const*    p2;
 
-    if(traits_type::is_path_UNC(this->c_str()))
+    if (traits_type::is_path_UNC(this->c_str()))
     {
         WINSTL_ASSERT('\\' == m_buffer[0]);
         WINSTL_ASSERT('\\' == m_buffer[1]);
@@ -1569,19 +1621,19 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
         char_type const* slash0 =   next_slash_or_end(&m_buffer[3]);
         char_type const* slash1 =   next_slash_or_end(slash0);
 
-        for(ws_size_t i = 0, n = static_cast<ws_size_t>(slash1 - &m_buffer[0]); i < n; ++i)
+        for (ws_size_t i = 0, n = static_cast<ws_size_t>(slash1 - &m_buffer[0]); i < n; ++i)
         {
             *dest++ = *p1++;
         }
     }
-    else if(this->is_absolute())
+    else if (this->is_absolute())
     {
         // Copy over the drive letter, colon and slash
         *dest++ = *p1++;
         *dest++ = *p1++;
         *dest++ = *p1++;
     }
-    else if(this->is_rooted())
+    else if (this->is_rooted())
     {
         *dest++ = path_name_separator();
         ++p1;
@@ -1591,7 +1643,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
     {
         size_type   i   =   0;
 
-        for(; '\0' != *p1; ++i)
+        for (; '\0' != *p1; ++i)
         {
             p2 = next_part_or_end(p1);
 
@@ -1601,37 +1653,37 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
             switch(parts[i].len)
             {
                 case    1:
-                    if('.' == p1[0])
+                    if ('.' == p1[0])
                     {
                         parts[i].type   =   part_type::dot;
                     }
                     break;
                 case    2:
-                    if('.' == p1[0])
+                    if ('.' == p1[0])
                     {
-                        if('.' == p1[1])
+                        if ('.' == p1[1])
                         {
                             parts[i].type   =   part_type::dotdot;
                         }
-                        else if(path_name_separator() == p1[1])
+                        else if (path_name_separator() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
                         }
-                        else if(path_name_separator_alt() == p1[1])
+                        else if (path_name_separator_alt() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
                         }
                     }
                     break;
                 case    3:
-                    if( '.' == p1[0] &&
+                    if ('.' == p1[0] &&
                         '.' == p1[1])
                     {
-                        if(path_name_separator() == p1[2])
+                        if (path_name_separator() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
                         }
-                        else if(path_name_separator_alt() == p1[2])
+                        else if (path_name_separator_alt() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
                         }
@@ -1648,13 +1700,13 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
     }
 
     // 2.a Remove all '.' parts
-    { for(size_type i = 0; i < parts.size(); ++i)
+    { for (size_type i = 0; i < parts.size(); ++i)
     {
         WINSTL_ASSERT(0 != parts[i].len);
 
         part_type&  part = parts[i];
 
-        if(part_type::dot == part.type)
+        if (part_type::dot == part.type)
         {
             part.len = 0;
         }
@@ -1663,17 +1715,17 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
     coalesce_parts_(parts);
 
     // 2.b Process the '..' parts
-    { for(size_type i = 1; i < parts.size(); ++i)
+    { for (size_type i = 1; i < parts.size(); ++i)
     {
         WINSTL_ASSERT(0 != parts[i].len);
 
         part_type&  part = parts[i];
 
-        if(part_type::dotdot == part.type)
+        if (part_type::dotdot == part.type)
         {
-            { for(size_type prior = i; ; )
+            { for (size_type prior = i; ; )
             {
-                if(0 == prior)
+                if (0 == prior)
                 {
                     break;
                 }
@@ -1681,9 +1733,9 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
                 {
                     --prior;
 
-                    if(0 != parts[prior].len)
+                    if (0 != parts[prior].len)
                     {
-                        if(part_type::normal == parts[prior].type)
+                        if (part_type::normal == parts[prior].type)
                         {
                             part.len = 0;
                             parts[prior].len = 0;
@@ -1698,7 +1750,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
     coalesce_parts_(parts);
 
     // 2.c "insert" a '.' if we've removed everything.
-    if( !this->is_rooted() &&
+    if (!this->is_rooted() &&
         parts.empty())
     {
         static const char_type  s_dot[] = { '.', '/' };
@@ -1715,7 +1767,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
         STLSOFT_NS_QUAL(pod_fill_n)(dest, newPath.m_buffer.size() - (dest - &newPath.m_buffer[0]), static_cast<char_type>('~'));
 #endif /* STLSOFT_DEBUG */
 
-        for(size_type i = 0; i < parts.size(); ++i)
+        for (size_type i = 0; i < parts.size(); ++i)
         {
             traits_type::char_copy(dest, parts[i].p, parts[i].len);
 
@@ -1733,7 +1785,7 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
 
     char_type last = m_buffer[m_len - 1];
 
-    if( !bRemoveTrailingPathNameSeparator &&
+    if (!bRemoveTrailingPathNameSeparator &&
         traits_type::is_path_name_separator(last))
     {
         newPath.push_sep_(last);
@@ -1745,18 +1797,24 @@ inline basic_path<C, T, A>& basic_path<C, T, A>::canonicalise(ws_bool_t bRemoveT
 
     swap(newPath);
 
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
     return *this;
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+    return true;
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
 
 template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::get_file() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::get_file() const STLSOFT_NOEXCEPT
 {
     char_type const* slash = last_slash_(m_buffer.data(), m_len);
 
-    if(NULL == slash)
+    if (NULL == slash)
     {
         slash = m_buffer.c_str();
     }
@@ -1772,17 +1830,17 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::get_ext() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::get_ext() const STLSOFT_NOEXCEPT
 {
     char_type const         *dot    =   traits_type::str_rchr(this->c_str(), '.');
     char_type const         *file   =   get_file();
     static const char_type  s_empty[1]  =   { '\0' };
 
-    if(NULL == dot)
+    if (NULL == dot)
     {
         return s_empty;
     }
-    else if(dot < file)
+    else if (dot < file)
     {
         return s_empty;
     }
@@ -1796,7 +1854,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::size_type basic_path<C, T, A>::length() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::size_type basic_path<C, T, A>::length() const STLSOFT_NOEXCEPT
 {
     return m_len;
 }
@@ -1805,7 +1863,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::size_type basic_path<C, T, A>::size() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::size_type basic_path<C, T, A>::size() const STLSOFT_NOEXCEPT
 {
     return length();
 }
@@ -1815,7 +1873,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k A
         >
 inline ss_typename_type_ret_k basic_path<C, T, A>::size_type
-/* static */ basic_path<C, T, A>::max_size()
+/* static */ basic_path<C, T, A>::max_size() STLSOFT_NOEXCEPT
 {
     return buffer_type_::max_size() - 1u;
 }
@@ -1824,7 +1882,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::bool_type basic_path<C, T, A>::empty() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::bool_type basic_path<C, T, A>::empty() const STLSOFT_NOEXCEPT
 {
     return 0 == size();
 }
@@ -1833,7 +1891,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::c_str() const
+inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const* basic_path<C, T, A>::c_str() const STLSOFT_NOEXCEPT
 {
     return m_buffer.c_str();
 }
@@ -1842,7 +1900,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const& basic_path<C, T, A>::operator [](ss_typename_type_k basic_path<C, T, A>::size_type index) const
+inline ss_typename_type_ret_k basic_path<C, T, A>::char_type const& basic_path<C, T, A>::operator [](ss_typename_type_k basic_path<C, T, A>::size_type index) const STLSOFT_NOEXCEPT
 {
     WINSTL_MESSAGE_ASSERT("Index out of range", !(size() < index));
 
@@ -1853,7 +1911,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ws_bool_t basic_path<C, T, A>::exists() const
+inline ws_bool_t basic_path<C, T, A>::exists() const STLSOFT_NOEXCEPT
 {
     return traits_type::file_exists(this->c_str());
 }
@@ -1862,7 +1920,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ws_bool_t basic_path<C, T, A>::is_rooted() const
+inline ws_bool_t basic_path<C, T, A>::is_rooted() const STLSOFT_NOEXCEPT
 {
     return traits_type::is_path_rooted(this->c_str());
 }
@@ -1871,7 +1929,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ws_bool_t basic_path<C, T, A>::is_absolute() const
+inline ws_bool_t basic_path<C, T, A>::is_absolute() const STLSOFT_NOEXCEPT
 {
     return traits_type::is_path_absolute(this->c_str());
 }
@@ -1880,7 +1938,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ws_bool_t basic_path<C, T, A>::has_sep() const
+inline ws_bool_t basic_path<C, T, A>::has_sep() const STLSOFT_NOEXCEPT
 {
     return this->empty() ? false : traits_type::has_dir_end(this->c_str() + (this->size() - 1));
 }
@@ -1912,7 +1970,31 @@ inline ws_bool_t basic_path<C, T, A>::equivalent(ss_typename_type_k basic_path<C
     class_type  lhs_(*this);
     class_type  rhs_(rhs);
 
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
     return lhs_.make_absolute(false).canonicalise(true) == rhs_.make_absolute(false).canonicalise(true);
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+	if (!lhs_.make_absolute(false))
+	{
+		return false;
+	}
+	if (!lhs_.canonicalise(false))
+	{
+		return false;
+	}
+
+	if (!rhs_.make_absolute(false))
+	{
+		return false;
+	}
+	if (!rhs_.canonicalise(false))
+	{
+		return false;
+	}
+
+	return lhs_.equal(rhs_);
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 }
 
 template<   ss_typename_param_k C
