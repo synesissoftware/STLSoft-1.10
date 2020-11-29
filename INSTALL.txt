@@ -2,7 +2,7 @@
 STLSoft - Install
 
 ; Created:  29th March 2002
-; Updated:  24th November 2020
+; Updated:  29th November 2020
 
 ============================================================================
 

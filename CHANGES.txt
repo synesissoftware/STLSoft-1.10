@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  27th July 2020
+; Updated:  29th November 2020
 
 ============================================================================
 
@@ -17,6 +17,215 @@ STLSoft - Changes
    **************************************
 
 
+
+============================================================================
+
+Changes for 1.10.1 beta 22 (29th November 2020)
+
+General:
+========
+
+ * added stlsoft::string_to_integer_range()
+ * added stlsoft::strnchr(), stlsoft::strnistrn(), stlsoft::strnstrn() C-style string search functions
+ * added move constructor to stlsoft::auto_buffer<>
+ * added move constructor for stlsoft::scoped_handle<>
+ * added move constructor for stlsoft::(basic_)simple_string<>
+ * winstl::output_debug_line() overloads expanded to 16-parameters, and changed to use variadic templates where supported
+ * stlsoft::split() functions enhanced to: return vector of arbitrary length; allow heterogeneous types for the split elements
+ * stlsoft::string_switch() split into two overloads to handle property and unambiguously flag enums, regular enums, and enum classes
+ * significant, BREAKING changes to stlsoft::try_parse_to() overloads to avoid ambiguity
+ * changed significantly the way in which stlsoft::cstring_maker works, and adjusted all dependent code
+ * various additions for compatibility with std::string_view (which is very similar to stlsoft::string_view)
+ * fixed case of a bunch of headers
+
+Changes:
+========
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/shims/access/string.hpp:
+    ~ fixed case of a bunch of headers
+
+ ~ atlstl/shims/access/string/CComBSTR.hpp:
+    ~ fixed case of a bunch of headers
+    ~ removed unnecessary includes
+
+ ~ atlstl/shims/access/string/CWindow.hpp:
+    ~ fixed case of a bunch of headers
+    ~ changed significantly the way in which cstring_maker works, and adjusted all dependent code
+
+ ~ atlstl/string/CComBSTR_veneer.hpp:
+    ~ fixed case of a bunch of headers
+
+ COMSTL:
+ =======
+
+ ~ comstl/smartptr/interface_ptr.hpp:
+    ~ using STLSOFT_PPF_pragma_message_SUPPORT rather than STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/collections/CArray_adaptors.hpp:
+ ~ mfcstl/collections/CArray_swap.hpp:
+ ~ mfcstl/collections/CArray_traits.hpp:
+ ~ mfcstl/collections/CList_adaptors.hpp:
+ ~ mfcstl/collections/CList_swap.hpp:
+ ~ mfcstl/collections/CList_traits.hpp:
+ ~ mfcstl/collections/CString_adaptors.hpp:
+ ~ mfcstl/shims/access/string.hpp:
+ ~ mfcstl/shims/access/string/CString.hpp:
+    ~ fixed case of a bunch of headers
+
+ ~ mfcstl/shims/access/string/cwnd.hpp:
+    ~ changed significantly the way in which cstring_maker works, and adjusted all dependent code
+
+ ~ mfcstl/shims/logical/is_empty.hpp:
+ ~ mfcstl/shims/logical/is_empty/CString.hpp:
+ ~ mfcstl/string/grab_CString_buffer.hpp:
+    ~ fixed case of a bunch of headers
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/conversion/sas_to_string.hpp:
+    + added overload of sas_to_string_m() taking generic second parameter that is passed to underlying SAS-like functions
+
+ ~ stlsoft/conversion/string_to_integer.hpp:
+    ~ significantly changed try_parse_to() overloads to avoid ambiguity
+    ~ string_to_integer() returns NULL endptr when len is 0
+    ~ various fixes and handling corner-cases
+
+ + stlsoft/conversion/string_to_integer_range.hpp:
+    + added string_to_integer_range.hpp
+
+ ~ stlsoft/memory/allocator_base.hpp:
+    ~ fixing defect in overload of pointer()
+
+ ~ stlsoft/memory/auto_buffer.h:
+    ~ relaxed precondition that ptr be non-null in free()
+
+ ~ stlsoft/memory/auto_buffer.hpp:
+    + added move constructor
+    ~ using STLSOFT_PPF_pragma_message_SUPPORT rather than STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+
+ ~ stlsoft/shims/access/string.hpp:
+    + added string access shims for nullptr (std::nullptr_t)
+    + added string access shims for std::string_view (depends on __cplusplus being >= 201703L)
+
+ + stlsoft/shims/access/string/std/basic_string_view.hpp:
+    + added string access shims for std::(|w|basic_)string_view
+
+ + stlsoft/shims/access/string/std/nullptr.hpp:
+    + added string access shims for nullptr (std::nullptr_t)
+
+ ~ stlsoft/shims/access/string/std/time.hpp:
+    + added SAS-like conversion functions taking a time format string
+
+ ~ stlsoft/shims/attribute/get_ptr.hpp:
+ ~ stlsoft/shims/attribute/get_top.hpp:
+    ~ improved names of internal macros for recording standard library feature detection
+
+ ~ stlsoft/smartptr/scoped_handle.hpp:
+    + added move constructor for scoped_handle<> (and scoped_handle<void>)
+
+ + stlsoft/string/c_string/strnchr.h:
+ + stlsoft/string/c_string/strnistrn.h:
+ + stlsoft/string/c_string/strnstrn.h:
+    + added stlsoft_C_strnchr(), stlsoft_C_strnistrn(), stlsoft_strnstrn()
+
+ ~ stlsoft/string/cstring_maker.hpp:
+    ~ changed significantly the way in which cstring_maker works, and adjusted all dependent code
+
+ ~ stlsoft/string/simple_string.hpp:
+    + added move ctor for (basic_)simple_string
+
+ ~ stlsoft/string/split_functions.hpp:
+    ~ stlsoft::split<>() now returns vector of arbitrary length
+    ~ properly sorting split() semantics
+    ~ stlsoft::split() now accepts heterogeneous string types for the split element
+    ~ now uses the S(char_t const*, int) or S(char_t const*, size_t) ctor, rather than S(char const* b, char const* e), so as to work with std::string_view
+
+ ~ stlsoft/string/string_traits.hpp:
+    + added (partial) specialisation of stlsoft::string_traits<> for std::basic_string_view
+
+ ~ stlsoft/string/trim_functions.hpp:
+    ~ C++17+ compatibility
+
+ ~ stlsoft/util/nulldef.h:
+ ~ stlsoft/util/zerodef.h:
+    ~ using STLSOFT_PPF_pragma_message_SUPPORT rather than STLSOFT_CF_PRAGMA_MESSAGE_SUPPORT
+
+ ~ stlsoft/util/string_switch.hpp:
+    ~ tidying up of semantics between use with regular and flags enums, by splitting implementation into two overloads
+
+ ~ stlsoft/internal/cccap/borland.h:
+    ~ STLSOFT_PPF_VARIADIC_MACROS_SUPPORT for all compilers (supporting STLSOFT_CF_SUPPORTS_VARIADIC_MACROS)
+
+ ~ stlsoft/internal/cccap/clang.h:
+    + variadic template support discrimination
+
+ ~ stlsoft/internal/cccap/como.h:
+ ~ stlsoft/internal/cccap/dmc.h:
+    ~ STLSOFT_PPF_VARIADIC_MACROS_SUPPORT for all compilers (supporting STLSOFT_CF_SUPPORTS_VARIADIC_MACROS)
+
+ ~ stlsoft/internal/cccap/gcc.h:
+    + variadic template support discrimination
+
+ ~ stlsoft/internal/cccap/msvc.h:
+    + variadic template support discrimination
+    + enabled STLSOFT_CF_MOVE_SEMANTICS_SUPPORT for VC++ 11+
+
+ ~ stlsoft/internal/cccap/mwerks.h:
+ ~ stlsoft/internal/cccap/sunpro.h:
+ ~ stlsoft/internal/cccap/unknown.h:
+ ~ stlsoft/internal/cccap/vectorc.h:
+ ~ stlsoft/internal/cccap/watcom.h:
+    ~ STLSOFT_PPF_VARIADIC_MACROS_SUPPORT for all compilers (supporting STLSOFT_CF_SUPPORTS_VARIADIC_MACROS)
+
+ ~ stlsoft/internal/std/has/auto_ptr_.hpp:
+    ~ improved names of internal macros for recording standard library feature detection
+    ~ fix on __cplusplus version for C++98
+    ~ reflecting removal of auto_ptr in C++17
+
+ ~ stlsoft/internal/std/has/deque_.hpp:
+ ~ stlsoft/internal/std/has/list_.hpp:
+ ~ stlsoft/internal/std/has/queue_.hpp:
+ ~ stlsoft/internal/std/has/stack_.hpp:
+ ~ stlsoft/internal/std/has/strftime_.hpp:
+ ~ stlsoft/internal/std/has/vector_.hpp:
+    ~ improved names of internal macros for recording standard library feature detection
+    ~ fix on __cplusplus version for C++98
+
+ ~ stlsoft/internal/std/has/priority_queue_.hpp:
+ ~ stlsoft/internal/std/has/shared_ptr_.hpp:
+ ~ stlsoft/internal/std/has/unique_ptr_.hpp:
+    ~ improved names of internal macros for recording standard library feature detection
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/path.hpp:
+    ~ noexcept modifiers applied, and changing return-types of make_absolute() and canonicalise() when compiling without exception support
+
+ WinSTL:
+ =======
+
+ ~ winstl/diagnostics/output_debug_line.h:
+    ~ moved winstl_C_diagnostics_output_debug_line_*_m() out of winstl::diagnostics namespace (in C++ compilation units)
+    + added winstl_C_diagnostics_output_debug_line_1(3|4|5|6)_m()
+
+ ~ winstl/diagnostics/output_debug_line.hpp:
+    winstl::diagnostics::output_debug_line() now implemented via variadics, which also expands flexibility by using string access shims
+    + added 13-, 14-, 15-, and 16-parameter overloads of output_debug_line()
+
+ ~ winstl/filesystem/path.hpp:
+    ~ noexcept modifiers applied, and changing return-types of make_absolute() and canonicalise() when compiling without exception support
+
+ ~ winstl/shims/access/string/HWND.hpp:
+ ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
+    ~ changed significantly the way in which cstring_maker works, and adjusted all dependent code
 
 ============================================================================
 
