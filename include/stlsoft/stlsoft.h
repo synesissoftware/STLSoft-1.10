@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    48
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 7
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     514
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 8
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     515
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -744,7 +744,7 @@
 #  if 0
 #  elif _MSC_VER < 1920
 #   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 15.x"
-#  elif _MSC_VER <= 1926
+#  elif _MSC_VER <= 1928
 #   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 16.x"
 #  else
 #   error Visual C++ version that is >= vc16 is not recognised
