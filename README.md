@@ -2,7 +2,7 @@
 
 Version 1.10 of STLSoft libraries
 
-## Current Status (July 2020)
+## Current Status (November 2020)
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its release.
 
@@ -15,7 +15,25 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-21 (Latest) - 27th July 2020
+### 1.10.1 beta-22 (Latest) - 29th November 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta22>
+
+* added ``stlsoft::string_to_integer_range()``
+* added ``stlsoft::strnchr()``, ``stlsoft::strnistrn()``, ``stlsoft::strnstrn()`` C-style string search functions
+* added move constructor to ``stlsoft::auto_buffer<>``
+* added move constructor for ``stlsoft::scoped_handle<>``
+* added move constructor for ``stlsoft::(basic_)simple_string<>``
+* ``winstl::output_debug_line()`` overloads expanded to 16-parameters, and changed to use variadic templates where supported
+* ``stlsoft::split()`` functions enhanced to: return vector of arbitrary length; allow heterogeneous types for the split elements
+* ``stlsoft::string_switch()`` split into two overloads to handle property and unambiguously flag enums, regular enums, and enum classes
+* significant, BREAKING changes to ``stlsoft::try_parse_to()`` overloads to avoid ambiguity
+* changed significantly the way in which ``stlsoft::cstring_maker`` works, and adjusted all dependent code
+* various additions for compatibility with ``std::string_view`` (which is very similar to ``stlsoft::string_view``)
+* fixed case of a bunch of headers
+
+
+### 1.10.1 beta-21 - 27th July 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta21>
 
