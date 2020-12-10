@@ -4,10 +4,11 @@
  * Purpose:     stopwatch class.
  *
  * Created:     16th January 2002
- * Updated:     13th September 2019
+ * Updated:     26th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR    5
-# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR    0
+# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR    1
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION 1
-# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     74
+# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT     76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -147,6 +149,8 @@ public: // Attributes
     static interval_type    get_milliseconds(epoch_type start, epoch_type end);
     /// The number of whole microseconds in the given measurement period
     static interval_type    get_microseconds(epoch_type start, epoch_type end);
+    /// The number of whole nanoseconds in the given measurement period
+    static interval_type    get_nanoseconds(epoch_type start, epoch_type end);
 
     /// The elapsed count in the measurement period
     ///
@@ -164,6 +168,10 @@ public: // Attributes
     ///
     /// This represents the extent, in whole microseconds, of the measurement period
     interval_type   get_microseconds() const;
+    /// The number of whole nanoseconds in the measurement period
+    ///
+    /// This represents the extent, in whole nanoseconds, of the measurement period
+    interval_type   get_nanoseconds() const;
 
     /// Stops the current period, starts the next, and returns the
     ///  period count for the prior period.
@@ -180,6 +188,10 @@ public: // Attributes
     /// Stops the current period, starts the next, and returns the
     ///  interval, in microseconds, for the prior period.
     interval_type   stop_get_microseconds_and_restart();
+
+    /// Stops the current period, starts the next, and returns the
+    ///  interval, in nanoseconds, for the prior period.
+    interval_type   stop_get_nanoseconds_and_restart();
 
 private: // Implementation
     static void measure_(epoch_type &epoch);
@@ -345,6 +357,85 @@ stopwatch::get_microseconds() const
     return secs * (1000 * 1000) + usecs;
 }
 
+inline
+stopwatch::interval_type
+stopwatch::get_nanoseconds() const
+{
+    UNIXSTL_MESSAGE_ASSERT("end before start: stop() must be called after start()", m_start.tv_sec <= m_end.tv_sec);
+
+    long    secs    =   m_end.tv_sec - m_start.tv_sec;
+    long    usecs   =   m_end.tv_usec - m_start.tv_usec;
+
+    UNIXSTL_ASSERT(usecs >= 0 || secs > 0);
+
+    return secs * (1000 * 1000 * 1000) + usecs * 1000;
+}
+
+inline
+stopwatch::interval_type
+stopwatch::stop_get_period_count_and_restart()
+{
+    stop();
+
+    interval_type   interval    =   get_period_count();
+
+    m_start = m_end;
+
+    return interval;
+}
+
+inline
+stopwatch::interval_type
+stopwatch::stop_get_seconds_and_restart()
+{
+    stop();
+
+    interval_type   interval    =   get_seconds();
+
+    m_start = m_end;
+
+    return interval;
+}
+
+inline
+stopwatch::interval_type
+stopwatch::stop_get_milliseconds_and_restart()
+{
+    stop();
+
+    interval_type   interval    =   get_milliseconds();
+
+    m_start = m_end;
+
+    return interval;
+}
+
+inline
+stopwatch::interval_type
+stopwatch::stop_get_microseconds_and_restart()
+{
+    stop();
+
+    interval_type   interval    =   get_microseconds();
+
+    m_start = m_end;
+
+    return interval;
+}
+
+inline
+stopwatch::interval_type
+stopwatch::stop_get_nanoseconds_and_restart()
+{
+    stop();
+
+    interval_type   interval    =   get_nanoseconds();
+
+    m_start = m_end;
+
+    return interval;
+}
+
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -366,8 +457,6 @@ stopwatch::get_microseconds() const
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
-
-/* ////////////////////////////////////////////////////////////////////// */
 
 #endif /* !UNIXSTL_INCL_UNIXSTL_DIAGNOSTICS_HPP_STOPWATCH */
 
