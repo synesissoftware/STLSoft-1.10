@@ -4,12 +4,13 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Thanks to:   Pablo Aguilar for the idea of a template-based get_symbol().
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -22,9 +23,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_MAJOR      6
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_MINOR      5
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_REVISION   11
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       246
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_MINOR      6
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_REVISION   1
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       249
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,12 +73,12 @@
 #ifndef WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION
 # include <winstl/exception/winstl_exception.hpp>
 #endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
+# include <stlsoft/memory/auto_buffer.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
-#ifndef WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER
-# include <winstl/filesystem/file_path_buffer.hpp>
-#endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER */
 #ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <winstl/system/system_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
@@ -200,8 +202,25 @@ public:
     ///
     /// \note Both copies hold independent handles to the underlying module.
     module(class_type const& rhs);
+
+#ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+
+    /// Constructs a module instance by taking over the state of the
+    /// instance \c rhs
+    ///
+    /// \param rhs The instance whose state will be taken over. Upon return
+    ///   \c rhs <code>get_module_handle()()</code> will obtain \c nullptr
+    module(class_type&& rhs) STLSOFT_NOEXCEPT
+        : m_hmodule(rhs.detach())
+        , m_param(rhs.m_param)
+        , m_proc(rhs.m_proc)
+    {}
+#endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
     /// Closes the module handle
     ~module() STLSOFT_NOEXCEPT;
+
+private:
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Static operations
@@ -349,12 +368,6 @@ private:
     void* const                         m_param;
     const degenerate_feedback_proc_type m_proc;
 /// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    class_type& operator =(class_type const&);
-/// @}
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -451,8 +464,11 @@ inline module::module(module const& rhs)
     }
     else
     {
-        basic_file_path_buffer<ws_char_a_t> buffer;
-        ws_size_t                           cch =   system_traits<ws_char_a_t>::get_module_filename(rhs.get_module_handle(), &buffer[0], buffer.size());
+        typedef system_traits<ws_char_a_t>      traits_a_t;
+
+        ws_size_t const                             cchRequired =   traits_a_t::get_module_filename(rhs.get_module_handle(), ss_nullptr_k, 0);
+        STLSOFT_NS_QUAL(auto_buffer)<ws_char_a_t>   buffer(1 + cchRequired);
+        ws_size_t const                             cch =   system_traits<ws_char_a_t>::get_module_filename(rhs.get_module_handle(), &buffer[0], buffer.size());
 
         if(0 == cch)
         {
@@ -563,7 +579,7 @@ inline /* static */ void module::unload(module::module_handle_type hmodule, modu
 
 inline /* static */ module::proc_pointer_type module::get_symbol(module::module_handle_type hmodule, ws_char_a_t const* symbolName)
 {
-    return reinterpret_cast<proc_pointer_type>(GetProcAddress(hmodule, symbolName));
+    return reinterpret_cast<proc_pointer_type>(WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hmodule, symbolName));
 }
 
 inline /* static */ module::proc_pointer_type module::get_symbol(module::module_handle_type hmodule, ws_uint32_t symbolOrdinal)
