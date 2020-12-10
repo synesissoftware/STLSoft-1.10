@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     29th November 2020
+ * Updated:     2nd December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,9 +55,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    48
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 7
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     514
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    50
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 1
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     517
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -381,6 +381,18 @@
 # define STLSOFT_PP_PASTE_2_TOKENS(t1, t2)                  t1 ## t2
 # define STLSOFT_PP_PASTE_3_TOKENS(t1, t2, t3)              t1 ## t2 ## t3
 
+/* #pragma message-compatible file+line quoting */
+
+# if 0
+# elif defined(_MSC_VER)
+
+#  define STLSOFT_FILELINE_PREFIX_                          __FILE__ "(" STLSOFT_STRINGIZE( __LINE__ ) "): "
+# else
+
+#  define STLSOFT_FILELINE_PREFIX_                          __FILE__ ":" STLSOFT_STRINGIZE( __LINE__ ) ": "
+# endif
+
+# define STLSOFT_FILELINE_MESSAGE(msg)                      STLSOFT_FILELINE_PREFIX_ ## "" msg ""
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -744,7 +756,7 @@
 #  if 0
 #  elif _MSC_VER < 1920
 #   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 15.x"
-#  elif _MSC_VER <= 1926
+#  elif _MSC_VER <= 1928
 #   define STLSOFT_COMPILER_VERSION_STRING      "Visual C++ 16.x"
 #  else
 #   error Visual C++ version that is >= vc16 is not recognised
@@ -1345,6 +1357,39 @@
 #endif /* sub-project versions */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * deprecation
+ */
+
+#ifndef STLSOFT_OBSOLETE
+
+# if 0
+# elif defined(__cplusplus) && \
+       __cplusplus >= 201402L
+
+#  define STLSOFT_DEPRECATED_(msg)                          [[deprecated(msg)]]
+# elif 0 || \
+       defined(__GNUC__) || \
+       defined(__clang__) || \
+       0
+
+#  define STLSOFT_DEPRECATED_(msg)                          __attribute__((deprecated))
+# elif defined(_MSC_VER) && \
+     (   _MSC_VER >= 1500 || \
+         (   _MSC_VER >= 1400 && \
+             defined(_MSC_FULL_VER) && \
+             _MSC_FULL_VER >= 140050320))
+
+#  define STLSOFT_DEPRECATED_(msg)                          __declspec(deprecated(msg))
+# else
+
+#  define STLSOFT_DEPRECATED_(msg)                          /* */
+# endif
+#else
+
+# define STLSOFT_DEPRECATED_(msg)                           /* */
+#endif /* STLSOFT_OBSOLETE */
+
+/* /////////////////////////////////////////////////////////////////////////
  * includes
  */
 
@@ -1870,13 +1915,17 @@ namespace stlsoft
  */
 #if !defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) && \
     !defined(STLSOFT_NO_NAMESPACES)
+
 # define STLSOFT_OPEN_WORKER_NS_(ns)                        namespace ns {
 # define STLSOFT_CLOSE_WORKER_NS_(ns)                       }
 # define STLSOFT_WORKER_NS_QUAL_(ns, x)                     ns::x
+# define STLSOFT_WORKER_NS_USING_(ns, x)                    using ns::x;
 #else /* ? namespaces supported */
+
 # define STLSOFT_OPEN_WORKER_NS_(ns)
 # define STLSOFT_CLOSE_WORKER_NS_(ns)
 # define STLSOFT_WORKER_NS_QUAL_(ns, x)                     x
+# define STLSOFT_WORKER_NS_USING_(ns, x)
 #endif /* namespaces supported */
 
 /* /////////////////////////////////////////////////////////////////////////
