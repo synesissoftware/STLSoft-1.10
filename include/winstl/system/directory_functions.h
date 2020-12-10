@@ -4,10 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     29th January 2013
- * Updated:     13th September 2019
+ * Updated:     3rd December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2013-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        9
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    4
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -65,6 +67,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
+# include <winstl/api/external/SystemInformation.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -100,8 +106,8 @@ winstl_C_get_home_directory_a(
 
     ws_char_a_t     drive[_MAX_PATH];
     ws_char_a_t     directory[_MAX_PATH];
-    DWORD const     cchDrive        =   STLSOFT_NS_GLOBAL(GetEnvironmentVariableA)("HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
-    DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : STLSOFT_NS_GLOBAL(GetEnvironmentVariableA)("HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
+    DWORD const     cchDrive        =   WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableA("HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
+    DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableA("HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;
 
     if(0 == cchDirectory)
@@ -138,8 +144,8 @@ winstl_C_get_home_directory_w(
 
     ws_char_w_t     drive[_MAX_PATH];
     ws_char_w_t     directory[_MAX_PATH];
-    DWORD const     cchDrive        =   STLSOFT_NS_GLOBAL(GetEnvironmentVariableW)(L"HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
-    DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : STLSOFT_NS_GLOBAL(GetEnvironmentVariableW)(L"HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
+    DWORD const     cchDrive        =   WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableW(L"HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
+    DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableW(L"HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;
 
     if(0 == cchDirectory)

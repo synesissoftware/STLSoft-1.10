@@ -4,7 +4,7 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     28th November 2020
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    13
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        21
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    15
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ winstl_C_call_CreateHardLinkA_(
             FARPROC pfp;
         }           u;
 
-        u.pfp = STLSOFT_NS_GLOBAL(GetProcAddress)(h, "CreateHardLinkA");
+        u.pfp = WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(h, "CreateHardLinkA");
 
         if (NULL != u.pfp)
         {
@@ -175,7 +175,7 @@ winstl_C_call_CreateHardLinkW_(
             FARPROC pfp;
         }           u;
 
-        u.pfp = STLSOFT_NS_GLOBAL(GetProcAddress)(h, "CreateHardLinkW");
+        u.pfp = WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(h, "CreateHardLinkW");
 
         if (NULL != u.pfp)
         {
@@ -242,7 +242,7 @@ winstl_C_hard_link_get_link_information_by_handle(
     *volumeSerialNumber =   0;
     *numLinks           =   0;
 
-    if (STLSOFT_NS_GLOBAL(GetFileInformationByHandle)(hFile, &bhfi))
+    if (WINSTL_API_EXTERNAL_FileManagement_GetFileInformationByHandle(hFile, &bhfi))
     {
         *fileIndexHigh      =   bhfi.nFileIndexHigh;
         *fileIndexLow       =   bhfi.nFileIndexLow;

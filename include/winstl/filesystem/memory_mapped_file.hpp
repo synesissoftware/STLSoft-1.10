@@ -4,13 +4,14 @@
  * Purpose:     Memory mapped file class.
  *
  * Created:     15th December 1996
- * Updated:     13th October 2019
+ * Updated:     29th November 2020
  *
  * Thanks:      To Pablo Aguilar for requesting multibyte / wide string
  *              ambivalence. To Joe Mariadassou for requesting swap().
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -23,9 +24,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -54,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR     12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      125
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION  7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT      126
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -254,7 +256,7 @@ private:
         else
         {
             DWORD   fileSizeHigh;
-            DWORD   fileSizeLow =   ::GetFileSize(hFile, &fileSizeHigh);
+            DWORD   fileSizeLow =   WINSTL_API_EXTERNAL_FileManagement_GetFileSize(hFile, &fileSizeHigh);
             DWORD   scode       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
             if( INVALID_FILE_SIZE == fileSizeLow &&

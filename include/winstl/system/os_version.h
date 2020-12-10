@@ -4,10 +4,11 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     21st September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1995-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 6
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     12
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 7
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -216,7 +218,7 @@ winstl_C_identify_operating_system(
 
         if(NULL != h)
         {
-            pfn = (GNSI_fn_t)STLSOFT_NS_GLOBAL(GetProcAddress)(h, "GetNativeSystemInfo");
+            pfn = (GNSI_fn_t)WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(h, "GetNativeSystemInfo");
 
             if(NULL != pfn)
             {

@@ -5,10 +5,11 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     13th September 2019
+ * Updated:     7th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -21,9 +22,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -53,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR    3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR    0
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 21
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     158
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 22
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     160
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -103,6 +105,9 @@
 # ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
 #  include <winstl/api/external/ErrorHandling.h>
 # endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+# ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
+#  include <winstl/api/external/FileManagement.h>
+# endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
 #endif /* _WIN32 */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -694,7 +699,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator == (  basic_findfile_sequence_value_type<C, T, X> const&  lhs
+inline is_bool_t operator ==(  basic_findfile_sequence_value_type<C, T, X> const&  lhs
                             ,   basic_findfile_sequence_value_type<C, T, X> const&  rhs)
 {
     return lhs.equal(rhs);
@@ -704,7 +709,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator == (  basic_findfile_sequence_value_type<C, T, X> const& lhs
+inline is_bool_t operator ==(  basic_findfile_sequence_value_type<C, T, X> const& lhs
                             ,   C const* rhs)
 {
     return lhs.equal(rhs);
@@ -714,7 +719,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator == (C const* lhs, basic_findfile_sequence_value_type<C, T, X> const& rhs)
+inline is_bool_t operator ==(C const* lhs, basic_findfile_sequence_value_type<C, T, X> const& rhs)
 {
     return rhs.equal(lhs);
 }
@@ -723,7 +728,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator != (  basic_findfile_sequence_value_type<C, T, X> const& lhs
+inline is_bool_t operator !=(  basic_findfile_sequence_value_type<C, T, X> const& lhs
                             ,   basic_findfile_sequence_value_type<C, T, X> const& rhs)
 {
     return !lhs.equal(rhs);
@@ -733,7 +738,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator != (  basic_findfile_sequence_value_type<C, T, X> const&  lhs
+inline is_bool_t operator !=(  basic_findfile_sequence_value_type<C, T, X> const&  lhs
                             ,   C const* rhs)
 {
     return !lhs.equal(rhs);
@@ -743,7 +748,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k X
         >
-inline is_bool_t operator != (  C const* lhs, basic_findfile_sequence_value_type<C, T, X> const& rhs)
+inline is_bool_t operator !=(  C const* lhs, basic_findfile_sequence_value_type<C, T, X> const& rhs)
 {
     return !rhs.equal(lhs);
 }
@@ -1356,13 +1361,13 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
 
                             if(NULL == m_handle)
                             {
-                                ::FindClose(hSrch);
+                                WINSTL_API_EXTERNAL_FileManagement_FindClose(hSrch);
                             }
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                         }
                         catch(...)
                         {
-                            ::FindClose(hSrch);
+                            WINSTL_API_EXTERNAL_FileManagement_FindClose(hSrch);
 
                             throw;
                         }

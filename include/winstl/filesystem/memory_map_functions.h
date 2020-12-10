@@ -4,7 +4,7 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     28th November 2020
+ * Updated:     29th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   7
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       121
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   8
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -263,7 +263,7 @@ winstl_C_map_named_view_of_file_by_handle_v_(
     }
     *viewSize = ~stlsoft_static_cast(ws_uintptr_t, 0);
 
-    fileSizeLow =   STLSOFT_NS_GLOBAL(GetFileSize)(hFile, &fileSizeHigh);
+    fileSizeLow =   WINSTL_API_EXTERNAL_FileManagement_GetFileSize(hFile, &fileSizeHigh);
     error       =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
     if (INVALID_FILE_SIZE == fileSizeLow &&
