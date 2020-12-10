@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     25th November 2020
+ * Updated:     8th December 2020
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -57,9 +57,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        187
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    1
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        193
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,14 +127,16 @@ struct auto_buffer_internal_default
     enum { division_factor  =   2       };
 };
 
-template <ss_typename_param_k T>
+template<
+    ss_typename_param_k T
+>
 struct auto_buffer_internal_size_calculator
     : private auto_buffer_internal_default
 {
 private:
     // Stupid, stupid, stupid GCC requires them all to share the same
     // enum, which totally sucks. It whinges about comparisons between
-    // enumerals (sic.) of different types. Thankfully it's irrelevant
+    // enumerators of different types. Thankfully it's irrelevant
     // because they're private
     enum
     {
@@ -276,7 +278,7 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
 
     . . .
 
-    if(buffer != &buff[0])
+    if (buffer != &buff[0])
     {
       delete [] buffer;
     }
@@ -327,28 +329,29 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  // //////////////////////////////////////////////
  // This is the pre-1.9 template parameter list
 
-template<   ss_typename_param_k T
+template<
+    ss_typename_param_k T
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-        ,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        ,   ss_typename_param_k A
+,   ss_typename_param_k A
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if defined(STLSOFT_COMPILER_IS_BORLAND)
-        ,   ss_size_t           space   =   256
+,   ss_size_t           space   =   256
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
-        ,   ss_size_t           SPACE   =   256
+,   ss_size_t           SPACE   =   256
 #  else /* ? compiler */
-        ,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-        ,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
 #  else /* ? compiler */
-        ,   ss_size_t           space   /* =   256 */
+,   ss_size_t           space   /* =   256 */
 #  endif /* compiler */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-        >
+>
 
  // End of pre-1.9 template parameter list
  // //////////////////////////////////////////////
@@ -362,29 +365,30 @@ template<   ss_typename_param_k T
 #  define STLSOFT_AUTO_BUFFER_NEW_FORM
 # endif /* !STLSOFT_AUTO_BUFFER_NEW_FORM */
 
-template<   ss_typename_param_k T
+template<
+    ss_typename_param_k T
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if 0
 #  elif defined(STLSOFT_COMPILER_IS_BORLAND)
-        ,   ss_size_t           space   =   256
+,   ss_size_t           space   =   256
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
-        ,   ss_size_t           SPACE   =   256
+,   ss_size_t           SPACE   =   256
 #  else /* ? compiler */
-        ,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-        ,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
 #  else /* ? compiler */
-        ,   ss_size_t           space   /* =   256 */
+,   ss_size_t           space   /* =   256 */
 #  endif /* compiler */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-        ,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        ,   ss_typename_param_k A
+,   ss_typename_param_k A
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        >
+>
 
  // End of 1.9+ template parameter list
  // //////////////////////////////////////////////
@@ -399,9 +403,7 @@ class auto_buffer
     : public stl_collection_tag
 #endif /* !STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
 {
-/// \name Member Types
-/// @{
-public:
+public: // types
     /// The value type
     typedef T                                                   value_type;
     /// The allocator type
@@ -440,43 +442,44 @@ public:
     /// The iterator type
     typedef
 # if !defined(STLSOFT_COMPILER_IS_BORLAND)
-           ss_typename_type_k
+      ss_typename_type_k
 # endif /* compiler */
-                       pointer_iterator <   value_type
-                                        ,   pointer
-                                        ,   reference
-                                        >::type             iterator;
+        pointer_iterator<
+            value_type
+        ,   pointer
+        ,   reference
+        >::type                                                 iterator;
     /// The non-mutating (const) iterator type
     typedef
 # if !defined(STLSOFT_COMPILER_IS_BORLAND)
-         ss_typename_type_k
+      ss_typename_type_k
 # endif /* compiler */
-                       pointer_iterator <   value_type const
-                                        ,   const_pointer
-                                        ,   const_reference
-                                        >::type             const_iterator;
+        pointer_iterator<
+            value_type const
+        ,   const_pointer
+        ,   const_reference
+        >::type                                                 const_iterator;
 
     /// The mutating (non-const) reverse iterator type
-    typedef reverse_iterator_base       <   iterator
-                                        ,   value_type
-                                        ,   reference
-                                        ,   pointer
-                                        ,   difference_type
-                                        >                   reverse_iterator;
+    typedef reverse_iterator_base<
+        iterator
+    ,   value_type
+    ,   reference
+    ,   pointer
+    ,   difference_type
+    >                                                           reverse_iterator;
 
     /// The non-mutating (const) reverse iterator type
-    typedef const_reverse_iterator_base <   const_iterator
-                                        ,   value_type const
-                                        ,   const_reference
-                                        ,   const_pointer
-                                        ,   difference_type
-                                        >                   const_reverse_iterator;
+    typedef const_reverse_iterator_base<
+        const_iterator
+    ,   value_type const
+    ,   const_reference
+    ,   const_pointer
+    ,   difference_type
+    >                                                           const_reverse_iterator;
 #endif /* !STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
-/// @}
 
-/// \name Implementation
-/// @{
-private:
+private: // implementation
     pointer allocate_(size_type cItems, void const* hint)
     {
 #ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
@@ -516,7 +519,7 @@ private:
 
         // This test is needed, since some allocators may not throw
         // bad_alloc
-        if(NULL != new_p)
+        if (NULL != new_p)
         {
             block_copy(new_p, p, cItems);
 
@@ -534,22 +537,24 @@ protected:
     {
         pod_fill_n(dest, cItems, value);
     }
-/// @}
 
-/// \name Construction
-/// @{
-public:
-    /// Constructs an auto_buffer instance with the given number of elements
+public: // construction
+    /// Constructs an auto_buffer instance with the given number of
+    /// uninitialised elements
     ///
-    /// Constructs an auto_buffer with the given number of elements. If the
-    /// allocation fails by throwing an exception, that exception is passed
-    /// through to the caller. If allocation fails by returning a null
-    /// pointer the auto_buffer instance is correctly constructed, and the
-    /// \link #size size() \endlink method returns 0.
+    /// Constructs an auto_buffer with the given number of uninitialised
+    /// elements. If the allocation fails by throwing an exception, that
+    /// exception is passed through to the caller. If allocation fails by
+    /// returning a null pointer the auto_buffer instance is correctly
+    /// constructed, and the \link #size size() \endlink method returns 0.
+    ///
+    /// \param cItems The number of items in the constructed instance
     ///
     /// \see \link #size size() \endlink
-    /// \param cItems The number of items in the constructed instance
-    ss_explicit_k auto_buffer(size_type cItems)
+    ss_explicit_k
+    auto_buffer(
+        size_type   cItems
+    )
         : m_buffer((space < cItems) ? allocate_(cItems) : const_cast<pointer>(&m_internal[0]))
         , m_cItems((NULL != m_buffer) ? cItems : 0)
         , m_bExternal(space < cItems)
@@ -578,6 +583,60 @@ public:
         // still prevent non POD types being placed in m_internal[].
         stlsoft_constraint_must_be_pod(value_type);
 #endif /* _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD */
+
+        STLSOFT_ASSERT(is_valid());
+    }
+
+    /// Constructs an auto_buffer instance with the given number of
+    /// initialised elements
+    ///
+    /// Constructs an auto_buffer with the given number of initialised
+    /// elements. If the allocation fails by throwing an exception, that
+    /// exception is passed through to the caller. If allocation fails by
+    /// returning a null pointer the auto_buffer instance is correctly
+    /// constructed, and the \link #size size() \endlink method returns 0.
+    ///
+    /// \param cItems The number of items in the constructed instance
+    /// \param v The value to which the items will be initialised
+    ///
+    /// \see \link #size size() \endlink
+    auto_buffer(
+        size_type           cItems
+    ,   value_type const&   v
+    )
+        : m_buffer((space < cItems) ? allocate_(cItems) : const_cast<pointer>(&m_internal[0]))
+        , m_cItems((NULL != m_buffer) ? cItems : 0)
+        , m_bExternal(space < cItems)
+    {
+        // Can't create one with an empty buffer. Though such is not legal
+        // it is supported by some compilers, so we must ensure it cannot be
+        // so
+        STLSOFT_STATIC_ASSERT(0 != space);
+
+        // These assertions ensure that the member ordering is not
+        // changed, invalidating the initialisation logic of m_buffer and
+        // m_cItems. The runtime assert is included for those compilers that
+        // do not implement compile-time asserts.
+#ifdef STLSOFT_CF_USE_RAW_OFFSETOF_IN_STATIC_ASSERT
+
+        STLSOFT_STATIC_ASSERT(STLSOFT_RAW_OFFSETOF(class_type, m_buffer) < STLSOFT_RAW_OFFSETOF(class_type, m_cItems));
+#endif /* STLSOFT_CF_USE_RAW_OFFSETOF_IN_STATIC_ASSERT */
+
+        STLSOFT_MESSAGE_ASSERT("m_buffer must be before m_cItems in the auto_buffer definition", stlsoft_reinterpret_cast(ss_byte_t*, &m_buffer) < stlsoft_reinterpret_cast(ss_byte_t*, &m_cItems));
+
+#ifndef _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD
+
+        // Use the must_be_pod constraint to ensure that
+        // no type is managed in auto_buffer which would result in
+        // dangerous mismanagement of the lifetime of its instances.
+        //
+        // Preprocessor specification of _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD
+        // prevents this, but the natural rules of the language will
+        // still prevent non POD types being placed in m_internal[].
+        stlsoft_constraint_must_be_pod(value_type);
+#endif /* _STLSOFT_AUTO_BUFFER_ALLOW_NON_POD */
+
+        block_set(&m_buffer[0], m_cItems, v);
 
         STLSOFT_ASSERT(is_valid());
     }
@@ -628,7 +687,7 @@ public:
     {
         STLSOFT_ASSERT(is_valid());
 
-        if(is_in_external_array_())
+        if (is_in_external_array_())
         {
             STLSOFT_ASSERT(NULL != m_buffer);
             STLSOFT_ASSERT(m_bExternal);
@@ -640,11 +699,8 @@ public:
 private:
     auto_buffer(class_type const&);     // copy-construction proscribed
     void operator =(class_type const&); // copy-assignment proscribed
-/// @}
 
-/// \name Operations
-/// @{
-private:
+private: // operations
     // Policy functions
     ss_bool_t   is_in_external_array_() const
     {
@@ -676,6 +732,8 @@ public:
     ///   case, the original storage and contents of the buffer will remain
     ///   unchanged.
     ///
+    /// \note This obeys the strong exception guarantee
+    ///
     /// \note When reducing the number of elements, the implementation
     ///   favours speed above memory consumption. If the new item size is
     ///   still larger than the internal storage size (\c internal_size())
@@ -686,11 +744,14 @@ public:
     ///   discarded in favour of the internal array when
     ///   <code>0 < cItems < internal_size()</code>.
     ///   Only <code>resize(0)</code> will deallocate the external array.
-    ss_bool_t resize(size_type cItems)
+    ss_bool_t
+    resize(
+        size_type   cItems
+    )
     {
         STLSOFT_ASSERT(is_valid());
 
-        // There are four changes possible:
+        // There are six changes possible:
         //
         // 1. Expansion within the internal buffer
         // 2. Contraction within the internal buffer
@@ -701,18 +762,18 @@ public:
         // 5. Expansion from the allocated buffer to another allocated buffer
         // 6. Contraction from the allocated buffer to another allocated buffer
 
-        if(m_cItems < cItems)
+        if (m_cItems < cItems)
         {
             // Expansion; cases 1, 3 & 5
 
-            if(is_in_external_array_())
+            if (is_in_external_array_())
             {
                 // Current buffer is allocated: case 5
                 pointer new_buffer  =   reallocate_(m_buffer, m_cItems, cItems);
 
                 // Still test for NULL here, since some allocators will
                 // not throw bad_alloc.
-                if(NULL == new_buffer)
+                if (NULL == new_buffer)
                 {
                     return false;
                 }
@@ -724,7 +785,7 @@ public:
             {
                 // Expanding from internal buffer; cases 1 & 3
 
-                if(space < cItems)
+                if (space < cItems)
                 {
                     // Expanding to allocated buffer; case 3
 
@@ -732,7 +793,7 @@ public:
 
                     // Still test for NULL here, since some allocators will
                     // not throw bad_alloc.
-                    if(NULL == new_buffer)
+                    if (NULL == new_buffer)
                     {
                         return false;
                     }
@@ -756,11 +817,11 @@ public:
         {
             // Contraction; cases 2, 4 & 6
 
-            if(is_in_external_array_())
+            if (is_in_external_array_())
             {
                 // Current buffer is allocated: cases 4 & 6
 
-                if(space < cItems)
+                if (space < cItems)
                 {
                     // Contracting within allocated buffer; case 6
 
@@ -770,7 +831,7 @@ public:
 #if defined(STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK)
                 else
 #else /* ? STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK */
-                else if(0 == cItems)
+                else if (0 == cItems)
 #endif /* STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK */
                 {
                     // Contracting back to internal; case 4
@@ -800,6 +861,53 @@ public:
         return true;
     }
 
+    /// Resizes and initialises the new items with the given value
+    ///
+    /// \param cItems The new size of the buffer
+    /// \param v The value to which any <em>new</em> items will be
+    ///   initialised
+    ss_bool_t
+    resize(
+        size_type           cItems
+    ,   value_type const&   v
+    )
+    {
+        size_type const n0  =   m_cItems;
+        ss_bool_t const r   =   resize(cItems);
+        size_type const n1  =   m_cItems;
+
+        if (r)
+        {
+            if (n1 > n0)
+            {
+                block_set(&m_buffer[0] + n0, n1 - n0, v);
+            }
+        }
+
+        return r;
+    }
+
+    /// Copies the contents from \c rhs
+    ///
+    /// \note This obeys the strong exception guarantee
+    ///
+    /// \note Unlike <code>resize()</code>, this method always results in an
+    ///   internal-storing copy if \c rhs is storing internally.
+    void
+    copy_from(
+        class_type const& rhs
+    )
+    {
+        if (rhs.is_in_external_array_())
+        {
+            resize(0);
+        }
+
+        resize(rhs.size());
+
+        block_copy(&m_buffer[0], &rhs.m_buffer[0], rhs.size());
+    }
+
     /// Swaps contents with the given buffer
     ///
     /// \note This method is only constant time when the memory for two buffers
@@ -822,13 +930,13 @@ public:
 #endif /* !STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
 
         // 2. Member variables
-        if( is_in_external_array_() &&
+        if (is_in_external_array_() &&
             rhs.is_in_external_array_())
         {
             // Both are allocated, so just swap them
             std_swap(m_buffer, rhs.m_buffer);
         }
-        else if(is_in_external_array_())
+        else if (is_in_external_array_())
         {
             // *this is allocated on the heap, rhs is using m_internal
 
@@ -841,7 +949,7 @@ public:
             // 3. Tell *this to use its internal buffer
             m_buffer = &m_internal[0];
         }
-        else if(rhs.is_in_external_array_())
+        else if (rhs.is_in_external_array_())
         {
             // This is a lazy cheat, but eminently effective.
             rhs.swap(*this);
@@ -853,7 +961,7 @@ public:
             // Both are using internal buffers, so we exchange the contents
             value_type  t[space];
 
-            if(rhs.m_cItems < m_cItems)
+            if (rhs.m_cItems < m_cItems)
             {
                 block_copy(&t[0],               &rhs.m_internal[0], rhs.m_cItems);
                 block_copy(&rhs.m_internal[0],  &m_internal[0],     m_cItems);
@@ -872,11 +980,8 @@ public:
 
         STLSOFT_ASSERT(is_valid());
     }
-/// @}
 
-/// \name Operators
-/// @{
-public:
+public: // operators
     // Note: The following two const and non-const implicit conversion
     // operators are correctly implemented. However, GCC will pedantically
     // give a verbose warning describing its having selected one over the
@@ -924,11 +1029,8 @@ public:
         return m_buffer;
     }
 #endif /* _STLSOFT_AUTO_BUFFER_ALLOW_CONST_CONVERSION_OPERATOR */
-/// @}
 
-/// \name Accessors
-/// @{
-public:
+public: // accessors
     /// Returns a pointer to the element array
     pointer data()
     {
@@ -990,11 +1092,8 @@ public:
 
         return m_buffer[size() - 1];
     }
-/// @}
 
-/// \name Iteration
-/// @{
-public:
+public: // iteration
     /// Returns a non-mutating iterator representing the start of the sequence
     const_iterator begin() const
     {
@@ -1076,11 +1175,7 @@ public:
     }
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 
-/// @}
-
-/// \name Attributes
-/// @{
-public:
+public: // attributes
     /// Returns the number of elements in the auto_buffer
     ///
     /// \note In the case where memory allocation has failed in the context
@@ -1143,45 +1238,42 @@ public:
 # endif /* STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
     }
 #endif /* STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
-/// @}
 
-/// \name Implementation
-/// @{
-private:
+private: // implementation
     ss_bool_t   is_valid() const
     {
         ss_bool_t   bRet    =   true;
 
 #if defined(STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK)
-        if( space < m_cItems &&
+        if (space < m_cItems &&
             !m_bExternal)
         {
             bRet = false;
         }
-        if( !(space < m_cItems) &&
+        if (!(space < m_cItems) &&
             m_bExternal)
         {
             bRet = false;
         }
 #else /* ? STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK */
 
-        if( space < m_cItems &&
+        if (space < m_cItems &&
             !m_bExternal)
         {
             bRet = false;
         }
 #endif /* STLSOFT_AUTO_BUFFER_AGGRESSIVE_SHRINK */
 
-        if(m_bExternal)
+        if (m_bExternal)
         {
-            if(m_buffer == &m_internal[0])
+            if (m_buffer == &m_internal[0])
             {
                 bRet = false;
             }
         }
         else
         {
-            if(m_buffer != &m_internal[0])
+            if (m_buffer != &m_internal[0])
             {
                 bRet = false;
             }
@@ -1189,38 +1281,35 @@ private:
 
         return bRet;
     }
-/// @}
 
-/// \name Members
-/// @{
-private:
+private: // fields
     pointer     m_buffer;           // Pointer to used buffer
     size_type   m_cItems;           // Number of items in buffer
     ss_bool_t   m_bExternal;        // This is required, since not allowed to compare m_buffer with &m_internal[0] - can't remember why; // NOTE: Check std
     value_type  m_internal[space];  // Internal storage
-/// @}
 };
 
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ss_typename_param_k T
+template<
+    ss_typename_param_k T
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-        ,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        ,   ss_typename_param_k A
+,   ss_typename_param_k A
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND) && \
-      !defined(STLSOFT_COMPILER_IS_DMC)
-        ,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+!defined(STLSOFT_COMPILER_IS_DMC)
+,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
 #  else /* ? compiler */
-        ,   ss_size_t           SPACE   =   256
+,   ss_size_t           SPACE   =   256
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-        ,   ss_size_t           SPACE /* = auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           SPACE /* = auto_buffer_internal_size_calculator<T>::value */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-        >
+>
 class auto_buffer_old
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
     : public auto_buffer<T, A, SPACE>
@@ -1228,9 +1317,7 @@ class auto_buffer_old
     : public auto_buffer<T, SPACE, A>
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
-/// \name Member Types
-/// @{
-private:
+private: // types
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
     typedef auto_buffer<T, A, SPACE>                                        parent_class_type;
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
@@ -1253,18 +1340,17 @@ public:
     typedef ss_typename_type_k parent_class_type::reverse_iterator          reverse_iterator;
     typedef ss_typename_type_k parent_class_type::const_reverse_iterator    const_reverse_iterator;
 # endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
-/// @}
 
-/// \name Construction
-/// @{
-public:
-    ss_explicit_k auto_buffer_old(size_type cItems)
+public: // construction
+    ss_explicit_k
+    auto_buffer_old(
+        size_type   cItems
+    )
         : parent_class_type(cItems)
     {}
 private:
     auto_buffer_old(class_type const&); // copy-construction proscribed
     void operator =(class_type const&); // copy-assignment proscribed
-/// @}
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -1274,19 +1360,28 @@ private:
  */
 
 #if !defined(STLSOFT_COMPILER_IS_WATCOM)
-template<   ss_typename_param_k T
+template<
+    ss_typename_param_k T
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-        ,   ss_typename_param_k A
-        ,   ss_size_t           SPACE
+,   ss_typename_param_k A
+,   ss_size_t           SPACE
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-        ,   ss_size_t           SPACE
-        ,   ss_typename_param_k A
+,   ss_size_t           SPACE
+,   ss_typename_param_k A
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-        >
+>
+inline
+void
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-inline void swap(auto_buffer<T, A, SPACE>& lhs, auto_buffer<T, A, SPACE>& rhs)
+swap(
+    auto_buffer<T, A, SPACE>&   lhs
+,   auto_buffer<T, A, SPACE>&   rhs
+)
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-inline void swap(auto_buffer<T, SPACE, A>& lhs, auto_buffer<T, SPACE, A>& rhs)
+swap(
+    auto_buffer<T, SPACE, A>&   lhs
+,   auto_buffer<T, SPACE, A>&   rhs
+)
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
     lhs.swap(rhs);
@@ -1350,19 +1445,26 @@ operator -(
 
 #ifndef STLSOFT_CF_TEMPLATE_SHIMS_NOT_SUPPORTED
 
-template<   ss_typename_param_k T
+template<
+    ss_typename_param_k T
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-        ,   ss_typename_param_k A
-        ,   ss_size_t           SPACE
+,   ss_typename_param_k A
+,   ss_size_t           SPACE
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-        ,   ss_size_t           SPACE
-        ,   ss_typename_param_k A
+,   ss_size_t           SPACE
+,   ss_typename_param_k A
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-        >
+>
+inline
+ss_bool_t 
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-inline ss_bool_t is_empty(auto_buffer<T, A, SPACE> const& b)
+is_empty(
+    auto_buffer<T, A, SPACE> const& b
+)
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-inline ss_bool_t is_empty(auto_buffer<T, SPACE, A> const& b)
+is_empty(
+    auto_buffer<T, SPACE, A> const& b
+)
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
     return b.empty();
@@ -1385,21 +1487,31 @@ inline ss_bool_t is_empty(auto_buffer<T, SPACE, A> const& b)
 # if ( ( defined(STLSOFT_COMPILER_IS_INTEL) && \
          defined(_MSC_VER))) && \
      _MSC_VER < 1310
+
 namespace std
 {
-    template<   ss_typename_param_k         T
+    template<
+        ss_typename_param_k         T
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-            ,   ss_typename_param_k         A
-            ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
+    ,   ss_typename_param_k         A
+    ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-            ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
-            ,   ss_typename_param_k         A
+    ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
+    ,   ss_typename_param_k         A
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-            >
+    >
+    inline
+    void
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-    inline void swap(STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>& lhs, STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>& rhs)
+    swap(
+        STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>&  lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>&  rhs
+    )
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    inline void swap(STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>& lhs, STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>& rhs)
+    swap(
+        STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>&  lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>&  rhs
+    )
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     {
         lhs.swap(rhs);
