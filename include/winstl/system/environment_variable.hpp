@@ -4,12 +4,13 @@
  * Purpose:     Simple class that provides access to an environment variable.
  *
  * Created:     20th December 2002
- * Updated:     13th September 2019
+ * Updated:     3rd December 2020
  *
  * Thanks to:   Pablo Aguilar for requesting size() and empty().
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -22,9 +23,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -54,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MINOR    4
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_REVISION 1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     82
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_REVISION 3
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -231,7 +233,7 @@ public: // comparison
     bool
     equal(class_type const& rhs) const
     {
-        if(rhs.size() != size())
+        if (rhs.size() != size())
         {
             return false;
         }
@@ -261,7 +263,7 @@ private: // implementation
     ,   size_type         cch2
     ) const
     {
-        if(cch1 != cch2)
+        if (cch1 != cch2)
         {
             return false;
         }
@@ -277,7 +279,7 @@ private: // implementation
     ,   size_type         cch2
     ) const
     {
-        if(cch1 != cch2)
+        if (cch1 != cch2)
         {
             return false;
         }
@@ -288,68 +290,23 @@ private: // implementation
     static
     bool_type
     obtain_(
-        char_type const*     name
+        char_type const*    name
     ,   buffer_type_&       buffer
     )
     {
-        WINSTL_ASSERT(1 == buffer.size());
-
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(0);
 
-        size_type const n1  = traits_type::get_environment_variable(name, NULL, 0);
-
-        if(ERROR_ENVVAR_NOT_FOUND == WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
+        if (0 != traits_type::get_environment_variable(name, buffer))
         {
-            buffer[0] = 0;
-
-            return false;
+            return true;
         }
-        else
-        {
-            if(0 == n1)
-            {
-                buffer[0] = 0;
 
-                return true;
-            }
-            else
-            {
-                if(!buffer.resize(1 + n1))
-                {
-                    WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_OUTOFMEMORY);
+        bool const r = 0 == WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-                    return false;
-                }
-                else
-                {
-                    size_type const n2 = traits_type::get_environment_variable(name, &buffer[0], buffer.size());
+        buffer.resize(1);
+        buffer[0] = char_type(0);
 
-                    if(ERROR_ENVVAR_NOT_FOUND == WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
-                    {
-                        buffer[0] = 0;
-
-                        return false;
-                    }
-                    else
-                    {
-                        if(0 == n2)
-                        {
-                            buffer[0] = 0;
-
-                            return true;
-                        }
-                        else
-                        {
-                            // This is necessary because GetEnvironmentVariable() does not do what
-                            // it's documented to do
-                            buffer.resize(1 + traits_type::str_len(buffer.data()));
-
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
+        return r;
     }
 
 // fields
@@ -483,7 +440,11 @@ operator !=(
  * \ingroup group__library__System
  */
 template<ss_typename_param_k C>
-inline basic_environment_variable<C> make_environment_variable(C const* path)
+inline
+basic_environment_variable<C>
+make_environment_variable(
+    C const* path
+)
 {
     return basic_environment_variable<C>(path);
 }
