@@ -5,13 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     7th February 2002
- * Updated:     13th September 2019
+ * Updated:     4th December 2020
  *
  * Thanks to:   Pablo Aguilar for discovering the Borland weirdness which is now
  *              addressed with the calc_path_max_() method.
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -24,9 +25,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -56,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_MAJOR    4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_MINOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_REVISION 10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_EDIT     143
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_REVISION 12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_EDIT     146
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -70,6 +72,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifdef STLSOFT_PPF_pragma_message_SUPPORT
+# pragma message(STLSOFT_FILELINE_MESSAGE("This file and the (basic_)file_path_buffer<> component are deprecated, and will be removed from a future version"))
+#endif /* STLSOFT_PPF_pragma_message_SUPPORT */
 
 #ifndef WINSTL_FILE_PATH_BUFFER_NO_USE_AUTO_BUFFER
 # define WINSTL_FILE_PATH_BUFFER_USE_AUTO_BUFFER
@@ -226,6 +232,7 @@ public:
 /// @{
 public:
     /// Default constructor
+    STLSOFT_DEPRECATED_("basic_file_path_buffer is deprecated, and will be removed from a future release") // applied here rather than on template because above class_type precipitates
     basic_file_path_buffer()
         : m_buffer(1 + calc_path_max_internal_())
     {
@@ -282,6 +289,9 @@ public:
     {
         m_buffer.swap(rhs.m_buffer);
     }
+
+    void resize(size_type )
+    {}
 /// @}
 
 /// \name Accessors
@@ -512,7 +522,7 @@ typedef basic_file_path_buffer<ws_char_a_t, processheap_allocator<ws_char_a_t> >
  * \ingroup group__library__FileSystem
  */
 typedef basic_file_path_buffer<ws_char_w_t, processheap_allocator<ws_char_w_t> >    file_path_buffer_w;
-/** Specialisation of the basic_file_path_buffer template for the ambeint character type \c TCHAR
+/** Specialisation of the basic_file_path_buffer template for the ambient character type \c TCHAR
  *
  * \ingroup group__library__FileSystem
  */

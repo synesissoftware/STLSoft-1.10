@@ -65,6 +65,60 @@
 #endif /* !WINSTL_INCL_WINSTL_API_H_winstl_win32_winnt_ */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * findvolume API declarations
+ *
+ * The FindVolume API is not visible in the Windows headers unless _WIN32_WINNT
+ * is defined as 0x0500 or greater. Where this definition is not present, the
+ * functions are declared here, unless _WINSTL_NO_FINDVOLUME_API is defined.
+ *
+ * Where _WINSTL_NO_FINDVOLUME_API is defined, the requisite members of the
+ * traits classes are undeclared.
+ */
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+# if !defined(_WINSTL_NO_FINDVOLUME_API)
+
+#  ifndef WINSTL_WIN32_WINNT
+#   error winstl_win32_winnt_.h is in error
+#  endif
+
+#  if (WINSTL_WIN32_WINNT < 0x0500) || \
+      !defined(FindFirstVolume) || \
+      !defined(FindNextVolume)
+
+#   define WINSTL_FINDVOLUME_API_NOT_DECLARED
+
+HANDLE WINAPI FindFirstVolumeA(
+    LPSTR lpszVolumeName,   /* output buffer */
+    DWORD cchBufferLength   /* size of output buffer */
+);
+
+HANDLE WINAPI FindFirstVolumeW(
+    LPWSTR lpszVolumeName,  /* output buffer */
+    DWORD cchBufferLength   /* size of output buffer */
+);
+
+BOOL WINAPI FindNextVolumeA(
+    HANDLE hFindVolume,     /* volume search handle */
+    LPSTR lpszVolumeName,   /* output buffer */
+    DWORD cchBufferLength   /* size of output buffer */
+);
+
+BOOL WINAPI FindNextVolumeW(
+    HANDLE hFindVolume,     /* volume search handle */
+    LPWSTR lpszVolumeName,  /* output buffer */
+    DWORD cchBufferLength   /* size of output buffer */
+);
+
+BOOL WINAPI FindVolumeClose(
+    HANDLE hFindVolume
+);
+#  endif
+# endif /* !_WINSTL_NO_FINDVOLUME_API */
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
  * Windows' File Management Functions
  */
 
