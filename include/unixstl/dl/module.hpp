@@ -4,10 +4,11 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -50,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MAJOR    6
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    3
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 8
-# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     234
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_MINOR    4
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_REVISION 2
+# define UNIXSTL_VER_UNIXSTL_DL_HPP_MODULE_EDIT     237
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,13 +169,26 @@ public:
         : m_hmodule(load(moduleName, mode))
     {
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(NULL == m_hmodule)
+        if (NULL == m_hmodule)
         {
             STLSOFT_THROW_X(unixstl_exception("Cannot load module", errno));
         }
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
+
+#ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
+
+    /// Constructs a module instance by taking over the state of the
+    /// instance \c rhs
+    ///
+    /// \param rhs The instance whose state will be taken over. Upon return
+    ///   \c rhs <code>get_module_handle()()</code> will obtain \c nullptr
+    module(class_type&& rhs) STLSOFT_NOEXCEPT
+        : m_hmodule(rhs.detach())
+    {}
+#endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
+
     /// Constructs by taking ownership of the given handle
     ///
     /// \note If exception-handling is being used, then this throws a
@@ -182,6 +197,10 @@ public:
     ss_explicit_k module(module_handle_type hmodule);
     /// Closes the module handle
     ~module() STLSOFT_NOEXCEPT;
+
+private:
+    module(class_type const&);          // copy-construction proscribed
+    void operator =(class_type const&); // copy-assignment proscribed
 /// @}
 
 /// \name Static operations
@@ -288,13 +307,6 @@ private:
 private:
     module_handle_type  m_hmodule;
 /// @}
-
-/// \name Not to be implemented
-/// @{
-private:
-    module(class_type const&);
-    class_type& operator =(class_type const&);
-/// @}
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -305,7 +317,7 @@ private:
  *
  * \ingroup group__concept__Shim__module_attribute
  */
-inline void *get_module_handle(UNIXSTL_NS_QUAL(module) const& m)
+inline void* get_module_handle(UNIXSTL_NS_QUAL(module) const& m)
 {
     return m.get_module_handle();
 }
@@ -320,7 +332,7 @@ inline module::module(us_char_a_t const* moduleName, int mode)
     : m_hmodule(load(moduleName, mode))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(unixstl_exception("Cannot load module", errno));
     }
@@ -331,7 +343,7 @@ inline module::module(us_char_w_t const* moduleName, int mode)
     : m_hmodule(load(moduleName, mode))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(unixstl_exception("Cannot load module", errno));
     }
@@ -342,7 +354,7 @@ inline module::module(module::module_handle_type hmodule)
     : m_hmodule(hmodule)
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(unixstl_exception("Cannot load module", errno));
     }
@@ -356,7 +368,7 @@ inline module::~module() STLSOFT_NOEXCEPT
 
 inline void module::unload() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_hmodule)
+    if (NULL != m_hmodule)
     {
         unload(m_hmodule);
         m_hmodule = NULL;
@@ -380,7 +392,7 @@ inline /* static */ module::module_handle_type module::load(us_char_a_t const* m
 
 inline /* static */ void module::unload(module::module_handle_type hmodule) STLSOFT_NOEXCEPT
 {
-    if(NULL != hmodule)
+    if (NULL != hmodule)
     {
         ::dlclose(hmodule);
     }
