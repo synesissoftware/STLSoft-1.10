@@ -4,10 +4,11 @@
  * Purpose:     COM memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MAJOR     4
 # define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_MINOR     1
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  8
-# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      61
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_REVISION  9
+# define COMSTL_VER_COMSTL_MEMORY_H_FUNCTIONS_EDIT      62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,13 +108,13 @@ namespace comstl_project
  * \note [C++] This function is wrapped by the comstl::CoTaskMemGetSize()
  *   function.
  */
-STLSOFT_INLINE cs_size_t comstl__CoTaskMemGetSize(void *pv)
+STLSOFT_INLINE cs_size_t comstl__CoTaskMemGetSize(void* pv)
 {
     LPMALLOC    lpmalloc;
     cs_size_t   ulRet;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(CoGetMalloc)(MEMCTX_TASK, &lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         ulRet = COMSTL_ITF_CALL(lpmalloc)->GetSize(COMSTL_ITF_THIS(lpmalloc) pv);
         COMSTL_ITF_CALL(lpmalloc)->Release(COMSTL_ITF_THIS0(lpmalloc));
@@ -142,13 +144,13 @@ STLSOFT_INLINE cs_size_t comstl__CoTaskMemGetSize(void *pv)
  * \note [C++] This function is wrapped by the comstl::CoTaskMemDidAlloc()
  *   function.
  */
-STLSOFT_INLINE cs_sint_t comstl__CoTaskMemDidAlloc(void *pv)
+STLSOFT_INLINE cs_sint_t comstl__CoTaskMemDidAlloc(void* pv)
 {
     LPMALLOC    lpmalloc;
     cs_sint_t   iRet;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(CoGetMalloc)(MEMCTX_TASK, &lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         iRet = COMSTL_ITF_CALL(lpmalloc)->DidAlloc(COMSTL_ITF_THIS(lpmalloc) pv);
         COMSTL_ITF_CALL(lpmalloc)->Release(COMSTL_ITF_THIS0(lpmalloc));
@@ -178,7 +180,7 @@ STLSOFT_INLINE void comstl__CoTaskMemHeapMinimise(void)
     LPMALLOC    lpmalloc;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(CoGetMalloc)(MEMCTX_TASK, &lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         COMSTL_ITF_CALL(lpmalloc)->HeapMinimize(COMSTL_ITF_THIS0(lpmalloc));
         COMSTL_ITF_CALL(lpmalloc)->Release(COMSTL_ITF_THIS0(lpmalloc));
@@ -213,7 +215,7 @@ namespace comstl
  * \param pv Pointer to the memory block
  * \return The size of the memory block (in bytes)
  */
-inline cs_size_t CoTaskMemGetSize(void *pv)
+inline cs_size_t CoTaskMemGetSize(void* pv)
 {
     return comstl__CoTaskMemGetSize(pv);
 }
@@ -230,7 +232,7 @@ inline cs_size_t CoTaskMemGetSize(void *pv)
  * \retval 0 The memory block was <i>not</i> allocated by the task allocator
  * \retval -1 CoTaskMemDidAlloc() cannot determine whether the memory block was allocated by the task allocator
  */
-inline cs_sint_t CoTaskMemDidAlloc(void *pv)
+inline cs_sint_t CoTaskMemDidAlloc(void* pv)
 {
     return comstl__CoTaskMemDidAlloc(pv);
 }

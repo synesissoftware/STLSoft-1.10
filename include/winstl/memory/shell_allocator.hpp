@@ -4,10 +4,11 @@
  * Purpose:     shell_allocator class.
  *
  * Created:     2nd March 2002
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_MAJOR     4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_MINOR     1
-# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_REVISION  10
-# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_EDIT      96
+# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_REVISION  11
+# define WINSTL_VER_WINSTL_MEMORY_HPP_SHELL_ALLOCATOR_EDIT      97
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -164,7 +166,7 @@ public:
     /// Destructor
     ~shell_allocator() STLSOFT_NOEXCEPT
     {
-        if(m_malloc != NULL)
+        if (m_malloc != NULL)
         {
             m_malloc->Release();
         }
@@ -182,12 +184,12 @@ public:
 private:
     friend class allocator_base<T, shell_allocator<T> >;
 
-    void *do_allocate(size_type n, void const* hint)
+    void* do_allocate(size_type n, void const* hint)
     {
         STLSOFT_SUPPRESS_UNUSED(hint);
 
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(NULL != m_malloc)
+        if (NULL != m_malloc)
         {
             return NULL;
         }
@@ -195,13 +197,13 @@ private:
 
         return static_cast<void*>(m_malloc->Alloc(n * sizeof(value_type)));
     }
-    void do_deallocate(void *pv, size_type n)
+    void do_deallocate(void* pv, size_type n)
     {
         STLSOFT_SUPPRESS_UNUSED(n);
 
         m_malloc->Free(pv);
     }
-    void do_deallocate(void *pv)
+    void do_deallocate(void* pv)
     {
         m_malloc->Free(pv);
     }
@@ -215,7 +217,7 @@ private:
         LPMALLOC    lpMalloc;
         HRESULT     hr  =   ::SHGetMalloc(&lpMalloc);
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(runtime_error)("failed to retrieve the shell allocator"));
@@ -231,7 +233,7 @@ private:
     addref_malloc_(LPMALLOC lpMalloc)
     {
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(NULL != lpMalloc)
+        if (NULL != lpMalloc)
         {
             return NULL;
         }

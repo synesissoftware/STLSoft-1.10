@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     22nd October 2020
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MINOR    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 13
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     62
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 14
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,14 +111,14 @@ namespace stlsoft
  * functionality of allocator classes, requiring that a derived type defines
  * only a simple set of non-static member functions:
  *
- * - <code>void *do_allocate(size_type n, void const* hint);</code> - allocates
+ * - <code>void* do_allocate(size_type n, void const* hint);</code> - allocates
  *    <code>n</code> bytes, optionally taking into account the locality
  *    <code>hint</code>. Return <code>NULL</code> or throw
  *    <code>std::bad_alloc</code> if the allocation fails.
- * - <code>void do_deallocate(void *pv, size_type n);</code> - deallocates
+ * - <code>void do_deallocate(void* pv, size_type n);</code> - deallocates
  *    the memory block pointed to by <code>pv</code>, which is <code>n</code>
  *    bytes in size.
- * - <code>void do_deallocate(void *pv);</code> - deallocates the memory block
+ * - <code>void do_deallocate(void* pv);</code> - deallocates the memory block
  *    pointed to by <code>pv</code>.
  *
  * \see stlsoft::malloc_allocator |
@@ -230,7 +230,7 @@ public:
 #if !defined(STLSOFT_FORCE_ATORS_RETURN_NULL) && \
     (   defined(STLSOFT_FORCE_ATORS_THROW_BAD_ALLOC) || \
         defined(STLSOFT_CF_THROW_BAD_ALLOC))
-        if(p == NULL)
+        if (p == NULL)
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_Memory));
         }

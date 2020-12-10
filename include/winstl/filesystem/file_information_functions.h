@@ -4,7 +4,7 @@
  * Purpose:     File  functions.
  *
  * Created:     7th November 2014
- * Updated:     28th November 2020
+ * Updated:     1st December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_EDIT        7
+# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_REVISION    4
+# define WINSTL_VER_WINSTL_H_FILE_INFORMATION_FUNCTIONS_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@ WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_a(
 
     WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA(path, si, NULL, dwSize, &dwSize);
 
-    for(*ppsd = NULL;;)
+    for (*ppsd = NULL;;)
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -212,7 +212,7 @@ WinSTL_C_FileInformation_get_SECURITY_DESCRIPTOR_w(
 
     WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW(path, si, NULL, dwSize, &dwSize);
 
-    for(*ppsd = NULL;;)
+    for (*ppsd = NULL;;)
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 

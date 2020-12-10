@@ -4,10 +4,11 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  9
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      35
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  10
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,7 +196,7 @@ private:
   {
     fprintf(stdout, "Received custom event: %ld, %p\n", code, arg);
 
-    if(300 == code)
+    if (300 == code)
     {
       std::string* str = static_cast<std::string*>(arg);
 
@@ -214,7 +216,7 @@ private:
 
 // 4. A cleanup function to ensure that the custom data associated with
 // 300 events is not lost; see step 10.
-void cleanup_300_proc(void *param, long code, custom_event_handler::event_id id, void *arg)
+void cleanup_300_proc(void* param, long code, custom_event_handler::event_id id, void* arg)
 {
   assert(300 == code);
 
@@ -232,7 +234,7 @@ custom_event_handler* mh = new MyHandler();
 
 // 6. Schedule an event with id 100, testing the return to ensure it's
 // been scheduled without error
-if(NULL == mh->schedule_custom_event(100))
+if (NULL == mh->schedule_custom_event(100))
 {
   std::err << "Failed to scheduled event (code=100)!" << std::endl;
 }
@@ -394,7 +396,7 @@ public:
     . . .
   };
 
-  void cancel_proc(void *param, long code, custom_event_handler::event_id id, void *arg)
+  void cancel_proc(void* param, long code, custom_event_handler::event_id id, void* arg)
   {
     ++*static_cast<int*>(arg);
   }
@@ -461,7 +463,7 @@ public:
   class CancelHandler
   {
   public:
-    void report(long code, custom_event_handler::event_id id, void *arg);
+    void report(long code, custom_event_handler::event_id id, void* arg);
     . . .
   };
 
@@ -594,7 +596,7 @@ private:
         void        *arg;   //!< The custom event argument
         event_id    id;     //!< The id of the event registered in the reactor
 
-        event_info(long code_, void *arg_)
+        event_info(long code_, void* arg_)
             : code(code_)
             , arg(arg_)
             , id(NULL)
@@ -692,7 +694,7 @@ inline custom_event_handler::~custom_event_handler() STLSOFT_NOEXCEPT
     ACESTL_MESSAGE_ASSERT("Custom event handler destroyed with outstanding entries: derived classes should cancel all notifications", m_entries.empty());
 }
 
-inline custom_event_handler::event_id custom_event_handler::schedule_custom_event(long code, ACE_Time_Value const& delay, void *arg /* = 0 */)
+inline custom_event_handler::event_id custom_event_handler::schedule_custom_event(long code, ACE_Time_Value const& delay, void* arg /* = 0 */)
 {
     ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -702,7 +704,7 @@ inline custom_event_handler::event_id custom_event_handler::schedule_custom_even
 
     ACE_NEW_NORETURN(entry_, event_info(code, arg));
 
-    if(NULL == entry_)
+    if (NULL == entry_)
     {
         ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -715,7 +717,7 @@ inline custom_event_handler::event_id custom_event_handler::schedule_custom_even
         info_ptr    entry(entry_);
         event_id    timerId =   schedule_event_(entry.get(), delay);
 
-        if(NULL == timerId)
+        if (NULL == timerId)
         {
             ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -764,7 +766,7 @@ inline custom_event_handler::event_id custom_event_handler::schedule_custom_even
     }
 }
 
-inline custom_event_handler::event_id custom_event_handler::schedule_custom_event(long code, void *arg /* = 0 */)
+inline custom_event_handler::event_id custom_event_handler::schedule_custom_event(long code, void* arg /* = 0 */)
 {
     ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -777,7 +779,7 @@ inline int custom_event_handler::cancel_custom_events(long code, custom_event_ha
 
     event_code_map_type::iterator it = m_entries.find(code);
 
-    if(m_entries.end() == it)
+    if (m_entries.end() == it)
     {
         ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -795,12 +797,12 @@ inline int custom_event_handler::cancel_custom_events(long code, custom_event_ha
         {
             info_ptr entry = (*begin).second;
 
-            if(NULL != pfn)
+            if (NULL != pfn)
             {
                 (*pfn)(param, entry->code, entry->id, entry->arg);
             }
 
-            if(cancel_event_(entry->id))
+            if (cancel_event_(entry->id))
             {
                 ++n;
             }
@@ -819,7 +821,7 @@ inline int custom_event_handler::cancel_custom_events(long code)
     return cancel_custom_events(code, NULL, NULL);
 }
 
-inline int custom_event_handler::cancel_custom_event(custom_event_handler::event_id event, void **parg /* = NULL */)
+inline int custom_event_handler::cancel_custom_event(custom_event_handler::event_id event, void** parg /* = NULL */)
 {
     ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -833,9 +835,9 @@ inline int custom_event_handler::cancel_custom_event(custom_event_handler::event
         event_map_type&             event_map   =   (*be).second;
         event_map_type::iterator    it          =   event_map.find(event);
 
-        if(event_map.end() != it)
+        if (event_map.end() != it)
         {
-            if(NULL != parg)
+            if (NULL != parg)
             {
                 *parg = (*it).second->arg;
             }
@@ -877,7 +879,7 @@ inline as_int_t custom_event_handler::has_custom_event(event_id event) const
         event_map_type const&           event_map   =   (*be).second;
         event_map_type::const_iterator  it          =   event_map.find(event);
 
-        if(event_map.end() != it)
+        if (event_map.end() != it)
         {
             return 1;
         }
@@ -894,7 +896,7 @@ inline int custom_event_handler::handle_callback_timeout(ACE_Time_Value const& c
     event_code_map_type::iterator   itc     =   m_entries.find(entry->code);
 
     // Is it one of ours?
-    if(m_entries.end() == itc)
+    if (m_entries.end() == itc)
     {
         ACESTL_MESSAGE_ASSERT("invariant violation", is_valid());
 
@@ -919,7 +921,7 @@ inline int custom_event_handler::handle_callback_timeout(ACE_Time_Value const& c
         event_map.erase(ite);
 
         // ... check whether we need to erase the entries map, and ...
-        if(event_map.empty())
+        if (event_map.empty())
         {
             m_entries.erase(itc);
         }

@@ -4,10 +4,11 @@
  * Purpose:     Error functions.
  *
  * Created:     7th May 2000
- * Updated:     13th October 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MINOR     5
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  2
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      82
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  3
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -176,13 +178,13 @@ winstl_C_fmtmsg_elide_message_a_(
 {
     ws_char_a_t const* firstDot = NULL;
 
-    if(WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags)
+    if (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags)
     {
         ws_char_a_t const* s;
 
         for(s = first; s != last; ++s)
         {
-            if('.' == *s)
+            if ('.' == *s)
             {
                 firstDot = s;
                 break;
@@ -195,7 +197,7 @@ winstl_C_fmtmsg_elide_message_a_(
         switch(*(last - 1))
         {
             case    '.':
-                if( (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&
+                if ((WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&
                     (   0 == (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags) ||
                         NULL == firstDot ||
                         firstDot == last - 1))
@@ -234,13 +236,13 @@ winstl_C_fmtmsg_elide_message_w_(
 {
     ws_char_w_t const* firstDot = NULL;
 
-    if(WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags)
+    if (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags)
     {
         ws_char_w_t const* s;
 
         for(s = first; s != last; ++s)
         {
-            if(L'.' == *s)
+            if (L'.' == *s)
             {
                 firstDot = s;
                 break;
@@ -253,7 +255,7 @@ winstl_C_fmtmsg_elide_message_w_(
         switch(*(last - 1))
         {
             case    L'.':
-                if( (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&
+                if ((WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&
                     (   0 == (WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY & elisionFlags) ||
                         NULL == firstDot ||
                         firstDot == last - 1))
@@ -302,7 +304,7 @@ winstl_C_FormatMessageA_INVOKE_for_alloc_(
 ,   va_list*        arguments
 )
 {
-    if(NULL == source)
+    if (NULL == source)
     {
         flags |= FORMAT_MESSAGE_FROM_SYSTEM;
     }
@@ -343,7 +345,7 @@ winstl_C_FormatMessageW_INVOKE_for_alloc_(
 ,   va_list*        arguments
 )
 {
-    if(NULL == source)
+    if (NULL == source)
     {
         flags |= FORMAT_MESSAGE_FROM_SYSTEM;
     }
@@ -385,7 +387,7 @@ winstl_C_FormatMessageA_INVOKE_in_buffer_(
 ,   va_list*        arguments
 )
 {
-    if(NULL == source)
+    if (NULL == source)
     {
         flags |= FORMAT_MESSAGE_FROM_SYSTEM;
     }
@@ -426,7 +428,7 @@ winstl_C_FormatMessageW_INVOKE_in_buffer_(
 ,   va_list*        arguments
 )
 {
-    if(NULL == source)
+    if (NULL == source)
     {
         flags |= FORMAT_MESSAGE_FROM_SYSTEM;
     }
@@ -470,7 +472,7 @@ winstl_C_FormatMessageA__buff_inst(
 ,   ws_uint_t       cchBuffer
 )
 {
-    if(NULL != hinst)
+    if (NULL != hinst)
     {
         flags = flags & ~(FORMAT_MESSAGE_FROM_SYSTEM);
         flags = flags | (FORMAT_MESSAGE_FROM_HMODULE);
@@ -510,7 +512,7 @@ winstl_C_FormatMessageW__buff_inst(
 ,   ws_uint_t       cchBuffer
 )
 {
-    if(NULL != hinst)
+    if (NULL != hinst)
     {
         flags = flags & ~(FORMAT_MESSAGE_FROM_SYSTEM);
         flags = flags | (FORMAT_MESSAGE_FROM_HMODULE);
@@ -549,7 +551,7 @@ winstl_C_FormatMessageA__alloc_inst(
 ,   ws_char_a_t**   buffer
 )
 {
-    if(NULL != hinst)
+    if (NULL != hinst)
     {
         flags = flags & ~(FORMAT_MESSAGE_FROM_SYSTEM);
         flags = flags | (FORMAT_MESSAGE_FROM_HMODULE);
@@ -588,7 +590,7 @@ winstl_C_FormatMessageW__alloc_inst(
 ,   ws_char_w_t**   buffer
 )
 {
-    if(NULL != hinst)
+    if (NULL != hinst)
     {
         flags = flags & ~(FORMAT_MESSAGE_FROM_SYSTEM);
         flags = flags | (FORMAT_MESSAGE_FROM_HMODULE);
@@ -615,7 +617,7 @@ winstl_C_FormatMessageW__alloc_inst(
  */
 STLSOFT_INLINE
 void
-winstl_C_fmtmsg_LocalFree__(void *pv)
+winstl_C_fmtmsg_LocalFree__(void* pv)
 {
     WINSTL_API_EXTERNAL_MemoryManagement_LocalFree(pv);
 }
@@ -664,7 +666,7 @@ winstl_C_format_message_from_module_to_allocated_buffer_a(
     ,   NULL
     );
 
-    if( 0 != r &&
+    if (0 != r &&
         0 != elisionFlags)
     {
         ws_char_a_t* newLast =
@@ -718,7 +720,7 @@ winstl_C_format_message_from_module_to_allocated_buffer_w(
     ,   NULL
     );
 
-    if( 0 != r &&
+    if (0 != r &&
         0 != elisionFlags)
     {
         ws_char_w_t* newLast =
@@ -758,7 +760,7 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_buff_inst_a(
     ws_dword_t res = winstl_C_FormatMessageA__buff_inst(FORMAT_MESSAGE_MAX_WIDTH_MASK, hinst, error, buffer, cchBuffer);
 #include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    if(res != 0)
+    if (res != 0)
     {
         /* Now trim the trailing space */
         ws_char_a_t* last_good = winstl_C_fmtmsg_elide_message_a_(buffer, buffer + res, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT);
@@ -792,7 +794,7 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_buff_inst_w(
     ws_dword_t res = winstl_C_FormatMessageW__buff_inst(FORMAT_MESSAGE_MAX_WIDTH_MASK, hinst, error, buffer, cchBuffer);
 #include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    if(res != 0)
+    if (res != 0)
     {
         /* Now trim the trailing space */
         ws_char_w_t* last_good = winstl_C_fmtmsg_elide_message_w_(buffer, buffer + res, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT);
@@ -865,7 +867,7 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_alloc_a(
     ws_dword_t res = winstl_C_FormatMessageA__alloc_inst(FORMAT_MESSAGE_MAX_WIDTH_MASK, hinst, error, buffer);
 #include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    if(res != 0)
+    if (res != 0)
     {
         /* Now trim the trailing space */
         ws_char_a_t* last_good = winstl_C_fmtmsg_elide_message_a_(*buffer, *buffer + res, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT);
@@ -896,7 +898,7 @@ STLSOFT_INLINE ws_dword_t winstl_C_format_message_alloc_w(
     ws_dword_t res = winstl_C_FormatMessageW__alloc_inst(FORMAT_MESSAGE_MAX_WIDTH_MASK, hinst, error, buffer);
 #include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    if(res != 0)
+    if (res != 0)
     {
         /* Now trim the trailing space */
         ws_char_w_t* last_good = winstl_C_fmtmsg_elide_message_w_(*buffer, *buffer + res, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT);
@@ -930,7 +932,7 @@ winstl_C_format_message_strerror_a(
     ws_char_a_t*    p;
     DWORD const     n = winstl_C_format_message_from_module_to_allocated_buffer_a(0, NULL, code, &p, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT | WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY);
 
-    if(0 == n)
+    if (0 == n)
     {
         /* If nothing was retrieved, we try to write a number into it */
 
@@ -938,7 +940,7 @@ winstl_C_format_message_strerror_a(
 
         p = stlsoft_static_cast(ws_char_a_t*, WINSTL_API_EXTERNAL_MemoryManagement_LocalAlloc(LMEM_FIXED, sizeof(ws_char_a_t) * 21));
 
-        if(NULL == p)
+        if (NULL == p)
         {
             return stlsoft_const_cast(ws_char_a_t*, winstl_C_fmtmsg_empty_reason_unknown_a());
         }
@@ -964,7 +966,7 @@ winstl_C_format_message_strerror_w(
     ws_char_w_t*    p;
     DWORD const     n = winstl_C_format_message_from_module_to_allocated_buffer_w(0, NULL, code, &p, WINSTL_ERROR_FUNCTIONS_ELIDE_DOT | WINSTL_ERROR_FUNCTIONS_ELIDE_DOT_IF_LAST_ONLY);
 
-    if(0 == n)
+    if (0 == n)
     {
         /* If nothing was retrieved, we try to write a number into it */
 
@@ -972,7 +974,7 @@ winstl_C_format_message_strerror_w(
 
         p = stlsoft_static_cast(ws_char_w_t*, WINSTL_API_EXTERNAL_MemoryManagement_LocalAlloc(LMEM_FIXED, sizeof(ws_char_w_t) * 21));
 
-        if(NULL == p)
+        if (NULL == p)
         {
             return stlsoft_const_cast(ws_char_w_t*, winstl_C_fmtmsg_empty_reason_unknown_w());
         }
@@ -999,11 +1001,11 @@ STLSOFT_INLINE
 void
 winstl_C_format_message_free_buff_a(ws_char_a_t* buffer)
 {
-    if(winstl_C_fmtmsg_empty_reason_unknown_a() == buffer)
+    if (winstl_C_fmtmsg_empty_reason_unknown_a() == buffer)
     {
         return;
     }
-    if(winstl_C_fmtmsg_empty_string_a() == buffer)
+    if (winstl_C_fmtmsg_empty_string_a() == buffer)
     {
         return;
     }

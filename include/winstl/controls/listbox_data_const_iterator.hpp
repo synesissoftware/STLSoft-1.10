@@ -4,10 +4,11 @@
  * Purpose:     Contains the listbox_data_const_iterator class.
  *
  * Created:     16th March 2008
- * Updated:     13th September 2019
+ * Updated:     7th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_CONST_ITERATOR_MAJOR       1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_CONST_ITERATOR_MINOR       1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_CONST_ITERATOR_REVISION    7
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_CONST_ITERATOR_EDIT        18
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTBOX_DATA_CONST_ITERATOR_EDIT        19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,13 +206,13 @@ public:
     }
 
     /// Indicates whether \c this and \c rhs are equivalent
-    bool operator == (class_type const& rhs) const
+    bool operator ==(class_type const& rhs) const
     {
         return 0 == compare(rhs);
     }
 
     /// Indicates whether \c this and \c rhs are not equivalent
-    bool operator != (class_type const& rhs) const
+    bool operator !=(class_type const& rhs) const
     {
         return 0 != compare(rhs);
     }

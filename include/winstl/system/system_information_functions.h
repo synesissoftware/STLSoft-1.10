@@ -4,10 +4,11 @@
  * Purpose:     System information functions.
  *
  * Created:     5th November 2014
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MINOR      1
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   3
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       10
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   4
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -163,13 +165,13 @@ winstl_C_get_computer_name_a(
 
     WINSTL_ASSERT(0 == cchBuffer || NULL != buffer);
 
-    if(0 == cchBuffer)
+    if (0 == cchBuffer)
     {
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_BUFFER_OVERFLOW);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
-    if( 0 != cchBuffer &&
+    if (0 != cchBuffer &&
         WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA(buffer, &cch))
     {
         return cch;
@@ -178,13 +180,13 @@ winstl_C_get_computer_name_a(
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(winstl_C_system_information_functions_MORE_DATA_(e))
+        if (winstl_C_system_information_functions_MORE_DATA_(e))
         {
             ws_char_a_t name_[MAX_COMPUTERNAME_LENGTH + 1];
 
             cch = STLSOFT_NUM_ELEMENTS(name_);
 
-            if(WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA(&name_[0], &cch))
+            if (WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameA(&name_[0], &cch))
             {
                 ++cch;
             }
@@ -211,13 +213,13 @@ winstl_C_get_computer_name_w(
 
     WINSTL_ASSERT(0 == cchBuffer || NULL != buffer);
 
-    if(0 == cchBuffer)
+    if (0 == cchBuffer)
     {
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_BUFFER_OVERFLOW);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
-    if( 0 != cchBuffer &&
+    if (0 != cchBuffer &&
         WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW(buffer, &cch))
     {
         return cch;
@@ -226,13 +228,13 @@ winstl_C_get_computer_name_w(
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(winstl_C_system_information_functions_MORE_DATA_(e))
+        if (winstl_C_system_information_functions_MORE_DATA_(e))
         {
             ws_char_w_t name_[MAX_COMPUTERNAME_LENGTH + 1];
 
             cch = STLSOFT_NUM_ELEMENTS(name_);
 
-            if(WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW(&name_[0], &cch))
+            if (WINSTL_API_EXTERNAL_SystemInformation_GetComputerNameW(&name_[0], &cch))
             {
                 ++cch;
             }
@@ -272,13 +274,13 @@ winstl_C_get_user_name_a(
 
     WINSTL_ASSERT(0 == cchBuffer || NULL != buffer);
 
-    if(0 == cchBuffer)
+    if (0 == cchBuffer)
     {
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INSUFFICIENT_BUFFER);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
-    if( 0 != cchBuffer &&
+    if (0 != cchBuffer &&
         WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA(buffer, &cch))
     {
         return cch - 1;
@@ -287,7 +289,7 @@ winstl_C_get_user_name_a(
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(winstl_C_system_information_functions_MORE_DATA_(e))
+        if (winstl_C_system_information_functions_MORE_DATA_(e))
         {
             ws_char_a_t name_[WINSTL_SYSTEM_SIF_UNLEN_ + 1];
 
@@ -317,13 +319,13 @@ winstl_C_get_user_name_w(
 
     WINSTL_ASSERT(0 == cchBuffer || NULL != buffer);
 
-    if(0 == cchBuffer)
+    if (0 == cchBuffer)
     {
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INSUFFICIENT_BUFFER);
     }
 
     cch = STLSOFT_STATIC_CAST(DWORD, cchBuffer);
-    if( 0 != cchBuffer &&
+    if (0 != cchBuffer &&
         WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW(buffer, &cch))
     {
         return cch - 1;
@@ -332,7 +334,7 @@ winstl_C_get_user_name_w(
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(winstl_C_system_information_functions_MORE_DATA_(e))
+        if (winstl_C_system_information_functions_MORE_DATA_(e))
         {
             ws_char_w_t name_[WINSTL_SYSTEM_SIF_UNLEN_ + 1];
 

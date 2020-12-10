@@ -5,13 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -24,9 +25,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -55,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        159
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    12
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        160
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -806,7 +808,7 @@ private:
     bool_type   has_sub_key_(char_type const* subKeyName) const;
     bool_type   has_value_(char_type const* valueName) const;
 
-    static result_type  get_value_(hkey_type hkey, char_type const* valueName, ws_uint_t type, void *value, size_type *pcbValue);
+    static result_type  get_value_(hkey_type hkey, char_type const* valueName, ws_uint_t type, void* value, size_type *pcbValue);
 
     static hkey_type    dup_key_(   hkey_type       hkey
                                 ,   REGSAM          accessMask  =   KEY_ALL_ACCESS);
@@ -912,12 +914,12 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::hkey_type bas
     hkey_type   hkey;
     result_type res = traits_type::reg_open_key(hkeyParent, keyName, &hkey, accessMask);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not open key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -941,7 +943,7 @@ template<   ss_typename_param_k C
 inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::hkey_type basic_reg_key<C, T, A>::dup_key_(  ss_typename_type_k basic_reg_key<C, T, A>::hkey_type    hkey
                                                                                                             ,   REGSAM                                                  accessMask /* = KEY_ALL_ACCESS */)
 {
-    if(NULL == hkey)
+    if (NULL == hkey)
     {
         return NULL;
     }
@@ -950,12 +952,12 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::hkey_type bas
         result_type res;
         HKEY        hkeyDup = traits_type::key_dup(hkey, accessMask, &res);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char message[] = "could not duplicate key";
 
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }
@@ -1005,7 +1007,7 @@ inline basic_reg_key<C, T, A>::basic_reg_key(class_type const& rhs, REGSAM acces
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline basic_reg_key<C, T, A>::~basic_reg_key() STLSOFT_NOEXCEPT
 {
-    if(m_hkey != NULL)
+    if (m_hkey != NULL)
     {
         WINSTL_API_EXTERNAL_Registry_RegCloseKey(m_hkey);
     }
@@ -1042,14 +1044,14 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::string_type basic_reg_key<
     size_type   cch_key_class   =   0;
     ws_long_t   res             =   traits_type::reg_query_info(m_hkey, NULL, &cch_key_class, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 query_fail:
 
         static const char message[] = "could not determine the key registry class";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1065,7 +1067,7 @@ query_fail:
 
         res = traits_type::reg_query_info(m_hkey, &p[0], &cch_key_class, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             goto query_fail;
@@ -1086,12 +1088,12 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::size_type basic_reg_key<C,
     ws_uint32_t c_sub_keys;
     ws_long_t   res         =   traits_type::reg_query_info(m_hkey, NULL, NULL, &c_sub_keys, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not determine the number of sub-keys";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1113,12 +1115,12 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::size_type basic_reg_key<C,
     ws_uint32_t c_values;
     ws_long_t   res         =   traits_type::reg_query_info(m_hkey, NULL, NULL, NULL, NULL, NULL, &c_values, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not determine the number of values";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1198,12 +1200,12 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::class_type basic_reg_key<C
     hkey_type   hkey;
     result_type res =   traits_type::reg_create_key(m_hkey, subKeyName, &hkey, accessMask);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not create sub-key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1241,7 +1243,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
             return true;
         default:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }
@@ -1318,11 +1320,11 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key<C, T, A>::result_type b
     result_type res = traits_type::reg_set_value(hkey, valueName, type, value, cbValue);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
         static const char message[] = "could not create value";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1373,7 +1375,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
     // Create a buffer of sufficient size: total length + a nul-terminator for each value + a double nul-terminator
     STLSOFT_NS_QUAL(auto_buffer)<char_type> buff(totalLen + numValues * 1 + 2);
 
-    if(buff.empty())
+    if (buff.empty())
     {
         WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
 
@@ -1453,7 +1455,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
             return true;
         default:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }

@@ -4,10 +4,11 @@
  * Purpose:     Shell memory functions.
  *
  * Created:     2nd March 1996
- * Updated:     13th September 2019
+ * Updated:     30th November 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MAJOR       6
 # define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_REVISION    9
-# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        66
+# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_REVISION    10
+# define WINSTL_VER_WINSTL_SHELL_MEMORY_H_FUNCTIONS_EDIT        67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -115,18 +117,18 @@ namespace winstl_project
  * \note [C++] This function is wrapped by the winstl::SHMemAlloc()
  *   function.
  */
-STLSOFT_INLINE void *winstl__SHMemAlloc(ws_size_t cb)
+STLSOFT_INLINE void* winstl__SHMemAlloc(ws_size_t cb)
 {
     LPMALLOC    lpmalloc;
     void        *pv;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(&lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         pv = WINSTL_ITF_CALL(lpmalloc)->Alloc(WINSTL_ITF_THIS(lpmalloc) cb);
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
 
-        if(NULL == pv)
+        if (NULL == pv)
         {
             WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_NOT_ENOUGH_MEMORY);
         }
@@ -158,12 +160,12 @@ STLSOFT_INLINE void *winstl__SHMemAlloc(ws_size_t cb)
  * \note [C++] This function is wrapped by the winstl::SHMemFree()
  *   function.
  */
-STLSOFT_INLINE void winstl__SHMemFree(void *pv)
+STLSOFT_INLINE void winstl__SHMemFree(void* pv)
 {
     LPMALLOC    lpmalloc;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(&lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         WINSTL_ITF_CALL(lpmalloc)->Free(WINSTL_ITF_THIS(lpmalloc) pv);
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
@@ -227,7 +229,7 @@ DECLARE_INTERFACE_(IMallocGcc32,IUnknown)
  *   function.
  */
 
-STLSOFT_INLINE void *winstl__SHMemRealloc(void *pv, ws_size_t cb)
+STLSOFT_INLINE void* winstl__SHMemRealloc(void* pv, ws_size_t cb)
 {
 #if defined(STLSOFT_COMPILER_IS_GCC) && \
     __GNUC__ < 4 && \
@@ -240,12 +242,12 @@ STLSOFT_INLINE void *winstl__SHMemRealloc(void *pv, ws_size_t cb)
     void            *pvNew;
     HRESULT         hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(stlsoft_reinterpret_cast(LPMALLOC*, &lpmalloc));
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         pvNew = WINSTL_ITF_CALL(lpmalloc)->Realloc(WINSTL_ITF_THIS(lpmalloc) pv, cb);
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
 
-        if( NULL == pvNew &&
+        if (NULL == pvNew &&
             0 != cb &&
             NULL != pv)
         {
@@ -274,13 +276,13 @@ STLSOFT_INLINE void *winstl__SHMemRealloc(void *pv, ws_size_t cb)
  * \note [C++] This function is wrapped by the winstl::SHMemGetSize()
  *   function.
  */
-STLSOFT_INLINE ws_size_t winstl__SHMemGetSize(void *pv)
+STLSOFT_INLINE ws_size_t winstl__SHMemGetSize(void* pv)
 {
     LPMALLOC    lpmalloc;
     ws_size_t   ulRet;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(&lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         ulRet = WINSTL_ITF_CALL(lpmalloc)->GetSize(WINSTL_ITF_THIS(lpmalloc) pv);
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
@@ -310,13 +312,13 @@ STLSOFT_INLINE ws_size_t winstl__SHMemGetSize(void *pv)
  * \note [C++] This function is wrapped by the winstl::SHMemDidAlloc()
  *   function.
  */
-STLSOFT_INLINE ws_sint_t winstl__SHMemDidAlloc(void *pv)
+STLSOFT_INLINE ws_sint_t winstl__SHMemDidAlloc(void* pv)
 {
     LPMALLOC    lpmalloc;
     ws_sint_t   iRet;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(&lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         iRet = WINSTL_ITF_CALL(lpmalloc)->DidAlloc(WINSTL_ITF_THIS(lpmalloc) pv);
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
@@ -346,7 +348,7 @@ STLSOFT_INLINE void winstl__SHMemHeapMinimise(void)
     LPMALLOC    lpmalloc;
     HRESULT     hr  =   STLSOFT_NS_GLOBAL(SHGetMalloc)(&lpmalloc);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         WINSTL_ITF_CALL(lpmalloc)->HeapMinimize(WINSTL_ITF_THIS0(lpmalloc));
         WINSTL_ITF_CALL(lpmalloc)->Release(WINSTL_ITF_THIS0(lpmalloc));
@@ -382,7 +384,7 @@ namespace winstl
  * \return Pointer to the allocated memory block, or NULL if the request
  *   failed.
  */
-inline void *SHMemAlloc(ws_size_t cb)
+inline void* SHMemAlloc(ws_size_t cb)
 {
     return winstl__SHMemAlloc(cb);
 }
@@ -395,7 +397,7 @@ inline void *SHMemAlloc(ws_size_t cb)
  *
  * \param pv Pointer to the memory block to be deallocated
  */
-inline void SHMemFree(void *pv)
+inline void SHMemFree(void* pv)
 {
     winstl__SHMemFree(pv);
 }
@@ -414,7 +416,7 @@ inline void SHMemFree(void *pv)
  * \return Pointer to the allocated memory block, or NULL if the request
  *   failed or cb is 0 and pv is not NULL.
  */
-inline void *SHMemRealloc(void *pv, ws_size_t cb)
+inline void* SHMemRealloc(void* pv, ws_size_t cb)
 {
     return winstl__SHMemRealloc(pv, cb);
 }
@@ -428,7 +430,7 @@ inline void *SHMemRealloc(void *pv, ws_size_t cb)
  * \param pv Pointer to the memory block
  * \return The size of the memory block (in bytes)
  */
-inline ws_size_t SHMemGetSize(void *pv)
+inline ws_size_t SHMemGetSize(void* pv)
 {
     return winstl__SHMemGetSize(pv);
 }
@@ -445,7 +447,7 @@ inline ws_size_t SHMemGetSize(void *pv)
  * \retval 0 The memory block was <i>not</i> allocated by the task allocator
  * \retval -1 SHMemDidAlloc() cannot determine whether the memory block was allocated by the task allocator
  */
-inline ws_sint_t SHMemDidAlloc(void *pv)
+inline ws_sint_t SHMemDidAlloc(void* pv)
 {
     return winstl__SHMemDidAlloc(pv);
 }
