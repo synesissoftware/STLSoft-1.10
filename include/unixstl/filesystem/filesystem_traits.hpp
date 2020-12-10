@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     13th September 2019
+ * Updated:     1st December 2020
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -14,6 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -26,9 +27,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -58,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  16
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      152
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  19
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      155
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,35 +183,35 @@ struct filesystem_traits
 /// \name Types
 /// @{
 private:
-    typedef system_traits<C>                        parent_class_type;
+    typedef system_traits<C>                                parent_class_type;
 public:
     /// The character type
-    typedef C                                       char_type;
+    typedef C                                               char_type;
     /// The size type
-    typedef us_size_t                               size_type;
+    typedef us_size_t                                       size_type;
     /// The difference type
-    typedef us_ptrdiff_t                            difference_type;
+    typedef us_ptrdiff_t                                    difference_type;
     /// The stat data type
-    typedef struct stat                             stat_data_type;
+    typedef struct stat                                     stat_data_type;
     /// The fstat data type
-    typedef struct stat                             fstat_data_type;
+    typedef struct stat                                     fstat_data_type;
     /// The current instantion of the type
-    typedef filesystem_traits<C>                    class_type;
+    typedef filesystem_traits<C>                            class_type;
     /// The (signed) integer type
-    typedef us_int_t                                int_type;
+    typedef us_int_t                                        int_type;
     /// The Boolean type
-    typedef us_bool_t                               bool_type;
+    typedef us_bool_t                                       bool_type;
     /// The type of a system file handle
-    typedef int                                     file_handle_type;
+    typedef int                                             file_handle_type;
     /// The type of a handle to a dynamically loaded module
-    typedef void*                                   module_type;
+    typedef void*                                           module_type;
     /// The type of system error codes
-    typedef int                                     error_type;
+    typedef int                                             error_type;
     /// The mode type
 #ifdef _WIN32
-    typedef unsigned short                          mode_type;
+    typedef unsigned short                                  mode_type;
 #else /* ? _WIN32 */
-    typedef mode_t                                  mode_type;
+    typedef mode_t                                          mode_type;
 #endif /* _WIN32 */
 /// @}
 
@@ -328,15 +330,16 @@ public:
     /// \note Because not all systems support fixed maximum path lengths, the value of this function is notionally dynamic
     static size_type    path_max();
     /// Gets the full path name into the given buffer, returning a pointer to the file-part
-    static size_type    get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer, char_type** ppFile);
+    static size_type    get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile);
     /// Gets the full path name into the given buffer
-    static size_type    get_full_path_name(char_type const* fileName, char_type* buffer, size_type cchBuffer);
+    static size_type    get_full_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer);
+
     /// Gets the full path name into the given buffer
     ///
     /// \deprecated The other overload is now the preferred form
-    static size_type    get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer);
+    static size_type    get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[]);
     /// Gets the short path name into the given buffer
-    static size_type    get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer);
+    static size_type    get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[]);
 /// @}
 
 /// \name File-system enumeration
@@ -361,9 +364,22 @@ public:
     /// Retrieves the name of the current directory into \c buffer up to a maximum of \c cchBuffer characters
     ///
     /// \deprecated The other overload is now the preferred form
-    static size_type    get_current_directory(size_type cchBuffer, char_type* buffer);
+    static size_type    get_current_directory(size_type cchBuffer, char_type buffer[]);
     /// Retrieves the name of the current directory into \c buffer up to a maximum of \c cchBuffer characters
-    static size_type    get_current_directory(char_type* buffer, size_type cchBuffer);
+    static size_type    get_current_directory(char_type buffer[], size_type cchBuffer);
+
+    /// Retrieves the name of the current directory into the given buffer
+    ///
+    /// \param rb Reference to a resizeable buffer into which the
+    ///   full-path is to be written
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_current_directory(
+        T_resizeableBuffer& rb
+    );
 /// @}
 
 /// \name File-system state
@@ -570,7 +586,7 @@ public:
 
         char_type* end = str_end(dir);
 
-        if( dir < end &&
+        if (dir < end &&
             !is_path_name_separator(*(end - 1)))
         {
             *end        =   path_name_separator();
@@ -586,7 +602,7 @@ public:
 
 #ifdef _WIN32
         // Don't trim drive roots ...
-        if( isalpha(dir[0]) &&
+        if (isalpha(dir[0]) &&
             ':' == dir[1] &&
             is_path_name_separator(dir[2]) &&
             '\0' == dir[3])
@@ -595,7 +611,7 @@ public:
         }
 
         // ... or UNC roots
-        if( '\\' == dir[0] &&
+        if ('\\' == dir[0] &&
             '\\' == dir[1] &&
             '\0' == dir[3])
         {
@@ -605,7 +621,7 @@ public:
 
         char_type* end = str_end(dir);
 
-        if( dir < end &&
+        if (dir < end &&
             is_path_name_separator(*(end - 1)))
         {
             *(end - 1)  =   '\0';
@@ -631,13 +647,13 @@ public:
 #if defined(_WIN32)
         char_type* pFile2   =   str_chr(path, '\\');
 
-        if(NULL == pFile)
+        if (NULL == pFile)
         {
             pFile = pFile2;
         }
-        else if(NULL != pFile2)
+        else if (NULL != pFile2)
         {
-            if(pFile2 < pFile)
+            if (pFile2 < pFile)
             {
                 pFile = pFile2;
             }
@@ -655,13 +671,13 @@ public:
 #if defined(_WIN32)
         char_type* pFile2   =   str_rchr(path, '\\');
 
-        if(NULL == pFile)
+        if (NULL == pFile)
         {
             pFile = pFile2;
         }
-        else if(NULL != pFile2)
+        else if (NULL != pFile2)
         {
-            if(pFile2 > pFile)
+            if (pFile2 > pFile)
             {
                 pFile = pFile2;
             }
@@ -675,17 +691,17 @@ public:
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        if('.' == dir[0])
+        if ('.' == dir[0])
         {
-            if('\0' == dir[1])
+            if ('\0' == dir[1])
             {
                 // found "."
                 return true;
             }
 
-            if('.' == dir[1])
+            if ('.' == dir[1])
             {
-                if('\0' == dir[2])
+                if ('\0' == dir[2])
                 {
                     // found ".."
                     return true;
@@ -704,14 +720,14 @@ public:
         // It might be a UNC path. This is handled by the second test below, but
         // this is a bit clearer, and since this is a debug kind of thing, we're
         // not worried about the cost
-        if( '\\' == path[0] &&
+        if ('\\' == path[0] &&
             '\\' == path[1])
         {
             return true;
         }
 
         // If it's really on Windows, then we need to skip the drive, if present
-        if( isalpha(path[0]) &&
+        if (isalpha(path[0]) &&
             ':' == path[1])
         {
             path += 2;
@@ -733,22 +749,22 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
-        if(cchPath >= 2)
+        if (cchPath >= 2)
         {
             // It might be a UNC path. This is handled by the second test below, but
             // this is a bit clearer, and since this is a debug kind of thing, we're
             // not worried about the cost
-            if( '\\' == path[0] &&
+            if ('\\' == path[0] &&
                 '\\' == path[1])
             {
                 return true;
             }
         }
 
-        if(cchPath >= 2)
+        if (cchPath >= 2)
         {
             // If it's really on Windows, then we need to skip the drive, if present
-            if( isalpha(path[0]) &&
+            if (isalpha(path[0]) &&
                 ':' == path[1])
             {
                 path += 2;
@@ -772,19 +788,19 @@ public:
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
-        if(is_path_UNC(path))
+        if (is_path_UNC(path))
         {
             return true;
         }
         // ... it's got drive + root slash, or
-        if( isalpha(path[0]) &&
+        if (isalpha(path[0]) &&
             ':' == path[1] &&
             is_path_name_separator(path[2]))
         {
             return true;
         }
         // ... it's got root forward slash
-        if('/' == path[0])
+        if ('/' == path[0])
         {
             return true;
         }
@@ -800,7 +816,7 @@ public:
     ,   size_t              cchPath
     )
     {
-        if(0 == cchPath)
+        if (0 == cchPath)
         {
             return false;
         }
@@ -809,14 +825,14 @@ public:
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
-        if(is_path_UNC(path, cchPath))
+        if (is_path_UNC(path, cchPath))
         {
             return true;
         }
-        if(cchPath >= 3)
+        if (cchPath >= 3)
         {
             // ... it's got drive + root slash, or
-            if( isalpha(path[0]) &&
+            if (isalpha(path[0]) &&
                 ':' == path[1] &&
                 is_path_name_separator(path[2]))
             {
@@ -824,7 +840,7 @@ public:
             }
         }
         // ... it's got root forward slash
-        if('/' == path[0])
+        if ('/' == path[0])
         {
             return true;
         }
@@ -876,7 +892,7 @@ private:
     static bool_type is_root_drive_(char_type const* path)
     {
 #ifdef _WIN32
-        if( isalpha(path[0]) &&
+        if (isalpha(path[0]) &&
             ':' == path[1] &&
             is_path_name_separator(path[2]) &&
             '\0' == path[3])
@@ -892,11 +908,11 @@ private:
     static bool_type is_root_UNC_(char_type const* path)
     {
 #ifdef _WIN32
-        if(is_path_UNC(path))
+        if (is_path_UNC(path))
         {
             char_type const* sep = str_pbrk(path + 2, "\\/");
 
-            if( NULL == sep ||
+            if (NULL == sep ||
                 '\0' == sep[1])
             {
                 return true;
@@ -910,7 +926,7 @@ private:
     }
     static bool_type is_root_directory_(char_type const* path)
     {
-        if( is_path_name_separator(path[0]) &&
+        if (is_path_name_separator(path[0]) &&
             '\0' == path[1])
         {
             return true;
@@ -929,7 +945,7 @@ public:
     static bool_type is_path_name_separator(char_type ch)
     {
 #ifdef _WIN32
-        if('\\' == ch)
+        if ('\\' == ch)
         {
             return true;
         }
@@ -971,14 +987,14 @@ private:
     ,   size_type           len
     )
     {
-        if(0 == len)
+        if (0 == len)
         {
             return 0;
         }
 
 #ifdef _WIN32
         // If it's really on Windows, then we need to check for drive designator
-        if( iswalpha(path[0]) &&
+        if (iswalpha(path[0]) &&
             ':' == path[1] &&
             is_path_name_separator(path[2]))
         {
@@ -986,12 +1002,12 @@ private:
         }
 
         // If it's really on Windows, then we need to skip the drive, if present
-        if( '\\' == path[0] &&
+        if ('\\' == path[0] &&
             '\\' == path[1])
         {
             char_type const* slash2 = find_next_path_name_separator(path + 2);
 
-            if(NULL == slash2)
+            if (NULL == slash2)
             {
 #if 0
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_INVALID_ARGUMENT);
@@ -1032,7 +1048,7 @@ private:
     ,   size_type           cchBuffer
     )
     {
-        if( NULL != buffer &&
+        if (NULL != buffer &&
             0 == cchBuffer)
         {
             return 0;
@@ -1040,14 +1056,14 @@ private:
 
         // The next thing to so is determine whether the path is absolute, in
         // which case we'll just copy it into the buffer
-        if(is_path_rooted(fileName))
+        if (is_path_rooted(fileName))
         {
             // Given path is absolute, so simply copy into buffer
-            if(NULL == buffer)
+            if (NULL == buffer)
             {
                 return len;
             }
-            else if(cchBuffer < len + 1)
+            else if (cchBuffer < len + 1)
             {
                 char_copy(&buffer[0], fileName, cchBuffer);
 
@@ -1067,7 +1083,7 @@ private:
             // Given path is relative, so get the current directory, and then concatenate
             buffer_type_ directory(1 + path_max());
 
-            if(0 == directory.size())
+            if (0 == directory.size())
             {
                 set_last_error(ENOMEM);
 
@@ -1077,47 +1093,47 @@ private:
             {
                 size_type lenDir = get_current_directory(&directory[0], directory.size());
 
-                if(0 == lenDir)
+                if (0 == lenDir)
                 {
                     // The call failed, so indicate that to caller
                     return 0;
                 }
                 else
                 {
-                    if( '.' == fileName[0] &&
+                    if ('.' == fileName[0] &&
                         (   1 == len ||
                             (   2 == len &&
                                 '.' == fileName[1])))
                     {
-                        if(1 == len)
+                        if (1 == len)
                         {
                             // '.'
 
-                            if(NULL == buffer)
+                            if (NULL == buffer)
                             {
                                 return lenDir;
                             }
                         }
                         else
-                        if(2 == len)
+                        if (2 == len)
                         {
                             // '..'
 
                             size_t const rootLen = get_root_len_(directory.data(), lenDir);
 
                             // Remove trailing slash, if any
-                            if( lenDir > rootLen &&
+                            if (lenDir > rootLen &&
                                 has_dir_end(directory.data() + (lenDir - 1)))
                             {
                                 remove_dir_end(directory.data() + (lenDir - 1));
                                 --lenDir;
                             }
 
-                            if(lenDir > rootLen)
+                            if (lenDir > rootLen)
                             {
                                 char_type* const lastSlash = const_cast<char_type*>(find_last_path_name_separator(directory.data() + rootLen));
 
-                                if(NULL != lastSlash)
+                                if (NULL != lastSlash)
                                 {
                                     size_t const newLen = lastSlash - directory.data();
 
@@ -1131,13 +1147,13 @@ private:
                                 }
                             }
 
-                            if(NULL == buffer)
+                            if (NULL == buffer)
                             {
                                 return lenDir;
                             }
                         }
 
-                        if(cchBuffer < lenDir + 1)
+                        if (cchBuffer < lenDir + 1)
                         {
                             char_copy(&buffer[0], directory.data(), cchBuffer);
 
@@ -1166,13 +1182,13 @@ return 0;
 
                         size_type const required = len + lenDir;
 
-                        if(NULL == buffer)
+                        if (NULL == buffer)
                         {
                             return required;
                         }
                         else
                         {
-                            if(cchBuffer < lenDir + 1)
+                            if (cchBuffer < lenDir + 1)
                             {
                                 char_copy(&buffer[0], directory.data(), cchBuffer);
 
@@ -1182,7 +1198,7 @@ return 0;
                             {
                                 char_copy(&buffer[0], directory.data(), lenDir);
 
-                                if(cchBuffer < required + 1)
+                                if (cchBuffer < required + 1)
                                 {
                                     char_copy(&buffer[0] + lenDir, fileName, cchBuffer - lenDir);
 
@@ -1203,18 +1219,18 @@ return 0;
         }
     }
 
-    static size_type get_full_path_name_impl(char_type const* fileName, us_size_t len, char_type* buffer, size_type cchBuffer)
+    static size_type get_full_path_name_impl(char_type const* fileName, us_size_t len, char_type buffer[], size_type cchBuffer)
     {
         UNIXSTL_ASSERT(len > 0);
 
-        if(NULL != class_type::str_pbrk(fileName, "<>|*?"))
+        if (NULL != class_type::str_pbrk(fileName, "<>|*?"))
         {
             errno = ENOENT;
 
             return 0;
         }
 
-        if('\0' != fileName[len])
+        if ('\0' != fileName[len])
         {
             buffer_type_ fileName_(1 + (len - 1));
 
@@ -1223,7 +1239,7 @@ return 0;
             // but it's best not, since some translators support exceptions but yet
             // don't throw on mem exhaustion, and in any case a user could change
             // ::new)
-            if(0 == fileName_.size())
+            if (0 == fileName_.size())
             {
                 set_last_error(ENOMEM);
 
@@ -1246,7 +1262,7 @@ return 0;
     }
 
 public:
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer, char_type** ppFile)
+    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile)
     {
         UNIXSTL_ASSERT(NULL != ppFile);
 
@@ -1254,18 +1270,18 @@ public:
 
         *ppFile = NULL;
 
-        if( NULL != buffer &&
+        if (NULL != buffer &&
             0 != r &&
             r <= cchBuffer)
         {
             size_type cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
 
-            if(r == cchRequired)
+            if (r == cchRequired)
             {
                 // Now search for the file separator
                 char_type* pFile = const_cast<char_type*>(find_last_path_name_separator(buffer));
 
-                if(NULL != (*ppFile = pFile))
+                if (NULL != (*ppFile = pFile))
                 {
                     (*ppFile)++;
                 }
@@ -1275,12 +1291,12 @@ public:
         return r;
     }
 
-    static size_type get_full_path_name(char_type const* fileName, char_type* buffer, size_type cchBuffer)
+    static size_type get_full_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
     {
         UNIXSTL_ASSERT(NULL != fileName);
         UNIXSTL_ASSERT(0 == cchBuffer || NULL != buffer);
 
-        if('\0' == *fileName)
+        if ('\0' == *fileName)
         {
             static const char s_dot[2] = { '.', '\0' };
 
@@ -1291,12 +1307,12 @@ public:
         return get_full_path_name_impl(fileName, str_len(fileName), buffer, cchBuffer);
     }
 
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer)
+    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
     }
 
-    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer)
+    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, cchBuffer, buffer);
     }
@@ -1328,13 +1344,29 @@ public:
 #endif /* _WIN32 */
     }
 
-    static size_type get_current_directory(size_type cchBuffer, char_type* buffer)
+    static size_type get_current_directory(size_type cchBuffer, char_type buffer[])
     {
         return get_current_directory(buffer, cchBuffer);
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_current_directory(
+        T_resizeableBuffer& rb
+    )
+    {
+        size_type const cchRequired = get_current_directory(static_cast<char_type*>(NULL), 0);
+
+        rb.resize(cchRequired);
+
+        return get_current_directory(&rb[0], rb.size());
+    }
+
 private:
-    static char_type const* call_getcwd_(char_type* buffer, size_type cchBuffer)
+    static char_type const* call_getcwd_(char_type buffer[], size_type cchBuffer)
     {
 #if defined(STLSOFT_COMPILER_IS_INTEL) || \
     defined(STLSOFT_COMPILER_IS_MSVC)
@@ -1345,7 +1377,7 @@ private:
     }
 public:
 
-    static size_type get_current_directory(char_type* buffer, size_type cchBuffer)
+    static size_type get_current_directory(char_type buffer[], size_type cchBuffer)
     {
 #if defined(_WIN32)
         char_type               local[1 + _MAX_PATH];
@@ -1365,7 +1397,7 @@ public:
                 , p(new traits_type_::char_type[n + 1])
             {
                 // check, for non-throwing new
-                if(NULL == p)
+                if (NULL == p)
                 {
                     n = 0;
                 }
@@ -1398,7 +1430,7 @@ public:
 
         char_type const* const  dir = call_getcwd_(local, cchLocal);
 
-        if(NULL == dir)
+        if (NULL == dir)
         {
             return 0;
         }
@@ -1406,9 +1438,9 @@ public:
         {
             size_type const len = str_len(dir);
 
-            if(0 == cchBuffer)
+            if (0 == cchBuffer)
             {
-                return len;
+                return 1 + len;
             }
             else
             {
@@ -1416,7 +1448,7 @@ public:
 
                 char_copy(buffer, dir, n);
 
-                if(n < cchBuffer)
+                if (n < cchBuffer)
                 {
                     buffer[n] = '\0';
                 }
@@ -1471,7 +1503,7 @@ public:
         UNIXSTL_ASSERT(NULL != stat_data);
 
 #ifdef _WIN32
-        if(NULL != class_type::str_pbrk(path, "*?"))
+        if (NULL != class_type::str_pbrk(path, "*?"))
         {
             // Sometimes the VC6 CRT libs crash with a wildcard stat
             set_last_error(EBADF);
@@ -1479,18 +1511,18 @@ public:
             return false;
         }
 
-        if(has_dir_end(path))
+        if (has_dir_end(path))
         {
             // Win32 impl does not like a trailing slash
             size_type len = str_len(path);
 
-            if( len > 3 ||
+            if (len > 3 ||
                 (   is_path_name_separator(*path) &&
                     len > 2))
             {
                 buffer_type_ directory(1 + len);
 
-                if(0 == directory.size())
+                if (0 == directory.size())
                 {
                     set_last_error(ENOMEM);
 
@@ -1747,7 +1779,7 @@ public:
 
         char_type* end = str_end(dir);
 
-        if( dir < end &&
+        if (dir < end &&
             !is_path_name_separator(*(end - 1)))
         {
             *end        =   path_name_separator();
@@ -1763,7 +1795,7 @@ public:
 
 #ifdef _WIN32
         // Don't trim drive roots ...
-        if( iswalpha(dir[0]) &&
+        if (iswalpha(dir[0]) &&
             L':' == dir[1] &&
             is_path_name_separator(dir[2]) &&
             L'\0' == dir[3])
@@ -1772,7 +1804,7 @@ public:
         }
 
         // ... or UNC roots
-        if( L'\\' == dir[0] &&
+        if (L'\\' == dir[0] &&
             L'\\' == dir[1] &&
             L'\0' == dir[3])
         {
@@ -1782,7 +1814,7 @@ public:
 
         char_type* end = str_end(dir);
 
-        if( dir < end &&
+        if (dir < end &&
             is_path_name_separator(*(end - 1)))
         {
             *(end - 1)  =   L'\0';
@@ -1808,13 +1840,13 @@ public:
 #if defined(_WIN32)
         char_type* pFile2   =   str_chr(path, L'\\');
 
-        if(NULL == pFile)
+        if (NULL == pFile)
         {
             pFile = pFile2;
         }
-        else if(NULL != pFile2)
+        else if (NULL != pFile2)
         {
-            if(pFile2 < pFile)
+            if (pFile2 < pFile)
             {
                 pFile = pFile2;
             }
@@ -1832,13 +1864,13 @@ public:
 #if defined(_WIN32)
         char_type* pFile2   =   str_rchr(path, L'\\');
 
-        if(NULL == pFile)
+        if (NULL == pFile)
         {
             pFile = pFile2;
         }
-        else if(NULL != pFile2)
+        else if (NULL != pFile2)
         {
-            if(pFile2 > pFile)
+            if (pFile2 > pFile)
             {
                 pFile = pFile2;
             }
@@ -1852,17 +1884,17 @@ public:
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        if(L'.' == dir[0])
+        if (L'.' == dir[0])
         {
-            if(L'\0' == dir[1])
+            if (L'\0' == dir[1])
             {
                 // found L"."
                 return true;
             }
 
-            if(L'.' == dir[1])
+            if (L'.' == dir[1])
             {
-                if(L'\0' == dir[2])
+                if (L'\0' == dir[2])
                 {
                     // found L".."
                     return true;
@@ -1879,7 +1911,7 @@ public:
 
 #ifdef _WIN32
         // If it's really on Windows, then we need to skip the drive, if present
-        if( iswalpha(path[0]) &&
+        if (iswalpha(path[0]) &&
             ':' == path[1])
         {
             path += 2;
@@ -1887,7 +1919,7 @@ public:
 
         // If it's really on Windows, then we need to account for the fact that
         // the slash might be backwards
-        if('\\' == *path)
+        if ('\\' == *path)
         {
             return true;
         }
@@ -1904,22 +1936,22 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
-        if(cchPath >= 2)
+        if (cchPath >= 2)
         {
             // It might be a UNC path. This is handled by the second test below, but
             // this is a bit clearer, and since this is a debug kind of thing, we're
             // not worried about the cost
-            if( L'\\' == path[0] &&
+            if (L'\\' == path[0] &&
                 L'\\' == path[1])
             {
                 return true;
             }
         }
 
-        if(cchPath >= 2)
+        if (cchPath >= 2)
         {
             // If it's really on Windows, then we need to skip the drive, if present
-            if( iswalpha(path[0]) &&
+            if (iswalpha(path[0]) &&
                 L':' == path[1])
             {
                 path += 2;
@@ -1951,7 +1983,7 @@ public:
     ,   size_t              cchPath
     )
     {
-        if(0 == cchPath)
+        if (0 == cchPath)
         {
             return false;
         }
@@ -1960,14 +1992,14 @@ public:
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
-        if(is_path_UNC(path, cchPath))
+        if (is_path_UNC(path, cchPath))
         {
             return true;
         }
-        if(cchPath >= 3)
+        if (cchPath >= 3)
         {
             // ... it's got drive + root slash, or
-            if( iswalpha(path[0]) &&
+            if (iswalpha(path[0]) &&
                 L':' == path[1] &&
                 is_path_name_separator(path[2]))
             {
@@ -1975,7 +2007,7 @@ public:
             }
         }
         // ... it's got root forward slash
-        if(L'/' == path[0])
+        if (L'/' == path[0])
         {
             return true;
         }
@@ -2026,7 +2058,7 @@ public:
     static bool_type is_path_name_separator(char_type ch)
     {
 #ifdef _WIN32
-        if(L'\\' == ch)
+        if (L'\\' == ch)
         {
             return true;
         }
@@ -2060,21 +2092,21 @@ public:
     }
 
 #if 0
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer, char_type** ppFile);
+    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile);
 
-    static size_type get_full_path_name(char_type const* fileName, char_type* buffer, size_type cchBuffer)
+    static size_type get_full_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
     {
         char_type* pFile;
 
         return get_full_path_name(fileName, cchBuffer, buffer, &pFile);
     }
 
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer)
+    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
     }
 
-    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type* buffer)
+    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, cchBuffer, buffer);
     }
@@ -2083,9 +2115,9 @@ public:
     // File-system state
     static bool_type set_current_directory(char_type const* dir);
 
-    static size_type get_current_directory(size_type cchBuffer, char_type* buffer);
+    static size_type get_current_directory(size_type cchBuffer, char_type buffer[]);
 
-    static size_type get_current_directory(char_type* buffer, size_type cchBuffer);
+    static size_type get_current_directory(char_type buffer[], size_type cchBuffer);
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
