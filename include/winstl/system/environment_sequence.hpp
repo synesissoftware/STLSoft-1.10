@@ -4,10 +4,11 @@
  * Purpose:     basic_environment_sequence class.
  *
  * Created:     31st December 2002
- * Updated:     13th September 2019
+ * Updated:     3rd December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_MINOR    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_REVISION 8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_EDIT     97
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_REVISION 9
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_EDIT     98
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -144,7 +146,7 @@ class basic_environment_sequence
 /// @{
 public:
     /// The character type
-    typedef C                                                   char_type;
+    typedef C                                               char_type;
     /// Structure representing the items
     struct symbol
     {
@@ -154,38 +156,40 @@ public:
         char_type const* value;
     };
     /// The value type
-    typedef symbol                                              value_type;
+    typedef symbol                                          value_type;
     /// The current parameterisation of the type
-    typedef basic_environment_sequence<C>                       class_type;
+    typedef basic_environment_sequence<C>                   class_type;
     /// The non-mutable (const) pointer type
-    typedef value_type const*                                   const_pointer;
+    typedef value_type const*                               const_pointer;
     /// The non-mutable (const) reference type
-    typedef value_type const&                                   const_reference;
+    typedef value_type const&                               const_reference;
     /// The size type
-    typedef ws_size_t                                           size_type;
+    typedef ws_size_t                                       size_type;
     /// The difference type
-    typedef ws_ptrdiff_t                                        difference_type;
+    typedef ws_ptrdiff_t                                    difference_type;
     /// The non-mutating (const) iterator type
     typedef
 #if !defined(STLSOFT_COMPILER_IS_BORLAND)
       ss_typename_type_k
 #endif /* compiler */
-        STLSOFT_NS_QUAL(pointer_iterator)   <   value_type
-                                            ,   const_pointer
-                                            ,   const_reference
-                                            >::type             const_iterator;
+        STLSOFT_NS_QUAL(pointer_iterator)<
+          value_type
+        , const_pointer
+        , const_reference
+        >::type                                             const_iterator;
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
     /// The non-mutating (const) reverse iterator type
     typedef
 #if !defined(STLSOFT_COMPILER_IS_BORLAND)
-            ss_typename_type_k
+      ss_typename_type_k
 #endif /* compiler */
-                               STLSOFT_NS_QUAL(const_reverse_iterator_generator)<   const_iterator
-                                                                                ,   value_type
-                                                                                ,   const_reference
-                                                                                ,   const_pointer
-                                                                                ,   difference_type
-                                                                                >::type     const_reverse_iterator;
+        STLSOFT_NS_QUAL(const_reverse_iterator_generator)<
+          const_iterator
+        , value_type
+        , const_reference
+        , const_pointer
+        , difference_type
+        >::type                                             const_reverse_iterator;
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 /// @}
 
@@ -266,15 +270,17 @@ public:
 
 // Implementation
 private:
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   char_type
-                                            ,   processheap_allocator<char_type>
-                                            >           environment_buffer_type;
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   symbol
-                                            ,   processheap_allocator<symbol>
-                                            >           symbols_buffer_type;
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        char_type
+    ,   processheap_allocator<char_type>
+    >                                                       environment_buffer_type_;
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        symbol
+    ,   processheap_allocator<symbol>
+    >                                                       symbols_buffer_type_;
 
     static ws_size_t    calc_items_(char_type const* p, char_type const** q, ws_int_t flags);
-    static void         prepare_items_(symbols_buffer_type &symbols, environment_buffer_type &environment, char_type *p, char_type *q, ws_int_t flags);
+    static void         prepare_items_(symbols_buffer_type_& symbols, environment_buffer_type_& environment, char_type* p, char_type* q, ws_int_t flags);
 private:
     static ws_int_t     compare_strings_(char_type const* s1, char_type const* s2, ws_int_t flags);
 
@@ -307,14 +313,14 @@ public:
 private:
     static ws_int_t         validate_flags_(ws_int_t flags);
     static char_type const* get_environment_strings_();
-    static void             free_environment_strings_(char_type *);
+    static void             free_environment_strings_(char_type*);
 
 private:
-    const ws_int_t          m_flags;        // The flags as specified to the ctor
-    C const                 *m_p;           // Pointer to the start of the raw environment block
-    C const                 *m_q;           // Pointer to the (one off the) end of the raw environment block
-    symbols_buffer_type     m_symbols;      // Array of symbols representing the parsed environment block
-    environment_buffer_type m_environment;  // The editable (and edited) copy of the environment block
+    const ws_int_t              m_flags;        // The flags as specified to the ctor
+    C const*                    m_p;            // Pointer to the start of the raw environment block
+    C const*                    m_q;            // Pointer to the (one off the) end of the raw environment block
+    symbols_buffer_type_        m_symbols;      // Array of symbols representing the parsed environment block
+    environment_buffer_type_    m_environment;  // The editable (and edited) copy of the environment block
 
 // Not to be implemented
 private:
@@ -348,16 +354,22 @@ typedef basic_environment_sequence<TCHAR>           environment_sequence;
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 template <ss_typename_param_k C>
-inline /* static */ ss_typename_type_ret_k basic_environment_sequence<C>::size_type basic_environment_sequence<C>::calc_items_(ss_typename_type_k basic_environment_sequence<C>::char_type const* p, ss_typename_type_k basic_environment_sequence<C>::char_type const** q, ws_int_t flags)
+inline /* static */
+ss_typename_type_ret_k basic_environment_sequence<C>::size_type
+basic_environment_sequence<C>::calc_items_(
+    ss_typename_type_k basic_environment_sequence<C>::char_type const*  p
+,   ss_typename_type_k basic_environment_sequence<C>::char_type const** q
+,   ws_int_t                                                            flags
+)
 {
     size_type           c;
     char_type const*    v;
 
-    for(c = 0, v = p;; ++p)
+    for (c = 0, v = p;; ++p)
     {
-        if(*p == 0) // End of an environment variable?
+        if (*p == 0) // End of an environment variable?
         {
-            if( showHidden == (showHidden & flags) ||
+            if (showHidden == (showHidden & flags) ||
                 '=' != v[0])
             {
                 ++c;
@@ -365,7 +377,7 @@ inline /* static */ ss_typename_type_ret_k basic_environment_sequence<C>::size_t
 
             v = p + 1;
 
-            if(*(p + 1) == 0) // End of all environment variable
+            if (*(p + 1) == 0) // End of all environment variable
             {
                 *q = p + 1;
                 break;
@@ -378,12 +390,20 @@ inline /* static */ ss_typename_type_ret_k basic_environment_sequence<C>::size_t
 
 
 template <ss_typename_param_k C>
-inline /* static */ void basic_environment_sequence<C>::prepare_items_(ss_typename_type_k basic_environment_sequence<C>::symbols_buffer_type &symbols, ss_typename_type_k basic_environment_sequence<C>::environment_buffer_type &environment, ss_typename_type_k basic_environment_sequence<C>::char_type *p, ss_typename_type_k basic_environment_sequence<C>::char_type* q, ws_int_t flags)
+inline /* static */
+void
+basic_environment_sequence<C>::prepare_items_(
+    ss_typename_type_k basic_environment_sequence<C>::symbols_buffer_type_&     symbols
+,   ss_typename_type_k basic_environment_sequence<C>::environment_buffer_type_& environment
+,   ss_typename_type_k basic_environment_sequence<C>::char_type*                p
+,   ss_typename_type_k basic_environment_sequence<C>::char_type*                q
+,   ws_int_t flags
+)
 {
-    ss_typename_type_k environment_buffer_type::iterator    env_begin   =   environment.begin();
-    ss_typename_type_k symbols_buffer_type::iterator        sym_begin   =   symbols.begin();
+    ss_typename_type_k environment_buffer_type_::iterator   env_begin   =   environment.begin();
+    ss_typename_type_k symbols_buffer_type_::iterator       sym_begin   =   symbols.begin();
     char_type*                                              begin       =   p;
-    char_type *const                                        end         =   q;
+    char_type* const                                        end         =   q;
     char_type*                                              last_src    =   begin;
     char_type*                                              last_dest   =   &*env_begin; // Need this because may be using VC7.0 style pointer iterators
 
@@ -394,18 +414,18 @@ inline /* static */ void basic_environment_sequence<C>::prepare_items_(ss_typena
     //
     // Secondly, it processes the source, and adjusts the m_symbols and
     // m_environment contents accordingly.
-    for(; begin != end;)
+    for (; begin != end;)
     {
         *env_begin = *begin;
 
-        if(*begin == 0)
+        if (*begin == 0)
         {
             const ws_bool_t bHidden =   ('=' == last_dest[0]);
 
             sym_begin->name  =   last_dest;
-            for(; last_src != begin; ++last_src, ++last_dest)
+            for (; last_src != begin; ++last_src, ++last_dest)
             {
-                if( *last_src == '=' &&
+                if (*last_src == '=' &&
                     (   !bHidden ||
                         sym_begin->name != last_dest))
                 {
@@ -419,7 +439,7 @@ inline /* static */ void basic_environment_sequence<C>::prepare_items_(ss_typena
             last_src            =   ++begin;
             last_dest           =   &*++env_begin;
 
-            if( showHidden == (showHidden & flags) ||
+            if (showHidden == (showHidden & flags) ||
                 !bHidden)
             {
                 ++sym_begin;
@@ -432,14 +452,18 @@ inline /* static */ void basic_environment_sequence<C>::prepare_items_(ss_typena
         }
     }
 
-    if(0 == (noSort & flags))
+    if (0 == (noSort & flags))
     {
         STLSOFT_NS_QUAL_STD(sort)(symbols.begin(), symbols.end(), compare_symbol());
     }
 }
 
 template <ss_typename_param_k C>
-inline /* static */ ws_int_t basic_environment_sequence<C>::validate_flags_(ws_int_t flags)
+inline /* static */
+ws_int_t
+basic_environment_sequence<C>::validate_flags_(
+    ws_int_t flags
+)
 {
     const ws_int_t  validFlags  =   0
                                 |   showHidden
@@ -454,31 +478,46 @@ inline /* static */ ws_int_t basic_environment_sequence<C>::validate_flags_(ws_i
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ basic_environment_sequence<ws_char_a_t>::char_type const* basic_environment_sequence<ws_char_a_t>::get_environment_strings_()
+inline /* static */
+basic_environment_sequence<ws_char_a_t>::char_type const*
+basic_environment_sequence<ws_char_a_t>::get_environment_strings_()
 {
     return static_cast<ws_char_a_t const*>(::GetEnvironmentStringsA());
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ basic_environment_sequence<ws_char_w_t>::char_type const* basic_environment_sequence<ws_char_w_t>::get_environment_strings_()
+inline /* static */
+basic_environment_sequence<ws_char_w_t>::char_type const*
+basic_environment_sequence<ws_char_w_t>::get_environment_strings_()
 {
     return static_cast<ws_char_w_t const*>(::GetEnvironmentStringsW());
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ void basic_environment_sequence<ws_char_a_t>::free_environment_strings_(basic_environment_sequence<ws_char_a_t>::char_type *s)
+inline /* static */
+void basic_environment_sequence<ws_char_a_t>::free_environment_strings_(
+    basic_environment_sequence<ws_char_a_t>::char_type* s
+)
 {
     ::FreeEnvironmentStringsA(s);
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ void basic_environment_sequence<ws_char_w_t>::free_environment_strings_(basic_environment_sequence<ws_char_w_t>::char_type *s)
+inline /* static */
+void basic_environment_sequence<ws_char_w_t>::free_environment_strings_(
+    basic_environment_sequence<ws_char_w_t>::char_type* s
+)
 {
     ::FreeEnvironmentStringsW(s);
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ ws_int_t basic_environment_sequence<ws_char_a_t>::compare_strings_(ws_char_a_t const* s1, ws_char_a_t const* s2, ws_int_t flags)
+inline /* static */
+ws_int_t basic_environment_sequence<ws_char_a_t>::compare_strings_(
+    ws_char_a_t const*  s1
+,   ws_char_a_t const*  s2
+,   ws_int_t            flags
+)
 {
     typedef system_traits<ws_char_a_t>  traits_t;
 
@@ -486,7 +525,12 @@ inline /* static */ ws_int_t basic_environment_sequence<ws_char_a_t>::compare_st
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
-inline /* static */ ws_int_t basic_environment_sequence<ws_char_w_t>::compare_strings_(ws_char_w_t const* s1, ws_char_w_t const* s2, ws_int_t flags)
+inline /* static */
+ws_int_t basic_environment_sequence<ws_char_w_t>::compare_strings_(
+    ws_char_w_t const*  s1
+,   ws_char_w_t const*  s2
+,   ws_int_t            flags
+)
 {
     typedef system_traits<ws_char_w_t>  traits_t;
 
@@ -494,7 +538,10 @@ inline /* static */ ws_int_t basic_environment_sequence<ws_char_w_t>::compare_st
 }
 
 template <ss_typename_param_k C>
-inline /* ss_explicit_k */ basic_environment_sequence<C>::basic_environment_sequence(ws_int_t flags)
+inline /* ss_explicit_k */
+basic_environment_sequence<C>::basic_environment_sequence(
+    ws_int_t flags
+)
     : m_flags(validate_flags_(flags))
     , m_p(get_environment_strings_())
     , m_symbols(calc_items_(m_p, &m_q, m_flags))
@@ -504,51 +551,59 @@ inline /* ss_explicit_k */ basic_environment_sequence<C>::basic_environment_sequ
 }
 
 template <ss_typename_param_k C>
-inline basic_environment_sequence<C>::~basic_environment_sequence() STLSOFT_NOEXCEPT
+inline
+basic_environment_sequence<C>::~basic_environment_sequence() STLSOFT_NOEXCEPT
 {
     // The documentation for FreeEnvironmentStrings does not explicitly state
     // that it is legal to free a null string, so we must do the test.
-    if(0 != m_p)
+    if (0 != m_p)
     {
         free_environment_strings_(const_cast<char_type*>(m_p));
     }
 }
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basic_environment_sequence<C>::begin() const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator
+basic_environment_sequence<C>::begin() const
 {
     return &*m_symbols.begin();
 }
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basic_environment_sequence<C>::end() const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator
+basic_environment_sequence<C>::end() const
 {
     return &*m_symbols.end();
 }
 
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_reverse_iterator basic_environment_sequence<C>::rbegin() const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_reverse_iterator
+basic_environment_sequence<C>::rbegin() const
 {
     return const_reverse_iterator(end());
 }
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_reverse_iterator basic_environment_sequence<C>::rend() const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_reverse_iterator
+basic_environment_sequence<C>::rend() const
 {
     return const_reverse_iterator(begin());
 }
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basic_environment_sequence<C>::find(ss_typename_type_k basic_environment_sequence<C>::char_type const* name) const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator
+basic_environment_sequence<C>::find(
+    ss_typename_type_k basic_environment_sequence<C>::char_type const* name
+) const
 {
     const_iterator  b   =   this->begin();
     const_iterator  e   =   this->end();
 
-    for(; b != e; ++b)
+    for (; b != e; ++b)
     {
-        if(0 == compare_strings_(name, (*b).name, m_flags))
+        if (0 == compare_strings_(name, (*b).name, m_flags))
         {
             break;
         }
@@ -558,14 +613,18 @@ inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basi
 }
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basic_environment_sequence<C>::find(ss_typename_type_k basic_environment_sequence<C>::char_type const* name, ss_typename_type_k basic_environment_sequence<C>::char_type const* value) const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator
+basic_environment_sequence<C>::find(
+    ss_typename_type_k basic_environment_sequence<C>::char_type const*  name
+,   ss_typename_type_k basic_environment_sequence<C>::char_type const*  value
+) const
 {
     const_iterator  b   =   this->begin();
     const_iterator  e   =   this->end();
 
-    for(; b != e; ++b)
+    for (; b != e; ++b)
     {
-        if( 0 == compare_strings_(name, (*b).name, m_flags) &&
+        if (0 == compare_strings_(name, (*b).name, m_flags) &&
             (   NULL == value ||
                 0 == compare_strings_(value, (*b).value, m_flags)))
         {
@@ -578,19 +637,24 @@ inline ss_typename_type_ret_k basic_environment_sequence<C>::const_iterator basi
 
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::size_type basic_environment_sequence<C>::size() const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::size_type
+basic_environment_sequence<C>::size() const
 {
     return m_symbols.size();
 }
 
 template <ss_typename_param_k C>
-inline ws_bool_t basic_environment_sequence<C>::empty() const
+inline ws_bool_t
+basic_environment_sequence<C>::empty() const
 {
     return size() == 0;
 }
 
 template <ss_typename_param_k C>
-inline ss_typename_type_ret_k basic_environment_sequence<C>::value_type basic_environment_sequence<C>::operator [](ss_typename_type_k basic_environment_sequence<C>::size_type index) const
+inline ss_typename_type_ret_k basic_environment_sequence<C>::value_type
+basic_environment_sequence<C>::operator [](
+    ss_typename_type_k basic_environment_sequence<C>::size_type index
+) const
 {
     WINSTL_MESSAGE_ASSERT("index access out of range in basic_environment_sequence", index < size() + 1);   // Has to be +1, since legitimate to take address of one-past-the-end
 
