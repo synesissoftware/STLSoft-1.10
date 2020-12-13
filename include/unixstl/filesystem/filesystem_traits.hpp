@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     1st December 2020
+ * Updated:     12th December 2020
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  19
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      155
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  20
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      156
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -565,8 +565,10 @@ public:
     static int_type str_fs_compare(char_type const* s1, char_type const* s2)
     {
 #ifdef _WIN32
+
         return str_compare_no_case(s1, s2);
 #else /* ? _WIN32 */
+
         return str_compare(s1, s2);
 #endif /* _WIN32 */
     }
@@ -574,8 +576,10 @@ public:
     static int_type str_fs_n_compare(char_type const* s1, char_type const* s2, size_type cch)
     {
 #ifdef _WIN32
+
         return str_n_compare_no_case(s1, s2, cch);
 #else /* ? _WIN32 */
+
         return str_n_compare(s1, s2, cch);
 #endif /* _WIN32 */
     }
@@ -601,6 +605,7 @@ public:
         UNIXSTL_ASSERT(NULL != dir);
 
 #ifdef _WIN32
+
         // Don't trim drive roots ...
         if (isalpha(dir[0]) &&
             ':' == dir[1] &&
@@ -717,6 +722,7 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
+
         // It might be a UNC path. This is handled by the second test below, but
         // this is a bit clearer, and since this is a debug kind of thing, we're
         // not worried about the cost
@@ -749,6 +755,7 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
+
         if (cchPath >= 2)
         {
             // It might be a UNC path. This is handled by the second test below, but
@@ -785,6 +792,7 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
+
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
@@ -799,14 +807,10 @@ public:
         {
             return true;
         }
-        // ... it's got root forward slash
-        if ('/' == path[0])
-        {
-            return true;
-        }
 
         return false;
 #else /* ? _WIN32 */
+
         return is_path_rooted(path);
 #endif /* _WIN32 */
     }
@@ -822,6 +826,7 @@ public:
         }
 
 #ifdef _WIN32
+
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
@@ -839,14 +844,10 @@ public:
                 return true;
             }
         }
-        // ... it's got root forward slash
-        if ('/' == path[0])
-        {
-            return true;
-        }
 
         return false;
 #else /* ? _WIN32 */
+
         return is_path_rooted(path, cchPath);
 #endif /* _WIN32 */
     }
@@ -856,10 +857,12 @@ public:
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
+
         size_type const cchPath = str_len(path);
 
         return is_path_UNC(path, cchPath);
 #else /* ? _WIN32 */
+
         STLSOFT_SUPPRESS_UNUSED(path);
 
         return false;
@@ -872,6 +875,7 @@ public:
     )
     {
 #ifdef _WIN32
+
         switch(cchPath)
         {
             case    0:
@@ -881,6 +885,7 @@ public:
                 return '\\' == path[0] && '\\' == path[1];
         }
 #else /* ? _WIN32 */
+
         STLSOFT_SUPPRESS_UNUSED(path);
         STLSOFT_SUPPRESS_UNUSED(cchPath);
 
@@ -892,6 +897,7 @@ private:
     static bool_type is_root_drive_(char_type const* path)
     {
 #ifdef _WIN32
+
         if (isalpha(path[0]) &&
             ':' == path[1] &&
             is_path_name_separator(path[2]) &&
@@ -900,6 +906,7 @@ private:
             return true;
         }
 #else /* ? _WIN32 */
+
         STLSOFT_SUPPRESS_UNUSED(path);
 #endif /* _WIN32 */
 
@@ -908,6 +915,7 @@ private:
     static bool_type is_root_UNC_(char_type const* path)
     {
 #ifdef _WIN32
+
         if (is_path_UNC(path))
         {
             char_type const* sep = str_pbrk(path + 2, "\\/");
@@ -919,6 +927,7 @@ private:
             }
         }
 #else /* ? _WIN32 */
+
         STLSOFT_SUPPRESS_UNUSED(path);
 #endif /* _WIN32 */
 
@@ -945,6 +954,7 @@ public:
     static bool_type is_path_name_separator(char_type ch)
     {
 #ifdef _WIN32
+
         if ('\\' == ch)
         {
             return true;
@@ -972,8 +982,10 @@ public:
     static size_type path_max()
     {
 #if defined(PATH_MAX)
+
         return PATH_MAX;
 #else /* ? PATH_MAX */
+
         return 1 + pathconf("/", _PC_PATH_MAX);
 #endif /* PATH_MAX */
     }
@@ -993,6 +1005,7 @@ private:
         }
 
 #ifdef _WIN32
+
         // If it's really on Windows, then we need to check for drive designator
         if (iswalpha(path[0]) &&
             ':' == path[1] &&
@@ -1020,7 +1033,6 @@ private:
                 return 1 + (slash2 - path);
             }
         }
-
 #endif /* _WIN32 */
 
         return is_path_name_separator(path[0]) ? 1 : 0;
@@ -1338,8 +1350,10 @@ public:
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_MSVC) || \
         defined(STLSOFT_COMPILER_IS_INTEL))
+
         return 0 == ::_chdir(dir);
 #else /* ? _WIN32 */
+
         return 0 == ::chdir(dir);
 #endif /* _WIN32 */
     }
@@ -1380,12 +1394,15 @@ public:
     static size_type get_current_directory(char_type buffer[], size_type cchBuffer)
     {
 #if defined(_WIN32)
+
         char_type               local[1 + _MAX_PATH];
         size_type const         cchLocal = STLSOFT_NUM_ELEMENTS(local);
 #elif defined(PATH_MAX)
+
         char_type               local[1 + PATH_MAX];
         size_type const         cchLocal = STLSOFT_NUM_ELEMENTS(local);
 #else
+
         struct path_max_buffer
         {
         public:
@@ -1477,6 +1494,7 @@ public:
         return class_type::stat(path, &sd) && S_IFDIR == (sd.st_mode & S_IFMT);
     }
 #ifndef _WIN32
+
     static bool_type is_socket(char_type const* path)
     {
         stat_data_type sd;
@@ -1487,10 +1505,12 @@ public:
     static bool_type is_link(char_type const* path)
     {
 #ifdef _WIN32
+
         STLSOFT_SUPPRESS_UNUSED(path);
 
         return false;
 #else /* ? _WIN32 */
+
         stat_data_type sd;
 
         return class_type::lstat(path, &sd) && S_IFLNK == (sd.st_mode & S_IFMT);
@@ -1503,6 +1523,7 @@ public:
         UNIXSTL_ASSERT(NULL != stat_data);
 
 #ifdef _WIN32
+
         if (NULL != class_type::str_pbrk(path, "*?"))
         {
             // Sometimes the VC6 CRT libs crash with a wildcard stat
@@ -1549,8 +1570,10 @@ public:
         UNIXSTL_ASSERT(NULL != stat_data);
 
 #ifdef _WIN32
+
         return 0 == class_type::stat(path, stat_data);
 #else /* ? _WIN32 */
+
         return 0 == ::lstat(path, stat_data);
 #endif /* _WIN32 */
     }
@@ -1579,6 +1602,7 @@ public:
 #endif /* 0 */
     }
 #ifndef _WIN32
+
     static bool_type is_socket(stat_data_type const* stat_data)
     {
 #if 1
@@ -1591,23 +1615,27 @@ public:
     static bool_type is_link(stat_data_type const* stat_data)
     {
 #ifdef _WIN32
+
         STLSOFT_SUPPRESS_UNUSED(stat_data);
 
         return false;
 #else /* ? _WIN32 */
-#if 1
+
+# if 1
         return S_IFLNK == (stat_data->st_mode & S_IFMT);
-#else /* ? 0 */
+# else /* ? 0 */
         return filesystem_traits_util_::is_file_type_(stat_data, S_IFLNK);
-#endif /* 0 */
+# endif /* 0 */
 #endif /* _WIN32 */
     }
 
     static bool_type is_readonly(stat_data_type const* stat_data)
     {
 #ifdef _WIN32
+
         return S_IREAD == (stat_data->st_mode & (S_IREAD | S_IWRITE));
 #else /* ? _WIN32 */
+
         return S_IRUSR == (stat_data->st_mode & (S_IRUSR | S_IWUSR));
 #endif /* _WIN32 */
     }
@@ -1617,8 +1645,10 @@ public:
         mode_type mode = 0;
 
 #ifdef _WIN32
+
         mode    =   S_IREAD | S_IWRITE | S_IEXEC;
 #else /* ? _WIN32 */
+
         mode    =   S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
 #endif /* _WIN32 */
 
@@ -1636,6 +1666,7 @@ public:
 
         return 0 == ::_mkdir(dir);
 #else /* ? _WIN32 */
+
         return 0 == ::mkdir(dir, permissions);
 #endif /* _WIN32 */
     }
@@ -1645,8 +1676,10 @@ public:
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_INTEL) || \
         defined(STLSOFT_COMPILER_IS_MSVC))
+
         return 0 == ::_rmdir(dir);
 #else /* ? _WIN32 */
+
         return 0 == ::rmdir(dir);
 #endif /* _WIN32 */
     }
@@ -1678,8 +1711,10 @@ public:
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_INTEL) || \
         defined(STLSOFT_COMPILER_IS_MSVC))
+
         return ::_open(fileName, oflag, pmode);
 #else /* ? _WIN32 */
+
         return ::open(fileName, oflag, pmode);
 #endif /* _WIN32 */
     }
@@ -1691,8 +1726,10 @@ public:
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_INTEL) || \
         defined(STLSOFT_COMPILER_IS_MSVC))
+
         return 0 == ::_close(fd);
 #else /* ? _WIN32 */
+
         return 0 == ::close(fd);
 #endif /* _WIN32 */
     }
@@ -2005,11 +2042,6 @@ public:
             {
                 return true;
             }
-        }
-        // ... it's got root forward slash
-        if (L'/' == path[0])
-        {
-            return true;
         }
 
         return false;

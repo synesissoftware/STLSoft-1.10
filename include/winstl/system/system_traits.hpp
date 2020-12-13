@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     3rd December 2020
+ * Updated:     13th December 2020
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       11
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        157
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        158
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,25 +169,25 @@ struct system_traits
 /// @{
 public:
     /// The character type
-    typedef C                                       char_type;
+    typedef C                                               char_type;
     /// The size type
-    typedef ws_size_t                               size_type;
+    typedef ws_size_t                                       size_type;
     /// The difference type
-    typedef ws_ptrdiff_t                            difference_type;
+    typedef ws_ptrdiff_t                                    difference_type;
     /// The current instantion of the type
-    typedef system_traits<C>                        class_type;
+    typedef system_traits<C>                                class_type;
     /// The (signed) integer type
-    typedef ws_int_t                                int_type;
+    typedef ws_int_t                                        int_type;
     /// The Boolean type
-    typedef ws_bool_t                               bool_type;
+    typedef ws_bool_t                                       bool_type;
     /// The type of a handle to a dynamically loaded module
-    typedef HMODULE                                 module_type;
+    typedef HMODULE                                         module_type;
     /// The type of a handle to a kernel object
-    typedef HANDLE                                  handle_type;
+    typedef HANDLE                                          handle_type;
     /// The type of system result codes
-    typedef DWORD                                   result_code_type;
+    typedef DWORD                                           result_code_type;
     /// The type of system error codes
-    typedef DWORD                                   error_type;
+    typedef DWORD                                           error_type;
 /// @}
 
 /// \name General string handling
