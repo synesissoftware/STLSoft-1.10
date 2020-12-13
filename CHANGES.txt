@@ -18,6 +18,22 @@ STLSoft - Changes
 
 
 
+Changes for 1.10.1 beta 24 (13th December 2020)
+
+General:
+========
+
+ * added file unixstl/filesystem/path_buffer.hpp missing from beta 23
+
+Changes:
+========
+
+ UNIXSTL:
+ ========
+
+ + unixstl/filesystem/path_buffer.hpp:
+    + added unixstl::basic_path_buffer
+
 ============================================================================
 
 Changes for 1.10.1 beta 23 (13th December 2020)

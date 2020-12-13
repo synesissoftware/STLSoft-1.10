@@ -2,7 +2,7 @@
 STLSoft - TODO
 
 ; Created:  29th March 2002
-; Updated:  29th November 2020
+; Updated:  13th December 2020
 
 ============================================================================
 
@@ -10,13 +10,35 @@ STLSoft - TODO
 STLSoft 1.10 TODOs:
 ===================
 
-* Documentation improvements        -   abandoned. Will be done for STLSoft 1.11
-* Website                           -   deferred until STLSoft 1.11 released
-* C++ 11/14/17/20 compatibility     -   partial; further coming in 1.11
+ * syslog in variadic templates, a la winstl::output_debug_line()
+
+ * incorporate the is_valid_path() suite of functions into 1.10
+
+ * further system_traits refactoring:
+   - joining common code via CRTP
+   - abstracting out string stuff (into stlsoft::)
+   - sorting the "safe-string" stuff
+
+ * refactor find_last_path_name_separator_() and related
+
+ * memory-mapped-file class issues
 
 
-* widespread provision of move      -   partial; further coming in 1.11
-* custom radix in integer_to_string -   abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
+STLSoft 1.11+ TODOs:
+====================
+
+ * Documentation improvements
+
+ * Website
+
+ * C++ 11/14/17/20 compatibility - partial; further coming in 1.11
+
+
+abandoned TODOs:
+================
+
+ * custom radix in integer_to_string - abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
+
 
 =============================== end of file ================================
 

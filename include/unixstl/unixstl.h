@@ -49,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MAJOR    3
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MINOR    10
-# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_REVISION 2
-# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     107
+# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_REVISION 3
+# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     108
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file unixstl/unixstl.h
@@ -136,12 +136,13 @@
 # define _UNIXSTL_VER_1_7_6     0x010706ff  /*!< Version 1.7.6 (with STLSoft 1.9.119) */
 # define _UNIXSTL_VER_1_8_1_B01 0x01080181  /*!< Version 1.8.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _UNIXSTL_VER_1_8_1_B02 0x01080182  /*!< Version 1.8.1 beta 2 (with STLSoft 1.10.1 beta 23) */
+# define _UNIXSTL_VER_1_8_1_B03 0x01080183  /*!< Version 1.8.1 beta 3 (with STLSoft 1.10.1 beta 23) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _UNIXSTL_VER_MAJOR      1
 #define _UNIXSTL_VER_MINOR      8
 #define _UNIXSTL_VER_REVISION   1
-#define _UNIXSTL_VER            _UNIXSTL_VER_1_8_1_B02
+#define _UNIXSTL_VER            _UNIXSTL_VER_1_8_1_B03
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
