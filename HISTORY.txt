@@ -2,10 +2,15 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  13th December 2020
+; Updated:  14th December 2020
 
 ============================================================================
 
+
+14th December 2020 - 1.10.1 (beta 25) released
+----------------------------------------------
+
+ * added two more files missing from beta 23 - D'oh!
 
 13th December 2020 - 1.10.1 (beta 24) released
 ----------------------------------------------

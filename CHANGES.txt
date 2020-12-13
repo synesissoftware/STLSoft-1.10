@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  13th December 2020
+; Updated:  14th December 2020
 
 ============================================================================
 
@@ -17,6 +17,27 @@ STLSoft - Changes
    **************************************
 
 
+
+Changes for 1.10.1 beta 25 (14th December 2020)
+
+General:
+========
+
+ * added two more files missing from beta 23 - D'oh!
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ + stlsoft/conversion/char2str.hpp
+    + added stlsoft::char2str() conversion function
+
+ + stlsoft/string/c_string/strnpbrkn.h:
+    + added stlsoft_C_(str|wcs)npbrkn()
+
+============================================================================
 
 Changes for 1.10.1 beta 24 (13th December 2020)
 
