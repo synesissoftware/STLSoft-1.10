@@ -8,14 +8,29 @@ Version 1.10 of STLSoft libraries
 
 ### Impending 1.10 release
 
-Working now (October 2019) on getting documentation updated and existing
+Working now (December 2020) on getting documentation updated and existing
 automated tests included into the GitHub-released project, and then
 we'll be at it.
 
 
 ## Releases
 
-### 1.10.1 beta-22 (Latest) - 29th November 2020
+### 1.10.1 beta-23 (Latest) - 13th December 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta23>
+
+* ``basic_file_path_buffer<>`` is now deprecated in all projects, and all dependent components are modified to use other facilities
+* added ``platformstl::environment_variable<>`` class template
+* added (in)equality operators for ``stlsoft::error_desc``
+* added ``stlsoft::basic_path_buffer<>`` component, as an alternative to ``basic_file_path_buffer<>``
+* ``stlsoft::auto_buffer<>`` class template ``copy_from()`` method, and ctor and ``resize()`` method that take value for initialisation of (new) elements
+* added ``stlsoft::strnpbrkn()``/``wcsnpbrkn()`` (and added ``stlsoft_C_``(``str``|``wcs``)``npbrkn()``)
+* added move constructor to ``unixstl::module`` and ``winstl::module``
+* large number of new methods and defect fixes in (``platformstl``|``unixstl``|``winstl``)``::filesystem_traits``
+* large number of new methods and defect fixes in (``platformstl``|``unixstl``|``winstl``)``::system_traits``
+
+
+### 1.10.1 beta-22 - 29th November 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta22>
 
