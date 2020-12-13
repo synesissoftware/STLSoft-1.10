@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  21
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      157
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  22
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      158
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1066,9 +1066,35 @@ private:
             return 0;
         }
 
+#ifdef _WIN32
+
+        if (!is_path_absolute(fileName) &&
+            is_path_rooted(fileName))
+        {
+            buffer_type_    cwd(1);
+            size_type const n1  =   get_current_directory(cwd);
+            char const*     sep =   stlsoft_C_strnpbrkn(cwd.data(), n1, "\\/", 2);
+            size_t const    n2  =   sep - cwd.data();
+
+            cwd.resize(n2 + len + 1);
+
+            ::memcpy(&cwd[0] + n2, fileName, sizeof(char_type) * len);
+            cwd[n2 + len] = '\0';
+
+            return get_full_path_name_impl2(cwd.data(), n2 + len, buffer, cchBuffer);
+        }
+#endif
+
         // The next thing to so is determine whether the path is absolute, in
         // which case we'll just copy it into the buffer
+
+#ifdef _WIN32
+
+        if (is_path_absolute(fileName))
+#else
+
         if (is_path_rooted(fileName))
+#endif
         {
             // Given path is absolute, so simply copy into buffer
             if (NULL == buffer)
