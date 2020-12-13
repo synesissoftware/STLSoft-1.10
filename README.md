@@ -15,7 +15,13 @@ we'll be at it.
 
 ## Releases
 
-### 1.10.1 beta-23 (Latest) - 13th December 2020
+### 1.10.1 beta-24 (Latest) - 13th December 2020
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta24>
+
+* added file unixstl/filesystem/path_buffer.hpp missing from beta 23
+
+### 1.10.1 beta-23 - 13th December 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta23>
 
