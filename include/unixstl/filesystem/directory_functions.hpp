@@ -4,10 +4,11 @@
  * Purpose:     Functions for manipulating directories.
  *
  * Created:     7th February 2002
- * Updated:     13th September 2019
+ * Updated:     10th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -50,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR       3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR       0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    12
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        56
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR       1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,9 +71,9 @@
 #ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS
 # include <unixstl/filesystem/filesystem_traits.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS */
-#ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER
-# include <unixstl/filesystem/file_path_buffer.hpp>
-#endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
+# include <stlsoft/memory/auto_buffer.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -98,198 +100,229 @@ namespace unixstl_project
  * helper functions
  */
 
-template <ss_typename_param_k C>
-inline C* find_last_path_name_separator_(C const* s)
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+STLSOFT_OPEN_WORKER_NS_(ximpl_unixstl_directory_functions_)
+
+template<
+    ss_typename_param_k T_character
+>
+inline
+T_character*
+find_last_path_name_separator_(
+    T_character const* s
+)
 {
-    typedef filesystem_traits<C>    traits_t;
+    typedef T_character                                     char_t;
+    typedef filesystem_traits<
+        char_t
+    >                                                       fs_traits_t;
 
-    ss_typename_type_k traits_t::char_type const*   slash   =   traits_t::str_rchr(s, '/');
+    char_t const*       slash   =   fs_traits_t::str_rchr(s, '/');
 #ifdef _WIN32
-    ss_typename_type_k traits_t::char_type const*   bslash  =   traits_t::str_rchr(s, '\\');
+    char_t const* const bslash  =   fs_traits_t::str_rchr(s, '\\');
 
-    if(NULL == slash)
+    if (NULL == slash)
     {
         slash = bslash;
     }
-    else if(NULL != bslash)
+    else if (NULL != bslash)
     {
-        if(slash < bslash)
+        if (slash < bslash)
         {
             slash = bslash;
         }
     }
 #endif /* _WIN32 */
 
-    return const_cast<C*>(slash);
+    return const_cast<char_t*>(slash);
 }
 
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k T_character
+>
 inline
 us_bool_t
 create_directory_recurse_impl(
-    C const*        dir
-,   unsigned short  mode
+    T_character const*  dir
+,   unsigned short      mode
 )
 {
-    typedef C                                   char_type;
-    typedef filesystem_traits<C>                traits_t;
-    typedef basic_file_path_buffer<char_type>   file_path_buffer_t;
+    typedef T_character                                     char_t;
+    typedef filesystem_traits<
+        T_character
+    >                                                       fs_traits_t;
+    typedef STLSOFT_NS_QUAL(auto_buffer)<
+        char_t
+#ifdef PATH_MAX
+    ,   1 + PATH_MAX
+#else /* ? PATH_MAX */
+    ,   1 + 512
+#endif /* PATH_MAX */
+    >                                                       buffer_t;
 
-    us_bool_t bRet;
-
-    if( NULL == dir ||
+    if (NULL == dir ||
         '\0' == *dir)
     {
-        traits_t::set_last_error(ENOTDIR);
+        fs_traits_t::set_last_error(ENOTDIR);
 
-        bRet = false;
+        return false;
     }
     else
     {
-        if(traits_t::file_exists(dir))
+        if (fs_traits_t::file_exists(dir))
         {
-            if(traits_t::is_directory(dir))
+            if (fs_traits_t::is_directory(dir))
             {
-                traits_t::set_last_error(EISDIR);
+                fs_traits_t::set_last_error(EISDIR);
 
-                bRet = true;
+                return true;
             }
             else
             {
-                traits_t::set_last_error(EEXIST);
+                fs_traits_t::set_last_error(EEXIST);
 
-                bRet = false;
+                return false;
             }
         }
         else
         {
-            file_path_buffer_t  sz;
-            file_path_buffer_t  szParent;
-
             // May be being compiled absent exception support, so need to check the
             // file path buffers. (This _could_ be done with a compile-time #ifdef,
             // but it's best not, since some translators support exceptions but yet
             // don't throw on mem exhaustion, and in any case a user could change
             // ::new)
-            if( 0 == sz.size() ||
-                0 == szParent.size())
+
+            us_size_t const dirLen = fs_traits_t::str_len(dir);
+            buffer_t        sz(dirLen + 1);
+
+            if (0 == sz.size())
             {
-                bRet = false;
+                return false;
+            }
+
+            if ((dirLen + 1) > sz.size())
+            {
+                fs_traits_t::set_last_error(EINVAL);
+
+                return false;
+            }
+
+            fs_traits_t::char_copy(&sz[0] + 0, dir, dirLen);
+            sz[dirLen] = '\0';
+            fs_traits_t::remove_dir_end(&sz[0]);
+
+            if (fs_traits_t::create_directory(sz.data(), mode) ||
+                EEXIST == fs_traits_t::get_last_error())
+            {
+                return true;
             }
             else
             {
-                us_size_t const dirLen = traits_t::str_len(dir);
+                // Trim previous directory
 
-                if((dirLen + 1) > sz.size())
+                us_size_t const szLen = fs_traits_t::str_len(dir);
+                buffer_t        szParent(szLen + 1);
+
+                if (0 == szParent.size())
                 {
-                    traits_t::set_last_error(EINVAL);
+                    return false;
+                }
 
-                    bRet = false;
+                fs_traits_t::char_copy(&szParent[0], sz.data(), szLen);
+                szParent[szLen] = '\0';
+
+                char_t* const pszSlash = find_last_path_name_separator_(szParent.data());
+                if (pszSlash == NULL)
+                {
+                    fs_traits_t::set_last_error(ENOTDIR);
+
+                    return false;
                 }
                 else
                 {
-                    traits_t::char_copy(&sz[0], dir, dirLen + 1);
-                    traits_t::remove_dir_end(&sz[0]);
+                    *pszSlash = '\0';   // Will always have enough room for two bytes
 
-                    if( traits_t::create_directory(sz.c_str(), mode) ||
-                        EEXIST == traits_t::get_last_error())
+                    // If second character is ':', and total lengths is less than four,
+                    // or the recurse create fails, then return false;
+                    if ((   szParent[1] == ':' &&
+                            (fs_traits_t::set_last_error(EACCES), fs_traits_t::str_len(szParent.data()) < 4)) ||
+                        !create_directory_recurse_impl(szParent.data(), mode))
                     {
-                        traits_t::set_last_error(0);
-
-                        bRet = true;
+                        return false;
                     }
                     else
                     {
-                        // Trim previous directory
-                        traits_t::char_copy(&szParent[0], sz.c_str(), dirLen + 1);
-
-                        char_type* pszSlash = find_last_path_name_separator_(szParent.c_str());
-                        if(pszSlash == NULL)
-                        {
-                            traits_t::set_last_error(ENOTDIR);
-
-                            bRet = false;
-                        }
-                        else
-                        {
-                            *pszSlash = '\0';   // Will always have enough room for two bytes
-
-                            // If second character is ':', and total lengths is less than four,
-                            // or the recurse create fails, then return false;
-                            if( (   szParent[1] == ':' &&
-                                    (traits_t::set_last_error(EACCES), traits_t::str_len(szParent.c_str()) < 4)) ||
-                                !create_directory_recurse_impl(szParent.c_str(), mode))
-                            {
-                                bRet = false;
-                            }
-                            else
-                            {
-                                bRet = traits_t::create_directory(sz.c_str(), mode) || EEXIST == traits_t::get_last_error();
-                            }
-                        }
+                        return fs_traits_t::create_directory(sz.data(), mode) || EEXIST == fs_traits_t::get_last_error();
                     }
                 }
             }
         }
     }
-
-    return bRet;
 }
 
 template<
-    ss_typename_param_k C
-,   ss_typename_param_k FD  // This is need because VC++6 cannot deduce filesystem_traits<C>::find_data_type
+    ss_typename_param_k T_character
+,   ss_typename_param_k T_finddata  // This is need because VC++6 cannot deduce filesystem_traits<T_character>::find_data_type
 >
 inline
 us_int_t
 remove_directory_recurse_impl(
-    C const*    dir
-,   us_int_t (*pfn)(void* param, C const* subDir, FD const* st, struct dirent const* de, int err)
-,   void*       param
+    T_character const*  dir
+,   us_int_t          (*pfn)(void* param, T_character const* subDir, T_finddata const* st, struct dirent const* de, int err)
+,   void*               param
 )
 {
-    typedef C                                   char_type;
-    typedef filesystem_traits<C>                traits_t;
-    typedef basic_file_path_buffer<char_type>   file_path_buffer_t;
-    us_int_t                                    dwRet;
+    typedef T_character                                     char_t;
+    typedef filesystem_traits<T_character>                  fs_traits_t;
+    typedef STLSOFT_NS_QUAL(auto_buffer)<
+        char_t
+#ifdef PATH_MAX
+    ,   1 + PATH_MAX
+#else /* ? PATH_MAX */
+    ,   1 + 512
+#endif /* PATH_MAX */
+    >                                                       buffer_t;
+    typedef ss_typename_type_k fs_traits_t::stat_data_type  stat_data_t;
 
-    if(NULL != pfn)
+    us_int_t dwRet;
+
+    if (NULL != pfn)
     {
         (void)(*pfn)(param, dir, NULL, NULL, ~0);   // Entering
     }
 
-    if( NULL == dir ||
+    if (NULL == dir ||
         '\0' == *dir)
     {
         dwRet = ENOTDIR;
 
-        if(NULL != pfn)
+        if (NULL != pfn)
         {
             (void)(*pfn)(param, dir, NULL, NULL, dwRet);
         }
     }
     else
     {
-        if(!traits_t::file_exists(dir))
+        if (!fs_traits_t::file_exists(dir))
         {
             // The given path does not exist, so this is treated as success, but
             // reporting ENOENT
 
             dwRet = ENOENT;
 
-            if(NULL != pfn)
+            if (NULL != pfn)
             {
                 (void)(*pfn)(param, dir, NULL, NULL, dwRet);
             }
         }
         else
         {
-            if(traits_t::is_file(dir))
+            if (fs_traits_t::is_file(dir))
             {
                 // The given path exists as a file. This is failure
                 dwRet = EEXIST;
 
-                if(NULL != pfn)
+                if (NULL != pfn)
                 {
                     (void)(*pfn)(param, dir, NULL, NULL, dwRet);
                 }
@@ -297,24 +330,25 @@ remove_directory_recurse_impl(
             else
             {
                 // Otherwise, we attempt to remove it
-                if(traits_t::remove_directory(dir))
+                if (fs_traits_t::remove_directory(dir))
                 {
                     dwRet = 0;
 
-                    if(NULL != pfn)
+                    if (NULL != pfn)
                     {
                         (void)(*pfn)(param, dir, NULL, NULL, dwRet); // Deleted
                     }
                 }
                 else
                 {
-                    const int removeError = traits_t::get_last_error();
+                    const int removeError = fs_traits_t::get_last_error();
 
-                    if(ENOTEMPTY != removeError)
+                    if (ENOTEMPTY != removeError &&
+                        EACCES != removeError)
                     {
                         dwRet = removeError;
 
-                        if(NULL != pfn)
+                        if (NULL != pfn)
                         {
                             (void)(*pfn)(param, dir, NULL, NULL, dwRet);
                         }
@@ -323,55 +357,73 @@ remove_directory_recurse_impl(
                     {
                         // It has some contents, so we need to remove them
 
-                        file_path_buffer_t  sz;
-                        DIR*                hSrch;
-                        us_size_t           n;
-                        us_size_t const     dirLen = traits_t::str_len(dir);
+                        bool const          hasEnd  =   fs_traits_t::has_dir_end(dir);
+                        us_size_t const     dirLen  =   fs_traits_t::str_len(dir);
+                        us_size_t const     baseLen =   dirLen + (hasEnd ? 0 : 1);
+                        buffer_t            sz(baseLen + 1);
 
-                        traits_t::char_copy(&sz[0], dir, dirLen + 1);
-                        traits_t::ensure_dir_end(&sz[0]);
-                        n = traits_t::str_len(sz.c_str());
-
-                        hSrch = traits_t::open_dir(sz.c_str());
-                        if(NULL == hSrch)
+                        if (0 == sz.size())
                         {
-                            dwRet = traits_t::get_last_error();
+                            return ENOMEM;
+                        }
+
+                        fs_traits_t::char_copy(&sz[0] + 0, dir, dirLen);
+
+                        if (!hasEnd)
+                        {
+                            sz[dirLen] = '\0';
+                            fs_traits_t::ensure_dir_end(&sz[0] + dirLen - 1);
+                        }
+
+                        sz[baseLen] = '\0';
+
+                        DIR* hSrch = fs_traits_t::open_dir(sz.data());
+                        if (NULL == hSrch)
+                        {
+                            dwRet = fs_traits_t::get_last_error();
                         }
                         else
                         {
                             dwRet = 0;
 
-                            for(struct dirent const* de; 0 == dwRet && NULL != (de = traits_t::read_dir(hSrch)); )
+                            for (struct dirent const* de; 0 == dwRet && NULL != (de = fs_traits_t::read_dir(hSrch)); )
                             {
-                                if(!traits_t::is_dots(de->d_name))
+                                if (!fs_traits_t::is_dots(de->d_name))
                                 {
-                                    ss_typename_type_k traits_t::stat_data_type st;
+                                    stat_data_t     st;
+                                    us_size_t const denameLen = fs_traits_t::str_len(de->d_name);
 
-                                    us_size_t const denameLen = traits_t::str_len(de->d_name);
-
-                                    traits_t::char_copy(&sz[0] + n, de->d_name, denameLen + 1);
-                                    if(!traits_t::stat(sz.c_str(), &st))
+                                    if (sz.size() < baseLen + denameLen + 1)
                                     {
-                                        dwRet = traits_t::get_last_error();
+                                        if (!sz.resize(baseLen + denameLen + 1))
+                                        {
+                                            return ENOMEM;
+                                        }
+                                    }
 
-                                        if(NULL != pfn)
+                                    fs_traits_t::char_copy(&sz[0] + baseLen, de->d_name, denameLen + 1);
+                                    if (!fs_traits_t::stat(sz.data(), &st))
+                                    {
+                                        dwRet = fs_traits_t::get_last_error();
+
+                                        if (NULL != pfn)
                                         {
                                             (void)(*pfn)(param, dir, NULL, de, dwRet);
                                         }
                                     }
                                     else
                                     {
-                                        if(traits_t::is_file(&st))
+                                        if (fs_traits_t::is_file(&st))
                                         {
                                             // If it's a file, the pfn must be consulted, otherwise
                                             // it's an automatic failure
 
-                                            if( NULL == pfn ||
+                                            if (NULL == pfn ||
                                                 !(*pfn)(param, dir, &st, de, 0))
                                             {
                                                 dwRet = ENOTEMPTY;
 
-                                                if(NULL != pfn)
+                                                if (NULL != pfn)
                                                 {
                                                     (void)(*pfn)(param, dir, &st, de, dwRet);
                                                 }
@@ -380,11 +432,11 @@ remove_directory_recurse_impl(
                                             }
                                             else
                                             {
-                                                if(!traits_t::delete_file(sz.c_str()))
+                                                if (!fs_traits_t::delete_file(sz.data()))
                                                 {
-                                                    dwRet = traits_t::get_last_error();
+                                                    dwRet = fs_traits_t::get_last_error();
 
-                                                    if(NULL != pfn)
+                                                    if (NULL != pfn)
                                                     {
                                                         (void)(*pfn)(param, dir, &st, de, dwRet);
                                                     }
@@ -397,12 +449,12 @@ remove_directory_recurse_impl(
                                         {
                                             // If it's a directory, then pfn is consulted, otherwise
                                             // it's an automatic attempt to recursively delete
-                                            if( NULL != pfn &&
+                                            if (NULL != pfn &&
                                                 !(*pfn)(param, dir, &st, de, 0))
                                             {
                                                 dwRet = ENOTEMPTY;
 
-                                                if(NULL != pfn)
+                                                if (NULL != pfn)
                                                 {
                                                     (void)(*pfn)(param, dir, &st, de, dwRet);
                                                 }
@@ -411,27 +463,27 @@ remove_directory_recurse_impl(
                                             }
                                             else
                                             {
-                                                dwRet = remove_directory_recurse_impl(sz.c_str(), pfn, param);
+                                                dwRet = remove_directory_recurse_impl(sz.data(), pfn, param);
                                             }
                                         }
                                     }
                                 }
                             }
 
-                            traits_t::close_dir(hSrch);
+                            fs_traits_t::close_dir(hSrch);
 
-                            if(0 == dwRet)
+                            if (0 == dwRet)
                             {
-                                if(traits_t::remove_directory(dir))
+                                if (fs_traits_t::remove_directory(dir))
                                 {
-                                    if(NULL != pfn)
+                                    if (NULL != pfn)
                                     {
                                         (void)(*pfn)(param, dir, NULL, NULL, 0); // Deleted
                                     }
                                 }
                                 else
                                 {
-                                    dwRet = traits_t::get_last_error();
+                                    dwRet = fs_traits_t::get_last_error();
                                 }
                             }
                         }
@@ -443,6 +495,9 @@ remove_directory_recurse_impl(
 
     return dwRet;
 }
+
+STLSOFT_CLOSE_WORKER_NS_(ximpl_unixstl_directory_functions_)
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -456,9 +511,14 @@ remove_directory_recurse_impl(
  * \param dir The path of the directory to create
  * \param mode The permissions with which each directory is to be created
  */
-inline us_bool_t create_directory_recurse(us_char_a_t const* dir, unsigned short mode = 0755)
+inline
+us_bool_t
+create_directory_recurse(
+    us_char_a_t const*  dir
+,   unsigned short      mode = 0755
+)
 {
-    return create_directory_recurse_impl(dir, mode);
+    return STLSOFT_WORKER_NS_QUAL_(ximpl_unixstl_directory_functions_, create_directory_recurse_impl)(dir, mode);
 }
 
 #if 0
@@ -470,9 +530,14 @@ inline us_bool_t create_directory_recurse(us_char_a_t const* dir, unsigned short
  * \param dir The path of the directory to create
  * \param mode The permissions with which each directory is to be created
  */
-inline us_bool_t create_directory_recurse(us_char_w_t const* dir, unsigned short mode = 0755)
+inline
+us_bool_t
+create_directory_recurse(
+    us_char_w_t const*  dir
+,   unsigned short      mode = 0755
+)
 {
-    return create_directory_recurse_impl(dir, mode);
+    return STLSOFT_WORKER_NS_QUAL_(ximpl_unixstl_directory_functions_, create_directory_recurse_impl)(dir, mode);
 }
 #endif /* 0 */
 
@@ -484,8 +549,15 @@ inline us_bool_t create_directory_recurse(us_char_w_t const* dir, unsigned short
  * \param dir The path of the directory to create
  * \param mode The permissions with which each directory is to be created
  */
-template <ss_typename_param_k S>
-inline us_bool_t create_directory_recurse(S const& dir, unsigned short mode = 0755)
+template<
+    ss_typename_param_k S
+>
+inline
+us_bool_t
+create_directory_recurse(
+    S const&        dir
+,   unsigned short  mode = 0755
+)
 {
     return create_directory_recurse(STLSOFT_NS_QUAL(c_str_ptr)(dir), mode);
 }
@@ -538,17 +610,19 @@ inline us_bool_t create_directory_recurse(S const& dir, unsigned short mode = 07
  *   with the failure. All other params are unspecified (except \c param).
  *   The return value is ignored.
  */
-inline us_bool_t remove_directory_recurse(
+inline
+us_bool_t
+remove_directory_recurse(
     us_char_a_t const*  dir
-,   us_int_t            (*pfn)(void* param, us_char_a_t const* subDir, struct stat const* st, struct dirent const* de, int err)
+,   us_int_t          (*pfn)(void* param, us_char_a_t const* subDir, struct stat const* st, struct dirent const* de, int err)
 ,   void*               param
 )
 {
-    typedef filesystem_traits<us_char_a_t> traits_t;
+    typedef filesystem_traits<us_char_a_t> fs_traits_t;
 
-    us_int_t dwRet = remove_directory_recurse_impl<us_char_a_t, struct stat>(dir, pfn, param);
+    us_int_t const dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_unixstl_directory_functions_, remove_directory_recurse_impl)<us_char_a_t, struct stat>(dir, pfn, param);
 
-    traits_t::set_last_error(dwRet);
+    fs_traits_t::set_last_error(dwRet);
 
     return 0 == dwRet;
 }
@@ -557,7 +631,11 @@ inline us_bool_t remove_directory_recurse(
  *
  * \ingroup group__library__FileSystem
  */
-inline us_bool_t remove_directory_recurse(us_char_a_t const* dir)
+inline
+us_bool_t
+remove_directory_recurse(
+    us_char_a_t const* dir
+)
 {
     return remove_directory_recurse(dir, NULL, NULL);
 }
@@ -567,17 +645,19 @@ inline us_bool_t remove_directory_recurse(us_char_a_t const* dir)
  *
  * \ingroup group__library__FileSystem
  */
-inline us_bool_t remove_directory_recurse(
+inline
+us_bool_t
+remove_directory_recurse(
     us_char_w_t const*  dir
-,   us_int_t            (*pfn)(void* param, us_char_w_t const* subDir, struct stat const* st, struct dirent const* de, int err)
+,   us_int_t          (*pfn)(void* param, us_char_w_t const* subDir, struct stat const* st, struct dirent const* de, int err)
 ,   void*               param
 )
 {
-    typedef filesystem_traits<us_char_w_t>  traits_t;
+    typedef filesystem_traits<us_char_w_t>  fs_traits_t;
 
-    us_int_t dwRet = remove_directory_recurse_impl<us_char_w_t, struct stat>(dir, pfn, param);
+    us_int_t const dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_unixstl_directory_functions_, remove_directory_recurse_impl)<us_char_w_t, struct stat>(dir, pfn, param);
 
-    traits_t::set_last_error(dwRet);
+    fs_traits_t::set_last_error(dwRet);
 
     return 0 == dwRet;
 }
@@ -586,7 +666,11 @@ inline us_bool_t remove_directory_recurse(
  *
  * \ingroup group__library__FileSystem
  */
-inline us_bool_t remove_directory_recurse(us_char_w_t const* dir)
+inline
+us_bool_t
+remove_directory_recurse(
+    us_char_w_t const* dir
+)
 {
     return remove_directory_recurse(dir, NULL, NULL);
 }
@@ -596,16 +680,16 @@ inline us_bool_t remove_directory_recurse(us_char_w_t const* dir)
  *
  * \ingroup group__library__FileSystem
  */
-template <ss_typename_param_k S>
-inline us_bool_t remove_directory_recurse(S const& dir)
+template<
+    ss_typename_param_k S
+>
+inline
+us_bool_t
+remove_directory_recurse(
+    S const& dir
+)
 {
-    typedef filesystem_traits<us_char_a_t>  traits_t;
-
-    us_int_t dwRet = remove_directory_recurse(STLSOFT_NS_QUAL(c_str_ptr)(dir), NULL, NULL);
-
-    traits_t::set_last_error(dwRet);
-
-    return 0 == dwRet;
+    return remove_directory_recurse(STLSOFT_NS_QUAL(c_str_ptr)(dir), NULL, NULL);
 }
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -59,9 +59,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  22
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      158
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     12
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      160
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,10 +81,9 @@
 #ifndef UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <unixstl/system/system_traits.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS */
-
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+# include <stlsoft/string/c_string/strnpbrkn.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
 
 #ifdef _WIN32
 # include <ctype.h>
@@ -142,6 +141,14 @@
 #  include <winstl/api/external/ErrorHandling.h>
 # endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #endif /* _WIN32 */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -246,18 +253,88 @@ public:
 /// \name File-system entry names
 /// @{
 public:
-    /// Appends a path name separator to \c dir if one does not exist
+    /// Ensures that a given C-style string has a trailing path name
+    /// separator by appending one where necessary
+    ///
+    /// \param dir A non-null pointer to a mutable C-style string
+    ///
+    /// \return \c dir
+    ///
+    /// \pre nullptr != dir
+    ///
+    /// \note \c dir is assumed to contain space for an additional
+    ///   character (if required) and NUL-terminator
     ///
     /// \see \link #path_name_separator path_name_separator() \endlink
-    static char_type*   ensure_dir_end(char_type* dir);
-    /// Removes the path name separator from the end of \c dir, if it has it
+    static
+    char_type*
+    ensure_dir_end(
+        char_type* dir
+    );
+
+    /// Ensures that a given C-style resizeable buffer has a trailing path
+    /// name separator by appending one where necessary
+    ///
+    /// \param rb a reference to a \c resizeable_buffer
+    ///
+    /// \return The length of \c rb after the operation has completed
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    ensure_dir_end(
+        T_resizeableBuffer& rb
+    );
+
+    /// Removes the path name separator from the end of \c dir, if present
+    ///
+    /// \pre nullptr != dir
     ///
     /// \see \link #path_name_separator path_name_separator() \endlink
-    static char_type*   remove_dir_end(char_type* dir);
+    static
+    char_type*
+    remove_dir_end(
+        char_type* dir
+    );
+
+    /// Removes the path name separator from the end of \c rb, if present
+    ///
+    /// \param rb a reference to a \c resizeable_buffer
+    ///
+    /// \return The length of \c rb after the operation has completed
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    remove_dir_end(
+        T_resizeableBuffer& rb
+    );
+
     /// Returns \c true if \c dir has trailing path name separator
     ///
+    /// \pre nullptr != dir
+    ///
     /// \see \link #path_name_separator path_name_separator() \endlink
-    static bool_type    has_dir_end(char_type const* dir);
+    static
+    bool_type
+    has_dir_end(
+        char_type const* dir
+    );
+
+    /// Returns \c true if \c rb has trailing path name separator
+    ///
+    /// \see \link #path_name_separator path_name_separator() \endlink
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    bool_type
+    has_dir_end(
+        T_resizeableBuffer& rb
+    );
+
 
     /// Returns pointer to the next path_name_separator, or \c NULL if none found.
     static char_type const* find_next_path_name_separator(char_type const* path);
@@ -336,10 +413,40 @@ public:
 
     /// Gets the full path name into the given buffer
     ///
+    /// \param fileName The path to be translated
+    /// \param rb Reference to a resizeable buffer into which the
+    ///   full-path is to be written
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    );
+
+    /// Gets the full path name into the given buffer
+    ///
     /// \deprecated The other overload is now the preferred form
     static size_type    get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[]);
     /// Gets the short path name into the given buffer
     static size_type    get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[]);
+
+    /// Gets the short path name into the given buffer
+    ///
+    /// \param fileName The path to be translated
+    /// \param rb Reference to a resizeable buffer into which the
+    ///   short-path is to be written
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    );
 /// @}
 
 /// \name File-system enumeration
@@ -600,6 +707,31 @@ public:
         return dir;
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    ensure_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (!has_dir_end(rb))
+        {
+            size_type const n = rb.size();
+
+            if (0 != n)
+            {
+                rb.resize(n + 1);
+
+                rb[n - 1]   =   path_name_separator();
+                rb[n - 0]   =   char_type(0);
+            }
+        }
+
+        return rb.size();
+    }
+
     static char_type* remove_dir_end(char_type* dir)
     {
         UNIXSTL_ASSERT(NULL != dir);
@@ -635,6 +767,27 @@ public:
         return dir;
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    remove_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (has_dir_end(rb))
+        {
+            size_type const n = rb.size();
+
+            rb.resize(n - 1);
+
+            rb[n - 2] = char_type(0);
+        }
+
+        return rb.size();
+    }
+
     static bool_type has_dir_end(char_type const* dir)
     {
         UNIXSTL_ASSERT(NULL != dir);
@@ -642,6 +795,23 @@ public:
         size_type len = str_len(dir);
 
         return (0 < len) && is_path_name_separator(dir[len - 1]);
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    bool_type
+    has_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (rb.size() < 2)
+        {
+            return false;
+        }
+
+        return is_path_name_separator(rb[rb.size() - 2]);
     }
 
     static
@@ -1345,6 +1515,23 @@ public:
         return get_full_path_name_impl(fileName, str_len(fileName), buffer, cchBuffer);
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    )
+    {
+        size_type const cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
+
+        rb.resize(cchRequired);
+
+        return get_full_path_name(fileName, &rb[0], rb.size());
+    }
+
     static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
@@ -1353,6 +1540,19 @@ public:
     static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, cchBuffer, buffer);
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    )
+    {
+        return get_full_path_name(fileName);
     }
 
     // File-system enumeration
@@ -1852,6 +2052,31 @@ public:
         return dir;
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    ensure_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (!has_dir_end(rb))
+        {
+            size_type const n = rb.size();
+
+            if (0 != n)
+            {
+                rb.resize(n + 1);
+
+                rb[n - 1]   =   path_name_separator();
+                rb[n - 0]   =   char_type(0);
+            }
+        }
+
+        return rb.size();
+    }
+
     static char_type* remove_dir_end(char_type* dir)
     {
         UNIXSTL_ASSERT(NULL != dir);
@@ -1886,6 +2111,27 @@ public:
         return dir;
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    remove_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (has_dir_end(rb))
+        {
+            size_type const n = rb.size();
+
+            rb.resize(n - 1);
+
+            rb[n - 2] = char_type(0);
+        }
+
+        return rb.size();
+    }
+
     static bool_type has_dir_end(char_type const* dir)
     {
         UNIXSTL_ASSERT(NULL != dir);
@@ -1893,6 +2139,23 @@ public:
         size_type len = str_len(dir);
 
         return (0 < len) && is_path_name_separator(dir[len - 1]);
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    bool_type
+    has_dir_end(
+        T_resizeableBuffer& rb
+    )
+    {
+        if (rb.size() < 2)
+        {
+            return false;
+        }
+
+        return is_path_name_separator(rb[rb.size() - 2]);
     }
 
     static
@@ -2159,6 +2422,23 @@ public:
         return get_full_path_name(fileName, cchBuffer, buffer, &pFile);
     }
 
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    )
+    {
+        size_type const cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
+
+        rb.resize(cchRequired);
+
+        return get_full_path_name(fileName, &rb[0], rb.size());
+    }
+
     static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
@@ -2167,6 +2447,19 @@ public:
     static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
     {
         return get_full_path_name(fileName, cchBuffer, buffer);
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   T_resizeableBuffer& rb
+    )
+    {
+        return get_full_path_name(fileName);
     }
 #endif /* 0 */
 

@@ -5,10 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     2nd February 2019
+ * Updated:     13th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -48,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MAJOR    3
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MINOR    10
-# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_REVISION 1
-# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     106
+# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_REVISION 2
+# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     107
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file unixstl/unixstl.h
@@ -134,12 +135,13 @@
 # define _UNIXSTL_VER_1_7_5     0x010705ff  /*!< Version 1.7.5 (with STLSoft 1.9.113) */
 # define _UNIXSTL_VER_1_7_6     0x010706ff  /*!< Version 1.7.6 (with STLSoft 1.9.119) */
 # define _UNIXSTL_VER_1_8_1_B01 0x01080181  /*!< Version 1.8.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _UNIXSTL_VER_1_8_1_B02 0x01080182  /*!< Version 1.8.1 beta 2 (with STLSoft 1.10.1 beta 23) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _UNIXSTL_VER_MAJOR      1
 #define _UNIXSTL_VER_MINOR      8
 #define _UNIXSTL_VER_REVISION   1
-#define _UNIXSTL_VER            _UNIXSTL_VER_1_8_1_B01
+#define _UNIXSTL_VER            _UNIXSTL_VER_1_8_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

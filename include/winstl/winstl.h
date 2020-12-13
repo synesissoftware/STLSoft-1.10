@@ -5,10 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     12th September 2019
+ * Updated:     13th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -48,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_WINSTL_MAJOR       3
 # define WINSTL_VER_WINSTL_H_WINSTL_MINOR       17
-# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    2
-# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        214
+# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    3
+# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        215
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file winstl/winstl.h
@@ -159,12 +160,13 @@
 # define _WINSTL_VER_1_12_1_B01 0x010c0181  /*!< Version 1.12.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _WINSTL_VER_1_12_1_B02 0x010c0182  /*!< Version 1.12.1 beta 2 (with STLSoft 1.10.1 beta 10) */
 # define _WINSTL_VER_1_12_1_B03 0x010c0183  /*!< Version 1.12.1 beta 3 (with STLSoft 1.10.1 beta 14) */
+# define _WINSTL_VER_1_12_1_B03 0x010c0183  /*!< Version 1.12.1 beta 3 (with STLSoft 1.10.1 beta 14) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _WINSTL_VER_MAJOR       1
 #define _WINSTL_VER_MINOR       12
 #define _WINSTL_VER_REVISION    1
-#define _WINSTL_VER             _WINSTL_VER_1_12_1_B03
+#define _WINSTL_VER             _WINSTL_VER_1_12_1_B04
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes

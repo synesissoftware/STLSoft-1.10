@@ -72,8 +72,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        253
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    3
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        254
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -235,7 +235,7 @@ private:
         char_type
     ,   1 + _MAX_PATH
     ,   processheap_allocator<char_type>
-    >                                                       file_path_buffer_type_;
+    >                                                       buffer_type_;
     typedef STLSOFT_NS_QUAL(auto_buffer_old)<
         char_type
     ,   processheap_allocator<char_type>
@@ -334,7 +334,7 @@ public:
 private:
     char_type const         m_delim;
     flags_type const        m_flags;
-    file_path_buffer_type_  m_directory;    // The directory, as specified to the constructor
+    buffer_type_            m_directory;    // The directory, as specified to the constructor
     patterns_buffer_type_   m_patterns;     // The pattern(s) specified to the constructor
 /// @}
 
@@ -348,7 +348,7 @@ private:
 /// @{
 private:
     static flags_type   validate_flags_(flags_type flags);
-    static size_type    validate_directory_(char_type const* directory, file_path_buffer_type_& dir, flags_type flags);
+    static size_type    validate_directory_(char_type const* directory, buffer_type_& dir, flags_type flags);
 /// @}
 };
 
@@ -418,7 +418,7 @@ private:
         char_type
     ,   1 + _MAX_PATH
     ,   processheap_allocator<char_type>
-    >                                                       file_path_buffer_type_;
+    >                                                       buffer_type_;
 /// @}
 
 /// \name Construction
@@ -524,8 +524,8 @@ public:
 private:
     friend class basic_findfile_sequence_const_input_iterator<C, T, class_type>;
 
-    find_data_type          m_data;
-    file_path_buffer_type_  m_path;
+    find_data_type  m_data;
+    buffer_type_    m_path;
 /// @}
 };
 
@@ -578,7 +578,7 @@ private:
         char_type
     ,   1 + _MAX_PATH
     ,   processheap_allocator<char_type>
-    >                                                       file_path_buffer_type_;
+    >                                                       buffer_type_;
 /// @}
 
 /// \name Utility classes
@@ -692,9 +692,9 @@ private:
     static
     HANDLE
     find_first_file_(
-        file_path_buffer_type_ const&   searchSpec
-    ,   flags_type                      flags
-    ,   find_data_type*                 findData
+        buffer_type_ const& searchSpec
+    ,   flags_type          flags
+    ,   find_data_type*     findData
     );
 /// @}
 
@@ -706,7 +706,7 @@ private:
     sequence_type const* const                      m_list;
     shared_handle*                                  m_handle;
     ss_typename_type_k traits_type::find_data_type  m_data;
-    file_path_buffer_type_                          m_subpath;
+    buffer_type_                                    m_subpath;
     char_type const*                                m_pattern0;
     char_type const*                                m_pattern1;
     char_type                                       m_delim;
@@ -1103,9 +1103,9 @@ template <ss_typename_param_k C, ss_typename_param_k T>
 inline /* static */
 ss_typename_type_ret_k basic_findfile_sequence<C, T>::size_type
 basic_findfile_sequence<C, T>::validate_directory_(
-    char_type const*        directory
-,   file_path_buffer_type_& dir
-,   flags_type              flags
+    char_type const*    directory
+,   buffer_type_&       dir
+,   flags_type          flags
 )
 {
     if (NULL == directory ||
@@ -1490,9 +1490,9 @@ template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k V>
 inline /* static */
 HANDLE
 basic_findfile_sequence_const_input_iterator<C, T, V>::find_first_file_(
-    ss_typename_type_k basic_findfile_sequence_const_input_iterator<C, T, V>::file_path_buffer_type_ const& searchSpec
-,   flags_type                                                                                              flags
-,   ss_typename_type_k basic_findfile_sequence_const_input_iterator<C, T, V>::find_data_type*               findData
+    ss_typename_type_k basic_findfile_sequence_const_input_iterator<C, T, V>::buffer_type_ const&   searchSpec
+,   flags_type                                                                                      flags
+,   ss_typename_type_k basic_findfile_sequence_const_input_iterator<C, T, V>::find_data_type*       findData
 )
 {
     HANDLE      hSrch = INVALID_HANDLE_VALUE;
@@ -1778,8 +1778,8 @@ basic_findfile_sequence_const_input_iterator<C, T, V>::operator ++()
                     // sequence is tolerant of both slashes and backslashes, we need to find the last
                     // of each and take the endmost.
 
-                    file_path_buffer_type_  search(n1 + 1); // Buffer in which to prepare the search-spec for FindFirstFile()
-                    size_type               cch;    // Used to make the strrchr operations faster
+                    buffer_type_    search(n1 + 1); // Buffer in which to prepare the search-spec for FindFirstFile()
+                    size_type       cch;            // Used to make the strrchr operations faster
 
                     if (traits_type::is_path_rooted(m_pattern0))
                     {

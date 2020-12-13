@@ -5,10 +5,11 @@
  *              platform discriminations, and definitions of types.
  *
  * Created:     20th March 2005
- * Updated:     11th October 2019
+ * Updated:     13th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -21,9 +22,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -47,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MINOR    15
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 2
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     52
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 4
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/platformstl.h
@@ -127,12 +129,13 @@
 # define _PLATFORMSTL_VER_1_8_4     0x010804ff  /*!< Version 1.8.4 (with STLSoft 1.9.119) */
 # define _PLATFORMSTL_VER_1_9_1_B01 0x01090181  /*!< Version 1.9.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _PLATFORMSTL_VER_1_9_1_B02 0x01090182  /*!< Version 1.9.1 beta 2 (with STLSoft 1.10.1 beta 16) */
+# define _PLATFORMSTL_VER_1_9_1_B03 0x01090183  /*!< Version 1.9.1 beta 3 (with STLSoft 1.10.1 beta 23) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _PLATFORMSTL_VER_MAJOR      1
 #define _PLATFORMSTL_VER_MINOR      9
 #define _PLATFORMSTL_VER_REVISION   1
-#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B02
+#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B03
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -149,8 +152,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0190
-# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 16, or later
+#if _STLSOFT_VER < 0x010a0197
+# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 23, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -506,8 +509,6 @@ namespace platformstl = ::stlsoft::platformstl_project;
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
-
-/* ////////////////////////////////////////////////////////////////////// */
 
 #endif /* !PLATFORMSTL_INCL_PLATFORMSTL_H_PLATFORMSTL */
 

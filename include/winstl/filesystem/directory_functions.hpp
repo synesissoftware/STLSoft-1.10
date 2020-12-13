@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR     1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      67
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  3
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,9 @@
 #ifndef WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS
 # include <winstl/filesystem/filesystem_traits.hpp>
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
+# include <stlsoft/memory/auto_buffer.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 #ifdef _ATL_MIN_CRT
 # ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR
 #  include <stlsoft/memory/util/allocator_selector.hpp>
@@ -245,7 +248,7 @@ create_directory_recurse_impl(
                 fs_traits_t::char_copy(&szParent[0], sz.data(), szLen);
                 szParent[szLen] = '\0';
 
-                char_t* const pszSlash = STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_directory_functions_, find_last_path_name_separator_)<char_t>(szParent.data());
+                char_t* const pszSlash = find_last_path_name_separator_(szParent.data());
                 if (pszSlash == NULL)
                 {
                     fs_traits_t::set_last_error(ERROR_DIRECTORY);
@@ -371,7 +374,6 @@ remove_directory_recurse_impl(
                     {
                         // It has some contents, so we need to remove them
 
-                        stat_data_t         st;
                         bool const          hasEnd  =   fs_traits_t::has_dir_end(dir);
                         ws_size_t const     dirLen  =   fs_traits_t::str_len(dir);
                         ws_size_t const     wildLen =   fs_traits_t::str_len(fs_traits_t::pattern_all());
@@ -394,7 +396,8 @@ remove_directory_recurse_impl(
                         fs_traits_t::char_copy(&sz[0] + baseLen, fs_traits_t::pattern_all(), wildLen);
                         sz[baseLen + wildLen] = '\0';
 
-                        HANDLE hSrch = fs_traits_t::find_first_file(sz.data(), &st);
+                        stat_data_t st;
+                        HANDLE      hSrch = fs_traits_t::find_first_file(sz.data(), &st);
                         if (INVALID_HANDLE_VALUE == hSrch)
                         {
                             dwRet = fs_traits_t::get_last_error();
@@ -573,7 +576,9 @@ create_directory_recurse(
  * \param dir The path of the directory to create
  * \param lpsa The security attributes with which each directory is to be created
  */
-template <ss_typename_param_k S>
+template<
+    ss_typename_param_k S
+>
 inline
 ws_bool_t
 create_directory_recurse(
@@ -640,7 +645,7 @@ remove_directory_recurse(
 {
     typedef filesystem_traits<ws_char_a_t>  traits_t;
 
-    ws_dword_t dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_directory_functions_, remove_directory_recurse_impl)<ws_char_a_t, WIN32_FIND_DATAA>(dir, pfn, param);
+    ws_dword_t const dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_directory_functions_, remove_directory_recurse_impl)<ws_char_a_t, WIN32_FIND_DATAA>(dir, pfn, param);
 
     traits_t::set_last_error(dwRet);
 
@@ -674,7 +679,7 @@ remove_directory_recurse(
 {
     typedef filesystem_traits<ws_char_w_t>  traits_t;
 
-    ws_dword_t dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_directory_functions_, remove_directory_recurse_impl)<ws_char_w_t, WIN32_FIND_DATAW>(dir, pfn, param);
+    ws_dword_t const dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_directory_functions_, remove_directory_recurse_impl)<ws_char_w_t, WIN32_FIND_DATAW>(dir, pfn, param);
 
     traits_t::set_last_error(dwRet);
 
@@ -694,23 +699,21 @@ remove_directory_recurse(
     return remove_directory_recurse(dir, NULL, NULL);
 }
 
-#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-
 /** Removes the given directory, and all its subdirectories.
  *
  * \ingroup group__library__FileSystem
  */
-template <ss_typename_param_k S>
+template<
+    ss_typename_param_k S
+>
 inline
 ws_bool_t
 remove_directory_recurse(
-S const& dir
+    S const& dir
 )
 {
     return remove_directory_recurse(STLSOFT_NS_QUAL(c_str_ptr)(dir), NULL, NULL);
 }
-
-#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

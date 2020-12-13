@@ -4,10 +4,11 @@
  * Purpose:     A number of useful functionals .
  *
  * Created:     2nd November 2003
- * Updated:     13th September 2019
+ * Updated:     12th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -51,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_MAJOR    4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_MINOR    1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_REVISION 8
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_EDIT     62
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_MINOR    2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_REVISION 1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_FUNCTIONALS_EDIT     63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,9 +78,6 @@
 #ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS
 # include <unixstl/filesystem/filesystem_traits.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS */
-#ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER
-# include <unixstl/filesystem/file_path_buffer.hpp>
-#endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER */
 #ifndef _UNIXSTL_FUNCTIONALS_NO_STD
 # include <functional>
 #else /* ? _UNIXSTL_FUNCTIONALS_NO_STD */
@@ -152,21 +151,25 @@ public:
 private:
     result_type compare_(char_type const* s1, char_type const* s2)
     {
-        basic_file_path_buffer<char_type>   path1;
-        basic_file_path_buffer<char_type>   path2;
+        typedef STLSOFT_NS_QUAL(auto_buffer)<
+            char
+        >                                                   buffer_t;
 
-        if( !traits_type::get_full_path_name(s1, path1.size(), &path1[0]) ||
-            !traits_type::get_full_path_name(s2, path2.size(), &path2[0]))
+        buffer_t    path1(1);
+        buffer_t    path2(1);
+
+        if( !traits_type::get_full_path_name(s1, path1) ||
+            !traits_type::get_full_path_name(s2, path2))
         {
             return false;
         }
         else
         {
-            traits_type::remove_dir_end(&path1[0]);
-            traits_type::remove_dir_end(&path2[0]);
+            traits_type::remove_dir_end(path1);
+            traits_type::remove_dir_end(path2);
 
-            s1 = path1.c_str();
-            s2 = path2.c_str();
+            s1 = path1.data();
+            s2 = path2.data();
 
             return 0 == traits_type::str_compare(s1, s2);
         }

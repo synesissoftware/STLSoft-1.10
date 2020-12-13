@@ -57,9 +57,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       5
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       11
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       12
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        158
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        160
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -233,6 +233,46 @@ public:
     ///
     /// \return s + n
     static char_type*   str_set(char_type* s, size_type n, char_type c);
+/// @}
+
+/// \name Path string handling
+/// @{
+public:
+    /// Performs a semantic string comparison with specific handling for
+    /// path string character rules on the ambient operating system
+    ///
+    /// \param ps1 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param ps2 C-style string pointer to the first path. May not be
+    ///   \c null
+    ///
+    /// \note This function does <em>not</em> perform analysis such as
+    ///   canonicalisation of dots directories
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    );
+
+    /// Performs a semantic string comparison with specific handling for
+    /// path string character rules on the ambient operating system
+    ///
+    /// \param ps1 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param ps2 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param cch Number of characters to compare
+    ///
+    /// \note This function does <em>not</em> perform analysis such as
+    ///   canonicalisation of dots directories
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    );
 /// @}
 
 /// \name Locale management
@@ -675,6 +715,107 @@ public:
         }
 
         return s;
+    }
+
+public:
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    )
+    {
+        WINSTL_ASSERT(NULL != ps1);
+        WINSTL_ASSERT(NULL != ps2);
+
+        for (;; ++ps1, ++ps2)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+
+            if (0 != d)
+            {
+                return d;
+            }
+
+            if ('\0' == *ps1)
+            {
+                break;
+            }
+        }
+
+        return 0;
+    }
+
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    )
+    {
+        WINSTL_ASSERT(NULL != ps1);
+        WINSTL_ASSERT(NULL != ps2);
+
+        for (; 0 != cch; ++ps1, ++ps2, --cch)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+
+            if (0 != d)
+            {
+                return d;
+            }
+        }
+
+        return 0;
     }
 
 public:
@@ -1179,6 +1320,107 @@ public:
         }
 
         return s;
+    }
+
+public:
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    )
+    {
+        WINSTL_ASSERT(NULL != ps1);
+        WINSTL_ASSERT(NULL != ps2);
+
+        for (;; ++ps1, ++ps2)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+
+            if (0 != d)
+            {
+                return d;
+            }
+
+            if ('\0' == *ps1)
+            {
+                break;
+            }
+        }
+
+        return 0;
+    }
+
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    )
+    {
+        WINSTL_ASSERT(NULL != ps1);
+        WINSTL_ASSERT(NULL != ps2);
+
+        for (; 0 != cch; ++ps1, ++ps2, --cch)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+
+            if (0 != d)
+            {
+                return d;
+            }
+        }
+
+        return 0;
     }
 
 public:

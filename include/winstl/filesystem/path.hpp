@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     4th December 2020
+ * Updated:     11th December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     288
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 2
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     291
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,18 +85,18 @@
 #  include <winstl/exception/winstl_exception.hpp>
 # endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES
-# include <stlsoft/memory/util/allocator_features.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES */
 #ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
-#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS
-# include <stlsoft/string/copy_functions.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES
+# include <stlsoft/memory/util/allocator_features.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES */
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS
+# include <stlsoft/string/copy_functions.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
@@ -210,7 +210,10 @@ public:
     /// \endcode
     ///
     /// \pre len(path) <= size()
-    ss_explicit_k basic_path(char_type const* path);
+    ss_explicit_k
+    basic_path(
+        char_type const* path
+    );
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
     /// Constructs a path from a string object.
     ///
@@ -232,9 +235,13 @@ public:
     /// assert("C:\\WINDOWS" == p);
     /// assert("c:\\windows" == p);
     /// \endcode
-    template<ss_typename_param_k S>
+    template<
+        ss_typename_param_k S
+    >
     ss_explicit_k
-    basic_path(S const& s)
+    basic_path(
+        S const& s
+    )
         : m_buffer(STLSOFT_NS_QUAL(c_str_data)(s), STLSOFT_NS_QUAL(c_str_len)(s))
     {}
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
@@ -248,9 +255,13 @@ public:
     /// assert("C:\\WINDOWS" == p);
     /// assert("c:\\windows" == p);
     /// \endcode
-    basic_path(char_type const* path, size_type cch);
+    basic_path(
+        char_type const*    path
+    ,   size_type           cch
+    );
 
 #ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+
     /// Copies the contents of \c rhs
     basic_path(class_type const& rhs);
 #endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
@@ -263,7 +274,9 @@ public:
     class_type& operator =(char_type const* rhs);
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
     /// Copies the contents of \c s
-    template<ss_typename_param_k S>
+    template<
+        ss_typename_param_k S
+    >
     class_type& operator =(S const& s)
     {
         return operator_equal_(STLSOFT_NS_QUAL(c_str_ptr)(s));
@@ -271,11 +284,21 @@ public:
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
 
     // Creates a root path
-    static class_type root(char_type const* s);
+    static
+    class_type
+    root(
+        char_type const* s
+    );
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
     // Creates a root path
-    template<ss_typename_param_k S>
-    static class_type root(S const& s)
+    template<
+        ss_typename_param_k S
+    >
+    static
+    class_type
+    root(
+        S const& s
+    )
     {
         return root(STLSOFT_NS_QUAL(c_str_ptr)(s));
     }
@@ -326,15 +349,15 @@ public:
 #if !defined(STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT) || \
     defined(STLSOFT_CF_MEMBER_TEMPLATE_OVERLOAD_DISCRIMINATED)
     /// Equivalent to push()
-    class_type&
-    operator /=(class_type const& rhs);
+    class_type& operator /=(class_type const& rhs);
 #endif /* !STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT || STLSOFT_CF_MEMBER_TEMPLATE_OVERLOAD_DISCRIMINATED */
 
 #if defined(STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT)
     /// Equivalent to push()
-    template <ss_typename_param_k S>
-    class_type&
-    operator /=(S const& rhs)
+    template<
+        ss_typename_param_k S
+    >
+    class_type& operator /=(S const& rhs)
     {
         return push(STLSOFT_NS_QUAL(c_str_ptr)(rhs));
     }
@@ -488,14 +511,14 @@ private:
 
     bool_type               equivalent_(char_type const* rhs, size_type cch) const STLSOFT_NOEXCEPT;
 
-    static char_type const* last_slash_(char_type const* buffer, size_type len);
+    static char_type const* last_slash_(char_type const* buffer, size_type len) STLSOFT_NOEXCEPT;
 
-    static char_type const* next_slash_or_end_(char_type const* p);
-    static char_type const* next_part_or_end_(char_type const* p);
-    static char_type        path_name_separator();
-    static char_type        path_name_separator_alt();
+    static char_type const* next_slash_or_end_(char_type const* p) STLSOFT_NOEXCEPT;
+    static char_type const* next_part_or_end_(char_type const* p) STLSOFT_NOEXCEPT;
+    static char_type        path_name_separator() STLSOFT_NOEXCEPT;
+    static char_type        path_name_separator_alt() STLSOFT_NOEXCEPT;
 
-// Member Types
+// Members
 private:
     typedef ss_typename_type_k path_buffer_generator<
         char_type
@@ -517,12 +540,18 @@ private:
     };
 
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
-    typedef ss_typename_type_k A::ss_template_qual_k rebind<part_type>::other   part_ator_type_;
+    typedef ss_typename_type_k A::ss_template_qual_k rebind<
+        part_type
+    >::other                                                part_ator_type_;
 #else /* ? STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 # ifdef WIN32
-    typedef ss_typename_type_k processheap_allocator<part_type>                 part_ator_type_;
+    typedef ss_typename_type_k processheap_allocator<
+        part_type
+    >                                                       part_ator_type_;
 # else /* ? OS */
-    typedef ss_typename_type_k allocator_selector<part_type>::allocator_type    part_ator_type_;
+    typedef ss_typename_type_k allocator_selector<
+        part_type
+    >::allocator_type                                       part_ator_type_;
 # endif /* OS */
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 
@@ -594,17 +623,28 @@ typedef basic_path<TCHAR, filesystem_traits<TCHAR> >                   path;
         basic_path__()
             : parent_class_type()
         {}
-        ss_explicit_k basic_path__(char_type const* path)
+        ss_explicit_k
+        basic_path__(
+            char_type const* path
+        )
             : parent_class_type(path)
         {}
 # ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
         /// Constructs a path from \c path
-        template<ss_typename_param_k S>
-        ss_explicit_k basic_path__(S const& s)
+        template<
+            ss_typename_param_k S
+        >
+        ss_explicit_k
+        basic_path__(
+            S const& s
+        )
             : parent_class_type(s)
         {}
 # endif /* STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT */
-        basic_path__(char_type const* path, size_type cch)
+        basic_path__(
+            char_type const*    path
+        ,   size_type           cch
+        )
             : parent_class_type(path, cch)
         {}
         basic_path__(class_type const& rhs)
@@ -624,7 +664,9 @@ typedef basic_path<TCHAR, filesystem_traits<TCHAR> >                   path;
             return *this;
         }
 # ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
-        template<ss_typename_param_k S>
+        template<
+            ss_typename_param_k S
+        >
         class_type& operator =(S const& s)
         {
             parent_class_type::operator =(s);
@@ -742,7 +784,8 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-basic_path<C, T, A> operator /(
+basic_path<C, T, A>
+operator /(
     basic_path<C, T, A> const&                                  lhs
 ,   ss_typename_type_k basic_path<C, T, A>::char_type const*    rhs
 )
@@ -760,7 +803,8 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-basic_path<C, T, A> operator /(
+basic_path<C, T, A>
+operator /(
     ss_typename_type_k basic_path<C, T, A>::char_type const*    lhs
 ,   basic_path<C, T, A> const&                                  rhs
 )
@@ -778,7 +822,8 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-basic_path<C, T, A> operator /(
+basic_path<C, T, A>
+operator /(
     basic_path<C, T, A> const&  lhs
 ,   basic_path<C, T, A> const&  rhs
 )
@@ -799,7 +844,9 @@ basic_path<C, T, A> operator /(
  *
  * \ingroup group__library__FileSystem
  */
-template<ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 inline
 basic_path<C>
 make_path(
@@ -855,7 +902,10 @@ c_str_data(
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_a_t const*
 c_str_data_a(
@@ -864,7 +914,10 @@ c_str_data_a(
 {
     return b.data();
 }
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_w_t const*
 c_str_data_w(
@@ -896,7 +949,10 @@ c_str_len(
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_size_t
 c_str_len_a(
@@ -905,7 +961,10 @@ c_str_len_a(
 {
     return b.size();
 }
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_size_t
 c_str_len_w(
@@ -939,7 +998,10 @@ c_str_ptr(
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_a_t const*
 c_str_ptr_a(
@@ -948,7 +1010,10 @@ c_str_ptr_a(
 {
     return b.c_str();
 }
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_w_t const*
 c_str_ptr_w(
@@ -987,7 +1052,10 @@ c_str_ptr_null(
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_a_t const*
 c_str_ptr_null_a(
@@ -1001,7 +1069,10 @@ c_str_ptr_null_a(
 
     return b.c_str();
 }
-template <ss_typename_param_k T, ss_typename_param_k A>
+template<
+    ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 ws_char_w_t const*
 c_str_ptr_null_w(
@@ -1079,7 +1150,7 @@ basic_path<C, T, A>::last_() STLSOFT_NOEXCEPT
 
     return m_buffer[size() - 1];
 }
-    
+
 template<
     ss_typename_param_k C
 ,   ss_typename_param_k T
@@ -1090,7 +1161,7 @@ ss_typename_param_k basic_path<C, T, A>::char_type const*
 basic_path<C, T, A>::last_slash_(
     ss_typename_param_k basic_path<C, T, A>::char_type const*   buffer
 ,   ss_typename_param_k basic_path<C, T, A>::size_type          /* len */
-)
+) STLSOFT_NOEXCEPT
 {
     char_type*  slash   =   traits_type::str_rchr(buffer, path_name_separator());
     char_type*  slash_a =   traits_type::str_rchr(buffer, path_name_separator_alt());
@@ -1113,7 +1184,7 @@ inline /* static */
 ss_typename_param_k basic_path<C, T, A>::char_type const*
 basic_path<C, T, A>::next_slash_or_end_(
     ss_typename_param_k basic_path<C, T, A>::char_type const* p
-)
+) STLSOFT_NOEXCEPT
 {
     for (;;)
     {
@@ -1141,7 +1212,7 @@ inline /* static */
 ss_typename_param_k basic_path<C, T, A>::char_type const*
 basic_path<C, T, A>::next_part_or_end_(
     ss_typename_param_k basic_path<C, T, A>::char_type const* p
-)
+) STLSOFT_NOEXCEPT
 {
     for (;;)
     {
@@ -1171,7 +1242,7 @@ template<
 >
 inline /* static */
 ss_typename_param_k basic_path<C, T, A>::char_type
-basic_path<C, T, A>::path_name_separator_alt()
+basic_path<C, T, A>::path_name_separator_alt() STLSOFT_NOEXCEPT
 {
     return '/';
 }
@@ -1179,7 +1250,7 @@ basic_path<C, T, A>::path_name_separator_alt()
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline /* static */
 ss_typename_param_k basic_path<C, T, A>::char_type
-basic_path<C, T, A>::path_name_separator()
+basic_path<C, T, A>::path_name_separator() STLSOFT_NOEXCEPT
 {
     WINSTL_ASSERT('\\' == traits_type::path_name_separator());
 
@@ -1192,7 +1263,8 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-void basic_path<C, T, A>::swap(
+void
+basic_path<C, T, A>::swap(
     basic_path<C, T, A>& rhs
 ) STLSOFT_NOEXCEPT
 {
@@ -1777,7 +1849,8 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-void basic_path<C, T, A>::clear() STLSOFT_NOEXCEPT
+void
+basic_path<C, T, A>::clear() STLSOFT_NOEXCEPT
 {
     m_buffer.truncate(0);
 }
@@ -2366,7 +2439,7 @@ basic_path<C, T, A>::equal(
         return false;
     }
 
-    return equal(rhs.c_str());
+    return 0 == traits_type::path_str_n_compare(m_buffer.data(), rhs.data(), size());
 }
 
 template<
@@ -2380,7 +2453,7 @@ basic_path<C, T, A>::equal(
     ss_typename_type_k basic_path<C, T, A>::char_type const* rhs
 ) const STLSOFT_NOEXCEPT
 {
-    return 0 == traits_type::str_compare_no_case(m_buffer.data(), STLSOFT_NS_QUAL(c_str_ptr)(rhs));
+    return 0 == traits_type::path_str_compare(m_buffer.data(), STLSOFT_NS_QUAL(c_str_ptr)(rhs));
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */

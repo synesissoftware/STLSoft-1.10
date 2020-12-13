@@ -5,10 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     13th September 2019
+ * Updated:     12th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     5
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     5
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  8
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      126
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     6
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  1
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      128
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -235,6 +236,46 @@ public:
     static char_type*   str_set(char_type* s, size_type n, char_type c);
 /// @}
 
+/// \name Path string handling
+/// @{
+public:
+    /// Performs a semantic string comparison with specific handling for
+    /// path string character rules on the ambient operating system
+    ///
+    /// \param ps1 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param ps2 C-style string pointer to the first path. May not be
+    ///   \c null
+    ///
+    /// \note This function does <em>not</em> perform analysis such as
+    ///   canonicalisation of dots directories
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    );
+
+    /// Performs a semantic string comparison with specific handling for
+    /// path string character rules on the ambient operating system
+    ///
+    /// \param ps1 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param ps2 C-style string pointer to the first path. May not be
+    ///   \c null
+    /// \param cch Number of characters to compare
+    ///
+    /// \note This function does <em>not</em> perform analysis such as
+    ///   canonicalisation of dots directories
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    );
+/// @}
+
 /// \name System Paths
 /// @{
 public:
@@ -403,6 +444,113 @@ public:
         }
 
         return s;
+    }
+
+public:
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    )
+    {
+        UNIXSTL_ASSERT(NULL != ps1);
+        UNIXSTL_ASSERT(NULL != ps2);
+
+        for (;; ++ps1, ++ps2)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+#ifdef _WIN32
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+#endif
+
+            if (0 != d)
+            {
+                return d;
+            }
+
+            if ('\0' == *ps1)
+            {
+                break;
+            }
+        }
+
+        return 0;
+    }
+
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    )
+    {
+        UNIXSTL_ASSERT(NULL != ps1);
+        UNIXSTL_ASSERT(NULL != ps2);
+
+        for (; 0 != cch; ++ps1, ++ps2, --cch)
+        {
+            int_type d = int_type(*ps1) - int_type(*ps2);
+
+#ifdef _WIN32
+
+            if (0 != d)
+            {
+                d = toupper(*ps1) - toupper(*ps2);
+            }
+
+            if (0 != d)
+            {
+                switch (*ps1)
+                {
+                case '/':
+                case '\\':
+
+                    switch (*ps2)
+                    {
+                    case '/':
+                    case '\\':
+
+                        d = 0;
+                        break;
+                    }
+                    break;
+                }
+            }
+#endif
+
+            if (0 != d)
+            {
+                return d;
+            }
+        }
+
+        return 0;
     }
 
 public:
@@ -608,6 +756,22 @@ public:
 
         return s;
     }
+
+public:
+    static
+    int_type
+    path_str_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    );
+
+    static
+    int
+    path_str_n_compare(
+        char_type const*    ps1
+    ,   char_type const*    ps2
+    ,   size_type           cch
+    );
 
 public:
 #if STLSOFT_LEAD_VER >= 0x010a0000

@@ -97,10 +97,6 @@
 # include <winstl/internal/windows_version_.h>
 #endif /* !WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_ */
 
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
-
 #ifndef STLSOFT_INCL_H_CTYPE
 # define STLSOFT_INCL_H_CTYPE
 # include <ctype.h>
@@ -119,6 +115,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_internal_h_FileManagement
 # include <winstl/api/internal/FileManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_internal_h_FileManagement */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
