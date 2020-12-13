@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  20
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      156
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  21
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      157
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1073,7 +1073,7 @@ private:
             // Given path is absolute, so simply copy into buffer
             if (NULL == buffer)
             {
-                return len;
+                return len + 1;
             }
             else if (cchBuffer < len + 1)
             {
@@ -1123,7 +1123,7 @@ private:
 
                             if (NULL == buffer)
                             {
-                                return lenDir;
+                                return lenDir + 1;
                             }
                         }
                         else
@@ -1161,7 +1161,7 @@ private:
 
                             if (NULL == buffer)
                             {
-                                return lenDir;
+                                return lenDir + 1;
                             }
                         }
 
