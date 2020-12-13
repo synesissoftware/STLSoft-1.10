@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  29th November 2020
+; Updated:  13th December 2020
 
 ============================================================================
 
@@ -17,6 +17,174 @@ STLSoft - Changes
    **************************************
 
 
+
+============================================================================
+
+Changes for 1.10.1 beta 23 (13th December 2020)
+
+General:
+========
+
+ * basic_file_path_buffer<> is now deprecated in all projects, and all dependent components are modified to use other facilities
+ * added platformstl::environment_variable<> class template
+ * added (in)equality operators for stlsoft::error_desc
+ * added stlsoft::basic_path_buffer<> component, as an alternative to basic_file_path_buffer<>
+ * stlsoft::auto_buffer<> class template copy_from() method, and ctor and resize() method that take value for initialisation of (new) elements
+ * added stlsoft::strnpbrkn()/wcsnpbrkn() (and added stlsoft_C_(str|wcs)npbrkn())
+ * added move constructor to unixstl::module and winstl::module
+ * large number of new methods and defect fixes in (platformstl|unixstl|winstl)::filesystem_traits
+ * large number of new methods and defect fixes in (platformstl|unixstl|winstl)::system_traits
+
+Changes:
+========
+
+ InetSTL:
+ ========
+
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+    ~ abstraction of Windows APIs
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/file_path_buffer.hpp:
+    ~ platformstl::basic_file_path_buffer is now deprecated
+
+ + platformstl/system/environment_variable.hpp:
+    + added platformstl::environment_variable<> class template
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/error/error_desc.hpp:
+    + added stlsoft::error_desc (in)equality operators
+
+ + stlsoft/filesystem/path_buffer.hpp:
+    + added stlsoft/path_buffer.hpp (stlsoft::basic_path_buffer<>)
+    + added winstl::(basic_)path_buffer
+
+ ~ stlsoft/memory/auto_buffer.hpp:
+    + auto_buffer added copy_from() method that
+    + auto_buffer added ctor and resize() methods that take value for initialisation of (new) elements)
+
+ ~ stlsoft/stlsoft.h:
+    ~ compatibility with Visual Studio 2019 (16.8.2)
+
+ + stlsoft/string/c_string/strnpbrkn.h:
+    + added stlsoft_C_(str|wcs)npbrkn()
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/dl/module.hpp:
+    + added move constructor
+
+ ~ unixstl/filesystem/current_directory_scope.hpp:
+    - removed dependency on basic_file_path_buffer
+
+ ~ unixstl/filesystem/directory_functions.hpp:
+    - recursive directory functions no longer dependent on unixstl::(basic_)file_path_buffer
+    ~ fixed defect
+
+ ~ unixstl/filesystem/file_path_buffer.hpp:
+    ~ unixstl::basic_file_path_buffer is now deprecated
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    + function-template overloads of each of ensure_dir_end(), ensure_dir_end(), has_dir_end() that takes a resizeable buffer
+    ~ fixed get_full_path_name() defect
+    ~ Windows-only fix for fulfilling full-path with a rooted but non-absolute path
+    ~ fixed is_path_absolute() on Windows to return false if only rooted 
+    + added resizeable-buffer overloads of get_full_path_name() and get_short_path_name()
+    + function-template overloads of get_current_directory() that takes a resizeable buffer
+    ~ correction to get_current_directory()
+
+ ~ unixstl/filesystem/functionals.hpp:
+    ~ UNIXSTL filesystem/functionals.hpp now independent of basic_file_path_buffer
+
+ ~ unixstl/filesystem/glob_sequence.hpp:
+    - unixstl::glob_sequence no longer dependent on unixstl::(basic_)file_path_buffer
+
+ ~ unixstl/filesystem/path.hpp:
+    ~ unixstl::(basic_)path is now independent of basic_file_path_buffer
+    ~ correcting implementation of c_str_ptr_null(|_a|_w)
+    ~ applying noexcept
+    + added data()
+    ~ minor improvements to implementation
+
+ ~ unixstl/filesystem/readdir_sequence.hpp:
+    - unixstl::readdir_sequence no longer dependent on unixstl::(basic_)file_path_buffer
+
+ ~ unixstl/system/system_traits.hpp:
+    system_traits: + added path_str_compare(), path_str_n_compare()
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/FileManagement.h:
+    ~ abstraction of Windows APIs
+
+ + winstl/api/internal/DynamicLinkLibrary.h:
+    ~ correctly handling for Windows long-paths
+
+ ~ winstl/dl/module.hpp:
+    + added move constructor (for winstl::module)
+    - removed dependency on file_path_buffer
+
+ ~ winstl/filesystem/current_directory_scope.hpp:
+    ~ defect fix
+    - removed dependency on basic_file_path_buffer
+
+ ~ winstl/filesystem/directory_functions.hpp:
+    - recursive directory functions no longer dependent on winstl::(basic_)file_path_buffer
+    ~ fixing defect
+
+ ~ winstl/filesystem/file_path_buffer.hpp:
+    ~ winstl::basic_file_path_buffer is now deprecated
+    + added resize() - as a no-op - as a tactical measure in evolving dependent components
+
+ ~ winstl/filesystem/filesystem_traits.hpp:
+    ~ winstl::filesystem_traits<wchar_t>::GetFullPathNameW() now implemented in terms of WINSTL_API_INTERNAL_FileManagement_GetFullPathNameW(), which will intercept "\\?\." and "\\?\.\"
+    + function-template overloads of each of get_current_directory(), get_full_path_name(), get_short_path_name() that takes a resizeable buffer
+    ~ abstraction of Windows APIs
+
+ ~ winstl/filesystem/findfile_sequence.hpp:
+    - removed #include dependency on file_path_buffer
+    + added winstl::(basic_)findfile_sequence::allowLongPathTranslation flag, which causes length-related search failures to be retried using Windows NT long-paths (on wide-character specialisations only)
+    - winstl::basic_findfile_sequence_const_iterator<> no longer dependent on winstl::(basic_)file_path_buffer
+    - winstl::basic_findfile_sequence<> no longer dependent on winstl::(basic_)file_path_buffer
+    - winstl::basic_findfile_sequence_value_type<> no longer dependent on winstl::(basic_)file_path_buffer
+    ~ abstraction of Windows APIs
+
+ ~ winstl/filesystem/functionals.hpp:
+    - removed all uses of (basic_)file_path_buffer
+    ~ renamed path_contains_file => directory_contains_file
+
+ ~ winstl/filesystem/link_functions.h:
+ ~ winstl/filesystem/memory_map_functions.h:
+ ~ winstl/filesystem/memory_mapped_file.hpp:
+    ~ abstraction of Windows APIs
+
+ ~ winstl/filesystem/path.hpp:
+    ~ winstl::(basic_)path is now independent of basic_file_path_buffer
+    + added basic_path::data()
+    ~ simplified implementation of c_str_ptr_null(|_a|_w)
+    ~ simplified implementation of c_str_len(|_a|_w)
+
+ + winstl/filesystem/path_buffer.hpp:
+    + added winstl::(basic_)path_buffer
+
+ ~ winstl/system/environment_variable.hpp:
+    + added system_traits function-template overloads of each of get_environment_variable() and expand_environment_strings() that takes a resizeable buffer
+    ~ simplified system_traits' get_environment_variable()
+
+ ~ winstl/system/system_traits.hpp:
+    + added path_str_compare(), path_str_n_compare()
+    + added system_traits function-template overloads of each of get_environment_variable() and expand_environment_strings() that takes a resizeable buffer
+    ~ simplified system_traits' get_environment_variable()
+    + function-template overloads of each of get_module_filename(), get_system_directory(), get_windows_directory(), get_home_directory() that takes a resizeable buffer
+
+ ~ winstl/system/version_info.hpp:
+    - removed dependency on basic_file_path_buffer
 
 ============================================================================
 

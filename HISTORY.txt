@@ -2,10 +2,23 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  29th November 2020
+; Updated:  13th December 2020
 
 ============================================================================
 
+
+13th December 2020 - 1.10.1 (beta 23) released
+----------------------------------------------
+
+ * basic_file_path_buffer<> is now deprecated in all projects, and all dependent components are modified to use other facilities
+ * added platformstl::environment_variable<> class template
+ * added (in)equality operators for stlsoft::error_desc
+ * added stlsoft::basic_path_buffer<> component, as an alternative to basic_file_path_buffer<>
+ * stlsoft::auto_buffer<> class template copy_from() method, and ctor and resize() method that take value for initialisation of (new) elements
+ * added stlsoft::strnpbrkn()/wcsnpbrkn() (and added stlsoft_C_(str|wcs)npbrkn())
+ * added move constructor to unixstl::module and winstl::module
+ * large number of new methods and defect fixes in (platformstl|unixstl|winstl)::filesystem_traits
+ * large number of new methods and defect fixes in (platformstl|unixstl|winstl)::system_traits
 
 29th November 2020 - 1.10.1 (beta 22) released
 ----------------------------------------------
