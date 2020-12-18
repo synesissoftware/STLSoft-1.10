@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     6th June 2006
- * Updated:     28th November 2020
+ * Updated:     18th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        29
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    2
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,9 +102,13 @@ namespace winstl_project
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+STLSOFT_OPEN_WORKER_NS_(ximpl_winstl_squeeze_functions_)
 
-template <ss_typename_param_k C>
-ws_size_t path_squeeze_impl(
+template<
+    ss_typename_param_k C
+>
+ws_size_t
+path_squeeze_impl(
     C const*    path
 ,   ws_size_t   pathLen
 ,   C           buffer[]
@@ -240,7 +244,9 @@ ws_size_t path_squeeze_impl(
     return cchBuffer;
 }
 
-template<ss_typename_param_k S>
+template<
+    ss_typename_param_k S
+>
 ws_size_t
 path_squeeze_impl2(
     S const&    path
@@ -251,7 +257,9 @@ path_squeeze_impl2(
     return path_squeeze_impl(STLSOFT_NS_QUAL(c_str_ptr_a)(path), STLSOFT_NS_QUAL(c_str_len)(path), buffer, cchBuffer);
 }
 
-template<ss_typename_param_k S>
+template<
+    ss_typename_param_k S
+>
 ws_size_t
 path_squeeze_impl2(
     S const&    path
@@ -262,10 +270,13 @@ path_squeeze_impl2(
     return path_squeeze_impl(STLSOFT_NS_QUAL(c_str_ptr_w)(path), STLSOFT_NS_QUAL(c_str_len)(path), buffer, cchBuffer);
 }
 
+STLSOFT_CLOSE_WORKER_NS_(ximpl_winstl_squeeze_functions_)
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #if 0
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 ws_size_t
 path_squeeze(
     C const*    path
@@ -316,7 +327,7 @@ path_squeeze(
 ,   ws_size_t   cchBuffer
 )
 {
-    return path_squeeze_impl2(path, buffer, cchBuffer);
+    return STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_squeeze_functions_, path_squeeze_impl2)(path, buffer, cchBuffer);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
