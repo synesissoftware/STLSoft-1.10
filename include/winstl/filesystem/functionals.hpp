@@ -4,7 +4,7 @@
  * Purpose:     File-system related functions and predicates.
  *
  * Created:     19th January 2002
- * Updated:     3rd December 2020
+ * Updated:     17th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR     2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION  3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      101
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION  4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -487,15 +487,20 @@ private: // implementation
         >                                                   buffer_t;
 
         ws_size_t const cchDirectory    =   traits_t::str_len(directory);
+        ws_bool_t const hasEnd          =   traits_t::has_dir_end(directory);
+        ws_size_t const cchBase         =   cchDirectory + (hasEnd ? 0 : 1);
         ws_size_t const cchFile         =   traits_t::str_len(file);
-        ws_size_t const cchPath         =   1 + cchDirectory + 1 + cchFile + 1;
+        ws_size_t const cchPath         =   cchBase + cchFile;
 
-        buffer_t        path(cchPath);
+        buffer_t        path(cchPath + 1);
 
         traits_t::char_copy(&path[0], directory, cchDirectory);
         path[cchDirectory] = '\0';
-        traits_t::ensure_dir_end(&path[0]);
-        traits_t::str_n_cat(&path[0], file, cchFile);
+        if (!hasEnd)
+        {
+            traits_t::ensure_dir_end(&path[0]);
+        }
+        traits_t::char_copy(&path[0] + cchBase, file, cchFile);
         path[cchPath] = '\0';
 
         return traits_t::file_exists(path.data());
