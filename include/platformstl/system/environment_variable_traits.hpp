@@ -4,10 +4,11 @@
  * Purpose:     Definition of the environment_variable_traits class.
  *
  * Created:     9th December 2005
- * Updated:     13th September 2019
+ * Updated:     17th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -53,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 6
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     32
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 7
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -88,6 +90,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS
+# include <stlsoft/string/c_string_traits.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS */
 
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
@@ -274,7 +279,11 @@ struct environment_variable_traits
 /// @{
 public:
     /// The character type
-    typedef char        char_type;
+    typedef char                                            char_type;
+private:
+    typedef STLSOFT_NS_QUAL(c_string_traits)<
+        char
+    >                                                       cs_traits_type_;
 /// @}
 
 /// \name Operations
@@ -359,7 +368,32 @@ inline /* static */ environment_variable_traits::char_type const* environment_va
     STLSOFT_ASSERT(NULL != name);
     STLSOFT_MESSAGE_ASSERT("Name may not contain '='", NULL == ::strchr(name, '='));
 
+#if _STLSOFT_VER < 0x01100000
+
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC)
+
+# if _MSC_VER >= 1500
+
+#  pragma warning(push)
+#  pragma warning(disable : 4996)
+# endif
+#endif
+#endif
+
     return const_cast<char_type const*>(::getenv(name));
+
+#if _STLSOFT_VER < 0x01100000
+
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC)
+
+# if _MSC_VER >= 1500
+
+#  pragma warning(pop)
+# endif
+#endif
+#endif
 }
 
 #ifdef PLATFORMSTL_ENVVAR_SET_SUPPORTED
@@ -437,9 +471,9 @@ inline /* static */ int environment_variable_traits::call_putenv_(environment_va
             else
 #endif /* STLSOFT_CF_THROW_BAD_ALLOC */
             {
-                ::strncpy(&buff[0], name, cchName);
+                cs_traits_type_::char_copy(&buff[0], name, cchName);
                 buff[cchName] = '=';
-                ::strncpy(&buff[cchName + 1], value, cchValue);
+                cs_traits_type_::char_copy(&buff[cchName + 1], value, cchValue);
                 buff[cchName + 1 + cchValue] = '\0';
                 STLSOFT_ASSERT(::strlen(buff.data()) == buff.size() - 1);
 

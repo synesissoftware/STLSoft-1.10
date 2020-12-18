@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     13th December 2020
+ * Updated:     18th December 2020
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -56,10 +56,10 @@
 #define WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       5
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       12
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       6
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        160
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        161
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS
+# include <stlsoft/string/c_string_traits.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS */
 
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
@@ -164,6 +168,7 @@ namespace winstl_project
  */
 template <ss_typename_param_k C>
 struct system_traits
+    : public stlsoft::c_string_traits<C>
 {
 /// \name Types
 /// @{
@@ -188,51 +193,6 @@ public:
     typedef DWORD                                           result_code_type;
     /// The type of system error codes
     typedef DWORD                                           error_type;
-/// @}
-
-/// \name General string handling
-/// @{
-public:
-    /// Copies a specific number of characters from the source to the destination
-    static char_type*   char_copy(char_type* dest, char_type const* src, size_type n);
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    /// Copies the contents of \c src to \c dest
-    static char_type*   str_copy(char_type* dest, char_type const* src);
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-    /// Copies the contents of \c src to \c dest, up to cch \c characters
-    static char_type*   str_n_copy(char_type* dest, char_type const* src, size_type cch);
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    /// Appends the contents of \c src to \c dest
-    static char_type*   str_cat(char_type* dest, char_type const* src);
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-    /// Appends the contents of \c src to \c dest, up to cch \c characters
-    static char_type*   str_n_cat(char_type* dest, char_type const* src, size_type cch);
-    /// Compares the contents of \c src and \c dest
-    static int_type     str_compare(char_type const* s1, char_type const* s2);
-    /// Compares the contents of \c src and \c dest in a case-insensitive fashion
-    static int_type     str_compare_no_case(char_type const* s1, char_type const* s2);
-    /// Compares the contents of \c src and \c dest up to \c cch characters
-    static int_type     str_n_compare(char_type const* s1, char_type const* s2, size_type cch);
-    /// Compares the contents of \c src and \c dest up to \c cch characters
-    static int_type     str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
-    /// Evaluates the length of \c src
-    static size_type    str_len(char_type const* src);
-    /// Finds the given character \c ch in \c s
-    static char_type*   str_chr(char_type const* s, char_type ch);
-    /// Finds the rightmost instance \c ch in \c s
-    static char_type*   str_rchr(char_type const* s, char_type ch);
-    /// Finds the given substring \c sub in \c s
-    static char_type*   str_str(char_type const* s, char_type const* sub);
-    /// Finds one of a set of characters in \c s
-    static char_type*   str_pbrk(char_type const* s, char_type const* charSet);
-    /// Returns a pointer to the end of the string
-    static char_type*   str_end(char_type const* s);
-    /// Sets each character in \c s to the character \c c
-    ///
-    /// \return s + n
-    static char_type*   str_set(char_type* s, size_type n, char_type c);
 /// @}
 
 /// \name Path string handling
@@ -546,176 +506,19 @@ public:
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct system_traits<ws_char_a_t>
+    : public STLSOFT_NS_QUAL(c_string_traits)<ws_char_a_t>
 {
 public:
-    typedef ws_char_a_t                 char_type;
-    typedef ws_size_t                   size_type;
-    typedef ws_ptrdiff_t                difference_type;
-    typedef system_traits<char_type>    class_type;
-    typedef ws_int_t                    int_type;
-    typedef ws_bool_t                   bool_type;
-    typedef HMODULE                     module_type;
-    typedef HANDLE                      handle_type;
-    typedef DWORD                       result_code_type;
-    typedef DWORD                       error_type;
-
-public:
-    static char_type* char_copy(char_type* dest, char_type const* src, size_type n)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(0 == n || NULL != src);
-
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_copy(char_type* dest, char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-# ifdef STLSOFT_MIN_CRT
-        return ::lstrcpyA(dest, src);
-# else /*? STLSOFT_MIN_CRT */
-        return ::strcpy(dest, src);
-# endif /* STLSOFT_MIN_CRT */
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static char_type* str_n_copy(char_type* dest, char_type const* src, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(0 == cch || NULL != src);
-
-        return ::strncpy(dest, src, cch);
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_cat(char_type* dest, char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-# ifdef STLSOFT_MIN_CRT
-        return ::lstrcatA(dest, src);
-# else /*? STLSOFT_MIN_CRT */
-        return ::strcat(dest, src);
-# endif /* STLSOFT_MIN_CRT */
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static char_type* str_n_cat(char_type* dest, char_type const* src, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-        return ::strncat(dest, src, cch);
-    }
-
-    static int_type str_compare(char_type const* s1, char_type const* s2)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-#ifdef STLSOFT_MIN_CRT
-        return ::lstrcmpA(s1, s2);
-#else /*? STLSOFT_MIN_CRT */
-        return ::strcmp(s1, s2);
-#endif /* STLSOFT_MIN_CRT */
-    }
-
-    static int_type str_compare_no_case(char_type const* s1, char_type const* s2)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_stricmp(s1, s2);
-    }
-
-    static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return ::strncmp(s1, s2, cch);
-    }
-
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
-#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch);
-    }
-#else
-    ;
-#endif
-
-    static size_type str_len(char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != src);
-
-#ifdef STLSOFT_MIN_CRT
-        return static_cast<size_type>(::lstrlenA(src));
-#else /*? STLSOFT_MIN_CRT */
-        return ::strlen(src);
-#endif /* STLSOFT_MIN_CRT */
-    }
-
-    static char_type* str_chr(char_type const* s, char_type ch)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        return const_cast<char_type*>(::strchr(s, ch));
-    }
-
-    static char_type* str_rchr(char_type const* s, char_type ch)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        return const_cast<char_type*>(::strrchr(s, ch));
-    }
-
-    static char_type* str_str(char_type const* s, char_type const* sub)
-    {
-        WINSTL_ASSERT(NULL != s);
-        WINSTL_ASSERT(NULL != sub);
-
-        return const_cast<char_type*>(::strstr(s, sub));
-    }
-
-    static char_type* str_pbrk(char_type const* s, char_type const* charSet)
-    {
-        WINSTL_ASSERT(NULL != s);
-        WINSTL_ASSERT(NULL != charSet);
-
-        return const_cast<char_type*>(::strpbrk(s, charSet));
-    }
-
-    static char_type* str_end(char_type const* s)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        for (; *s != '\0'; ++s)
-        {}
-
-        return const_cast<char_type*>(s);
-    }
-
-    static char_type* str_set(char_type* s, size_type n, char_type c)
-    {
-        WINSTL_ASSERT(NULL != s || 0u == n);
-
-        for (; 0u != n; --n, ++s)
-        {
-            *s = c;
-        }
-
-        return s;
-    }
+    typedef ws_char_a_t                                     char_type;
+    typedef ws_size_t                                       size_type;
+    typedef ws_ptrdiff_t                                    difference_type;
+    typedef system_traits<char_type>                        class_type;
+    typedef ws_int_t                                        int_type;
+    typedef ws_bool_t                                       bool_type;
+    typedef HMODULE                                         module_type;
+    typedef HANDLE                                          handle_type;
+    typedef DWORD                                           result_code_type;
+    typedef DWORD                                           error_type;
 
 public:
     static
@@ -1151,176 +954,19 @@ private:
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct system_traits<ws_char_w_t>
+    : public STLSOFT_NS_QUAL(c_string_traits)<ws_char_w_t>
 {
 public:
-    typedef ws_char_w_t                 char_type;
-    typedef ws_size_t                   size_type;
-    typedef ws_ptrdiff_t                difference_type;
-    typedef system_traits<char_type>    class_type;
-    typedef ws_int_t                    int_type;
-    typedef ws_bool_t                   bool_type;
-    typedef HMODULE                     module_type;
-    typedef HANDLE                      handle_type;
-    typedef DWORD                       result_code_type;
-    typedef DWORD                       error_type;
-
-public:
-    static char_type* char_copy(char_type* dest, char_type const* src, size_type n)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(0 == n || NULL != src);
-
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_copy(char_type* dest, char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-# ifdef STLSOFT_MIN_CRT
-        return ::lstrcpyW(dest, src);
-# else /*? STLSOFT_MIN_CRT */
-        return ::wcscpy(dest, src);
-# endif /* STLSOFT_MIN_CRT */
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static char_type* str_n_copy(char_type* dest, char_type const* src, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(0 == cch || NULL != src);
-
-        return ::wcsncpy(dest, src, cch);
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_cat(char_type* dest, char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-# ifdef STLSOFT_MIN_CRT
-        return ::lstrcatW(dest, src);
-# else /*? STLSOFT_MIN_CRT */
-        return ::wcscat(dest, src);
-# endif /* STLSOFT_MIN_CRT */
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static char_type* str_n_cat(char_type* dest, char_type const* src, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != dest);
-        WINSTL_ASSERT(NULL != src);
-
-        return ::wcsncat(dest, src, cch);
-    }
-
-    static int_type str_compare(char_type const* s1, char_type const* s2)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-#ifdef STLSOFT_MIN_CRT
-        return ::lstrcmpW(s1, s2);
-#else /*? STLSOFT_MIN_CRT */
-        return ::wcscmp(s1, s2);
-#endif /* STLSOFT_MIN_CRT */
-    }
-
-    static int_type str_compare_no_case(char_type const* s1, char_type const* s2)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_wcsicmp(s1, s2);
-    }
-
-    static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return ::wcsncmp(s1, s2, cch);
-    }
-
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
-#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
-    {
-        WINSTL_ASSERT(NULL != s1);
-        WINSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch);
-    }
-#else
-    ;
-#endif
-
-    static size_type str_len(char_type const* src)
-    {
-        WINSTL_ASSERT(NULL != src);
-
-#ifdef STLSOFT_MIN_CRT
-        return static_cast<size_type>(::lstrlenW(src));
-#else /*? STLSOFT_MIN_CRT */
-        return ::wcslen(src);
-#endif /* STLSOFT_MIN_CRT */
-    }
-
-    static char_type* str_chr(char_type const* s, char_type ch)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        return const_cast<char_type*>(::wcschr(s, ch));
-    }
-
-    static char_type* str_rchr(char_type const* s, char_type ch)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        return const_cast<char_type*>(::wcsrchr(s, ch));
-    }
-
-    static char_type* str_str(char_type const* s, char_type const* sub)
-    {
-        WINSTL_ASSERT(NULL != s);
-        WINSTL_ASSERT(NULL != sub);
-
-        return const_cast<char_type*>(::wcsstr(s, sub));
-    }
-
-    static char_type* str_pbrk(char_type const* s, char_type const* charSet)
-    {
-        WINSTL_ASSERT(NULL != s);
-        WINSTL_ASSERT(NULL != charSet);
-
-        return const_cast<char_type*>(::wcspbrk(s, charSet));
-    }
-
-    static char_type* str_end(char_type const* s)
-    {
-        WINSTL_ASSERT(NULL != s);
-
-        for (; *s != L'\0'; ++s)
-        {}
-
-        return const_cast<char_type*>(s);
-    }
-
-    static char_type* str_set(char_type* s, size_type n, char_type c)
-    {
-        WINSTL_ASSERT(NULL != s || 0u == n);
-
-        for (; 0u != n; --n, ++s)
-        {
-            *s = c;
-        }
-
-        return s;
-    }
+    typedef ws_char_w_t                                     char_type;
+    typedef ws_size_t                                       size_type;
+    typedef ws_ptrdiff_t                                    difference_type;
+    typedef system_traits<char_type>                        class_type;
+    typedef ws_int_t                                        int_type;
+    typedef ws_bool_t                                       bool_type;
+    typedef HMODULE                                         module_type;
+    typedef HANDLE                                          handle_type;
+    typedef DWORD                                           result_code_type;
+    typedef DWORD                                           error_type;
 
 public:
     static

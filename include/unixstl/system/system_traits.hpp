@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     12th December 2020
+ * Updated:     18th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -22,9 +22,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,10 +53,10 @@
 #define UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     5
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     6
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     6
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      128
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      129
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -68,6 +69,10 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS
+# include <stlsoft/string/c_string_traits.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS */
 
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
@@ -168,6 +173,7 @@ namespace unixstl_project
  */
 template <ss_typename_param_k C>
 struct system_traits
+    : public stlsoft::c_string_traits<C>
 {
 /// \name Types
 /// @{
@@ -192,48 +198,6 @@ public:
     typedef int                                     result_code_type;
     /// The type of system error codes
     typedef int                                     error_type;
-/// @}
-
-/// \name General string handling
-/// @{
-public:
-    /// Copies a specific number of characters from the source to the destination
-    static char_type*   char_copy(char_type* dest, char_type const* src, size_type n);
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    /// Copies the contents of \c src to \c dest
-    static char_type*   str_copy(char_type* dest, char_type const* src);
-    /// Copies the contents of \c src to \c dest, up to cch \c characters
-    static char_type*   str_n_copy(char_type* dest, char_type const* src, size_type cch);
-    /// Appends the contents of \c src to \c dest
-    static char_type*   str_cat(char_type* dest, char_type const* src);
-    /// Appends the contents of \c src to \c dest, up to cch \c characters
-    static char_type*   str_n_cat(char_type* dest, char_type const* src, size_type cch);
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-    /// Comparies the contents of \c src and \c dest
-    static int_type     str_compare(char_type const* s1, char_type const* s2);
-    /// Comparies the contents of \c src and \c dest in a case-insensitive fashion
-    static int_type     str_compare_no_case(char_type const* s1, char_type const* s2);
-    /// Comparies the contents of \c src and \c dest up to \c cch characters
-    static int_type     str_n_compare(char_type const* s1, char_type const* s2, size_type cch);
-    /// Comparies the contents of \c src and \c dest up to \c cch characters
-    static int_type     str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch);
-    /// Evaluates the length of \c src
-    static size_type    str_len(char_type const* src);
-    /// Finds the given character \c ch in \c s
-    static char_type*   str_chr(char_type const* s, char_type ch);
-    /// Finds the rightmost instance \c ch in \c s
-    static char_type*   str_rchr(char_type const* s, char_type ch);
-    /// Finds the given substring \c sub in \c s
-    static char_type*   str_str(char_type const* s, char_type const* sub);
-    /// Finds one of a set of characters in \c s
-    static char_type*   str_pbrk(char_type const* s, char_type const* charSet);
-    /// Returns a pointer to the end of the string
-    static char_type*   str_end(char_type const* s);
-    /// Sets each character in \c s to the character \c c
-    ///
-    /// \return s + n
-    static char_type*   str_set(char_type* s, size_type n, char_type c);
 /// @}
 
 /// \name Path string handling
@@ -333,118 +297,19 @@ struct system_traits;
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct system_traits<us_char_a_t>
+    : public STLSOFT_NS_QUAL(c_string_traits)<us_char_a_t>
 {
 public:
-    typedef us_char_a_t                 char_type;
-    typedef us_size_t                   size_type;
-    typedef us_ptrdiff_t                difference_type;
-    typedef system_traits<us_char_a_t>  class_type;
-    typedef us_int_t                    int_type;
-    typedef us_bool_t                   bool_type;
-    typedef void*                       module_type;
-    typedef int                         handle_type;
-    typedef int                         result_code_type;
-    typedef int                         error_type;
-
-public:
-    static char_type* char_copy(char_type* dest, char_type const* src, size_type n)
-    {
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_copy(char_type* dest, char_type const* src)
-    {
-        return ::strcpy(dest, src);
-    }
-
-    static char_type* str_n_copy(char_type* dest, char_type const* src, size_type cch)
-    {
-        return ::strncpy(dest, src, cch);
-    }
-
-    static char_type* str_cat(char_type* dest, char_type const* src)
-    {
-        return ::strcat(dest, src);
-    }
-
-    static char_type* str_n_cat(char_type* dest, char_type const* src, size_type cch)
-    {
-        return ::strncat(dest, src, cch);
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static int_type str_compare(char_type const* s1, char_type const* s2)
-    {
-        return ::strcmp(s1, s2);
-    }
-
-    static int_type str_compare_no_case(char_type const* s1, char_type const* s2);
-
-    static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
-    {
-        return ::strncmp(s1, s2, cch);
-    }
-
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
-#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
-    {
-        UNIXSTL_ASSERT(NULL != s1);
-        UNIXSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch);
-    }
-#else
-    ;
-#endif
-
-    static size_type str_len(char_type const* src)
-    {
-        return static_cast<size_type>(::strlen(src));
-    }
-
-    static char_type* str_chr(char_type const* s, char_type ch)
-    {
-        return const_cast<char_type*>(::strchr(s, ch));
-    }
-
-    static char_type* str_rchr(char_type const* s, char_type ch)
-    {
-        return const_cast<char_type*>(::strrchr(s, ch));
-    }
-
-    static char_type* str_str(char_type const* s, char_type const* sub)
-    {
-        return const_cast<char_type*>(::strstr(s, sub));
-    }
-
-    static char_type* str_pbrk(char_type const* s, char_type const* charSet)
-    {
-        return const_cast<char_type*>(::strpbrk(s, charSet));
-    }
-
-    static char_type* str_end(char_type const* s)
-    {
-        UNIXSTL_ASSERT(NULL != s);
-
-        for(; *s != '\0'; ++s)
-        {}
-
-        return const_cast<char_type*>(s);
-    }
-
-    static char_type* str_set(char_type* s, size_type n, char_type c)
-    {
-        UNIXSTL_ASSERT(NULL != s || 0u == n);
-
-        for(; 0u != n; --n, ++s)
-        {
-            *s = c;
-        }
-
-        return s;
-    }
+    typedef us_char_a_t                                     char_type;
+    typedef us_size_t                                       size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef system_traits<us_char_a_t>                      class_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef void*                                           module_type;
+    typedef int                                             handle_type;
+    typedef int                                             result_code_type;
+    typedef int                                             error_type;
 
 public:
     static
@@ -644,118 +509,19 @@ public:
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct system_traits<us_char_w_t>
+    : public STLSOFT_NS_QUAL(c_string_traits)<us_char_w_t>
 {
 public:
-    typedef us_char_w_t                 char_type;
-    typedef us_size_t                   size_type;
-    typedef us_ptrdiff_t                difference_type;
-    typedef system_traits<us_char_a_t>  class_type;
-    typedef us_int_t                    int_type;
-    typedef us_bool_t                   bool_type;
-    typedef void*                       module_type;
-    typedef int                         handle_type;
-    typedef int                         result_code_type;
-    typedef int                         error_type;
-
-public:
-    static char_type* char_copy(char_type* dest, char_type const* src, size_type n)
-    {
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
-    }
-
-#if !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS) || \
-    defined(_CRT_SECURE_NO_DEPRECATE)
-    static char_type* str_copy(char_type* dest, char_type const* src)
-    {
-        return ::wcscpy(dest, src);
-    }
-
-    static char_type* str_n_copy(char_type* dest, char_type const* src, size_type cch)
-    {
-        return ::wcsncpy(dest, src, cch);
-    }
-
-    static char_type* str_cat(char_type* dest, char_type const* src)
-    {
-        return ::wcscat(dest, src);
-    }
-
-    static char_type* str_n_cat(char_type* dest, char_type const* src, size_type cch)
-    {
-        return ::wcsncat(dest, src, cch);
-    }
-#endif /* !STLSOFT_USING_SAFE_STR_FUNCTIONS || _CRT_SECURE_NO_DEPRECATE */
-
-    static int_type str_compare(char_type const* s1, char_type const* s2)
-    {
-        return ::wcscmp(s1, s2);
-    }
-
-    static int_type str_compare_no_case(char_type const* s1, char_type const* s2);
-
-    static int_type str_n_compare(char_type const* s1, char_type const* s2, size_type cch)
-    {
-        return ::wcsncmp(s1, s2, cch);
-    }
-
-    static int_type str_n_compare_no_case(char_type const* s1, char_type const* s2, size_type cch)
-#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
-    {
-        UNIXSTL_ASSERT(NULL != s1);
-        UNIXSTL_ASSERT(NULL != s2);
-
-        return STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch);
-    }
-#else
-    ;
-#endif
-
-    static size_type str_len(char_type const* src)
-    {
-        return static_cast<size_type>(::wcslen(src));
-    }
-
-    static char_type* str_chr(char_type const* s, char_type ch)
-    {
-        return const_cast<char_type*>(::wcschr(s, ch));
-    }
-
-    static char_type* str_rchr(char_type const* s, char_type ch)
-    {
-        return const_cast<char_type*>(::wcsrchr(s, ch));
-    }
-
-    static char_type* str_str(char_type const* s, char_type const* sub)
-    {
-        return const_cast<char_type*>(::wcsstr(s, sub));
-    }
-
-    static char_type* str_pbrk(char_type const* s, char_type const* charSet)
-    {
-        return const_cast<char_type*>(::wcspbrk(s, charSet));
-    }
-
-    static char_type* str_end(char_type const* s)
-    {
-        UNIXSTL_ASSERT(NULL != s);
-
-        for(; *s != L'\0'; ++s)
-        {}
-
-        return const_cast<char_type*>(s);
-    }
-
-    static char_type* str_set(char_type* s, size_type n, char_type c)
-    {
-        UNIXSTL_ASSERT(NULL != s || 0u == n);
-
-        for(; 0u != n; --n, ++s)
-        {
-            *s = c;
-        }
-
-        return s;
-    }
+    typedef us_char_w_t                                     char_type;
+    typedef us_size_t                                       size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef system_traits<us_char_a_t>                      class_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef void*                                           module_type;
+    typedef int                                             handle_type;
+    typedef int                                             result_code_type;
+    typedef int                                             error_type;
 
 public:
     static
