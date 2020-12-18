@@ -4,7 +4,7 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     3rd December 2020
+ * Updated:     18th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    4
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    5
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     25
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,19 +81,10 @@
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
 
 /* /////////////////////////////////////////////////////////////////////////
- * namespace
+ * types
  */
 
-#ifndef STLSOFT_NO_NAMESPACE
-namespace stlsoft
-{
-#endif /* STLSOFT_NO_NAMESPACE */
-
-/* /////////////////////////////////////////////////////////////////////////
- * classes
- */
-
-struct stlsoft_C_string_slice_a_t
+struct stlsoft_C_string_slice_m_t
 {
     size_t          len;    /*!< The length of the slice */
     char const*     ptr;    /*!< The pointer of the slice */
@@ -101,7 +92,7 @@ struct stlsoft_C_string_slice_a_t
 #ifdef __cplusplus
 public: /* Construction */
     static
-    stlsoft_C_string_slice_a_t
+    stlsoft_C_string_slice_m_t
     create(
         char const* s
     ,   size_t      n
@@ -109,12 +100,12 @@ public: /* Construction */
     {
         STLSOFT_ASSERT(0u == n || NULL != s);
 
-        stlsoft_C_string_slice_a_t r = { n, s };
+        stlsoft_C_string_slice_m_t r = { n, s };
 
         return r;
     }
     static
-    stlsoft_C_string_slice_a_t
+    stlsoft_C_string_slice_m_t
     create()
     {
         return create(ss_nullptr_k, 0);
@@ -122,11 +113,7 @@ public: /* Construction */
 #endif /* __cplusplus */
 };
 #ifndef __cplusplus
-typedef struct stlsoft_C_string_slice_a_t   stlsoft_C_string_slice_a_t;
-#else /* ? !__cplusplus */
-# ifndef STLSOFT_NO_NAMESPACE
-typedef stlsoft_C_string_slice_a_t          string_slice_a_t;
-# endif /* STLSOFT_NO_NAMESPACE */
+typedef struct stlsoft_C_string_slice_m_t                   stlsoft_C_string_slice_m_t;
 #endif /* !__cplusplus */
 
 struct stlsoft_C_string_slice_w_t
@@ -158,13 +145,21 @@ public: /* Construction */
 #endif /* __cplusplus */
 };
 #ifndef __cplusplus
-typedef struct stlsoft_C_string_slice_w_t   stlsoft_C_string_slice_w_t;
-#else /* ? !__cplusplus */
-# ifndef STLSOFT_NO_NAMESPACE
-typedef stlsoft_C_string_slice_w_t          string_slice_w_t;
-# endif /* STLSOFT_NO_NAMESPACE */
+typedef struct stlsoft_C_string_slice_w_t                   stlsoft_C_string_slice_w_t;
 #endif /* !__cplusplus */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_NO_NAMESPACE
+namespace stlsoft
+{
+#endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * types
+ */
 
 #ifdef __cplusplus
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -175,7 +170,7 @@ struct string_slice_selection_traits_t;
 STLSOFT_TEMPLATE_SPECIALISATION
 struct string_slice_selection_traits_t<char>
 {
-    typedef stlsoft_C_string_slice_a_t  slice_type;
+    typedef stlsoft_C_string_slice_m_t  slice_type;
 };
 
 STLSOFT_TEMPLATE_SPECIALISATION
@@ -193,12 +188,19 @@ struct string_slice_selection_traits_t<wchar_t>
 
 #ifndef STLSOFT_NO_NAMESPACE
 
-/* stlsoft_C_string_slice_a_t const& */
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       string_slice_a_t;
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       string_slice_m_t;
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_w_t)       string_slice_w_t;
+
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       stlsoft_C_string_slice_a_t;
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_w_t)       stlsoft_C_string_slice_w_t;
+
+/* stlsoft_C_string_slice_m_t const& */
 
 inline
 ss_char_a_t const*
 c_str_data_a(
-    stlsoft_C_string_slice_a_t const& slice
+    stlsoft_C_string_slice_m_t const& slice
 )
 {
     return (0u == slice.len) ? "" : slice.ptr;
@@ -206,7 +208,7 @@ c_str_data_a(
 inline
 ss_size_t
 c_str_len_a(
-    stlsoft_C_string_slice_a_t const& slice
+    stlsoft_C_string_slice_m_t const& slice
 )
 {
     return slice.len;
@@ -215,7 +217,7 @@ c_str_len_a(
 inline
 ss_char_a_t const*
 c_str_data(
-    stlsoft_C_string_slice_a_t const& slice
+    stlsoft_C_string_slice_m_t const& slice
 )
 {
     return (0u == slice.len) ? "" : slice.ptr;
@@ -223,7 +225,7 @@ c_str_data(
 inline
 ss_size_t
 c_str_len(
-    stlsoft_C_string_slice_a_t const& slice
+    stlsoft_C_string_slice_m_t const& slice
 )
 {
     return slice.len;
@@ -266,12 +268,12 @@ c_str_len(
 
 
 
-/* stlsoft_C_string_slice_a_t const* */
+/* stlsoft_C_string_slice_m_t const* */
 
 inline
 ss_char_a_t const*
 c_str_data_a(
-    stlsoft_C_string_slice_a_t const* slice
+    stlsoft_C_string_slice_m_t const* slice
 )
 {
     return (NULL == slice) ? "" : c_str_data_a(*slice);
@@ -279,7 +281,7 @@ c_str_data_a(
 inline
 ss_size_t
 c_str_len_a(
-    stlsoft_C_string_slice_a_t const* slice
+    stlsoft_C_string_slice_m_t const* slice
 )
 {
     return (NULL == slice) ? 0u : c_str_len_a(*slice);
@@ -288,7 +290,7 @@ c_str_len_a(
 inline
 ss_char_a_t const*
 c_str_data(
-    stlsoft_C_string_slice_a_t const* slice
+    stlsoft_C_string_slice_m_t const* slice
 )
 {
     return (NULL == slice) ? "" : c_str_data_a(*slice);
@@ -296,7 +298,7 @@ c_str_data(
 inline
 ss_size_t
 c_str_len(
-    stlsoft_C_string_slice_a_t const* slice
+    stlsoft_C_string_slice_m_t const* slice
 )
 {
     return (NULL == slice) ? 0u : c_str_len_a(*slice);
@@ -339,12 +341,20 @@ c_str_len(
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_NO_NAMESPACE
+} /* namespace stlsoft */
+#endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
  * stream insertion shims
  */
 
 #ifdef __cplusplus
 
-/** The \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft_C_string_slice_a_t
+/** The \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft_C_string_slice_m_t
  *
  * \ingroup group__concept__Shim__stream_insertion
  *
@@ -354,7 +364,7 @@ inline
 S&
 operator <<(
     S&                                  s
-,   stlsoft_C_string_slice_a_t const&   slice
+,   stlsoft_C_string_slice_m_t const&   slice
 )
 {
     s.write(slice.ptr, slice.len);
@@ -383,14 +393,6 @@ operator <<(
 }
 
 #endif /* __cplusplus */
-
-/* /////////////////////////////////////////////////////////////////////////
- * namespace
- */
-
-#ifndef STLSOFT_NO_NAMESPACE
-} /* namespace stlsoft */
-#endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion
