@@ -4,7 +4,7 @@
  * Purpose:     Definition of stlsoft_C_strnpbrkn() and stlsoft_C_wcsnpbrkn()
  *
  * Created:     11th December 2020
- * Updated:     14th December 2020
+ * Updated:     18th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -47,14 +47,14 @@
  *   (\ref group__library__String "String" Library).
  */
 
-#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
-#define STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNPBRKN
+#define STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNPBRKN
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNCHR_MAJOR    1
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNCHR_MINOR    0
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNCHR_REVISION 1
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNCHR_EDIT     2
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNPBRKN_MAJOR      1
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNPBRKN_MINOR      0
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNPBRKN_REVISION   2
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNPBRKN_EDIT       3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -190,7 +190,7 @@ wcsnpbrkn(
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNPBRKN */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
