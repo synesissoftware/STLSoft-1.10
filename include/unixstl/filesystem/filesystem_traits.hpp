@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     14th December 2020
+ * Updated:     22nd December 2020
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -61,7 +61,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     12
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      161
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      162
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,12 +75,12 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
-# include <stlsoft/memory/auto_buffer.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 #ifndef UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <unixstl/system/system_traits.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
+# include <stlsoft/memory/auto_buffer.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
 # include <stlsoft/string/c_string/strnpbrkn.h>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
@@ -220,6 +220,39 @@ public:
 #else /* ? _WIN32 */
     typedef mode_t                                          mode_type;
 #endif /* _WIN32 */
+/// @}
+
+/// \name Concepts
+/// @{
+public:
+    /// This type does not actually exists in the compilable code, but,
+    /// rather, represents a concept used in several 
+    struct resizeable_buffer
+    {
+    public: // typedef
+        typedef T_value                                     value_type;
+        typedef std::size_t                                 size_type;
+
+    public: // accessors
+
+        /// Obtains a copy of the value (usually a character)
+        /// at \c index
+        ///
+        /// \pre index < size()
+        value_type& operator [](size_type index) noexcept;
+
+        /// The number of elements currently managed
+        ///
+        /// \post empty() || value_type(0) == operator[](size() - 1)
+        size_type size() const noexcept;
+
+        /// Indicates whether any elements are managed
+        bool_type empty() const noexcept;
+
+    public: // operations
+
+        void resize(size_type newSize);
+    };
 /// @}
 
 /// \name Member Constants
