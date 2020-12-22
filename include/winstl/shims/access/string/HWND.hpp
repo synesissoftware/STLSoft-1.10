@@ -4,7 +4,7 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     23rd November 2020
+ * Updated:     22nd December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MAJOR       4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MINOR       1
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    9
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        127
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    10
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        128
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -365,7 +365,7 @@ public:
 
     // Copy constructor
     c_str_ptr_null_HWND_proxy(class_type const& rhs)
-        : m_block(cstring_maker_type_::dup_null(rhs.m_block))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
 
     /// Releases any storage acquired by the proxy
@@ -483,7 +483,7 @@ public:
 
     // Copy constructor
     c_str_ptr_HWND_proxy(class_type const& rhs)
-        : m_block(cstring_maker_type_::dup_null(rhs.m_block))
+        : m_block(cstring_maker_type_::share(rhs.m_block))
     {}
 
     /// Releases any storage acquired by the proxy
