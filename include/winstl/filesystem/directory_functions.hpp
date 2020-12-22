@@ -4,7 +4,7 @@
  * Purpose:     Functions for manipulating directories.
  *
  * Created:     7th February 2002
- * Updated:     10th December 2020
+ * Updated:     20th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR     1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      69
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION  4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT      70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -142,37 +142,6 @@ template<
     ss_typename_param_k T_character
 >
 inline
-T_character*
-find_last_path_name_separator_(
-    T_character const* s
-)
-{
-    typedef directory_recurse_traits_t<T_character>         dr_traits_t;
-    typedef ss_typename_type_k dr_traits_t::char_type       char_t;
-    typedef ss_typename_type_k dr_traits_t::fs_traits_type  fs_traits_t;
-
-    char_t const*       slash   =   fs_traits_t::str_rchr(s, '/');
-    char_t const* const bslash  =   fs_traits_t::str_rchr(s, '\\');
-
-    if (NULL == slash)
-    {
-        slash = bslash;
-    }
-    else if (NULL != bslash)
-    {
-        if (slash < bslash)
-        {
-            slash = bslash;
-        }
-    }
-
-    return const_cast<char_t*>(slash);
-}
-
-template<
-    ss_typename_param_k T_character
->
-inline
 ws_bool_t
 create_directory_recurse_impl(
     T_character const*      dir
@@ -248,8 +217,8 @@ create_directory_recurse_impl(
                 fs_traits_t::char_copy(&szParent[0], sz.data(), szLen);
                 szParent[szLen] = '\0';
 
-                char_t* const pszSlash = find_last_path_name_separator_(szParent.data());
-                if (pszSlash == NULL)
+                char_t const* const pszSlash = fs_traits_t::find_last_path_name_separator(szParent.data());
+                if (NULL == pszSlash)
                 {
                     fs_traits_t::set_last_error(ERROR_DIRECTORY);
 
@@ -257,7 +226,7 @@ create_directory_recurse_impl(
                 }
                 else
                 {
-                    *pszSlash = '\0';                   // Will always have enough room for two bytes
+                    *const_cast<char_t*>(pszSlash) = '\0';
 
                     // If second character is ':', and total lengths is less than four,
                     // or the recurse create fails, then return false;

@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     10th December 2020
+ * Updated:     22nd December 2020
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -72,8 +72,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        254
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    5
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        256
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -431,25 +431,11 @@ private:
         find_data_type const&   data
     ,   char_type const*        directory
     ,   size_type               cchDirectory
-    )
-        : m_data(data)
-        , m_path(1)
-    {
-        WINSTL_ASSERT(NULL != directory);
-        WINSTL_ASSERT(0 != cchDirectory);
-        WINSTL_ASSERT(traits_type::is_path_name_separator(directory[cchDirectory - 1]));
-        WINSTL_ASSERT(traits_type::has_dir_end(directory, cchDirectory));
-
-        size_type const cchFilename =   traits_type::str_len(data.cFileName);
-        size_type const cchTotal    =   cchDirectory + cchFilename;
-
-        m_path.resize(1 + cchTotal);
-
-        traits_type::char_copy(&m_path[0], directory, cchDirectory);
-        traits_type::char_copy(&m_path[0] + cchDirectory, data.cFileName, cchFilename);
-        m_path[cchDirectory + cchFilename] = '\0';
-    }
+    );
 public:
+    /// Copy constructor
+    basic_findfile_sequence_value_type(class_type const& rhs);
+
     /// Copy assignment operator
     class_type& operator =(class_type const& rhs);
 /// @}
@@ -1160,8 +1146,9 @@ basic_findfile_sequence<C, T>::basic_findfile_sequence(
     , m_flags(validate_flags_(flags))
     , m_directory()
     , m_patterns(1 + traits_type::str_len(pattern))
-    , m_directoryLen(validate_directory_(NULL, m_directory, m_flags))
 {
+    validate_directory_(NULL, m_directory, m_flags);
+
     traits_type::char_copy(&m_patterns[0], pattern, m_patterns.size());
 
     WINSTL_ASSERT(is_valid());
@@ -1178,8 +1165,9 @@ basic_findfile_sequence<C, T>::basic_findfile_sequence(
     , m_flags(validate_flags_(flags))
     , m_directory()
     , m_patterns(1 + traits_type::str_len(patterns))
-    , m_directoryLen(validate_directory_(NULL, m_directory, m_flags))
 {
+    validate_directory_(NULL, m_directory, m_flags);
+
     traits_type::char_copy(&m_patterns[0], patterns, m_patterns.size());
 
     WINSTL_ASSERT(is_valid());
@@ -1216,8 +1204,9 @@ basic_findfile_sequence<C, T>::basic_findfile_sequence(
     , m_flags(validate_flags_(flags))
     , m_directory()
     , m_patterns(1 + traits_type::str_len(patterns))
-    , m_directoryLen(validate_directory_(directory, m_directory, m_flags))
 {
+    validate_directory_(directory, m_directory, m_flags);
+
     traits_type::char_copy(&m_patterns[0], patterns, m_patterns.size());
 
     WINSTL_ASSERT(is_valid());
@@ -1319,6 +1308,42 @@ basic_findfile_sequence_value_type<C, T>::basic_findfile_sequence_value_type()
     m_data.cFileName[0]             =   '\0';
     m_data.cAlternateFileName[0]    =   '\0';
     m_path[0]                       =   '\0';
+}
+
+template <ss_typename_param_k C, ss_typename_param_k T>
+inline
+basic_findfile_sequence_value_type<C, T>::basic_findfile_sequence_value_type(
+    find_data_type const&   data
+,   char_type const*        directory
+,   size_type               cchDirectory
+)
+    : m_data(data)
+    , m_path(1)
+{
+    WINSTL_ASSERT(NULL != directory);
+    WINSTL_ASSERT(0 != cchDirectory);
+    WINSTL_ASSERT(traits_type::is_path_name_separator(directory[cchDirectory - 1]));
+    WINSTL_ASSERT(traits_type::has_dir_end(directory, cchDirectory));
+
+    size_type const cchFilename =   traits_type::str_len(data.cFileName);
+    size_type const cchTotal    =   cchDirectory + cchFilename;
+
+    m_path.resize(1 + cchTotal);
+
+    traits_type::char_copy(&m_path[0], directory, cchDirectory);
+    traits_type::char_copy(&m_path[0] + cchDirectory, data.cFileName, cchFilename);
+    m_path[cchDirectory + cchFilename] = '\0';
+}
+
+template <ss_typename_param_k C, ss_typename_param_k T>
+inline
+basic_findfile_sequence_value_type<C, T>::basic_findfile_sequence_value_type(
+    class_type const& rhs
+)
+    : m_data(rhs.m_data)
+    , m_path(1)
+{
+    m_path.copy_from(rhs.m_path);
 }
 
 template <ss_typename_param_k C, ss_typename_param_k T>

@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     18th December 2020
+ * Updated:     20th December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     296
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 1
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     298
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -293,6 +293,7 @@ public:
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
 #ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+
     /// Copies the contents of \c rhs
     class_type& operator =(class_type const& rhs);
 #endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
@@ -338,8 +339,6 @@ public:
     class_type& push(class_type const& rhs, bool_type bAddPathNameSeparator = false);
     /// Appends the contents of \c rhs to the path
     class_type& push(char_type const* rhs, bool_type bAddPathNameSeparator = false);
-    /// Appends the contents of \c rhs to the path as an extension
-    class_type& push_ext(class_type const& rhs, bool_type bAddPathNameSeparator = false);
     /// Appends the contents of \c rhs to the path as an extension
     class_type& push_ext(char_type const* rhs, bool_type bAddPathNameSeparator = false);
     /// Ensures that the path has a trailing path name separator
@@ -1550,23 +1549,6 @@ basic_path<C, T, A>::push_(
     return *this;
 }
 
-#if 0
-
-template<
-    ss_typename_param_k C
-,   ss_typename_param_k T
-,   ss_typename_param_k A
->
-inline
-basic_path<C, T, A>&
-basic_path<C, T, A>::push_ext(
-    class_type const&   rhs
-,   ws_bool_t           bAddPathNameSeparator /* = false */
-)
-{
-}
-#endif /* 0 */
-
 template<
     ss_typename_param_k C
 ,   ss_typename_param_k T
@@ -2040,9 +2022,9 @@ basic_path<C, T, A>::canonicalise(
                     }
                     break;
                 case    3:
+
                     if ('.' == p1[0] &&
                         '.' == p1[1])
-
                     {
                         if (path_name_separator() == p1[2])
                         {
@@ -2054,8 +2036,8 @@ basic_path<C, T, A>::canonicalise(
                         }
                     }
                     break;
-
                 default:
+
                     break;
             }
 

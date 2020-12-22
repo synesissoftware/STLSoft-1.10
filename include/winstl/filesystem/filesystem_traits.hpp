@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     9th December 2020
+ * Updated:     22nd December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       17
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       18
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        163
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        166
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,6 +75,16 @@
 # define _WINSTL_FILESYSTEM_TRAITS_USE_TRUNCATION_TESTING
 #endif /* _WIN64 || _M_??64 */
 
+#ifndef WINSTL_INCL_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS
+# include <winstl/filesystem/path_classify_functions.h>
+#endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS*/
+#ifndef WINSTL_INCL_WINSTL_FILESYSTEM_H_PATH_PARSE_FUNCTIONS
+# include <winstl/filesystem/path_parse_functions.h>
+#endif /*! WINSTL_INCL_WINSTL_FILESYSTEM_H_PATH_PARSE_FUNCTIONS */
+#ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
+# include <winstl/system/system_traits.hpp>
+#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+
 #ifdef _WINSTL_FILESYSTEM_TRAITS_USE_TRUNCATION_TESTING
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 #  ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST
@@ -86,16 +96,9 @@
 #  endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST */
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 #endif /* _WINSTL_FILESYSTEM_TRAITS_USE_TRUNCATION_TESTING */
-
 #ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
-#ifndef WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS
-# include <winstl/system/system_traits.hpp>
-#endif /* !WINSTL_INCL_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS */
-#ifndef WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_
-# include <winstl/internal/windows_version_.h>
-#endif /* !WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_ */
 
 #ifndef STLSOFT_INCL_H_CTYPE
 # define STLSOFT_INCL_H_CTYPE
@@ -119,6 +122,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_
+# include <winstl/internal/windows_version_.h>
+#endif /* !WINSTL_INCL_WINSTL_INTERNAL_H_WINDOWS_VERSION_ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -177,6 +184,8 @@ public:
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     /// The current instantion of the type
     typedef filesystem_traits<C>                            class_type;
+    /// The path-classification results type
+    typedef winstl_C_path_classification_results_t          path_classification_results_type;
 
     /// The (signed) integer type
     typedef ws_int_t                                        int_type;
@@ -191,8 +200,6 @@ public:
     /// The type of file attributes
     typedef DWORD                                           file_attributes_type;
 /// @}
-
-#ifdef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 /// \name Concepts
 /// @{
@@ -226,8 +233,6 @@ public:
         void resize(size_type newSize);
     };
 /// @}
-#endif /* STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
 
 /// \name Member Constants
 /// @{
@@ -372,9 +377,78 @@ public:
     static
     bool_type
     has_dir_end(
-        T_resizeableBuffer& rb
+        T_resizeableBuffer const& rb
     );
 
+
+    /// Classifies a path
+    ///
+    /// \param path
+    /// \param cchPath
+    /// \param parseFlags
+    /// \param results
+    ///
+    /// \pre 0 == cchPath || nullptr != path
+    static
+    path_classification_t
+    path_classify(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    ,   int                                 parseFlags
+    ,   path_classification_results_type*   results
+    );
+
+    /// Returns a pointer to the last slash - back-slash or forward-slash -
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path C-style string pointer of path to be examined
+    ///
+    /// \pre nullptr != path
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    );
+
+    /// Returns a pointer to the last slash - back-slash or forward-slash -
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param cchPath Number of characters in \c path to be examined
+    ///
+    /// \pre 0 == cch || nullptr != path
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    );
+
+    /// Returns a pointer to the last slash - back-slash or forward-slash -
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path C-style string pointer of path to be examined
+    ///
+    /// \pre nullptr != path
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    );
+
+    /// Returns a pointer to the last slash - back-slash or forward-slash -
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param cchPath Number of characters in \c path to be examined
+    ///
+    /// \pre 0 == cch || nullptr != path
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    );
 
     /// Returns \c true if dir is \c "." or \c ".."
     static bool_type    is_dots(char_type const* dir);
@@ -737,6 +811,7 @@ public:
     typedef WIN32_FIND_DATAA                                stat_data_type;
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     typedef filesystem_traits<char_type>                    class_type;
+    typedef winstl_C_path_classification_results_m_t        path_classification_results_type;
     typedef ws_int_t                                        int_type;
     typedef ws_bool_t                                       bool_type;
     typedef HANDLE                                          file_handle_type;
@@ -914,13 +989,19 @@ public:
         return has_dir_end(dir, len);
     }
 
+    // required to disambiguate from resizeable-buffer overload
+    static bool_type has_dir_end(char_type* dir)
+    {
+        return has_dir_end(const_cast<char_type const*>(dir));
+    }
+
     template<
         ss_typename_param_k T_resizeableBuffer
     >
     static
     bool_type
     has_dir_end(
-        T_resizeableBuffer& rb
+        T_resizeableBuffer const& rb
     )
     {
         if (rb.size() < 2)
@@ -929,6 +1010,64 @@ public:
         }
 
         return is_path_name_separator(rb[rb.size() - 2]);
+    }
+
+    static
+    path_classification_t
+    path_classify(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    ,   int                                 parseFlags
+    ,   path_classification_results_type*   results
+    )
+    {
+        return winstl_C_path_classify(path, cchPath, parseFlags, results);
+    }
+
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    )
+    {
+        WINSTL_ASSERT(NULL != path);
+
+        return winstl_C_find_last_path_name_separator(path);
+    }
+
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+        return winstl_C_find_last_path_name_separator_len(path, cchPath);
+    }
+
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    )
+    {
+        WINSTL_ASSERT(NULL != path);
+
+        return winstl_C_find_first_path_name_separator(path);
+    }
+
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+        return winstl_C_find_first_path_name_separator_len(path, cchPath);
     }
 
     static bool_type is_dots(char_type const* dir)
@@ -1972,6 +2111,7 @@ public:
     typedef WIN32_FIND_DATAW                                stat_data_type;
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     typedef filesystem_traits<char_type>                    class_type;
+    typedef winstl_C_path_classification_results_w_t        path_classification_results_type;
     typedef ws_int_t                                        int_type;
     typedef ws_bool_t                                       bool_type;
     typedef HANDLE                                          file_handle_type;
@@ -2145,13 +2285,19 @@ public:
         return has_dir_end(dir, len);
     }
 
+    // required to disambiguate from resizeable-buffer overload
+    static bool_type has_dir_end(char_type* dir)
+    {
+        return has_dir_end(const_cast<char_type const*>(dir));
+    }
+
     template<
         ss_typename_param_k T_resizeableBuffer
     >
     static
     bool_type
     has_dir_end(
-        T_resizeableBuffer& rb
+        T_resizeableBuffer const& rb
     )
     {
         if (rb.size() < 2)
@@ -2160,6 +2306,64 @@ public:
         }
 
         return is_path_name_separator(rb[rb.size() - 2]);
+    }
+
+    static
+    path_classification_t
+    path_classify(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    ,   int                                 parseFlags
+    ,   path_classification_results_type*   results
+    )
+    {
+        return winstl_C_path_classify(path, cchPath, parseFlags, results);
+    }
+
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    )
+    {
+        WINSTL_ASSERT(NULL != path);
+
+        return winstl_C_find_last_path_name_separator(path);
+    }
+
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+        return winstl_C_find_last_path_name_separator_len(path, cchPath);
+    }
+
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    )
+    {
+        WINSTL_ASSERT(NULL != path);
+
+        return winstl_C_find_first_path_name_separator(path);
+    }
+
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+        return winstl_C_find_first_path_name_separator_len(path, cchPath);
     }
 
     static bool_type is_dots(char_type const* dir)
