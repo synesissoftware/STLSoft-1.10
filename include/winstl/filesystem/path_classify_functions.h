@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions
  *
  * Created:     28th November 2020
- * Updated:     20th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        1
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    2
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -67,15 +67,23 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+# include <stlsoft/string/c_string/strnchr.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNPBRKN
+# include <stlsoft/string/c_string/strnpbrkn.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNPBRKN */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNSTRN
+# include <stlsoft/string/c_string/strnstrn.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNSTRN */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_H_STRING_SLICE
 # include <stlsoft/string/string_slice.h>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_H_STRING_SLICE */
 
-# include <stlsoft/string/c_string/strnchr.h>
-# include <stlsoft/string/c_string/strnpbrkn.h>
-# include <stlsoft/string/c_string/strnstrn.h>
-
+#ifndef STLSOFT_INCL_H_CTYPE
+# define STLSOFT_INCL_H_CTYPE
 # include <ctype.h>
+#endif /* !STLSOFT_INCL_H_CTYPE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * types
