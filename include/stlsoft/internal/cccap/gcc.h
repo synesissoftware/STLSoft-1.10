@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     3rd December 2020
+ * Updated:     23rd December 2020
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -63,8 +63,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      29
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       107
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       108
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -418,12 +418,21 @@
 # define STLSOFT_CF_TEMPLATE_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_CONSTRUCTOR
 #endif /* compiler */
 
-/* #define STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
+#if 0
+#elif defined(__MINGW32__) || \
+      defined(__MINGW64__)
+
+# define STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
+#else
+
+# define STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
+#endif
 
 #define STLSOFT_CF_TEMPLATE_VOID_TYPE_PARAMETER
 
 /* NOTE: required C++14 is a _punt_ - please let us know if can be 201103L */
-#if __cplusplus >= 201402L
+#if defined(__cplusplus) && \
+    __cplusplus >= 201402L
 # define STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
 #endif /* compiler */
 
