@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     22nd December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       18
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        166
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        170
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -99,6 +99,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS
+# include <stlsoft/util/resizeable_buffer_helpers.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS */
 
 #ifndef STLSOFT_INCL_H_CTYPE
 # define STLSOFT_INCL_H_CTYPE
@@ -205,7 +208,10 @@ public:
 /// @{
 public:
     /// This type does not actually exists in the compilable code, but,
-    /// rather, represents a concept used in several 
+    /// rather, represents a concept used in several functions
+    ///
+    /// \note It is <em>ALWAYS</em> assumed that the last element in the
+    ///   buffer is a <code>NUL</code>-terminator
     struct resizeable_buffer
     {
     public: // typedef
@@ -307,7 +313,10 @@ public:
     ///
     /// \param rb a reference to a \c resizeable_buffer
     ///
-    /// \return The length of \c rb after the operation has completed
+    /// \return The length of \c rb, excluding the
+    ///   <code>NUL</code>-terminator, after the operation has completed
+    /// \retval 0 if the buffer cannot be resized to accommodate a new
+    ///   <code>NUL</code>-terminator
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -371,6 +380,9 @@ public:
     /// Returns \c true if \c rb has trailing path name separator
     ///
     /// \see \link #path_name_separator path_name_separator() \endlink
+    ///
+    /// \retval true !rb.empty() && is_path_name_separator(rb[-2])
+    /// \retval false rb.empty() || !is_path_name_separator(rb[-2])
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -887,14 +899,17 @@ public:
 
             if (0 != n)
             {
-                rb.resize(n + 1);
+                if (!resizeable_buffer_resize(rb, n + 1))
+                {
+                    return 0;
+                }
 
                 rb[n - 1]   =   path_name_separator();
                 rb[n - 0]   =   char_type(0);
             }
         }
 
-        return rb.size();
+        return rb.empty() ? 0 : rb.size() - 1;
     }
 
     static char_type* remove_dir_end(char_type* dir)
@@ -942,12 +957,15 @@ public:
         {
             size_type const n = rb.size();
 
-            rb.resize(n - 1);
+            if (!resizeable_buffer_resize(rb, n - 1))
+            {
+                return 0;
+            }
 
             rb[n - 2] = char_type(0);
         }
 
-        return rb.size();
+        return rb.empty() ? 0 : rb.size() - 1;
     }
 
     static bool_type has_dir_end(char_type const* dir, size_type cch)
@@ -1307,7 +1325,14 @@ public:
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER < 1200
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile)
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    ,   char_type**         ppFile
+    )
     {
         WINSTL_MESSAGE_ASSERT("GetFullPathNameW() will crash when the file-name and buffer parameters are the same, so it's not a good idea to do this for ANSI compilation", fileName != buffer);
 
@@ -1347,7 +1372,15 @@ public:
     }
 #else /* ? compiler */
 private:
-    static size_type get_full_path_name_impl2(char_type const* fileName, size_type len, char_type buffer[], size_type cchBuffer, char_type** ppFile)
+    static
+    size_type
+    get_full_path_name_impl2(
+        char_type const*    fileName
+    ,   size_type           len
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    ,   char_type**         ppFile
+    )
     {
         size_type r = class_type::GetFullPathNameA(fileName, cchBuffer, buffer, ppFile);
 
@@ -1412,7 +1445,15 @@ private:
         }
     }
 
-    static size_type get_full_path_name_impl(char_type const* fileName, size_type len, char_type buffer[], size_type cchBuffer, char_type** ppFile)
+    static
+    size_type
+    get_full_path_name_impl(
+        char_type const*    fileName
+    ,   size_type           len
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    ,   char_type**         ppFile
+    )
     {
         WINSTL_ASSERT(len > 0);
 
@@ -1435,11 +1476,13 @@ private:
             {
                 fileName_[len] = '\0';
 
-                return get_full_path_name_impl( static_cast<char_type*>(::memcpy(&fileName_[0], fileName, sizeof(char_type) * len))
-                                            ,   len
-                                            ,   buffer
-                                            ,   cchBuffer
-                                            ,   ppFile);
+                return get_full_path_name_impl(
+                    static_cast<char_type*>(::memcpy(&fileName_[0], fileName, sizeof(char_type) * len))
+                ,   len
+                ,   buffer
+                ,   cchBuffer
+                ,   ppFile
+                );
             }
         }
         else
@@ -1449,7 +1492,14 @@ private:
     }
 
 public:
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile)
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    ,   char_type**         ppFile
+    )
     {
         WINSTL_MESSAGE_ASSERT("GetFullPathNameW() will crash when the file-name and buffer parameters are the same, so it's not a good idea to do this for ANSI compilation", fileName != buffer);
 
@@ -1558,7 +1608,13 @@ public:
     }
 #endif /* compiler */
 
-    static size_type get_full_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != fileName);
 
@@ -1586,21 +1642,40 @@ public:
     {
         size_type const cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_full_path_name(fileName, &rb[0], rb.size());
     }
 
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    )
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
     }
 
-    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
+    static size_type get_short_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    )
     {
         return class_type::GetShortPathNameA(fileName, buffer, cchBuffer);
     }
-    static size_type get_short_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         return class_type::GetShortPathNameA(fileName, buffer, cchBuffer);
     }
@@ -1617,7 +1692,10 @@ public:
     {
         size_type const cchRequired = get_short_path_name(fileName, static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_short_path_name(fileName, &rb[0], rb.size());
     }
@@ -1691,7 +1769,10 @@ public:
     {
         size_type const cchRequired = get_current_directory(static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_current_directory(&rb[0], rb.size());
     }
@@ -1745,7 +1826,7 @@ private:
             stat_data->ftLastWriteTime.dwHighDateTime   =   0;
             stat_data->nFileSizeHigh                    =   0;
             stat_data->nFileSizeLow                     =   0;
-            { for (ws_size_t i = 0; i < 4; ++i)
+            { for (size_type i = 0; i < 4; ++i)
             {
                 stat_data->cFileName[i]             =   path[i];
                 stat_data->cAlternateFileName[i]    =   path[i];
@@ -2182,14 +2263,17 @@ public:
 
             if (0 != n)
             {
-                rb.resize(n + 1);
+                if (!resizeable_buffer_resize(rb, n + 1))
+                {
+                    return 0;
+                }
 
                 rb[n - 1] = path_name_separator();
                 rb[n - 0] = char_type(0);
             }
         }
 
-        return rb.size();
+        return rb.empty() ? 0 : rb.size() - 1;
     }
 
     static char_type* remove_dir_end(char_type* dir)
@@ -2238,12 +2322,15 @@ public:
         {
             size_type const n = rb.size();
 
-            rb.resize(n - 1);
+            if (!resizeable_buffer_resize(rb, n - 1))
+            {
+                return 0;
+            }
 
             rb[n - 2] = char_type(0);
         }
 
-        return rb.size();
+        return rb.empty() ? 0 : rb.size() - 1;
     }
 
     static bool_type has_dir_end(char_type const* dir, size_type cch)
@@ -2602,14 +2689,27 @@ public:
         return winstl_C_internal_IsWindows9x(NULL, NULL, NULL) ? WINSTL_CONST_MAX_PATH : CONST_NT_MAX_PATH;
     }
 
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[], char_type** ppFile)
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    ,   char_type**         ppFile
+    )
     {
         WINSTL_MESSAGE_ASSERT("GetFullPathNameW() will crash when the file-name and buffer parameters are the same", fileName != buffer);
 
         return class_type::GetFullPathNameW(fileName, cchBuffer, buffer, ppFile);
     }
 
-    static size_type get_full_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         char_type* pFile;
 
@@ -2628,21 +2728,42 @@ public:
     {
         size_type const cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_full_path_name(fileName, &rb[0], rb.size());
     }
 
-    static size_type get_full_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
+    static
+    size_type
+    get_full_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    )
     {
         return get_full_path_name(fileName, buffer, cchBuffer);
     }
 
-    static size_type get_short_path_name(char_type const* fileName, size_type cchBuffer, char_type buffer[])
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   size_type           cchBuffer
+    ,   char_type           buffer[]
+    )
     {
         return class_type::GetShortPathNameW(fileName, buffer, cchBuffer);
     }
-    static size_type get_short_path_name(char_type const* fileName, char_type buffer[], size_type cchBuffer)
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         return class_type::GetShortPathNameW(fileName, buffer, cchBuffer);
     }
@@ -2659,7 +2780,10 @@ public:
     {
         size_type const cchRequired = get_short_path_name(fileName, static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_short_path_name(fileName, &rb[0], rb.size());
     }
@@ -2733,7 +2857,10 @@ public:
     {
         size_type const cchRequired = get_current_directory(static_cast<char_type*>(NULL), 0);
 
-        rb.resize(cchRequired);
+        if (!resizeable_buffer_resize(rb, cchRequired))
+        {
+            return 0;
+        }
 
         return get_current_directory(&rb[0], rb.size());
     }
@@ -2787,7 +2914,7 @@ private:
             stat_data->ftLastWriteTime.dwHighDateTime   =   0;
             stat_data->nFileSizeHigh                    =   0;
             stat_data->nFileSizeLow                     =   0;
-            { for (ws_size_t i = 0; i < 4; ++i)
+            { for (size_type i = 0; i < 4; ++i)
             {
                 stat_data->cFileName[i]             =   path[i];
                 stat_data->cAlternateFileName[i]    =   path[i];
