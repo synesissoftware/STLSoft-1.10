@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_path_buffer template class.
  *
  * Created:     27th May 2020
- * Updated:     4th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MAJOR       1
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       0
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    1
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        1
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       1
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    2
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,6 +159,8 @@ public: // construction
     }
     /// Constructs an instance with an unitialised size of \c n
     ///
+    /// \param n The resulting length of the buffer
+    ///
     /// \post char_type(0) == (*this)[0]
     /// \post char_type(0) == (*this)[n]
     ss_explicit_k
@@ -172,6 +174,8 @@ public: // construction
         m_buffer[n] = char_type(0);
     }
     /// Constructs an instance containing a copy of \c s
+    ///
+    /// \param s A C-style string
     ss_explicit_k
     basic_path_buffer(
         char_type const*    s
@@ -181,10 +185,14 @@ public: // construction
     {
         m_len = m_buffer.size() - 1;
 
-        ::memcpy(&m_buffer[0], s, m_len * sizeof(char_type));
+        memcpy_(m_buffer, 0, s, m_len);
         m_buffer[m_len] = char_type(0);
     }
     /// Constructs an instance containing a copy of \c s of length \c n
+    ///
+    /// \param s A C-style string
+    /// \param n The resulting length of the buffer
+    ///
     basic_path_buffer(
         char_type const*    s
     ,   size_type           n
@@ -192,15 +200,15 @@ public: // construction
         : m_buffer(n + 1)
         , m_len(n)
     {
-        ::memcpy(&m_buffer[0], s, n * sizeof(char_type));
-        m_buffer[n] = char_type(0);
+        memcpy_(m_buffer, 0, s, m_len);
+        m_buffer[m_len] = char_type(0);
     }
     /// Constructs an instance as a copy of \c rhs
     basic_path_buffer(class_type const& rhs)
         : m_buffer(rhs.m_buffer.size())
         , m_len(rhs.m_len)
     {
-        ::memcpy(&m_buffer[0], rhs.m_buffer.data(), rhs.m_buffer.size() * sizeof(char_type));
+        memcpy_(m_buffer, 0, rhs.m_buffer.data(), rhs.m_buffer.size());
 
         STLSOFT_ASSERT(char_type(0) == m_buffer[m_len]);
     }
@@ -252,7 +260,8 @@ public: // operations
             m_buffer.resize(n + 1);
         }
 
-        ::memcpy(&m_buffer[0], s, n * sizeof(char_type));
+        memcpy_(m_buffer, 0, s, n);
+
         m_len = n;
         m_buffer[m_len] = char_type(0);
 
@@ -284,7 +293,7 @@ public: // operations
 
         if (ss_nullptr_k != s)
         {
-            ::memcpy(&m_buffer[m_len], s, cch * sizeof(char_type));
+            memcpy_(m_buffer, m_len, s, cch);
         }
         m_len += cch;
         m_buffer[m_len] = char_type(0);
@@ -404,6 +413,28 @@ public: // accessors
         return m_buffer[index];
     }
 
+    /// 
+    ///
+    /// \pre !empty()
+    char_type
+    back() const STLSOFT_NOEXCEPT
+    {
+        STLSOFT_ASSERT(!empty());
+
+        return m_buffer[m_len - 1];
+    }
+
+    /// 
+    ///
+    /// \pre !empty()
+    char_type
+    front() const STLSOFT_NOEXCEPT
+    {
+        STLSOFT_ASSERT(!empty());
+
+        return m_buffer[0];
+    }
+
     /// \return The number of characters written, including the
     ///   NUL-terminator if included
     size_type
@@ -438,6 +469,24 @@ public: // accessors
     data() const STLSOFT_NOEXCEPT
     {
         return m_buffer.data();
+    }
+
+private: // implementation
+    static
+    void
+    memcpy_(
+        buffer_type_&       dest
+    ,   size_type           offset
+    ,   char_type const*    src
+    ,   size_type           n
+    )
+    {
+        STLSOFT_ASSERT(0 == n || ss_nullptr_k != src);
+
+        if (0 != n)
+        {
+            ::memcpy(dest.data() + offset, src, n * sizeof(char_type));
+        }
     }
 
 private: // fields
