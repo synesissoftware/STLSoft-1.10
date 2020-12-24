@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     6th June 2006
- * Updated:     18th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        30
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -272,23 +272,6 @@ path_squeeze_impl2(
 
 STLSOFT_CLOSE_WORKER_NS_(ximpl_winstl_squeeze_functions_)
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-#if 0
-template<
-    ss_typename_param_k C
->
-ws_size_t
-path_squeeze(
-    C const*    path
-,   C           buffer[]
-,   ws_size_t   cchBuffer
-)
-{
-    typedef filesystem_traits<C> traits_t;
-
-    return path_squeeze_impl(path, traits_t::str_len(path), buffer, cchBuffer);
-}
-#endif /* 0 */
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions

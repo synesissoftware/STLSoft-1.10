@@ -4,10 +4,11 @@
  * Purpose:     Contains the basic_connection class.
  *
  * Created:     30th April 1999
- * Updated:     13th September 2019
+ * Updated:     23rd December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -53,7 +55,7 @@
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    11
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        83
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        84
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -120,14 +122,15 @@ namespace inetstl_project
  * \ingroup group__library__Network
  *
  */
-template<   ss_typename_param_k C
+template<
+    ss_typename_param_k C
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        ,   ss_typename_param_k X   =   throw_internet_exception_policy
+,   ss_typename_param_k X   =   throw_internet_exception_policy
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        ,   ss_typename_param_k X   =   STLSOFT_NS_QUAL(null_exception_policy)
+,   ss_typename_param_k X   =   STLSOFT_NS_QUAL(null_exception_policy)
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-        ,   ss_typename_param_k T   =   filesystem_traits<C>
-        >
+,   ss_typename_param_k T   =   filesystem_traits<C>
+>
 class basic_connection
 {
 public:
@@ -159,14 +162,17 @@ public:
     /// \note If the connection fails to open, the exception_policy_type function-call operator is called. If the
     /// policy throws an exception, then that exception is thrown. If the policy is "null exception" policy type, then
     /// the connection object will be constructed in a closed state.
-    ss_explicit_k basic_connection( HINTERNET           hsess
-                                ,   char_type const*    server
-                                ,   INTERNET_PORT       port
-                                ,   char_type const*    userName
-                                ,   char_type const*    password
-                                ,   is_dword_t          service
-                                ,   is_dword_t          flags
-                                ,   is_dword_t          context     =   0);
+    ss_explicit_k
+    basic_connection(
+        HINTERNET           hsess
+    ,   char_type const*    server
+    ,   INTERNET_PORT       port
+    ,   char_type const*    userName
+    ,   char_type const*    password
+    ,   is_dword_t          service
+    ,   is_dword_t          flags
+    ,   is_dword_t          context     =   0
+    );
     /// Closes the connection, if open
     ~basic_connection() STLSOFT_NOEXCEPT;
 
@@ -186,14 +192,17 @@ public:
     /// \note If the connection fails to open, the exception_policy_type function-call operator is called. If the
     /// policy throws an exception, then that exception is thrown. If the policy is "null exception" policy type, then
     /// the connection object will be left in a closed state.
-    is_bool_t    connect(   HINTERNET           hsess
-                        ,   char_type const*    server
-                        ,   INTERNET_PORT       port
-                        ,   char_type const*    userName
-                        ,   char_type const*    password
-                        ,   is_dword_t          service
-                        ,   is_dword_t          flags
-                        ,   is_dword_t          context =   0);
+    is_bool_t
+    connect(
+        HINTERNET           hsess
+    ,   char_type const*    server
+    ,   INTERNET_PORT       port
+    ,   char_type const*    userName
+    ,   char_type const*    password
+    ,   is_dword_t          service
+    ,   is_dword_t          flags
+    ,   is_dword_t          context =   0
+    );
     /// Closes the connection, if open
     void        close();
     /// Removes the connection from this object, and returns the underlying WinInet handle to the
@@ -217,7 +226,9 @@ public:
 
 // Implementation
 private:
-    static char_type const  *null_string_();
+    static
+    char_type const*
+    null_string_();
 
 // Members
 private:
@@ -234,54 +245,63 @@ private:
  * \ingroup group__library__Network
  *
  */
-typedef basic_connection<is_char_a_t>   connection_a;
+typedef basic_connection<is_char_a_t>                       connection_a;
 /** Specialisation of the basic_connection template for the Unicode character type \c wchar_t
  *
  * \ingroup group__library__Network
  *
  */
-typedef basic_connection<is_char_w_t>   connection_w;
+typedef basic_connection<is_char_w_t>                       connection_w;
 /** Specialisation of the basic_connection template for the Win32 character type \c TCHAR
  *
  * \ingroup group__library__Network
  *
  */
-typedef basic_connection<TCHAR>         connection;
+typedef basic_connection<TCHAR>                             connection;
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline /* static */ ss_typename_type_ret_k basic_connection<C, X, T>::char_type const* basic_connection<C, X, T>::null_string_()
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline /* static */
+ss_typename_type_ret_k basic_connection<C, X, T>::char_type const*
+basic_connection<C, X, T>::null_string_()
 {
     static char_type    s_null[1] = { 0 };
 
     return s_null;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline basic_connection<C, X, T>::basic_connection()
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+basic_connection<C, X, T>::basic_connection()
     : m_hConn(NULL)
     , m_lastError(ERROR_SUCCESS)
 {}
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline basic_connection<C, X, T>::basic_connection( HINTERNET       hsess
-                                                ,   char_type const* server
-                                                ,   INTERNET_PORT   port
-                                                ,   char_type const* userName
-                                                ,   char_type const* password
-                                                ,   is_dword_t      service
-                                                ,   is_dword_t      flags
-                                                ,   is_dword_t      context /* = 0 */)
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+basic_connection<C, X, T>::basic_connection(
+    HINTERNET       hsess
+,   char_type const* server
+,   INTERNET_PORT   port
+,   char_type const* userName
+,   char_type const* password
+,   is_dword_t      service
+,   is_dword_t      flags
+,   is_dword_t      context /* = 0 */
+)
     : m_hConn(traits_type::internet_connect(hsess, server, port, userName, password, service, flags, context))
     , m_lastError(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
 {
@@ -291,11 +311,13 @@ inline basic_connection<C, X, T>::basic_connection( HINTERNET       hsess
     }
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline basic_connection<C, X, T>::~basic_connection() STLSOFT_NOEXCEPT
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+basic_connection<C, X, T>::~basic_connection() STLSOFT_NOEXCEPT
 {
     if(NULL != m_hConn)
     {
@@ -303,18 +325,23 @@ inline basic_connection<C, X, T>::~basic_connection() STLSOFT_NOEXCEPT
     }
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline is_bool_t basic_connection<C, X, T>::connect(HINTERNET       hsess
-                                                ,   char_type const* server
-                                                ,   INTERNET_PORT   port
-                                                ,   char_type const* userName
-                                                ,   char_type const* password
-                                                ,   is_dword_t      service
-                                                ,   is_dword_t      flags
-                                                ,   is_dword_t      context /* = 0 */)
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+is_bool_t
+basic_connection<C, X, T>::connect(
+    HINTERNET       hsess
+,   char_type const* server
+,   INTERNET_PORT   port
+,   char_type const* userName
+,   char_type const* password
+,   is_dword_t      service
+,   is_dword_t      flags
+,   is_dword_t      context /* = 0 */
+)
 {
     is_bool_t    bRet;
 
@@ -342,11 +369,14 @@ inline is_bool_t basic_connection<C, X, T>::connect(HINTERNET       hsess
     return bRet;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline void basic_connection<C, X, T>::close()
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+void
+basic_connection<C, X, T>::close()
 {
     if(NULL != m_hConn)
     {
@@ -356,11 +386,14 @@ inline void basic_connection<C, X, T>::close()
     }
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline HINTERNET basic_connection<C, X, T>::detach()
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+HINTERNET
+basic_connection<C, X, T>::detach()
 {
     INETSTL_MESSAGE_ASSERT("Attempting to detach from an empty connection", is_connected());
 
@@ -371,49 +404,63 @@ inline HINTERNET basic_connection<C, X, T>::detach()
     return hConn;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline is_bool_t basic_connection<C, X, T>::is_connected() const
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+is_bool_t
+basic_connection<C, X, T>::is_connected() const
 {
     return NULL != m_hConn;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline is_dword_t basic_connection<C, X, T>::last_error() const
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+is_dword_t
+basic_connection<C, X, T>::last_error() const
 {
     return m_lastError;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline HINTERNET basic_connection<C, X, T>::get() const
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+HINTERNET
+basic_connection<C, X, T>::get() const
 {
     return m_hConn;
 }
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline basic_connection<C, X, T>::operator HINTERNET ()
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+basic_connection<C, X, T>::operator HINTERNET ()
 {
     return m_hConn;
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
 
-template<   ss_typename_param_k C
-        ,   ss_typename_param_k X
-        ,   ss_typename_param_k T
-        >
-inline HINTERNET get_handle(basic_connection<C, X, T> &s)
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k X
+,   ss_typename_param_k T
+>
+inline
+HINTERNET
+get_handle(basic_connection<C, X, T> &s)
 {
     return s;
 }
