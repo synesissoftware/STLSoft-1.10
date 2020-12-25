@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     18th December 2020
+ * Updated:     25th December 2020
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       6
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        161
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    2
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        162
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,6 +127,11 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_H_CTYPE
+# define STLSOFT_INCL_H_CTYPE
+# include <ctype.h>
+#endif /* !STLSOFT_INCL_H_CTYPE */
 
 #ifndef WINSTL_INCL_WINSTL_API_internal_h_DynamicLinkLibrary
 # include <winstl/api/internal/DynamicLinkLibrary.h>

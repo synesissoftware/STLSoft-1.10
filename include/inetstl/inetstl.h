@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     24th April 2004
- * Updated:     2nd February 2019
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2004-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,9 +47,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_H_INETSTL_MAJOR    3
-# define INETSTL_VER_INETSTL_H_INETSTL_MINOR    9
+# define INETSTL_VER_INETSTL_H_INETSTL_MINOR    10
 # define INETSTL_VER_INETSTL_H_INETSTL_REVISION 1
-# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     566
+# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     567
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file inetstl/inetstl.h
@@ -128,12 +128,13 @@
 # define _INETSTL_VER_1_3_8      0x010308ff  /*!< Version 1.3.8 (with STLSoft 1.9.121) */
 # define _INETSTL_VER_1_4_1_B01  0x01040181  /*!< Version 1.4.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _INETSTL_VER_1_4_1_B02  0x01040182  /*!< Version 1.4.1 beta 2 (with STLSoft 1.10.1 beta 10) */
+# define _INETSTL_VER_1_4_1_B03  0x01040183  /*!< Version 1.4.1 beta 3 (with STLSoft 1.10.1 beta 26) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _INETSTL_VER_MAJOR       1
 #define _INETSTL_VER_MINOR       4
 #define _INETSTL_VER_REVISION    1
-#define _INETSTL_VER             _INETSTL_VER_1_4_1_B02
+#define _INETSTL_VER             _INETSTL_VER_1_4_1_B03
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -560,6 +561,46 @@ typedef is_streampos_t      streampos_t;        /*!< streampos */
 typedef is_streamoff_t      streamoff_t;        /*!< streamoff */
 # endif /* compiler */
 #endif /* !INETSTL_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * constants
+ */
+
+#if 0
+#elif 0 || \
+      defined(_WIN32) || \
+      defined(WIN32) || \
+      defined(WIN64) || \
+      0
+
+/** \def INETSTL_CONST_MAX_PATH
+ *
+ */
+# if 0
+# elif defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
+
+#  define INETSTL_CONST_MAX_PATH                            (260)
+# elif defined(_MAX_PATH)
+
+#  define INETSTL_CONST_MAX_PATH                            _MAX_PATH
+# elif defined(__CYGWIN__) || \
+       defined(__MINGW32__) || \
+       defined(__MINGW64__)
+
+#  define INETSTL_CONST_MAX_PATH                            (260)
+# else
+
+#  error _MAX_PATH not defined, and not CygWin compiler
+# endif
+
+# ifdef __cplusplus
+
+/** C++ constant equivalent to \ref INETSTL_CONST_MAX_PATH.
+ */
+const is_size_t CONST_MAX_PATH          =   INETSTL_CONST_MAX_PATH;
+
+# endif /* __cplusplus */
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * values

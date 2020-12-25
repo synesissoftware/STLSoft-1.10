@@ -4,11 +4,11 @@
  * Purpose:     File-system functionals.
  *
  * Created:     19th January 2002
- * Updated:     13th September 2019
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+ * Copyright (c) 2002-2020, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,8 +51,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR       4
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR       0
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION    10
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        48
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION    11
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,8 +159,8 @@ public:
 private:
     static result_type compare_(char_type const* s1, char_type const* s2)
     {
-        char_type       path1[_MAX_PATH + 1];
-        char_type       path2[_MAX_PATH + 1];
+        char_type       path1[INETSTL_CONST_MAX_PATH + 1];
+        char_type       path2[INETSTL_CONST_MAX_PATH + 1];
         is_size_t const len1    =   traits_type::str_len(s1);
         is_size_t const len2    =   traits_type::str_len(s2);
 
@@ -220,7 +220,7 @@ public:
 private:
     is_bool_t exists_(char_type const* s) const
     {
-        char_type   sz0[1 + _MAX_PATH];
+        char_type   sz0[1 + INETSTL_CONST_MAX_PATH];
         is_dword_t  dw;
 
         if(!traits_type::get_full_path_name(m_hConnection, s, STLSOFT_NUM_ELEMENTS(sz0), sz0))

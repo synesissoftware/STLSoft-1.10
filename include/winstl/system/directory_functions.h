@@ -4,7 +4,7 @@
  * Purpose:     Directory functions.
  *
  * Created:     29th January 2013
- * Updated:     3rd December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    4
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        10
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    5
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,8 +104,8 @@ winstl_C_get_home_directory_a(
 {
     /* NOTE: assumes that HOMEDRIVE and HOMEPATH can never be larger than _MAX_PATH */
 
-    ws_char_a_t     drive[_MAX_PATH];
-    ws_char_a_t     directory[_MAX_PATH];
+    ws_char_a_t     drive[WINSTL_CONST_MAX_PATH];
+    ws_char_a_t     directory[WINSTL_CONST_MAX_PATH];
     DWORD const     cchDrive        =   WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableA("HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
     DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableA("HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;
@@ -142,8 +142,8 @@ winstl_C_get_home_directory_w(
 {
     /* NOTE: assumes that HOMEDRIVE and HOMEPATH can never be larger than _MAX_PATH */
 
-    ws_char_w_t     drive[_MAX_PATH];
-    ws_char_w_t     directory[_MAX_PATH];
+    ws_char_w_t     drive[WINSTL_CONST_MAX_PATH];
+    ws_char_w_t     directory[WINSTL_CONST_MAX_PATH];
     DWORD const     cchDrive        =   WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableW(L"HOMEDRIVE", &drive[0], STLSOFT_NUM_ELEMENTS(drive));
     DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableW(L"HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;

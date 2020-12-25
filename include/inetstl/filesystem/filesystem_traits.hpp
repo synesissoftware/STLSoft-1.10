@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     18th December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR    5
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR    0
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 1
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     92
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 2
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -372,7 +372,7 @@ public:
 
         // Deduce the separator
         char_type const separator   =   (NULL == str_chr(fileName, '/') && NULL != str_chr(fileName, '\\')) ? '\\' : '/';
-        char_type       fullPath[1 + _MAX_PATH];
+        char_type       fullPath[1 + INETSTL_CONST_MAX_PATH];
         size_type       len         =   str_len(fileName);
 
         // If we're not rooted, then get the current directory and concatenate
@@ -661,7 +661,7 @@ public:
 
         // Deduce the separator
         char_type const separator   =   (NULL == str_chr(fileName, L'/') && NULL != str_chr(fileName, L'\\')) ? L'\\' : L'/';
-        char_type       fullPath[1 + _MAX_PATH];
+        char_type       fullPath[1 + INETSTL_CONST_MAX_PATH];
         size_type       len         =   str_len(fileName);
 
         // If we're not rooted, then get the current directory and concatenate

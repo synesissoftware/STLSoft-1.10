@@ -5,12 +5,13 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     13th September 2019
+ * Updated:     25th December 2020
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      19
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  2
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,7 +170,7 @@ public:
     size_type
     initial_size()
     {
-        return 1 + _MAX_PATH;
+        return 1 + WINSTL_CONST_MAX_PATH;
     }
 /// @}
 

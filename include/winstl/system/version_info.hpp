@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing version information.
  *
  * Created:     16th February 1998
- * Updated:     3rd December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MAJOR    5
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_MINOR    3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 16
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     150
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_REVISION 17
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_VERSION_INFO_EDIT     151
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -656,12 +656,12 @@ private:
 private:
     typedef STLSOFT_NS_QUAL(auto_buffer)<
         ws_char_a_t
-    ,   1 + _MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
     ,   allocator_a_type_
     >                                                       buffer_a_t;
     typedef STLSOFT_NS_QUAL(auto_buffer)<
         ws_char_w_t
-    ,   1 + _MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
     ,   allocator_w_type_
     >                                                       buffer_w_t;
     typedef system_traits<
