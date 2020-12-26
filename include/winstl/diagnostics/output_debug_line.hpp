@@ -4,7 +4,7 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     27th November 2020
+ * Updated:     26th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MAJOR      2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_MINOR      2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_REVISION   1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       14
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_REVISION   2
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_OUTPUT_DEBUG_LINE_EDIT       15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,9 +69,9 @@
 #endif /* STLSOFT_TRACE_INCLUDE */
 
 #ifdef STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
-# ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
+# ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
 #  include <stlsoft/memory/auto_buffer.hpp>
-# endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
+# endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
 #  include <stlsoft/shims/access/string.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
