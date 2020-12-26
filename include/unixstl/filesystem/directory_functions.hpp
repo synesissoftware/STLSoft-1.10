@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR       3
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR       1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        61
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,40 +102,6 @@ namespace unixstl_project
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 STLSOFT_OPEN_WORKER_NS_(ximpl_unixstl_directory_functions_)
-
-template<
-    ss_typename_param_k T_character
->
-inline
-T_character*
-find_last_path_name_separator_(
-    T_character const* s
-)
-{
-    typedef T_character                                     char_t;
-    typedef filesystem_traits<
-        char_t
-    >                                                       fs_traits_t;
-
-    char_t const*       slash   =   fs_traits_t::str_rchr(s, '/');
-#ifdef _WIN32
-    char_t const* const bslash  =   fs_traits_t::str_rchr(s, '\\');
-
-    if (NULL == slash)
-    {
-        slash = bslash;
-    }
-    else if (NULL != bslash)
-    {
-        if (slash < bslash)
-        {
-            slash = bslash;
-        }
-    }
-#endif /* _WIN32 */
-
-    return const_cast<char_t*>(slash);
-}
 
 template<
     ss_typename_param_k T_character
@@ -209,7 +175,7 @@ create_directory_recurse_impl(
 
             fs_traits_t::char_copy(&sz[0] + 0, dir, dirLen);
             sz[dirLen] = '\0';
-            fs_traits_t::remove_dir_end(&sz[0]);
+            fs_traits_t::remove_dir_end(sz);
 
             if (fs_traits_t::create_directory(sz.data(), mode) ||
                 EEXIST == fs_traits_t::get_last_error())
@@ -231,8 +197,8 @@ create_directory_recurse_impl(
                 fs_traits_t::char_copy(&szParent[0], sz.data(), szLen);
                 szParent[szLen] = '\0';
 
-                char_t* const pszSlash = find_last_path_name_separator_(szParent.data());
-                if (pszSlash == NULL)
+                char_t const* const pszSlash = fs_traits_t::find_last_path_name_separator(szParent.data());
+                if (NULL == pszSlash)
                 {
                     fs_traits_t::set_last_error(ENOTDIR);
 
@@ -240,7 +206,7 @@ create_directory_recurse_impl(
                 }
                 else
                 {
-                    *pszSlash = '\0';   // Will always have enough room for two bytes
+                    *const_cast<char_t*>(pszSlash) = '\0';
 
                     // If second character is ':', and total lengths is less than four,
                     // or the recurse create fails, then return false;
