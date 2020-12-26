@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_path_buffer template class.
  *
  * Created:     27th May 2020
- * Updated:     24th December 2020
+ * Updated:     26th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MAJOR       1
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       1
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    2
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        3
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       2
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    1
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -230,10 +230,25 @@ public: // construction
         rhs.m_buffer.resize(1);
         rhs.m_len = 0;
     }
+
+    basic_path_buffer(
+        buffer_type&&       buffer
+    ,   size_type           n
+    )
+        : m_buffer(std::move(buffer))
+        , m_len(n)
+    {
+        m_buffer[m_len] = char_type(0);
+    }
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
     /// Releases all resources associated with the instance
     ~basic_path_buffer() STLSOFT_NOEXCEPT
     {}
+
+private:
+    void operator =(class_type const&);
+
+public:
 
     /// Swaps the contents of the instance with those of \c rhs
     void
