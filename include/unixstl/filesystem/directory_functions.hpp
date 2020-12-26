@@ -4,7 +4,7 @@
  * Purpose:     Functions for manipulating directories.
  *
  * Created:     7th February 2002
- * Updated:     10th December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MAJOR       3
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_MINOR       1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_REVISION    1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        60
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_DIRECTORY_FUNCTIONS_EDIT        61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -639,42 +639,6 @@ remove_directory_recurse(
 {
     return remove_directory_recurse(dir, NULL, NULL);
 }
-
-#if 0
-/** Removes the given directory, and all its subdirectories.
- *
- * \ingroup group__library__FileSystem
- */
-inline
-us_bool_t
-remove_directory_recurse(
-    us_char_w_t const*  dir
-,   us_int_t          (*pfn)(void* param, us_char_w_t const* subDir, struct stat const* st, struct dirent const* de, int err)
-,   void*               param
-)
-{
-    typedef filesystem_traits<us_char_w_t>  fs_traits_t;
-
-    us_int_t const dwRet = STLSOFT_WORKER_NS_QUAL_(ximpl_unixstl_directory_functions_, remove_directory_recurse_impl)<us_char_w_t, struct stat>(dir, pfn, param);
-
-    fs_traits_t::set_last_error(dwRet);
-
-    return 0 == dwRet;
-}
-
-/** Removes the given directory, and all its subdirectories.
- *
- * \ingroup group__library__FileSystem
- */
-inline
-us_bool_t
-remove_directory_recurse(
-    us_char_w_t const* dir
-)
-{
-    return remove_directory_recurse(dir, NULL, NULL);
-}
-#endif /* 0 */
 
 /** Removes the given directory, and all its subdirectories.
  *

@@ -4,7 +4,7 @@
  * Purpose:     Current working directory scoping class.
  *
  * Created:     12th November 1998
- * Updated:     11th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MAJOR       5
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MINOR       1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION    14
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT        134
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT        135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -223,7 +223,9 @@ typedef basic_current_directory_scope<char, filesystem_traits<char> >           
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 inline
 us_char_a_t const*
 c_str_ptr_null_a(
@@ -232,7 +234,9 @@ c_str_ptr_null_a(
 {
     return STLSOFT_NS_QUAL(c_str_ptr_null_a)(b.c_str());
 }
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 inline
 us_char_w_t const*
 c_str_ptr_null_w(
@@ -254,7 +258,9 @@ template<
 >
 inline
 C const*
-c_str_ptr_null(basic_current_directory_scope<C, T> const& b)
+c_str_ptr_null(
+    basic_current_directory_scope<C, T> const& b
+)
 {
     return STLSOFT_NS_QUAL(c_str_ptr_null)(b.get_previous());
 }
@@ -262,7 +268,9 @@ c_str_ptr_null(basic_current_directory_scope<C, T> const& b)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 inline
 us_char_a_t const*
 c_str_ptr_a(
@@ -271,7 +279,9 @@ c_str_ptr_a(
 {
     return b.c_str();
 }
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k C
+>
 inline
 us_char_w_t const*
 c_str_ptr_w(
@@ -293,7 +303,9 @@ template<
 >
 inline
 C const*
-c_str_ptr(basic_current_directory_scope<C, T> const& b)
+c_str_ptr(
+    basic_current_directory_scope<C, T> const& b
+)
 {
     return b.get_previous();
 }
@@ -301,20 +313,24 @@ c_str_ptr(basic_current_directory_scope<C, T> const& b)
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k T
+>
 inline
 us_char_a_t const*
 c_str_data_a(
-    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_a_t, C> const& b
+    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_a_t, T> const& b
 )
 {
     return b.c_str();
 }
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k T
+>
 inline
 us_char_w_t const*
 c_str_data_w(
-    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_w_t, C> const& b
+    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_w_t, T> const& b
 )
 {
     return b.c_str();
@@ -332,27 +348,33 @@ template<
 >
 inline
 C const*
-c_str_data(basic_current_directory_scope<C, T> const& b)
+c_str_data(
+    basic_current_directory_scope<C, T> const& b
+)
 {
     return b.get_previous();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k T
+>
 inline
 us_size_t
 c_str_len_a(
-    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_a_t, C> const& b
+    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_a_t, T> const& b
 )
 {
     return STLSOFT_NS_QUAL(c_str_len_a)(b.c_str());
 }
-template <ss_typename_param_k C>
+template<
+    ss_typename_param_k T
+>
 inline
 us_size_t
 c_str_len_w(
-    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_w_t, C> const& b
+    UNIXSTL_NS_QUAL(basic_current_directory_scope)<us_char_w_t, T> const& b
 )
 {
     return STLSOFT_NS_QUAL(c_str_len_w)(b.c_str());

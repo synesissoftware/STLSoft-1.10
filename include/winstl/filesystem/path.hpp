@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     18th December 2020
+ * Updated:     24th December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    11
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     296
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     301
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -178,14 +178,17 @@ public:
     /// The current parameterisation of the type
     typedef basic_path<C, T, A>                             class_type;
     /// The size type
-    typedef ws_size_t                                       size_type;
+    typedef ss_typename_type_k traits_type::size_type       size_type;
     /// The Boolean type
-    typedef ws_bool_t                                       bool_type;
+    typedef ss_typename_type_k traits_type::bool_type       bool_type;
 private:
     typedef ss_typename_type_k path_buffer_generator<
         char_type
     ,   allocator_type
-    >::type                                                 buffer_type_;
+    >::type                                                 path_buffer_type_;
+
+    typedef ss_typename_param_k path_buffer_type_::buffer_type
+                                                            buffer_type_;
 
 // TODO: Use the slice string, and provide iterators over the directory parts
 
@@ -265,11 +268,11 @@ public:
     ,   size_type           cch
     );
 
-#ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+#ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
     /// Copies the contents of \c rhs
     basic_path(class_type const& rhs);
-#endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
+#endif /* STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
 #ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
 
     /// Constructs an auto_buffer instance by taking over the state of the
@@ -286,16 +289,20 @@ public:
     {}
 
 protected:
-    basic_path(buffer_type_&& rhs) STLSOFT_NOEXCEPT
+    basic_path(path_buffer_type_&& rhs) STLSOFT_NOEXCEPT
         : m_buffer(std::move(rhs))
+    {}
+    basic_path(buffer_type_&& rhs, size_type cch) STLSOFT_NOEXCEPT
+        : m_buffer(std::move(rhs), cch)
     {}
 public:
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
-#ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+#ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
+
     /// Copies the contents of \c rhs
     class_type& operator =(class_type const& rhs);
-#endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
+#endif /* STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
     /// Copies the contents of \c rhs
     class_type& operator =(char_type const* rhs);
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT
@@ -338,8 +345,6 @@ public:
     class_type& push(class_type const& rhs, bool_type bAddPathNameSeparator = false);
     /// Appends the contents of \c rhs to the path
     class_type& push(char_type const* rhs, bool_type bAddPathNameSeparator = false);
-    /// Appends the contents of \c rhs to the path as an extension
-    class_type& push_ext(class_type const& rhs, bool_type bAddPathNameSeparator = false);
     /// Appends the contents of \c rhs to the path as an extension
     class_type& push_ext(char_type const* rhs, bool_type bAddPathNameSeparator = false);
     /// Ensures that the path has a trailing path name separator
@@ -409,8 +414,6 @@ public:
     make_absolute(
         bool_type bRemoveTrailingPathNameSeparator = true
     );
-    /// Canonicalises the path
-    ///
     /// Canonicalises the path, removing all "./" parts and evaluating all
     /// "../" parts. Any path with only one part will not be canonicalised.
     /// A leading '.' will be preserved if no other '..' or "normal" parts
@@ -445,36 +448,36 @@ public:
     /// if the path is terminated by the path name separator
     ///
     /// \note If the path contains no path name separator, the full path will be returned
-    char_type const*  get_file() const STLSOFT_NOEXCEPT;
+    char_type const*    get_file() const STLSOFT_NOEXCEPT;
     /// Returns a pointer to the extension, or to the empty string if there is no extension
-    char_type const*  get_ext() const STLSOFT_NOEXCEPT;
+    char_type const*    get_ext() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
-    size_type         length() const STLSOFT_NOEXCEPT;
+    size_type           length() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
     ///
     /// \remarks Equivalent to length()
-    size_type         size() const STLSOFT_NOEXCEPT;
+    size_type           size() const STLSOFT_NOEXCEPT;
     /// The maximum possible length of a path
-    static size_type  max_size() STLSOFT_NOEXCEPT;
+    static size_type    max_size() STLSOFT_NOEXCEPT;
     /// Determines whether the path is empty
-    bool_type         empty() const STLSOFT_NOEXCEPT;
+    bool_type           empty() const STLSOFT_NOEXCEPT;
     /// Returns null-terminated non-mutable (const) pointer to string data
-    char_type const*  data() const STLSOFT_NOEXCEPT;
+    char_type const*    data() const STLSOFT_NOEXCEPT;
     /// Conversion to a non-mutable (const) pointer to the path
-    char_type const*  c_str() const STLSOFT_NOEXCEPT;
+    char_type const*    c_str() const STLSOFT_NOEXCEPT;
     /// Returns a non-mutable (const) reference to the character at
     ///  the given index
     ///
     /// \note The behaviour is undefined if <code>index >= size()</code>.
-    char_type const&  operator [](size_type index) const STLSOFT_NOEXCEPT;
+    char_type const&    operator [](size_type index) const STLSOFT_NOEXCEPT;
     /// Indicates whether the path represents an existing file system entry
-    bool_type         exists() const STLSOFT_NOEXCEPT;
+    bool_type           exists() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path is rooted
-    bool_type         is_rooted() const STLSOFT_NOEXCEPT;
+    bool_type           is_rooted() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path is absolute
-    bool_type         is_absolute() const STLSOFT_NOEXCEPT;
+    bool_type           is_absolute() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path has a trailing separator
-    bool_type         has_sep() const STLSOFT_NOEXCEPT;
+    bool_type           has_sep() const STLSOFT_NOEXCEPT;
 
     /// Copies the contents into a caller supplied buffer
     ///
@@ -513,6 +516,7 @@ public:
     ///
     /// \note The string comparison is case-insensitive.
     bool_type equal(char_type const* rhs) const STLSOFT_NOEXCEPT;
+
     /// Evaluates whether the two instances hold identical strings.
     ///
     /// \note The string comparison is case-insensitive.
@@ -596,7 +600,7 @@ private:
     static size_type coalesce_parts_(part_buffer_type_& parts);
 
 private: // fields
-    buffer_type_    m_buffer;
+    path_buffer_type_   m_buffer;
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1386,7 +1390,7 @@ basic_path<C, T, A>::basic_path(
     : m_buffer(path, cch)
 {}
 
-#ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+#ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
 template<
     ss_typename_param_k C
@@ -1399,9 +1403,9 @@ basic_path<C, T, A>::basic_path(
 )
     : m_buffer(rhs.m_buffer)
 {}
-#endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
+#endif /* STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
 
-#ifndef STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD
+#ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
 template<
     ss_typename_param_k C
@@ -1420,7 +1424,7 @@ basic_path<C, T, A>::operator =(
 
     return *this;
 }
-#endif /* !STLSOFT_CF_NO_COPY_CTOR_AND_COPY_CTOR_TEMPLATE_OVERLOAD */
+#endif /* STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR */
 
 template<
     ss_typename_param_k C
@@ -1477,7 +1481,7 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::push(
     class_type const&   rhs
-,   ws_bool_t           bAddPathNameSeparator /* = false */
+,   bool_type           bAddPathNameSeparator /* = false */
 )
 {
     return push_(rhs.data(), rhs.size(), bAddPathNameSeparator);
@@ -1492,7 +1496,7 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::push(
     char_type const*    rhs
-,   ws_bool_t           bAddPathNameSeparator /* = false */
+,   bool_type           bAddPathNameSeparator /* = false */
 )
 {
     WINSTL_ASSERT(NULL != rhs);
@@ -1510,7 +1514,7 @@ basic_path<C, T, A>&
 basic_path<C, T, A>::push_(
     char_type const*    rhs
 ,   size_type           cch
-,   ws_bool_t           bAddPathNameSeparator
+,   bool_type           bAddPathNameSeparator
 )
 {
     if (0 != cch)
@@ -1550,23 +1554,6 @@ basic_path<C, T, A>::push_(
     return *this;
 }
 
-#if 0
-
-template<
-    ss_typename_param_k C
-,   ss_typename_param_k T
-,   ss_typename_param_k A
->
-inline
-basic_path<C, T, A>&
-basic_path<C, T, A>::push_ext(
-    class_type const&   rhs
-,   ws_bool_t           bAddPathNameSeparator /* = false */
-)
-{
-}
-#endif /* 0 */
-
 template<
     ss_typename_param_k C
 ,   ss_typename_param_k T
@@ -1576,7 +1563,7 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::push_ext(
     char_type const*    rhs
-,   ws_bool_t           bAddPathNameSeparator /* = false */
+,   bool_type           bAddPathNameSeparator /* = false */
 )
 {
     WINSTL_ASSERT(NULL != rhs);
@@ -1670,7 +1657,7 @@ template<
 inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop(
-    ws_bool_t bRemoveTrailingPathNameSeparator /* = true */
+    bool_type bRemoveTrailingPathNameSeparator /* = true */
 ) STLSOFT_NOEXCEPT
 {
     char_type* slash = const_cast<char_type*>(last_slash_(m_buffer.data(), size_()));
@@ -1889,12 +1876,12 @@ basic_path<C, T, A>&
 bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 basic_path<C, T, A>::make_absolute(
-    ws_bool_t bRemoveTrailingPathNameSeparator /* = true */
+    bool_type bRemoveTrailingPathNameSeparator /* = true */
 )
 {
     if (!empty())
     {
-        buffer_type_    buffer;
+        buffer_type_    buffer(1);
         size_type       cch = traits_type::get_full_path_name(c_str(), buffer);
 
         if (0 == cch)
@@ -1910,7 +1897,7 @@ basic_path<C, T, A>::make_absolute(
 
 #ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
 
-        class_type      newPath(std::move(buffer));
+        class_type      newPath(std::move(buffer), cch);
 #else /* ? STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
         class_type      newPath(buffer.data(), cch);
@@ -1945,7 +1932,7 @@ basic_path<C, T, A>&
 bool
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 basic_path<C, T, A>::canonicalise(
-    ws_bool_t bRemoveTrailingPathNameSeparator /* = true */
+    bool_type bRemoveTrailingPathNameSeparator /* = true */
 )
 {
     if (empty())
@@ -2040,9 +2027,9 @@ basic_path<C, T, A>::canonicalise(
                     }
                     break;
                 case    3:
+
                     if ('.' == p1[0] &&
                         '.' == p1[1])
-
                     {
                         if (path_name_separator() == p1[2])
                         {
@@ -2054,8 +2041,8 @@ basic_path<C, T, A>::canonicalise(
                         }
                     }
                     break;
-
                 default:
+
                     break;
             }
 
@@ -2268,7 +2255,7 @@ inline
 ss_typename_type_ret_k basic_path<C, T, A>::size_type
 /* static */ basic_path<C, T, A>::max_size() STLSOFT_NOEXCEPT
 {
-    return buffer_type_::max_size() - 1u;
+    return path_buffer_type_::max_size() - 1u;
 }
 
 template<
@@ -2320,7 +2307,7 @@ basic_path<C, T, A>::operator [](
     ss_typename_type_k basic_path<C, T, A>::size_type index
 ) const STLSOFT_NOEXCEPT
 {
-    WINSTL_MESSAGE_ASSERT("Index out of range", !(size() < index));
+    WINSTL_MESSAGE_ASSERT("Index out of range", !(size_() < index));
 
     return data()[index];
 }
@@ -2331,7 +2318,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::exists() const STLSOFT_NOEXCEPT
 {
     return traits_type::file_exists(this->c_str());
@@ -2343,7 +2330,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::is_rooted() const STLSOFT_NOEXCEPT
 {
     return traits_type::is_path_rooted(this->c_str());
@@ -2355,7 +2342,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::is_absolute() const STLSOFT_NOEXCEPT
 {
     return traits_type::is_path_absolute(this->c_str());
@@ -2367,7 +2354,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::has_sep() const STLSOFT_NOEXCEPT
 {
     if (empty())
@@ -2399,7 +2386,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::equivalent(
     basic_path<C, T, A> const& rhs
 ) const STLSOFT_NOEXCEPT
@@ -2413,7 +2400,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::equivalent(
     ss_typename_type_k basic_path<C, T, A>::char_type const* rhs
 ) const STLSOFT_NOEXCEPT
@@ -2427,7 +2414,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::equivalent_(
     char_type const*    rhs
 ,   size_type           cch
@@ -2469,7 +2456,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::equal(
     basic_path<C, T, A> const& rhs
 ) const STLSOFT_NOEXCEPT
@@ -2488,7 +2475,7 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ws_bool_t
+ss_typename_type_k basic_path<C, T, A>::bool_type
 basic_path<C, T, A>::equal(
     ss_typename_type_k basic_path<C, T, A>::char_type const* rhs
 ) const STLSOFT_NOEXCEPT
