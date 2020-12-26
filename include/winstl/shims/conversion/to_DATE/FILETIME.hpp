@@ -4,10 +4,11 @@
  * Purpose:     winstl::to_DATE(FILETIME const&) overload.
  *
  * Created:     12th March 2007
- * Updated:     2nd February 2019
+ * Updated:     26th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -20,9 +21,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -52,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_MAJOR      1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_MINOR      0
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_REVISION   6
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_EDIT       13
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_REVISION   7
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_FILETIME_EDIT       15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,7 +80,7 @@ STLSOFT_COMPILER_IS_GCC:
 #endif /* STLSOFT_TRACE_INCLUDE */
 
 #ifndef WINSTL_UDATE_DEFINED
-# error UDATE is not defined. If you are certain that your compiler's Windows header files define this type, #define the symbol WINSTL_FORCE_UDATE
+# error UDATE is not defined. If you are certain that the Windows header files of your compiler define this type, #define the symbol WINSTL_FORCE_UDATE
 #endif /* !WINSTL_UDATE_DEFINED */
 #ifndef WINSTL_INCL_WINSTL_SHIMS_CONVERSION_TO_DATE_HPP_SYSTEMTIME
 # include <winstl/shims/conversion/to_DATE/SYSTEMTIME.hpp>

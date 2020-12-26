@@ -4,10 +4,11 @@
  * Purpose:     Message functions.
  *
  * Created:     9th March 2010
- * Updated:     2nd February 2019
+ * Updated:     26th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +53,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     19
+# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

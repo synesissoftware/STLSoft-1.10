@@ -4,7 +4,7 @@
  * Purpose:     External preprocessor aliases for string functions.
  *
  * Created:     15th November 2002
- * Updated:     17th December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -49,7 +49,7 @@
 #define STLSOFT_INCL_STLSOFT_API_external_h_string
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes
+ * includes - 1
  */
 
 #ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
@@ -63,6 +63,17 @@
 # define STLSOFT_INCL_H_STRING
 # include <string.h>
 #endif /* !STLSOFT_INCL_H_STRING */
+
+#if 0 ||\
+    defined(__MINGW32__)||\
+    defined(__MINGW64__)||\
+    0
+# ifndef STLSOFT_INCL_H_STRINGS
+#  define STLSOFT_INCL_H_STRINGS
+#  include <strings.h>
+# endif /* !STLSOFT_INCL_H_STRINGS */
+#endif
+
 #if 0 ||\
     defined(STLSOFT_COMPILER_IS_BORLAND)||\
     0
@@ -70,6 +81,7 @@
 #  include <tchar.h>
 # endif /* !STLSOFT_INCL_H_TCHAR */
 #endif /* compiler */
+
 #ifndef STLSOFT_INCL_H_WCHAR
 # define STLSOFT_INCL_H_WCHAR
 # include <wchar.h>
@@ -114,68 +126,6 @@
 /* /////////////////////////////////////////////////////////////////////////
  * string functions
  */
-
-/*
-
- * from winstl/system/system_traits.hpp
-
-#if defined(STLSOFT_COMPILER_IS_BORLAND)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# endif
-# if !defined(__MFC_COMPAT__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_DMC)
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_GCC)
-# if !defined(__STRICT_ANSI__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_INTEL) || \
-      defined(STLSOFT_COMPILER_IS_MSVC)
-# if !defined(__STDC__) && \
-     !defined(STLSOFT_USING_SAFE_STR_FUNCTIONS)
-#  define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# endif
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_MWERKS)
-# define WINSTL_SYSTEM_TRAITS_HAS_strnicmp_
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#elif defined(STLSOFT_COMPILER_IS_WATCOM)
-# define WINSTL_SYSTEM_TRAITS_HAS__strnicmp_
-#endif
-
-
-
-#if defined(STLSOFT_COMPILER_IS_BORLAND)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# endif
-# if !defined(__MFC_COMPAT__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_DMC)
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_GCC)
-# if !defined(__STRICT_ANSI__)
-#  define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-# endif
-#elif defined(STLSOFT_COMPILER_IS_INTEL) || \
-      defined(STLSOFT_COMPILER_IS_MSVC)
-# if !defined(__STDC__)
-#  define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# endif
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_MWERKS)
-# define WINSTL_SYSTEM_TRAITS_HAS_wcsnicmp_
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#elif defined(STLSOFT_COMPILER_IS_WATCOM)
-# define WINSTL_SYSTEM_TRAITS_HAS__wcsnicmp_
-#endif
-
- */
-
 
 /* *************************************
  * stricmp
@@ -345,6 +295,11 @@
 # elif defined(STLSOFT_COMPILER_IS_GCC)
 
 #  if 0
+#  elif 0 || \
+        defined(__MINGW32__)||\
+        defined(__MINGW64__)||\
+        0
+#   define STLSOFT_API_EXTERNAL_string_strnicmp                             STLSOFT_NS_GLOBAL_(strncasecmp)
 #  elif !defined(__STRICT_ANSI__)
 #   define STLSOFT_API_EXTERNAL_string_strnicmp                             STLSOFT_NS_GLOBAL_(_strnicmp)
 #  endif
@@ -447,6 +402,28 @@
 #  define STLSOFT_API_EXTERNAL_string_wcsnicmp                              STLSOFT_NS_GLOBAL_(_wcsnicmp)
 # endif
 #endif /* !STLSOFT_API_EXTERNAL_string_wcsnicmp */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes - 2
+ */
+
+#ifndef STLSOFT_API_EXTERNAL_string_strnicmp
+
+# define STLSOFT_API_EXTERNAL_string_strnicmp               stlsoft_C_strnicmp
+
+# ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNICMP
+#  include <stlsoft/string/c_string/strnicmp.h>
+# endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNICMP */
+#endif /* !STLSOFT_API_EXTERNAL_string_strnicmp */
+
+#ifndef STLSOFT_API_EXTERNAL_string_wcsnicmp
+
+# define STLSOFT_API_EXTERNAL_string_wcsnicmp               stlsoft_C_wcsnicmp
+
+# ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNICMP
+#  include <stlsoft/string/c_string/strnicmp.h>
+# endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNICMP */
+#endif /* !STLSOFT_API_EXTERNAL_string_strnicmp */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
