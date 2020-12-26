@@ -111,7 +111,7 @@ typedef highperformance_stopwatch               highperformance_counter;
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

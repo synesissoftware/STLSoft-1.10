@@ -5,7 +5,7 @@
  *              platform discriminations, and definitions of types.
  *
  * Created:     20th March 2005
- * Updated:     13th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,7 +50,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MINOR    15
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 4
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     54
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/platformstl.h
@@ -503,7 +503,7 @@ namespace platformstl = ::stlsoft::platformstl_project;
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

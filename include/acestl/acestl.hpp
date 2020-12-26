@@ -522,7 +522,7 @@ namespace acestl = ::stlsoft::acestl_project;
 #endif /* !ACESTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

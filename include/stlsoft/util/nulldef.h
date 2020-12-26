@@ -4,7 +4,7 @@
  * Purpose:     Include for defining NULL to be the NULL_v template class.
  *
  * Created:     17th December 2002
- * Updated:     3rd December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_MINOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_REVISION 2
-# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_EDIT     40
+# define STLSOFT_VER_STLSOFT_UTIL_H_NULLDEF_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

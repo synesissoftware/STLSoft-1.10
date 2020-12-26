@@ -4,7 +4,7 @@
  * Purpose:     WinSTL system-time stopwatch class.
  *
  * Created:     22nd March 2002
- * Updated:     26th November 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_SYSTEMTIME_STOPWATCH_MAJOR       5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_SYSTEMTIME_STOPWATCH_MINOR       0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_SYSTEMTIME_STOPWATCH_REVISION    2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_SYSTEMTIME_STOPWATCH_EDIT        56
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_SYSTEMTIME_STOPWATCH_EDIT        57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -233,7 +233,7 @@ systemtime_stopwatch::get_nanoseconds() const
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

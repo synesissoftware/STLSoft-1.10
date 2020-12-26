@@ -4,7 +4,7 @@
  * Purpose:     UNIXSTL process-time stopwatch class.
  *
  * Created:     9th June 2006
- * Updated:     26th November 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MAJOR       2
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_REVISION    2
-# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT        23
+# define UNIXSTL_VER_UNIXSTL_DIAGNOSTICS_HPP_PROCESSTIMES_STOPWATCH_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -388,7 +388,7 @@ processtimes_stopwatch::get_microseconds() const
 #endif /* !UNIXSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

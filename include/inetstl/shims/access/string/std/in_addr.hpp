@@ -541,7 +541,7 @@ using ::inetstl::c_str_ptr;
 #endif /* !INETSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

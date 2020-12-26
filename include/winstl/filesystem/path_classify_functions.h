@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    2
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        2
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -366,7 +366,7 @@ path_classify(
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

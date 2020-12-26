@@ -1027,8 +1027,8 @@ struct fff_traits_<ws_char_w_t>
     static
     HANDLE
     find_first_file_l(
-        T_buffer const& searchSpec
-    ,   T_findData*     findData
+        T_buffer const&     searchSpec
+    ,   T_findData*         findData
     ,   T_fs_traits const*
     )
     {
@@ -1044,6 +1044,7 @@ struct fff_traits_<ws_char_w_t>
         return T_fs_traits::find_first_file(searchSpec_l.data(), findData);
     }
 };
+#endif /* compiler */
 
 #endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
 

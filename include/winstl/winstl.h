@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_WINSTL_MAJOR       3
 # define WINSTL_VER_WINSTL_H_WINSTL_MINOR       17
-# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    5
-# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        217
+# define WINSTL_VER_WINSTL_H_WINSTL_REVISION    4
+# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        216
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file winstl/winstl.h
@@ -1128,7 +1128,7 @@ namespace winstl = ::stlsoft::winstl_project;
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

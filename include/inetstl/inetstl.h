@@ -669,7 +669,7 @@ namespace inetstl = ::stlsoft::inetstl_project;
 #endif /* !INETSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

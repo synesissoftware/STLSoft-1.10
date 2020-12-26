@@ -4,7 +4,7 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     26th November 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     19
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1353,7 +1353,7 @@ winstl_C_diagnostics_output_debug_line_16_m(
 }
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

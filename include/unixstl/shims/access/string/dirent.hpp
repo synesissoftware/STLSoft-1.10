@@ -393,7 +393,7 @@ using ::unixstl::c_str_ptr_null_a;
 #endif /* !UNIXSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

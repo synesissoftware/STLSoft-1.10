@@ -152,7 +152,7 @@ inline const FILETIME to_FILETIME(SYSTEMTIME const& rhs)
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

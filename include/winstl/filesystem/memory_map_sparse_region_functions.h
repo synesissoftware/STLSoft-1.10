@@ -4,7 +4,7 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     28th November 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_EDIT     118
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_SPARSE_REGION_FUNCTIONS_EDIT     119
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -286,7 +286,7 @@ create_named_sparse_shared_region_on_pagefile(
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

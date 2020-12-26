@@ -4,7 +4,7 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     18th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    5
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     27
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -395,7 +395,7 @@ operator <<(
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

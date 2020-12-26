@@ -4,7 +4,7 @@
  * Purpose:     UNIX memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     3rd December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,7 +52,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR    3
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR    1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION 2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT     105
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT     106
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@ unmap_view_of_file(
 #endif /* !UNIXSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

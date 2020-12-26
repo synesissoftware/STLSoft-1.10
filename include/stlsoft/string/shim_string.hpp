@@ -803,7 +803,7 @@ inline std::basic_ostream<C>& operator <<(std::basic_ostream<C> &s, stlsoft::bas
 #endif /* ? compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

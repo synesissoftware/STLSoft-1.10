@@ -4,7 +4,7 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     26th June 2003
- * Updated:     7th December 2020
+ * Updated:     24th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MAJOR      4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_MINOR      0
 # define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_REVISION   6
-# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       44
+# define WINSTL_VER_WINSTL_SECURITY_HPP_ACL_SEQUENCE_EDIT       45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -248,7 +248,7 @@ private:
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

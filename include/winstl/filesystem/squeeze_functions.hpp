@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        31
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -329,7 +329,7 @@ path_squeeze(
 #endif /* !WINSTL_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT

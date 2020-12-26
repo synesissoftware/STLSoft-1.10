@@ -989,7 +989,7 @@ integer_to_string(C* buf, ss_size_t cchBuf, unsigned long i, ss_size_t& cchRes)
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * inclusion
+ * inclusion control
  */
 
 #ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
