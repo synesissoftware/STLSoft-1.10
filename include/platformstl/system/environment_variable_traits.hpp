@@ -4,7 +4,7 @@
  * Purpose:     Definition of the environment_variable_traits class.
  *
  * Created:     9th December 2005
- * Updated:     17th December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,16 +56,8 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MINOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 7
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     33
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-/* /////////////////////////////////////////////////////////////////////////
- * Auto-generation and compatibility
- */
-
-/*
-[<[STLSOFT-AUTO:NO-UNITTEST]>]
-*/
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -176,7 +168,8 @@
 #endif /* PLATFORMSTL_ENVVAR_PUTENV_HAS_UNDERSCORE */
 
 
-#if defined(PLATFORMSTL_ENVVAR_STDC_ONLY)
+#if 0
+#elif defined(PLATFORMSTL_ENVVAR_STDC_ONLY)
 
 #elif defined(PLATFORMSTL_OS_IS_UNIX)
 

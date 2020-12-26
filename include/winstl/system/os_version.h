@@ -4,7 +4,7 @@
  * Purpose:     winstl_C_identify_operating_system() function.
  *
  * Created:     18th May 1995
- * Updated:     30th November 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_MINOR    0
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 7
-# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     13
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_REVISION 8
+# define WINSTL_VER_WINSTL_SYSTEM_H_OS_VERSION_EDIT     14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -427,6 +427,9 @@ WINSTL_SYSTEM_OS_VERSION_c_str_data_a_ITEM_(Windows_8);
 WINSTL_SYSTEM_OS_VERSION_c_str_data_a_ITEM_(Windows_Server_2012_R2);
 WINSTL_SYSTEM_OS_VERSION_c_str_data_a_ITEM_(Windows_8_1);
 
+    case WinSTL_OperatingSystemIdentifier_Invalid:
+
+        break;
     }
 
 # undef WINSTL_SYSTEM_OS_VERSION_c_str_data_a_ITEM_

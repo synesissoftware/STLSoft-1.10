@@ -5,10 +5,11 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     13th September 2019
+ * Updated:     26th December 2020
  *
  * Home:        http://www.stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MINOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        13
+# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

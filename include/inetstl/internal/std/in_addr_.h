@@ -5,10 +5,11 @@
  *              for Internet-related types.
  *
  * Created:     21st October 2006
- * Updated:     2nd February 2019
+ * Updated:     26th December 2020
  *
  * Home:        http://stlsoft.org/
  *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -21,9 +22,10 @@
  * - Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the following disclaimer in the
  *   documentation and/or other materials provided with the distribution.
- * - Neither the name(s) of Matthew Wilson and Synesis Software nor the
- *   names of any contributors may be used to endorse or promote products
- *   derived from this software without specific prior written permission.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -54,7 +56,7 @@
 # define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__MAJOR      2
 # define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__MINOR      0
 # define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__REVISION   2
-# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__EDIT       14
+# define INETSTL_VER_INETSTL_INTERNAL_STD_H_IN_ADDR__EDIT       15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

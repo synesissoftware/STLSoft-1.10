@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     7th December 2020
+ * Updated:     25th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR    3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR    0
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 22
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     160
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION 23
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT     161
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -482,7 +482,7 @@ private:
     friend class basic_findfile_sequence_const_input_iterator<C, T, X, class_type>;
 
     find_data_type  m_data;
-    char_type       m_path[1 + _MAX_PATH];
+    char_type       m_path[1 + INETSTL_CONST_MAX_PATH];
 /// @}
 };
 
@@ -933,7 +933,7 @@ inline /* static */ void basic_findfile_sequence<C, T, X>::extract_subpath_(HINT
 {
     char_type* pFile;
 
-    traits_type::get_full_path_name(hconn, pattern, _MAX_PATH, dest, &pFile);
+    traits_type::get_full_path_name(hconn, pattern, INETSTL_CONST_MAX_PATH, dest, &pFile);
 
     if(NULL != pFile)
     {

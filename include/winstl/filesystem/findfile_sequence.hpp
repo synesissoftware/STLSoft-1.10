@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     22nd December 2020
+ * Updated:     26th December 2020
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -72,12 +72,12 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        256
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    6
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        257
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
- * includes
+ * includes - 1
  */
 
 #ifndef WINSTL_INCL_WINSTL_H_WINSTL
@@ -87,10 +87,24 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER < 1100
 # error winstl/findfile_sequence.hpp is not compatible with Visual C++ 4.2 or earlier
 #endif /* compiler */
+
+#if defined(STLSOFT_COMPILER_IS_MSVC) && \
+    _MSC_VER < 1500
+
+# define WINSTL_FFS_NO_LONG_PATH_SUPPORT_
+#endif
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes - 2
+ */
 
 #ifndef WINSTL_INCL_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS
 # include <winstl/filesystem/filesystem_traits.hpp>
@@ -233,7 +247,7 @@ public:
 private:
     typedef STLSOFT_NS_QUAL(auto_buffer)<
         char_type
-    ,   1 + _MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
     ,   processheap_allocator<char_type>
     >                                                       buffer_type_;
     typedef STLSOFT_NS_QUAL(auto_buffer_old)<
@@ -258,7 +272,9 @@ public:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         ,   throwOnAccessFailure        =   0x2000  //!< Causes an exception to be thrown if a directory cannot be accessed
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#ifndef WINSTL_FFS_NO_LONG_PATH_SUPPORT_
         ,   allowLongPathTranslation    =   0x4000  //!< For wide-string specialisations, allows translation of paths to long-path forms - beginning with <code>"\\?\"</code> - when appropriate
+#endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
     };
 /// @}
 
@@ -416,7 +432,7 @@ private:
     typedef ss_typename_type_k sequence_type::flags_type    flags_type;
     typedef STLSOFT_NS_QUAL(auto_buffer)<
         char_type
-    ,   1 + _MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
     ,   processheap_allocator<char_type>
     >                                                       buffer_type_;
 /// @}
@@ -562,7 +578,7 @@ private:
     typedef ss_typename_type_k sequence_type::flags_type    flags_type;
     typedef STLSOFT_NS_QUAL(auto_buffer)<
         char_type
-    ,   1 + _MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
     ,   processheap_allocator<char_type>
     >                                                       buffer_type_;
 /// @}
@@ -974,6 +990,8 @@ is_empty(
 
 STLSOFT_OPEN_WORKER_NS_(ximpl_winstl_ffs_)
 
+#ifndef WINSTL_FFS_NO_LONG_PATH_SUPPORT_
+
 // fff_traits_
 
 template<
@@ -991,6 +1009,7 @@ struct fff_traits_
     find_first_file_l(
         T_buffer const&
     ,   T_findData*
+    ,   T_fs_traits const*
     )
     {
         return INVALID_HANDLE_VALUE;
@@ -1010,6 +1029,7 @@ struct fff_traits_<ws_char_w_t>
     find_first_file_l(
         T_buffer const& searchSpec
     ,   T_findData*     findData
+    ,   T_fs_traits const*
     )
     {
         T_buffer searchSpec_l(4 + searchSpec.size());
@@ -1024,6 +1044,8 @@ struct fff_traits_<ws_char_w_t>
         return T_fs_traits::find_first_file(searchSpec_l.data(), findData);
     }
 };
+
+#endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
 
 STLSOFT_CLOSE_WORKER_NS_(ximpl_winstl_ffs_)
 
@@ -1048,7 +1070,9 @@ ss_typename_type_ret_k basic_findfile_sequence<C, T>::flags_type basic_findfile_
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                                     |   throwOnAccessFailure
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#ifndef WINSTL_FFS_NO_LONG_PATH_SUPPORT_
                                     |   allowLongPathTranslation
+#endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
                                     |   0;
 
     WINSTL_MESSAGE_ASSERT("Specification of unrecognised/unsupported flags", flags == (flags & validFlags));
@@ -1566,6 +1590,8 @@ basic_findfile_sequence_const_input_iterator<C, T, V>::find_first_file_(
         }
         else
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#ifndef WINSTL_FFS_NO_LONG_PATH_SUPPORT_
+
         if (STLSOFT_ALWAYS_FALSE() ||
             ERROR_PATH_NOT_FOUND == dw ||
             ERROR_FILE_NOT_FOUND == dw ||
@@ -1576,9 +1602,12 @@ basic_findfile_sequence_const_input_iterator<C, T, V>::find_first_file_(
             {
                 typedef STLSOFT_WORKER_NS_QUAL_(ximpl_winstl_ffs_, fff_traits_)<char_type>  fff_traits_t_;
 
-                hSrch = fff_traits_t_::find_first_file_l<traits_type>(searchSpec, findData);
+                typedef traits_type                                                         traits_t_;
+
+                hSrch = fff_traits_t_::find_first_file_l(searchSpec, findData, static_cast<traits_t_*>(0));
             }
         }
+#endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
     }
 
     // Now need to validate against the flags
