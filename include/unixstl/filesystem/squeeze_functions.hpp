@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     13th June 2006
- * Updated:     24th December 2020
+ * Updated:     30th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR     2
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      25
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  3
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -129,17 +129,18 @@ path_squeeze_impl(
     }
     else if(0 != cchBuffer)
     {
-        basic_path<char_t>  p(path, pathLen);
-        char_t const*       file_ptr    =   p.get_file();
-        char_t const*       path_ptr    =   p.c_str();
-        const size_t        fileLen     =   p.size() - (file_ptr - path_ptr);
+        typedef basic_path<char_t>                              path_t_;
+        typedef ss_typename_param_k path_t_::string_slice_type  slice_t_;
+
+        path_t_         p(path, pathLen);
+        slice_t_ const  file        =   p.get_file();
+        char_t const*   path_ptr    =   p.c_str();
 
         if(cchBuffer > pathLen)
         {
             // Room for all
 
-            traits_t::char_copy(buffer, path_ptr, pathLen);
-            buffer[pathLen] = '\0';
+            p.copy(buffer, cchBuffer);
 
             cchBuffer = pathLen + 1u;
         }
@@ -195,52 +196,52 @@ path_squeeze_impl(
 
             if(cchBuffer < 5 + 1)
             {
-                traits_t::char_copy(buffer, file_ptr, cchBuffer - 1);
+                traits_t::char_copy(buffer, file.ptr, cchBuffer - 1);
                 buffer[cchBuffer - 1] = '\0';
 
-                if(cchBuffer > fileLen)
+                if(cchBuffer > file.len)
                 {
-                    cchBuffer = fileLen + 1;
+                    cchBuffer = file.len + 1;
                 }
             }
-            else if(cchBuffer < fileLen + 1)
+            else if(cchBuffer < file.len + 1)
             {
                 // Squeezing just file+ext
-                size_t  leftLen     =   (cchBuffer - 3 - 1) / 2;
-                size_t  rightLen    =   (cchBuffer - 3 - 1) - leftLen;
+                size_t const    leftLen     =   (cchBuffer - 3 - 1) / 2;
+                size_t const    rightLen    =   (cchBuffer - 3 - 1) - leftLen;
 
-                traits_t::char_copy(buffer, file_ptr, leftLen);
+                traits_t::char_copy(buffer, file.ptr, leftLen);
                 buffer[leftLen + 0] = '.';
                 buffer[leftLen + 1] = '.';
                 buffer[leftLen + 2] = '.';
-                traits_t::char_copy(buffer + leftLen + 3, file_ptr + (fileLen - rightLen), rightLen);
+                traits_t::char_copy(buffer + leftLen + 3, file.ptr + (file.len - rightLen), rightLen);
                 buffer[leftLen + 3 + rightLen] = '\0';
             }
-            else if(cchBuffer < rootLen + 3 + 1 + fileLen + 1)
+            else if(cchBuffer < rootLen + 3 + 1 + file.len + 1)
             {
                 // File (name + ext) only
 
-                traits_t::char_copy(buffer, file_ptr, fileLen);
-                buffer[fileLen] = '\0';
+                traits_t::char_copy(buffer, file.ptr, file.len);
+                buffer[file.len] = '\0';
 
-                if(cchBuffer > fileLen)
+                if(cchBuffer > file.len)
                 {
-                    cchBuffer = fileLen + 1;
+                    cchBuffer = file.len + 1;
                 }
             }
             else
             {
                 UNIXSTL_ASSERT(cchBuffer < pathLen + 1);
 
-                // Squeezing
-                size_t  rightLen    =   1 + fileLen;
-                size_t  leftLen     =   (cchBuffer - 3 - 1) - rightLen;
+                // Squeezing whole path
+                size_t const    rightLen    =   1 + file.len;
+                size_t const    leftLen     =   (cchBuffer - 3 - 1) - rightLen;
 
                 traits_t::char_copy(buffer, path_ptr, leftLen);
                 buffer[leftLen + 0] = '.';
                 buffer[leftLen + 1] = '.';
                 buffer[leftLen + 2] = '.';
-                traits_t::char_copy(buffer + leftLen + 3, file_ptr - 1, rightLen);
+                traits_t::char_copy(buffer + leftLen + 3, file.ptr - 1, rightLen);
                 buffer[leftLen + 3 + rightLen] = '\0';
             }
         }
@@ -291,7 +292,7 @@ STLSOFT_CLOSE_WORKER_NS_(ximpl_unixstl_squeeze_functions_)
  * \param buffer Pointer to the buffer into which the sqeezed path will be
  *   written. If NULL, function returns required size (=== len(path) + 1)
  * \param cchBuffer The number of available characters inc buffer. This
- *   value in inclusive of the required nul-terminator
+ *   value in inclusive of the required <code>nul</code>-terminator
  *
  */
 
