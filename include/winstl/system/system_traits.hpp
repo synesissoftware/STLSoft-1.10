@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     25th December 2020
+ * Updated:     27th December 2020
  *
  * Thanks to:   Austin Ziegler for spotting the defective pre-condition
  *              enforcement of expand_environment_strings().
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR       6
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        162
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION    4
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT        164
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,6 +108,11 @@
 # include <winstl/system/system_information_functions.h>
 #endif /* !WINSTL_INCL_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS */
 
+#ifndef STLSOFT_INCL_H_CTYPE
+# define STLSOFT_INCL_H_CTYPE
+# include <ctype.h>
+#endif /* !STLSOFT_INCL_H_CTYPE */
+
 #ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
 # include <winstl/api/external/DynamicLinkLibrary.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
@@ -124,18 +129,13 @@
 # include <winstl/api/external/SystemInformation.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
 
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
-
-#ifndef STLSOFT_INCL_H_CTYPE
-# define STLSOFT_INCL_H_CTYPE
-# include <ctype.h>
-#endif /* !STLSOFT_INCL_H_CTYPE */
-
 #ifndef WINSTL_INCL_WINSTL_API_internal_h_DynamicLinkLibrary
 # include <winstl/api/internal/DynamicLinkLibrary.h>
 #endif /* !WINSTL_INCL_WINSTL_API_internal_h_DynamicLinkLibrary */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -245,11 +245,18 @@ public:
 public:
     /// Returns the locale information
 #ifndef NONLS
-    static int_type     get_locale_info(LCID locale, LCTYPE type, char_type* data, int_type cchData);
+    static
+    int_type
+    get_locale_info(
+        LCID        locale
+    ,   LCTYPE      type
+    ,   char_type*  data
+    ,   int_type    cchData
+    );
 #endif /* !NONLS */
 /// @}
 
-/// \name Module Paths
+/// \name System Paths
 /// @{
 public:
     /// Gets the full path name of the given module
@@ -263,7 +270,13 @@ public:
     ///  \c NUL character
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_module_filename(HMODULE hModule, char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_module_filename(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Gets the full path name of the given module
     ///
@@ -291,7 +304,13 @@ public:
     ///  \c NUL character
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_module_directory(HMODULE hModule, char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_module_directory(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Gets the full path name of the system directory
     ///
@@ -302,7 +321,12 @@ public:
     ///  \c NUL character
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_system_directory(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_system_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Gets the full path name of the system directory
     ///
@@ -325,7 +349,12 @@ public:
     ///  \c NUL character
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_windows_directory(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_windows_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Gets the full path name of the Windows directory
     ///
@@ -348,7 +377,12 @@ public:
     ///  \c NUL character
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_home_directory(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Gets the full path name of the current user's home directory
     ///
@@ -369,22 +403,45 @@ public:
     /// Gets the host name
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_host_name(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_host_name(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
     /// Gets the user name
     ///
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_user_name(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_user_name(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 /// @}
 
 /// \name Dynamic Loading
 /// @{
 public:
     /// Loads the given executable module
-    static module_type  load_library(char_type const* name);
+    static
+    module_type
+    load_library(
+        char_type const*    name
+    );
     /// Closes the given executable module
-    static bool_type    free_library(module_type hModule);
+    static
+    bool_type
+    free_library(
+        module_type         hModule
+    );
     /// Retrieves the given symbol from the library
-    static FARPROC      find_symbol(module_type hModule, char const* symbolName);
+    static
+    FARPROC
+    find_symbol(
+        module_type         hModule
+    ,   char const*         symbolName
+    );
 /// @}
 
 /// \name Kernel object control
@@ -416,7 +473,13 @@ public:
     ///
     /// \pre NULL != name
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    get_environment_variable(char_type const* name, char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    );
 
     /// Gets an environment variable into the given buffer
     ///
@@ -437,10 +500,15 @@ public:
     ///
     /// \pre NULL != src
     /// \pre 0 == cchBuffer || nullptr != buffer
-    static size_type    expand_environment_strings(char_type const* src, char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    );
 
-    /// Expands environment strings in \c src into \c buffer, up to a
-    /// maximum \c cchDest characters
+    /// Expands environment strings in \c src into the given buffer
     ///
     /// \param src The string to be expanded
     /// \param rb Reference to a resizeable buffer into which the
@@ -464,7 +532,7 @@ struct system_traits;
 
 struct system_traits_
 {
-public:
+public: // types
     typedef ws_size_t                                       size_type;
     typedef ws_ptrdiff_t                                    difference_type;
     typedef system_traits_                                  class_type;
@@ -487,8 +555,15 @@ public:
         return FALSE != WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hModule);
     }
 
-    static FARPROC find_symbol(module_type hModule, char const* symbolName)
+    static
+    FARPROC
+    find_symbol(
+        module_type hModule
+    ,   char const* symbolName
+    )
     {
+        WINSTL_ASSERT(NULL != symbolName);
+
         return WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hModule, symbolName);
     }
 
@@ -628,14 +703,27 @@ public:
 
 public:
 #ifndef NONLS
-    static int_type get_locale_info(LCID locale, LCTYPE type, char_type* data, int cchData)
+    static
+    int_type
+    get_locale_info(
+        LCID        locale
+    ,   LCTYPE      type
+    ,   char_type*  data
+    ,   int_type    cchData
+    )
     {
         return ::GetLocaleInfoA(locale, type, data, cchData);
     }
 #endif /* !NONLS */
 
 public:
-    static size_type get_module_filename(HMODULE hModule, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_module_filename(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -659,7 +747,13 @@ public:
         return get_module_filename(hModule, &rb[0], rb.size());
     }
 
-    static size_type get_module_directory(HMODULE hModule, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_module_directory(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -683,7 +777,12 @@ public:
         return cch;
     }
 
-    static size_type get_system_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_system_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -729,7 +828,12 @@ public:
         return get_windows_directory(&rb[0], rb.size());
     }
 
-    static size_type get_home_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -775,7 +879,12 @@ public:
         return system_traits_::free_library(hModule);
     }
 
-    static FARPROC find_symbol(module_type hModule, char const* symbolName)
+    static
+    FARPROC
+    find_symbol(
+        module_type hModule
+    ,   char const* symbolName
+    )
     {
         WINSTL_ASSERT(NULL != symbolName);
 
@@ -799,13 +908,19 @@ public:
         return system_traits_::get_last_error();
     }
 
-    static void set_last_error(error_type er = error_type())
+    static void set_last_error(error_type er)
     {
         system_traits_::set_last_error(er);
     }
 
 public:
-    static size_type get_environment_variable(char_type const* name, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != name);
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
@@ -835,12 +950,18 @@ public:
         return get_environment_variable(name, &rb[0], rb.size());
     }
 
-    static size_type expand_environment_strings(char_type const* src, char_type* dest, size_type cch_dest)
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != src);
-        WINSTL_ASSERT(NULL != dest || 0 == cch_dest);
+        WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
-        return class_type::ExpandEnvironmentStringsA(src, dest, cch_dest);
+        return class_type::ExpandEnvironmentStringsA(src, buffer, cchBuffer);
     }
 
     template<
@@ -937,22 +1058,22 @@ private:
 #endif /* _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
     }
 
-    static size_type ExpandEnvironmentStringsA(char_type const* src, char_type* dest, size_type cch_dest)
+    static size_type ExpandEnvironmentStringsA(char_type const* src, char_type* buffer, size_type cchBuffer)
     {
 #ifdef _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING
 
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, dest, STLSOFT_NS_QUAL(truncation_cast)<DWORD>(cch_dest));
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, buffer, STLSOFT_NS_QUAL(truncation_cast)<DWORD>(cchBuffer));
 # else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-        WINSTL_MESSAGE_ASSERT("buffer size out of range", STLSOFT_NS_QUAL(truncation_test)<DWORD>(cch_dest));
+        WINSTL_MESSAGE_ASSERT("buffer size out of range", STLSOFT_NS_QUAL(truncation_test)<DWORD>(cchBuffer));
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, dest, static_cast<DWORD>(cch_dest));
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, buffer, static_cast<DWORD>(cchBuffer));
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 #else /* ? _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, dest, cch_dest);
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsA(src, buffer, cchBuffer);
 #endif /* _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
     }
 };
@@ -1076,14 +1197,27 @@ public:
 
 public:
 #ifndef NONLS
-    static int_type get_locale_info(LCID locale, LCTYPE type, char_type* data, int cchData)
+    static
+    int_type
+    get_locale_info(
+        LCID        locale
+    ,   LCTYPE      type
+    ,   char_type*  data
+    ,   int_type    cchData
+    )
     {
         return ::GetLocaleInfoW(locale, type, data, cchData);
     }
 #endif /* !NONLS */
 
 public:
-    static size_type get_module_filename(HMODULE hModule, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_module_filename(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -1107,7 +1241,13 @@ public:
         return get_module_filename(hModule, &rb[0], rb.size());
     }
 
-    static size_type get_module_directory(HMODULE hModule, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_module_directory(
+        HMODULE     hModule
+    ,   char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -1131,7 +1271,12 @@ public:
         return cch;
     }
 
-    static size_type get_system_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_system_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -1177,7 +1322,12 @@ public:
         return get_windows_directory(&rb[0], rb.size());
     }
 
-    static size_type get_home_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
@@ -1223,7 +1373,12 @@ public:
         return system_traits_::free_library(hModule);
     }
 
-    static FARPROC find_symbol(module_type hModule, char const* symbolName)
+    static
+    FARPROC
+    find_symbol(
+        module_type hModule
+    ,   char const* symbolName
+    )
     {
         WINSTL_ASSERT(NULL != symbolName);
 
@@ -1247,13 +1402,19 @@ public:
         return system_traits_::get_last_error();
     }
 
-    static void set_last_error(error_type er = error_type())
+    static void set_last_error(error_type er)
     {
         system_traits_::set_last_error(er);
     }
 
 public:
-    static size_type get_environment_variable(char_type const* name, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != name);
         WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
@@ -1283,12 +1444,18 @@ public:
         return get_environment_variable(name, &rb[0], rb.size());
     }
 
-    static size_type expand_environment_strings(char_type const* src, char_type* dest, size_type cch_dest)
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         WINSTL_ASSERT(NULL != src);
-        WINSTL_ASSERT(NULL != dest || 0 == cch_dest);
+        WINSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
-        return class_type::ExpandEnvironmentStringsW(src, dest, cch_dest);
+        return class_type::ExpandEnvironmentStringsW(src, buffer, cchBuffer);
     }
 
     template<
@@ -1385,22 +1552,22 @@ private:
 #endif /* _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
     }
 
-    static size_type ExpandEnvironmentStringsW(char_type const* src, char_type* dest, size_type cch_dest)
+    static size_type ExpandEnvironmentStringsW(char_type const* src, char_type* buffer, size_type cchBuffer)
     {
 #ifdef _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING
 
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, dest, STLSOFT_NS_QUAL(truncation_cast)<DWORD>(cch_dest));
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, buffer, STLSOFT_NS_QUAL(truncation_cast)<DWORD>(cchBuffer));
 # else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-        WINSTL_MESSAGE_ASSERT("buffer size out of range", STLSOFT_NS_QUAL(truncation_test)<DWORD>(cch_dest));
+        WINSTL_MESSAGE_ASSERT("buffer size out of range", STLSOFT_NS_QUAL(truncation_test)<DWORD>(cchBuffer));
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, dest, static_cast<DWORD>(cch_dest));
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, buffer, static_cast<DWORD>(cchBuffer));
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 #else /* ? _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
 
-        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, dest, cch_dest);
+        return WINSTL_API_EXTERNAL_SystemInformation_ExpandEnvironmentStringsW(src, buffer, cchBuffer);
 #endif /* _WINSTL_SYSTEM_TRAITS_USE_TRUNCATION_TESTING */
     }
 };

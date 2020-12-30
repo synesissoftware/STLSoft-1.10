@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     18th December 2020
+ * Updated:     27th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     0
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      129
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      131
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -70,23 +70,16 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS
+# include <unixstl/system/directory_functions.h>
+#endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS */
+
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS
 # include <stlsoft/string/c_string_traits.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_C_STRING_TRAITS */
-
-#ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
-# include <stlsoft/internal/safestr.h>
-#endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
-
-#if STLSOFT_LEAD_VER >= 0x010a0000
-# ifndef UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS
-#  include <unixstl/system/directory_functions.h>
-# endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS */
-#endif /* STLSoft 1.10+ */
-
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS
+# include <stlsoft/util/resizeable_buffer_helpers.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS */
 
 #if defined(_WIN32) || \
     defined(_WIN64)
@@ -137,6 +130,13 @@
 # include <sys/stat.h>
 #endif /* !STLSOFT_INCL_SYS_H_STAT */
 
+#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
+# include <stlsoft/api/external/string.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+#ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
+# include <stlsoft/internal/safestr.h>
+#endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
+
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
  */
@@ -179,25 +179,25 @@ struct system_traits
 /// @{
 public:
     /// The character type
-    typedef C                                       char_type;
+    typedef C                                               char_type;
     /// The size type
-    typedef us_size_t                               size_type;
+    typedef us_size_t                                       size_type;
     /// The difference type
-    typedef us_ptrdiff_t                            difference_type;
+    typedef us_ptrdiff_t                                    difference_type;
     /// The current instantion of the type
-    typedef system_traits<C>                        class_type;
+    typedef system_traits<C>                                class_type;
     /// The (signed) integer type
-    typedef us_int_t                                int_type;
+    typedef us_int_t                                        int_type;
     /// The Boolean type
-    typedef us_bool_t                               bool_type;
+    typedef us_bool_t                                       bool_type;
     /// The type of a handle to a dynamically loaded module
-    typedef void*                                   module_type;
+    typedef void*                                           module_type;
     /// The type of a handle to a kernel object
-    typedef int                                     handle_type;
+    typedef int                                             handle_type;
     /// The type of system result codes
-    typedef int                                     result_code_type;
+    typedef int                                             result_code_type;
     /// The type of system error codes
-    typedef int                                     error_type;
+    typedef int                                             error_type;
 /// @}
 
 /// \name Path string handling
@@ -243,21 +243,37 @@ public:
 /// \name System Paths
 /// @{
 public:
-#if STLSOFT_LEAD_VER >= 0x010a0000
-    /// Gets the full path name of the user's home directory
-    static size_type    get_home_directory(char_type* buffer, size_type cchBuffer);
-#endif /* STLSoft 1.10+ */
+    /// Gets the full path name of the current user's home directory
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 /// @}
 
 /// \name Dynamic Loading
 /// @{
 public:
     /// Loads the given executable module
-    static module_type  load_library(char_type const* name);
+    static
+    module_type
+    load_library(
+        char_type const*    name
+    );
     /// Closes the given executable module
-    static bool_type    free_library(module_type hModule);
+    static
+    bool_type
+    free_library(
+        module_type         hModule
+    );
     /// Retrieves the given symbol from the library
-    static void*        find_symbol(module_type hModule, char const* symbolName);
+    static
+    void*
+    find_symbol(
+        module_type         hModule
+    ,   char const*         symbolName
+    );
 /// @}
 
 /// \name Kernel object control
@@ -270,6 +286,8 @@ public:
 /// \name Error
 /// @{
 public:
+    /// Gives the failure code that represents success
+    static error_type   get_success_code();
     /// Gives the last error
     static error_type   get_last_error();
     /// Sets the last error
@@ -284,9 +302,58 @@ public:
     /// \param name The name of the variable to find
     /// \param buffer The buffer in which to write the variable. If this is NULL, then the required length is returned
     /// \param cchBuffer The size of the buffer, in characters
-    static size_type    get_environment_variable(char_type const* name, char_type* buffer, size_type cchBuffer);
+    ///
+    /// \pre NULL != name
+    /// \pre 0 == cchBuffer || nullptr != buffer
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    );
+
+    /// Gets an environment variable into the given buffer
+    ///
+    /// \param name The name of the variable to find
+    /// \param rb Reference to a resizeable buffer into which the
+    ///   environment variable value is to be written
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   T_resizeableBuffer& rb
+    );
+
     /// Expands environment strings in \c src into \c buffer, up to a maximum \c cchDest characters
-    static size_type    expand_environment_strings(char_type const* src, char_type* buffer, size_type cchBuffer);
+    ///
+    /// \pre NULL != src
+    /// \pre 0 == cchBuffer || nullptr != buffer
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    );
+
+    /// Expands environment strings in \c src into the given buffer
+    ///
+    /// \param src The string to be expanded
+    /// \param rb Reference to a resizeable buffer into which the
+    ///   expansion is to be written
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   T_resizeableBuffer& rb
+    );
 /// @}
 };
 
@@ -294,6 +361,67 @@ public:
 
 template <ss_typename_param_k C>
 struct system_traits;
+
+struct system_traits_
+{
+public: // types
+    typedef us_size_t                                       size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef void*                                           module_type;
+    typedef int                                             handle_type;
+    typedef int                                             result_code_type;
+    typedef int                                             error_type;
+
+public:
+    static bool_type close_handle(handle_type h)
+    {
+#if defined(_WIN32) && \
+    (   defined(STLSOFT_COMPILER_IS_MSVC) || \
+        defined(STLSOFT_COMPILER_IS_INTEL))
+
+        return 0 == ::_close(h);
+#else /* ? _WIN32 */
+
+        return 0 == ::close(h);
+#endif /* _WIN32 */
+    }
+
+public:
+    static bool_type free_library(module_type hModule)
+    {
+        return 0 == ::dlclose(hModule);
+    }
+
+    static
+    void*
+    find_symbol(
+        module_type     hModule
+    ,   char const*     symbolName
+    )
+    {
+        UNIXSTL_ASSERT(NULL != symbolName);
+
+        return ::dlsym(hModule, symbolName);
+    }
+
+public:
+    static error_type get_success_code()
+    {
+        return 0;
+    }
+
+    static error_type get_last_error()
+    {
+        return errno;
+    }
+
+    static void set_last_error(error_type er)
+    {
+        errno = er;
+    }
+};
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct system_traits<us_char_a_t>
@@ -419,15 +547,17 @@ public:
     }
 
 public:
-#if STLSOFT_LEAD_VER >= 0x010a0000
-    /// Gets the full path name of the user's home directory
-    static size_type get_home_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         UNIXSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
         return unixstl_C_get_home_directory_a(buffer, cchBuffer);
     }
-#endif /* STLSoft 1.10+ */
 
 public:
     static module_type load_library(char_type const* name)
@@ -437,41 +567,53 @@ public:
 
     static bool_type free_library(module_type hModule)
     {
-        return 0 == ::dlclose(hModule);
+        return system_traits_::free_library(hModule);
     }
 
-    static void* find_symbol(module_type hModule, char const* symbolName)
+    static
+    void*
+    find_symbol(
+        module_type     hModule
+    ,   char const*     symbolName
+    )
     {
-        return ::dlsym(hModule, symbolName);
+        UNIXSTL_ASSERT(NULL != symbolName);
+
+        return system_traits_::find_symbol(hModule, symbolName);
     }
 
 public:
     static bool_type close_handle(handle_type h)
     {
-#if defined(_WIN32) && \
-    (   defined(STLSOFT_COMPILER_IS_MSVC) || \
-        defined(STLSOFT_COMPILER_IS_INTEL))
-        return 0 == ::_close(h);
-#else /* ? _WIN32 */
-        return 0 == ::close(h);
-#endif /* _WIN32 */
+        return system_traits_::close_handle(h);
     }
 
 public:
-    static error_type get_last_error()
+    static error_type get_success_code()
     {
-        return errno;
+        return system_traits_::get_success_code();
     }
 
-    static void set_last_error(error_type er = error_type())
+    static error_type get_last_error()
     {
-        errno = er;
+        return system_traits_::get_last_error();
+    }
+
+    static void set_last_error(error_type er)
+    {
+        system_traits_::set_last_error(er);
     }
 
 public:
 # include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
 
-    static size_type get_environment_variable(char_type const* name, char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
     {
         char const* var = ::getenv(name);
 
@@ -504,7 +646,47 @@ public:
 
 # include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    static size_type expand_environment_strings(char_type const* src, char_type* buffer, size_type cchBuffer);
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   T_resizeableBuffer& rb
+    )
+    {
+        size_type const cchRequired = get_environment_variable(name, static_cast<char_type*>(NULL), 0);
+
+        if (0 == cchRequired)
+        {
+            return 0;
+        }
+
+        rb.resize(cchRequired);
+
+        return get_environment_variable(name, &rb[0], rb.size());
+    }
+
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
+    ;
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   T_resizeableBuffer& rb
+    )
+    ;
 };
 
 STLSOFT_TEMPLATE_SPECIALISATION
@@ -540,15 +722,17 @@ public:
     );
 
 public:
-#if STLSOFT_LEAD_VER >= 0x010a0000
-    /// Gets the full path name of the user's home directory
-    static size_type get_home_directory(char_type* buffer, size_type cchBuffer)
+    static
+    size_type
+    get_home_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
         UNIXSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
         return unixstl_C_get_home_directory_w(buffer, cchBuffer);
     }
-#endif /* STLSoft 1.10+ */
 
 public:
     static module_type load_library(char_type const* name);
@@ -558,36 +742,80 @@ public:
         return 0 == ::dlclose(hModule);
     }
 
-    static void* find_symbol(module_type hModule, char const* symbolName)
+    static
+    void*
+    find_symbol(
+        module_type     hModule
+    ,   char const*     symbolName
+    )
     {
-        return ::dlsym(hModule, symbolName);
+        UNIXSTL_ASSERT(NULL != symbolName);
+
+        return system_traits_::find_symbol(hModule, symbolName);
     }
 
 public:
     static bool_type close_handle(handle_type h)
     {
-#if defined(_WIN32) && \
-    defined(STLSOFT_COMPILER_IS_MSVC)
-        return 0 == ::_close(h);
-#else /* ? _WIN32 */
-        return 0 == ::close(h);
-#endif /* _WIN32 */
+        return system_traits_::close_handle(h);
     }
 
 public:
+    static error_type get_success_code()
+    {
+        return system_traits_::get_success_code();
+    }
+
     static error_type get_last_error()
     {
-        return errno;
+        return system_traits_::get_last_error();
     }
 
-    static void set_last_error(error_type er = error_type())
+    static void set_last_error(error_type er)
     {
-        errno = er;
+        system_traits_::set_last_error(er);
     }
 
 public:
-    static size_type get_environment_variable(char_type const* name, char_type* buffer, size_type cchBuffer);
-    static size_type expand_environment_strings(char_type const* src, char_type* buffer, size_type cchBuffer);
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
+    ;
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_environment_variable(
+        char_type const*    name
+    ,   T_resizeableBuffer& rb
+    )
+    ;
+
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
+    ;
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    expand_environment_strings(
+        char_type const*    src
+    ,   T_resizeableBuffer& rb
+    )
+    ;
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
