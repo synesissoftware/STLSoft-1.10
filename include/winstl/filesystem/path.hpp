@@ -54,10 +54,10 @@
 #define WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    12
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     302
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    0
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     309
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -94,9 +94,15 @@
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+# include <stlsoft/string/c_string/strnchr.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS
 # include <stlsoft/string/copy_functions.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_SLICE
+# include <stlsoft/string/string_slice.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_STRING_SLICE */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
@@ -189,6 +195,10 @@ private:
 
     typedef ss_typename_param_k path_buffer_type_::buffer_type
                                                             buffer_type_;
+public:
+    typedef STLSOFT_NS_QUAL(string_slice)<
+        char_type
+    >                                                       string_slice_type;
 
 // TODO: Use the slice string, and provide iterators over the directory parts
 
@@ -316,6 +326,9 @@ public:
     }
 #endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
 
+    /// Swaps the state of the instance with \c rhs
+    void swap(class_type& rhs) STLSOFT_NOEXCEPT;
+
     // Creates a root path
     static
     class_type
@@ -355,10 +368,7 @@ public:
     class_type& push_sep();
     /// Pops the last path element from the path
     ///
-    /// \note In previous versions, this operation did not remove the
-    ///   left-most path component. That behaviour is no longer supported,
-    ///   and the method will now leave the path instance empty in that
-    ///   case.
+    /// \note This operation does not remove the root.
     class_type&
     pop(
         bool_type bRemoveTrailingPathNameSeparator = true
@@ -442,15 +452,10 @@ public:
 /// \name Attributes
 /// @{
 public:
-    /// Returns a pointer to the part of the path after the last path name separator
-    ///
-    /// \note If the path represents a directory, the name of the directory will be returned, except
-    /// if the path is terminated by the path name separator
-    ///
-    /// \note If the path contains no path name separator, the full path will be returned
-    char_type const*    get_file() const STLSOFT_NOEXCEPT;
-    /// Returns a pointer to the extension, or to the empty string if there is no extension
-    char_type const*    get_ext() const STLSOFT_NOEXCEPT;
+    /// Obtains the file, if present
+    string_slice_type   get_file() const STLSOFT_NOEXCEPT;
+    /// Obtains the extension, if present, of the file, if present
+    string_slice_type   get_ext() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
     size_type           length() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
@@ -484,7 +489,11 @@ public:
     /// \param buffer Pointer to character buffer to receive the contents.
     ///  May be NULL, in which case the method returns size().
     /// \param cchBuffer Number of characters of available space in \c buffer.
-    size_type       copy(char_type *buffer, size_type cchBuffer) const STLSOFT_NOEXCEPT;
+    size_type
+    copy(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    ) const STLSOFT_NOEXCEPT;
 /// @}
 
 /// \name Comparison
@@ -534,13 +543,14 @@ public:
 
 // Implementation
 private:
+    char_type*              data_() STLSOFT_NOEXCEPT;
+    char_type const*        data_() const STLSOFT_NOEXCEPT;
     size_type               size_() const STLSOFT_NOEXCEPT;
 
     class_type&             operator_equal_(char_type const* path);
 
     class_type&             push_(char_type const* rhs, size_type cch, bool_type bAddPathNameSeparator);
     class_type&             push_sep_(char_type sep);
-    void                    swap(class_type& rhs) STLSOFT_NOEXCEPT;
     class_type&             concat_(char_type const* rhs, size_type cch);
 
     bool_type               has_dir_end_() const STLSOFT_NOEXCEPT;
@@ -1163,7 +1173,7 @@ basic_path<C, T, A>::has_dir_end_() const STLSOFT_NOEXCEPT
         return false;
     }
 
-    return traits_type::has_dir_end(m_buffer.data() + (size_() - 1));
+    return traits_type::has_dir_end(data_() + (size_() - 1));
 }
 
 template<
@@ -1177,7 +1187,7 @@ basic_path<C, T, A>::last_() STLSOFT_NOEXCEPT
 {
     WINSTL_ASSERT(!empty());
 
-    return m_buffer[size() - 1];
+    return m_buffer[size_() - 1];
 }
 
 template<
@@ -1189,18 +1199,10 @@ inline /* static */
 ss_typename_param_k basic_path<C, T, A>::char_type const*
 basic_path<C, T, A>::last_slash_(
     ss_typename_param_k basic_path<C, T, A>::char_type const*   buffer
-,   ss_typename_param_k basic_path<C, T, A>::size_type          /* len */
+,   ss_typename_param_k basic_path<C, T, A>::size_type          len
 ) STLSOFT_NOEXCEPT
 {
-    char_type*  slash   =   traits_type::str_rchr(buffer, path_name_separator());
-    char_type*  slash_a =   traits_type::str_rchr(buffer, path_name_separator_alt());
-
-    if (slash_a > slash)
-    {
-        slash = slash_a;
-    }
-
-    return slash;
+    return traits_type::find_last_path_name_separator(buffer, len);
 }
 
 template<
@@ -1517,10 +1519,42 @@ basic_path<C, T, A>::push_(
 ,   bool_type           bAddPathNameSeparator
 )
 {
-    if (0 != cch)
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+
+    // Algorithm:
+    //
+    // 1. if rhs empty, do nothing
+    // 2. if rhs absolute, then take rhs
+    // 3. if rhs is slash-rooted and this is slash-rooted or relative, then take rhs
+    // 4. if rhs is drive-letter-relative, then take rhs
+    // 5. if rhs is relative and this is drive-letter-relative, then paste rhs directly
+
+    // - otherwise, add 
+
+    // - if invalid, throw an exception (but this will happen with take rhs)
+
+
+    if (0 == cch)
     {
-        if (traits_type::is_path_rooted(rhs))
+        // 1. if rhs empty, do nothing
+
+        return *this;
+    }
+    else
+    {
+        int const               parseFlags2  =   0
+                                            ;
+        slice_t_                root2;
+        path_classification_t   pcls2       =   traits_type::path_classify_root(rhs, cch, parseFlags2, &root2);
+        bool const              is_abs2     =   traits_type::path_is_absolute(pcls2);
+        bool const              is_rooted2  =   traits_type::path_is_rooted(pcls2);
+
+        if (is_abs2)
         {
+            // 2. if rhs absolute, then take rhs
+
+take_rhs:
             class_type newPath(rhs, cch);
 
             if (bAddPathNameSeparator &&
@@ -1530,9 +1564,54 @@ basic_path<C, T, A>::push_(
             }
 
             swap(newPath);
+
+            return *this;
         }
         else
         {
+	        results_t_              results1;
+            int const               parseFlags1  =   0
+                                                ;
+            path_classification_t   pcls1       =   traits_type::path_classify(data_(), size_(), parseFlags1, &results1);
+            bool const              is_abs1     =   traits_type::path_is_absolute(pcls1);
+
+            if (is_rooted2 &&
+                !is_abs1)
+            {
+                // 3. if rhs is slash-rooted and this is slash-rooted or relative, then take rhs
+
+                goto take_rhs;
+            }
+            else
+            if (WinSTL_C_PathType_DriveLetterRelative == pcls2)
+            {
+                // 4. if rhs is drive-letter-relative, then take rhs
+
+                goto take_rhs;
+            }
+            else
+            {
+                if (WinSTL_C_PathType_DriveLetterRelative == pcls1 &&
+                    0 == results1.directory.len &&
+                    0 == results1.entry.len)
+                {
+                    // 5. if rhs is relative and this is drive-letter-relative, then paste rhs directly
+
+                    WINSTL_ASSERT(!is_abs2 && !is_rooted2);
+
+                    m_buffer.reserve(m_buffer.size() + 1 + cch + 1);
+
+                    m_buffer.append(rhs, cch);
+
+                    if (bAddPathNameSeparator)
+                    {
+                        push_sep();
+                    }
+
+                    return *this;
+                }
+            }
+
             // In an attempt to maintain slash/backslash consistency, we
             // locate the next slash to help guide the push_sep_() method.
 
@@ -1549,9 +1628,9 @@ basic_path<C, T, A>::push_(
 
             swap(newPath);
         }
-    }
 
-    return *this;
+        return *this;
+    }
 }
 
 template<
@@ -1599,8 +1678,8 @@ basic_path<C, T, A>::push_sep()
 {
     char_type               sep     =   path_name_separator();
 
-    char_type const* const  slash   =   traits_type::str_chr(m_buffer.data(), path_name_separator());
-    char_type const* const  slash_a =   traits_type::str_chr(m_buffer.data(), path_name_separator_alt());
+    char_type const* const  slash   =   stlsoft::c_string::strnchr(data_(), size_(), path_name_separator());
+    char_type const* const  slash_a =   stlsoft::c_string::strnchr(data_(), size_(), path_name_separator_alt());
 
     if (NULL == slash &&
         NULL != slash_a)
@@ -1660,91 +1739,70 @@ basic_path<C, T, A>::pop(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 ) STLSOFT_NOEXCEPT
 {
-    char_type* slash = const_cast<char_type*>(last_slash_(m_buffer.data(), size_()));
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
-    if (NULL != slash)
+    results_t_                              results;
+    int const                               parseFlags  =   0
+                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                                        ;
+    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    bool const                              is_rooted   =   traits_type::path_is_rooted(pcls);
+
+    if (0 != results.entry.len)
     {
-        if (static_cast<size_type>(slash - m_buffer.data()) + 1 == size_())
+        if (0 != results.entry.len)
         {
-            bool shouldRemoveTrailingSlash = true;
+            m_buffer.resize(m_buffer.size() - results.entry.len);
 
-            // The last slash is just a trailing separator
-            //
-            // Is it just a volume, or just a UNC, or just a root slash
-            if (traits_type::is_path_rooted(m_buffer.data()))
+            if (bRemoveTrailingPathNameSeparator)
             {
-                if (traits_type::is_path_UNC(m_buffer.data()))
+                if (results.numDirectoryParts > (is_rooted ? 1u : 0u))
                 {
-                    char_type const* share = next_part_or_end_(m_buffer.data() + 2);
+                    WINSTL_MESSAGE_ASSERT("must have directory", 0 != results.directory.len);
+                    WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(results.directory.ptr[results.directory.len - 1]));
+                    WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(m_buffer.data()[m_buffer.size() - 1]));
 
-                    if (NULL == share)
-                    {
-                        shouldRemoveTrailingSlash = false;
-                    }
+                    m_buffer.pop_last();
                 }
-                else if (traits_type::is_path_absolute(m_buffer.data()))
-                {
-                    if (3 == size_())
-                    {
-                        shouldRemoveTrailingSlash = false;
-                    }
-                }
-                else
-                {
-                    if (1 == size_())
-                    {
-                        shouldRemoveTrailingSlash = false;
-                    }
-                }
-            }
-
-            if (shouldRemoveTrailingSlash)
-            {
-                m_buffer.pop_last();
-
-                slash = const_cast<char_type*>(last_slash_(m_buffer.data(), size_()));
             }
         }
     }
-
-    if (NULL != slash)
+    else
     {
-        if (traits_type::is_path_UNC(m_buffer.data()))
+        if (is_rooted)
         {
-            char_type const* shareSlash = next_slash_or_end_(m_buffer.data() + 2);
+            WINSTL_ASSERT(0 != results.numDirectoryParts);
 
-            if (shareSlash == slash)
+            if (1 == results.numDirectoryParts)
             {
-                slash = NULL;
+                return *this;
             }
         }
-        else if(traits_type::is_path_absolute(m_buffer.data()) &&
-                3 == size_())
+        else
         {
-            slash = NULL;
+            if (0 == results.numDirectoryParts)
+            {
+                return *this;
+            }
         }
-        else if(traits_type::is_path_rooted(m_buffer.data()) &&
-                1 == size_())
-        {
-            slash = NULL;
-        }
-    }
 
-    if (NULL != slash)
-    {
-        size_type const len = static_cast<size_type>((slash + 1) - m_buffer.data());
+        WINSTL_MESSAGE_ASSERT("must have directory", 0 != results.directory.len);
+        WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(results.directory.ptr[results.directory.len - 1]));
 
-        m_buffer.resize(len);
+        --results.directory.len;
+
+        char_type* const    slash   =   const_cast<char_type*>(last_slash_(results.directory.ptr, results.directory.len));
+        size_t const        cchLess =    slash - results.directory.ptr;
+
+        class_type newPath(results.location.ptr, results.location.len - cchLess);
 
         if (bRemoveTrailingPathNameSeparator)
         {
-            this->pop_sep();
+            newPath.pop_sep();
         }
-    }
 
-    if (NULL == slash)
-    {
-        clear();
+        swap(newPath);
     }
 
     return *this;
@@ -1759,32 +1817,33 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
 {
-    if (!empty())
-    {
-        if (1 == size_() &&
-            traits_type::is_path_name_separator(m_buffer[0]))
-        {
-            // It's / or \ - ignore
-        }
-        else if(3 == size_() &&
-                ':' == m_buffer[1] &&
-                traits_type::is_path_name_separator(m_buffer[2]))
-        {
-            // It's drive rooted - ignore
-        }
-        else
-        {
-            // We can pop a separator off anything else, including a UNC host
-            char_type* last = &last_();
+    // requirements to drop the separator:
+    //
+    // - does not have an entry, AND
+    //   - if rooted, has 2+ directories, OR
+    //   - if !rooted, has 1+ directories
 
-            if (*last == path_name_separator())
-            {
-                m_buffer.pop_last();
-            }
-            else if (*last == path_name_separator_alt())
-            {
-                m_buffer.pop_last();
-            }
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+
+    results_t_                              results;
+    int const                               parseFlags  =   0
+                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                                        ;
+    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+
+    if (0 == results.entry.len)
+    {
+        bool const is_rooted = traits_type::path_is_rooted(pcls);
+
+        if (results.numDirectoryParts > (is_rooted ? 1u : 0u))
+        {
+            WINSTL_MESSAGE_ASSERT("must have directory", 0 != results.directory.len);
+            WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(results.directory.ptr[results.directory.len - 1]));
+            WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(results.input.ptr[results.input.len - 1]));
+            WINSTL_MESSAGE_ASSERT("directory must end with slash", traits_type::is_path_name_separator(m_buffer.data()[m_buffer.size() - 1]));
+
+            m_buffer.pop_last();
         }
     }
 
@@ -1800,21 +1859,19 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    { for (ws_size_t len = size_(); 0 != len; --len)
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+
+    results_t_                              results;
+    int const                               parseFlags  =   0
+                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                                        ;
+    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+
+    if (0 != results.extension.len)
     {
-        char_type* last = &m_buffer[len - 1];
-
-        if (traits_type::is_path_name_separator(*last))
-        {
-            break;
-        }
-        else if ('.' == *last)
-        {
-            m_buffer.resize(len - 1);
-
-            break;
-        }
-    }}
+        m_buffer.resize(m_buffer.size() - results.extension.len);
+    }
 
     return *this;
 }
@@ -1879,37 +1936,64 @@ basic_path<C, T, A>::make_absolute(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 )
 {
-    if (!empty())
-    {
-        buffer_type_    buffer(1);
-        size_type       cch = traits_type::get_full_path_name(c_str(), buffer);
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
-        if (0 == cch)
-        {
+    int const               parseFlags  =   0
+                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                        ;
+    slice_t_                root;
+    path_classification_t   pcls        =   traits_type::path_classify_root(data_(), size_(), parseFlags, &root);
+
+    switch (pcls)
+    {
+    case    WinSTL_C_PathType_Empty:
+    case    WinSTL_C_PathType_DriveLetterRooted:
+    case    WinSTL_C_PathType_UncRooted:
+    case    WinSTL_C_PathType_HomeRooted:
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-            STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+        return *this;
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
 
-            return false;
+        return true;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-        }
+    default:
+
+        break;
+    }
+
+    WINSTL_ASSERT(0 != size_());
+
+    buffer_type_    buffer(1);
+    size_type const cch = traits_type::get_full_path_name(c_str(), buffer);
+
+    if (0 == cch)
+    {
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
+        STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+        return false;
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+    }
 
 #ifdef STLSOFT_CF_RVALUE_REFERENCES_SUPPORT
 
-        class_type      newPath(std::move(buffer), cch);
+    class_type      newPath(std::move(buffer), cch);
 #else /* ? STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
-        class_type      newPath(buffer.data(), cch);
+    class_type      newPath(buffer.data(), cch);
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
 
-        if (bRemoveTrailingPathNameSeparator)
-        {
-            newPath.pop_sep();
-        }
-
-        swap(newPath);
+    if (bRemoveTrailingPathNameSeparator)
+    {
+        newPath.pop_sep();
     }
+
+    swap(newPath);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
@@ -1946,10 +2030,48 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
-    class_type  newPath(*this);
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+
+    results_t_                              results;
+    int const                               parseFlags  =   0
+                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                                        ;
+    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+
+    switch (pcls)
+    {
+    case    WinSTL_C_PathType_InvalidSlashRuns:
+    case    WinSTL_C_PathType_InvalidChars:
+    case    WinSTL_C_PathType_Invalid:
+    case    WinSTL_C_PathType_Unknown:
+    case    WinSTL_C_PathType_Empty:
+
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
+        return *this;
+#else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
+        return true;
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+    case    WinSTL_C_PathType_Relative:
+    case    WinSTL_C_PathType_SlashRooted:
+    case    WinSTL_C_PathType_DriveLetterRelative:
+    case    WinSTL_C_PathType_DriveLetterRooted:
+    case    WinSTL_C_PathType_UncIncomplete:
+    case    WinSTL_C_PathType_UncRooted:
+    case    WinSTL_C_PathType_HomeRooted:
+    default:
+
+        break;
+    }
+
+    class_type      newPath(*this);
+    bool const      is_rooted   =   traits_type::path_is_rooted(pcls);
 
 #ifdef STLSOFT_DEBUG
-    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0], newPath.m_buffer.size(), static_cast<char_type>('~'));
+
+    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0] + results.root.len, newPath.m_buffer.size() + results.root.len, static_cast<char_type>('~'));
 #endif /* STLSOFT_DEBUG */
 
     // Basically we scan through the path looking for ./ .\ ..\ and ../
@@ -1957,35 +2079,20 @@ basic_path<C, T, A>::canonicalise(
     // 0. Handle special path prefixes
 
     part_buffer_type_   parts(this->length() / 2);  // Uncanonicalised directory parts
-    char_type*          dest   =   &newPath.m_buffer[0];
-    char_type const*    p1     =   this->c_str();
+    char_type*          dest   =   &newPath.m_buffer[0] + results.root.len;
+    char_type const*    p1     =   data_() + results.root.len;
     char_type const*    p2;
+    size_type           num_d   =   0;
+    size_type           num_dd  =   0;
 
-    if (traits_type::is_path_UNC(this->c_str()))
+    if (is_rooted)
     {
-        WINSTL_ASSERT('\\' == m_buffer[0]);
-        WINSTL_ASSERT('\\' == m_buffer[1]);
-        WINSTL_ASSERT('\\' != m_buffer[2]);
+        *dest++ = *p1++;
 
-        char_type const* slash0 =   next_slash_or_end_(&m_buffer[3]);
-        char_type const* slash1 =   next_slash_or_end_(slash0);
-
-        for (ws_size_t i = 0, n = static_cast<ws_size_t>(slash1 - &m_buffer[0]); i < n; ++i)
+        if (path_name_separator_alt() == dest[-1])
         {
-            *dest++ = *p1++;
+            dest[-1] = path_name_separator();
         }
-    }
-    else if (this->is_absolute())
-    {
-        // Copy over the drive letter, colon and slash
-        *dest++ = *p1++;
-        *dest++ = *p1++;
-        *dest++ = *p1++;
-    }
-    else if (this->is_rooted())
-    {
-        *dest++ = path_name_separator();
-        ++p1;
     }
 
     // 1. Parse the path into an uncanonicalised sequence of directory parts
@@ -2006,6 +2113,8 @@ basic_path<C, T, A>::canonicalise(
                     if ('.' == p1[0])
                     {
                         parts[i].type   =   part_type::dot;
+
+                        ++num_d;
                     }
                     break;
                 case    2:
@@ -2015,14 +2124,20 @@ basic_path<C, T, A>::canonicalise(
                         if ('.' == p1[1])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
                         else if (path_name_separator() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
+
+                            ++num_d;
                         }
                         else if (path_name_separator_alt() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
+
+                            ++num_d;
                         }
                     }
                     break;
@@ -2034,10 +2149,14 @@ basic_path<C, T, A>::canonicalise(
                         if (path_name_separator() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
                         else if (path_name_separator_alt() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
                     }
                     break;
@@ -2053,7 +2172,7 @@ basic_path<C, T, A>::canonicalise(
     }
 
     // 2.a Remove all '.' parts
-    { for (size_type i = 0; i < parts.size(); ++i)
+    { for (size_type i = 0; 0 != num_d && i < parts.size(); ++i)
     {
         WINSTL_ASSERT(0 != parts[i].len);
 
@@ -2062,13 +2181,16 @@ basic_path<C, T, A>::canonicalise(
         if (part_type::dot == part.type)
         {
             part.len = 0;
+
+            --num_d;
         }
     }}
 
     coalesce_parts_(parts);
 
     // 2.b Process the '..' parts
-    { for (size_type i = 1; i < parts.size(); ++i)
+
+    { for (size_type i = 0; 0 != num_dd && i < parts.size(); ++i)
     {
         WINSTL_ASSERT(0 != parts[i].len);
 
@@ -2076,34 +2198,59 @@ basic_path<C, T, A>::canonicalise(
 
         if (part_type::dotdot == part.type)
         {
-            { for (size_type prior = i; ; )
+            // Now, regardless of where we're at, we look backwards
+            // for the latest available non-empty normal part
+
+            size_type prior = parts.size();
+
+            for (size_t j = 0; j != i; ++j)
             {
-                if (0 == prior)
+                size_type index = i - (j + 1);
+
+                WINSTL_ASSERT(index < prior);
+
+                part_type const& index_part = parts[index];
+
+                if (0 != index_part.len &&
+                    part_type::normal == index_part.type)
                 {
+                    prior = index;
+
                     break;
+                }
+            }
+
+            if (parts.size() == prior)
+            {
+                // (still) at start, or having worked back to it
+
+                if (!is_rooted)
+                {
+                    // permit leading ".."
                 }
                 else
                 {
-                    --prior;
+                    // ignore leading ".."
 
-                    if (0 != parts[prior].len)
-                    {
-                        if (part_type::normal == parts[prior].type)
-                        {
-                            part.len = 0;
-                            parts[prior].len = 0;
-                            break;
-                        }
-                    }
+                    part.len = 0;
                 }
-            }}
+            }
+            else
+            {
+                part_type& prior_part = parts[prior];
+
+                part.len        =   0;
+                prior_part.len  =   0;
+            }
+
+            --num_dd;
         }
     }}
 
     coalesce_parts_(parts);
 
     // 2.c "insert" a '.' if we've removed everything.
-    if (!this->is_rooted() &&
+    if (!is_rooted &&
         parts.empty())
     {
         static const char_type  s_dot[] = { '.', '/' };
@@ -2117,6 +2264,7 @@ basic_path<C, T, A>::canonicalise(
     // 3. Write out all the parts back into the new path instance
     {
 #ifdef STLSOFT_DEBUG
+
         STLSOFT_NS_QUAL(pod_fill_n)(dest, newPath.m_buffer.size() - (dest - &newPath.m_buffer[0]), static_cast<char_type>('~'));
 #endif /* STLSOFT_DEBUG */
 
@@ -2125,6 +2273,14 @@ basic_path<C, T, A>::canonicalise(
             traits_type::char_copy(dest, parts[i].p, parts[i].len);
 
             dest += parts[i].len;
+
+            if (0 != parts[i].len)
+            {
+                if (path_name_separator_alt() == dest[-1])
+                {
+                    dest[-1] = path_name_separator();
+                }
+            }
         }
 
         *dest = '\0';
@@ -2132,19 +2288,7 @@ basic_path<C, T, A>::canonicalise(
         newPath.m_buffer.resize(dest - newPath.data());
     }
 
-    // Now we determine whether to leave a trailing separator or
-    // not and, if so, what type it should be.
-
-    WINSTL_ASSERT(!empty());
-
-    char_type last = last_();
-
-    if (!bRemoveTrailingPathNameSeparator &&
-        traits_type::is_path_name_separator(last))
-    {
-        newPath.push_sep_(last);
-    }
-    else
+    if (bRemoveTrailingPathNameSeparator)
     {
         newPath.pop_sep();
     }
@@ -2166,21 +2310,55 @@ template<
 ,   ss_typename_param_k A
 >
 inline
-ss_typename_type_ret_k basic_path<C, T, A>::char_type const*
+ss_typename_type_ret_k basic_path<C, T, A>::string_slice_type
 basic_path<C, T, A>::get_file() const STLSOFT_NOEXCEPT
 {
-    char_type const* slash = last_slash_(m_buffer.data(), size_());
+    char_type const* const slash = last_slash_(data_(), size_());
 
     if (NULL == slash)
     {
-        slash = m_buffer.data();
+        return string_slice_type(data_(), size_());
     }
     else
     {
-        ++slash;
-    }
+        size_type const slash_offset = static_cast<size_type>(slash - data_());
 
-    return slash;
+        return string_slice_type(slash + 1, size_() - (1 + slash_offset));
+    }
+}
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+ss_typename_type_ret_k basic_path<C, T, A>::string_slice_type
+basic_path<C, T, A>::get_ext() const STLSOFT_NOEXCEPT
+{
+    string_slice_type const file    =   get_file();
+    char_type const* const  dot     =   stlsoft::c_string::strnchr(file.ptr, file.len, '.');
+
+    if (NULL == dot)
+    {
+        return string_slice_type();
+    }
+    else
+    {
+        return string_slice_type(dot, file.len - static_cast<size_type>(dot - file.ptr));
+    }
+}
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+ss_typename_type_ret_k basic_path<C, T, A>::char_type*
+basic_path<C, T, A>::data_() STLSOFT_NOEXCEPT
+{
+    return m_buffer.data();
 }
 
 template<
@@ -2190,24 +2368,9 @@ template<
 >
 inline
 ss_typename_type_ret_k basic_path<C, T, A>::char_type const*
-basic_path<C, T, A>::get_ext() const STLSOFT_NOEXCEPT
+basic_path<C, T, A>::data_() const STLSOFT_NOEXCEPT
 {
-    char_type const*        dot    =   traits_type::str_rchr(this->c_str(), '.');
-    char_type const*        file   =   get_file();
-    static const char_type  s_empty[1]  =   { '\0' };
-
-    if (NULL == dot)
-    {
-        return s_empty;
-    }
-    else if (dot < file)
-    {
-        return s_empty;
-    }
-    else
-    {
-        return dot + 1;
-    }
+    return m_buffer.data();
 }
 
 template<
@@ -2279,7 +2442,7 @@ inline
 ss_typename_type_ret_k basic_path<C, T, A>::char_type const*
 basic_path<C, T, A>::data() const STLSOFT_NOEXCEPT
 {
-    return m_buffer.data();
+    return data_();
 }
 
 template<
@@ -2293,7 +2456,7 @@ basic_path<C, T, A>::c_str() const STLSOFT_NOEXCEPT
 {
     WINSTL_ASSERT(char_type(0) == m_buffer[size_()]);
 
-    return m_buffer.data();
+    return data_();
 }
 
 template<
@@ -2466,7 +2629,7 @@ basic_path<C, T, A>::equal(
         return false;
     }
 
-    return 0 == traits_type::path_str_n_compare(m_buffer.data(), rhs.data(), size());
+    return 0 == traits_type::path_str_n_compare(data_(), rhs.data(), size());
 }
 
 template<
@@ -2480,7 +2643,7 @@ basic_path<C, T, A>::equal(
     ss_typename_type_k basic_path<C, T, A>::char_type const* rhs
 ) const STLSOFT_NOEXCEPT
 {
-    return 0 == traits_type::path_str_compare(m_buffer.data(), STLSOFT_NS_QUAL(c_str_ptr)(rhs));
+    return 0 == traits_type::path_str_compare(data_(), STLSOFT_NS_QUAL(c_str_ptr)(rhs));
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 

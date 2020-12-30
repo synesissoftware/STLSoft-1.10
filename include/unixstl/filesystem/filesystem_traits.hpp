@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     24th December 2020
+ * Updated:     30th December 2020
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -59,9 +59,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     12
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      165
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     14
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  3
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      172
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,9 +75,27 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
+#ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS
+# include <unixstl/filesystem/path_classify_functions.h>
+#endif /* !UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS*/
+#ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_PARSE_FUNCTIONS
+# include <unixstl/filesystem/path_parse_functions.h>
+#endif /*! UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_PARSE_FUNCTIONS */
 #ifndef UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS
 # include <unixstl/system/system_traits.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS */
+
+#ifdef _UNIXSTL_FILESYSTEM_TRAITS_USE_TRUNCATION_TESTING
+# ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+#  ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST
+#   include <stlsoft/conversion/truncation_cast.hpp>
+#  endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_CAST */
+# else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
+#  ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST
+#   include <stlsoft/conversion/truncation_test.hpp>
+#  endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST */
+# endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#endif /* _UNIXSTL_FILESYSTEM_TRAITS_USE_TRUNCATION_TESTING */
 #ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
@@ -149,10 +167,6 @@
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
 
-#ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
-# include <stlsoft/api/external/string.h>
-#endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
-
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
  */
@@ -177,6 +191,7 @@ namespace unixstl_project
  */
 
 #ifdef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 /** Traits class for file-system operations
  *
  * \ingroup group__library__FileSystem
@@ -190,7 +205,7 @@ template <ss_typename_param_k C>
 struct filesystem_traits
     : public system_traits<C>
 {
-/// \name Types
+/// \name types
 /// @{
 private:
     typedef system_traits<C>                                parent_class_type;
@@ -199,6 +214,8 @@ public:
     typedef C                                               char_type;
     /// The size type
     typedef us_size_t                                       size_type;
+    /// The large size type
+    typedef us_uint64_t                                     large_size_type;
     /// The difference type
     typedef us_ptrdiff_t                                    difference_type;
     /// The stat data type
@@ -207,6 +224,9 @@ public:
     typedef struct stat                                     fstat_data_type;
     /// The current instantion of the type
     typedef filesystem_traits<C>                            class_type;
+    /// The path-classification results type
+    typedef unixstl_C_path_classification_results_t         path_classification_results_type;
+
     /// The (signed) integer type
     typedef us_int_t                                        int_type;
     /// The Boolean type
@@ -225,7 +245,7 @@ public:
 #endif /* _WIN32 */
 /// @}
 
-/// \name Concepts
+/// \name concepts
 /// @{
 public:
     /// This type does not actually exists in the compilable code, but,
@@ -261,7 +281,7 @@ public:
     };
 /// @}
 
-/// \name Member Constants
+/// \name constants
 /// @{
 public:
 #ifdef PATH_MAX
@@ -277,19 +297,19 @@ public:
     };
 /// @}
 
-/// \name General string handling
+/// \name general string handling
 /// @{
 public:
     /// Compares the contents of \c src and \c dest, according to the
       /// lexicographical ordering on the host operating system.
     static int_type     str_fs_compare(char_type const* s1, char_type const* s2);
-    /// Compares the contents of \c src and \c dest up to \c cch
+    /// Compares the contents of \c src and \c dest up to \c len
     /// characters. according to the lexicographical ordering on the host
     /// operating system.
-    static int_type     str_fs_n_compare(char_type const* s1, char_type const* s2, size_type cch);
+    static int_type     str_fs_n_compare(char_type const* s1, char_type const* s2, size_type len);
 /// @}
 
-/// \name File-system entry names
+/// \name directory-end
 /// @{
 public:
     /// Ensures that a given C-style string has a trailing path name
@@ -308,7 +328,32 @@ public:
     static
     char_type*
     ensure_dir_end(
-        char_type* dir
+        char_type*  dir
+    );
+
+    /// Ensures that a given C-style string has a trailing path name
+    /// separator by appending one where necessary
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param len Number of characters in \c path to be examined
+    /// \param capacity Number of available characters available
+    ///   in \c path. If 0, capacity will not be checked
+    /// \param pLenToIncrease An optional pointer to a variable that will
+    ///   be incremented if a path name separator is appended
+    ///
+    /// \return \c dir
+    ///
+    /// \pre 0 == len || nullptr != dir
+    /// \pre 0 == capacity || len < capacity
+    ///
+    /// \see \link #path_name_separator path_name_separator() \endlink
+    static
+    char_type*
+    ensure_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type   capacity
+    ,   size_type*  pLenToIncrease
     );
 
     /// Ensures that a given C-style resizeable buffer has a trailing path
@@ -329,31 +374,6 @@ public:
         T_resizeableBuffer& rb
     );
 
-    /// Removes the path name separator from the end of \c dir, if present
-    ///
-    /// \pre nullptr != dir
-    ///
-    /// \see \link #path_name_separator path_name_separator() \endlink
-    static
-    char_type*
-    remove_dir_end(
-        char_type* dir
-    );
-
-    /// Removes the path name separator from the end of \c rb, if present
-    ///
-    /// \param rb a reference to a \c resizeable_buffer
-    ///
-    /// \return The length of \c rb after the operation has completed
-    template<
-        ss_typename_param_k T_resizeableBuffer
-    >
-    static
-    size_type
-    remove_dir_end(
-        T_resizeableBuffer& rb
-    );
-
     /// Returns \c true if \c dir has trailing path name separator
     ///
     /// \pre nullptr != dir
@@ -363,6 +383,22 @@ public:
     bool_type
     has_dir_end(
         char_type const* dir
+    );
+
+    /// Returns \c true if the string designated by \c dir and \c len has
+    /// trailing path name separator
+    ///
+    /// \pre 0 == len || nullptr != dir
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param len Number of characters in \c path to be examined
+    ///
+    /// \see \link #path_name_separator path_name_separator() \endlink
+    static
+    bool_type
+    has_dir_end(
+        char_type const*    dir
+    ,   size_type           len
     );
 
     /// Returns \c true if \c rb has trailing path name separator
@@ -380,23 +416,136 @@ public:
         T_resizeableBuffer const& rb
     );
 
-
-    /// Returns pointer to the next path_name_separator, or \c NULL if none found.
+    /// Removes the path name separator from the end of \c dir, if present
+    ///
+    /// \pre nullptr != dir
+    ///
+    /// \see \link #path_name_separator path_name_separator() \endlink
     static
-    char_type const*
-    find_next_path_name_separator(
-        char_type const* path
+    char_type*
+    remove_dir_end(
+        char_type* dir
     );
 
-    /// Returns pointer to the last path_name_separator, or \c NULL if none found.
+    /// Removes the path name separator from the end of \c dir, if present
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param len Number of characters in \c path to be examined
+    /// \param pLenToDecrease An optional pointer to a variable that will
+    ///   be decremented if a path name separator is removed
+    ///
+    /// \return \c dir
+    ///
+    /// \pre 0 == len || nullptr != dir
+    /// \pre nullptr != pLenToDecrease
+    ///
+    /// \see \link #path_name_separator path_name_separator() \endlink
+    static
+    char_type*
+    remove_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type*  pLenToDecrease
+    );
+
+    /// Removes the path name separator from the end of \c rb, if present
+    ///
+    /// \param rb a reference to a \c resizeable_buffer
+    ///
+    /// \return The length of \c rb after the operation has completed
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    remove_dir_end(
+        T_resizeableBuffer& rb
+    );
+/// @}
+
+/// \name path classification and analysis
+/// @{
+public:
+    /// Classifies a path
+    ///
+    /// \param path
+    /// \param len
+    /// \param parseFlags
+    /// \param results
+    ///
+    /// \pre 0 == len || nullptr != path
+    static
+    path_classification_t
+    path_classify(
+        char_type const*                    path
+    ,   size_t                              len
+    ,   int                                 parseFlags
+    ,   path_classification_results_type*   results
+    );
+
+    static
+    path_is_rooted(
+        path_classification_t               pc
+    );
+
+    /// Returns a pointer to the last path name separator
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path C-style string pointer of path to be examined
+    ///
+    /// \pre nullptr != path
     static
     char_type const*
     find_last_path_name_separator(
-        char_type const* path
+        char_type const*                    path
+    );
+
+    /// Returns a pointer to the last path name separator
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param len Number of characters in \c path to be examined
+    ///
+    /// \pre 0 == len || nullptr != path
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
+    );
+
+    /// Returns a pointer to the next path name separator
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path C-style string pointer of path to be examined
+    ///
+    /// \pre nullptr != path
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    );
+
+    /// Returns a pointer to the next path name separator
+    /// in \c path, or \c nullptr if none is found
+    ///
+    /// \param path Pointer to characters of path to be examined
+    /// \param len Number of characters in \c path to be examined
+    ///
+    /// \pre 0 == len || nullptr != path
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
     );
 
     /// Returns \c true if dir is \c "." or \c ".."
     static bool_type    is_dots(char_type const* dir);
+
+    /// Returns \c true if the path begins with a dots directory
+    static bool_type    starts_with_dots(char_type const* dir);
+
     /// Returns \c true if path is rooted
     ///
     /// \note Only enough characters of the path pointed to by \c path as are
@@ -406,7 +555,7 @@ public:
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
     static bool_type    is_path_rooted(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     );
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// Returns \c true if path is an absolute path
@@ -418,7 +567,7 @@ public:
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
     static bool_type    is_path_absolute(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     );
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// Returns \c true if path is a UNC path
@@ -429,7 +578,7 @@ public:
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
     static bool_type    is_path_UNC(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     );
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// Indicates whether the given path is the root designator.
@@ -482,6 +631,8 @@ public:
     /// \param fileName The path to be translated
     /// \param rb Reference to a resizeable buffer into which the
     ///   full-path is to be written
+    ///
+    /// \return The length of \c rb after the operation has completed
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -502,7 +653,10 @@ public:
     ,   size_type           cchBuffer
     ,   char_type           buffer[]
     );
+
     /// Gets the short path name into the given buffer
+    ///
+    /// \deprecated The other overload is now the preferred form
     static
     size_type
     get_short_path_name(
@@ -512,10 +666,21 @@ public:
     );
 
     /// Gets the short path name into the given buffer
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    );
+
+    /// Gets the short path name into the given buffer
     ///
     /// \param fileName The path to be translated
     /// \param rb Reference to a resizeable buffer into which the
     ///   short-path is to be written
+    ///
+    /// \return The length of \c rb after the operation has completed
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -527,7 +692,7 @@ public:
     );
 /// @}
 
-/// \name File-system enumeration
+/// \name file-system enumeration
 /// @{
 public:
     // opendir/readdir API
@@ -538,25 +703,40 @@ public:
     static struct dirent const* read_dir(DIR* h);
     /// Closes the handle of the file-system search
     static void                 close_dir(DIR* h);
-
 /// @}
 
-/// \name File-system control
+/// \name file-system control
 /// @{
 public:
     /// Sets the current directory to \c dir
-    static bool_type    set_current_directory(char_type const* dir);
+    static
+    bool_type
+    set_current_directory(
+        char_type const*    dir
+    );
     /// Retrieves the name of the current directory into \c buffer up to a maximum of \c cchBuffer characters
     ///
     /// \deprecated The other overload is now the preferred form
-    static size_type    get_current_directory(size_type cchBuffer, char_type buffer[]);
+    static
+    size_type
+    get_current_directory(
+        size_type   cchBuffer
+    ,   char_type   buffer[]
+    );
     /// Retrieves the name of the current directory into \c buffer up to a maximum of \c cchBuffer characters
-    static size_type    get_current_directory(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_current_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    );
 
     /// Retrieves the name of the current directory into the given buffer
     ///
     /// \param rb Reference to a resizeable buffer into which the
-    ///   full-path is to be written
+    ///   current directory is to be written
+    ///
+    /// \return The length of \c rb after the operation has completed
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -567,7 +747,7 @@ public:
     );
 /// @}
 
-/// \name File-system state
+/// \name file-system state
 /// @{
 public:
     /// Returns whether a file exists or not
@@ -588,7 +768,7 @@ public:
     /// Gets the information for a particular file system entry
     static bool_type    lstat(char_type const* path, stat_data_type* stat_data);
     /// Gets the information for a particular open file
-    static bool_type    fstat(file_handle_type fd, fstat_data_type* fstat_data);
+    static bool_type    fstat(file_handle_type h, fstat_data_type* fstat_data);
 
     /// Returns whether the given stat info represents a file
     static bool_type    is_file(stat_data_type const* stat_data);
@@ -605,7 +785,7 @@ public:
     static bool_type    is_readonly(stat_data_type const* stat_data);
 /// @}
 
-/// \name File-system control
+/// \name file-system control
 /// @{
 public:
     /// Creates a directory
@@ -622,7 +802,10 @@ public:
     /// Rename a file
     static bool_type    rename_file(char_type const* currentName, char_type const* newName);
     /// Copy a file
-//    static bool_type    copy_file(char_type const* sourceName, char_type const* newName, bool_type bFailIfExists = false);
+#if 0
+
+    static bool_type    copy_file(char_type const* sourceName, char_type const* newName, bool_type bFailIfExists = false);
+#endif
 
     /// The value returned by open_file() that indicates that the
     /// operation failed
@@ -630,7 +813,7 @@ public:
     /// Create / open a file
     static file_handle_type open_file(char_type const* fileName, int oflag, int pmode);
     /// Closes the given operating system handle
-    static bool_type        close_file(file_handle_type fd);
+    static bool_type        close_file(file_handle_type h);
     /// Create / open a file
     ///
     /// \deprecated Users should use open_file()
@@ -638,16 +821,16 @@ public:
     /// Closes the given operating system handle
     ///
     /// \deprecated Users should use close_file()
-    static bool_type        close(file_handle_type fd);
+    static bool_type        close(file_handle_type h);
 #ifdef STLSOFT_CF_64BIT_INT_SUPPORT
     /// Gets the size of the file
-    static us_uint64_t      get_file_size(file_handle_type fd);
+    static large_size_type      get_file_size(file_handle_type h);
     /// Gets the size of the file
-    static us_uint64_t  get_file_size(stat_data_type const& sd);
+    static large_size_type  get_file_size(stat_data_type const& sd);
     /// Gets the size of the file
     ///
     /// \pre (NULL != psd)
-    static us_uint64_t  get_file_size(stat_data_type const* psd);
+    static large_size_type  get_file_size(stat_data_type const* psd);
 #else /* ? STLSOFT_CF_64BIT_INT_SUPPORT */
 private:
     /// Not currently supported
@@ -657,49 +840,41 @@ private:
 #endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
 /// @}
 };
-
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
-
-#if 0
-struct filesystem_traits_util_
-{
-public:
-    typedef struct stat                                 stat_data_type;
-    typedef us_bool_t                                   bool_type;
-#ifdef _WIN32
-    typedef unsigned short                              mode_type;
-#else /* ? _WIN32 */
-    typedef mode_t                                      mode_type;
-#endif /* _WIN32 */
-#if 1
-protected:
-#else /* ? 0 */
-public:
-#endif /* 0 */
-    static bool_type is_file_type_(
-        stat_data_type const*   stat_data
-    ,   mode_type               typeModeBits
-    )
-    {
-        return typeModeBits == (stat_data->st_mode & S_IFMT);
-    }
-    template <ss_typename_param_k C>
-    static bool_type is_file_type_(
-        C const*                path
-    ,   bool_type               (*pfnstat)(C const*, stat_data_type*)
-    ,   mode_type               typeModeBits
-    )
-    {
-        stat_data_type sd;
-
-        return (*pfnstat)(path, &sd) && is_file_type_(&sd, typeModeBits);
-    }
-};
-#endif /* 0 */
-
 
 template <ss_typename_param_k C>
 struct filesystem_traits;
+
+struct filesystem_traits_
+    : public system_traits_
+{
+public: // types
+    typedef us_size_t                                       size_type;
+    typedef us_uint64_t                                     large_size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef int                                             file_handle_type;
+    typedef void*                                           module_type;
+    typedef int                                             error_type;
+#ifdef _WIN32
+    typedef unsigned short                                  mode_type;
+#else /* ? _WIN32 */
+    typedef mode_t                                          mode_type;
+#endif /* _WIN32 */
+
+public: // path classification and analysis
+    static size_type path_max()
+    {
+#if defined(PATH_MAX)
+
+        return PATH_MAX;
+#else /* ? PATH_MAX */
+
+        return 1 + pathconf("/", _PC_PATH_MAX);
+#endif /* PATH_MAX */
+    }
+};
 
 STLSOFT_TEMPLATE_SPECIALISATION
 struct filesystem_traits<us_char_a_t>
@@ -708,28 +883,31 @@ struct filesystem_traits<us_char_a_t>
     , protected filesystem_traits_util_
 #endif /* 0 */
 {
-public:
-    typedef us_char_a_t                                 char_type;
-    typedef us_size_t                                   size_type;
-    typedef us_ptrdiff_t                                difference_type;
-    typedef struct stat                                 stat_data_type;
-    typedef struct stat                                 fstat_data_type;
-    typedef filesystem_traits<us_char_a_t>              class_type;
-    typedef us_int_t                                    int_type;
-    typedef us_bool_t                                   bool_type;
-    typedef int                                         file_handle_type;
-    typedef void*                                       module_type;
-    typedef int                                         error_type;
+public: // types
+    typedef us_char_a_t                                     char_type;
+    typedef us_size_t                                       size_type;
+    typedef us_uint64_t                                     large_size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef struct stat                                     stat_data_type;
+    typedef struct stat                                     fstat_data_type;
+    typedef filesystem_traits<us_char_a_t>                  class_type;
+    typedef unixstl_C_path_classification_results_m_t       path_classification_results_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef int                                             file_handle_type;
+    typedef void*                                           module_type;
+    typedef int                                             error_type;
 #ifdef _WIN32
-    typedef unsigned short                              mode_type;
+    typedef unsigned short                                  mode_type;
 #else /* ? _WIN32 */
-    typedef mode_t                                      mode_type;
+    typedef mode_t                                          mode_type;
 #endif /* _WIN32 */
 private:
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<char_type> buffer_type_;
-public:
+    typedef STLSOFT_NS_QUAL(auto_buffer)<
+        char_type
+    >                                                       buffer_type_;
 
-
+public: // constants
 #ifdef PATH_MAX
     enum
     {
@@ -740,13 +918,15 @@ public:
     enum
     {
 #ifdef _WIN32
+
         pathComparisonIsCaseSensitive   =   false
 #else /* ? _WIN32 */
+
         pathComparisonIsCaseSensitive   =   true
 #endif /* _WIN32 */
     };
 
-public:
+public: // general string handling
     static int_type str_fs_compare(char_type const* s1, char_type const* s2)
     {
 #ifdef _WIN32
@@ -758,28 +938,77 @@ public:
 #endif /* _WIN32 */
     }
 
-    static int_type str_fs_n_compare(char_type const* s1, char_type const* s2, size_type cch)
+    static int_type str_fs_n_compare(char_type const* s1, char_type const* s2, size_type len)
     {
 #ifdef _WIN32
 
-        return str_n_compare_no_case(s1, s2, cch);
+        return str_n_compare_no_case(s1, s2, len);
 #else /* ? _WIN32 */
 
-        return str_n_compare(s1, s2, cch);
+        return str_n_compare(s1, s2, len);
 #endif /* _WIN32 */
     }
 
-    static char_type* ensure_dir_end(char_type* dir)
+public: // directory-end 
+    static
+    char_type*
+    ensure_dir_end(
+        char_type*  dir
+    )
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        char_type* end = str_end(dir);
+        size_type const len = str_len(dir);
 
-        if (dir < end &&
-            !is_path_name_separator(*(end - 1)))
+        return ensure_dir_end(dir, len, 0, NULL);
+    }
+
+    static
+    char_type*
+    ensure_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type   capacity
+    ,   size_type*  pLenToIncrease
+    )
+    {
+        UNIXSTL_ASSERT(0 == len || NULL != dir);
+        UNIXSTL_ASSERT(0 == capacity || len < capacity);
+
+        size_type dummy;
+
+        if (NULL == pLenToIncrease)
         {
-            *end        =   path_name_separator();
-            *(end + 1)  =   '\0';
+            pLenToIncrease = &dummy;
+        }
+
+        if (0 != len)
+        {
+            char_type last = dir[len - 1];
+
+            if (!is_path_name_separator(last))
+            {
+                if (0 == capacity)
+                {
+                    dir[len + 0]    =   path_name_separator();
+                    dir[len + 1]    =   char_type(0);
+
+                    ++*pLenToIncrease;
+                }
+                else
+                {
+                    if (len + 0 < capacity)
+                    {
+                        dir[len + 0]    =   path_name_separator();
+
+                        ++*pLenToIncrease;
+                    }
+                    if (len + 1 < capacity)
+                    {
+                        dir[len + 1]    =   char_type(0);
+                    }
+                }
+            }
         }
 
         return dir;
@@ -813,36 +1042,121 @@ public:
         return rb.empty() ? 0 : rb.size() - 1;
     }
 
-    static char_type* remove_dir_end(char_type* dir)
+    static
+    bool_type
+    has_dir_end(
+        char_type const*    dir
+    ,   size_type           len
+    )
+    {
+        UNIXSTL_ASSERT(0 == len || NULL != dir);
+
+        if (0 == len)
+        {
+            return false;
+        }
+
+        switch (len)
+        {
+        case 0:
+
+            return false;
+        case 1:
+
+            return is_path_name_separator(dir[0]);
+        default:
+
+            if (char_type(0) == dir[len - 1])
+            {
+                return is_path_name_separator(dir[len - 2]);
+            }
+            else
+            {
+                return is_path_name_separator(dir[len - 1]);
+            }
+        }
+    }
+
+    static
+    bool_type
+    has_dir_end(
+        char_type const*    dir
+    )
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-#ifdef _WIN32
+        size_type const len = str_len(dir);
 
-        // Don't trim drive roots ...
-        if (isalpha(dir[0]) &&
-            ':' == dir[1] &&
-            is_path_name_separator(dir[2]) &&
-            '\0' == dir[3])
+        return has_dir_end(dir, len);
+    }
+
+    // required to disambiguate from resizeable-buffer overload
+    static
+    bool_type
+    has_dir_end(
+        char_type* dir
+    )
+    {
+        return has_dir_end(const_cast<char_type const*>(dir));
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    bool_type
+    has_dir_end(
+        T_resizeableBuffer const& rb
+    )
+    {
+        if (rb.size() < 2)
         {
-            return dir;
+            return false;
         }
 
-        // ... or UNC roots
-        if ('\\' == dir[0] &&
-            '\\' == dir[1] &&
-            '\0' == dir[3])
+        return is_path_name_separator(rb[rb.size() - 2]);
+    }
+
+    static
+    char_type*
+    remove_dir_end(
+        char_type*  dir
+    )
+    {
+        UNIXSTL_ASSERT(NULL != dir);
+
+        size_type const len = str_len(dir);
+
+        return remove_dir_end(dir, len, NULL);
+    }
+
+    static
+    char_type*
+    remove_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type*  pLenToDecrease
+    )
+    {
+        UNIXSTL_ASSERT(NULL != dir);
+
+        size_type dummy;
+
+        if (NULL == pLenToDecrease)
         {
-            return dir;
+            pLenToDecrease = &dummy;
         }
-#endif /* _WIN32 */
 
-        char_type* end = str_end(dir);
-
-        if (dir < end &&
-            is_path_name_separator(*(end - 1)))
+        if (0 != len)
         {
-            *(end - 1)  =   '\0';
+            char_type& last = dir[len - 1];
+
+            if (is_path_name_separator(last))
+            {
+                last = char_type(0);
+
+                --*pLenToDecrease;
+            }
         }
 
         return dir;
@@ -872,78 +1186,73 @@ public:
         return rb.empty() ? 0 : rb.size() - 1;
     }
 
-    static bool_type has_dir_end(char_type const* dir)
-    {
-        UNIXSTL_ASSERT(NULL != dir);
-
-        size_type len = str_len(dir);
-
-        return (0 < len) && is_path_name_separator(dir[len - 1]);
-    }
-
-    template<
-        ss_typename_param_k T_resizeableBuffer
-    >
+public: // path classification and analysis
     static
-    bool_type
-    has_dir_end(
-        T_resizeableBuffer const& rb
+    path_classification_t
+    path_classify(
+        char_type const*                    path
+    ,   size_t                              len
+    ,   int                                 parseFlags
+    ,   path_classification_results_type*   results
     )
     {
-        if (rb.size() < 2)
-        {
-            return false;
-        }
+        return unixstl_C_path_classify(path, len, parseFlags, results);
+    }
 
-        return is_path_name_separator(rb[rb.size() - 2]);
+    static
+    bool
+    path_is_rooted(
+        path_classification_t               pc
+    )
+    {
+        return 0 != unixstl_C_path_is_rooted(pc);
+    }
+
+
+    static
+    char_type const*
+    find_last_path_name_separator(
+        char_type const*                    path
+    )
+    {
+        UNIXSTL_ASSERT(NULL != path);
+
+        return unixstl_C_find_last_path_name_separator(path);
     }
 
     static
     char_type const*
-    find_next_path_name_separator(char_type const* path)
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
+    )
     {
-        char_type* pFile    =   str_chr(path, path_name_separator());
-#if defined(_WIN32)
-        char_type* pFile2   =   str_chr(path, '\\');
+        UNIXSTL_ASSERT(0 == len || NULL != path);
 
-        if (NULL == pFile)
-        {
-            pFile = pFile2;
-        }
-        else if (NULL != pFile2)
-        {
-            if (pFile2 < pFile)
-            {
-                pFile = pFile2;
-            }
-        }
-#endif /* _WIN32 */
-
-        return pFile;
+        return unixstl_C_find_last_path_name_separator_len(path, len);
     }
 
     static
     char_type const*
-    find_last_path_name_separator(char_type const* path)
+    find_next_path_name_separator(
+        char_type const*                    path
+    )
     {
-        char_type* pFile    =   str_rchr(path, path_name_separator());
-#if defined(_WIN32)
-        char_type* pFile2   =   str_rchr(path, '\\');
+        UNIXSTL_ASSERT(NULL != path);
 
-        if (NULL == pFile)
-        {
-            pFile = pFile2;
-        }
-        else if (NULL != pFile2)
-        {
-            if (pFile2 > pFile)
-            {
-                pFile = pFile2;
-            }
-        }
-#endif /* _WIN32 */
+        return unixstl_C_find_first_path_name_separator(path);
+    }
 
-        return pFile;
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
+    )
+    {
+        UNIXSTL_ASSERT(0 == len || NULL != path);
+
+        return unixstl_C_find_first_path_name_separator_len(path, len);
     }
 
     static bool_type is_dots(char_type const* dir)
@@ -963,6 +1272,39 @@ public:
                 if ('\0' == dir[2])
                 {
                     // found ".."
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    static bool_type starts_with_dots(char_type const* dir)
+    {
+        UNIXSTL_ASSERT(NULL != dir);
+
+        if ('.' == dir[0])
+        {
+            if ('\0' == dir[1])
+            {
+                return true;
+            }
+
+            if (is_path_name_separator(dir[1]))
+            {
+                return true;
+            }
+
+            if ('.' == dir[1])
+            {
+                if ('\0' == dir[2])
+                {
+                    return true;
+                }
+
+                if (is_path_name_separator(dir[2]))
+                {
                     return true;
                 }
             }
@@ -1003,14 +1345,14 @@ public:
 
     static bool_type is_path_rooted(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
     {
         UNIXSTL_ASSERT(NULL != path);
 
 #ifdef _WIN32
 
-        if (cchPath >= 2)
+        if (len >= 2)
         {
             // It might be a UNC path. This is handled by the second test below, but
             // this is a bit clearer, and since this is a debug kind of thing, we're
@@ -1022,14 +1364,14 @@ public:
             }
         }
 
-        if (cchPath >= 2)
+        if (len >= 2)
         {
             // If it's really on Windows, then we need to skip the drive, if present
             if (isalpha(path[0]) &&
                 ':' == path[1])
             {
                 path += 2;
-                cchPath -= 2;
+                len -= 2;
             }
         }
 
@@ -1038,7 +1380,7 @@ public:
         // is_path_name_separator()
 #endif /* _WIN32 */
 
-        return 0 != cchPath && is_path_name_separator(*path);
+        return 0 != len && is_path_name_separator(*path);
     }
 
     static bool_type is_path_absolute(char_type const* path)
@@ -1071,10 +1413,10 @@ public:
 
     static bool_type is_path_absolute(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
     {
-        if (0 == cchPath)
+        if (0 == len)
         {
             return false;
         }
@@ -1084,11 +1426,11 @@ public:
         // If it's really on Windows, then it can only be absolute if ...
         //
         // ... it's a UNC path, or ...
-        if (is_path_UNC(path, cchPath))
+        if (is_path_UNC(path, len))
         {
             return true;
         }
-        if (cchPath >= 3)
+        if (len >= 3)
         {
             // ... it's got drive + root slash, or
             if (isalpha(path[0]) &&
@@ -1102,7 +1444,7 @@ public:
         return false;
 #else /* ? _WIN32 */
 
-        return is_path_rooted(path, cchPath);
+        return is_path_rooted(path, len);
 #endif /* _WIN32 */
     }
 
@@ -1112,9 +1454,9 @@ public:
 
 #ifdef _WIN32
 
-        size_type const cchPath = str_len(path);
+        size_type const len = str_len(path);
 
-        return is_path_UNC(path, cchPath);
+        return is_path_UNC(path, len);
 #else /* ? _WIN32 */
 
         STLSOFT_SUPPRESS_UNUSED(path);
@@ -1125,12 +1467,12 @@ public:
 
     static bool_type is_path_UNC(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
     {
 #ifdef _WIN32
 
-        switch(cchPath)
+        switch(len)
         {
             case    0:
             case    1:
@@ -1141,7 +1483,7 @@ public:
 #else /* ? _WIN32 */
 
         STLSOFT_SUPPRESS_UNUSED(path);
-        STLSOFT_SUPPRESS_UNUSED(cchPath);
+        STLSOFT_SUPPRESS_UNUSED(len);
 
         return false;
 #endif /* _WIN32 */
@@ -1235,13 +1577,7 @@ public:
 
     static size_type path_max()
     {
-#if defined(PATH_MAX)
-
-        return PATH_MAX;
-#else /* ? PATH_MAX */
-
-        return 1 + pathconf("/", _PC_PATH_MAX);
-#endif /* PATH_MAX */
+        return filesystem_traits_::path_max();
     }
 
 private:
@@ -1330,7 +1666,10 @@ private:
             char const*     sep =   stlsoft_C_strnpbrkn(cwd.data(), n1, "\\/", 2);
             size_t const    n2  =   sep - cwd.data();
 
-            cwd.resize(n2 + len + 1);
+            if (!resizeable_buffer_resize(cwd, n2 + len + 1))
+            {
+                return 0;
+            }
 
             ::memcpy(&cwd[0] + n2, fileName, sizeof(char_type) * len);
             cwd[n2 + len] = '\0';
@@ -1476,7 +1815,7 @@ return 0;
 
                         if (NULL == buffer)
                         {
-                            return required;
+                            return required + 1;
                         }
                         else
                         {
@@ -1661,6 +2000,17 @@ public:
         return get_full_path_name(fileName, cchBuffer, buffer);
     }
 
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
+    {
+        return get_full_path_name(fileName, buffer, cchBuffer);
+    }
+
     template<
         ss_typename_param_k T_resizeableBuffer
     >
@@ -1674,8 +2024,7 @@ public:
         return get_full_path_name(fileName, rb);
     }
 
-    // File-system enumeration
-
+public: // file-system enumeration
     static DIR* open_dir(char_type const* dir)
     {
         return ::opendir(dir);
@@ -1689,8 +2038,12 @@ public:
         ::closedir(h);
     }
 
-    // File-system state
-    static bool_type set_current_directory(char_type const* dir)
+public: // file-system control
+    static
+    bool_type
+    set_current_directory(
+        char_type const*    dir
+    )
     {
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_MSVC) || \
@@ -1703,7 +2056,12 @@ public:
 #endif /* _WIN32 */
     }
 
-    static size_type get_current_directory(size_type cchBuffer, char_type buffer[])
+    static
+    size_type
+    get_current_directory(
+        size_type   cchBuffer
+    ,   char_type   buffer[]
+    )
     {
         return get_current_directory(buffer, cchBuffer);
     }
@@ -1739,7 +2097,12 @@ private:
     }
 public:
 
-    static size_type get_current_directory(char_type buffer[], size_type cchBuffer)
+    static
+    size_type
+    get_current_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
     {
 #if defined(_WIN32)
 
@@ -1823,6 +2186,7 @@ public:
         }
     }
 
+public: // file-system state
     static bool_type file_exists(char_type const* fileName)
     {
         stat_data_type sd;
@@ -1883,7 +2247,7 @@ public:
         if (has_dir_end(path))
         {
             // Win32 impl does not like a trailing slash
-            size_type len = str_len(path);
+            size_type const len = str_len(path);
 
             if (len > 3 ||
                 (   is_path_name_separator(*path) &&
@@ -1902,7 +2266,7 @@ public:
                     char_copy(&directory[0], path, len);
                     directory[len] = '\0';
 
-                    class_type::remove_dir_end(&directory[0]);
+                    class_type::remove_dir_end(directory);
 
                     return class_type::stat(directory.data(), stat_data);
                 }
@@ -1925,12 +2289,12 @@ public:
         return 0 == ::lstat(path, stat_data);
 #endif /* _WIN32 */
     }
-    static bool_type fstat(file_handle_type fd, fstat_data_type* fstat_data)
+    static bool_type fstat(file_handle_type h, fstat_data_type* fstat_data)
     {
-        UNIXSTL_ASSERT(-1 != fd);
+        UNIXSTL_ASSERT(-1 != h);
         UNIXSTL_ASSERT(NULL != fstat_data);
 
-        return 0 == ::fstat(fd, fstat_data);
+        return 0 == ::fstat(h, fstat_data);
     }
 
     static bool_type is_file(stat_data_type const* stat_data)
@@ -2069,16 +2433,16 @@ public:
 
 # include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 
-    static bool_type close_file(file_handle_type fd)
+    static bool_type close_file(file_handle_type h)
     {
 #if defined(_WIN32) && \
     (   defined(STLSOFT_COMPILER_IS_INTEL) || \
         defined(STLSOFT_COMPILER_IS_MSVC))
 
-        return 0 == ::_close(fd);
+        return 0 == ::_close(h);
 #else /* ? _WIN32 */
 
-        return 0 == ::close(fd);
+        return 0 == ::close(h);
 #endif /* _WIN32 */
     }
 
@@ -2087,23 +2451,23 @@ public:
         return class_type::open_file(fileName, oflag, pmode);
     }
 
-    static bool_type close(file_handle_type fd)
+    static bool_type close(file_handle_type h)
     {
-        return class_type::close_file(fd);
+        return class_type::close_file(h);
     }
 
 #ifdef STLSOFT_CF_64BIT_INT_SUPPORT
-    static us_uint64_t get_file_size(file_handle_type fd)
+    static large_size_type get_file_size(file_handle_type h)
     {
         struct stat st;
 
-        return class_type::fstat(fd, &st) ? st.st_size : 0;
+        return class_type::fstat(h, &st) ? st.st_size : 0;
     }
-    static us_uint64_t get_file_size(stat_data_type const& sd)
+    static large_size_type get_file_size(stat_data_type const& sd)
     {
         return sd.st_size;
     }
-    static us_uint64_t get_file_size(stat_data_type const* psd)
+    static large_size_type get_file_size(stat_data_type const* psd)
     {
         UNIXSTL_ASSERT(NULL != psd);
 
@@ -2119,10 +2483,30 @@ struct filesystem_traits<us_char_w_t>
     , protected filesystem_traits_util_
 #endif /* 0 */
 {
-public:
-    typedef us_char_w_t char_type;
-    typedef us_size_t   size_type;
+public: // types
+    typedef us_char_w_t                                     char_type;
+    typedef us_size_t                                       size_type;
+    typedef us_uint64_t                                     large_size_type;
+    typedef us_ptrdiff_t                                    difference_type;
+    typedef struct stat                                     stat_data_type;
+    typedef struct stat                                     fstat_data_type;
+    typedef filesystem_traits<us_char_a_t>                  class_type;
+    typedef us_int_t                                        int_type;
+    typedef us_bool_t                                       bool_type;
+    typedef int                                             file_handle_type;
+    typedef void*                                           module_type;
+    typedef int                                             error_type;
+#ifdef _WIN32
+    typedef unsigned short                                  mode_type;
+#else /* ? _WIN32 */
+    typedef mode_t                                          mode_type;
+#endif /* _WIN32 */
+private:
+    typedef STLSOFT_NS_QUAL(auto_buffer)<
+        char_type
+    >                                                       buffer_type_;
 
+public: // constants
 #ifdef PATH_MAX
     enum
     {
@@ -2133,42 +2517,97 @@ public:
     enum
     {
 #ifdef _WIN32
+
         pathComparisonIsCaseSensitive   =   false
 #else /* ? _WIN32 */
+
         pathComparisonIsCaseSensitive   =   true
 #endif /* _WIN32 */
     };
 
-public:
+public: // general string handling
     static int_type str_fs_compare(char_type const* s1, char_type const* s2)
     {
 #ifdef _WIN32
+
         return str_compare_no_case(s1, s2);
 #else /* ? _WIN32 */
+
         return str_compare(s1, s2);
 #endif /* _WIN32 */
     }
 
-    static int_type str_fs_n_compare(char_type const* s1, char_type const* s2, size_type cch)
+    static int_type str_fs_n_compare(char_type const* s1, char_type const* s2, size_type len)
     {
 #ifdef _WIN32
-        return str_n_compare_no_case(s1, s2, cch);
+
+        return str_n_compare_no_case(s1, s2, len);
 #else /* ? _WIN32 */
-        return str_n_compare(s1, s2, cch);
+
+        return str_n_compare(s1, s2, len);
 #endif /* _WIN32 */
     }
 
-    static char_type* ensure_dir_end(char_type* dir)
+public: // directory-end 
+    static
+    char_type*
+    ensure_dir_end(
+        char_type*  dir
+    )
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-        char_type* end = str_end(dir);
+        size_type const len = str_len(dir);
 
-        if (dir < end &&
-            !is_path_name_separator(*(end - 1)))
+        return ensure_dir_end(dir, len, 0, NULL);
+    }
+
+    static
+    char_type*
+    ensure_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type   capacity
+    ,   size_type*  pLenToIncrease
+    )
+    {
+        UNIXSTL_ASSERT(0 == len || NULL != dir);
+        UNIXSTL_ASSERT(0 == capacity || len < capacity);
+
+        size_type dummy;
+
+        if (NULL == pLenToIncrease)
         {
-            *end        =   path_name_separator();
-            *(end + 1)  =   L'\0';
+            pLenToIncrease = &dummy;
+        }
+
+        if (0 != len)
+        {
+            char_type& last = dir[len - 1];
+
+            if (!is_path_name_separator(last))
+            {
+                if (0 == capacity)
+                {
+                    dir[len + 0]    =   path_name_separator();
+                    dir[len + 1]    =   char_type(0);
+
+                    ++*pLenToIncrease;
+                }
+                else
+                {
+                    if (len + 0 < capacity)
+                    {
+                        dir[len + 0]    =   path_name_separator();
+
+                        ++*pLenToIncrease;
+                    }
+                    if (len + 1 < capacity)
+                    {
+                        dir[len + 1]    =   char_type(0);
+                    }
+                }
+            }
         }
 
         return dir;
@@ -2189,7 +2628,7 @@ public:
 
             if (0 != n)
             {
-                if (!rb.resize(n + 1))
+                if (!resizeable_buffer_resize(rb, n + 1))
                 {
                     return 0;
                 }
@@ -2202,35 +2641,121 @@ public:
         return rb.empty() ? 0 : rb.size() - 1;
     }
 
-    static char_type* remove_dir_end(char_type* dir)
+    static
+    bool_type
+    has_dir_end(
+        char_type const*    dir
+    ,   size_type           len
+    )
+    {
+        UNIXSTL_ASSERT(0 == len || NULL != dir);
+
+        if (0 == len)
+        {
+            return false;
+        }
+
+        switch (len)
+        {
+        case 0:
+
+            return false;
+        case 1:
+
+            return is_path_name_separator(dir[0]);
+        default:
+
+            if (char_type(0) == dir[len - 1])
+            {
+                return is_path_name_separator(dir[len - 2]);
+            }
+            else
+            {
+                return is_path_name_separator(dir[len - 1]);
+            }
+        }
+    }
+
+    static
+    bool_type
+    has_dir_end(
+        char_type const*    dir
+    )
     {
         UNIXSTL_ASSERT(NULL != dir);
 
-#ifdef _WIN32
-        // Don't trim drive roots ...
-        if (iswalpha(dir[0]) &&
-            L':' == dir[1] &&
-            is_path_name_separator(dir[2]) &&
-            L'\0' == dir[3])
+        size_type const len = str_len(dir);
+
+        return has_dir_end(dir, len);
+    }
+
+    // required to disambiguate from resizeable-buffer overload
+    static
+    bool_type
+    has_dir_end(
+        char_type* dir
+    )
+    {
+        return has_dir_end(const_cast<char_type const*>(dir));
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    bool_type
+    has_dir_end(
+        T_resizeableBuffer const& rb
+    )
+    {
+        if (rb.size() < 2)
         {
-            return dir;
+            return false;
         }
 
-        // ... or UNC roots
-        if (L'\\' == dir[0] &&
-            L'\\' == dir[1] &&
-            L'\0' == dir[3])
+        return is_path_name_separator(rb[rb.size() - 2]);
+    }
+
+    static
+    char_type*
+    remove_dir_end(
+        char_type*  dir
+    )
+    {
+        UNIXSTL_ASSERT(NULL != dir);
+
+        size_type const len = str_len(dir);
+
+        return remove_dir_end(dir, len, NULL);
+    }
+
+    static
+    char_type*
+    remove_dir_end(
+        char_type*  dir
+    ,   size_type   len
+    ,   size_type*  pLenToDecrease
+    )
+    {
+        UNIXSTL_ASSERT(NULL != dir);
+
+        size_type dummy;
+
+        if (NULL == pLenToDecrease)
         {
-            return dir;
+            pLenToDecrease = &dummy;
         }
-#endif /* _WIN32 */
 
-        char_type* end = str_end(dir);
-
-        if (dir < end &&
-            is_path_name_separator(*(end - 1)))
+        if (0 != len)
         {
-            *(end - 1)  =   L'\0';
+            char_type& last = dir[len - 1];
+
+            if (is_path_name_separator(last))
+            {
+                last = char_type(0);
+
+                --*pLenToDecrease;
+            }
         }
 
         return dir;
@@ -2260,79 +2785,36 @@ public:
         return rb.empty() ? 0 : rb.size() - 1;
     }
 
-    static bool_type has_dir_end(char_type const* dir)
-    {
-        UNIXSTL_ASSERT(NULL != dir);
-
-        size_type len = str_len(dir);
-
-        return (0 < len) && is_path_name_separator(dir[len - 1]);
-    }
-
-    template<
-        ss_typename_param_k T_resizeableBuffer
-    >
+public: // path classification and analysis
     static
-    bool_type
-    has_dir_end(
-        T_resizeableBuffer& rb
+    char_type const*
+    find_last_path_name_separator(
+        char_type const* path
     )
-    {
-        if (rb.size() < 2)
-        {
-            return false;
-        }
-
-        return is_path_name_separator(rb[rb.size() - 2]);
-    }
+    ;
 
     static
     char_type const*
-    find_next_path_name_separator(char_type const* path)
-    {
-        char_type* pFile    =   str_chr(path, path_name_separator());
-#if defined(_WIN32)
-        char_type* pFile2   =   str_chr(path, L'\\');
-
-        if (NULL == pFile)
-        {
-            pFile = pFile2;
-        }
-        else if (NULL != pFile2)
-        {
-            if (pFile2 < pFile)
-            {
-                pFile = pFile2;
-            }
-        }
-#endif /* _WIN32 */
-
-        return pFile;
-    }
+    find_last_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
+    )
+    ;
 
     static
     char_type const*
-    find_last_path_name_separator(char_type const* path)
-    {
-        char_type* pFile    =   str_rchr(path, path_name_separator());
-#if defined(_WIN32)
-        char_type* pFile2   =   str_rchr(path, L'\\');
+    find_next_path_name_separator(
+        char_type const*                    path
+    )
+    ;
 
-        if (NULL == pFile)
-        {
-            pFile = pFile2;
-        }
-        else if (NULL != pFile2)
-        {
-            if (pFile2 > pFile)
-            {
-                pFile = pFile2;
-            }
-        }
-#endif /* _WIN32 */
-
-        return pFile;
-    }
+    static
+    char_type const*
+    find_next_path_name_separator(
+        char_type const*                    path
+    ,   size_t                              len
+    )
+    ;
 
     static bool_type is_dots(char_type const* dir)
     {
@@ -2360,153 +2842,36 @@ public:
     }
 
     static bool_type is_path_rooted(char_type const* path)
-    {
-        UNIXSTL_ASSERT(NULL != path);
-
-#ifdef _WIN32
-        // If it's really on Windows, then we need to skip the drive, if present
-        if (iswalpha(path[0]) &&
-            ':' == path[1])
-        {
-            path += 2;
-        }
-
-        // If it's really on Windows, then we need to account for the fact that
-        // the slash might be backwards
-        if ('\\' == *path)
-        {
-            return true;
-        }
-#endif /* _WIN32 */
-
-        return '/' == *path;
-    }
+    ;
 
     static bool_type is_path_rooted(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
-    {
-        UNIXSTL_ASSERT(NULL != path);
-
-#ifdef _WIN32
-        if (cchPath >= 2)
-        {
-            // It might be a UNC path. This is handled by the second test below, but
-            // this is a bit clearer, and since this is a debug kind of thing, we're
-            // not worried about the cost
-            if (L'\\' == path[0] &&
-                L'\\' == path[1])
-            {
-                return true;
-            }
-        }
-
-        if (cchPath >= 2)
-        {
-            // If it's really on Windows, then we need to skip the drive, if present
-            if (iswalpha(path[0]) &&
-                L':' == path[1])
-            {
-                path += 2;
-                cchPath -= 2;
-            }
-        }
-
-        // If it's really on Windows, then we need to account for the fact that
-        // the slash might be backwards, but that's taken care of for us by
-        // is_path_name_separator()
-#endif /* _WIN32 */
-
-        return 0 != cchPath && is_path_name_separator(*path);
-    }
+    ;
 
     static bool_type is_path_absolute(char_type const* path)
-    {
-        UNIXSTL_ASSERT(NULL != path);
-
-#ifdef _WIN32
-        return is_path_absolute(path, str_len(path));
-#else /* ? _WIN32 */
-        return is_path_rooted(path);
-#endif /* _WIN32 */
-    }
+    ;
 
     static bool_type is_path_absolute(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
-    {
-        if (0 == cchPath)
-        {
-            return false;
-        }
-
-#ifdef _WIN32
-        // If it's really on Windows, then it can only be absolute if ...
-        //
-        // ... it's a UNC path, or ...
-        if (is_path_UNC(path, cchPath))
-        {
-            return true;
-        }
-        if (cchPath >= 3)
-        {
-            // ... it's got drive + root slash, or
-            if (iswalpha(path[0]) &&
-                L':' == path[1] &&
-                is_path_name_separator(path[2]))
-            {
-                return true;
-            }
-        }
-
-        return false;
-#else /* ? _WIN32 */
-        return is_path_rooted(path, cchPath);
-#endif /* _WIN32 */
-    }
+    ;
 
     static bool_type is_path_UNC(char_type const* path)
-    {
-        UNIXSTL_ASSERT(NULL != path);
-
-#ifdef _WIN32
-        size_type const cchPath = str_len(path);
-
-        return is_path_UNC(path, cchPath);
-#else /* ? _WIN32 */
-        STLSOFT_SUPPRESS_UNUSED(path);
-
-        return false;
-#endif /* _WIN32 */
-    }
+    ;
 
     static bool_type is_path_UNC(
         char_type const*    path
-    ,   size_t              cchPath
+    ,   size_t              len
     )
-    {
-#ifdef _WIN32
-        switch(cchPath)
-        {
-            case    0:
-            case    1:
-                return false;
-            default:
-                return L'\\' == path[0] && L'\\' == path[1];
-        }
-#else /* ? _WIN32 */
-        STLSOFT_SUPPRESS_UNUSED(path);
-        STLSOFT_SUPPRESS_UNUSED(cchPath);
-
-        return false;
-#endif /* _WIN32 */
-    }
+    ;
 
     static bool_type is_path_name_separator(char_type ch)
     {
 #ifdef _WIN32
+
         if (L'\\' == ch)
         {
             return true;
@@ -2533,14 +2898,9 @@ public:
 
     static size_type path_max()
     {
-#if defined(PATH_MAX)
-        return PATH_MAX;
-#else /* ? PATH_MAX */
-        return 1 + pathconf("/", _PC_PATH_MAX);
-#endif /* PATH_MAX */
+        return filesystem_traits_::path_max();
     }
 
-#if 0
     static
     size_type
     get_full_path_name(
@@ -2548,7 +2908,8 @@ public:
     ,   size_type           cchBuffer
     ,   char_type           buffer[]
     ,   char_type**         ppFile
-    );
+    )
+    ;
 
     static
     size_type
@@ -2557,11 +2918,7 @@ public:
     ,   char_type           buffer[]
     ,   size_type           cchBuffer
     )
-    {
-        char_type* pFile;
-
-        return get_full_path_name(fileName, cchBuffer, buffer, &pFile);
-    }
+    ;
 
     template<
         ss_typename_param_k T_resizeableBuffer
@@ -2572,16 +2929,7 @@ public:
         char_type const*    fileName
     ,   T_resizeableBuffer& rb
     )
-    {
-        size_type const cchRequired = get_full_path_name(fileName, static_cast<char_type*>(NULL), 0);
-
-        if (!resizeable_buffer_resize(rb, cchRequired))
-        {
-            return 0;
-        }
-
-        return get_full_path_name(fileName, &rb[0], rb.size());
-    }
+    ;
 
     static
     size_type
@@ -2590,9 +2938,7 @@ public:
     ,   size_type           cchBuffer
     ,   char_type           buffer[]
     )
-    {
-        return get_full_path_name(fileName, buffer, cchBuffer);
-    }
+    ;
 
     static
     size_type
@@ -2601,9 +2947,16 @@ public:
     ,   size_type           cchBuffer
     ,   char_type           buffer[]
     )
-    {
-        return get_full_path_name(fileName, cchBuffer, buffer);
-    }
+    ;
+
+    static
+    size_type
+    get_short_path_name(
+        char_type const*    fileName
+    ,   char_type           buffer[]
+    ,   size_type           cchBuffer
+    )
+    ;
 
     template<
         ss_typename_param_k T_resizeableBuffer
@@ -2614,17 +2967,39 @@ public:
         char_type const*    fileName
     ,   T_resizeableBuffer& rb
     )
-    {
-        return get_full_path_name(fileName);
-    }
-#endif /* 0 */
+    ;
 
-    // File-system state
-    static bool_type set_current_directory(char_type const* dir);
+public: // file-system enumeration
+    static DIR* open_dir(char_type const* dir)
+    ;
+    static struct dirent const* read_dir(DIR* h)
+    ;
+    static void close_dir(DIR* h)
+    ;
 
-    static size_type get_current_directory(size_type cchBuffer, char_type buffer[]);
+public: // file-system control
+    static
+    bool_type
+    set_current_directory(
+        char_type const*    dir
+    )
+    ;
 
-    static size_type get_current_directory(char_type buffer[], size_type cchBuffer);
+    static
+    size_type
+    get_current_directory(
+        size_type   cchBuffer
+    ,   char_type   buffer[]
+    )
+    ;
+
+    static
+    size_type
+    get_current_directory(
+        char_type   buffer[]
+    ,   size_type   cchBuffer
+    )
+    ;
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
