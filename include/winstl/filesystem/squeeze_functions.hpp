@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     6th June 2006
- * Updated:     29th December 2020
+ * Updated:     30th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        33
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION    4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT        34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -202,8 +202,8 @@ path_squeeze_impl(
             else if (cchBuffer < file.len + 1)
             {
                 // Squeezing just file+ext
-                size_t  leftLen     =   (cchBuffer - 3 - 1) / 2;
-                size_t  rightLen    =   (cchBuffer - 3 - 1) - leftLen;
+                size_t const    leftLen     =   (cchBuffer - 3 - 1) / 2;
+                size_t const    rightLen    =   (cchBuffer - 3 - 1) - leftLen;
 
                 traits_t::char_copy(buffer, file.ptr, leftLen);
                 buffer[leftLen + 0] = '.';
@@ -228,9 +228,9 @@ path_squeeze_impl(
             {
                 WINSTL_ASSERT(cchBuffer < pathLen + 1);
 
-                // Squeezing
-                size_t  rightLen    =   1 + file.len;
-                size_t  leftLen     =   (cchBuffer - 3 - 1) - rightLen;
+                // Squeezing whole path
+                size_t const    rightLen    =   1 + file.len;
+                size_t const    leftLen     =   (cchBuffer - 3 - 1) - rightLen;
 
                 traits_t::char_copy(buffer, path_ptr, leftLen);
                 buffer[leftLen + 0] = '.';
@@ -286,11 +286,11 @@ STLSOFT_CLOSE_WORKER_NS_(ximpl_winstl_squeeze_functions_)
  * \param buffer Pointer to the buffer into which the sqeezed path will be
  *   written. If NULL, function returns required size (=== len(path) + 1)
  * \param cchBuffer The number of available characters inc buffer. This
- *   value in inclusive of the required nul-terminator
+ *   value in inclusive of the required <code>NUL</code>-terminator
  *
  * \return The number of characters required (if buffer is NULL), or the
  *   number of characters written (if buffer is non-NULL). In both cases, it
- *   includes the one required for the nul-terminator
+ *   includes the one required for the <code>NUL</code>-terminator
  *
  * \remarks The squeeze algorithm is as follows. The path is split into
  *   volume+directory and file+ext. If the buffer is too small to fit the
