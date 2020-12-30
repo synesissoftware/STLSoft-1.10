@@ -4,7 +4,7 @@
  * Purpose:     Platform header for the path_buffer components.
  *
  * Created:     22nd December 2020
- * Updated:     22nd December 2020
+ * Updated:     30th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_MAJOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_MINOR       0
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_EDIT        1
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_REVISION    2
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_PATH_BUFFER_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -126,11 +126,11 @@ namespace platformstl_project
     {};
 
     /// Specialisation of the basic_path_buffer template for the ANSI character type \c char
-    typedef basic_path_buffer<char>                         path_a;
+    typedef basic_path_buffer<char>                         path_buffer_a;
     /// Specialisation of the basic_path_buffer template for the Unicode character type \c wchar_t
-    typedef basic_path_buffer<wchar_t>                      path_w;
+    typedef basic_path_buffer<wchar_t>                      path_buffer_w;
     /// Specialisation of the basic_path_buffer template for the ANSI character type \c char on UNIX, and for the \c TCHAR type on Windows
-    typedef basic_path_buffer<tchar>                        path;
+    typedef basic_path_buffer<tchar>                        path_buffer;
 #elif defined(PLATFORMSTL_OS_IS_UNIX)
 
 # ifdef UNIXSTL_NO_NAMESPACE
