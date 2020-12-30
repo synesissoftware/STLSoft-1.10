@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     24th December 2020
+ * Updated:     30th December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    6
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    12
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     301
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     302
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,9 +85,9 @@
 #  include <winstl/exception/winstl_exception.hpp>
 # endif /* !WINSTL_INCL_WINSTL_EXCEPTION_HPP_WINSTL_EXCEPTION */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-#ifndef STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_HPP_MEMORY_AUTO_BUFFER */
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
 #ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES
 # include <stlsoft/memory/util/allocator_features.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES */
