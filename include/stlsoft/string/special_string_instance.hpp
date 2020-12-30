@@ -4,7 +4,7 @@
  * Purpose:     Special string instance class template.
  *
  * Created:     3rd June 2006
- * Updated:     26th December 2020
+ * Updated:     29th December 2020
  *
  * Thanks to:   Pablo Aguilar for spotting my omission of string access shims
  *              for special_string_instance_1.
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        40
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    3
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -609,9 +609,13 @@ private: // implementation
     ,   ss_char_a_t const*    s2
     ,   size_type          /* cch2 */
     ) const
+#ifdef STLSOFT_API_EXTERNAL_string_strnicmp
     {
         return 0 == STLSOFT_API_EXTERNAL_string_strnicmp(s1, s2, cch1);
     }
+#else
+    ;
+#endif
 
     bool
     equal_caseinsensitive_(
@@ -620,9 +624,13 @@ private: // implementation
     ,   ss_char_w_t const*    s2
     ,   size_type          /* cch2 */
     ) const
+#ifdef STLSOFT_API_EXTERNAL_string_wcsnicmp
     {
         return 0 == STLSOFT_API_EXTERNAL_string_wcsnicmp(s1, s2, cch1);
     }
+#else
+    ;
+#endif
 };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
