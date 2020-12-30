@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions
  *
  * Created:     21st December 2020
- * Updated:     24th December 2020
+ * Updated:     27th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR     1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      3
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION  5
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,6 +194,24 @@ unixstl_C_path_classify_m(
     );
 }
 
+STLSOFT_INLINE
+STLSOFT_NS_QUAL(ss_truthy_t)
+unixstl_C_path_is_rooted(
+    unixstl_C_path_classification_t pc
+)
+{
+    switch (pc)
+    {
+    case UNIXSTL_C_PathType_SlashRooted:
+    case UNIXSTL_C_PathType_HomeRooted:
+
+        return 1;
+    default:
+
+        return 0;
+    }
+}
+
 #ifdef __cplusplus
 
 inline
@@ -266,6 +284,15 @@ path_classify(
     UNIXSTL_ASSERT(0 != path.size() || ss_nullptr_k != path.data());
 
     return unixstl_C_path_classify(path.data(), path.size(), parseFlags, results);
+}
+
+inline
+bool
+path_is_rooted(
+    path_classification_t   pc
+)
+{
+    return 0 != unixstl_C_path_is_rooted(pc);
 }
 
 /* /////////////////////////////////////////////////////////////////////////

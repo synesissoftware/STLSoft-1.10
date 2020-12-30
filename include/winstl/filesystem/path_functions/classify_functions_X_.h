@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     28th November 2020
- * Updated:     22nd December 2020
+ * Updated:     30th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -474,7 +474,6 @@ drive_letter_relative:
     return WinSTL_C_PathType_Relative;
 }
 
-
 STLSOFT_INLINE
 winstl_C_path_classification_t
 winstl_C_path_classify_impl_X_(
@@ -593,7 +592,8 @@ winstl_C_path_classify_impl_X_(
                 break;
             case '/':
 
-                if (isLongPathPrefixed)
+                if (isLongPathPrefixed &&
+                    0 == (WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH & parseFlags))
                 {
                     results->firstInvalid.len   =   1;
                     results->firstInvalid.ptr   =   p0;
@@ -740,6 +740,77 @@ winstl_C_path_classify_impl_X_(
     {
         results->directory.len  -=  results->root.len;
         results->directory.ptr  +=  results->root.len;
+    }
+
+    return rcRoot;
+}
+
+STLSOFT_INLINE
+winstl_C_path_classification_t
+winstl_C_path_classify_root_impl_X_(
+    WINSTL_C_PATH_CLASSIFY_IMPL_char_t_ const*                  s0
+,   size_t                                                      cch0
+,   int                                                         parseFlags
+,   WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_*    root
+)
+{
+    typedef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_             char_t;
+
+    char_t const*                               s1;
+    size_t                                      cch1;
+    size_t                                      cchPrefix;
+    int                                         isLongPathPrefixed;
+    winstl_C_path_classification_t              rcRoot;
+    winstl_C_path_classification_results_X_t_   results;
+
+    WINSTL_ASSERT(0 == cch0 || ss_nullptr_k != s0);
+
+    WINSTL_MESSAGE_ASSERT("unrecognised parsing flags", 0 == (~WINSTL_PATH_CLASSIFY_F_MASK_ & parseFlags));
+
+    WINSTL_ASSERT(ss_nullptr_k != root);
+
+    root->len   =   0;
+    root->ptr   =   NULL;
+
+    if (0 == cch0)
+    {
+        return WinSTL_C_PathType_Empty;
+    }
+
+    rcRoot = winstl_C_path_classify_root_X_(
+        s0, cch0
+    ,   parseFlags
+    ,   &results
+    ,   &s1, &cch1
+    ,   &cchPrefix
+    ,   &isLongPathPrefixed
+    );
+
+    WINSTL_ASSERT(cch1 <= cch0);
+
+    root->len   =   cch0 - cch1;
+
+    switch (rcRoot)
+    {
+    case    WinSTL_C_PathType_SlashRooted:
+    case    WinSTL_C_PathType_DriveLetterRooted:
+    case    WinSTL_C_PathType_UncRooted:
+    case    WinSTL_C_PathType_HomeRooted:
+
+        root->ptr   =   s0;
+        break;
+    case    WinSTL_C_PathType_DriveLetterRelative:
+
+        root->ptr   =   s0;
+        break;
+    case    WinSTL_C_PathType_UncIncomplete:
+
+        root->len   =   cch0;
+        root->ptr   =   s0;
+        break;
+    default:
+
+        break;
     }
 
     return rcRoot;

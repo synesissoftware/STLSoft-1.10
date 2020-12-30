@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions
  *
  * Created:     28th November 2020
- * Updated:     24th December 2020
+ * Updated:     30th December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,9 +51,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR       1
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    2
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        3
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       3
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    1
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -160,8 +160,9 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 #define WINSTL_PATH_CLASSIFY_F_IGNORESLASHRUNS              (0x00000001)
 #define WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARS           (0x00000002)
 #define WINSTL_PATH_CLASSIFY_F_RECOGNISETILDEHOME           (0x00000004)
+#define WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH (0x00000008)
 
-#define WINSTL_PATH_CLASSIFY_F_MASK_                        (0x00000007)
+#define WINSTL_PATH_CLASSIFY_F_MASK_                        (0x0000000f)
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
@@ -179,6 +180,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # define winstl_C_path_classify_find_UNC_server_and_share_X_        winstl_C_path_classify_find_UNC_server_and_share_m_
 # define winstl_C_path_classify_root_X_                             winstl_C_path_classify_root_m_
 # define winstl_C_path_classify_impl_X_                             winstl_C_path_classify_impl_m_
+# define winstl_C_path_classify_root_impl_X_                        winstl_C_path_classify_root_impl_m_
 # include <winstl/filesystem/path_functions/classify_functions_X_.h>
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_
@@ -190,6 +192,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # undef winstl_C_path_classify_find_UNC_server_and_share_X_
 # undef winstl_C_path_classify_root_X_
 # undef winstl_C_path_classify_impl_X_
+# undef winstl_C_path_classify_root_impl_X_
 
 # define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                        wchar_t
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_    stlsoft_C_string_slice_w_t
@@ -201,6 +204,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # define winstl_C_path_classify_find_UNC_server_and_share_X_        winstl_C_path_classify_find_UNC_server_and_share_w_
 # define winstl_C_path_classify_root_X_                             winstl_C_path_classify_root_w_
 # define winstl_C_path_classify_impl_X_                             winstl_C_path_classify_impl_w_
+# define winstl_C_path_classify_root_impl_X_                        winstl_C_path_classify_root_impl_w_
 # include <winstl/filesystem/path_functions/classify_functions_X_.h>
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_
@@ -212,6 +216,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # undef winstl_C_path_classify_find_UNC_server_and_share_X_
 # undef winstl_C_path_classify_root_X_
 # undef winstl_C_path_classify_impl_X_
+# undef winstl_C_path_classify_root_impl_X_
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -265,6 +270,91 @@ winstl_C_path_classify_w(
     );
 }
 
+STLSOFT_INLINE
+winstl_C_path_classification_t
+winstl_C_path_classify_root_m(
+    char const*                                 s
+,   size_t                                      cch
+,   int                                         parseFlags
+,   stlsoft_C_string_slice_m_t*                 root
+)
+{
+    stlsoft_C_string_slice_m_t  dummy;
+
+    if (ss_nullptr_k == root)
+    {
+        root = &dummy;
+    }
+
+    return winstl_C_path_classify_root_impl_m_(
+        s, cch
+    ,   parseFlags
+    ,   root
+    );
+}
+
+STLSOFT_INLINE
+winstl_C_path_classification_t
+winstl_C_path_classify_root_w(
+    wchar_t const*                              s
+,   size_t                                      cch
+,   int                                         parseFlags
+,   stlsoft_C_string_slice_w_t*                 root
+)
+{
+    stlsoft_C_string_slice_w_t  dummy;
+
+    if (ss_nullptr_k == root)
+    {
+        root = &dummy;
+    }
+
+    return winstl_C_path_classify_root_impl_w_(
+        s, cch
+    ,   parseFlags
+    ,   root
+    );
+}
+
+STLSOFT_INLINE
+STLSOFT_NS_QUAL(ss_truthy_t)
+winstl_C_path_is_rooted(
+    winstl_C_path_classification_t  pc
+)
+{
+    switch (pc)
+    {
+    case WinSTL_C_PathType_SlashRooted:
+    case WinSTL_C_PathType_DriveLetterRooted:
+    case WinSTL_C_PathType_UncRooted:
+    case WinSTL_C_PathType_HomeRooted:
+
+        return true;
+    default:
+
+        return false;
+    }
+}
+
+STLSOFT_INLINE
+STLSOFT_NS_QUAL(ss_truthy_t)
+winstl_C_path_is_absolute(
+    winstl_C_path_classification_t  pc
+)
+{
+    switch (pc)
+    {
+    case WinSTL_C_PathType_DriveLetterRooted:
+    case WinSTL_C_PathType_UncRooted:
+    case WinSTL_C_PathType_HomeRooted:
+
+        return true;
+    default:
+
+        return false;
+    }
+}
+
 #ifdef __cplusplus
 
 inline
@@ -289,6 +379,30 @@ winstl_C_path_classify(
 )
 {
     return winstl_C_path_classify_w(s, cch, parseFlags, results);
+}
+
+inline
+winstl_C_path_classification_t
+winstl_C_path_classify_root(
+    char const*                                 s
+,   size_t                                      cch
+,   int                                         parseFlags
+,   stlsoft_C_string_slice_m_t*                 root
+)
+{
+    return winstl_C_path_classify_root_m(s, cch, parseFlags, root);
+}
+
+inline
+winstl_C_path_classification_t
+winstl_C_path_classify_root(
+    wchar_t const*                              s
+,   size_t                                      cch
+,   int                                         parseFlags
+,   stlsoft_C_string_slice_w_t*                 root
+)
+{
+    return winstl_C_path_classify_root_w(s, cch, parseFlags, root);
 }
 #endif /* __cplusplus */
 
@@ -350,6 +464,40 @@ path_classify(
     WINSTL_ASSERT(0 != path.size() || ss_nullptr_k != path.data());
 
     return winstl_C_path_classify(path.data(), path.size(), parseFlags, results);
+}
+
+template<
+    ss_typename_param_k T_string
+,   ss_typename_param_k T_results
+>
+path_classification_t
+path_classify_root(
+    T_string const&         path
+,   int                     parseFlags
+,   T_results*              results
+)
+{
+    WINSTL_ASSERT(0 != path.size() || ss_nullptr_k != path.data());
+
+    return winstl_C_path_classify_root(path.data(), path.size(), parseFlags, results);
+}
+
+inline
+bool
+path_is_rooted(
+    path_classification_t   pc
+)
+{
+    return 0 != winstl_C_path_is_rooted(pc);
+}
+
+inline
+bool
+path_is_absolute(
+    path_classification_t   pc
+)
+{
+    return 0 != winstl_C_path_is_absolute(pc);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
