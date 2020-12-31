@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     30th December 2020
+ * Updated:     31st December 2020
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     14
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      172
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  4
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      173
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -226,6 +226,8 @@ public:
     typedef filesystem_traits<C>                            class_type;
     /// The path-classification results type
     typedef unixstl_C_path_classification_results_t         path_classification_results_type;
+    /// The path-classification string slice type
+    typedef stlsoft_C_string_slice_t                        path_classification_string_slice_type;
 
     /// The (signed) integer type
     typedef us_int_t                                        int_type;
@@ -588,7 +590,20 @@ public:
     ///
     /// The function returns false if the path contains any part of a
     /// file name (or extension), directory, or share.
-    static bool_type    is_root_designator(char_type const* path);
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    );
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    ,   size_t              cchPath
+    );
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
     /// Returns \c true if the character is a path-name separator
     static bool_type    is_path_name_separator(char_type ch);
 
@@ -892,6 +907,7 @@ public: // types
     typedef struct stat                                     fstat_data_type;
     typedef filesystem_traits<us_char_a_t>                  class_type;
     typedef unixstl_C_path_classification_results_m_t       path_classification_results_type;
+    typedef stlsoft_C_string_slice_m_t                      path_classification_string_slice_type;
     typedef us_int_t                                        int_type;
     typedef us_bool_t                                       bool_type;
     typedef int                                             file_handle_type;
@@ -1490,62 +1506,165 @@ public: // path classification and analysis
     }
 
 private:
-    static bool_type is_root_drive_(char_type const* path)
-    {
 #ifdef _WIN32
 
-        if (isalpha(path[0]) &&
-            ':' == path[1] &&
-            is_path_name_separator(path[2]) &&
-            '\0' == path[3])
-        {
-            return true;
-        }
-#else /* ? _WIN32 */
-
-        STLSOFT_SUPPRESS_UNUSED(path);
-#endif /* _WIN32 */
-
-        return false;
-    }
-    static bool_type is_root_UNC_(char_type const* path)
+    static
+    bool_type
+    is_root_drive_(
+        char_type const*    path
+    ,   size_type           len
+    )
     {
-#ifdef _WIN32
-
-        if (is_path_UNC(path))
+        if (3 == len)
         {
-            char_type const* sep = str_pbrk(path + 2, "\\/");
-
-            if (NULL == sep ||
-                '\0' == sep[1])
+            if (iswalpha(path[0]) &&
+                L':' == path[1] &&
+                is_path_name_separator(path[2]))
             {
                 return true;
             }
         }
-#else /* ? _WIN32 */
-
-        STLSOFT_SUPPRESS_UNUSED(path);
-#endif /* _WIN32 */
 
         return false;
     }
-    static bool_type is_root_directory_(char_type const* path)
+    static
+    bool_type
+    is_root_UNC_(
+        char_type const*    path
+    ,   size_type           len
+    )
     {
-        if (is_path_name_separator(path[0]) &&
-            '\0' == path[1])
+        if (len < 2)
         {
+            return false;
+        }
+        else if (L'\\' != path[0])
+        {
+            return false;
+        }
+        else if (L'\\' != path[1])
+        {
+            return false;
+        }
+        else if (2 == len)
+        {
+            // "\\"
+
             return true;
+        }
+        else if (len < 4)
+        {
+            return false;
+        }
+        else
+        {
+            char_type const*    svr =   path + 2;
+            size_type           rem =   len - 2;
+
+            if (ss_nullptr_k != stlsoft::c_string::strnchr(svr, rem, '?'))
+            {
+                return false;
+            }
+
+            // now only have to be concerned with
+            //
+            // - "\\svr\share\";
+
+
+            // we've skipped past either "\\", so search for
+            // next '\'
+
+            char_type const* shr = stlsoft::c_string::strnchr(svr, rem, '\\');
+
+            if (ss_nullptr_k != shr)
+            {
+                if (ss_nullptr_k != shr)
+                {
+                    ++shr;
+                    rem -=  size_type(shr - svr);
+
+                    char_type const* sl = stlsoft::c_string::strnpbrkn(shr, rem, "\\/", 2);
+
+                    if (ss_nullptr_k != sl)
+                    {
+                        size_type const n3 = size_type(sl - shr);
+
+                        rem -= n3;
+
+                        if (1 == rem)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+#endif /* _WIN32 */
+    static
+    bool_type
+    is_root_directory_(
+        char_type const*    path
+    ,   size_type           len
+    )
+    {
+        if (1 == len)
+        {
+            if (is_path_name_separator(path[0]))
+            {
+                return true;
+            }
         }
 
         return false;
     }
 public:
-    static bool_type is_root_designator(char_type const* path)
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    )
     {
         UNIXSTL_ASSERT(NULL != path);
 
-        return is_root_directory_(path) || is_root_drive_(path) || is_root_UNC_(path);
+        size_type const len = str_len(path);
+
+        return is_root_designator(path, len);
     }
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    ,   size_t              cchPath
+    )
+    {
+        UNIXSTL_ASSERT(0 == cchPath || NULL != path);
+
+        if (is_root_directory_(path, cchPath))
+        {
+            return true;
+        }
+
+#ifdef _WIN32
+
+        if (is_root_drive_(path, cchPath))
+        {
+            return true;
+        }
+
+        if (is_root_UNC_(path, cchPath))
+        {
+            return true;
+        }
+#endif
+
+        return false;
+    }
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
     static bool_type is_path_name_separator(char_type ch)
     {
