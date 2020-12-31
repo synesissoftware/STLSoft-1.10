@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     30th December 2020
+ * Updated:     31st December 2020
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       21
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        178
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    3
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        180
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -99,6 +99,12 @@
 #ifndef STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER
 # include <stlsoft/memory/auto_buffer.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_MEMORY_HPP_AUTO_BUFFER */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+# include <stlsoft/string/c_string/strnchr.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
+#ifndef STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR
+# include <stlsoft/string/c_string/strnpbrkn.h>
+#endif /* !STLSOFT_INCL_STLSOFT_STRING_C_STRING_H_STRNCHR */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS
 # include <stlsoft/util/resizeable_buffer_helpers.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS */
@@ -566,7 +572,19 @@ public:
     ///
     /// The function returns false if the path contains any part of a
     /// file name (or extension), directory, or share.
-    static bool_type    is_root_designator(char_type const* path);
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    );
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    ,   size_t              cchPath
+    );
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
     /// Returns \c true if the character is a path-name separator
     ///
@@ -1412,7 +1430,9 @@ private:
     //
     //  "X:\"
     //
-    static bool_type is_root_drive_(
+    static
+    bool_type
+    is_root_drive_(
         char_type const*    path
     ,   size_type           len
     )
@@ -1433,17 +1453,76 @@ private:
     //
     //  "\\"
     //
-    static bool_type is_root_UNC_(
+    static
+    bool_type
+    is_root_UNC_(
         char_type const*    path
     ,   size_type           len
     )
     {
-        if (2 == len)
+        if (len < 2)
         {
-            if ('\\' == path[0] &&
-                '\\' == path[1])
+            return false;
+        }
+        else if (L'\\' != path[0])
+        {
+            return false;
+        }
+        else if (L'\\' != path[1])
+        {
+            return false;
+        }
+        else if (2 == len)
+        {
+            // "\\"
+
+            return true;
+        }
+        else if (len < 4)
+        {
+            return false;
+        }
+        else
+        {
+            char_type const*    svr =   path + 2;
+            size_type           rem =   len - 2;
+
+            if (ss_nullptr_k != stlsoft::c_string::strnchr(svr, rem, '?'))
             {
-                return true;
+                return false;
+            }
+
+            // now only have to be concerned with
+            //
+            // - "\\svr\share\";
+
+
+            // we've skipped past either "\\", so search for
+            // next '\'
+
+            char_type const* shr = stlsoft::c_string::strnchr(svr, rem, '\\');
+
+            if (ss_nullptr_k != shr)
+            {
+                if (ss_nullptr_k != shr)
+                {
+                    ++shr;
+                    rem -=  size_type(shr - svr);
+
+                    char_type const* sl = stlsoft::c_string::strnpbrkn(shr, rem, "\\/", 2);
+
+                    if (ss_nullptr_k != sl)
+                    {
+                        size_type const n3 = size_type(sl - shr);
+
+                        rem -= n3;
+
+                        if (1 == rem)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
         }
 
@@ -1457,7 +1536,9 @@ private:
     //
     //  "/"
     //
-    static bool_type is_root_directory_(
+    static
+    bool_type
+    is_root_directory_(
         char_type const*    path
     ,   size_type           len
     )
@@ -1473,14 +1554,47 @@ private:
         return false;
     }
 public:
-    static bool_type is_root_designator(char_type const* path)
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    )
     {
         WINSTL_ASSERT(NULL != path);
 
         size_type const len = str_len(path);
 
-        return is_root_directory_(path, len) || is_root_drive_(path, len) || is_root_UNC_(path, len);
+        return is_root_designator(path, len);
     }
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    ,   size_t              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+        if (is_root_directory_(path, cchPath))
+        {
+            return true;
+        }
+
+        if (is_root_drive_(path, cchPath))
+        {
+            return true;
+        }
+
+        if (is_root_UNC_(path, cchPath))
+        {
+            return true;
+        }
+
+        return false;
+    }
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
     static bool_type is_path_name_separator(char_type ch)
     {
@@ -2883,7 +2997,9 @@ private:
     //
     //  "X:\"
     //
-    static bool_type is_root_drive_(
+    static
+    bool_type
+    is_root_drive_(
         char_type const*    path
     ,   size_type           len
     )
@@ -2904,17 +3020,111 @@ private:
     //
     //  "\\"
     //
-    static bool_type is_root_UNC_(
+    static
+    bool_type
+    is_root_UNC_(
         char_type const*    path
     ,   size_type           len
     )
     {
-        if (2 == len)
+        if (len < 2)
         {
-            if ('\\' == path[0] &&
-                '\\' == path[1])
+            return false;
+        }
+        else if (L'\\' != path[0])
+        {
+            return false;
+        }
+        else if (L'\\' != path[1])
+        {
+            return false;
+        }
+        else if (2 == len)
+        {
+            // "\\"
+
+            return true;
+        }
+        else if (len < 4)
+        {
+            return false;
+        }
+        else
+        {
+            char_type const*    svr;
+            size_type           rem;
+
+            if (L'?' == path[2] &&
+                L'\\' == path[3])
             {
-                return true;
+                if (7 == len)
+                {
+                    if (iswalpha(path[4]) &&
+                        L':' == path[5] &&
+                        is_path_name_separator(path[6]))
+                    {
+                        // "\\?\X:\" ?
+
+                        return true;
+                    }
+                }
+
+                svr =   path + 4;
+                rem =   len - 4;
+
+                if (ss_nullptr_k != stlsoft::c_string::strnchr(svr, rem, L'/'))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                svr =   path + 2;
+                rem =   len - 2;
+            }
+
+            // now only have to be concerned with
+            //
+            // - "\\svr\share\";
+            // - "\\?\svr\share\"; and
+            // - "\\?\UNC\svr\share\"
+
+
+            // we've skipped past either "\\" or "\\?\", so search for
+            // next '\'
+
+            char_type const* shr = stlsoft::c_string::strnchr(svr, rem, L'\\');
+
+            if (ss_nullptr_k != shr)
+            {
+                if (3 == shr - svr &&
+                    0 == ::wcsncmp(L"UNC", svr, 3))
+                {
+                    svr +=  3;
+                    rem -=  3;
+
+                    shr = stlsoft::c_string::strnchr(svr + 1, rem - 1, L'\\');
+                }
+
+                if (ss_nullptr_k != shr)
+                {
+                    ++shr;
+                    rem -=  size_type(shr - svr);
+
+                    char_type const* sl = stlsoft::c_string::strnpbrkn(shr, rem, L"\\/", 2);
+
+                    if (ss_nullptr_k != sl)
+                    {
+                        size_type const n3 = size_type(sl - shr);
+
+                        rem -= n3;
+
+                        if (1 == rem)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
         }
 
@@ -2928,7 +3138,9 @@ private:
     //
     //  "/"
     //
-    static bool_type is_root_directory_(
+    static
+    bool_type
+    is_root_directory_(
         char_type const*    path
     ,   size_type           len
     )
@@ -2944,14 +3156,48 @@ private:
         return false;
     }
 public:
-    static bool_type is_root_designator(char_type const* path)
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    )
     {
         WINSTL_ASSERT(NULL != path);
 
         size_type const len = str_len(path);
 
-        return is_root_directory_(path, len) || is_root_drive_(path, len) || is_root_UNC_(path, len);
+        return is_root_designator(path, len);
     }
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
+    static
+    bool_type
+    is_root_designator(
+        char_type const*    path
+    ,   size_t              cchPath
+    )
+    {
+        WINSTL_ASSERT(0 == cchPath || NULL != path);
+
+
+        if (is_root_directory_(path, cchPath))
+        {
+            return true;
+        }
+
+        if (is_root_drive_(path, cchPath))
+        {
+            return true;
+        }
+
+        if (is_root_UNC_(path, cchPath))
+        {
+            return true;
+        }
+
+        return false;
+    }
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
     static bool_type is_path_name_separator(char_type ch)
     {
