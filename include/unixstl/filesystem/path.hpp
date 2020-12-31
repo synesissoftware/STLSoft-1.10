@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     30th December 2020
+ * Updated:     31st December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       265
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       266
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -541,6 +541,8 @@ private:
     ,   part_ator_type_
     >                                                       part_buffer_type_;
 
+
+    static size_type coalesce_parts_(part_buffer_type_& parts);
 
 private: // fields
     path_buffer_type_   m_buffer;
@@ -1228,6 +1230,45 @@ template<
 ,   ss_typename_param_k T
 ,   ss_typename_param_k A
 >
+inline /* static */
+ss_typename_param_k basic_path<C, T, A>::size_type
+basic_path<C, T, A>::coalesce_parts_(
+    ss_typename_param_k basic_path<C, T, A>::part_buffer_type_& parts
+)
+{
+    ss_typename_param_k part_buffer_type_::iterator src     =   parts.begin();
+    ss_typename_param_k part_buffer_type_::iterator dest    =   parts.begin();
+
+    { for (size_type i = 0; i < parts.size(); ++i, ++src)
+    {
+        if (0 == parts[i].len)
+        {
+            ; // Skip/overwrite this element
+        }
+        else
+        {
+            if (dest != src)
+            {
+                *dest = *src;
+            }
+
+            ++dest;
+        }
+    }}
+
+    size_type   n = static_cast<size_type>(dest - parts.begin());
+
+    parts.resize(n);
+
+    return n;
+}
+
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
 inline
 basic_path<C, T, A>::basic_path()
     : m_buffer()
@@ -1718,18 +1759,30 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
-    class_type  newPath(*this);
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+
+    results_t_                              results;
+    int const                               parseFlags  =   0
+                                                        ;
+    unixstl_C_path_classification_t const   pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+
+    class_type                              newPath(*this);
+    bool const                              is_rooted   =   traits_type::path_is_rooted(pcls);
 
 #ifdef STLSOFT_DEBUG
-    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0], newPath.m_buffer.size(), static_cast<char_type>('~'));
+
+    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0] + results.root.len, newPath.m_buffer.size() + results.root.len, static_cast<char_type>('~'));
 #endif /* STLSOFT_DEBUG */
 
     // Basically we scan through the path looking for ./ .\ ..\ and ../
 
     part_buffer_type_   parts(this->length() / 2);  // Uncanonicalised directory parts
-    char_type*          dest    =   &newPath.m_buffer[0];
-    char_type const*    p1      =   this->c_str();
+    char_type*          dest    =   &newPath.m_buffer[0] + results.root.len;
+    char_type const*    p1      =   data_() + results.root.len;
     char_type const*    p2;
+    size_type           num_d   =   0;
+    size_type           num_dd  =   0;
 
     if (this->is_absolute())
     {
@@ -1792,47 +1845,63 @@ basic_path<C, T, A>::canonicalise(
             switch(parts[i].len)
             {
                 case    1:
+
                     if ('.' == p1[0])
                     {
                         parts[i].type   =   part_type::dot;
+
+                        ++num_d;
                     }
                     break;
                 case    2:
+
                     if ('.' == p1[0])
                     {
                         if ('.' == p1[1])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
                         else if (path_name_separator() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
+
+                            ++num_d;
                         }
 #ifdef _WIN32
                         else if (path_name_separator_alt() == p1[1])
                         {
                             parts[i].type   =   part_type::dot;
+
+                            ++num_d;
                         }
 #endif /* _WIN32 */
                     }
                     break;
                 case    3:
+
                     if ('.' == p1[0] &&
                         '.' == p1[1])
                     {
                         if (path_name_separator() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
 #ifdef _WIN32
                         else if (path_name_separator_alt() == p1[2])
                         {
                             parts[i].type   =   part_type::dotdot;
+
+                            ++num_dd;
                         }
 #endif /* _WIN32 */
                     }
                     break;
                 default:
+
                     break;
             }
 
@@ -1842,45 +1911,95 @@ basic_path<C, T, A>::canonicalise(
         parts.resize(i);
     }
 
-    // 2. Process the parts into a canonicalised sequence
-    { for (size_type i = 0; i < parts.size(); ++i)
+    // 2.a Remove all '.' parts
+    { for (size_type i = 0; 0 != num_d && i < parts.size(); ++i)
     {
-        switch(parts[i].type)
+        UNIXSTL_ASSERT(0 != parts[i].len);
+
+        part_type&  part = parts[i];
+
+        if (part_type::dot == part.type)
         {
-            case    part_type::dot:
-                parts[i].len = 0;
-                break;
-            case    part_type::dotdot:
-                // Now need to track back and find a prior normal element
-                {
-                    size_type   prior;
+            part.len = 0;
 
-                    for (prior = i; ; )
-                    {
-                        if (0 == prior)
-                        {
-                            STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(invalid_argument)("No prior part to \"..\" for path canonicalisation"));
-                        }
-                        else
-                        {
-                            --prior;
-
-                            if (part_type::normal == parts[prior].type &&
-                                0 != parts[prior].len)
-                            {
-                                parts[i].len = 0;
-                                parts[prior].len = 0;
-                                break;
-                            }
-                        }
-                    }
-                }
-                break;
-            case    part_type::normal:
-            default:
-                break;
+            --num_d;
         }
     }}
+
+    coalesce_parts_(parts);
+
+    // 2.b Process the '..' parts
+
+    { for (size_type i = 0; 0 != num_dd && i < parts.size(); ++i)
+    {
+        UNIXSTL_ASSERT(0 != parts[i].len);
+
+        part_type&  part = parts[i];
+
+        if (part_type::dotdot == part.type)
+        {
+            // Now, regardless of where we're at, we look backwards
+            // for the latest available non-empty normal part
+
+            size_type prior = parts.size();
+
+            for (size_t j = 0; j != i; ++j)
+            {
+                size_type index = i - (j + 1);
+
+                UNIXSTL_ASSERT(index < prior);
+
+                part_type const& index_part = parts[index];
+
+                if (0 != index_part.len &&
+                    part_type::normal == index_part.type)
+                {
+                    prior = index;
+
+                    break;
+                }
+            }
+
+            if (parts.size() == prior)
+            {
+                // (still) at start, or having worked back to it
+
+                if (!is_rooted)
+                {
+                    // permit leading ".."
+                }
+                else
+                {
+                    // ignore leading ".."
+
+                    part.len = 0;
+                }
+            }
+            else
+            {
+                part_type& prior_part = parts[prior];
+
+                part.len        =   0;
+                prior_part.len  =   0;
+            }
+
+            --num_dd;
+        }
+    }}
+
+    coalesce_parts_(parts);
+
+    // 2.c "insert" a '.' if we've removed everything.
+    if (!is_rooted &&
+        parts.empty())
+    {
+        static const char_type  s_dot[] = { '.', '/' };
+
+        parts.resize(1);
+        parts[0].type   =   part_type::dot;
+        parts[0].len    =   1;
+        parts[0].p      =   s_dot;
+    }
 
     // 3. Write out all the parts back into the new path instance
     {
