@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     30th December 2020
+ * Updated:     31st December 2020
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    0
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     309
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     310
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1868,6 +1868,8 @@ basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
                                                         ;
     winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
 
+    STLSOFT_SUPPRESS_UNUSED(pcls);
+
     if (0 != results.extension.len)
     {
         m_buffer.resize(m_buffer.size() - results.extension.len);
@@ -2079,8 +2081,8 @@ basic_path<C, T, A>::canonicalise(
     // 0. Handle special path prefixes
 
     part_buffer_type_   parts(this->length() / 2);  // Uncanonicalised directory parts
-    char_type*          dest   =   &newPath.m_buffer[0] + results.root.len;
-    char_type const*    p1     =   data_() + results.root.len;
+    char_type*          dest    =   &newPath.m_buffer[0] + results.root.len;
+    char_type const*    p1      =   data_() + results.root.len;
     char_type const*    p2;
     size_type           num_d   =   0;
     size_type           num_dd  =   0;
