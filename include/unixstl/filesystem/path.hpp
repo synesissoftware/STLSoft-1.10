@@ -4,14 +4,14 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     31st December 2020
+ * Updated:     1st January 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       266
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       268
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -312,12 +312,16 @@ public:
 public:
     /// Appends the contents of \c rhs to the path
     class_type& push(class_type const& rhs, bool_type bAddPathNameSeparator = false);
+
     /// Appends the contents of \c rhs to the path
     class_type& push(char_type const* rhs, bool_type bAddPathNameSeparator = false);
+
     /// Appends the contents of \c rhs to the path as an extension
     class_type& push_ext(char_type const* rhs, bool_type bAddPathNameSeparator = false);
+
     /// Ensures that the path has a trailing path name separator
     class_type& push_sep();
+
     /// Pops the last path element from the path
     ///
     /// \note In previous versions, this operation did not remove the
@@ -328,12 +332,14 @@ public:
     pop(
         bool_type bRemoveTrailingPathNameSeparator = true
     ) STLSOFT_NOEXCEPT;
+
     /// Ensures that the path does not have a trailing path name separator
     ///
     /// \note Does not trim the separator character from the root designator
     ///
     /// \note This method is idempotent.
     class_type& pop_sep() STLSOFT_NOEXCEPT;
+
     /// Removes the extension, if any, from the file component of the path
     ///
     /// \note This method is idempotent.
@@ -379,6 +385,7 @@ public:
     make_absolute(
         bool_type bRemoveTrailingPathNameSeparator = true
     );
+
     /// Canonicalises the path, removing all "./" parts and evaluating all
     /// "../" parts. Any path with only one part will not be canonicalised.
     /// A leading '.' will be preserved if no other '..' or "normal" parts
@@ -407,35 +414,50 @@ public:
 /// \name Attributes
 /// @{
 public:
+    /// Obtains the location, if present
+    string_slice_type   get_location() const STLSOFT_NOEXCEPT;
+
     /// Obtains the file, if present
     string_slice_type   get_file() const STLSOFT_NOEXCEPT;
+
     /// Obtains the extension, if present, of the file, if present
     string_slice_type   get_ext() const STLSOFT_NOEXCEPT;
+
     /// Returns the length of the converted path
     size_type           length() const STLSOFT_NOEXCEPT;
+
     /// Returns the length of the converted path
     ///
     /// \remarks Equivalent to length()
     size_type           size() const STLSOFT_NOEXCEPT;
+
     /// The maximum possible length of a path
     static size_type    max_size() STLSOFT_NOEXCEPT;
+
     /// Determines whether the path is empty
     bool_type           empty() const STLSOFT_NOEXCEPT;
+
     /// Returns null-terminated non-mutable (const) pointer to string data
     char_type const*    data() const STLSOFT_NOEXCEPT;
+
     /// Conversion to a non-mutable (const) pointer to the path
     char_type const*    c_str() const STLSOFT_NOEXCEPT;
+
     /// Returns a non-mutable (const) reference to the character at
     ///  the given index
     ///
     /// \note The behaviour is undefined if <code>index >= size()</code>.
     char_type const&    operator [](size_type index) const STLSOFT_NOEXCEPT;
+
     /// Indicates whether the path represents an existing file system entry
     bool_type           exists() const STLSOFT_NOEXCEPT;
+
     /// Indicates whether the path is rooted
     bool_type           is_rooted() const STLSOFT_NOEXCEPT;
+
     /// Indicates whether the path is absolute
     bool_type           is_absolute() const STLSOFT_NOEXCEPT;
+
     /// Indicates whether the path has a trailing separator
     bool_type           has_sep() const STLSOFT_NOEXCEPT;
 
@@ -2044,6 +2066,21 @@ basic_path<C, T, A>::canonicalise(
 
     return true;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+}
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+ss_typename_type_ret_k basic_path<C, T, A>::string_slice_type
+basic_path<C, T, A>::get_location() const STLSOFT_NOEXCEPT
+{
+    char_type const* const  slash   =   last_slash_(data_(), size_());
+    size_type const         len     =   (NULL == slash) ? 0 : (static_cast<size_type>(slash - data_()) + 1);
+
+    return string_slice_type(data_(), len);
 }
 
 template<

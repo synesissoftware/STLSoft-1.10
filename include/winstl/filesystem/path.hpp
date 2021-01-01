@@ -4,14 +4,14 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     31st December 2020
+ * Updated:     2nd January 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    0
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     310
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 2
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     312
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -452,6 +452,8 @@ public:
 /// \name Attributes
 /// @{
 public:
+    /// Obtains the location, if present
+    string_slice_type   get_location() const STLSOFT_NOEXCEPT;
     /// Obtains the file, if present
     string_slice_type   get_file() const STLSOFT_NOEXCEPT;
     /// Obtains the extension, if present, of the file, if present
@@ -1740,7 +1742,6 @@ basic_path<C, T, A>::pop(
 ) STLSOFT_NOEXCEPT
 {
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
     results_t_                              results;
     int const                               parseFlags  =   0
@@ -1824,7 +1825,6 @@ basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
     //   - if !rooted, has 1+ directories
 
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
     results_t_                              results;
     int const                               parseFlags  =   0
@@ -1860,7 +1860,6 @@ basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
     results_t_                              results;
     int const                               parseFlags  =   0
@@ -1938,7 +1937,6 @@ basic_path<C, T, A>::make_absolute(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 )
 {
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
     typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
     int const               parseFlags  =   0
@@ -2033,7 +2031,6 @@ basic_path<C, T, A>::canonicalise(
     }
 
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
     results_t_                              results;
     int const                               parseFlags  =   0
@@ -2304,6 +2301,21 @@ basic_path<C, T, A>::canonicalise(
 
     return true;
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+}
+
+template<
+    ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+ss_typename_type_ret_k basic_path<C, T, A>::string_slice_type
+basic_path<C, T, A>::get_location() const STLSOFT_NOEXCEPT
+{
+    char_type const* const  slash   =   last_slash_(data_(), size_());
+    size_type const         len     =   (NULL == slash) ? 0 : (static_cast<size_type>(slash - data_()) + 1);
+
+    return string_slice_type(data_(), len);
 }
 
 template<
