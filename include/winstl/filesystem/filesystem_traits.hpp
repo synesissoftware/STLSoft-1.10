@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     31st December 2020
+ * Updated:     1st January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       21
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        180
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    4
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        181
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,6 +194,8 @@ public:
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     /// The current instantion of the type
     typedef filesystem_traits<C>                            class_type;
+    /// The path-classification type
+    typedef path_classification_t                           path_classification_type;
     /// The path-classification results type
     typedef winstl_C_path_classification_results_t          path_classification_results_type;
     /// The path-classification string slice type
@@ -938,6 +940,7 @@ public: // types
     typedef WIN32_FIND_DATAA                                stat_data_type;
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     typedef filesystem_traits<char_type>                    class_type;
+    typedef path_classification_t                           path_classification_type;
     typedef winstl_C_path_classification_results_m_t        path_classification_results_type;
     typedef stlsoft_C_string_slice_m_t                      path_classification_string_slice_type;
     typedef ws_int_t                                        int_type;
@@ -2509,6 +2512,7 @@ public: // types
     typedef WIN32_FIND_DATAW                                stat_data_type;
     typedef BY_HANDLE_FILE_INFORMATION                      fstat_data_type;
     typedef filesystem_traits<char_type>                    class_type;
+    typedef path_classification_t                           path_classification_type;
     typedef winstl_C_path_classification_results_w_t        path_classification_results_type;
     typedef stlsoft_C_string_slice_w_t                      path_classification_string_slice_type;
     typedef ws_int_t                                        int_type;

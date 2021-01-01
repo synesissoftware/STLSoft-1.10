@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     31st December 2020
+ * Updated:     1st January 2021
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -14,7 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,9 +59,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     14
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      173
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     15
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  1
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      174
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -224,6 +224,8 @@ public:
     typedef struct stat                                     fstat_data_type;
     /// The current instantion of the type
     typedef filesystem_traits<C>                            class_type;
+    /// The path-classification type
+    typedef path_classification_t                           path_classification_type;
     /// The path-classification results type
     typedef unixstl_C_path_classification_results_t         path_classification_results_type;
     /// The path-classification string slice type
@@ -487,6 +489,12 @@ public:
 
     static
     path_is_rooted(
+        path_classification_t               pc
+    );
+
+    static
+    bool
+    path_is_absolute(
         path_classification_t               pc
     );
 
@@ -906,6 +914,7 @@ public: // types
     typedef struct stat                                     stat_data_type;
     typedef struct stat                                     fstat_data_type;
     typedef filesystem_traits<us_char_a_t>                  class_type;
+    typedef path_classification_t                           path_classification_type;
     typedef unixstl_C_path_classification_results_m_t       path_classification_results_type;
     typedef stlsoft_C_string_slice_m_t                      path_classification_string_slice_type;
     typedef us_int_t                                        int_type;
@@ -1222,6 +1231,15 @@ public: // path classification and analysis
     )
     {
         return 0 != unixstl_C_path_is_rooted(pc);
+    }
+
+    static
+    bool
+    path_is_absolute(
+        path_classification_t               pc
+    )
+    {
+        return path_is_rooted(pc);
     }
 
 
