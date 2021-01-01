@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     27th December 2020
+ * Updated:     1st January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     1
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     2
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      131
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      133
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -243,12 +243,33 @@ public:
 /// \name System Paths
 /// @{
 public:
+
     /// Gets the full path name of the current user's home directory
+    ///
+    /// \param buffer Pointer to array of size \c cchBuffer. Must not be
+    ///  \c nullptr unless \c cchBuffer is 0
+    /// \param cchBuffer Size of the buffer, measured in characters,
+    ///  available in \c buffer. Should include space for the terminating
+    ///  \c NUL character
+    ///
+    /// \pre 0 == cchBuffer || nullptr != buffer
     static
     size_type
     get_home_directory(
         char_type   buffer[]
     ,   size_type   cchBuffer
+    );
+
+    /// Gets the full path name of the current user's home directory
+    ///
+    /// \param rb Reference to a resizeable buffer
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_home_directory(
+        T_resizeableBuffer& rb
     );
 /// @}
 
@@ -557,6 +578,22 @@ public:
         UNIXSTL_ASSERT(NULL != buffer || 0 == cchBuffer);
 
         return unixstl_C_get_home_directory_a(buffer, cchBuffer);
+    }
+
+    template<
+        ss_typename_param_k T_resizeableBuffer
+    >
+    static
+    size_type
+    get_home_directory(
+        T_resizeableBuffer& rb
+    )
+    {
+        size_type const cchRequired = get_home_directory(static_cast<char_type*>(NULL), 0);
+
+        rb.resize(cchRequired);
+
+        return get_home_directory(&rb[0], rb.size());
     }
 
 public:
