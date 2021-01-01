@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        stlsoft/api/internal/stdio.h
  *
- * Purpose:     External preprocessor aliases for internal stdio API.
+ * Purpose:     Internal adaptations for stdio.h constructs.
  *
  * Created:     11th November 2020
- * Updated:     11th November 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

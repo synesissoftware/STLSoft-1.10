@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        stlsoft/api/internal/time.h
  *
- * Purpose:     External preprocessor aliases for internal Time API.
+ * Purpose:     Internal adaptations for time.h constructs.
  *
  * Created:     11th January 2017
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
