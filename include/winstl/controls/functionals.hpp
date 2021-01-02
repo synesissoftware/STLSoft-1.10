@@ -4,11 +4,11 @@
  * Purpose:     Functionals for application to controls.
  *
  * Created:     8th October 2002
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MAJOR    4
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MINOR    2
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 8
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     92
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 9
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,6 +102,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 #ifndef _WINSTL_CONTROL_FUNCTIONALS_NO_STD
 # include <functional>
@@ -259,7 +263,7 @@ public:
 
         WINSTL_ASSERT(cchClass < STLSOFT_NUM_ELEMENTS(m_name.sza));
 
-        ::memcpy(&m_name.sza[0], windowClass, cchClass);
+        STLSOFT_API_INTERNAL_memfns_memcpy(&m_name.sza[0], windowClass, cchClass);
         m_name.sza[cchClass] = '\0';
     }
     ss_explicit_k is_class(ws_char_w_t const* windowClass)
@@ -273,7 +277,7 @@ public:
 
         WINSTL_ASSERT(cchClass < STLSOFT_NUM_ELEMENTS(m_name.szw));
 
-        ::memcpy(&m_name.szw[0], windowClass, cchClass);
+        STLSOFT_API_INTERNAL_memfns_memcpy(&m_name.szw[0], windowClass, cchClass);
         m_name.szw[cchClass] = '\0';
     }
 

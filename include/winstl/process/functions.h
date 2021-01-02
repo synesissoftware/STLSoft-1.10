@@ -4,11 +4,11 @@
  * Purpose:     Process functions.
  *
  * Created:     12th March 2006
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     29
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 6
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -75,14 +75,13 @@
 # include <stlsoft/quality/cover.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
 
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
-
 #ifndef WINSTL_INCL_WINSTL_API_external_h_HandleAndObject
 # include <winstl/api/external/HandleAndObject.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_HandleAndObject */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -139,7 +138,7 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcess9_a(
 
     if(NULL == si)
     {
-        STLSOFT_NS_GLOBAL(memset)(&si_, 0, sizeof(si_));
+        STLSOFT_API_INTERNAL_memfns_memset(&si_, 0, sizeof(si_));
         si = &si_;
     }
     if(NULL == pi)
@@ -171,7 +170,7 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcessFEA_a(ws_char_a_t const* cmdLine, DWOR
     PROCESS_INFORMATION pi;
     BOOL                b;
 
-    STLSOFT_NS_GLOBAL(memset)(&si, 0, sizeof(si));
+    STLSOFT_API_INTERNAL_memfns_memset(&si, 0, sizeof(si));
 
     b = STLSOFT_NS_GLOBAL(CreateProcessA)(NULL, stlsoft_const_cast(ws_char_a_t*, cmdLine), NULL, NULL, FALSE, flags, stlsoft_const_cast(ws_char_a_t*, envBlock), NULL, &si, &pi);
 

@@ -4,11 +4,11 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     3rd December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    3
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     115
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 2
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     116
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,9 +90,14 @@
 # endif /* !STLSOFT_INCL_STLSOFT_ERROR_HPP_CONVERSION_ERROR */
 # include <errno.h>
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+
 #ifndef STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR
 # include <stlsoft/internal/safestr.h>
 #endif /* !STLSOFT_INCL_STLSOFT_INTERNAL_H_SAFESTR */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -329,7 +334,7 @@ public:
     multibyte2wide(multibyte2wide const& rhs)
         : parent_class_type(rhs.parent_class_type::size())
     {
-        ::memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
+        STLSOFT_API_INTERNAL_memfns_memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
     }
 private:
 # else /* compiler */
@@ -470,7 +475,7 @@ public:
     wide2multibyte(wide2multibyte const& rhs)
         : parent_class_type(rhs.parent_class_type::size())
     {
-        ::memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
+        STLSOFT_API_INTERNAL_memfns_memcpy(this->parent_class_type::data_(), rhs.parent_class_type::data(), this->parent_class_type::size());
     }
 private:
 # else /* compiler */

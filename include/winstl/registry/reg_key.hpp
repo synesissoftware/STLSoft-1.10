@@ -5,14 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     30th November 2020
+ * Updated:     2nd January 2021
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    12
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        160
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    13
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        161
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -126,6 +126,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Registry
 # include <winstl/api/external/Registry.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Registry */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -1390,7 +1394,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
         char_type const* const  s   =   values[i];
         const size_type         len =   traits_type::str_len(s);
 
-        ::memcpy(p, s, sizeof(char_type) * len);
+        STLSOFT_API_INTERNAL_memfns_memcpy(p, s, sizeof(char_type) * len);
         p += len;
         *p++ = '\0';
     }}

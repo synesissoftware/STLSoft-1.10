@@ -72,8 +72,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        258
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        259
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -147,6 +147,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
 # include <winstl/api/external/FileManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -1039,7 +1043,7 @@ struct fff_traits_<ws_char_w_t>
         searchSpec_l[2] =   L'?';
         searchSpec_l[3] =   L'\\';
 
-        ::memcpy(&searchSpec_l[0] + 4, &searchSpec[0], sizeof(ws_char_w_t) * searchSpec.size());
+        STLSOFT_API_INTERNAL_memfns_memcpy(&searchSpec_l[0] + 4, &searchSpec[0], sizeof(ws_char_w_t) * searchSpec.size());
 
         return T_fs_traits::find_first_file(searchSpec_l.data(), findData);
     }

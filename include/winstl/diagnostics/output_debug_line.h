@@ -4,11 +4,11 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     24th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    0
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 1
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     20
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 2
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,6 +91,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_Debugging
 # include <winstl/api/external/Debugging.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_Debugging */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
@@ -162,7 +166,7 @@ stlsoft_C_concatenate_N_m(
                 ss_char_a_t const*  s   =   va_arg(args, ss_char_a_t const*);
                 ss_size_t           len =   STLSOFT_NS_QUAL(c_str_len_a)(s);
 
-                STLSOFT_NS_GLOBAL(memcpy)(dest, s, sizeof(ss_char_a_t) * len);
+                STLSOFT_API_INTERNAL_memfns_memcpy(dest, s, sizeof(ss_char_a_t) * len);
                 dest += len;
             }
             *dest = '\0';

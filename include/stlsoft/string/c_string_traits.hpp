@@ -4,11 +4,11 @@
  * Purpose:     Contains the c_string_traits class template.
  *
  * Created:     15th November 2002
- * Updated:     18th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_MAJOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_MINOR       0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_EDIT        161
+# define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_REVISION    2
+# define STLSOFT_VER_STLSOFT_STRING_HPP_C_STRING_TRAITS_EDIT        162
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,6 +76,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 #if 0
 #elif defined(STLSOFT_MIN_CRT) && \
@@ -185,7 +189,7 @@ public:
         STLSOFT_ASSERT(NULL != dest);
         STLSOFT_ASSERT(0 == n || NULL != src);
 
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
+        return static_cast<char_type*>(STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(char_type) * n));
     }
 
     static int_type str_compare(char_type const* s1, char_type const* s2)
@@ -315,7 +319,7 @@ public:
         STLSOFT_ASSERT(NULL != dest);
         STLSOFT_ASSERT(0 == n || NULL != src);
 
-        return static_cast<char_type*>(::memcpy(dest, src, sizeof(char_type) * n));
+        return static_cast<char_type*>(STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(char_type) * n));
     }
 
     static int_type str_compare(char_type const* s1, char_type const* s2)

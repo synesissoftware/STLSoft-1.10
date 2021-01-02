@@ -4,11 +4,11 @@
  * Purpose:     Sequence class for adapting ACE_Message_Queue to an STL sequence.
  *
  * Created:     15th September 2004
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_MAJOR     2
 # define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_MINOR     1
-# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_REVISION  15
-# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_EDIT      74
+# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_REVISION  16
+# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_EDIT      75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,6 +113,10 @@
 # define STLSOFT_INCL_ALGORITHM
 # include <algorithm>                // for std::copy
 #endif /* !STLSOFT_INCL_ALGORITHM */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -328,7 +332,7 @@ public:
                     {
                         // Terminal case
 
-                        ::memcpy(&m_entryIndex[m_entry->rd_ptr()], f, n);
+                        STLSOFT_API_INTERNAL_memfns_memcpy(&m_entryIndex[m_entry->rd_ptr()], f, n);
 
                         ACESTL_ASSERT(n <= m_entryLength - m_entryIndex);
 
@@ -340,7 +344,7 @@ public:
                     {
                         // Recursive case
 
-                        ::memcpy(&m_entryIndex[m_entry->rd_ptr()], f, n1);
+                        STLSOFT_API_INTERNAL_memfns_memcpy(&m_entryIndex[m_entry->rd_ptr()], f, n1);
                         f += n1;
 
                         m_entry = nextEntry();
@@ -363,13 +367,13 @@ public:
                 {
                     // Terminal case
 
-                    ::memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
+                    STLSOFT_API_INTERNAL_memfns_memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
                 }
                 else
                 {
                     // Recursive case
 
-                    ::memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
+                    STLSOFT_API_INTERNAL_memfns_memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
                     o += n1;
 
                     m_entry = nextEntry();
@@ -396,7 +400,7 @@ public:
                     //
                     // This is the terminating case.
 
-                    ::memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n);
+                    STLSOFT_API_INTERNAL_memfns_memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n);
 
                     ACESTL_ASSERT(n <= m_entryLength - m_entryIndex);
 
@@ -406,7 +410,7 @@ public:
                 }
                 else
                 {
-                    ::memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
+                    STLSOFT_API_INTERNAL_memfns_memcpy(o, &m_entryIndex[m_entry->rd_ptr()], n1);
                     o += n1;
 
                     m_entry = nextEntry();

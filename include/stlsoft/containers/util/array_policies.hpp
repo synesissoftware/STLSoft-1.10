@@ -5,13 +5,13 @@
  *              frame) classes.
  *
  * Created:     1st September 2002
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MINOR       1
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        148
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    8
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        149
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,10 +78,9 @@
 # include <stlsoft/meta/n_types.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_META_HPP_N_TYPES */
 
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>                    // for memcpy(), memset()
-#endif /* !STLSOFT_INCL_H_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -269,7 +268,7 @@ template<   ss_typename_param_k T
 void do_construct_1(A& /* ator */, T *p, ss_size_t n, two_type)
 {
 #if 1
-    ::memset(p, 0, n * sizeof(T));
+    STLSOFT_API_INTERNAL_memfns_memset(p, 0, n * sizeof(T));
 #else /* ? 0 */
     STLSOFT_NS_QUAL_STD(fill_n)(p, n, 0);
 #endif /* 0 */
@@ -307,7 +306,7 @@ void do_construct_2(A& /* ator */, T* p, ss_size_t n, T const& value, two_type)
 {
     for(T* e = p + n; p != e; ++p)
     {
-        ::memcpy(p, &value, sizeof(T));
+        STLSOFT_API_INTERNAL_memfns_memcpy(p, &value, sizeof(T));
     }
 }
 
@@ -339,7 +338,7 @@ void do_copy_construct_1(A& /* ator */, T* p, T const* src, ss_size_t n, two_typ
 {
     for(T* e = p + n; p != e; ++p, ++src)
     {
-        ::memcpy(p, src, sizeof(T));
+        STLSOFT_API_INTERNAL_memfns_memcpy(p, src, sizeof(T));
     }
 }
 

@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     1st January 2021
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       21
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    4
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        181
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    5
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        182
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -134,6 +134,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -1713,7 +1717,7 @@ private:
                         r2 = cchBuffer;
                     }
 
-                    ::memcpy(&buffer[0], &buffer_[0], sizeof(char_type) * r2);
+                    STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0], &buffer_[0], sizeof(char_type) * r2);
                     if (NULL != pFile2 &&
                         r2 == (r - 1) &&
                         static_cast<size_type>(pFile2 - &buffer_[0]) < r2)
@@ -1778,7 +1782,7 @@ private:
                 fileName_[len] = '\0';
 
                 return get_full_path_name_impl(
-                    static_cast<char_type*>(::memcpy(&fileName_[0], fileName, sizeof(char_type) * len))
+                    static_cast<char_type*>(STLSOFT_API_INTERNAL_memfns_memcpy(&fileName_[0], fileName, sizeof(char_type) * len))
                 ,   len
                 ,   buffer
                 ,   cchBuffer
@@ -2206,7 +2210,7 @@ public:
             {
                 WINSTL_ASSERT(len > 0);
 
-                ::memcpy(&buffer[0], path, sizeof(char_type) * (len - 1));
+                STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0], path, sizeof(char_type) * (len - 1));
 
                 buffer[len - 1] = '\0';
 
@@ -3531,7 +3535,7 @@ public:
             {
                 WINSTL_ASSERT(len > 0);
 
-                ::memcpy(&buffer[0], path, sizeof(char_type) * (len - 1));
+                STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0], path, sizeof(char_type) * (len - 1));
 
                 buffer[len - 1] = L'\0';
 

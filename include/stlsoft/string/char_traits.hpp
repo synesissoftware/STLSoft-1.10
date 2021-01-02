@@ -4,11 +4,11 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     87
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 7
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -115,6 +115,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 #if !defined(STLSOFT_NO_CHAR_TRAITS_LIBRARY_CALLS) || \
     defined(STLSOFT_DEBUG)
@@ -338,7 +342,7 @@ public:
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::copy called with NULL source", (0 == cch || NULL != src));
 
 #ifdef STLSOFT_DEBUG
-        ::memset(dest, 0, cch * sizeof(char_type));
+        STLSOFT_API_INTERNAL_memfns_memset(dest, 0, cch * sizeof(char_type));
 #endif /* STLSOFT_DEBUG */
 
         for(ret = dest; 0 < cch; --cch, ++dest, ++src)
@@ -695,7 +699,7 @@ public:
 STLSOFT_TEMPLATE_SPECIALISATION
 inline char* stlsoft_char_traits<char>::assign(char* dest, ss_size_t cch, char const& c)
 {
-    return static_cast<char*>(::memset(dest, c, cch * sizeof(char)));
+    return static_cast<char*>(STLSOFT_API_INTERNAL_memfns_memset(dest, c, cch * sizeof(char)));
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION
@@ -721,10 +725,10 @@ STLSOFT_TEMPLATE_SPECIALISATION
 inline char* stlsoft_char_traits<char>::copy(char* dest, char const* src, ss_size_t cch)
 {
 #ifdef STLSOFT_DEBUG
-    ::memset(dest, 0, cch * sizeof(char));
+    STLSOFT_API_INTERNAL_memfns_memset(dest, 0, cch * sizeof(char));
 #endif /* STLSOFT_DEBUG */
 
-    return static_cast<char*>(memcpy(dest, src, cch * sizeof(char)));
+    return static_cast<char*>(STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, cch * sizeof(char)));
 }
 
 STLSOFT_TEMPLATE_SPECIALISATION

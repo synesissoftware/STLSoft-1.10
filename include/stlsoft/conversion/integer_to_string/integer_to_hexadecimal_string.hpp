@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MINOR       0
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    19
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        95
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    20
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        96
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -99,6 +99,10 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -322,7 +326,7 @@ i2s_handle_signed_minimum_in_hexadecimal_2_(
     C* end  =   buf + cchBuf;
     C* r    =   end - STLSOFT_NUM_ELEMENTS(s_minimum);
 
-    ::memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
+    STLSOFT_API_INTERNAL_memfns_memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
 
     STLSOFT_COVER_MARK_LINE();
 
@@ -350,7 +354,7 @@ i2s_handle_signed_minimum_in_hexadecimal_2_(
     C* end  =   buf + cchBuf;
     C* r    =   end - STLSOFT_NUM_ELEMENTS(s_minimum);
 
-    ::memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
+    STLSOFT_API_INTERNAL_memfns_memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
 
     STLSOFT_COVER_MARK_LINE();
 
@@ -378,7 +382,7 @@ i2s_handle_signed_minimum_in_hexadecimal_2_(
     C* end  =   buf + cchBuf;
     C* r    =   end - STLSOFT_NUM_ELEMENTS(s_minimum);
 
-    ::memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
+    STLSOFT_API_INTERNAL_memfns_memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
 
     STLSOFT_COVER_MARK_LINE();
 
@@ -406,7 +410,7 @@ i2s_handle_signed_minimum_in_hexadecimal_2_(
     C* end  =   buf + cchBuf;
     C* r    =   end - STLSOFT_NUM_ELEMENTS(s_minimum);
 
-    ::memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
+    STLSOFT_API_INTERNAL_memfns_memcpy(r, s_minimum, sizeof(C) * STLSOFT_NUM_ELEMENTS(s_minimum));
 
     STLSOFT_COVER_MARK_LINE();
 

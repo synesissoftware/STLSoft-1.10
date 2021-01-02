@@ -4,11 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     29th January 2013
- * Updated:     25th December 2020
+ * Updated:     2nd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2013-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    5
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        11
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    6
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,10 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_SystemInformation
 # include <winstl/api/external/SystemInformation.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_SystemInformation */
+
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -98,8 +102,8 @@ namespace winstl_project
 STLSOFT_INLINE
 ws_size_t
 winstl_C_get_home_directory_a(
-    ws_char_a_t*    buffer
-,   ws_size_t       cchBuffer
+    ws_char_a_t buffer[]
+,   ws_size_t   cchBuffer
 )
 {
     /* NOTE: assumes that HOMEDRIVE and HOMEPATH can never be larger than _MAX_PATH */
@@ -126,8 +130,8 @@ winstl_C_get_home_directory_a(
         return 1 + cchTotal;
     }
 
-    memcpy(buffer + 0, drive, sizeof(ws_char_a_t) * cchDrive);
-    memcpy(buffer + cchDrive, directory, sizeof(ws_char_a_t) * cchDirectory);
+    STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0] + 0, drive, sizeof(ws_char_a_t) * cchDrive);
+    STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0] + cchDrive, directory, sizeof(ws_char_a_t) * cchDirectory);
     buffer[cchDrive + cchDirectory] = '\0';
 
     return cchTotal;
@@ -136,8 +140,8 @@ winstl_C_get_home_directory_a(
 STLSOFT_INLINE
 ws_size_t
 winstl_C_get_home_directory_w(
-    ws_char_w_t*    buffer
-,   ws_size_t       cchBuffer
+    ws_char_w_t buffer[]
+,   ws_size_t   cchBuffer
 )
 {
     /* NOTE: assumes that HOMEDRIVE and HOMEPATH can never be larger than _MAX_PATH */
@@ -164,8 +168,8 @@ winstl_C_get_home_directory_w(
         return 1 + cchTotal;
     }
 
-    memcpy(buffer + 0, drive, sizeof(ws_char_w_t) * cchDrive);
-    memcpy(buffer + cchDrive, directory, sizeof(ws_char_w_t) * cchDirectory);
+    STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0] + 0, drive, sizeof(ws_char_w_t) * cchDrive);
+    STLSOFT_API_INTERNAL_memfns_memcpy(&buffer[0] + cchDrive, directory, sizeof(ws_char_w_t) * cchDirectory);
     buffer[cchDrive + cchDirectory] = '\0';
 
     return cchTotal;
@@ -180,8 +184,8 @@ winstl_C_get_home_directory_w(
 inline
 ws_size_t
 get_home_directory(
-    ws_char_a_t*    buffer
-,   ws_size_t       cchBuffer
+    ws_char_a_t buffer[]
+,   ws_size_t   cchBuffer
 )
 {
     return winstl_C_get_home_directory_a(buffer, cchBuffer);
@@ -190,8 +194,8 @@ get_home_directory(
 inline
 ws_size_t
 get_home_directory(
-    ws_char_w_t*    buffer
-,   ws_size_t       cchBuffer
+    ws_char_w_t buffer[]
+,   ws_size_t   cchBuffer
 )
 {
     return winstl_C_get_home_directory_w(buffer, cchBuffer);

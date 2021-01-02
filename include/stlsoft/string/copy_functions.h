@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MINOR      0
-# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_REVISION   2
-# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       10
+# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_REVISION   3
+# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -83,10 +83,9 @@
 # include <stlsoft/quality/cover.h>
 #endif /* !STLSOFT_INCL_STLSOFT_QUALITY_H_COVER */
 
-#ifndef STLSOFT_INCL_H_STRING
-# define STLSOFT_INCL_H_STRING
-# include <string.h>
-#endif /* !STLSOFT_INCL_H_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
+# include <stlsoft/api/internal/memfns.h>
+#endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -136,7 +135,7 @@ STLSoft_C_string_copy_a(
     if( 0 != n &&
         0 != cchSrc)
     {
-        STLSOFT_NS_GLOBAL(memcpy)(dest, src, sizeof(ss_char_a_t) * n);
+        STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_a_t) * n);
 
         if(n < cchDest)
         {
@@ -166,7 +165,7 @@ STLSoft_C_string_copy_w(
     if( 0 != n &&
         0 != cchSrc)
     {
-        STLSOFT_NS_GLOBAL(memcpy)(dest, src, sizeof(ss_char_w_t) * n);
+        STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_w_t) * n);
     }
 
     if(n < cchDest)
@@ -225,7 +224,7 @@ STLSoft_C_string_copy_with_nul_a(
 
     if(0 != n)
     {
-        STLSOFT_NS_GLOBAL(memcpy)(dest, src, sizeof(ss_char_a_t) * n);
+        STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_a_t) * n);
 
         dest[n] = '\0';
     }
@@ -265,7 +264,7 @@ STLSoft_C_string_copy_with_nul_w(
 
     if(0 != n)
     {
-        STLSOFT_NS_GLOBAL(memcpy)(dest, src, sizeof(ss_char_w_t) * n);
+        STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_w_t) * n);
     }
 
     if(0 != cchDest)
