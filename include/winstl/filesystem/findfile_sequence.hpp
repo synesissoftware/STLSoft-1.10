@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     2nd January 2021
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -26,7 +26,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -73,7 +73,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        257
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        258
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -124,9 +124,9 @@
 # include <stlsoft/shims/access/string.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_HPP_STRING */
 #ifndef STLSOFT_COMPILER_IS_WATCOM
-#ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
-# include <stlsoft/util/std/iterator_helper.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
+# ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
+#  include <stlsoft/util/std/iterator_helper.hpp>
+# endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
 #endif /* compiler */
 #ifndef STLSOFT_INCL_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE
 # include <stlsoft/smartptr/scoped_handle.hpp>
@@ -1027,8 +1027,8 @@ struct fff_traits_<ws_char_w_t>
     static
     HANDLE
     find_first_file_l(
-        T_buffer const&     searchSpec
-    ,   T_findData*         findData
+        T_buffer const& searchSpec
+    ,   T_findData*     findData
     ,   T_fs_traits const*
     )
     {
@@ -1044,7 +1044,6 @@ struct fff_traits_<ws_char_w_t>
         return T_fs_traits::find_first_file(searchSpec_l.data(), findData);
     }
 };
-#endif /* compiler */
 
 #endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
 
