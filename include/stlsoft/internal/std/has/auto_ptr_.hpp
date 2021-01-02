@@ -19,7 +19,17 @@
 #elif __cplusplus >= 201703L
 #else
 
-# define STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_
+# if 0
+# elif defined(__GNUC__) && \
+       __GNUC__ >= 9 && \
+       __cplusplus >= 201402L
+
+   /* for GCC 9+ and C++14 or later we do not enable, so as to avoid warnings */
+
+# else
+
+#  define STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_
+# endif
 #endif
 
 #endif /* !STLSOFT_INCL_stlsoft_internal_std_has_HPP_auto_ptr_ */
