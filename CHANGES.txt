@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  14th December 2020
+; Updated:  4th January 2021
 
 ============================================================================
 
@@ -37,6 +37,7 @@ Changes:
  + stlsoft/string/c_string/strnpbrkn.h:
     + added stlsoft_C_(str|wcs)npbrkn()
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 24 (13th December 2020)
@@ -54,6 +55,7 @@ Changes:
 
  + unixstl/filesystem/path_buffer.hpp:
     + added unixstl::basic_path_buffer
+
 
 ============================================================================
 
@@ -222,6 +224,7 @@ Changes:
 
  ~ winstl/system/version_info.hpp:
     - removed dependency on basic_file_path_buffer
+
 
 ============================================================================
 
@@ -432,6 +435,7 @@ Changes:
  ~ winstl/shims/access/string/LSA_UNICODE_STRING.hpp:
     ~ changed significantly the way in which cstring_maker works, and adjusted all dependent code
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 21 (27th July 2020)
@@ -457,6 +461,7 @@ Changes:
  ~ unixstl/filesystem/readdir_sequence.hpp:
     ~ fixed readdir_sequence::empty()
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 20 (4th July 2020)
@@ -475,6 +480,7 @@ Changes:
  ~ stlsoft/internal/std/has/shared_ptr_.hpp:
  ~ stlsoft/internal/std/has/unique_ptr_.hpp:
     ~ fixed detecton of shared_ptr and unique_ptr
+
 
 ============================================================================
 
@@ -520,6 +526,7 @@ Changes:
 
  ~ winstl/security/functions.h:
     ~ fixed defect in implementation function
+
 
 ============================================================================
 
@@ -573,6 +580,7 @@ Changes:
 
  - winstl/string/spin_policies.hpp:
     - removed vestigial (and erroneous) file
+
 
 ============================================================================
 
@@ -629,6 +637,7 @@ Changes:
 
  ~ winstl/filesystem/findfile_sequence.hpp:
     ~ GCC 8 compatibility
+
 
 ============================================================================
 
@@ -926,6 +935,7 @@ Changes:
     winstl::environment_variable : + data(); + equal(); + equal_ignore_case(); + operators ==() and !=()
     winstl::environment_variable : + refactored, and added exists() method
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 10 (20th December 2018)
@@ -1010,6 +1020,7 @@ Changes:
  ~ winstl/synch/process_mutex.hpp:
     + winstl::process_mutex() now takes an optional EVENT handle which will be signalled if the mutex experiences an abandoned acquire
     ~ refactored in terms of external API
+
 
 ============================================================================
 
@@ -1140,6 +1151,7 @@ Changes:
  ~ unixstl/filesystem/filesystem_traits.hpp:
     ~ fixing break to UNIX-compatibility introduced in beta-6/7
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 7 (9th June 2018)
@@ -1179,6 +1191,7 @@ Changes:
  ~ winstl/diagnostics/output_debug_line.h:
  ~ winstl/diagnostics/output_debug_line.hpp:
     ~ trivial boilerplate changes
+
 
 ============================================================================
 
@@ -1594,6 +1607,7 @@ Changes:
  ~ winstl/window/zorder_iterator.hpp:
     ~ refactored in terms of external API
 
+
 ============================================================================
 
 Changes for 1.10.1 beta 5 (15th May 2017)
@@ -1717,10 +1731,6 @@ General:
    functions, elicitation functions, modification functions, and validation
    functions
  * ... and many many other improvements and additions ...
-
-
-
-============================================================================
 
 
 
@@ -1865,6 +1875,7 @@ Changes:
 
  ~ stlsoft/internal/cccap/msvc.h:
     - MSVC++ does not support __func__
+
 
 ============================================================================
 
@@ -2385,6 +2396,7 @@ Changes for 1.9.120 (9th September 2015)
 
     ~ widestring-compatible
 
+
 ============================================================================
 
 Changes for 1.9.119 (26th August 2015)
@@ -2425,6 +2437,7 @@ Changes:
   + winstl/internal/windows_version.h:
 
     + separated out all Windows-version assessments
+
 
 ============================================================================
 
@@ -2556,6 +2569,7 @@ Changes:
 
  ~ winstl/winstl.h:
     ~ tidying up use of non-standard names
+
 
 ============================================================================
 
@@ -3121,6 +3135,7 @@ Changes:
  ~ include/winstl/filesystem/filesystem_traits.hpp:
     ~ changed erroneously named new method's name from invalid_handle_value() to invalid_file_handle_value()
 
+
 ============================================================================
 
 Changes for 1.9.107 (30th January 2011)
@@ -3229,6 +3244,7 @@ Changes:
     + added equal() method, and operator ==/!= non-member operators
     + added swap() in winstl namespace
 
+
 ============================================================================
 
 Changes for 1.9.106 (28th December 2010)
@@ -3247,6 +3263,7 @@ Changes:
 
  ~ include/winstl/error/exceptions.hpp:
     ~ workaround for Intel compile error
+
 
 ============================================================================
 
@@ -3900,6 +3917,7 @@ Changes:
  ~ winstl/system/system_traits.hpp:
     + str_set() method
 
+
 ============================================================================
 
 Changes for 1.9.96 (10th March 2010)
@@ -3927,6 +3945,7 @@ Changes:
  ~ include/stlsoft/util/std/library_discriminator.hpp:
     ~ refactored Dinkumware detection, to discriminate 8, 9 and 10
 
+
 ============================================================================
 
 Changes for 1.9.95 (7th March 2010)
@@ -3945,6 +3964,7 @@ Changes:
  ~ include/comstl/error/exceptions.hpp:
     + added get_hr()
     ~ deprecated hr()
+
 
 ============================================================================
 
@@ -3970,6 +3990,7 @@ Changes:
 
  ~ include/winstl/filesystem/memory_mapped_file.hpp:
     ~ corrected omission of inline from swap for winstl::memory_mapped_file
+
 
 ============================================================================
 
@@ -4022,6 +4043,7 @@ Changes:
  ~ include/winstl/system/system_traits.hpp:
  ~ include/winstl/system/version_info.hpp:
     ~ now uses WINSTL_CONST_MAX_PATH
+
 
 ============================================================================
 
@@ -4107,6 +4129,7 @@ Changes:
  ~ include/winstl/winstl.h:
     ~ header ordering, for GCC 3.4
 
+
 ============================================================================
 
 Changes for 1.9.89 (19th January 2010)
@@ -4145,6 +4168,7 @@ Changes:
  ~ include/unixstl/filesystem/readdir_sequence.hpp:
  ~ include/unixstl/system/system_traits.hpp:
     ~ safe string compatibility
+
 
 ============================================================================
 
@@ -4243,6 +4267,7 @@ Changes:
     + added MAKEINTRESOURCEA
     + added MAKEINTRESOURCEW
 
+
 ============================================================================
 
 Changes for 1.9.87 (11th August 2009)
@@ -4251,6 +4276,7 @@ Summary:
 ========
 
  * trivial formatting changes
+
 
 ============================================================================
 
@@ -4329,6 +4355,7 @@ Changes:
  ~ include/winstl/filesystem/path.hpp:
     ~ minor changes to exception-specifications
 
+
 ============================================================================
 
 Changes for 1.9.85 (16th June 2009)
@@ -4364,6 +4391,7 @@ Changes:
 
  ~ winstl/controls/listview_sequence.hpp:
     ~ lvs_string_t may now be overridden via the pre-processor, in preparation for future expansion of flexibility
+
 
 ============================================================================
 
@@ -4405,6 +4433,7 @@ Changes:
  ~ include/winstl/registry/reg_key.hpp:
     ~ fixed defect in set_value_() overload for REG_MULTI_SZ values (widestring only)
 
+
 ============================================================================
 
 Changes for 1.9.83 (19th May 2009)
@@ -4439,6 +4468,7 @@ Changes:
     ~ corrected exception-safety defect (by reversing the order of m_name and m_hkey)
     ~ documentation simplification
 
+
 ============================================================================
 
 Changes for 1.9.82 (15th May 2009)
@@ -4460,6 +4490,7 @@ Changes:
 
  ~ include/winstl/registry/reg_traits.hpp:
     + added reg_delete_tree()
+
 
 ============================================================================
 
@@ -4484,6 +4515,7 @@ Changes:
  ~ include/stlsoft/stlsoft.h:
     + added __func__ support detection, via STLSOFT_CF_func_SYMBOL_SUPPORT
     + added symbol for __FUNCTION__ or equivalent: STLSOFT_FUNCTION_SYMBOL
+
 
 ============================================================================
 
@@ -4553,6 +4585,7 @@ Changes:
  ~ include/winstl/filesystem/path.hpp:
     ~ changed implementation of generic operator =() in order to avoid possibilities of infinite loops (which can happen when a type with an opposing string encoding is used)
 
+
 ============================================================================
 
 Changes for 1.9.79 (2nd May 2009)
@@ -4582,6 +4615,7 @@ Changes:
 
  ~ include/inetstl/shims/access/string/std/in_addr.hpp:
     ~ compatibility with "safe string" library
+
 
 ============================================================================
 
@@ -4640,6 +4674,7 @@ Changes:
  ~ winstl/system/system_traits.hpp:
     ~ corrected behaviour of get_environment_variable()
 
+
 ============================================================================
 
 Changes for 1.9.77 (9th March 2009)
@@ -4664,6 +4699,7 @@ Changes:
 
  ~ include/winstl/filesystem/memory_mapped_file.hpp:
     ~ fixed invalid invariant
+
 
 ============================================================================
 
@@ -4696,6 +4732,7 @@ Changes:
 
  ~ include/winstl/filesystem/memory_mapped_file.hpp:
     + added swap() method, and std::swap() overload
+
 
 ============================================================================
 
@@ -4747,6 +4784,7 @@ Changes:
     ~ renamed all internal member types to have trailing underscore
     ~ changed subscript operator to be able to index (but not use) the end element
 
+
 ============================================================================
 
 Changes for 1.9.74 (13th February 2009)
@@ -4774,6 +4812,7 @@ Changes:
 
  ~ include/platformstl/filesystem/file_lines.hpp:
     ~ workaround for Borland code generation defect
+
 
 ============================================================================
 
@@ -4805,6 +4844,7 @@ Changes:
 
  ~ include/winstl/filesystem/findfile_sequence.hpp:
     ~ workaround for VC++ 7.1 defect (requiring length() to return size_t, not member type size_type)
+
 
 ============================================================================
 
@@ -4878,6 +4918,7 @@ Changes:
  ~ include/winstl/system/system_traits.hpp:
     ~ tidied up asserts
 
+
 ============================================================================
 
 Changes for 1.9.71 (28th January 2009)
@@ -4895,6 +4936,7 @@ Changes:
 
  ~ include/winstl/filesystem/findfile_sequence.hpp:
     ~ added workaround for missing CO_E_PATHTOOLONG on DMC++
+
 
 ============================================================================
 
@@ -4947,6 +4989,7 @@ Changes:
     + added char_copy() to system_traits specialisations
     ~ trivial documentation markup modifications
 
+
 ============================================================================
 
 Changes for 1.9.69 (23rd January 2009)
@@ -4972,6 +5015,7 @@ Changes:
  ~ include/winstl/string/resource_string.hpp:
     ~ removal of unnecessary string access shim
 
+
 ============================================================================
 
 Changes for 1.9.68 (18th January 2009)
@@ -4990,6 +5034,7 @@ Changes:
  ~ include/stlsoft/util/must_init.hpp:
     ~ fixed ambiguous operator +() bug
     ~ documentation fixes
+
 
 ============================================================================
 
@@ -5016,6 +5061,7 @@ Changes:
  ~ include/stlsoft/memory/null_allocator.hpp:
     ~ when exception support is enabled it throws std::bad_alloc; otherwise, requesting memory from it is a contract violation
 
+
 ============================================================================
 
 Changes for 1.9.66 (4th January 2009)
@@ -5041,6 +5087,7 @@ Changes:
  ~ include/stlsoft/util/limit_traits.h:
     ~ compatibility with SunPro compiler
 
+
 ============================================================================
 
 Changes for 1.9.65 (1st January 2009)
@@ -5063,6 +5110,7 @@ Changes:
  ~ include/winstl/synch/process_mutex.hpp:
     ~ trivial documentation modification
 
+
 ============================================================================
 
 Changes for 1.9.64 (28th December 2008)
@@ -5082,6 +5130,7 @@ Changes:
     ~ fixed defect seen with Borland, whereby conversion to multibyte string
       in c_str_VARIANT_proxy_a's implicit conversion operator was not
       carried out
+
 
 ============================================================================
 
@@ -5105,6 +5154,7 @@ Changes:
  ~ stlsoft/string/simple_string.hpp:
     ~ optimised reserve() method so that it now does not alloc new buffer if
       requested size is less than current capacity
+
 
 ============================================================================
 
@@ -5143,6 +5193,7 @@ Changes:
  ~ winstl/shims/conversion/to_SYSTEMTIME/DATE.hpp:
     ~ fixed defect - initialising unknown name - in non-exception mode
 
+
 ============================================================================
 
 Changes for 1.9.61 (19th November 2008)
@@ -5179,6 +5230,7 @@ Changes:
  ~ mfcstl/shims/attribute/get_synch_handle.hpp:
     ~ documentation markup improvements
 
+
 ============================================================================
 
 Changes for 1.9.60 (27th October 2008)
@@ -5200,6 +5252,7 @@ Changes:
 
   + stlsoft/conversion/m2w.hpp:
      provides access to stlsoft::m2w converter class
+
 
 ============================================================================
 
@@ -5228,6 +5281,7 @@ Changes:
   ~ comstl/comstl.h:
      ~ refactored way in which VARIANT-manipulation macros are defined for C
        compilation to fix compile errors with GCC
+
 
 ============================================================================
 
@@ -5271,6 +5325,7 @@ Changes:
   ~ winstl/shims/access/string/time.hpp:
      ~ fixed defect whereby last character of converted date is truncated
      ~ reduced include dependencies
+
 
 ============================================================================
 
@@ -5326,6 +5381,7 @@ Changes:
   ~ winstl/controls/listbox_sequence.hpp:
      + added const_reference member type
 
+
 ============================================================================
 
 Changes for 1.9.56 (1st October 2008)
@@ -5358,6 +5414,7 @@ Changes:
 
   ~ unixstl/synch/sleep_functions.h:
      ~ tidied up includes for UNIX emulation on Win32
+
 
 ============================================================================
 
@@ -5405,6 +5462,7 @@ Changes:
   ~ winstl/registry/util/shared_handles.hpp:
      ~ fixes to x64 defects (contributed by Austin Ziegler)
 
+
 ============================================================================
 
 Changes for 1.9.54 (15th September 2008)
@@ -5437,6 +5495,7 @@ Changes:
   ~ winstl/shims/conversion/to_SYSTEMTIME/DATE.hpp:
      ~ removed dependency of to_SYSTEMTIME(DATE const&) on UDATE
 
+
 ============================================================================
 
 Changes for 1.9.53 (14th September 2008)
@@ -5465,6 +5524,7 @@ Changes:
      ~ fixed defective pre-condition enforcement of
        expand_environment_strings()
 
+
 ============================================================================
 
 Changes for 1.9.52 (11th September 2008)
@@ -5487,6 +5547,7 @@ Changes:
        unsigned->signed casts
      + added in safeguard for unlikely case of changing date/time pictures
        mid call
+
 
 ============================================================================
 
@@ -5517,6 +5578,7 @@ Changes:
      ~ fixed defect whereby failure to convert, due to invalid date, results
        in fault in shim string
 
+
 ============================================================================
 
 Changes for 1.9.50 (3rd September 2008)
@@ -5538,6 +5600,7 @@ Changes:
 
   + stlsoft/conversion/w2m.hpp
      * includes stlsoft/conversion/char_conversions.hpp
+
 
 ============================================================================
 
@@ -5564,6 +5627,7 @@ Changes:
   ~ winstl/registry/reg_key.hpp:
      ~ fix for DMC++ defect in winstl::reg_value function template
        definition
+
 
 ============================================================================
 
@@ -5622,6 +5686,7 @@ Changes:
   ~ winstl/error/error_desc.hpp
      + added bool_type member type
      + added empty() method
+
 
 ============================================================================
 
@@ -5886,6 +5951,7 @@ Changes:
    to common functions winstl__get_window_sptrint_() and
    winstl__set_window_sptrint_()
 
+
 ============================================================================
 
 Changes for 1.9.41 (13th May 2008)
@@ -5894,6 +5960,7 @@ Summary:
 ========
 
  * bug fix for GCC compilation on PowerPC that was broken with 1.9.40
+
 
 ============================================================================
 
@@ -5924,6 +5991,7 @@ Changes:
 
  ~ stlsoft/util/integral_printf_traits.hpp: fixed bug in 64-bit
    specialisations that was introduced in 1.9.39
+
 
 ============================================================================
 
@@ -5973,6 +6041,7 @@ Changes:
     LPARAM in this function
     (winstl/window/functions.h)
 
+
 ============================================================================
 
 Changes for 1.9.38 (4th May 2008)
@@ -6000,6 +6069,7 @@ Changes:
      PLATFORMSTL_ARCH_IS_ALPHA
      PLATFORMSTL_ARCH_IS_HPPA
      PLATFORMSTL_ARCH_IS_SPARC
+
 
 ============================================================================
 
@@ -6053,6 +6123,7 @@ Changes:
 
   ~ winstl/system/system_traits.hpp refactored to use new symbols
 
+
 ============================================================================
 
 Changes for 1.9.36 (30th April 2008)
@@ -6069,6 +6140,7 @@ Changes:
  --------
 
  + added support for FreeBSD operating system
+
 
 ============================================================================
 
@@ -6088,6 +6160,7 @@ Changes:
  + added value_multi_sz() to winstl::reg_value
  ~ refactored exception handling in basic_reg_key::reg_class() to avoid
    spurious compiler warnings about unreachable branches
+
 
 ============================================================================
 
@@ -6144,6 +6217,7 @@ Changes:
      * winstl::basic_reg_key_sequence
      * winstl::basic_reg_value
      * winstl::basic_reg_value_sequence
+
 
 ============================================================================
 
@@ -6209,6 +6283,7 @@ Changes:
   ~ marked winstl/shims/access/string/lsa_unicode_string.hpp as not for
     unit-test (since the unit-test programs do not #include <ntsecapi.h>)
 
+
 ============================================================================
 
 Changes for 1.9.32 (22nd April 2008)
@@ -6271,6 +6346,7 @@ Changes:
 
    ~ exception hierarchy refactoring
 
+
 ============================================================================
 
 Changes for 1.9.30 (3rd March 2008)
@@ -6279,6 +6355,7 @@ Summary:
 ========
 
  * tidying of distribution
+
 
 ============================================================================
 
@@ -6301,6 +6378,7 @@ Changes:
  -------
 
    ~ more preparation for safe string library compatibility
+
 
 ============================================================================
 
@@ -6336,6 +6414,7 @@ Changes:
    ~ winstl::reg_traits now inherits from winstl::system_traits
    ~ winstl::window_traits now inherits from winstl::system_traits
 
+
 ============================================================================
 
 Changes for 1.9.27 (17th March 2008)
@@ -6367,6 +6446,7 @@ Changes:
    + added item-data functions for list-/combo-boxes: listbox_getitemdata()
      and combobox_getitemdata()
 
+
 ============================================================================
 
 Changes for 1.9.26 (15th March 2008)
@@ -6395,6 +6475,7 @@ Changes:
    ~ stlsoft/internal/cccap/vectorc.h
    ~ stlsoft/internal/cccap/watcom.h
 
+
 ============================================================================
 
 Changes for 1.9.25 (9th March 2008)
@@ -6409,6 +6490,7 @@ Changes:
 ========
 
  < too many to list >
+
 
 ============================================================================
 
@@ -6438,6 +6520,7 @@ Changes:
 
   ~ unixstl/filesystem/path.hpp now uses std_swap
 
+
 ============================================================================
 
 Changes for 1.9.23 (20th February 2008)
@@ -6455,6 +6538,7 @@ Changes:
 
  ~ STLSOFT_CF_EXCEPTION_SUPPORT was being defined for Metrowerks CodeWarrior
    in C compilation units. This is now corrected
+
 
 ============================================================================
 
@@ -6483,6 +6567,7 @@ Changes:
  ~ minor warning-avoidance refactoring in
    winstl/system/console_colour_scope.hpp
 
+
 ============================================================================
 
 Changes for 1.9.21 (5th February 2008)
@@ -6499,6 +6584,7 @@ Changes:
     unixstl/synch/sleep_functions.h,
    rather than
     unixstl/synch/util/features.h
+
 
 ============================================================================
 
@@ -6520,6 +6606,7 @@ Changes:
    interface-compatible with unixstl::tss_index and winstl::tss_index, for
    single-threaded contexts.
 
+
 ============================================================================
 
 Changes for 1.9.19 (2nd February 2008)
@@ -6537,6 +6624,7 @@ Changes:
 
  ~ comstl/speech/sapi_util.hpp now introduces the SPEAKFLAGS enumerators
    into the global namespace, to be compatible with the SAPI headers.
+
 
 ============================================================================
 
@@ -6564,6 +6652,7 @@ Additions:
    SAPI interfaces and constants, for those compilers that do not have the
    headers supplied.
 
+
 ============================================================================
 
 Changes for 1.9.17 (5th January 2008)
@@ -6581,6 +6670,7 @@ Fixes:
 
  ~ Fixed new incompatibility in the definition of UNIXSTL_ASSERT for the
    Mac OS-X platform, evinced with Leopard and GCC 4.0.1
+
 
 ============================================================================
 
@@ -6649,6 +6739,7 @@ Fixes:
  ~ bug fix to winstl::GetTimeFormat_msA/W, whereby 24hr format was always
    used, regardless of the locale settings
 
+
 ============================================================================
 
 Changes for 1.9.15 (24th December 2007)
@@ -6669,6 +6760,7 @@ Fixes:
    This was causing problems with the (soon-to-be-released) xTests and
    flecxx libraries, and is now fixed.
 
+
 ============================================================================
 
 Changes for 1.9.14 (23rd December 2007)
@@ -6677,6 +6769,7 @@ Summary:
 ========
 
  * updated stlsoft version (_STLSOFT_VER) missing in 1.9.13
+
 
 ============================================================================
 
@@ -6846,6 +6939,7 @@ Changes:
 
  ~ winstl/system/system_traits.hpp - only uses truncation testing in 64-bit
    compilations
+
 
 ============================================================================
 
@@ -7107,6 +7201,7 @@ Items added to H:\3Pty\STLSoft\stlsoft-1.9.7:                                   
   H:\3Pty\STLSoft\stlsoft-1.9.7\include\winstl\shims\conversion\to_DATE\unittest\SYSTEMTIME_unittest_.h
   H:\3Pty\STLSoft\stlsoft-1.9.7\include\winstl\shims\conversion\to_DATE\unittest\UDATE_unittest_.h
 
+
 ============================================================================
 
 Changes for 1.9.6 (25th September 2007)
@@ -7180,6 +7275,7 @@ Fixes:
     winstl::system_traits::get_system_directory
     winstl::system_traits::get_windows_directory
 
+
 ============================================================================
 
 Changes for 1.9.4 (2nd August 2007)
@@ -7189,6 +7285,7 @@ Additions:
 
  + detection of compiler support for __VA_ARGS__, via the
    STLSOFT_CF_SUPPORTS_VARIADIC_MACROS
+
 
 ============================================================================
 
@@ -7207,6 +7304,7 @@ Additions:
    * degenerate overload (uint64_t)
    * WIN32_FIND_DATA overload
 
+
 ============================================================================
 
 Changes for 1.9.2 (2nd June 2007)
@@ -7223,6 +7321,7 @@ Fixes:
 
  ~ bug fix to operator /=() for winstl::basic_path and unixstl::basic_path
 
+
 ============================================================================
 
 Changes for 1.9.1, version released with Extended STL, volume 1 (30th April 2007):
@@ -7237,6 +7336,7 @@ Fixes:
    range is larger than the string.
 
  ~ rangelib/algorithms.hpp: bug fix in r_equal(), r_exists_if(), r_find_if()
+
 
 ============================================================================
 
@@ -7317,6 +7417,7 @@ Changes:
 
   ~ winstl::basic_findvolume_sequence bug with VC++ 8 now fixed
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 46 (13th March 2007):
@@ -7325,6 +7426,7 @@ Changes:
 ========
 
  ~ wholesale lexical changes (e.g. "char const *x" => "char const* x")
+
 
 ============================================================================
 
@@ -7366,6 +7468,7 @@ Changes:
 
  ~ winstl::reg_value:
      ~ can now copy an empty instance (previously threw an exception)
+
 
 ============================================================================
 
@@ -7440,6 +7543,7 @@ Fixes:
 Removals:
 =========
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 43 (22nd January 2007):
@@ -7466,6 +7570,7 @@ Changes:
  ~ stlsoft::get_ptr overload for std::auto_ptr slightly modified
 
  ~ winstl/shims/access/string.hpp now includes winstl/shims/access/string/time.hpp
+
 
 ============================================================================
 
@@ -8022,6 +8127,7 @@ Additions:
 
  + comstl::try_interface_cast
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 32 (6th December 2006):
@@ -8032,6 +8138,7 @@ Changes:
 ~ fixed unixstl/unixstl.h (in)compatibility with C compilation
 
 ~ fixed platformstl/platformstl.h (in)compatibility with C compilation
+
 
 ============================================================================
 
@@ -8120,6 +8227,7 @@ Changes:
 ~ WinSTL's pid_sequence and process_module_sequence classes have been
   rendered slightly more efficient.
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 28 (29th October 2006):
@@ -8155,6 +8263,7 @@ Changes:
 ~ minor general changes in makefile structure
 
 ~ fixed for UNIX makefiles
+
 
 ============================================================================
 
@@ -8259,10 +8368,6 @@ Changes:
   PLATFORMSTL_HAS_ATOMIC_PREADD
 
 
-
-
-
-
 ============================================================================
 
 Changes for 1.9.1 beta 23 (17th September 2006):
@@ -8282,9 +8387,6 @@ Changes:
 
 ~ a whole load more directory changes. Very few now remain, and 1.9.1 proper
   is very close.
-
-
-
 
 
 ============================================================================
@@ -8326,6 +8428,7 @@ Changes:
 ~ fix bug in stlsoft::member_selector_iterator (which crops up when
   compiling Pantheios with Visual C++ 8)
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 20 (2nd September 2006):
@@ -8344,6 +8447,7 @@ Additions:
 
 + winstl::reg_get_dword_value() - retrieves a DWORD value from a reg key
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 19 (9th August 2006):
@@ -8353,6 +8457,7 @@ Additions:
 
 + dotnetstl::check_cast custom cast function template
   (dotnetstl/conversion/check_cast.hpp)
+
 
 ============================================================================
 
@@ -8390,6 +8495,7 @@ Items changed (unversioned) from H:\3Pty\stlsoft\1.9.1-beta17 to H:\3Pty\stlsoft
   include\stlsoft\smartptr\unittest\scoped_handle_unittest_.h                   ...          => ...         ; 6th July 2006       => 5th August 2006
   include\winstl\filesystem\unittest\absolute_path_unittest_.h                  ...          => ...         ;                     =>
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 17 (5th August 2006):
@@ -8416,6 +8522,7 @@ Changes:
 
 ~ winstl::load_text_file() now throws an exception if the file cannot be
   opened.
+
 
 ============================================================================
 
@@ -8457,6 +8564,7 @@ Items added to H:\3Pty\stlsoft\1.9.1-beta16\include:                            
   H:\3Pty\stlsoft\1.9.1-beta16\include\stlsoft\conversion\unittest\byte_format_unittest_.h
   H:\3Pty\stlsoft\1.9.1-beta16\include\winstl\system\console_colour_scope.hpp
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 15 (18th July 2006):
@@ -8472,6 +8580,7 @@ Changes for 1.9.1 beta 15 (18th July 2006):
 + A whole host of algorithms that've been hiding in the research branch for
   over a year are now brought into the main trunk, under
     include/stlsoft/algorithms/...
+
 
 ============================================================================
 
@@ -8538,6 +8647,7 @@ Changes for 1.9.1 beta 12 (8th July 2006)
 ~ lots and lots more directory re-arrangements, and addition of "better"
   documentation (to be seen currently at http://stlsoft.org/doc-1.9)
 
+
 ============================================================================
 
 Changes for 1.9.1 beta 11 (25th June 2006)
@@ -8547,6 +8657,7 @@ Unfortunately, the release of beta 10 that was supposed to support recls
 1.8.1 was missing some features. Doh! (That'll teach me to release in a hurry.)
 
 Hopefully, this now corrects that.
+
 
 ============================================================================
 
@@ -8717,6 +8828,7 @@ Items added to H:\STLSoft\Releases\current\STLSoft\include:                     
 Changes for 1.9.1 beta 9 (11th June 2006)
 
 not listed - just file/directory changes
+
 
 ============================================================================
 
