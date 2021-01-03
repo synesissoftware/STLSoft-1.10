@@ -17,7 +17,7 @@ we'll be at it.
 
 ### 1.10.1 beta-25 (Latest) - 14th December 2020
 
-<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta24>
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta25>
 
 * added two more files missing from beta 23 - D'oh!
 
