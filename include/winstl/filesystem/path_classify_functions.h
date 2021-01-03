@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions
  *
  * Created:     28th November 2020
- * Updated:     30th December 2020
+ * Updated:     3rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       3
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        8
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    2
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,6 +173,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                        char
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_    stlsoft_C_string_slice_m_t
 # define winstl_C_path_classification_results_X_t_                  winstl_C_path_classification_results_m_t
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_           STLSOFT_NS_GLOBAL(isalpha)
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_           stlsoft_C_strnchr
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_         stlsoft_C_strnpbrkn
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_          stlsoft_C_strnstrn
@@ -185,6 +186,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_
 # undef winstl_C_path_classification_results_X_t_
+# undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_
@@ -197,6 +199,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                        wchar_t
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_    stlsoft_C_string_slice_w_t
 # define winstl_C_path_classification_results_X_t_                  winstl_C_path_classification_results_w_t
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_           STLSOFT_NS_GLOBAL(iswalpha)
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_           stlsoft_C_wcsnchr
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_         stlsoft_C_wcsnpbrkn
 # define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_          stlsoft_C_wcsnstrn
@@ -209,6 +212,7 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_
 # undef winstl_C_path_classification_results_X_t_
+# undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_

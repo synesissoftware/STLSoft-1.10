@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     28th November 2020
- * Updated:     30th December 2020
+ * Updated:     3rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -377,7 +377,7 @@ winstl_C_path_classify_root_X_(
 #endif
                         else
                         {
-                            if (isalpha(s0[2]))
+                            if (WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_(s0[2]))
                             {
                                 /* potentially a UNC server with 1-character name */
 
@@ -436,7 +436,7 @@ maybe_regular_UNC:
 try_detect_drive:
     if (cch0 > 1)
     {
-        if (isalpha(s0[0]) &&
+        if (WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_(s0[0]) &&
             ':' == s0[1])
         {
             if (2 == cch0)
