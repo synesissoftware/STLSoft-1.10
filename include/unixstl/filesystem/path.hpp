@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     1st January 2021
+ * Updated:     3rd January 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       268
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       270
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -201,9 +201,6 @@ public:
     typedef STLSOFT_NS_QUAL(string_slice)<
         char_type
     >                                                       string_slice_type;
-
-// TODO: Use the slice string, and provide iterators over the directory parts
-
 /// @}
 
 /// \name Construction
@@ -233,7 +230,6 @@ public:
         char_type const*    path
     ,   size_type           cch
     );
-
 #ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
     /// Copies the contents of \c rhs
@@ -253,7 +249,6 @@ public:
     basic_path(class_type&& rhs) STLSOFT_NOEXCEPT
         : m_buffer(std::move(rhs.m_buffer))
     {}
-
 protected:
     basic_path(path_buffer_type_&& rhs) STLSOFT_NOEXCEPT
         : m_buffer(std::move(rhs))
@@ -263,7 +258,6 @@ protected:
     {}
 public:
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
-
 #ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
     /// Copies the contents of \c rhs
@@ -292,6 +286,7 @@ public:
         char_type const* s
     );
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
+
     // Creates a root path
     template<
         ss_typename_param_k S
@@ -312,34 +307,25 @@ public:
 public:
     /// Appends the contents of \c rhs to the path
     class_type& push(class_type const& rhs, bool_type bAddPathNameSeparator = false);
-
     /// Appends the contents of \c rhs to the path
     class_type& push(char_type const* rhs, bool_type bAddPathNameSeparator = false);
-
     /// Appends the contents of \c rhs to the path as an extension
     class_type& push_ext(char_type const* rhs, bool_type bAddPathNameSeparator = false);
-
     /// Ensures that the path has a trailing path name separator
     class_type& push_sep();
-
     /// Pops the last path element from the path
     ///
-    /// \note In previous versions, this operation did not remove the
-    ///   left-most path component. That behaviour is no longer supported,
-    ///   and the method will now leave the path instance empty in that
-    ///   case.
+    /// \note This operation does not remove the root.
     class_type&
     pop(
         bool_type bRemoveTrailingPathNameSeparator = true
     ) STLSOFT_NOEXCEPT;
-
     /// Ensures that the path does not have a trailing path name separator
     ///
     /// \note Does not trim the separator character from the root designator
     ///
     /// \note This method is idempotent.
     class_type& pop_sep() STLSOFT_NOEXCEPT;
-
     /// Removes the extension, if any, from the file component of the path
     ///
     /// \note This method is idempotent.
@@ -416,33 +402,25 @@ public:
 public:
     /// Obtains the location, if present
     string_slice_type   get_location() const STLSOFT_NOEXCEPT;
-
     /// Obtains the file, if present
     string_slice_type   get_file() const STLSOFT_NOEXCEPT;
-
     /// Obtains the extension, if present, of the file, if present
     string_slice_type   get_ext() const STLSOFT_NOEXCEPT;
 
     /// Returns the length of the converted path
     size_type           length() const STLSOFT_NOEXCEPT;
-
     /// Returns the length of the converted path
     ///
     /// \remarks Equivalent to length()
     size_type           size() const STLSOFT_NOEXCEPT;
-
     /// The maximum possible length of a path
     static size_type    max_size() STLSOFT_NOEXCEPT;
-
     /// Determines whether the path is empty
     bool_type           empty() const STLSOFT_NOEXCEPT;
-
     /// Returns null-terminated non-mutable (const) pointer to string data
     char_type const*    data() const STLSOFT_NOEXCEPT;
-
     /// Conversion to a non-mutable (const) pointer to the path
     char_type const*    c_str() const STLSOFT_NOEXCEPT;
-
     /// Returns a non-mutable (const) reference to the character at
     ///  the given index
     ///
@@ -451,13 +429,10 @@ public:
 
     /// Indicates whether the path represents an existing file system entry
     bool_type           exists() const STLSOFT_NOEXCEPT;
-
     /// Indicates whether the path is rooted
     bool_type           is_rooted() const STLSOFT_NOEXCEPT;
-
     /// Indicates whether the path is absolute
     bool_type           is_absolute() const STLSOFT_NOEXCEPT;
-
     /// Indicates whether the path has a trailing separator
     bool_type           has_sep() const STLSOFT_NOEXCEPT;
 
@@ -516,17 +491,15 @@ private:
     size_type               size_() const STLSOFT_NOEXCEPT;
 
     class_type&             operator_equal_(char_type const* path);
+    bool_type               equivalent_(char_type const* rhs, size_type cch) const STLSOFT_NOEXCEPT;
 
     class_type&             push_(char_type const* rhs, size_type cch, bool_type bAddPathNameSeparator);
     class_type&             concat_(char_type const* rhs, size_type cch);
 
     char_type&              last_() STLSOFT_NOEXCEPT;
-
-    bool_type               equivalent_(char_type const* rhs, size_type cch) const STLSOFT_NOEXCEPT;
-
     static char_type const* last_slash_(char_type const* buffer, size_type len) STLSOFT_NOEXCEPT;
-
     static char_type const* next_slash_or_end_(char_type const* p) STLSOFT_NOEXCEPT;
+
     static char_type        path_name_separator() STLSOFT_NOEXCEPT;
 #ifdef _WIN32
     static char_type        path_name_separator_alt() STLSOFT_NOEXCEPT;
@@ -564,7 +537,11 @@ private:
     >                                                       part_buffer_type_;
 
 
-    static size_type coalesce_parts_(part_buffer_type_& parts);
+    static
+    size_type
+    coalesce_parts_(
+        part_buffer_type_& parts
+    );
 
 private: // fields
     path_buffer_type_   m_buffer;
@@ -1548,28 +1525,41 @@ basic_path<C, T, A>::pop(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 ) STLSOFT_NOEXCEPT
 {
-    char_type*  slash   =   traits_type::str_rchr(data_(), path_name_separator());
-#ifdef _WIN32
-    char_type*  slash_a =   traits_type::str_rchr(data_(), path_name_separator_alt());
+    size_type const rootLen = traits_type::get_root_len_(data_(), size_());
 
-    if (slash_a > slash)
+    if (rootLen < size_())
     {
-        slash = slash_a;
-    }
-#endif /* _WIN32 */
+        // we have some non-root content to remove - check if a trailing slash and remove it
 
-    if (NULL != slash)
-    {
-        m_buffer.resize(slash - data_());
-    }
-    else
-    {
-        clear();
+        char_type const* lslash = traits_type::find_last_path_name_separator(data_(), size_());
+
+        if (&last_() == lslash)
+        {
+            m_buffer.pop_last();
+
+            lslash = traits_type::find_last_path_name_separator(data_(), size_());
+        }
     }
 
-    if (bRemoveTrailingPathNameSeparator)
+    if (rootLen < size_())
     {
-        this->pop_sep();
+        // we have some non-root content to remove
+
+        char_type const* lslash = traits_type::find_last_path_name_separator(data_() + rootLen, size_() - rootLen);
+
+        if (NULL == lslash)
+        {
+            m_buffer.resize(rootLen);
+        }
+        else
+        {
+            if (!bRemoveTrailingPathNameSeparator)
+            {
+                ++lslash;
+            }
+
+            m_buffer.resize(size_type(lslash - data_()));
+        }
     }
 
     return *this;
@@ -1630,27 +1620,23 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    { for (us_size_t len = m_len; 0 != len; --len)
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
+    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+
+    STLSOFT_SUPPRESS_UNUSED(pcls);
+
+    if (0 != results.extension.len)
     {
-        char_type* last = &m_buffer[len - 1];
-
-        if (traits_type::is_path_name_separator(*last))
-        {
-            break;
-        }
-        else if ('.' == *last)
-        {
-            m_len = len - 1;
-
-            m_buffer[m_len] = '\0';
-
-            break;
-        }
-    }}
+        m_buffer.resize(m_buffer.size() - results.extension.len);
+    }
 
     return *this;
 }
-
 
 #if !defined(STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT) || \
     defined(STLSOFT_CF_MEMBER_TEMPLATE_OVERLOAD_DISCRIMINATED)
@@ -1781,16 +1767,17 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
     typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
 
-    results_t_                              results;
-    int const                               parseFlags  =   0
-                                                        ;
-    unixstl_C_path_classification_t const   pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
 
-    class_type                              newPath(*this);
-    bool const                              is_rooted   =   traits_type::path_is_rooted(pcls);
+    class_type              newPath(*this);
+    bool const              is_rooted   =   traits_type::path_is_rooted(pcls);
 
 #ifdef STLSOFT_DEBUG
 
