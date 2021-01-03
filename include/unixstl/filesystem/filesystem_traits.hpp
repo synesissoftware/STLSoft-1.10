@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     2nd January 2021
+ * Updated:     3rd January 2021
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     15
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      175
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  3
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      176
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1722,7 +1722,13 @@ public:
     }
 
 private:
+#if _STLSOFT_VER >= 0x010b0000
+
+# error Sort get_root_len_() properly
+#endif
+
     // TODO: promote this to public
+public:
     static
     size_type
     get_root_len_(
@@ -1781,6 +1787,7 @@ private:
 
         return get_root_len_(path, len);
     }
+private:
 
     static
     size_type
