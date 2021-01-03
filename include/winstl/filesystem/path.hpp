@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     2nd January 2021
+ * Updated:     3rd January 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     312
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 3
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     313
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -199,9 +199,6 @@ public:
     typedef STLSOFT_NS_QUAL(string_slice)<
         char_type
     >                                                       string_slice_type;
-
-// TODO: Use the slice string, and provide iterators over the directory parts
-
 /// @}
 
 /// \name Construction
@@ -277,7 +274,6 @@ public:
         char_type const*    path
     ,   size_type           cch
     );
-
 #ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
     /// Copies the contents of \c rhs
@@ -297,7 +293,6 @@ public:
     basic_path(class_type&& rhs) STLSOFT_NOEXCEPT
         : m_buffer(std::move(rhs.m_buffer))
     {}
-
 protected:
     basic_path(path_buffer_type_&& rhs) STLSOFT_NOEXCEPT
         : m_buffer(std::move(rhs))
@@ -307,7 +302,6 @@ protected:
     {}
 public:
 #endif /* STLSOFT_CF_RVALUE_REFERENCES_SUPPORT */
-
 #ifdef STLSOFT_CF_TEMPLATE_COPY_CONSTRUCTOR_TEMPLATE_OVERLOAD_DISCRIMINATED_AGAINST_NON_TEMPLATE_COPY_CONSTRUCTOR
 
     /// Copies the contents of \c rhs
@@ -424,6 +418,7 @@ public:
     make_absolute(
         bool_type bRemoveTrailingPathNameSeparator = true
     );
+
     /// Canonicalises the path, removing all "./" parts and evaluating all
     /// "../" parts. Any path with only one part will not be canonicalised.
     /// A leading '.' will be preserved if no other '..' or "normal" parts
@@ -458,6 +453,7 @@ public:
     string_slice_type   get_file() const STLSOFT_NOEXCEPT;
     /// Obtains the extension, if present, of the file, if present
     string_slice_type   get_ext() const STLSOFT_NOEXCEPT;
+
     /// Returns the length of the converted path
     size_type           length() const STLSOFT_NOEXCEPT;
     /// Returns the length of the converted path
@@ -477,6 +473,7 @@ public:
     ///
     /// \note The behaviour is undefined if <code>index >= size()</code>.
     char_type const&    operator [](size_type index) const STLSOFT_NOEXCEPT;
+
     /// Indicates whether the path represents an existing file system entry
     bool_type           exists() const STLSOFT_NOEXCEPT;
     /// Indicates whether the path is rooted
@@ -550,21 +547,18 @@ private:
     size_type               size_() const STLSOFT_NOEXCEPT;
 
     class_type&             operator_equal_(char_type const* path);
+    bool_type               equivalent_(char_type const* rhs, size_type cch) const STLSOFT_NOEXCEPT;
+    bool_type               has_dir_end_() const STLSOFT_NOEXCEPT;
 
     class_type&             push_(char_type const* rhs, size_type cch, bool_type bAddPathNameSeparator);
     class_type&             push_sep_(char_type sep);
     class_type&             concat_(char_type const* rhs, size_type cch);
 
-    bool_type               has_dir_end_() const STLSOFT_NOEXCEPT;
-
     char_type&              last_() STLSOFT_NOEXCEPT;
-
-    bool_type               equivalent_(char_type const* rhs, size_type cch) const STLSOFT_NOEXCEPT;
-
     static char_type const* last_slash_(char_type const* buffer, size_type len) STLSOFT_NOEXCEPT;
-
     static char_type const* next_slash_or_end_(char_type const* p) STLSOFT_NOEXCEPT;
     static char_type const* next_part_or_end_(char_type const* p) STLSOFT_NOEXCEPT;
+
     static char_type        path_name_separator() STLSOFT_NOEXCEPT;
     static char_type        path_name_separator_alt() STLSOFT_NOEXCEPT;
 
@@ -608,8 +602,11 @@ private:
 # endif /* OS */
     >                                                       part_buffer_type_;
 
-
-    static size_type coalesce_parts_(part_buffer_type_& parts);
+    static
+    size_type
+    coalesce_parts_(
+        part_buffer_type_& parts
+    );
 
 private: // fields
     path_buffer_type_   m_buffer;
@@ -1741,14 +1738,15 @@ basic_path<C, T, A>::pop(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 ) STLSOFT_NOEXCEPT
 {
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
 
-    results_t_                              results;
-    int const                               parseFlags  =   0
-                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
-                                                        ;
-    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
-    bool const                              is_rooted   =   traits_type::path_is_rooted(pcls);
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    bool const              is_rooted   =   traits_type::path_is_rooted(pcls);
 
     if (0 != results.entry.len)
     {
@@ -1824,13 +1822,14 @@ basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
     //   - if rooted, has 2+ directories, OR
     //   - if !rooted, has 1+ directories
 
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
 
-    results_t_                              results;
-    int const                               parseFlags  =   0
-                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
-                                                        ;
-    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
 
     if (0 == results.entry.len)
     {
@@ -1859,13 +1858,14 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
 
-    results_t_                              results;
-    int const                               parseFlags  =   0
-                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
-                                                        ;
-    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
 
     STLSOFT_SUPPRESS_UNUSED(pcls);
 
@@ -2030,13 +2030,14 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
+    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
     typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
 
-    results_t_                              results;
-    int const                               parseFlags  =   0
-                                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
-                                                        ;
-    winstl_C_path_classification_t const    pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
+    results_t_              results;
+    int const               parseFlags  =   0
+                                        |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+                                        ;
+    classification_t_ const pcls        =   traits_type::path_classify(data_(), size_(), parseFlags, &results);
 
     switch (pcls)
     {
