@@ -7,9 +7,13 @@ ideas/
 
 # files (by name)
 
+.DS_Store
+
 list_changes.cmd
 
 include/stlsoft/internal/dos2unix.has.been.performed
+
+sh.exe.stackdump
 
 # files (by pattern)
 
@@ -31,6 +35,8 @@ include/stlsoft/internal/dos2unix.has.been.performed
 *.scc
 *.so
 *.swp
+*.tmp
+
 *.vcproj*.user
 *.vcxproj*.user
 
