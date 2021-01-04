@@ -2,10 +2,28 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  14th December 2020
+; Updated:  4th January 2021
 
 ============================================================================
 
+
+4th January 2021 - 1.10.1 (beta 26) released
+--------------------------------------------
+
+ * added (UNIXSTL and WinSTL) Path Classification API (from 1.12 work), which work with Windows UNC and long-path root designators and all slash conventions
+ * added (UNIXSTL and WinSTL) path parsing function - include/???stl/filesystem/path_parse_functions.h, presenting a consistent set of functions centralised from disparate parts of the libraries
+ * BREAKING CHANGES: (UNIXSTL and WinSTL) basic_path<> methods get_file() and get_ext() now return slices, and get_ext() changed semantics to include '.'
+ * (UNIXSTL and WinSTL) basic_path<> added move semantics and get_location() method and made swap() method public, as well as numerous defect fixes and consistency improvements implemented in terms of new Path Classification API
+ * (UNIXSTL and WinSTL) filesystem_traits<> added path classification and path parsing methods, as well as numerous defect fixes
+ * updated copyright info for all files, from Synesis Software to Synesis Information Systems
+ * stlsoft::basic_path_buffer<> added resize(), back(), front() methods
+ * added added stlsoft_C_(str|wcs)nicmp()
+ * raw (C) string slice types moved out of stlsoft:: namespace in C++
+ * C++14 compatibility
+ * a whole lot of work to reduce dependencies
+ * many improvements to GCC compatibility
+ * all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+ * BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
 
 14th December 2020 - 1.10.1 (beta 25) released
 ----------------------------------------------

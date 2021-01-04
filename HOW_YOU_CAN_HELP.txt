@@ -2,7 +2,7 @@
 STLSoft - How You Can Help
 
 ; Created:  27th December 2010
-; Updated:  13th October 2019
+; Updated:  4th January 2021
 
 ============================================================================
 
@@ -68,9 +68,9 @@ in this area (as we don't!)
 ----------------------
 
 If you value the diligence and effort that's gone into bringing you this
-software, please make a donation to the project, via:
+software, then:
 
-  https://sourceforge.net/project/project_donations.php?group_id=238860
+  contact Matt Wilson via stlsoft@gmail.com
 
 
 5. Write articles, blog-posts about your experiences

@@ -5,11 +5,11 @@
  *              platform discriminations, and definitions of types.
  *
  * Created:     20th March 2005
- * Updated:     24th December 2020
+ * Updated:     4th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -49,8 +49,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_MINOR    15
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 4
-# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     55
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_REVISION 5
+# define PLATFORMSTL_VER_PLATFORMSTL_H_PLATFORMSTL_EDIT     56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/platformstl.h
@@ -130,12 +130,13 @@
 # define _PLATFORMSTL_VER_1_9_1_B01 0x01090181  /*!< Version 1.9.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _PLATFORMSTL_VER_1_9_1_B02 0x01090182  /*!< Version 1.9.1 beta 2 (with STLSoft 1.10.1 beta 16) */
 # define _PLATFORMSTL_VER_1_9_1_B03 0x01090183  /*!< Version 1.9.1 beta 3 (with STLSoft 1.10.1 beta 23) */
+# define _PLATFORMSTL_VER_1_9_1_B04 0x01090184  /*!< Version 1.9.1 beta 4 (with STLSoft 1.10.1 beta 26) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _PLATFORMSTL_VER_MAJOR      1
 #define _PLATFORMSTL_VER_MINOR      9
 #define _PLATFORMSTL_VER_REVISION   1
-#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B03
+#define _PLATFORMSTL_VER            _PLATFORMSTL_VER_1_9_1_B04
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -152,8 +153,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0197
-# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 23, or later
+#if _STLSOFT_VER < 0x010a019a
+# error This version of the PlatformSTL libraries requires STLSoft version 1.10.1 beta 26, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////

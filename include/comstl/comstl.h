@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     4th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_H_COMSTL_MAJOR       3
 # define COMSTL_VER_COMSTL_H_COMSTL_MINOR       9
-# define COMSTL_VER_COMSTL_H_COMSTL_REVISION    6
-# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        127
+# define COMSTL_VER_COMSTL_H_COMSTL_REVISION    7
+# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        128
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file comstl/comstl.h
@@ -155,12 +155,13 @@
 # define _COMSTL_VER_1_9_2      0x010902ff  /*!< Version 1.9.2 (with STLSoft 1.9.113) */
 # define _COMSTL_VER_1_10_1_B01 0x010a0181  /*!< Version 1.10.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _COMSTL_VER_1_10_1_B02 0x010a0182  /*!< Version 1.10.1 beta 2 (with STLSoft 1.10.1 beta 17) */
+# define _COMSTL_VER_1_10_1_B03 0x010a0183  /*!< Version 1.10.1 beta 3 (with STLSoft 1.10.1 beta 26) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _COMSTL_VER_MAJOR       1
 #define _COMSTL_VER_MINOR       10
 #define _COMSTL_VER_REVISION    1
-#define _COMSTL_VER             _COMSTL_VER_1_10_1_B02
+#define _COMSTL_VER             _COMSTL_VER_1_10_1_B03
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -196,8 +197,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0191
-# error This version of the COMSTL libraries requires STLSoft version 1.10.1 beta 17, or later
+#if _STLSOFT_VER < 0x010a019a
+# error This version of the COMSTL libraries requires STLSoft version 1.10.1 beta 26, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////

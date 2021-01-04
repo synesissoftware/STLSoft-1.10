@@ -18,6 +18,321 @@ STLSoft - Changes
 
 
 
+Changes for 1.10.1 beta 26 (4th January 2021)
+
+General:
+========
+
+ * added (UNIXSTL and WinSTL) Path Classification API (from 1.12 work), which work with Windows UNC and long-path root designators and all slash conventions
+ * added (UNIXSTL and WinSTL) path parsing function - include/???stl/filesystem/path_parse_functions.h, presenting a consistent set of functions centralised from disparate parts of the libraries
+ * BREAKING CHANGES: (UNIXSTL and WinSTL) basic_path<> methods get_file() and get_ext() now return slices, and get_ext() changed semantics to include '.'
+ * (UNIXSTL and WinSTL) basic_path<> added move semantics and get_location() method and made swap() method public, as well as numerous defect fixes and consistency improvements implemented in terms of new Path Classification API
+ * (UNIXSTL and WinSTL) filesystem_traits<> added path classification and path parsing methods, as well as numerous defect fixes
+ * updated copyright info for all files, from Synesis Software to Synesis Information Systems
+ * stlsoft::basic_path_buffer<> added resize(), back(), front() methods
+ * added added stlsoft_C_(str|wcs)nicmp()
+ * raw (C) string slice types moved out of stlsoft:: namespace in C++
+ * C++14 compatibility
+ * a whole lot of work to reduce dependencies
+ * many improvements to GCC compatibility
+ * all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+ * BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/algorithms/pod.hpp:
+ ~ stlsoft/containers/util/array_policies.hpp:
+ ~ stlsoft/conversion/byte_format_functions.hpp:
+ ~ stlsoft/conversion/char_conversions.hpp:
+ ~ stlsoft/obsolete/first_class_promoter.hpp:
+ ~ stlsoft/string/char_traits.hpp:
+ ~ stlsoft/string/copy_functions.h:
+ ~ stlsoft/string/cstring_maker.hpp:
+ ~ stlsoft/string/fast_string_concatenator.hpp:
+ ~ stlsoft/string/simple_string.hpp:
+ ~ stlsoft/string/special_string_instance.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ stlsoft/api/external/string.h:
+ ~ stlsoft/util/std/stdio_overload_detectors.hpp:
+    ~ GCC compatibility
+
+ + stlsoft/api/internal/memfns.h:
+    + added abstractions for memcpy() and memset()
+
+ ~ stlsoft/conversion/integer_to_string/integer_to_decimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_hexadecimal_string.hpp:
+ ~ stlsoft/conversion/integer_to_string/integer_to_octal_string.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    ~ reworked pointer calculation to comply with GCC's -Warray-bounds warning
+
+ ~ stlsoft/conversion/number/grouping_functions.hpp:
+    ~ STRICT compatibility
+
+ ~ stlsoft/filesystem/path_buffer.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    + added stlsoft::(basic_|)path_buffer<>::resize()
+    + added ctor taking rvalue buffer_type and size
+    + added stlsoft::basic_path_buffer::(back|front)()
+
+ ~ stlsoft/internal/cccap/gcc.h:
+    ~ C-compatibility
+
+ ~ stlsoft/internal/std/has/auto_ptr_.hpp:
+    ~ for GCC 9+ and C++14 or later we do not enable, so as to avoid warnings
+
+ ~ stlsoft/stlsoft.h:
+    BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+ + stlsoft/string/c_string/strnicmp.h:
+    + added stlsoft_C_(str|wcs)nicmp()
+
+ ~ stlsoft/string/c_string/strnpbrkn.h:
+    ~ fixed include-guards
+
+ + stlsoft/string/c_string/strnrchr.h:
+    ~ defect fix
+
+ ~ stlsoft/string/c_string_traits.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+ ~ stlsoft/string/string_slice.h:
+    ~ stlsoft_C_string_slice_a_t moved out of stlsoft namespace into global namespace, and renamed stlsoft_C_string_slice_m_t
+    ~ stlsoft_C_string_slice_w_t moved out of stlsoft namespace into global namespace
+
+ ~ stlsoft/string/string_slice.hpp:
+    + added operators with lhs as cc* and rhs as slice const&
+    + added noexcept
+
+ + stlsoft/util/resizeable_buffer_helpers.hpp:
+    + added stlsoft/util/resizeable_buffer_helpers.hpp
+
+ ACESTL:
+ =======
+
+ ~ acestl/collections/message_queue_sequence.hpp:
+ ~ acestl/memory/message_block_functions.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/string/CComBSTR_veneer.hpp:
+    ~ refactored to avoid compiler-specific CRT function
+
+ COMSTL:
+ =======
+
+ ~ comstl/collections/enumeration_policies.hpp:
+ ~ comstl/shims/access/string/VARIANT.hpp:
+ ~ comstl/util/variant.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ comstl/conversion/interface_cast.hpp:
+    ~ GCC compatibility
+
+ InetSTL:
+ ========
+
+ ~ inetstl/filesystem/filesystem_traits.hpp:
+    ~ GCC compatibility
+    BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+ ~ inetstl/filesystem/findfile_sequence.hpp:
+ ~ inetstl/filesystem/functionals.hpp:
+ ~ inetstl/inetstl.h:
+    ~ GCC compatibility
+
+ MFCSTL:
+ =======
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/FILE_stream.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ platformstl/system/environment_variable_traits.hpp:
+    ~ STRICT compatibility
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/current_directory.hpp:
+ ~ unixstl/filesystem/current_directory_scope.hpp:
+    ~ canonicalising
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    + added path_is_absolute()
+    + added path_classification_results_type type, path_classify(), path_is_rooted()
+    + added 2-param is_root_designator()
+    + added missing (wrt winstl::filesystem_traits<>) directory-end and path classification and analysis functions
+    + added large_size_type
+    ~ fixed defect in unixstl::filesystem_traits::get_full_path_name()
+    ~ refactoring, and removal of wide-variants
+    ~ directory-end return-value fixes
+    ~ defect fix, and some comment corrections
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ unixstl/filesystem/glob_sequence.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ unixstl/filesystem/path.hpp:
+    + added move_semantics for unixstl::(basic_|)path
+    + added get_location()
+    ~ fixed pop() and pop_ext()
+    ~ fixed canonicalise()
+    ~ unixstl::(basic_|)path get_file() and get_ext() now return string slice, and get_ext() includes the leading '.' (if extension present)
+    ~ unixstl::(basic_|)path::swap() now public
+    ~ canonicalising
+    - removal of never-implemented method
+
+ + unixstl/filesystem/path_classify_functions.h:
+    + added path_is_rooted()
+    + added unixstl/filesystem/path_classify_functions.h
+
+ ~ unixstl/filesystem/pipe.hpp:
+    ~ STRICT compatibility
+
+ ~ unixstl/filesystem/squeeze_functions.hpp:
+    ~ winstl::(basic_|)path get_file() and get_ext() now return string slice, and get_ext() includes the leading '.' (if extension present)
+
+ ~ unixstl/system/directory_functions.h:
+    ~ fixed defect in unixstl_C_get_home_directory_a()
+
+ ~ unixstl/system/system_traits.hpp:
+    + added resizeable buffer overload of get_home_directory
+    + added overload of get_environment_variable() taking resizeable-buffer
+    BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+ WinSTL:
+ =======
+
+ ~ winstl/controls/functionals.hpp:
+ ~ winstl/conversion/char_conversions.hpp:
+ ~ winstl/diagnostics/output_debug_line.h:
+ ~ winstl/diagnostics/output_debug_line.hpp:
+ ~ winstl/filesystem/file_path_buffer.hpp:
+ ~ winstl/process/functions.h:
+ ~ winstl/registry/reg_key.hpp:
+ ~ winstl/toolhelp/sequence_base.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+
+ ~ winstl/filesystem/current_directory.hpp:
+ ~ winstl/filesystem/current_directory_scope.hpp:
+    ~ canonicalising
+
+ ~ winstl/filesystem/directory_functions.hpp:
+    winstl::filesystem_traits : + added find_last_path_name_separator() overloads
+
+ ~ winstl/filesystem/filesystem_traits.hpp:
+    + added 2-param is_root_designator()
+    + added path_is_absolute()
+    + added path_classify_root()
+    + added path_is_rooted()
+    + added overload of remove_dir_end()
+    + added find_first_path_name_separator()-family of functions
+    + added find_last_path_name_separator() overloads
+    + added path_classification_results_type type and path_classify()
+    ~ fixed multibyte-wide defect
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    ~ directory-end return-value fixes
+    ~ changed overload of ensure_dir_end()
+
+ ~ winstl/filesystem/findfile_sequence.hpp:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    ~ GCC compatibility
+    ~ defect fix
+
+ ~ winstl/filesystem/functionals.hpp:
+    ~ STRICT compatibility
+
+ ~ winstl/filesystem/path.hpp:
+    + added move constructor
+    - removal of unused local typedefs
+    (unix|win)stl::(basic_|)path<> : + added get_location()
+    ~ improving winstl::(basic_|)path::canonicalise_path()
+    ~ fixed push_() semantics to include handing drive-relative paths
+    ~ winstl::(basic_|)path get_file() and get_ext() now return string slice, and get_ext() includes the leading '.' (if extension present)
+    ~ refactored pop(), pop_sep(), pop_ext() in terms of new path-classification API
+    ~ canonicalising
+    ~ fixed the off-by-one by allowing (internal) move-construction from low-level buffer
+    - removed winstl::basic_path::push_ext(class_type const&, bool)
+
+ + winstl/filesystem/path_classify_functions.h:
+    ~ widestring compatibility
+    + added WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+    + added path_is_absolute()
+    + added path_classify_root()
+    ~ fix
+    + added path_is_rooted()
+    ~ missing include
+    path classification functions : + added wide implementations
+    ~ long-prefixed paths may not contain forward slashes
+    path classify functions : ~ handling home-rooted names (when WINSTL_PATH_CLASSIFY_F_RECOGNISETILDEHOME specified)
+    path classify functions : ~ handling long-path prefixed drive-rooted names
+    path classify functions : ~ handling embedded NUL characters; ~ handling very-short UNC paths
+    path classify functions : ~ handling slash-runs
+    winstl_C_path_classification_results_m_t : + added numDirectoryParts and numDotsDirectoryParts fields
+    path classify functions : ~ handling "." and ".."
+    path classify functions : ~ file => entry
+    winstl_C_path_classify_m : + now handles UNC paths
+    + added winstl/filesystem/path_classify_functions.h
+
+ + winstl/filesystem/path_functions/classify_functions_X_.h:
+    ~ widestring compatibility
+    + added WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
+    + added path_classify_root()
+    ~ MinGW compatibility
+    path classification functions : + added wide implementations
+    ~ long-prefixed paths may not contain forward slashes
+    path classify functions : ~ handling home-rooted names (when WINSTL_PATH_CLASSIFY_F_RECOGNISETILDEHOME specified)
+    path classify functions : ~ handling long-path prefixed drive-rooted names
+    path classify functions : ~ handling embedded NUL characters; ~ handling very-short UNC paths
+    path classify functions : ~ handling slash-runs
+    winstl_C_path_classification_results_m_t : + added numDirectoryParts and numDotsDirectoryParts fields
+    path classify functions : ~ handling "." and ".."
+    path classify functions : ~ file => entry
+    winstl_C_path_classify_m : + now handles UNC paths
+    + added winstl/filesystem/path_classify_functions.h
+
+ ~ winstl/filesystem/path_parse_functions.h:
+    + added find_first_path_name_separator()-family of functions
+    ~ extracted out path-parsing functions
+
+ ~ winstl/filesystem/squeeze_functions.hpp:
+    ~ winstl::(basic_|)path get_file() and get_ext() now return string slice, and get_ext() includes the leading '.' (if extension present)
+
+ ~ winstl/shims/access/string/HWND.hpp:
+    ~ vestigial defect fix
+
+ ~ winstl/shims/conversion/to_DATE/FILETIME.hpp:
+ ~ winstl/shims/conversion/to_DATE/SYSTEMTIME.hpp:
+ ~ winstl/shims/conversion/to_DATE/UDATE.hpp:
+ ~ winstl/shims/conversion/to_FILETIME/UDATE.hpp:
+ ~ winstl/shims/conversion/to_SYSTEMTIME/UDATE.hpp:
+ ~ winstl/system/os_version.h:
+ ~ winstl/system/temporary_file_name.hpp:
+ ~ winstl/system/version_info.hpp:
+ ~ winstl/winstl.h:
+    ~ GCC compatibility
+
+ ~ winstl/system/directory_functions.h:
+    ~ all uses of memcpy() and memset() now in terms of abstractions (in stlsoft/api/internal/memfns.h)
+    ~ GCC compatibility
+
+ ~ winstl/system/system_traits.hpp:
+    ~ GCC compatibility
+    BREAKING CHANGES: ~ abstracted out string-handling from *stl::system_traits<> into stlsoft::c_string_traits<>, and removed several unused (and sketchy) functions
+
+
+============================================================================
+
 Changes for 1.10.1 beta 25 (14th December 2020)
 
 General:

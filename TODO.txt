@@ -2,7 +2,7 @@
 STLSoft - TODO
 
 ; Created:  29th March 2002
-; Updated:  13th December 2020
+; Updated:  4th January 2021
 
 ============================================================================
 
@@ -10,28 +10,40 @@ STLSoft - TODO
 STLSoft 1.10 TODOs:
 ===================
 
+ * take down https://github.com/synesissoftware/STLSoft-1.10-delta
+
+ * update the downloads on SourceForge
+
+ * flesh out README.md
+
+ * sort the SourceForge site
+
+ * STLSoft 1.10-related blog posts (focusing on new components)
+
+
+STLSoft 1.11+ TODOs:
+====================
+
  * syslog in variadic templates, a la winstl::output_debug_line()
 
- * incorporate the is_valid_path() suite of functions into 1.10
+ * memory-mapped-file class minor issues
+
+ * integrate STLSoft's exception-hierarchies with new standard exception design
+
+ * C++ 11/14/17/20 compatibility - partial; further coming in 1.12
+
+ * bring in platformstl::properties_file from 1.12 project
 
  * further system_traits refactoring:
    - joining common code via CRTP
    - abstracting out string stuff (into stlsoft::)
    - sorting the "safe-string" stuff
 
- * refactor find_last_path_name_separator_() and related
-
- * memory-mapped-file class issues
-
-
-STLSoft 1.11+ TODOs:
-====================
-
  * Documentation improvements
 
- * Website
+ * Website - currenty http://stlsoft.org/ is *VERY* out of date
 
- * C++ 11/14/17/20 compatibility - partial; further coming in 1.11
+ * Set-up donation
 
 
 abandoned TODOs:

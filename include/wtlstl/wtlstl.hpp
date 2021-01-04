@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     12th May 2003
- * Updated:     26th December 2020
+ * Updated:     4th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MAJOR    2
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MINOR    4
-# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_REVISION 2
-# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     58
+# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_REVISION 3
+# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file wtlstl/wtlstl.hpp
@@ -116,11 +116,12 @@
 #define _WTLSTL_VER_1_2_1       0x00010201  /*!< Version 1.2.1 */
 #define _WTLSTL_VER_1_2_2       0x00010202  /*!< Version 1.2.2 (with STLSoft 1.9.25) */
 #define _WTLSTL_VER_1_2_3       0x00010203  /*!< Version 1.2.3 (with STLSoft 1.10.1 b1) */
+#define _WTLSTL_VER_1_2_4       0x00010204  /*!< Version 1.2.4 (with STLSoft 1.10.1 b 26) */
 
 #define _WTLSTL_VER_MAJOR       1
 #define _WTLSTL_VER_MINOR       2
 #define _WTLSTL_VER_REVISION    3
-#define _WTLSTL_VER             _WTLSTL_VER_1_2_3
+#define _WTLSTL_VER             _WTLSTL_VER_1_2_4
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -192,8 +193,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0181
-# error This version of the WTLSTL libraries requires STLSoft version 1.10.1 beta 1, or later
+#if _STLSOFT_VER < 0x010a019a
+# error This version of the WTLSTL libraries requires STLSoft version 1.10.1 beta 26, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////

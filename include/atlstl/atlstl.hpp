@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     4th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,8 +50,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     7
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  1
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      121
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  2
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
@@ -134,12 +134,13 @@
 # define _ATLSTL_VER_1_7_1_B01  0x01070181  /*!< Version 1.7.1 beta 1 (with STLSoft 1.10.1 beta 1) */
 # define _ATLSTL_VER_1_7_1_B02  0x01070182  /*!< Version 1.7.1 beta 2 (with STLSoft 1.10.1 beta 4) */
 # define _ATLSTL_VER_1_7_1_B03  0x01070183  /*!< Version 1.7.1 beta 3 (with STLSoft 1.10.1 beta 10) */
+# define _ATLSTL_VER_1_7_1_B04  0x01070184  /*!< Version 1.7.1 beta 4 (with STLSoft 1.10.1 beta 26) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _ATLSTL_VER_MAJOR       1
 #define _ATLSTL_VER_MINOR       7
 #define _ATLSTL_VER_REVISION    1
-#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B03
+#define _ATLSTL_VER             _ATLSTL_VER_1_7_1_B04
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -184,8 +185,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0181
-# error This version of the ATLSTL libraries requires STLSoft version 1.10.1 beta 1, or later
+#if _STLSOFT_VER < 0x010a019a
+# error This version of the ATLSTL libraries requires STLSoft version 1.10.1 beta 26, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -6,14 +6,14 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     4th January 2021
  *
  * Thanks:      To Cláudio Albuquerque for suggesting the inclusion of
  *              atlstr.h.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MAJOR     3
 # define MFCSTL_VER_MFCSTL_HPP_MFCSTL_MINOR     5
-# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_REVISION  5
-# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      105
+# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_REVISION  6
+# define MFCSTL_VER_MFCSTL_HPP_MFCSTL_EDIT      106
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file mfcstl/mfcstl.hpp
@@ -133,12 +133,13 @@
 # define _MFCSTL_VER_1_5_3      0x00010503  /*!< Version 1.5.3 (with STLSoft 1.9.25) */
 # define _MFCSTL_VER_1_5_4      0x010504ff  /*!< Version 1.5.4 (with STLSoft 1.9.113) */
 # define _MFCSTL_VER_1_6_1_B01  0x01060181  /*!< Version 1.6.1 beta 1 (with STLSoft 1.10.1 beta 1) */
+# define _MFCSTL_VER_1_6_1_B02  0x01060182  /*!< Version 1.6.1 beta 2 (with STLSoft 1.10.1 beta 26) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _MFCSTL_VER_MAJOR       1
 #define _MFCSTL_VER_MINOR       6
 #define _MFCSTL_VER_REVISION    1
-#define _MFCSTL_VER             _MFCSTL_VER_1_6_1_B01
+#define _MFCSTL_VER             _MFCSTL_VER_1_6_1_B02
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -174,8 +175,8 @@
  * STLSoft version compatibility check(s)
  */
 
-#if _STLSOFT_VER < 0x010a0181
-# error This version of the MFCSTL libraries requires STLSoft version 1.10.1 beta 1, or later
+#if _STLSOFT_VER < 0x010a019a
+# error This version of the MFCSTL libraries requires STLSoft version 1.10.1 beta 26, or later
 #endif /* _STLSOFT_VER */
 
 /* /////////////////////////////////////////////////////////////////////////
