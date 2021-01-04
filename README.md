@@ -2,20 +2,37 @@
 
 Version 1.10 of STLSoft libraries
 
-## Current Status (November 2020)
+## Current Status (January 2021)
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its release.
 
 ### Impending 1.10 release
 
-Working now (December 2020) on getting documentation updated and existing
-automated tests included into the GitHub-released project, and then
-we'll be at it.
+Working now (January 2021) on the 1.10 release candidate, and expect to be done this month.
 
 
 ## Releases
 
-### 1.10.1 beta-25 (Latest) - 14th December 2020
+### 1.10.1 beta-26 (Latest) - 4th January 2021
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta26>
+
+* added (**UNIXSTL** and **WinSTL**) **Path Classification API** (from 1.12 work), which work with Windows UNC and long-path root designators and all slash conventions
+* added (**UNIXSTL** and **WinSTL**) **path parsing function** - **include/???stl/filesystem/path_parse_functions.h**, presenting a consistent set of functions centralised from disparate parts of the libraries
+* **BREAKING CHANGES**: (**UNIXSTL** and **WinSTL**) ``basic_path<>`` methods ``get_file()`` and ``get_ext()`` now return slices, and ``get_ext()`` changed semantics to include ``'.'``
+* (**UNIXSTL** and **WinSTL**) ``basic_path<>`` added move semantics and ``get_location()`` method and made ``swap()`` method public, as well as numerous defect fixes and consistency improvements implemented in terms of new **Path Classification API**
+* (**UNIXSTL** and **WinSTL**) ``filesystem_traits<>`` added path classification and path parsing methods, as well as numerous defect fixes
+* updated copyright info for all files, from **Synesis Software** to **Synesis Information Systems**
+* ``stlsoft::basic_path_buffer<>`` added ``resize()``, ``back()``, ``front()`` methods
+* added ``stlsoft_C_(str|wcs)nicmp()``
+* raw (C) string slice types moved out of ``stlsoft::`` namespace in C++
+* C++14 compatibility
+* a whole lot of work to reduce dependencies
+* many improvements to **GCC** compatibility
+* all uses of ``memcpy()`` and ``memset()`` now in terms of abstractions (in **stlsoft/api/internal/memfns.h**)
+* **BREAKING CHANGES**: ~ abstracted out string-handling from ``???stl::system_traits<>`` into ``stlsoft::c_string_traits<>``, and removed several unused (and sketchy) functions
+
+### 1.10.1 beta-25 - 14th December 2020
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta25>
 
