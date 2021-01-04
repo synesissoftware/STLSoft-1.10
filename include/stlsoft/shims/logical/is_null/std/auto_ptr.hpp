@@ -4,11 +4,11 @@
  * Purpose:     Generic adapted case of is_null shim std::auto_ptr<>.
  *
  * Created:     31st March 2007
- * Updated:     26th December 2020
+ * Updated:     5th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_MINOR       0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_REVISION    1
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_EDIT        18
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_REVISION    2
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_EDIT        19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -68,10 +68,16 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-# ifndef STLSOFT_INCL_MEMORY
-#  define STLSOFT_INCL_MEMORY
-#  include <memory>
-# endif /* !STLSOFT_INCL_MEMORY */
+#include <stlsoft/internal/std/has/auto_ptr_.hpp>
+
+#ifndef STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_
+# error std::auto_ptr not supported on this compiler
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_ */
+
+#ifndef STLSOFT_INCL_MEMORY
+# define STLSOFT_INCL_MEMORY
+# include <memory>
+#endif /* !STLSOFT_INCL_MEMORY */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

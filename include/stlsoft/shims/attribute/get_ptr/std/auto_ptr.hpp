@@ -4,14 +4,14 @@
  * Purpose:     Contains the get_ptr attribute shim.
  *
  * Created:     10th January 2002
- * Updated:     26th December 2020
+ * Updated:     5th January 2021
  *
  * Thanks to:   Nevin Liber for spotting a mistake in the get_ptr
  *              definition.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_MAJOR     4
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_MINOR     1
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_REVISION  6
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_EDIT      59
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_REVISION  7
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR_EDIT      60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,13 +71,16 @@
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
 
-#if defined(STLSOFT_COMPILER_IS_WATCOM)
-# define _STLSOFT_PTR_ACCESS_NO_AUTO_PTR
-#endif /* compiler */
+#include <stlsoft/internal/std/has/auto_ptr_.hpp>
 
-#ifndef _STLSOFT_PTR_ACCESS_NO_AUTO_PTR
-# include <memory>                  // for std::auto_ptr
-#endif /* _STLSOFT_PTR_ACCESS_NO_AUTO_PTR */
+#ifndef STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_
+# error std::auto_ptr not supported on this compiler
+#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_ */
+
+#ifndef STLSOFT_INCL_MEMORY
+# define STLSOFT_INCL_MEMORY
+# include <memory>
+#endif /* !STLSOFT_INCL_MEMORY */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
