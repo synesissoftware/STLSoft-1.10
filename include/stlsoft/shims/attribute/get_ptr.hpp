@@ -4,11 +4,11 @@
  * Purpose:     Contains the get_ptr attribute shim.
  *
  * Created:     10th January 2002
- * Updated:     24th November 2020
+ * Updated:     5th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_MAJOR      4
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_MINOR      1
 # define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_REVISION   1
-# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_EDIT       53
+# define STLSOFT_VER_STLSOFT_SHIMS_ATTRIBUTE_HPP_GET_PTR_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -81,19 +81,19 @@
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR
 #  include <stlsoft/shims/attribute/get_ptr/std/auto_ptr.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_AUTO_PTR */
-#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_ */
+#endif /* STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_ */
 
 #ifdef STLSOFT_STANDARD_LIBRARY_HAS_shared_ptr_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_SHARED_PTR
 #  include <stlsoft/shims/attribute/get_ptr/std/shared_ptr.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_SHARED_PTR */
-#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_shared_ptr_ */
+#endif /* STLSOFT_STANDARD_LIBRARY_HAS_shared_ptr_ */
 
 #ifdef STLSOFT_STANDARD_LIBRARY_HAS_unique_ptr_
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_UNIQUE_PTR
 #  include <stlsoft/shims/attribute/get_ptr/std/unique_ptr.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ATTRIBUTE_GET_PTR_STD_HPP_UNIQUE_PTR */
-#endif /* !STLSOFT_STANDARD_LIBRARY_HAS_unique_ptr_ */
+#endif /* STLSOFT_STANDARD_LIBRARY_HAS_unique_ptr_ */
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
