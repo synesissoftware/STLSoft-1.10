@@ -13,7 +13,14 @@ Working now (January 2021) on the 1.10 release candidate, and expect to be done 
 
 ## Releases
 
-### 1.10.1 beta-26 (Latest) - 4th January 2021
+### 1.10.1 beta-27 (Latest) - 10th January 2021
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta27>
+
+* added **string access shims** for ``std::chrono`` type(s)
+* some GCC compatibility tweaks
+
+### 1.10.1 beta-26 - 4th January 2021
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta26>
 
