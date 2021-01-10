@@ -5,7 +5,7 @@
  *              built-in and standard string types.
  *
  * Created:     16th January 2002
- * Updated:     5th January 2021
+ * Updated:     10th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,9 +54,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_MAJOR       4
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_MINOR       4
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_MINOR       5
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_REVISION    1
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_EDIT        101
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_HPP_STRING_EDIT        102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -69,6 +69,8 @@
 #ifdef STLSOFT_TRACE_INCLUDE
 # pragma message(__FILE__)
 #endif /* STLSOFT_TRACE_INCLUDE */
+
+#include <stlsoft/internal/std/has/chrono_.hpp>
 
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_H_FWD
 # include <stlsoft/shims/access/string/fwd.h>
@@ -83,6 +85,11 @@
 # ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING
 #  include <stlsoft/shims/access/string/std/basic_string.hpp>
 # endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING */
+# ifdef STLSOFT_STANDARD_LIBRARY_HAS_chrono_
+#  ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_CHRONO
+#   include <stlsoft/shims/access/string/std/chrono.hpp>
+#  endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_CHRONO */
+# endif
 # if __cplusplus >= 201703L
 #  ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_BASIC_STRING_VIEW
 #   include <stlsoft/shims/access/string/std/basic_string_view.hpp>
