@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  4th January 2021
+; Updated:  10th January 2021
 
 ============================================================================
 
@@ -17,6 +17,46 @@ STLSoft - Changes
    **************************************
 
 
+
+Changes for 1.10.1 beta 27 (10th January 2021)
+
+General:
+========
+
+ * added string access shims for std::chrono type(s)
+ * some GCC compatibility tweaks
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/internal/std/has/auto_ptr_.hpp:
+    ~ refining std::auto_ptr compatibility detection (for GCC, C++ 11-14)
+
+ ~ stlsoft/shims/access/string.hpp:
+    + added string access shims for std::chrono type(s)
+    ~ minor typo fix
+
+ + stlsoft/shims/access/string/std/chrono.hpp:
+    + added string access shims for std::chrono type(s)
+
+ ~ stlsoft/shims/attribute/get_ptr.hpp:
+    ~ minor typo fix
+
+ ~ stlsoft/shims/attribute/get_ptr/std/auto_ptr.hpp:
+ ~ stlsoft/shims/logical/is_null/std/auto_ptr.hpp:
+    ~ enforcing std::auto_ptr compatibility detection
+
+ WinSTL:
+ =======
+
+ ~ winstl/api/external/FileManagement.h:
+    ~ fix
+
+
+============================================================================
 
 Changes for 1.10.1 beta 26 (4th January 2021)
 

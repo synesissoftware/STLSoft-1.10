@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     4th January 2021
+ * Updated:     10th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    50
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 5
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     523
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     524
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -327,12 +327,13 @@
 # define _STLSOFT_VER_1_10_1_B24    0x010a0198  /*!< Version 1.10.1 beta 24 (13th December 2020) */
 # define _STLSOFT_VER_1_10_1_B25    0x010a0199  /*!< Version 1.10.1 beta 25 (14th December 2020) */
 # define _STLSOFT_VER_1_10_1_B26    0x010a019a  /*!< Version 1.10.1 beta 26 (18th December 2020) */
+# define _STLSOFT_VER_1_10_1_B27    0x010a019b  /*!< Version 1.10.1 beta 27 (11th January 2021) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B26
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B27
 
 /* /////////////////////////////////////
  * underlying version detection

@@ -2,10 +2,16 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  4th January 2021
+; Updated:  10th January 2021
 
 ============================================================================
 
+
+10th January 2021 - 1.10.1 (beta 27) released
+---------------------------------------------
+
+ * added string access shims for std::chrono type(s)
+ * some GCC compatibility tweaks
 
 4th January 2021 - 1.10.1 (beta 26) released
 --------------------------------------------
