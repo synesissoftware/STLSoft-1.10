@@ -22,7 +22,7 @@
 # if 0
 # elif defined(__GNUC__) && \
        __GNUC__ >= 9 && \
-       !defined(STLSOFT_ALLOW_auto_ptr_in_cplusplus_11_or_14) \
+       !defined(STLSOFT_ALLOW_auto_ptr_in_cplusplus_11_or_14) && \
        __cplusplus >= 201402L
 
     /* for GCC 9+ and C++11-14 or later we do not enable, so as to avoid warnings */
