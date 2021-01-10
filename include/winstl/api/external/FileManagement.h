@@ -5,11 +5,11 @@
  *              Management Functions API.
  *
  * Created:     20th August 2017
- * Updated:     29th November 2020
+ * Updated:     9th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -83,7 +83,8 @@
 #   error winstl_win32_winnt_.h is in error
 #  endif
 
-#  if (WINSTL_WIN32_WINNT < 0x0500) || \
+#  if (  0 != WINSTL_WIN32_WINNT && \
+         WINSTL_WIN32_WINNT < 0x0500) || \
       !defined(FindFirstVolume) || \
       !defined(FindNextVolume)
 
