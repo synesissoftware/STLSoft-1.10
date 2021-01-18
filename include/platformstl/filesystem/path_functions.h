@@ -4,11 +4,11 @@
  * Purpose:     Path manipulation functions.
  *
  * Created:     3rd February 2011
- * Updated:     24th December 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef PLATFORMSTL_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_REVISION 6
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     26
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_REVISION 7
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_H_PATH_FUNCTIONS_EDIT     27
 #endif /* !PLATFORMSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ namespace platformstl_project
  *   empty slice if the path is empty or has no file (stem+extension) part
  */
 STLSOFT_INLINE
-stlsoft_C_string_slice_a_t const
+stlsoft_C_string_slice_m_t const
 platformstl_C_get_executable_name_from_path(
     ss_char_a_t const* path
 )
@@ -124,17 +124,17 @@ platformstl_C_get_executable_name_from_path(
     {
 #ifdef __cplusplus
 
-        return stlsoft_C_string_slice_a_t::create(ss_nullptr_k, 0);
+        return stlsoft_C_string_slice_m_t::create(ss_nullptr_k, 0);
 #else /* ? __cplusplus */
 
-        stlsoft_C_string_slice_a_t r = { 0, NULL };
+        stlsoft_C_string_slice_m_t r = { 0, NULL };
 
         return r;
 #endif /* __cplusplus */
     }
     else
     {
-        stlsoft_C_string_slice_a_t  r;
+        stlsoft_C_string_slice_m_t  r;
         size_t const                cch     =   strlen(path);
         ss_char_a_t const*          slash   =   strrchr(path, '/');
 #ifdef _WIN32
@@ -269,7 +269,7 @@ platformstl_C_get_executable_name_from_path_w(
  *   empty slice if the path is empty or has no file (stem+extension) part
  */
 STLSOFT_INLINE
-stlsoft_C_string_slice_a_t const
+stlsoft_C_string_slice_m_t const
 platformstl_C_get_directory_path_from_path(
     ss_char_a_t const* path
 )
@@ -278,17 +278,17 @@ platformstl_C_get_directory_path_from_path(
     {
 #ifdef __cplusplus
 
-        return stlsoft_C_string_slice_a_t::create(ss_nullptr_k, 0);
+        return stlsoft_C_string_slice_m_t::create(ss_nullptr_k, 0);
 #else /* ? __cplusplus */
 
-        stlsoft_C_string_slice_a_t r = { 0, NULL };
+        stlsoft_C_string_slice_m_t r = { 0, NULL };
 
         return r;
 #endif /* __cplusplus */
     }
     else
     {
-        stlsoft_C_string_slice_a_t  r;
+        stlsoft_C_string_slice_m_t  r;
         ss_char_a_t const*          slash   =   strrchr(path, '/');
 #ifdef _WIN32
         ss_char_a_t const* const    bslash  =   strrchr(path, '\\');
@@ -397,7 +397,7 @@ platformstl_C_get_directory_path_from_path_w(
 /** \see platformstl_C_get_executable_name_from_path()
  */
 inline
-stlsoft_C_string_slice_a_t const
+stlsoft_C_string_slice_m_t const
 get_executable_name_from_path(
     ss_char_a_t const* path
 )
@@ -420,7 +420,7 @@ get_executable_name_from_path(
 /** \see platformstl_C_get_directory_path_from_path()
  */
 inline
-stlsoft_C_string_slice_a_t const
+stlsoft_C_string_slice_m_t const
 get_directory_path_from_path(
     ss_char_a_t const* path
 )
