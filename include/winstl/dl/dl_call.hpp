@@ -4,11 +4,11 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     24th December 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     7
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  11
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      61
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     8
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  1
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -308,21 +308,27 @@ namespace calling_convention
 #endif // STLSOFT_CF_STDCALL_SUPPORTED
     };
 
-    inline calling_convention from_int(int i)
+    inline
+    calling_convention
+    from_int(int i)
     {
         switch(i)
         {
             default:
+
                 STLSOFT_MESSAGE_ASSERT("Invalid/unrecognised calling convention specifier. cdecl will be assumed", 0);
 #ifdef STLSOFT_CF_CDECL_SUPPORTED
             case    cdeclCallConv:
+
                 return cdeclCallConv;
 #endif /* STLSOFT_CF_CDECL_SUPPORTED */
 #ifdef STLSOFT_CF_FASTCALL_SUPPORTED
             case    fastcallCallConv:
+
                 return fastcallCallConv;
 #endif // STLSOFT_CF_FASTCALL_SUPPORTED
 #ifdef STLSOFT_CF_STDCALL_SUPPORTED
+
             case    stdcallCallConv:
                 return stdcallCallConv;
 #endif // STLSOFT_CF_STDCALL_SUPPORTED
@@ -338,7 +344,7 @@ namespace calling_convention
  */
 struct function_descriptor_base
 {
-    operator function_descriptor_base const* () const
+    operator function_descriptor_base const* () const STLSOFT_NOEXCEPT
     {
         return this;
     }
@@ -349,15 +355,17 @@ struct function_descriptor_base
  * \param CC The calling convention, one of the \link winstl::calling_convention::calling_convention calling_convention\endlink enumerators
  * \param S The string type
  */
-template<   int                 CC
-        ,   ss_typename_param_k S
-        >
+template<
+    int                 CC
+,   ss_typename_param_k S
+>
 struct function_descriptor
     : public function_descriptor_base
 {
     enum { value = CC };
 
-    ss_explicit_k function_descriptor(S const& functionName)
+    ss_explicit_k
+    function_descriptor(S const& functionName)
         : FunctionName(functionName)
         , CallingConvention(CC)
     {
@@ -376,7 +384,10 @@ struct function_descriptor
 #endif /* STLSOFT_CF_FASTCALL_SUPPORTED */
     }
 
-    ss_explicit_k function_descriptor(S const& functionName, int cc)
+    function_descriptor(
+        S const&    functionName
+    ,   int         cc
+    )
         : FunctionName(functionName)
         , CallingConvention(cc)
     {}
@@ -388,17 +399,26 @@ private:
     function_descriptor& operator =(function_descriptor const&);
 };
 
-template<   int                 cc
-        ,   ss_typename_param_k S
-        >
-inline function_descriptor<cc, S> fn_desc(S const& functionName)
+template<
+    int                 cc
+,   ss_typename_param_k S
+>
+inline
+function_descriptor<cc, S>
+fn_desc(S const& functionName)
 {
     return function_descriptor<cc, S>(functionName);
 }
 
-template<   ss_typename_param_k    S
-        >
-inline function_descriptor<0, S> fn_desc(int cc, S const& functionName)
+template<
+    ss_typename_param_k    S
+>
+inline
+function_descriptor<0, S>
+fn_desc(
+    int         cc
+,   S const&    functionName
+)
 {
     return function_descriptor<0, S>(functionName, cc);
 }
@@ -434,7 +454,9 @@ namespace winstl
 } /&zwj;* namespace winstl *&zwj;/
 \endcode
  */
-template<ss_typename_param_k T>
+template<
+    ss_typename_param_k T
+>
 struct is_valid_dl_call_arg
 {
     enum { value = 0 };
@@ -458,7 +480,12 @@ public:
 /// \name Dynamic Library Functions
 /// @{
 public:
-    static entry_point_type get_symbol(library_handle_type hLib, char const* functionName)
+    static
+    entry_point_type
+    get_symbol(
+        library_handle_type hLib
+    ,   char const*         functionName
+    ) STLSOFT_NOEXCEPT
     {
         return WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hLib, functionName);
     }
@@ -492,46 +519,69 @@ public:
 
 
 // These structures used for selecting lock_name_() function templates
-template<   ss_typename_param_k T
-        >
-inline T const& lock_name_(T const& t, dl_call_traits::is_not_fd)
+template<
+    ss_typename_param_k T
+>
+inline
+T const&
+lock_name_(
+    T const&    t
+,   dl_call_traits::is_not_fd
+)
 {
     return t;
 }
 
-template<   int                 cc
-        ,   ss_typename_param_k S
-        >
-inline S const& lock_name_(function_descriptor<cc, S> const& fd, dl_call_traits::is_fd)
+template<
+    int                 cc
+,   ss_typename_param_k S
+>
+inline
+S const&
+lock_name_(
+    function_descriptor<cc, S> const&   fd
+,   dl_call_traits::is_fd
+)
 {
     return fd.FunctionName;
 }
 
-inline dl_call_traits::is_fd test_fd_(function_descriptor_base const*)
+inline
+dl_call_traits::is_fd
+test_fd_(function_descriptor_base const*)
 {
     return dl_call_traits::is_fd();
 }
 
-inline dl_call_traits::is_not_fd test_fd_(...)
+inline
+dl_call_traits::is_not_fd test_fd_(...)
 {
     return dl_call_traits::is_not_fd();
 }
 
 #if defined(STLSOFT_COMPILER_IS_MSVC) || \
     defined(STLSOFT_COMPILER_IS_GCCx)
-inline dl_call_traits::library_is_handle test_library_(dl_call_traits::library_handle_type )
+inline
+dl_call_traits::library_is_handle
+test_library_(dl_call_traits::library_handle_type)
 {
     return dl_call_traits::library_is_handle();
 }
 #else /* ? compiler */
-inline dl_call_traits::library_is_handle test_library_(dl_call_traits::library_handle_type const&)
+inline
+dl_call_traits::library_is_handle
+test_library_(dl_call_traits::library_handle_type const&)
 {
     return dl_call_traits::library_is_handle();
 }
 #endif /* compiler */
 
-template <ss_typename_param_k T>
-inline dl_call_traits::library_is_not_handle test_library_(T const&)
+template<
+    ss_typename_param_k T
+>
+inline
+dl_call_traits::library_is_not_handle
+test_library_(T const&)
 {
     return dl_call_traits::library_is_not_handle();
 }
@@ -540,11 +590,16 @@ inline dl_call_traits::library_is_not_handle test_library_(T const&)
  * helper functions
  */
 
-inline dl_call_traits::entry_point_type lookup_symbol_(dl_call_traits::library_handle_type hinst, char const* functionName)
+inline
+dl_call_traits::entry_point_type
+lookup_symbol_(
+    dl_call_traits::library_handle_type hinst
+,   char const*                         functionName
+)
 {
-    dl_call_traits::entry_point_type    fp  =   dl_call_traits::get_symbol(hinst, functionName);
+    dl_call_traits::entry_point_type fp = dl_call_traits::get_symbol(hinst, functionName);
 
-    if(NULL == fp)
+    if (NULL == fp)
     {
         STLSOFT_THROW_X(missing_entry_point_exception(functionName, WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -552,38 +607,51 @@ inline dl_call_traits::entry_point_type lookup_symbol_(dl_call_traits::library_h
     return fp;
 }
 
-template <ss_typename_param_k C>
-inline calling_convention::calling_convention determine_calling_convention_(C const*& functionName)
+template<
+    ss_typename_param_k C
+>
+inline
+calling_convention::calling_convention
+determine_calling_convention_(C const*& functionName)
 {
-    typedef stlsoft::basic_string_view<C>   string_t;
+#if 0
+#elif defined(WINSTL_ARCH_IS_IA64) || \
+      defined(WINSTL_ARCH_IS_X64)
+
+    STLSOFT_SUPPRESS_UNUSED(functionName);
+
+    return calling_convention::cdeclCallConv;
+#else
+
+    typedef stlsoft::basic_string_view<C> string_t;
 
     calling_convention::calling_convention  cc = calling_convention::cdeclCallConv;
     string_t                                s0;
     string_t                                s1;
 
-    if(stlsoft::split(functionName, ':', s0, s1))
+    if (stlsoft::split(functionName, ':', s0, s1))
     {
-#ifdef STLSOFT_CF_CDECL_SUPPORTED
-        if( s0 == "C" ||
+# ifdef STLSOFT_CF_CDECL_SUPPORTED
+        if (s0 == "C" ||
             s0 == "cdecl")
         {
                 cc = calling_convention::cdeclCallConv;
         } else
-#endif /* STLSOFT_CF_CDECL_SUPPORTED */
-#ifdef STLSOFT_CF_FASTCALL_SUPPORTED
-        if( s0 == "F" ||
+# endif /* STLSOFT_CF_CDECL_SUPPORTED */
+# ifdef STLSOFT_CF_FASTCALL_SUPPORTED
+        if (s0 == "F" ||
             s0 == "fastcall")
         {
                 cc = calling_convention::fastcallCallConv;
         } else
-#endif // STLSOFT_CF_FASTCALL_SUPPORTED
-#ifdef STLSOFT_CF_STDCALL_SUPPORTED
-        if( s0 == "S" ||
+# endif // STLSOFT_CF_FASTCALL_SUPPORTED
+# ifdef STLSOFT_CF_STDCALL_SUPPORTED
+        if (s0 == "S" ||
             s0 == "stdcall")
         {
                 cc = calling_convention::stdcallCallConv;
         } else
-#endif // STLSOFT_CF_STDCALL_SUPPORTED
+# endif // STLSOFT_CF_STDCALL_SUPPORTED
         {
             STLSOFT_THROW_X(invalid_calling_convention_exception(s0.c_str()));
         }
@@ -592,26 +660,37 @@ inline calling_convention::calling_convention determine_calling_convention_(C co
     }
 
     return cc;
+#endif
 }
 
-template <ss_typename_param_k S>
-char const* detect_cc_( dl_call_traits::is_not_fd
-                    ,   char const*                             functionName
-                    ,   S const&
-                    ,   calling_convention::calling_convention& cc)
+template<
+    ss_typename_param_k S
+>
+inline
+char const*
+detect_cc_(
+    dl_call_traits::is_not_fd
+,   char const*                             functionName
+,   S const&
+,   calling_convention::calling_convention& cc
+)
 {
     cc = determine_calling_convention_(functionName);
 
     return functionName;
 }
 
-template<   int                 CC
-        ,   ss_typename_param_k C
-        >
-char const* detect_cc_( dl_call_traits::is_fd
-                    ,   char const*                             functionName
-                    ,   function_descriptor<CC, C> const&       fd
-                    ,   calling_convention::calling_convention& cc)
+template<
+    int                 CC
+,   ss_typename_param_k C
+>
+char const*
+detect_cc_(
+    dl_call_traits::is_fd
+,   char const*                             functionName
+,   function_descriptor<CC, C> const&       fd
+,   calling_convention::calling_convention& cc
+)
 {
     cc = calling_convention::from_int(fd.CallingConvention);
 
