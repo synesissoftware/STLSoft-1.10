@@ -4,11 +4,11 @@
  * Purpose:     Efficient drop-in replacement for strftime().
  *
  * Created:     23rd December 2018
- * Updated:     26th December 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2018-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_MAJOR       1
-# define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_MINOR       1
+# define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_MINOR       3
 # define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_REVISION    1
-# define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_EDIT        10
+# define STLSOFT_VER_STLSOFT_TIME_HPP_FAST_STRFTIME_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1075,7 +1075,6 @@ finish_sliced_item:
     return n;
 }
 
-
 } /* namespace ximpl_fast_strftime_ */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -1244,6 +1243,7 @@ fast_strftime(
     return ximpl_fast_strftime_::fast_strftime_(dest, cchDest, fmt, tm, s_info);
 }
 
+/** wide-string form */
 inline
 size_t
 fast_wcsftime(
@@ -1313,6 +1313,37 @@ fast_wcsftime(
 
     return ximpl_fast_strftime_::fast_strftime_(dest, cchDest, fmt, tm, s_info);
 }
+
+/** wide-string form */
+inline
+size_t
+fast_strftime(
+    wchar_t                     dest[]
+,   size_t                      cchDest
+,   wchar_t const*              fmt
+,   struct tm const*            tm
+)
+{
+    return fast_wcsftime(dest, cchDest, fmt, tm);
+}
+
+#ifdef STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
+
+template<
+    ss_typename_param_k T_character
+,   ss_size_t           V_dimension
+>
+inline
+size_t
+fast_strftime(
+    T_character               (&dest)[V_dimension]
+,   T_character const*          fmt
+,   struct tm const*            tm
+)
+{
+    return fast_strftime(dest, V_dimension, fmt, tm);
+}
+#endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
 
 /* /////////////////////////////////////////////////////////////////////////
 * namespace
