@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_MINOR       0
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_REVISION    1
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_EDIT        3
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_REVISION    3
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_EDIT        4
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,7 +86,63 @@ namespace stlsoft
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-STLSOFT_OPEN_WORKER_NS_(ximpl_stlsoft_util_rb_helpers)
+STLSOFT_OPEN_WORKER_NS_(ximpl_stlsoft_util_rb_helpers_)
+
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC) && \
+      _MSC_VER < 1310
+
+ /* Have to muck around with state here to get the old girl to work */
+
+template<
+    ss_typename_param_k T_rb
+>
+struct rb_helper_traits_vc6
+{
+private:
+    T_rb* prb;
+
+public:
+    ss_explicit_k
+    rb_helper_traits_vc6(
+        T_rb& rb
+    )
+        : prb(&rb)
+    {}
+
+    bool
+    do_resize(
+        size_t              newSize
+    ,   bool (T_rb::*pfn)(size_t)
+    )
+    {
+        return (prb->*pfn)(newSize);
+    }
+
+    bool
+    do_resize(
+        size_t              newSize
+    ,   void (T_rb::*pfn)(size_t)
+    )
+    {
+        (prb->*pfn)(newSize);
+
+        return true;
+    }
+};
+
+template<
+    ss_typename_param_k T
+>
+inline
+rb_helper_traits_vc6<T>
+traits_for(
+    T& rb
+)
+{
+    return rb_helper_traits_vc6<T>(rb);
+}
+#else
 
 template<
     ss_typename_param_k T_resizeableBuffer
@@ -124,19 +180,20 @@ struct rb_helper_traits
         return true;
     }
 };
-STLSOFT_CLOSE_WORKER_NS_(ximpl_stlsoft_util_rb_helpers)
+#endif
+STLSOFT_CLOSE_WORKER_NS_(ximpl_stlsoft_util_rb_helpers_)
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
  */
 
- /** Invokes <code>resize()</code> on the given buffer, regardless of
-  *  whether the buffer's type's method returns \c bool or \c void
-  *
-  * \param rb Reference to the resizeable buffer instance
-  * \param newSize The new size
-  */
+/** Invokes <code>resize()</code> on the given buffer, regardless of
+ *  whether the buffer's type's method returns \c bool or \c void
+ *
+ * \param rb Reference to the resizeable buffer instance
+ * \param newSize The new size
+ */
 template<
     ss_typename_param_k T_resizeableBuffer
 >
@@ -146,14 +203,26 @@ resizeable_buffer_resize(
 ,   ss_size_t           newSize
 )
 {
-    typedef ss_typename_type_k T_resizeableBuffer::value_type   value_t;
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC) && \
+      _MSC_VER < 1310
 
-    typedef STLSOFT_WORKER_NS_QUAL_(ximpl_stlsoft_util_rb_helpers, rb_helper_traits)<
-        T_resizeableBuffer
+    STLSOFT_WORKER_NS_USING_(ximpl_stlsoft_util_rb_helpers_, traits_for);
+
+    return traits_for(rb).do_resize(newSize, &T_resizeableBuffer::resize);
+#else
+    typedef T_resizeableBuffer                              buffer_t;
+    typedef ss_typename_type_k buffer_t::value_type         value_t;
+
+    STLSOFT_WORKER_NS_USING_(ximpl_stlsoft_util_rb_helpers_, rb_helper_traits);
+
+    typedef rb_helper_traits<
+        buffer_t
     ,   value_t
-    >                                                           traits_t;
+    >                                                       traits_t;
 
     return traits_t::do_resize(rb, newSize, &T_resizeableBuffer::resize);
+#endif
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
