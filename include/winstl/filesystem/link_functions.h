@@ -4,11 +4,11 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     30th November 2020
+ * Updated:     15th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    15
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        23
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       2
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    1
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,9 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary
 # include <winstl/api/external/DynamicLinkLibrary.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_DynamicLinkLibrary */
+#ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
+# include <winstl/api/external/ErrorHandling.h>
+#endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
 #ifndef WINSTL_INCL_WINSTL_API_external_h_FileManagement
 # include <winstl/api/external/FileManagement.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_FileManagement */
@@ -192,7 +195,6 @@ winstl_C_call_CreateHardLinkW_(
 
 #endif /* _WIN32_WINNT < 0x0500 */
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -266,7 +268,7 @@ winstl_C_hard_link_get_link_information_a(
 )
 {
     ss_truthy_t     r   =   ws_false_v;
-    HANDLE const    h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
+    HANDLE          h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
                                 path
                             ,   0
                             ,   FILE_SHARE_READ | FILE_SHARE_WRITE
@@ -285,6 +287,34 @@ winstl_C_hard_link_get_link_information_a(
     *fileIndexLow       =   0;
     *volumeSerialNumber =   0;
     *numLinks           =   0;
+
+    if (INVALID_HANDLE_VALUE == h)
+    {
+        ws_dword_t const    le      =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        ws_dword_t const    attrs   =   WINSTL_API_EXTERNAL_FileManagement_GetFileAttributesA(path);
+
+        if (INVALID_FILE_ATTRIBUTES == attrs)
+        {
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
+        }
+        else if(0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
+        {
+            h = WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
+                path
+            ,   0
+            ,   FILE_SHARE_READ | FILE_SHARE_WRITE
+            ,   NULL
+            ,   OPEN_EXISTING
+            ,   FILE_FLAG_BACKUP_SEMANTICS
+            ,   NULL
+            );
+
+            if (INVALID_HANDLE_VALUE == h)
+            {
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
+            }
+        }
+    }
 
     if (INVALID_HANDLE_VALUE != h)
     {
@@ -307,7 +337,7 @@ winstl_C_hard_link_get_link_information_w(
 )
 {
     ss_truthy_t     r   =   ws_false_v;
-    HANDLE const    h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
+    HANDLE          h   =   WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
                                 path
                             ,   0
                             ,   FILE_SHARE_READ | FILE_SHARE_WRITE
@@ -326,6 +356,34 @@ winstl_C_hard_link_get_link_information_w(
     *fileIndexLow       =   0;
     *volumeSerialNumber =   0;
     *numLinks           =   0;
+
+    if (INVALID_HANDLE_VALUE == h)
+    {
+        ws_dword_t const    le      =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+        ws_dword_t const    attrs   =   WINSTL_API_EXTERNAL_FileManagement_GetFileAttributesW(path);
+
+        if (INVALID_FILE_ATTRIBUTES == attrs)
+        {
+            WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
+        }
+        else if(0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
+        {
+            h = WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
+                path
+            ,   0
+            ,   FILE_SHARE_READ | FILE_SHARE_WRITE
+            ,   NULL
+            ,   OPEN_EXISTING
+            ,   FILE_FLAG_BACKUP_SEMANTICS
+            ,   NULL
+            );
+
+            if (INVALID_HANDLE_VALUE == h)
+            {
+                WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
+            }
+        }
+    }
 
     if (INVALID_HANDLE_VALUE != h)
     {
