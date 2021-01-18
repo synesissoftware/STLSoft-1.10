@@ -4,11 +4,11 @@
  * Purpose:     String creation functions (from String Access Shims)
  *
  * Created:     25th December 2018
- * Updated:     29th October 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2018-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MAJOR    1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MINOR    1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_REVISION 1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_EDIT     7
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_REVISION 2
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_EDIT     8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -99,7 +99,10 @@ sas_to_string_m(
     T_arg const&    arg0
 )
 {
-    return std::basic_string<char>(STLSOFT_NS_QUAL(c_str_data_a)(arg0), STLSOFT_NS_QUAL(c_str_len_a)(arg0));
+    return std::basic_string<char>(
+        static_cast<char const*>(STLSOFT_NS_QUAL(c_str_data_a)(arg0))
+    ,   static_cast<size_t>(STLSOFT_NS_QUAL(c_str_len_a)(arg0))
+    );
 }
 
 /** Obtains the string form of a given instance, via SAS-like overloads of
@@ -125,7 +128,10 @@ sas_to_string_m(
 #endif
 )
 {
-    return std::basic_string<char>(STLSOFT_NS_QUAL(c_str_data_a)(arg0, arg1), STLSOFT_NS_QUAL(c_str_len_a)(arg0, arg1));
+    return std::basic_string<char>(
+        static_cast<char const*>(STLSOFT_NS_QUAL(c_str_data_a)(arg0, arg1))
+    ,   static_cast<size_t>(STLSOFT_NS_QUAL(c_str_len_a)(arg0, arg1))
+    );
 }
 
 /** Obtains the string form of a given instance, via the String Access Shims
@@ -140,7 +146,10 @@ sas_to_string_w(
     T_arg const&    arg0
 )
 {
-    return std::basic_string<wchar_t>(STLSOFT_NS_QUAL(c_str_data_w)(arg0), STLSOFT_NS_QUAL(c_str_len_w)(arg0));
+    return std::basic_string<wchar_t>(
+        static_cast<wchar_t const*>(STLSOFT_NS_QUAL(c_str_data_w)(arg0))
+    ,   static_cast<size_t>(STLSOFT_NS_QUAL(c_str_len_w)(arg0))
+    );
 }
 
 /** Obtains the string form of a given instance, via the String Access Shims
