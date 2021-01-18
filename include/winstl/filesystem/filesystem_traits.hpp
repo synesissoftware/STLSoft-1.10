@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     3rd January 2021
+ * Updated:     13th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR       21
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        184
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION    7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT        185
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -2418,7 +2418,7 @@ private:
                 requiredLen += cwdLen;
             }
 
-            if (requiredLen > maxPathLength)
+            if (requiredLen >= maxPathLength)
             {
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
@@ -3737,7 +3737,7 @@ private:
                 requiredLen += cwdLen;
             }
 
-            if (requiredLen > maxPathLength)
+            if (requiredLen >= maxPathLength)
             {
                 WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_FILENAME_EXCED_RANGE);
             }
