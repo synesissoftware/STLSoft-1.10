@@ -5,11 +5,11 @@
  *              exceptions.
  *
  * Created:     15th September 2010
- * Updated:     26th December 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MAJOR    1
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MINOR    0
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_REVISION 6
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     100
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_REVISION 7
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -115,24 +115,66 @@ struct ximpl_CException_sas_util
     typedef STLSOFT_NS_QUAL(auto_buffer)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>       buffer_t;
     typedef STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> shim_string_t;
 
+    static
+    LPCTSTR
+    mfcstl_C_fmtmsg_elide_message_a_(
+        LPCTSTR     first
+    ,   int      /* elisionFlags */
+    )
+    {
+        TCHAR const* lastWanted = NULL;
+
+        for (; '\0' != *first; ++first)
+        {
+            switch (*first)
+            {
+            case    '.':
+            case    ' ':
+            case    '\t':
+            case    '\r':
+            case    '\n':
+
+                break;
+            default:
+
+                lastWanted = first;
+                break;
+            }
+        }
+
+        if (NULL != lastWanted)
+        {
+            return lastWanted + 1;
+        }
+
+        return first;
+    }
+
+
     static shim_string_t create_(CException const& x)
     {
         buffer_t buff(buffer_t::internal_size());
 
-        for(; !buff.empty(); buff.resize(1u + 2* buff.size()))
+        for (; !buff.empty(); buff.resize(1u + 2* buff.size()))
         {
-            buff[buff.size() - 1] = '~';
+            buff[0] = buff[buff.size() - 1] = '~';
 
-            if(!const_cast<CException&>(x).GetErrorMessage(&buff[0], static_cast<UINT>(buff.size()), NULL))
+            if (!const_cast<CException&>(x).GetErrorMessage(&buff[0], static_cast<UINT>(buff.size()), NULL))
             {
+                if ('\0' == buff[0])
+                {
+                    break;
+                }
             }
-            else if('\0' != buff[buff.size() - 1])
+            else if ('\0' != buff[buff.size() - 1])
             {
                 break;
             }
         }
 
-        return shim_string_t(buff.data());
+        LPCTSTR const end = mfcstl_C_fmtmsg_elide_message_a_(buff.data(), 0);
+
+        return shim_string_t(buff.data(), static_cast<size_t>(end - buff.data()));
     }
 };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
