@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     7th December 2020
+ * Updated:     21st December 2020
  *
  * Home:        http://stlsoft.org/
  *
