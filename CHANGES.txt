@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  10th January 2021
+; Updated:  18th January 2021
 
 ============================================================================
 
@@ -17,6 +17,88 @@ STLSoft - Changes
    **************************************
 
 
+
+Changes for 1.10.1 beta 28 (18th January 2021)
+
+General:
+========
+
+ * added character-array overloads of fast_strftime()
+ * WinSTL hard link information functions now work for directories as well as files
+ * various defect fixes
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/conversion/sas_to_string.hpp:
+    ~ casts to invoke shim temporary return values' types' implicit conversions
+    stlsoft::sas_to_string() : ~ now double-invokes shims in order to work with arbitrary types; compiler will optimise out easily
+
+ ~ stlsoft/shims/access/string/std/chrono.hpp:
+    ~ fixed wrong include-case
+
+ ~ stlsoft/time/fast_strftime.hpp:
+    + added character-array overloads of fast_strftime()
+    + added wide overload of fast_strftime()
+    ~ preparatory refactoring
+
+ ~ stlsoft/util/resizeable_buffer_helpers.hpp:
+    ~ backwards-compatibility with VC++ 6
+    ~ preparatory changes
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/shims/access/string/CException.hpp:
+    ~ string access shims for CException now works in case where no string can be elicited, and also elides trailing whitespace and periods
+    ~ preparatory refactoring
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/filesystem/path_functions.h:
+    ~ fixed defect introduced in 1.10.1 beta-26
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/path.hpp:
+    ~ fixed (debug-only) defect in (unix|win)stl::basic_path<>
+
+ WinSTL:
+ =======
+
+ ~ winstl/dl/dl_call.hpp:
+    winstl::dl_call() : ~ now always assumes cdecl on 64-bit architectures
+    + added noexcept()
+    ~ preparatory changes
+
+ ~ winstl/filesystem/current_directory_scope.hpp:
+    ~ refactoring
+
+ ~ winstl/filesystem/file_functions.hpp:
+    ~ refactoring
+
+ ~ winstl/filesystem/filesystem_traits.hpp:
+    winstl::filesystem_traits<>::GetFullPathName(A|W) : ~ correction to detection of 1 + longest-possible (regular) path-name
+
+ ~ winstl/filesystem/findfile_sequence.hpp:
+    ~ fixing defect
+    ~ refactoring
+
+ ~ winstl/filesystem/link_functions.h:
+    (|winstl_C_)hard_link_get_link_information(|_a|_w) : + now works for directories via a repeated call, for directories only, specifying the FILE_FLAG_BACKUP_SEMANTICS flag
+
+ ~ winstl/filesystem/path.hpp:
+    ~ refactoring
+    ~ fixed (debug-only) defect in (unix|win)stl::basic_path<>
+
+
+
+============================================================================
 
 Changes for 1.10.1 beta 27 (10th January 2021)
 
