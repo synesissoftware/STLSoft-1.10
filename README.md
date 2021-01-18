@@ -13,7 +13,15 @@ Working now (January 2021) on the 1.10 release candidate, and expect to be done 
 
 ## Releases
 
-### 1.10.1 beta-27 (Latest) - 10th January 2021
+### 1.10.1 beta-28 (Latest) - 18th January 2021
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta28>
+
+* added character-array overloads of ``fast_strftime()``
+* WinSTL hard link information functions now work for directories as well as files
+* various defect fixes
+
+### 1.10.1 beta-27 - 10th January 2021
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta27>
 
