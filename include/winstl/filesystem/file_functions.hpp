@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for file handling
  *
  * Created:     1st January 2005
- * Updated:     26th December 2020
+ * Updated:     15th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MINOR      3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   17
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       70
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   18
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -230,7 +230,9 @@ load_text_file_impl(
 
     if(INVALID_HANDLE_VALUE == h.get())
     {
-        STLSOFT_THROW_X(winstl_exception("File does not exist", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+        DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+
+        STLSOFT_THROW_X(winstl_exception("File does not exist", le));
     }
 
     ws_uint64_t             size    =   filesys_traits_t::get_file_size(h.get());
@@ -256,7 +258,9 @@ load_text_file_impl(
 
             if(!::ReadFile(h.get(), &buffer[0], DWORD(buffer.size()), &dw, NULL))
             {
-                STLSOFT_THROW_X(winstl_exception("Read operation failed", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+                DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+
+                STLSOFT_THROW_X(winstl_exception("Read operation failed", le));
             }
             else
             {

@@ -4,11 +4,11 @@
  * Purpose:     Current working directory scoping class.
  *
  * Created:     12th November 1998
- * Updated:     24th December 2020
+ * Updated:     15th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MAJOR     5
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_MINOR     2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION  16
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      142
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_REVISION  17
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_CURRENT_DIRECTORY_SCOPE_EDIT      143
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -322,16 +322,20 @@ basic_current_directory_scope<C, T>::init_(
 {
     if (0 == traits_type::get_current_directory(m_previous))
     {
+        DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(winstl_exception("could not determine current directory", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("could not determine current directory", le));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
         m_previous[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
     else if (!traits_type::set_current_directory(dir))
     {
+        DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        STLSOFT_THROW_X(winstl_exception("could not change current directory", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+        STLSOFT_THROW_X(winstl_exception("could not change current directory", le));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
         m_previous[0] = '\0';
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */

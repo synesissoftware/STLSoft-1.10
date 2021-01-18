@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 3
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     313
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     315
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1973,7 +1973,9 @@ basic_path<C, T, A>::make_absolute(
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
+        DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
+
+        STLSOFT_THROW_X(winstl_exception("could not determine the absolute path", le));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
 
         return false;
