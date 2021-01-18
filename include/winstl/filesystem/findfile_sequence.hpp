@@ -1613,6 +1613,8 @@ basic_findfile_sequence_const_input_iterator<C, T, V>::find_first_file_(
                 hSrch = fff_traits_t_::find_first_file_l(searchSpec, findData, static_cast<traits_t_*>(0));
             }
         }
+#else /* ? WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
+        {}
 #endif /* !WINSTL_FFS_NO_LONG_PATH_SUPPORT_*/
     }
 
