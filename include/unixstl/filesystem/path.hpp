@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     7th January 2021
+ * Updated:     14th January 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -1780,7 +1780,7 @@ basic_path<C, T, A>::canonicalise(
 
 #ifdef STLSOFT_DEBUG
 
-    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0] + results.root.len, newPath.m_buffer.size() + results.root.len, static_cast<char_type>('~'));
+    STLSOFT_NS_QUAL(pod_fill_n)(&newPath.m_buffer[0] + results.root.len, newPath.m_buffer.size() - results.root.len, static_cast<char_type>('~'));
 #endif /* STLSOFT_DEBUG */
 
     // Basically we scan through the path looking for ./ .\ ..\ and ../
