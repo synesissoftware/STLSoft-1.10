@@ -4,11 +4,11 @@
  * Purpose:     Utility functions for working with resizeable-buffers.
  *
  * Created:     24th December 2020
- * Updated:     26th December 2020
+ * Updated:     16th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_REVISION    1
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_EDIT        2
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_RESIZEABLE_BUFFER_HELPERS_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -89,13 +89,13 @@ namespace stlsoft
 STLSOFT_OPEN_WORKER_NS_(ximpl_stlsoft_util_rb_helpers)
 
 template<
-    ss_typename_param_k T_resizableBuffer
+    ss_typename_param_k T_resizeableBuffer
 ,   ss_typename_param_k T_character
 >
 struct rb_helper_traits
 {
     typedef T_character                                     char_type;
-    typedef T_resizableBuffer                               buffer_type;
+    typedef T_resizeableBuffer                              buffer_type;
 
     typedef bool                             (buffer_type::*pfn_b)(size_t);
     typedef void                             (buffer_type::*pfn_v)(size_t);
@@ -138,22 +138,22 @@ STLSOFT_CLOSE_WORKER_NS_(ximpl_stlsoft_util_rb_helpers)
   * \param newSize The new size
   */
 template<
-    ss_typename_param_k T_resizableBuffer
+    ss_typename_param_k T_resizeableBuffer
 >
 bool
 resizeable_buffer_resize(
-    T_resizableBuffer&  rb
+    T_resizeableBuffer& rb
 ,   ss_size_t           newSize
 )
 {
-    typedef ss_typename_type_k T_resizableBuffer::value_type    value_t;
+    typedef ss_typename_type_k T_resizeableBuffer::value_type   value_t;
 
     typedef STLSOFT_WORKER_NS_QUAL_(ximpl_stlsoft_util_rb_helpers, rb_helper_traits)<
-        T_resizableBuffer
+        T_resizeableBuffer
     ,   value_t
     >                                                           traits_t;
 
-    return traits_t::do_resize(rb, newSize, &T_resizableBuffer::resize);
+    return traits_t::do_resize(rb, newSize, &T_resizeableBuffer::resize);
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
