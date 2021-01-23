@@ -4,11 +4,11 @@
  * Purpose:     Definition of the environment_variable_traits class.
  *
  * Created:     9th December 2005
- * Updated:     25th December 2020
+ * Updated:     23rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 7
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     34
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 9
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -363,29 +363,14 @@ inline /* static */ environment_variable_traits::char_type const* environment_va
 
 #if _STLSOFT_VER < 0x01100000
 
-#if 0
-#elif defined(STLSOFT_COMPILER_IS_MSVC)
-
-# if _MSC_VER >= 1500
-
-#  pragma warning(push)
-#  pragma warning(disable : 4996)
-# endif
-#endif
+# include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
 #endif
 
     return const_cast<char_type const*>(::getenv(name));
 
 #if _STLSOFT_VER < 0x01100000
 
-#if 0
-#elif defined(STLSOFT_COMPILER_IS_MSVC)
-
-# if _MSC_VER >= 1500
-
-#  pragma warning(pop)
-# endif
-#endif
+# include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 #endif
 }
 

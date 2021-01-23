@@ -4,11 +4,11 @@
  * Purpose:     pipe class, based on UNIX pipe.
  *
  * Created:     19th June 2004
- * Updated:     18th December 2020
+ * Updated:     23rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_MAJOR      4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_REVISION   8
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_EDIT       54
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_REVISION   10
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_EDIT       56
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -214,25 +214,16 @@ private:
         int h
     )
     {
-#if 0
-#elif defined(STLSOFT_COMPILER_IS_MSVC)
+#if _STLSOFT_VER < 0x01100000
 
-# if _MSC_VER >= 1500
-
-#  pragma warning(push)
-#  pragma warning(disable : 4996)
-# endif
+# include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
 #endif
 
         ::close(h);
 
-#if 0
-#elif defined(STLSOFT_COMPILER_IS_MSVC)
+#if _STLSOFT_VER < 0x01100000
 
-# if _MSC_VER >= 1500
-
-#  pragma warning(pop)
-# endif
+# include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 #endif
     }
 /// @}

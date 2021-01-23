@@ -4,11 +4,11 @@
  * Purpose:     Windows console functions.
  *
  * Created:     6th August 2015
- * Updated:     2nd December 2020
+ * Updated:     23rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR       0
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    7
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        11
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION    9
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -152,18 +152,13 @@ unixstl_C_get_console_width(void)
 #if defined(_MSC_VER) && \
     defined(_STLSOFT_FORCE_ANY_COMPILER)
 
-# if _MSC_VER >= 1200
-#  pragma warning(push)
-#  pragma warning(disable : 4996)
-# endif /* compiler */
+# include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
 
     pfn_fileno  =   STLSOFT_NS_GLOBAL(_fileno);
     pfn_isatty  =   STLSOFT_NS_GLOBAL(_isatty);
     pfn_getenv  =   STLSOFT_NS_GLOBAL(getenv);
 
-# if _MSC_VER >= 1200
-#  pragma warning(pop)
-# endif /* compiler */
+# include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 #else
 
     pfn_fileno  =   STLSOFT_NS_GLOBAL(fileno);
