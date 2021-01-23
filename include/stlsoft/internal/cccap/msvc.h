@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     19th January 2021
+ * Updated:     23rd January 2021
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
@@ -67,9 +67,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     34
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      149
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     35
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,6 +159,16 @@
 
 #if _MSC_VER >= 1400
 # define STLSOFT_PPF_VARIADIC_MACROS_SUPPORT
+#endif /* compiler */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compiler-specific features
+ *
+ * - #pragma warning
+ */
+
+#if _MSC_VER >= 1200
+# define STLSOFT_CF_msvc_pragma_warning_pop
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
