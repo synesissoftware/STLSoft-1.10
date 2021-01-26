@@ -4,11 +4,11 @@
  * Purpose:     Range exceptions.
  *
  * Created:     30th December 2005
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MAJOR     2
 # define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_MINOR     0
-# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_REVISION  9
-# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      32
+# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_REVISION  10
+# define RANGELIB_VER_RANGELIB_ERROR_HPP_EXCEPTIONS_EDIT      33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -152,14 +152,14 @@ public:
     /// \note This does not do have any implementation, but is required to placate
     /// the Comeau and GCC compilers, which otherwise complain about mismatched
     /// exception specifications between this class and its parent
-    virtual ~range_exception() STLSOFT_NOEXCEPT
+    virtual ~range_exception() STLSOFT_NOEXCEPT_STDOVR
     {}
 /// @}
 
 /// \name Accessors
 /// @{
 public:
-    virtual char const* what() const STLSOFT_NOEXCEPT
+    virtual char const* what() const STLSOFT_NOEXCEPT_STDOVR
     {
         return m_reason.empty() ? this->real_what_() : m_reason.c_str();
     }
@@ -168,7 +168,7 @@ public:
 /// \name Implementation
 /// @{
 private:
-    virtual char const* real_what_() const throw()
+    virtual char const* real_what_() const STLSOFT_NOEXCEPT
     {
         return "Range exception";
     }
@@ -211,14 +211,14 @@ public:
     /// \note This does not do have any implementation, but is required to placate
     /// the Comeau and GCC compilers, which otherwise complain about mismatched
     /// exception specifications between this class and its parent
-    virtual ~empty_range_exception() STLSOFT_NOEXCEPT
+    virtual ~empty_range_exception() STLSOFT_NOEXCEPT_STDOVR
     {}
 /// @}
 
 /// \name Implementation
 /// @{
 private:
-    virtual char const* real_what_() const throw()
+    virtual char const* real_what_() const STLSOFT_NOEXCEPT
     {
         return "Range was empty";
     }

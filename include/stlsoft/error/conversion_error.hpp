@@ -4,11 +4,11 @@
  * Purpose:     Definition of the stlsoft::conversion_error exception class.
  *
  * Created:     15th December 2006
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_MAJOR       1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_MINOR       0
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_REVISION    10
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_EDIT        22
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_REVISION    11
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_CONVERSION_ERROR_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,9 +123,10 @@ protected:
     {}
 #if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER > 1200
+
     // There's a defect in the VC++ 6 compiler that causes the throwing of
     // any derived class to cause an ICE
-    virtual ~conversion_error_base() STLSOFT_NOEXCEPT = 0;
+    virtual ~conversion_error_base() STLSOFT_NOEXCEPT_STDOVR = 0;
 #endif /* compiler */
 /// @}
 };
@@ -173,7 +174,7 @@ public:
         : parent_class_type(rhs)
         , m_statusCode(rhs.m_statusCode)
     {}
-    virtual ~conversion_error() STLSOFT_NOEXCEPT
+    virtual ~conversion_error() STLSOFT_NOEXCEPT_STDOVR
     {}
 private:
     class_type& operator =(class_type const&);  // copy-assignment proscribed
@@ -209,7 +210,7 @@ private:
 
 # if !defined(STLSOFT_COMPILER_IS_MSVC) || \
     _MSC_VER > 1200
-inline /* virtual */ conversion_error_base::~conversion_error_base() STLSOFT_NOEXCEPT
+inline /* virtual */ conversion_error_base::~conversion_error_base() STLSOFT_NOEXCEPT_STDOVR
 {}
 # endif /* compiler */
 

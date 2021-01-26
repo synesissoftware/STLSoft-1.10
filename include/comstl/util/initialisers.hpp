@@ -4,13 +4,13 @@
  * Purpose:     Contains classes for initialising COM/OLE.
  *
  * Created:     8th February 1999
- * Updated:     26th December 2020
+ * Updated:     25th January 2021
  *
  * Thanks:      To Adi Shavit, for demanding better documentation of COMSTL.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MAJOR      3
 # define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_MINOR      3
-# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_REVISION   9
-# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       94
+# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_REVISION   10
+# define COMSTL_VER_COMSTL_UTIL_HPP_INITIALISERS_EDIT       95
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ public:
 /// \name Implementation
 /// @{
 private:
-    virtual char const* real_what_() const throw()
+    virtual char const* real_what_() const STLSOFT_NOEXCEPT
     {
         return "COM initialisation failure";
     }

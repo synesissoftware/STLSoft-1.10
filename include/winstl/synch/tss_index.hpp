@@ -4,11 +4,11 @@
  * Purpose:     Wrapper class for Win32 TSS key.
  *
  * Created:     20th January 1999
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_MINOR    0
-# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_REVISION 13
-# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_EDIT     53
+# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_REVISION 14
+# define WINSTL_VER_WINSTL_SYNCH_HPP_TSS_INDEX_EDIT     54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ public:
 /// \name Accessors
 /// @{
 public:
-    virtual char const* what() const STLSOFT_NOEXCEPT
+    virtual char const* what() const STLSOFT_NOEXCEPT_STDOVR
     {
         return "failed to allocate a TSS key";
     }
