@@ -4,7 +4,7 @@
  * Purpose:     Definition of the string access shims for the VARIANT type.
  *
  * Created:     24th May 2002
- * Updated:     2nd January 2021
+ * Updated:     23rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MAJOR    5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_MINOR    4
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 7
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     147
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_REVISION 8
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_VARIANT_EDIT     148
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -138,17 +138,11 @@ public:
 
         osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 
-#if defined(STLSOFT_COMPILER_IS_MSVC) && \
-    _MSC_VER >= 1700
-# pragma warning(push)
-# pragma warning(disable : 4996)
-#endif
+#include <stlsoft/internal/warnings/push/suppress_deprecation_.h>
+
         if( !::GetVersionEx(&osvi) ||
             VER_PLATFORM_WIN32_NT != osvi.dwPlatformId)
-#if defined(STLSOFT_COMPILER_IS_MSVC) && \
-    _MSC_VER >= 1700
-# pragma warning(pop)
-#endif
+#include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
         {
             /* Not supported on Windows 9x */
             return NULL;
