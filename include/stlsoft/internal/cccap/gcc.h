@@ -4,13 +4,13 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     23rd December 2020
+ * Updated:     23rd January 2021
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -62,9 +62,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      29
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       108
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      30
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       109
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -152,6 +152,17 @@
     (   __GNUC__ == 3 && \
         __GNUC_MINOR__ >= 4)
 # define STLSOFT_PPF_VARIADIC_MACROS_SUPPORT
+#endif /* compiler */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compiler-specific features
+ *
+ * - #pragma warning
+ */
+
+/* This is the earliest tested. Please submit PR if known to be supported by earlier version */
+#if STLSOFT_GCC_VER >= 40200
+# define STLSOFT_CF_gcc_pragma_diagnostic_pop
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,14 +4,14 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     25th November 2020
+ * Updated:     23rd January 2021
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -67,9 +67,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     34
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     35
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      148
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,6 +159,16 @@
 
 #if _MSC_VER >= 1400
 # define STLSOFT_PPF_VARIADIC_MACROS_SUPPORT
+#endif /* compiler */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compiler-specific features
+ *
+ * - #pragma warning
+ */
+
+#if _MSC_VER >= 1200
+# define STLSOFT_CF_msvc_pragma_warning_pop
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -364,7 +374,8 @@
 # define STLSOFT_CF_noexcept_KEYWORD_SUPPORT
 #endif /* compiler */
 
-#if _MSC_VER >= 1600
+#if _MSC_VER >= 1600 && \
+    defined(__cplusplus)
 # define STLSOFT_CF_nullptr_KEYWORD_SUPPORT
 #endif /* compiler */
 

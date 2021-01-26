@@ -4,11 +4,11 @@
  * Purpose:     Pops warning suppression for "".
  *
  * Created:     6th October 2016
- * Updated:     26th December 2020
+ * Updated:     23rd January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -27,9 +27,12 @@
 # error stlsoft/internal/warnings/pop/suppress_deprecation_.h already included without preceeding push
 #endif /* STLSOFT_INCL_STLSOFT_INTERNAL_WARNINGS_PUSH_H_SUPPRESS_DEPRECATION_ */
 
-#if 0 || \
-    defined(STLSOFT_COMPILER_IS_MSVC) || \
-    0
+#if 0
+#elif defined(STLSOFT_CF_gcc_pragma_diagnostic_pop)
+
+# pragma GCC diagnostic pop
+#elif defined(STLSOFT_CF_msvc_pragma_warning_pop)
+
 # pragma warning(pop)
 #endif
 
