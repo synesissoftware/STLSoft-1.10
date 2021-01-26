@@ -4,7 +4,7 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     16th January 2021
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     8
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  1
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      65
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  2
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -196,7 +196,7 @@ public:
         : parent_class_type(class_type::create_reason_(functionName).c_str(), sc)
     {}
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-    virtual ~missing_entry_point_exception() STLSOFT_NOEXCEPT
+    virtual ~missing_entry_point_exception() STLSOFT_NOEXCEPT_STDOVR
     {}
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 private:
@@ -250,7 +250,7 @@ public:
         , m_ccs(callingConventionSpecifier)
     {}
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-    virtual ~invalid_calling_convention_exception() STLSOFT_NOEXCEPT
+    virtual ~invalid_calling_convention_exception() STLSOFT_NOEXCEPT_STDOVR
     {}
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /// @}

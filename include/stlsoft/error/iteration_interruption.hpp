@@ -4,11 +4,11 @@
  * Purpose:     An exception thrown when an active end iterator is exhausted.
  *
  * Created:     30th November 2005
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_MINOR     0
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_REVISION  8
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_EDIT      27
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_REVISION  9
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ITERATION_INTERRUPTION_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,14 +122,14 @@ public:
         , m_errorCode(errorCode)
     {}
 
-    virtual ~iteration_interruption() throw()
+    virtual ~iteration_interruption() STLSOFT_NOEXCEPT_STDOVR
     {}
 /// @}
 
 /// \name Accessors
 /// @{
 public:
-    virtual char const* what() const throw()
+    virtual char const* what() const STLSOFT_NOEXCEPT_STDOVR
     {
         char const* message = parent_class_type::what();
 
@@ -143,7 +143,7 @@ public:
     }
 
     /// The error code associated with the exception
-    virtual long get_error_code() const throw()
+    virtual long get_error_code() const STLSOFT_NOEXCEPT
     {
         return m_errorCode;
     }
@@ -151,7 +151,7 @@ public:
     /// [DEPRECATED] The error code associated with the exception
     ///
     /// \deprecated Use get_error_code() instead.
-    virtual long errorCode() const throw()
+    virtual long errorCode() const STLSOFT_NOEXCEPT
     {
         return get_error_code();
     }
@@ -160,7 +160,7 @@ public:
 /// \name Implementation
 /// @{
 private:
-    virtual char const* real_what_() const throw()
+    virtual char const* real_what_() const STLSOFT_NOEXCEPT
     {
         return "iteration interruption";
     }

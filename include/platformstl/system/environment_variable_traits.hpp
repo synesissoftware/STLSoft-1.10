@@ -4,7 +4,7 @@
  * Purpose:     Definition of the environment_variable_traits class.
  *
  * Created:     9th December 2005
- * Updated:     23rd January 2021
+ * Updated:     25th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 9
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     36
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 10
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -283,6 +283,7 @@ private:
 /// @{
 public:
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
     /// Returns a pointer to the environment block pointer.
     ///
     /// \note The returned pointer must be passed back to release_environ().
@@ -290,17 +291,17 @@ public:
     /// Releases any allocation performed by get_environ().
     ///
     /// \param env The pointer returned in a previous call to get_environ().
-    static void release_environ(char_type const** env) throw();
-
+    static void release_environ(char_type const** env) STLSOFT_NOEXCEPT;
 #endif /* PLATFORMSTL_ENVVAR_HAS_ENVIRON */
 
     /// Returns a pointer to the value of the given variable, or NULL if
     /// the variable does not exist
     ///
     /// \param name The name of the variable whose value will be retrieved
-    static char_type const* get_variable(char_type const* name) throw();
+    static char_type const* get_variable(char_type const* name) STLSOFT_NOEXCEPT;
 
 #ifdef PLATFORMSTL_ENVVAR_SET_SUPPORTED
+
     /// Creates or updates the given variable to the given value
     ///
     /// \param name The name of the variable to create or update
@@ -309,9 +310,10 @@ public:
     /// \return A status code indicating success
     /// \retval 0 The operation completed successfully
     /// \retval !0 The operation failed
-    static int set_variable(char_type const* name, char_type const* value) throw();
+    static int set_variable(char_type const* name, char_type const* value) STLSOFT_NOEXCEPT;
 #endif /* PLATFORMSTL_ENVVAR_SET_SUPPORTED */
 #ifdef PLATFORMSTL_ENVVAR_ERASE_SUPPORTED
+
     /// Removed the given variable
     ///
     /// \param name The name of the variable to remove
@@ -321,7 +323,7 @@ public:
     /// \return A status code indicating success
     /// \retval 0 The operation completed successfully
     /// \retval !0 The operation failed
-    static int erase_variable(char_type const* name) throw();
+    static int erase_variable(char_type const* name) STLSOFT_NOEXCEPT;
 #endif /* PLATFORMSTL_ENVVAR_ERASE_SUPPORTED */
 /// @}
 
@@ -330,8 +332,9 @@ public:
 private:
 #if defined(PLATFORMSTL_ENVVAR_SET_BY_PUTENV) || \
     defined(PLATFORMSTL_ENVVAR_ERASE_BY_PUTENV)
-    static int          call_putenv_(char_type const* str) throw();
-    static int          call_putenv_(char_type const* name, char_type const* value) throw();
+
+    static int          call_putenv_(char_type const* str) STLSOFT_NOEXCEPT;
+    static int          call_putenv_(char_type const* name, char_type const* value) STLSOFT_NOEXCEPT;
 #endif /* putenv ? */
 /// @}
 };
@@ -343,6 +346,7 @@ private:
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 #ifdef PLATFORMSTL_ENVVAR_HAS_ENVIRON
+
 inline /* static */ environment_variable_traits::char_type const** environment_variable_traits::get_environ()
 {
 # ifdef PLATFORMSTL_ENVVAR_ENVIRON_HAS_UNDERSCORE
@@ -352,11 +356,11 @@ inline /* static */ environment_variable_traits::char_type const** environment_v
 # endif /* PLATFORMSTL_ENVVAR_ENVIRON_HAS_UNDERSCORE */
 }
 
-inline /* static */ void environment_variable_traits::release_environ(environment_variable_traits::char_type const**) throw()
+inline /* static */ void environment_variable_traits::release_environ(environment_variable_traits::char_type const**) STLSOFT_NOEXCEPT
 {}
 #endif /* PLATFORMSTL_ENVVAR_HAS_ENVIRON */
 
-inline /* static */ environment_variable_traits::char_type const* environment_variable_traits::get_variable(environment_variable_traits::char_type const* name) throw()
+inline /* static */ environment_variable_traits::char_type const* environment_variable_traits::get_variable(environment_variable_traits::char_type const* name) STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(NULL != name);
     STLSOFT_MESSAGE_ASSERT("Name may not contain '='", NULL == ::strchr(name, '='));
@@ -375,7 +379,8 @@ inline /* static */ environment_variable_traits::char_type const* environment_va
 }
 
 #ifdef PLATFORMSTL_ENVVAR_SET_SUPPORTED
-inline /* static */ int environment_variable_traits::set_variable(environment_variable_traits::char_type const* name, environment_variable_traits::char_type const* value) throw()
+
+inline /* static */ int environment_variable_traits::set_variable(environment_variable_traits::char_type const* name, environment_variable_traits::char_type const* value) STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(NULL != name);
     STLSOFT_ASSERT(NULL != value);
@@ -390,7 +395,8 @@ inline /* static */ int environment_variable_traits::set_variable(environment_va
 #endif /* PLATFORMSTL_ENVVAR_SET_SUPPORTED */
 
 #ifdef PLATFORMSTL_ENVVAR_ERASE_SUPPORTED
-inline /* static */ int environment_variable_traits::erase_variable(environment_variable_traits::char_type const* name) throw()
+
+inline /* static */ int environment_variable_traits::erase_variable(environment_variable_traits::char_type const* name) STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(NULL != name);
     STLSOFT_MESSAGE_ASSERT("Name may not contain '='", NULL == ::strchr(name, '='));
@@ -408,7 +414,7 @@ inline /* static */ int environment_variable_traits::erase_variable(environment_
 #if defined(PLATFORMSTL_ENVVAR_SET_BY_PUTENV) || \
     defined(PLATFORMSTL_ENVVAR_ERASE_BY_PUTENV)
 
-inline /* static */ int environment_variable_traits::call_putenv_(environment_variable_traits::char_type const* str) throw()
+inline /* static */ int environment_variable_traits::call_putenv_(environment_variable_traits::char_type const* str) STLSOFT_NOEXCEPT
 {
 #ifdef PLATFORMSTL_ENVVAR_PUTENV_HAS_UNDERSCORE
     return ::_putenv(str);
@@ -417,7 +423,7 @@ inline /* static */ int environment_variable_traits::call_putenv_(environment_va
 #endif /* compiler */
 }
 
-inline /* static */ int environment_variable_traits::call_putenv_(environment_variable_traits::char_type const* name, environment_variable_traits::char_type const* value) throw()
+inline /* static */ int environment_variable_traits::call_putenv_(environment_variable_traits::char_type const* name, environment_variable_traits::char_type const* value) STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(NULL != name);
     STLSOFT_ASSERT(NULL == ::strchr(name, '='));

@@ -4,11 +4,11 @@
  * Purpose:     Definition of the environment_map class.
  *
  * Created:     14th November 2005
- * Updated:     28th November 2020
+ * Updated:     25th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_MINOR       5
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_REVISION    1
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_EDIT        72
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_REVISION    2
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_MAP_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -209,14 +209,14 @@ private:
         snapshot();
 
     public: // Operations
-        ss_bool_t erase(    first_type const&   name) throw();
-        void erase(         iterator            it) throw();
+        ss_bool_t erase(    first_type const&   name) STLSOFT_NOEXCEPT;
+        void erase(         iterator            it) STLSOFT_NOEXCEPT;
         void insert(        first_type const    &name
                         ,   second_type const&  value);
         void set(           first_type const&   name
                         ,   second_type const&  value);
         ss_bool_t lookup(   first_type const&   name
-                        ,   second_type*&       pvalue) throw();
+                        ,   second_type*&       pvalue) STLSOFT_NOEXCEPT;
 
     public: // Iteration
         iterator    begin();
@@ -878,7 +878,7 @@ inline environment_map::snapshot::iterator environment_map::snapshot::end()
     return m_variables.end();
 }
 
-inline ss_bool_t environment_map::snapshot::erase(first_type const& name) throw()
+inline ss_bool_t environment_map::snapshot::erase(first_type const& name) STLSOFT_NOEXCEPT
 {
     variables_type_::iterator it  =   m_variables.find(name);
 
@@ -892,7 +892,7 @@ inline ss_bool_t environment_map::snapshot::erase(first_type const& name) throw(
     return false;
 }
 
-inline void environment_map::snapshot::erase(environment_map::snapshot::iterator it) throw()
+inline void environment_map::snapshot::erase(environment_map::snapshot::iterator it) STLSOFT_NOEXCEPT
 {
     m_variables.erase(it);
 }
@@ -932,7 +932,7 @@ inline void environment_map::snapshot::set(first_type const& name, second_type c
 
 }
 
-inline ss_bool_t environment_map::snapshot::lookup(first_type const& name, second_type *&pvalue) throw()
+inline ss_bool_t environment_map::snapshot::lookup(first_type const& name, second_type *&pvalue) STLSOFT_NOEXCEPT
 {
     variables_type_::iterator it  =   m_variables.find(name);
 

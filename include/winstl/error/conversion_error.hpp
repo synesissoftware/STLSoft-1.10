@@ -4,11 +4,11 @@
  * Purpose:     Definition of the winstl::conversion_error exception class.
  *
  * Created:     16th December 2006
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef WINSTL_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MAJOR     1
 # define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_MINOR     0
-# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_REVISION  6
-# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      21
+# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_REVISION  7
+# define WINSTL_VER_WINSTL_ERROR_HPP_CONVERSION_ERROR_EDIT      22
 #endif /* !WINSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -139,7 +139,7 @@ public:
         : parent_class_type(rhs)
         , m_statusCode(rhs.m_statusCode)
     {}
-    virtual ~conversion_error() STLSOFT_NOEXCEPT
+    virtual ~conversion_error() STLSOFT_NOEXCEPT_STDOVR
     {}
 private:
     class_type& operator =(class_type const&);

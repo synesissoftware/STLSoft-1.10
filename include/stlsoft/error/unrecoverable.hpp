@@ -4,11 +4,11 @@
  * Purpose:     Definition of the \c unrecoverable exception class.
  *
  * Created:     14th October 2004
- * Updated:     30th November 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_MINOR      0
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_REVISION   7
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_EDIT       41
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_REVISION   8
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_UNRECOVERABLE_EDIT       42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -142,7 +142,7 @@ public:
     ///
     /// \note The destructor of each instance decrements the reference count of the
     ///
-    virtual ~unrecoverable() STLSOFT_NOEXCEPT
+    virtual ~unrecoverable() STLSOFT_NOEXCEPT_STDOVR
     {
         if (0 == --*m_refcnt)
         {

@@ -4,11 +4,11 @@
  * Purpose:     Defines the locale_exception exception class.
  *
  * Created:     25th December 2018
- * Updated:     26th December 2020
+ * Updated:     26th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2018-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_MAJOR      1
 # define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_MINOR      0
-# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_REVISION   1
-# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_EDIT       4
+# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_REVISION   3
+# define STLSOFT_VER_STLSOFT_LOCALE_EXCEPTION_HPP_LOCALE_EXCEPTION_EDIT       6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -124,6 +124,11 @@ public: // construction
         : parent_class_type(e, message)
         , LocaleName(stlsoft::c_str_ptr(localeName))
     {}
+#if 0
+#elif defined(__GNUC__)
+    ~locale_exception() STLSOFT_NOEXCEPT_STDOVR
+    {}
+#endif
 
 private:
     void operator =(class_type const&); // copy-assignment proscribed
