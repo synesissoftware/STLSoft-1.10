@@ -4,11 +4,11 @@
  * Purpose:     Contains the string access shims for std::exception.
  *
  * Created:     2nd May 2003
- * Updated:     26th December 2020
+ * Updated:     20th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_MAJOR       2
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_MINOR       2
-# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_REVISION    11
-# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_EDIT        54
+# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_REVISION    12
+# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_EDIT        55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -115,6 +115,7 @@ namespace stlsoft
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 struct ximpl_stlsoft_shims_access_string_std_exception_
 {
 public:
@@ -130,7 +131,6 @@ public:
     ,   ss_size_t*          numConverted
     )
     {
-        // Always assume the nul-terminator
         STLSOFT_ASSERT(NULL != mbs);
 
         STLSOFT_ASSERT(NULL != numConverted);
@@ -139,7 +139,7 @@ public:
 
         int r = ::mbstowcs_s(numConverted, ws, wsSizeInChars, mbs, mbsLen);
 
-        if(0 == r)
+        if (0 == r)
         {
             STLSOFT_ASSERT(0 != *numConverted);
 
@@ -154,7 +154,7 @@ public:
         STLSOFT_SUPPRESS_UNUSED(wsSizeInChars);
 
         *numConverted = ::mbstowcs(ws, mbs, mbsLen);
-        if(static_cast<ss_size_t>(-1) == *numConverted)
+        if (static_cast<ss_size_t>(-1) == *numConverted)
         {
             return errno;
         }
@@ -178,7 +178,7 @@ public:
 
         int r = ::mbstowcs_s(len, NULL, 0, s, 0);
 
-        if(0 == r)
+        if (0 == r)
         {
             STLSOFT_ASSERT(0 != *len);
 
@@ -186,17 +186,15 @@ public:
         }
 
         return r;
-
 #else /* ? STLSOFT_USING_SAFE_STR_FUNCTIONS */
 
         *len = ::mbstowcs(NULL, s, 0);
-        if(static_cast<ss_size_t>(-1) == *len)
+        if (static_cast<ss_size_t>(-1) == *len)
         {
             return errno;
         }
 
         return 0;
-
 #endif /* STLSOFT_USING_SAFE_STR_FUNCTIONS */
     }
 
@@ -217,8 +215,10 @@ public:
     )
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+
         STLSOFT_THROW_X(conversion_error(message, err));
 #else /* ?STLSOFT_CF_EXCEPTION_SUPPORT */
+
         STLSOFT_SUPPRESS_UNUSED(message);
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
@@ -232,7 +232,6 @@ public:
 #  endif /* _MSC_VER */
 # endif /* compiler */
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-
 };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -268,6 +267,8 @@ inline
 basic_shim_string<ss_char_w_t, 100>
 c_str_data_w(STLSOFT_NS_QUAL_STD(exception) const& x)
 {
+    typedef basic_shim_string<ss_char_w_t, 100> result_t;
+
     // C-string pointer and length
     ss_char_a_t const* const    s   = x.what();
     ss_size_t const             len = ::strlen(s);
@@ -277,14 +278,16 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     int         err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_len(s, &wlen);
 
     // handle failure to get length
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of exception message");
+
+        return result_t();
     }
 
     // Create the shim string, which will be returned
-    basic_shim_string<ss_char_w_t, 100> r(wlen);
-    ss_size_t                           wlen2;
+    result_t    r(wlen);
+    ss_size_t   wlen2;
 
     err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_(s, len, r.data(), 1u + r.size(), &wlen2);
 
@@ -293,9 +296,11 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     STLSOFT_SUPPRESS_UNUSED(wlen2);
 
     // handle failure to convert
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of exception message");
+
+        return result_t();
     }
 
     return r;
@@ -344,13 +349,15 @@ ss_size_t
 c_str_len_w(STLSOFT_NS_QUAL_STD(exception) const& x)
 {
     ss_size_t   len;
-    int         err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_len(x.what(), &len);
+    int const   err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_len(x.what(), &len);
 
-    if(0 != err)
+    if (0 != err)
     {
         len = 0;
 
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "failed to elicit length of multibyte string");
+
+        return 0;
     }
 
     return len;
@@ -448,6 +455,8 @@ inline
 basic_shim_string<ss_char_w_t, 100, true>
 c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(exception) const& x)
 {
+    typedef basic_shim_string<ss_char_w_t, 100, true>   result_t;
+
     // C-string pointer and length
     ss_char_a_t const* const    s   = x.what();
     ss_size_t const             len = ::strlen(s);
@@ -457,14 +466,16 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     int         err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_len(s, &wlen);
 
     // handle failure to get length
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of exception message");
+
+        return result_t();
     }
 
     // Create the shim string, which will be returned
-    basic_shim_string<ss_char_w_t, 100, true>  r(wlen);
-    ss_size_t                                  wlen2;
+    result_t  r(wlen);
+    ss_size_t wlen2;
 
     err = ximpl_stlsoft_shims_access_string_std_exception_::mbstowcs_(s, len, r.data(), 1u + r.size(), &wlen2);
 
@@ -473,9 +484,11 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     STLSOFT_SUPPRESS_UNUSED(wlen2);
 
     // handle failure to convert
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of exception message");
+
+        return result_t();
     }
 
     return r;
