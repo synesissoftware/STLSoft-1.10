@@ -20,6 +20,7 @@ sh.exe.stackdump
 *~
 *.a
 *.app
+*.b64
 *.dll
 *.dylib
 *.exe
@@ -30,12 +31,14 @@ sh.exe.stackdump
 *.opensdf
 *.out
 *.pch
-*.sdf
 *.sbr
 *.scc
+*.sdf
 *.so
+*.suo
 *.swp
 *.tmp
+*.zip
 
 *.vcproj*.user
 *.vcxproj*.user
