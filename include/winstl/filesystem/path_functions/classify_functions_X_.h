@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     28th November 2020
- * Updated:     3rd January 2021
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -102,7 +102,7 @@ winstl_C_path_classify_alwaysInvalidChars_X_()
     ,   '?'
     ,   '*'
     ,   '"'
-    ,   '\0'   
+    ,   '\0'
     };
 
     WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_  r = { STLSOFT_NUM_ELEMENTS(s_invalidCards), s_invalidCards };
@@ -110,7 +110,7 @@ winstl_C_path_classify_alwaysInvalidChars_X_()
     return r;
 }
 
-/* 
+/*
  *
  * \param s Points to the first character of the potential server-name
  *

@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     21st December 2020
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -98,7 +98,7 @@ unixstl_C_path_classify_alwaysInvalidChars_X_()
     ,   '?'
     ,   '*'
     ,   '"'
-    ,   '\0'   
+    ,   '\0'
     };
 
     UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_  r = { STLSOFT_NUM_ELEMENTS(s_invalidCards), s_invalidCards };

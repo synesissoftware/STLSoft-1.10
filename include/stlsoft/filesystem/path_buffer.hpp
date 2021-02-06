@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_path_buffer template class.
  *
  * Created:     27th May 2020
- * Updated:     2nd January 2021
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       3
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    2
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        6
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -416,7 +416,7 @@ public: // accessors
     {
         STLSOFT_ASSERT(0 != m_buffer.size());
         STLSOFT_ASSERT(m_len < m_buffer.size());
-     
+
         return m_len;
     }
 
@@ -443,7 +443,7 @@ public: // accessors
         return m_buffer[index];
     }
 
-    /// 
+    ///
     ///
     /// \pre !empty()
     char_type
@@ -454,7 +454,7 @@ public: // accessors
         return m_buffer[m_len - 1];
     }
 
-    /// 
+    ///
     ///
     /// \pre !empty()
     char_type

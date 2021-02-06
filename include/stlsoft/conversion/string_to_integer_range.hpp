@@ -4,11 +4,11 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     28th October 2020
- * Updated:     29th October 2020
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_RANGE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_RANGE_MINOR       0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_RANGE_REVISION    1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_RANGE_EDIT        1
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_RANGE_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -364,7 +364,7 @@ struct ximpl_string_to_integer_range_util_
 };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
-/** 
+/**
  */
 inline
 std::pair<int, int>
@@ -383,7 +383,7 @@ string_to_integer_range(
     return std::make_pair(from, to);
 }
 
-/** 
+/**
  */
 inline
 std::pair<int, int>
@@ -402,7 +402,7 @@ string_to_integer_range(
     return std::make_pair(from, to);
 }
 
-/** 
+/**
  */
 inline
 std::pair<int, int>
@@ -422,7 +422,7 @@ string_to_integer_range(
     return std::make_pair(from, to);
 }
 
-/** 
+/**
  */
 inline
 std::pair<int, int>

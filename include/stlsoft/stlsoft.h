@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     27th January 2021
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 1
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     526
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     527
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -1576,7 +1576,7 @@
        (    defined(STLSOFT_COMPILER_IS_GCC) && \
             STLSOFT_GCC_VER >= 40800) || \
        0
-       
+
 #  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while(0)
 # elif 0 || \
      defined(STLSOFT_COMPILER_IS_CLANG) || \

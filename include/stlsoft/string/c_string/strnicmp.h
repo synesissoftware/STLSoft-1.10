@@ -4,7 +4,7 @@
  * Purpose:     Definition of stlsoft_C_strnicmp() and stlsoft_C_wcsnicmp()
  *
  * Created:     25th November 2020
- * Updated:     27th January 2021
+ * Updated:     7th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_MINOR       0
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_REVISION    2    
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_EDIT        2
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_REVISION    2
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_EDIT        3
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
