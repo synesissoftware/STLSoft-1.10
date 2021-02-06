@@ -4,11 +4,11 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     20th June 2003
- * Updated:     26th December 2020
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MAJOR     4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     4
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  4
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      75
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  5
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -223,7 +223,14 @@ WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenRestrictedSids, TOKEN_GROUPS);
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSessionId, DWORD);
 
+#  if 0
+#  elif !defined(__MINGW32_) && \
+        !defined(__MINGW64_)
+
+#  else
+
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenGroupsAndPrivileges, TOKEN_GROUPS_AND_PRIVILEGES);
+#  endif
 
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSandBoxInert, DWORD);
 
@@ -235,7 +242,14 @@ WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenSandBoxInert, DWORD);
 
 # if WINSTL_WIN32_WINNT >= 0x0502
 
+#  if 0
+#  elif !defined(__MINGW32_) && \
+        !defined(__MINGW64_)
+
+#  else
+
 WINSTL_SEC_T_I_SPECIALISE_TIT_(TokenOrigin, TOKEN_ORIGIN);
+#  endif
 
 # endif /* Svr03+ */
 

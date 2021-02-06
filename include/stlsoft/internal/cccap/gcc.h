@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     23rd January 2021
+ * Updated:     27th January 2021
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
  *
@@ -64,55 +64,60 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      30
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       109
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       110
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * Structure:
  *
- * - auto-generation and compatibility
+ * - predefined macros extensions
+ * - custom macros
  * - preprocessor features
+ * - compiler-specific features
  * - support for built-in types
  * - built-in type characteristics
+ * - size-specific integer types
  * - support for C/C++ language features
  * - support for C language features
  * - support for C++ language features - 1
  * - support for C++ language features - 2
  * - inline assembler
+ * - linkage specification
+ * - atomics support
  * - calling convention
  * - integer sizes
- * - size-specific integer types
- * - still to-be-determined features
- * - assertions
+ * - integral types
+ * - still-to-be-determined features
+ * - quality assurance features
  * - compiler warning suppression
  * - obsolete features
  */
 
+
 /* /////////////////////////////////////////////////////////////////////////
- * Auto-generation and compatibility
+ * predefined macros extensions
  */
 
-/*
-[<[STLSOFT-AUTO:NO-DOCFILELABEL]>]
-[<[STLSOFT-AUTO:NO-UNITTEST]>]
-*/
 
 /* /////////////////////////////////////////////////////////////////////////
  * custom macros
  */
 
 #ifdef __GNUC_PATCHLEVEL__
-# define STLSOFT_INTERNAL_GCC_PATCHLEVEL_   __GNUC_PATCHLEVEL__
+# define STLSOFT_INTERNAL_GCC_PATCHLEVEL_                   __GNUC_PATCHLEVEL__
 #else /* ? __GNUC_PATCHLEVEL__ */
-# define STLSOFT_INTERNAL_GCC_PATCHLEVEL_   (0)
+# define STLSOFT_INTERNAL_GCC_PATCHLEVEL_                   (0)
 #endif /* __GNUC_PATCHLEVEL__ */
 
-#define STLSOFT_GCC_VER                                             \
-                                            ((__GNUC__ * 10000)     \
-                                            +                       \
-                                            (__GNUC_MINOR__ * 100)  \
-                                            +                       \
-                                            (STLSOFT_INTERNAL_GCC_PATCHLEVEL_ * 1))
+#define STLSOFT_GCC_VER                                     \
+                                                            \
+    (                                                       \
+        (__GNUC__                           * 10000)        \
+    +                                                       \
+        (__GNUC_MINOR__                     * 100)          \
+    +                                                       \
+        (STLSOFT_INTERNAL_GCC_PATCHLEVEL_   * 1)            \
+    )
 
 /* /////////////////////////////////////////////////////////////////////////
  * preprocessor features
@@ -166,7 +171,7 @@
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for built-in types
+ * support for built-in types
  *
  * - bool
  * - wchar_t
@@ -199,7 +204,7 @@
 #define STLSOFT_CF_BUILTIN___int64_SUPPORT
 
 /* /////////////////////////////////////////////////////////////////////////
- * Built-in type characteristics
+ * built-in type characteristics
  *
  * - char is unsigned
  * - wchar_t
@@ -216,7 +221,7 @@
 #endif /* STLSOFT_CF_BUILTIN_wchar_t_SUPPORT */
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C/C++ language features
+ * support for C/C++ language features
  *
  * - return void
  * - static assertions
@@ -246,7 +251,7 @@
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C++ language features - 1
+ * support for C++ language features - 1
  *
  * - exceptions
  *    - exception signatures
@@ -361,7 +366,7 @@
 #define STLSOFT_CF_OPERATOR_NOT_VIA_OPERATOR_POINTER_TO_MEMBER_SUPPORT
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C++ language features - 2
+ * support for C++ language features - 2
  *
  * - templates
  *    - specialisation syntax (template <>)
@@ -477,16 +482,16 @@
 # define STLSOFT_CF_THISCALL_SUPPORTED
 
 # ifdef STLSOFT_CF_CDECL_SUPPORTED
-#  define STLSOFT_CDECL                 __cdecl
+#  define STLSOFT_CDECL                                     __cdecl
 # endif /* STLSOFT_CF_CDECL_SUPPORTED */
 
 # if __GNUC__ > 2
 #  define STLSOFT_CF_FASTCALL_SUPPORTED
-#  define STLSOFT_FASTCALL              __fastcall
+#  define STLSOFT_FASTCALL                                  __fastcall
 # endif /* __GNUC__ > 2 */
 
 # define STLSOFT_CF_STDCALL_SUPPORTED
-# define STLSOFT_STDCALL                __stdcall
+# define STLSOFT_STDCALL                                    __stdcall
 
 
 # if (   __GNUC__ < 3 || \
@@ -507,7 +512,7 @@
  * integer sizes
  */
 
-#define _STLSOFT_SIZEOF_CHAR            (1)
+#define _STLSOFT_SIZEOF_CHAR                                (1)
 
 #if defined(__ILP64__) || \
     defined(_ILP64)
@@ -515,10 +520,10 @@
 #elif defined(__LP64__) || \
       defined(_LP64)
  /* LP64 */
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (8)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (8)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #elif 0 || \
       defined(__LLP64__) || \
       defined(_WIN32) || \
@@ -534,13 +539,18 @@
       defined(__arm__) || \
       0
  /* LLP64 */
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (4)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (4)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #else /* ? data model */
 # error Use of GCC has not been verified with any memory model other than LP64 and LLP64. Please contact Synesis Software
 #endif /* data model */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * size-specific integer types
+ */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * integral types
@@ -566,39 +576,28 @@
 
 /* 8-bit integer */
 #define STLSOFT_CF_8BIT_INT_SUPPORT
-#define STLSOFT_SI08_T_BASE_TYPE    signed      char
-#define STLSOFT_UI08_T_BASE_TYPE    unsigned    char
+#define STLSOFT_SI08_T_BASE_TYPE                            signed      char
+#define STLSOFT_UI08_T_BASE_TYPE                            unsigned    char
 
 /* 16-bit integer */
 #define STLSOFT_CF_16BIT_INT_SUPPORT
-#define STLSOFT_SI16_T_BASE_TYPE    signed      short
-#define STLSOFT_UI16_T_BASE_TYPE    unsigned    short
+#define STLSOFT_SI16_T_BASE_TYPE                            signed      short
+#define STLSOFT_UI16_T_BASE_TYPE                            unsigned    short
 
 /* 32-bit integer */
 #define STLSOFT_CF_32BIT_INT_SUPPORT
-#define STLSOFT_SI32_T_BASE_TYPE    signed      int
-#define STLSOFT_UI32_T_BASE_TYPE    unsigned    int
+#define STLSOFT_SI32_T_BASE_TYPE                            signed      int
+#define STLSOFT_UI32_T_BASE_TYPE                            unsigned    int
 #define STLSOFT_CF_LONG_DISTINCT_INT_TYPE
 
 /* 64-bit integer */
 #define STLSOFT_CF_64BIT_INT_SUPPORT
 #define STLSOFT_CF_64BIT_INT_IS_long_long
-#define STLSOFT_SI64_T_BASE_TYPE    signed      long long
-#define STLSOFT_UI64_T_BASE_TYPE    unsigned    long long
-
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
+#define STLSOFT_SI64_T_BASE_TYPE                            signed      long long
+#define STLSOFT_UI64_T_BASE_TYPE                            unsigned    long long
 
 /* /////////////////////////////////////////////////////////////////////////
- * Still to-be-determined features
+ * still-to-be-determined features
  */
 
 #define STLSOFT_CF_FUNCTION_SIGNATURE_FULL_ARG_QUALIFICATION_REQUIRED
@@ -660,9 +659,9 @@
   */
 # define __STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_CF_ASSERT_SUPPORT
-# define STLSOFT_ASSERT(expr)                   _STLSOFT_CUSTOM_ASSERT(expr)
+# define STLSOFT_ASSERT(expr)                               _STLSOFT_CUSTOM_ASSERT(expr)
 # if defined(_STLSOFT_CUSTOM_ASSERT_INCLUDE)
-#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME    _STLSOFT_CUSTOM_ASSERT_INCLUDE
+#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME                _STLSOFT_CUSTOM_ASSERT_INCLUDE
 # else
 #  error You must define _STLSOFT_CUSTOM_ASSERT_INCLUDE along with _STLSOFT_CUSTOM_ASSERT()
 # endif /* !_STLSOFT_CUSTOM_ASSERT_INCLUDE */
@@ -670,8 +669,8 @@
 # define __STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_CF_ASSERT_SUPPORT
 /* # define   __STLSOFT_CF_USE_cassert */
-# define __STLSOFT_CF_ASSERT_INCLUDE_NAME       <assert.h>
-# define STLSOFT_ASSERT(expr)                   assert(expr)
+# define __STLSOFT_CF_ASSERT_INCLUDE_NAME                   <assert.h>
+# define STLSOFT_ASSERT(expr)                               assert(expr)
 #endif /* _STLSOFT_CUSTOM_ASSERT */
 
 /* /////////////////////////////////////////////////////////////////////////
