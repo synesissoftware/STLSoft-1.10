@@ -5,11 +5,11 @@
  *              c_str_ptr_null, c_str_data, c_str_len, c_str_size.
  *
  * Created:     11th April 2005
- * Updated:     26th December 2020
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_MAJOR    2
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_MINOR    0
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_REVISION 6
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_EDIT     25
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_REVISION 7
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_EDIT     26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -79,47 +79,138 @@ namespace stlsoft
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * forward declarations
+ * forward declarations (C)
  */
 
-STLSOFT_INLINE ss_char_a_t const*   c_str_ptr_a(ss_char_a_t const* s);
-STLSOFT_INLINE ss_char_w_t const*   c_str_ptr_w(ss_char_w_t const* s);
-#ifdef __cplusplus
-inline ss_char_a_t const*           c_str_ptr(ss_char_a_t const* s);
-inline ss_char_w_t const*           c_str_ptr(ss_char_w_t const* s);
-#endif /* __cplusplus */
+ss_char_a_t const*
+c_str_data_a(
+    ss_char_a_t const* s
+);
 
-STLSOFT_INLINE ss_char_a_t const*   c_str_ptr_null_a(ss_char_a_t const* s);
-STLSOFT_INLINE ss_char_w_t const*   c_str_ptr_null_w(ss_char_w_t const* s);
-#ifdef __cplusplus
-inline ss_char_a_t const*           c_str_ptr_null(ss_char_a_t const* s);
-inline ss_char_w_t const*           c_str_ptr_null(ss_char_w_t const* s);
-#endif /* __cplusplus */
+ss_char_w_t const*
+c_str_data_w(
+    ss_char_w_t const* s
+);
 
-STLSOFT_INLINE ss_char_a_t const*   c_str_data_a(ss_char_a_t const* s);
-STLSOFT_INLINE ss_char_w_t const*   c_str_data_w(ss_char_w_t const* s);
-#ifdef __cplusplus
-inline ss_char_a_t const*           c_str_data(ss_char_a_t const* s);
-inline ss_char_w_t const*           c_str_data(ss_char_w_t const* s);
-#endif /* __cplusplus */
 
-STLSOFT_INLINE ss_size_t            c_str_len_a(ss_char_a_t const* s);
-STLSOFT_INLINE ss_size_t            c_str_len_w(ss_char_w_t const* s);
-#ifdef __cplusplus
-inline ss_size_t                    c_str_len(ss_char_a_t const* s);
-inline ss_size_t                    c_str_len(ss_char_w_t const* s);
-#endif /* __cplusplus */
+ss_size_t
+c_str_len_a(
+    ss_char_a_t const* s
+);
 
-STLSOFT_INLINE ss_size_t            c_str_size_a(ss_char_a_t const* s);
-STLSOFT_INLINE ss_size_t            c_str_size_w(ss_char_w_t const* s);
-#ifdef __cplusplus
-inline ss_size_t                    c_str_size(ss_char_a_t const* s);
-inline ss_size_t                    c_str_size(ss_char_w_t const* s);
-#endif /* __cplusplus */
+ss_size_t
+c_str_len_w(
+    ss_char_w_t const* s
+);
+
+
+ss_char_a_t const*
+c_str_ptr_a(
+    ss_char_a_t const* s
+);
+
+ss_char_w_t const*
+c_str_ptr_w(
+    ss_char_w_t const* s
+);
+
+
+ss_char_a_t const*
+c_str_ptr_null_a(
+    ss_char_a_t const* s
+);
+
+ss_char_w_t const*
+c_str_ptr_null_w(
+    ss_char_w_t const* s
+);
+
+
+ss_size_t
+c_str_size_a(
+    ss_char_a_t const* s
+);
+
+ss_size_t
+c_str_size_w(
+    ss_char_w_t const* s
+);
+
+/* /////////////////////////////////////////////////////////////////////////
+ * forward declarations (C++)
+ */
 
 #ifdef __cplusplus
+
+ss_char_a_t const*
+c_str_data(
+    ss_char_a_t const* s
+);
+
+
+ss_char_w_t const*
+c_str_data(
+    ss_char_w_t const* s
+);
+
+
+
+ss_size_t
+c_str_len(
+    ss_char_a_t const* s
+);
+
+
+ss_size_t
+c_str_len(
+    ss_char_w_t const* s
+);
+
+
+
+ss_char_a_t const*
+c_str_ptr(
+    ss_char_a_t const* s
+);
+
+
+ss_char_w_t const*
+c_str_ptr(
+    ss_char_w_t const* s
+);
+
+
+
+ss_char_a_t const*
+c_str_ptr_null(
+    ss_char_a_t const* s
+);
+
+ss_char_w_t const*
+c_str_ptr_null(
+    ss_char_w_t const* s
+);
+
+
+
+
+ss_size_t
+c_str_size(
+    ss_char_a_t const* s
+);
+
+ss_size_t
+c_str_size(
+    ss_char_w_t const* s
+);
+
+
+
 template <ss_typename_param_k S>
-inline ss_size_t                    c_str_size(S const& s);
+ss_size_t 
+c_str_size(
+    S const& s
+);
 #endif /* __cplusplus */
 
 /* ////////////////////////////////////////////////////////////////////// */

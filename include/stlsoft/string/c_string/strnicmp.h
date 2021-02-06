@@ -4,11 +4,11 @@
  * Purpose:     Definition of stlsoft_C_strnicmp() and stlsoft_C_wcsnicmp()
  *
  * Created:     25th November 2020
- * Updated:     25th December 2020
+ * Updated:     27th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_MINOR       0
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_REVISION    1    
-# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_EDIT        1
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_REVISION    2    
+# define STLSOFT_VER_STLSOFT_STRING_C_STRING_H_STRNICMP_EDIT        2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,10 @@
 # define STLSOFT_INCL_H_CTYPE
 # include <ctype.h>
 #endif /* !STLSOFT_INCL_H_CTYPE */
+#ifndef STLSOFT_INCL_H_WCTYPE
+# define STLSOFT_INCL_H_WCTYPE
+# include <wctype.h>
+#endif /* !STLSOFT_INCL_H_WCTYPE */
 
 /* /////////////////////////////////////////////////////////////////////////
  * API functions
