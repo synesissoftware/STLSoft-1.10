@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     15th January 2021
+ * Updated:     7th February 2021
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     315
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     316
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -639,7 +639,7 @@ typedef basic_path<TCHAR, filesystem_traits<TCHAR> >                   path;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-    template<   
+    template<
         ss_typename_param_k C
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
     ,   ss_typename_param_k T = filesystem_traits<C>
@@ -1529,7 +1529,7 @@ basic_path<C, T, A>::push_(
     // 4. if rhs is drive-letter-relative, then take rhs
     // 5. if rhs is relative and this is drive-letter-relative, then paste rhs directly
 
-    // - otherwise, add 
+    // - otherwise, add
 
     // - if invalid, throw an exception (but this will happen with take rhs)
 

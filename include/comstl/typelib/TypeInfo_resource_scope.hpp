@@ -4,11 +4,11 @@
  * Purpose:     Scoping class template for type information resources.
  *
  * Created:     6th April 2005
- * Updated:     26th December 2020
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_MAJOR    1
 # define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_MINOR    2
-# define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_REVISION 3
-# define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_EDIT     40
+# define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_REVISION 4
+# define COMSTL_VER_COMSTL_TYPELIB_HPP_TYPEINFO_RESOURCE_SCOPE_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,8 +157,8 @@ public: // Construction
         STLSOFT_CONTRACT_ENFORCE_PRECONDITION_PARAMS_API(NULL != ti, "pointer to type info may not be null");
         STLSOFT_CONTRACT_ENFORCE_ASSUMPTION((NULL == ti || NULL != m_ti.get()));
     }
-    template <typename T>
-    TypeInfo_resource_scope(T const& ti, resource_type* resource)
+    template <typename TI>
+    TypeInfo_resource_scope(TI const& ti, resource_type* resource)
         : m_ti(stlsoft::get_ptr(ti), true)
         , m_resource(resource)
     {
