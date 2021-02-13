@@ -5,7 +5,7 @@
  *              exceptions.
  *
  * Created:     15th September 2010
- * Updated:     16th January 2021
+ * Updated:     11th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MAJOR    1
 # define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_MINOR    0
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_REVISION 7
-# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     102
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_REVISION 8
+# define MFCSTL_VER_MFCSTL_SHIMS_ACCESS_STRING_HPP_CEXCEPTION_EDIT     103
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -110,6 +110,7 @@ ms_size_t const MFCSTL_EXCEPTION_SAS_CCH    =   128;
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 struct ximpl_CException_sas_util
 {
     typedef STLSOFT_NS_QUAL(auto_buffer)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>       buffer_t;
@@ -192,15 +193,21 @@ struct ximpl_CException_sas_util
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_data(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_data(CException const& x)
 {
     return ximpl_CException_sas_util::create_(x);
 }
 
 #if defined(UNICODE)
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_data_w(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_data_w(CException const& x)
 #else /* ? UNICODE */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_data_a(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_data_a(CException const& x)
 #endif /* UNICODE */
 {
     return c_str_data(x);
@@ -219,15 +226,21 @@ inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_len(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_len(CException const& x)
 {
     return ximpl_CException_sas_util::create_(x);
 }
 
 #if defined(UNICODE)
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_len_w(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_len_w(CException const& x)
 #else /* ? UNICODE */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_len_a(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_len_a(CException const& x)
 #endif /* UNICODE */
 {
     return c_str_len(x);
@@ -246,15 +259,21 @@ inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str
  * \ingroup group__concept__Shim__string_access
  *
  */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_ptr(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_ptr(CException const& x)
 {
     return ximpl_CException_sas_util::create_(x);
 }
 
 #if defined(UNICODE)
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_ptr_w(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_ptr_w(CException const& x)
 #else /* ? UNICODE */
-inline STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH> c_str_ptr_a(CException const& x)
+inline
+STLSOFT_NS_QUAL(basic_shim_string)<TCHAR, MFCSTL_EXCEPTION_SAS_CCH>
+c_str_ptr_a(CException const& x)
 #endif /* UNICODE */
 {
     return c_str_ptr(x);
