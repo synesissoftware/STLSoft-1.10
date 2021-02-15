@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     4th January 2021
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,7 +51,7 @@
 # define WINSTL_VER_WINSTL_H_WINSTL_MAJOR       3
 # define WINSTL_VER_WINSTL_H_WINSTL_MINOR       17
 # define WINSTL_VER_WINSTL_H_WINSTL_REVISION    5
-# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        217
+# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        218
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file winstl/winstl.h
@@ -968,7 +968,7 @@ typedef ws_uptrint_t        uptrint_t;
 # define WINSTL_CONST_MAX_PATH              (260)
 #else
 
-# error _MAX_PATH not defined, and not CygWin compiler
+# error _MAX_PATH not defined, and not CygWin/MinGW compiler
 #endif
 
 #ifdef __cplusplus

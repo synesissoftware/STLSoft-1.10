@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     2nd January 2021
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    3
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 2
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     116
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     117
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@ public:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_ASSERT(0 != n);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(0 == n)
+        if (0 == n)
         {
             return 0;
         }
@@ -283,11 +283,11 @@ private:
 
     void prepare_(alt_char_type const* s, size_type size)
     {
-        const pointer data = parent_class_type::data_();
+        pointer const data = parent_class_type::data_();
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
-        if(0 == size)
+        if (0 == size)
         {
             // Since we know that auto_buffer's parameterising size must
             // always be greater that 0, then
@@ -301,10 +301,10 @@ private:
 
             err = ::mbstowcs_s(&numConverted, data, size + 1, s, size);
 
-            if(0 != err)
+            if (0 != err)
             {
 #else /* ? STLSOFT_USING_SAFE_STR_FUNCTIONS */
-            if(static_cast<ss_size_t>(-1) == ::mbstowcs(data, s, size))
+            if (static_cast<ss_size_t>(-1) == ::mbstowcs(data, s, size))
             {
                 err = errno;
 #endif /* STLSOFT_USING_SAFE_STR_FUNCTIONS */
@@ -425,11 +425,11 @@ private:
 
     void prepare_(alt_char_type const* s, size_type size)
     {
-        const pointer data = parent_class_type::data_();
+        pointer const data = parent_class_type::data_();
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
-        if(0 == size)
+        if (0 == size)
         {
             // Since we know that auto_buffer's parameterising size must
             // always be greater that 0, then
@@ -443,10 +443,10 @@ private:
 
             err = ::wcstombs_s(&numConverted, data, size + 1, s, size);
 
-            if(0 != err)
+            if (0 != err)
             {
 #else /* ? STLSOFT_USING_SAFE_STR_FUNCTIONS */
-            if(static_cast<ss_size_t>(-1) == ::wcstombs(data, s, size))
+            if (static_cast<ss_size_t>(-1) == ::wcstombs(data, s, size))
             {
                 err = errno;
 #endif /* STLSOFT_USING_SAFE_STR_FUNCTIONS */

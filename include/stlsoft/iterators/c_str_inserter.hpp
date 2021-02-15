@@ -4,13 +4,13 @@
  * Purpose:     Contains the c_str_ptr_extract_iterator template class and c_str_inserter creator function.
  *
  * Created:     12th October 2004
- * Updated:     26th December 2020
+ * Updated:     16th February 2021
  *
  * Thanks to:   Pablo Aguilar for spotting missing inclusions.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_REVISION  6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      43
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -188,7 +188,11 @@ private:
  * \ingroup group__library__Iterator
  */
 template <ss_typename_param_k F>
-inline c_str_ptr_extract_iterator<F> c_str_inserter(F &f)
+inline
+c_str_ptr_extract_iterator<F>
+c_str_inserter(
+    F& f
+)
 {
     return c_str_ptr_extract_iterator<F>(f);
 }
@@ -200,7 +204,11 @@ inline c_str_ptr_extract_iterator<F> c_str_inserter(F &f)
  * \deprecated Use stlsoft::c_str_inserter()
  */
 template <ss_typename_param_k F>
-inline c_str_ptr_extract_iterator<F> c_str_ptr_inserter(F &f)
+inline
+c_str_ptr_extract_iterator<F>
+c_str_ptr_inserter(
+    F& f
+)
 {
     return c_str_ptr_extract_iterator<F>(f);
 }
