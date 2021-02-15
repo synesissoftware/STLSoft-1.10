@@ -4,11 +4,11 @@
  * Purpose:     Contains the is_null attribute shim.
  *
  * Created:     31st March 2007
- * Updated:     26th December 2020
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_MAJOR       2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_MINOR       0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_REVISION    3
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_EDIT        12
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_REVISION    4
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_HPP_IS_NULL_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,9 @@
 # endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR */
 
  /* std::auto_ptr<> */
-# ifndef _STLSOFT_PTR_ACCESS_NO_AUTO_PTR
+# include <stlsoft/internal/std/has/auto_ptr_.hpp>
+
+# ifdef STLSOFT_STANDARD_LIBRARY_HAS_auto_ptr_
 #  ifndef STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR
 #   include <stlsoft/shims/logical/is_null/std/auto_ptr.hpp>
 #  endif /* !STLSOFT_INCL_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR */
