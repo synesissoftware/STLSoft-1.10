@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     27th January 2021
+ * Updated:     23rd March 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -61,8 +61,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    7
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     22
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,6 +131,10 @@
 /* /////////////////////////////////////////////////////////////////////////
  * compiler-specific features
  */
+
+#ifdef __GNUC__
+# define STLSOFT_CF_gcc_pragma_diagnostic_pop
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
  * support for built-in types

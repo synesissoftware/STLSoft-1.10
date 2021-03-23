@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     7th February 2021
+ * Updated:     23rd March 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -206,7 +206,19 @@ unixstl_C_path_classify_impl_X_(
     size_t                                      cchPrefix;
     char_t const*                               invalidChar;
     unixstl_C_path_classification_t             rcRoot;
+#if 0
+#elif defined(STLSOFT_CF_gcc_pragma_diagnostic_pop)
+
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wmissing-braces"
+# pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#endif
     unixstl_C_path_classification_results_X_t_  blank = { 0 };
+#if 0
+#elif defined(STLSOFT_CF_gcc_pragma_diagnostic_pop)
+
+# pragma GCC diagnostic pop
+#endif
 
     UNIXSTL_ASSERT(0 == cch0 || ss_nullptr_k != s0);
 
