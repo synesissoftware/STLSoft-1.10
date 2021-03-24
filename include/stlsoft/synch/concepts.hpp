@@ -4,11 +4,11 @@
  * Purpose:     Synchronisation concept tags.
  *
  * Created:     16th January 2006
- * Updated:     26th December 2020
+ * Updated:     25th March 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_MAJOR       1
 # define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_MINOR       0
 # define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_REVISION    6
-# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_EDIT        22
+# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_EDIT        23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,7 +187,7 @@ typedef synchronisable_object_tag       synchronizable_object_tag;
 namespace concept_check
 {
     template <ss_typename_param_k S>
-    void synch_conformance_synch_obj(S &s, synchronisable_object_tag const*)
+    void synch_conformance_synch_obj(S& s, synchronisable_object_tag const*)
     {
         s.handle();
 
@@ -196,12 +196,12 @@ namespace concept_check
         static_cast<int>(s.is_signalled()); // Checks that return type evaluatable as truth
     }
     template <ss_typename_param_k S>
-    void synch_conformance_synch_obj(S &s, ...)
+    void synch_conformance_synch_obj(S& s, ...)
     {}
 
 
     template <ss_typename_param_k S>
-    void synch_conformance_try_lock(S &s, yes_type)
+    void synch_conformance_try_lock(S& s, yes_type)
     {
         if(s.try_lock())
         {
@@ -209,12 +209,12 @@ namespace concept_check
         }
     }
     template <ss_typename_param_k S>
-    void synch_conformance_try_lock(S &s, no_type)
+    void synch_conformance_try_lock(S& s, no_type)
     {}
 
 
     template <ss_typename_param_k S>
-    void synch_conformance_recursive_lock(S &s, yes_type)
+    void synch_conformance_recursive_lock(S& s, yes_type)
     {
         s.lock();
         s.lock();
@@ -222,11 +222,11 @@ namespace concept_check
         s.unlock();
     }
     template <ss_typename_param_k S>
-    void synch_conformance_recursive_lock(S &s, no_type)
+    void synch_conformance_recursive_lock(S& s, no_type)
     {}
 
     template <ss_typename_param_k S>
-    void synch_conformance_lock(S &s, critical_section_tag const*)
+    void synch_conformance_lock(S& s, critical_section_tag const*)
     {
         s.lock();
         s.unlock();
@@ -240,13 +240,13 @@ namespace concept_check
         synch_conformance_recursive_lock(s, is_recursive_type());
     }
     template <ss_typename_param_k S>
-    void synch_conformance_lock(S &s, ...)
+    void synch_conformance_lock(S& s, ...)
     {}
 
 
 
     template <ss_typename_param_k S>
-    void synch_conformance(S &s)
+    void synch_conformance(S& s)
     {
         synch_conformance_synch_obj(s,&s);
         synch_conformance_lock(s, &s);
