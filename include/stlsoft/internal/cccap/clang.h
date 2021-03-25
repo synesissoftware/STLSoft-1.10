@@ -132,6 +132,10 @@
  * compiler-specific features
  */
 
+#ifdef __GNUC__
+# define STLSOFT_CF_gcc_pragma_diagnostic_pop
+#endif
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for built-in types
  *
