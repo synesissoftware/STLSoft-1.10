@@ -5,7 +5,7 @@
  *              frame) classes.
  *
  * Created:     1st September 2002
- * Updated:     2nd January 2021
+ * Updated:     25th March 2021
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MINOR       1
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    8
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        149
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    9
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -313,7 +313,7 @@ void do_construct_2(A& /* ator */, T* p, ss_size_t n, T const& value, two_type)
 template<   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-void do_construct_2(A& /* ator */, T*  /* p */, ss_size_t /* n */, T const& value, three_type)
+void do_construct_2(A& /* ator */, T*  /* p */, ss_size_t /* n */, T const& /* value */, three_type)
 {}
 
 

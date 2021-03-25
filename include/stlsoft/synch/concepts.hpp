@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_MAJOR       1
 # define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_MINOR       0
-# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_REVISION    6
-# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_EDIT        23
+# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_REVISION    7
+# define STLSOFT_VER_STLSOFT_HPP_SYNCH_HPP_CONCEPTS_FWD_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -168,11 +168,11 @@ struct critical_section
 };
 
 
-#define STLSOFT_CRITICAL_SECTION_IS_RECURSIVE       (1)
-#define STLSOFT_CRITICAL_SECTION_ISNOT_RECURSIVE    (0)
+#define STLSOFT_CRITICAL_SECTION_IS_RECURSIVE               (1)
+#define STLSOFT_CRITICAL_SECTION_ISNOT_RECURSIVE            (0)
 
-#define STLSOFT_CRITICAL_SECTION_IS_TRYABLE         (1)
-#define STLSOFT_CRITICAL_SECTION_ISNOT_TRYABLE      (0)
+#define STLSOFT_CRITICAL_SECTION_IS_TRYABLE                 (1)
+#define STLSOFT_CRITICAL_SECTION_ISNOT_TRYABLE              (0)
 
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
@@ -193,10 +193,10 @@ namespace concept_check
 
         s.is_signalled();
 
-        static_cast<int>(s.is_signalled()); // Checks that return type evaluatable as truth
+        STLSOFT_SUPPRESS_UNUSED(static_cast<int>(s.is_signalled())); // Checks that return type evaluatable as truth
     }
     template <ss_typename_param_k S>
-    void synch_conformance_synch_obj(S& s, ...)
+    void synch_conformance_synch_obj(S& /* s */, ...)
     {}
 
 
@@ -209,7 +209,7 @@ namespace concept_check
         }
     }
     template <ss_typename_param_k S>
-    void synch_conformance_try_lock(S& s, no_type)
+    void synch_conformance_try_lock(S& /* s */, no_type)
     {}
 
 
@@ -222,7 +222,7 @@ namespace concept_check
         s.unlock();
     }
     template <ss_typename_param_k S>
-    void synch_conformance_recursive_lock(S& s, no_type)
+    void synch_conformance_recursive_lock(S& /* s */, no_type)
     {}
 
     template <ss_typename_param_k S>
@@ -240,7 +240,7 @@ namespace concept_check
         synch_conformance_recursive_lock(s, is_recursive_type());
     }
     template <ss_typename_param_k S>
-    void synch_conformance_lock(S& s, ...)
+    void synch_conformance_lock(S& /* s */, ...)
     {}
 
 
