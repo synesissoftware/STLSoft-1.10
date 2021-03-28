@@ -5,14 +5,14 @@
  *              abstracting away standard library inconsistencies.
  *
  * Created:     2nd January 2000
- * Updated:     26th July 2020
+ * Updated:     27th March 2021
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  6
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      128
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  7
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      121
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1049,6 +1049,8 @@ inline STLSOFT_NS_QUAL(ss_ptrdiff_t) *distance_type(pointer_iterator<V, P, R>::t
 
 /* ////////////////////////////////////////////////////////////////////// */
 
+#ifdef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 /** Iterator category obtainer
  *
  * \ingroup group__library__Utility
@@ -1057,74 +1059,29 @@ inline STLSOFT_NS_QUAL(ss_ptrdiff_t) *distance_type(pointer_iterator<V, P, R>::t
  * \param i The iterator instance
  */
 
-#if 0
 #elif defined(STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC) && \
       ( !defined(STLSOFT_COMPILER_IS_MSVC) || \
         _MSC_VER < 1900)
 # define stlsoft_iterator_query_category(I, i)      (STLSOFT_NS_QUAL_STD(_Iter_cat)(i))
 # define stlsoft_iterator_query_category_ptr(I, i)  (&STLSOFT_NS_QUAL_STD(_Iter_cat)(i))
 
-//#elif defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
-//# define stlsoft_iterator_query_category(I, i)     (*static_cast<std::iterator_traits<I>::iterator_category*>(0))
+#elif defined(STLSOFT_COMPILER_IS_CLANG)
 
-//#elif defined(STLSOFT_COMPILER_IS_BORLAND) // Change this to STLSOFT_CF_STD_LIBRARY_IS_SGI_RW
-//# define stlsoft_iterator_query_category(I, i)     (*static_cast<std::iterator_traits<I>::iterator_category*>(0))
+# define stlsoft_iterator_query_category(I, i)      (ss_typename_type_k std::iterator_traits<I>::iterator_category())
 
 #else /* ? library */
 
-//#if defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
 # define stlsoft_iterator_query_category(I, i)      (*static_cast<ss_typename_type_k std::iterator_traits<I>::iterator_category*>(0))
-# define stlsoft_iterator_query_category_ptr(I, i)  (static_cast<ss_typename_type_k std::iterator_traits<I>::iterator_category*>(0))
-//#else
-//#  define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(iterator_category)(i))
+
+# if 0
+# elif 0 || \
+       defined(STLSOFT_COMPILER_IS_DMC) || \
+       defined(STLSOFT_COMPILER_IS_MWERKS) || \
+	   0
+#  define stlsoft_iterator_query_category_ptr(I, i) (static_cast<ss_typename_type_k std::iterator_traits<I>::iterator_category*>(0))
+# endif
 
 #endif /* library / compiler */
-
-#if 0
-#    if defined(STLSOFT_COMPILER_IS_DMC)
-#     if defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category())
-    //#  error Digital Mars with STLport not yet supported
-#     else
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(iterator_category)(i))
-#     endif /*  */
-#    elif defined(STLSOFT_COMPILER_IS_COMO) || \
-          defined(STLSOFT_COMPILER_IS_INTEL)
-#     if defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category())
-#     elif defined(_STLSOFT_CF_MIGHT_BE_DINKUMWARE_MS_NAUGHTIES)
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(_Iter_cat)(i))
-#     else
-#      error
-#     endif /*  */
-#    elif defined(STLSOFT_COMPILER_IS_MSVC)
-#     if defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
-#      if _MSC_VER < 1300
-#       define stlsoft_iterator_query_category(I, i)    (STLSOFT_NS_QUAL_STD(iterator_category)(i))
-#      else
-#       define stlsoft_iterator_query_category(I, i)    (STLSOFT_NS_QUAL_STD(iterator_category)(i))
-#      endif /* _MSC_VER < 1300 */
-#     elif defined(_STLSOFT_CF_MIGHT_BE_DINKUMWARE_MS_NAUGHTIES)
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(_Iter_cat)(i))
-#     elif(_MSC_VER >= 1310)
-#      define stlsoft_iterator_query_category(I, i)     (STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category())
-#     elif(_MSC_VER >= 1200)
-#      error
-#     endif /*  */
-#    else
-#     define stlsoft_iterator_query_category(I, i)      (STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category())
-#    endif /* _STLSOFT_CF_MIGHT_BE_DINKUMWARE_MS_NAUGHTIES && !STLSOFT_CF_STD_LIBRARY_IS_STLPORT */
-#endif /* 0 */
-
-#if 0
-template <ss_typename_param_k T>
-struct queried_iterator_category
-{
-};
-
-template <ss_typename_param_k T>
-query_iterator_category
-#endif /* 0 */
 
 /* ////////////////////////////////////////////////////////////////////// */
 
