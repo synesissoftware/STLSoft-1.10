@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions
  *
  * Created:     21st December 2020
- * Updated:     27th December 2020
+ * Updated:     23rd March 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR     1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION  5
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      5
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION  6
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      6
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@ enum unixstl_C_path_classification_t
     ,   UNIXSTL_C_PathType_MAX_VALUE
 };
 #ifndef __cplusplus
-typedef enum unixstl_C_path_classification_t                 unixstl_C_path_classification_t;
+typedef enum unixstl_C_path_classification_t                unixstl_C_path_classification_t;
 #endif /* !__cplusplus */
 
 struct unixstl_C_path_classification_results_m_t
@@ -124,7 +124,7 @@ struct unixstl_C_path_classification_results_m_t
     stlsoft_C_string_slice_m_t      firstInvalid;           /*!< the first invalid character, if any */
 };
 #ifndef __cplusplus
-typedef struct unixstl_C_path_classification_results_m_t     unixstl_C_path_classification_results_m_t;
+typedef struct unixstl_C_path_classification_results_m_t    unixstl_C_path_classification_results_m_t;
 #endif /* !__cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -253,8 +253,8 @@ namespace unixstl_project
  * C++ types
  */
 
-typedef unixstl_C_path_classification_t                      path_classification_t;
-typedef unixstl_C_path_classification_results_m_t            path_classification_results_m_t;
+typedef unixstl_C_path_classification_t                     path_classification_t;
+typedef unixstl_C_path_classification_results_m_t           path_classification_results_m_t;
 
 /* /////////////////////////////////////////////////////////////////////////
  * C++ API functions

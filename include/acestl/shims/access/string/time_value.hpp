@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for the ACE_Time_Value class.
  *
  * Created:     2nd December 2004
- * Updated:     26th December 2020
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE_MAJOR     2
 # define ACESTL_VER_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE_MINOR     0
 # define ACESTL_VER_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE_REVISION  10
-# define ACESTL_VER_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE_EDIT      51
+# define ACESTL_VER_ACESTL_SHIMS_ACCESS_STRING_HPP_TIME_VALUE_EDIT      52
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,9 +130,9 @@ namespace acestl_time_access_string_util
         char                s1[20];
         ACE_TCHAR           s2[24];
 
-        const long          s   =   t.sec();
-        const long          us  =   t.usec();
-        struct tm   *const  tm  =   ACE_OS::localtime(&static_cast<time_t const&>(s));
+        long const          s   =   t.sec();
+        long const          us  =   t.usec();
+        struct tm* const    tm  =   ACE_OS::localtime(&static_cast<time_t const&>(s));
         as_size_t           len =   ACE_OS::strftime(s1, STLSOFT_NUM_ELEMENTS(s1), "%Y-%m-%d %H:%M:%S", tm);
 
         ACESTL_ASSERT(len == 1 + STLSOFT_NUM_ELEMENTS(s1));
@@ -164,7 +164,7 @@ namespace acestl_time_access_string_util
 
         res = ACE_OS::snprintf(&buff[0], buff.size(), ACE_TEXT_ALWAYS_CHAR(fmt), s1, ms);
 
-        if(0 < res)
+        if (0 < res)
         {
             ACESTL_ASSERT(static_cast<ss_size_t>(res) < buff.size());
 

@@ -4,11 +4,11 @@
  * Purpose:     Converts a standard rerror code (errno) to a printable string.
  *
  * Created:     18th July 2006
- * Updated:     2nd December 2020
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MINOR     3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  1
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      41
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -456,7 +456,7 @@ inline
 ss_typename_type_ret_k basic_error_desc<C>::char_type const*
 basic_error_desc<C>::get_description() const STLSOFT_NOEXCEPT
 {
-    static const char_type s_nullMessage[1] = { '\0' };
+    static char_type const s_nullMessage[1] = { '\0' };
 
     return (NULL != m_str) ? m_str : s_nullMessage;
 }

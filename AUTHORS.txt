@@ -2,7 +2,7 @@
 STLSoft - Authors
 
 ; Created:  29th March 2002
-; Updated:  6th July 2020
+; Updated:  16th February 2021
 
 ============================================================================
 
@@ -11,6 +11,7 @@ Major Contributors:
 
     Matthew Wilson        (most of the libraries)
     Pablo Aguilar         (Windows ToolHelp Library)
+    Garth Lancaster       (many edits, fixes, and nuggets of advice over the years)
 
 
 Bug reports, fixes and suggestions (for which we are very grateful):

@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  18th January 2021
+; Updated:  29th March 2021
 
 ============================================================================
 
@@ -17,6 +17,207 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.1 beta 30 (March 29th 2021)
+
+General:
+========
+
+ * Clang compatibility
+ * warnings
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/containers/util/array_policies.hpp:
+ ~ stlsoft/synch/concepts.hpp:
+    ~ warnings
+
+ ~ stlsoft/internal/cccap/clang.h:
+    ~ Clang compatibility
+
+ ~ stlsoft/util/std/iterator_helper.hpp:
+    ~ Clang compatibility
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/path_classify_functions.h:
+ ~ unixstl/filesystem/path_functions/classify_functions_X_.h:
+    ~ Clang compatibility
+
+ WinSTL:
+ =======
+
+ ~ winstl/filesystem/path_classify_functions.h:
+ ~ winstl/filesystem/path_functions/classify_functions_X_.h:
+    ~ Clang compatibility
+
+
+============================================================================
+
+Changes for 1.10.1 beta 29 (16th February 2021)
+
+General:
+========
+
+ * a whole lot of Clang- and GCC-compatibility
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/error/active_end_iterator_exhaustion.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/error/contract_violation.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/error/conversion_error.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/error/iteration_interruption.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/error/unrecoverable.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/exception/special/errno_exception.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+    ~ GCC compatibility
+
+ ~ stlsoft/internal/cccap/gcc.h:
+    + added discrimination of STLSOFT_CF_gcc_pragma_diagnostic_pop
+
+ ~ stlsoft/internal/cccap/msvc.h:
+    + added discrimination of STLSOFT_CF_msvc_pragma_warning_pop
+    ~ fixed VC++ definition of STLSOFT_CF_nullptr_KEYWORD_SUPPORT such that ss_nullptr_k is NULL in C
+
+ ~ stlsoft/internal/warnings/pop/suppress_deprecation_.h:
+    + added discrimination of STLSOFT_CF_gcc_pragma_diagnostic_pop
+    + added discrimination of STLSOFT_CF_msvc_pragma_warning_pop
+
+ ~ stlsoft/internal/warnings/push/suppress_deprecation_.h:
+    + added discrimination of STLSOFT_CF_gcc_pragma_diagnostic_pop
+    + added discrimination of STLSOFT_CF_msvc_pragma_warning_pop
+
+ ~ stlsoft/locale/exception/locale_exception.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+    ~ GCC compatibility
+
+ ~ stlsoft/shims/access/string/fwd.h:
+    ~ Clang-/GCC-compatibility
+
+ ~ stlsoft/shims/access/string/std/exception.hpp:
+    ~ returning appropriate default behaviour in NoX
+    ~ preparatory refactoring
+
+ ~ stlsoft/shims/logical/is_null.hpp:
+    ~ compatibility with compilers/standard-libraries in which std::auto_ptr is deprecated or missing
+
+ ~ stlsoft/stlsoft.h:
+    ~ Clang compatibility
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ stlsoft/string/c_string/strnicmp.h:
+    ~ Clang-compatibility
+
+ ~ stlsoft/string/c_string/strnistrn.h:
+    ~ Clang-compatibility
+
+ ~ stlsoft/string/replace_functions.hpp:
+    ~ MinGW-compatibility
+
+ ~ stlsoft/string/trim_functions.hpp:
+    ~ GCC compatibility
+
+ ~ stlsoft/util/std/stdio_overload_detectors.hpp:
+    ~ Clang-compatibility
+
+ ATLSTL:
+ =======
+
+ ~ atlstl/util/module_scope.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ COMSTL:
+ =======
+
+ ~ comstl/exception/variant_type_exception.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ comstl/shims/access/string/VARIANT.hpp:
+    ~ removing compiler specific deprecation warning suppression, via stlsoft/internal/warnings/pop/suppress_deprecation_.h and stlsoft/internal/warnings/push/suppress_deprecation_.h
+
+ ~ comstl/typelib/TypeInfo_resource_scope.hpp:
+    ~ defect fix (disambiguating template parameter names
+
+ ~ comstl/util/initialisers.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ MFCSTL:
+ =======
+
+ ~ mfcstl/shims/access/string/CException.hpp:
+    ~ preparatory changes
+
+ PlatformSTL:
+ ============
+
+ ~ platformstl/system/environment_map.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ platformstl/system/environment_variable_traits.hpp:
+    ~ MinGW-compatibility
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+    ~ removing compiler specific deprecation warning suppression, via stlsoft/internal/warnings/pop/suppress_deprecation_.h and stlsoft/internal/warnings/push/suppress_deprecation_.h
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/dl/dl_call.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ unixstl/filesystem/filesystem_traits.hpp:
+    ~ tidying
+
+ ~ unixstl/filesystem/pipe.hpp:
+    ~ removing compiler specific deprecation warning suppression, via stlsoft/internal/warnings/pop/suppress_deprecation_.h and stlsoft/internal/warnings/push/suppress_deprecation_.h
+
+ ~ unixstl/system/console_functions.h:
+    ~ removing compiler specific deprecation warning suppression, via stlsoft/internal/warnings/pop/suppress_deprecation_.h and stlsoft/internal/warnings/push/suppress_deprecation_.h
+
+ ~ unixstl/system/directory_functions.h:
+    ~ tidying
+
+ ~ unixstl/system/system_traits.hpp:
+    ~ tidying
+
+ WinSTL:
+ =======
+
+ ~ winstl/dl/dl_call.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ winstl/error/conversion_error.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ winstl/security/token_information.hpp:
+    ~ MinGW-compatibility
+
+ ~ winstl/synch/tss_index.hpp:
+    + added STLSOFT_NOEXCEPT_STDOVR, which resolves to noexcept, or throw(), or whatever is prescribed 
+
+ ~ winstl/system/system_version.hpp:
+    ~ sorting of compiler-specific warning deprecation - somewhat kicked down the road until STLSoft 1.11
+
+
+
+============================================================================
 
 Changes for 1.10.1 beta 28 (18th January 2021)
 

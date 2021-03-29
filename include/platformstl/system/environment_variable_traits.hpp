@@ -4,7 +4,7 @@
  * Purpose:     Definition of the environment_variable_traits class.
  *
  * Created:     9th December 2005
- * Updated:     25th January 2021
+ * Updated:     28th January 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_MINOR    2
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 10
-# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     37
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_REVISION 11
+# define PLATFORMSTL_VER_PLATFORMSTL_SYSTEM_HPP_ENVIRONMENT_TRAITS_EDIT     38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -210,6 +210,7 @@ extern char **environ;
 #  error UNIX family flavours other than BSD and SVR4 are not currently supported.
 # endif /* UNIX OS family */
 #elif defined(PLATFORMSTL_OS_IS_WINDOWS)
+
 # define PLATFORMSTL_ENVVAR_SET_BY_PUTENV
 # define PLATFORMSTL_ENVVAR_ERASE_BY_PUTENV_EQUALS
 # define PLATFORMSTL_ENVVAR_HAS_ENVIRON
@@ -224,6 +225,24 @@ extern char **environ;
 #  define PLATFORMSTL_ENVVAR_PUTENV_HAS_UNDERSCORE
 # else /* ? compiler */
 # endif /* compiler */
+
+# if 0
+# elif defined(__MINGW32__) || \
+       defined(__MINGW64__)
+
+extern char **_environ;
+
+#  ifndef PLATFORMSTL_ENVVAR_ENVIRON_HAS_UNDERSCORE
+#   define PLATFORMSTL_ENVVAR_ENVIRON_HAS_UNDERSCORE
+#  endif
+
+extern int _putenv(char const*);
+
+#  ifndef PLATFORMSTL_ENVVAR_PUTENV_HAS_UNDERSCORE
+#   define PLATFORMSTL_ENVVAR_PUTENV_HAS_UNDERSCORE
+#  endif
+# endif
+
 #else /* ? operating system */
 # error Operating systems other than UNIX and Win32 are not currently supported.
 #endif /* operating system */

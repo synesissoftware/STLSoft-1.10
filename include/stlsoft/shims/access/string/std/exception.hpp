@@ -4,7 +4,7 @@
  * Purpose:     Contains the string access shims for std::exception.
  *
  * Created:     2nd May 2003
- * Updated:     20th January 2021
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_MAJOR       2
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_MINOR       2
-# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_REVISION    12
-# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_EDIT        55
+# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_REVISION    14
+# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_EXCEPTION_EDIT        57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -282,7 +282,10 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of exception message");
 
+#ifndef STLSOFT_CF_EXCEPTION_SUPPORT
+
         return result_t();
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
     // Create the shim string, which will be returned
@@ -300,7 +303,10 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of exception message");
 
+#ifndef STLSOFT_CF_EXCEPTION_SUPPORT
+
         return result_t();
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
     return r;
@@ -356,8 +362,6 @@ c_str_len_w(STLSOFT_NS_QUAL_STD(exception) const& x)
         len = 0;
 
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "failed to elicit length of multibyte string");
-
-        return 0;
     }
 
     return len;
@@ -470,7 +474,10 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of exception message");
 
+#ifndef STLSOFT_CF_EXCEPTION_SUPPORT
+
         return result_t();
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
     // Create the shim string, which will be returned
@@ -488,7 +495,10 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(exception) const& x)
     {
         ximpl_stlsoft_shims_access_string_std_exception_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of exception message");
 
+#ifndef STLSOFT_CF_EXCEPTION_SUPPORT
+
         return result_t();
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
     return r;

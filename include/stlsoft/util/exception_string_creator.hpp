@@ -4,11 +4,11 @@
  * Purpose:     Contains the exception_string_creator class.
  *
  * Created:     25th May 2010
- * Updated:     26th December 2020
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_MINOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_REVISION 8
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     27
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_CREATOR_EDIT     28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,7 +204,7 @@ public:
     ///  than the current length
     class_type& truncate(size_type n)
     {
-        if(n < m_message.size())
+        if (n < m_message.size())
         {
             m_message.resize(n);
         }
@@ -464,7 +464,7 @@ private:
 
         err = ::wcstombs_s(&numConverted, dest, cbDest, src, cchSrc);
 
-        if(0 == err)
+        if (0 == err)
         {
             // wcstombs_s() always included nul-terminator in count
             --numConverted;
@@ -477,7 +477,7 @@ private:
 
         STLSOFT_SUPPRESS_UNUSED(cbDest);
 
-        if(static_cast<ss_size_t>(-1) == numConverted)
+        if (static_cast<ss_size_t>(-1) == numConverted)
         {
             err = errno;
 #endif /* STLSOFT_USING_SAFE_STR_FUNCTIONS */

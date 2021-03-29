@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     26th January 2021
+ * Updated:     29th March 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 1
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     526
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 2
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     528
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -330,12 +330,13 @@
 # define _STLSOFT_VER_1_10_1_B27    0x010a019b  /*!< Version 1.10.1 beta 27 (11th January 2021) */
 # define _STLSOFT_VER_1_10_1_B28    0x010a019c  /*!< Version 1.10.1 beta 28 (18th January 2021) */
 # define _STLSOFT_VER_1_10_1_B29    0x010a019d  /*!< Version 1.10.1 beta 29 (26th January 2021) */
+# define _STLSOFT_VER_1_10_1_B30    0x010a019e  /*!< Version 1.10.1 beta 29 (29th March 2021) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B29
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B30
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -399,7 +400,14 @@
 #  define STLSOFT_FILELINE_PREFIX_                          __FILE__ ":" STLSOFT_STRINGIZE( __LINE__ ) ": "
 # endif
 
-# define STLSOFT_FILELINE_MESSAGE(msg)                      STLSOFT_FILELINE_PREFIX_ ## "" msg ""
+# if 0
+# elif defined(__clang__)
+
+#  define STLSOFT_FILELINE_MESSAGE(msg)                     STLSOFT_FILELINE_PREFIX_ "" msg ""
+# else
+
+#  define STLSOFT_FILELINE_MESSAGE(msg)                     STLSOFT_FILELINE_PREFIX_ ## "" msg ""
+# endif
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -519,7 +527,7 @@
 # if __clang_major__ < 3
 #  error Only versions 3.0 and later of Clang C/C++ compiler is supported by the STLSoft libraries
 # else /* ? __COMO_VERSION__ */
-#  define STLSOFT_COMPILER_VERSION_STRING       "Clang " ## __clang_version__
+#  define STLSOFT_COMPILER_VERSION_STRING       "Clang " STLSOFT_STRINGIZE(__clang_major__) "." STLSOFT_STRINGIZE(__clang_minor__) "." STLSOFT_STRINGIZE(__clang_patchlevel__)
 # endif /* __COMO_VERSION__ */
 
 #elif defined(__COMO__) /* Do Comeau next, so that no Comeau back-end server compilers are preferentially discriminated */
@@ -1569,7 +1577,7 @@
        (    defined(STLSOFT_COMPILER_IS_GCC) && \
             STLSOFT_GCC_VER >= 40800) || \
        0
-       
+
 #  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while(0)
 # elif 0 || \
      defined(STLSOFT_COMPILER_IS_CLANG) || \

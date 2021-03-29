@@ -4,11 +4,11 @@
  * Purpose:     Contains the string access shims for std::type_info.
  *
  * Created:     19th December 2011
- * Updated:     26th December 2020
+ * Updated:     16th February 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO_MAJOR       2
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO_MINOR       3
 # define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO_REVISION    3
-# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO_EDIT        53
+# define _STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TYPE_INFO_EDIT        54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,6 +122,7 @@ namespace stlsoft
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+
 struct ximpl_stlsoft_shims_access_string_std_type_info_
 {
 public:
@@ -146,7 +147,7 @@ public:
 
         int r = ::mbstowcs_s(numConverted, ws, wsSizeInChars, mbs, mbsLen);
 
-        if(0 == r)
+        if (0 == r)
         {
             STLSOFT_ASSERT(0 != *numConverted);
 
@@ -161,7 +162,7 @@ public:
         STLSOFT_SUPPRESS_UNUSED(wsSizeInChars);
 
         *numConverted = ::mbstowcs(ws, mbs, mbsLen);
-        if(static_cast<ss_size_t>(-1) == *numConverted)
+        if (static_cast<ss_size_t>(-1) == *numConverted)
         {
             return errno;
         }
@@ -185,7 +186,7 @@ public:
 
         int r = ::mbstowcs_s(len, NULL, 0, s, 0);
 
-        if(0 == r)
+        if (0 == r)
         {
             STLSOFT_ASSERT(0 != *len);
 
@@ -197,7 +198,7 @@ public:
 #else /* ? STLSOFT_USING_SAFE_STR_FUNCTIONS */
 
         *len = ::mbstowcs(NULL, s, 0);
-        if(static_cast<ss_size_t>(-1) == *len)
+        if (static_cast<ss_size_t>(-1) == *len)
         {
             return errno;
         }
@@ -270,7 +271,7 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(type_info) const& ti)
     int         err = ximpl_stlsoft_shims_access_string_std_type_info_::mbstowcs_len(s, &wlen);
 
     // handle failure to get length
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_type_info_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of type_info message");
     }
@@ -286,7 +287,7 @@ c_str_data_w(STLSOFT_NS_QUAL_STD(type_info) const& ti)
     STLSOFT_SUPPRESS_UNUSED(wlen2);
 
     // handle failure to convert
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_type_info_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of type_info message");
     }
@@ -347,7 +348,7 @@ c_str_len_w(STLSOFT_NS_QUAL_STD(type_info) const& ti)
     ss_size_t   len;
     int         err = ximpl_stlsoft_shims_access_string_std_type_info_::mbstowcs_len(ti.name(), &len);
 
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_type_info_::throw_conversion_error_or_return_(err, "failed to elicit length of multibyte string");
 
@@ -474,7 +475,7 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(type_info) const& ti)
     int         err = ximpl_stlsoft_shims_access_string_std_type_info_::mbstowcs_len(s, &wlen);
 
     // handle failure to get length
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_type_info_::throw_conversion_error_or_return_(err, "cannot elicit wide-string length of type_info message");
     }
@@ -490,7 +491,7 @@ c_str_ptr_null_w(STLSOFT_NS_QUAL_STD(type_info) const& ti)
     STLSOFT_SUPPRESS_UNUSED(wlen2);
 
     // handle failure to convert
-    if(0 != err)
+    if (0 != err)
     {
         ximpl_stlsoft_shims_access_string_std_type_info_::throw_conversion_error_or_return_(err, "cannot elicit wide-string equivalent of type_info message");
     }

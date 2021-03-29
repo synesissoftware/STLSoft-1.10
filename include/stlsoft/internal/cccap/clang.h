@@ -4,11 +4,11 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     26th December 2020
+ * Updated:     25th March 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -61,28 +61,44 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    7
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     21
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     23
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
  * Structure:
  *
  * - predefined macros extensions
+ * - custom macros
  * - preprocessor features
+ * - compiler-specific features
  * - support for built-in types
+ * - built-in type characteristics
  * - size-specific integer types
  * - support for C/C++ language features
  * - support for C language features
  * - support for C++ language features - 1
  * - support for C++ language features - 2
+ * - inline assembler
+ * - linkage specification
+ * - atomics support
+ * - calling convention
+ * - integer sizes
+ * - integral types
  * - still-to-be-determined features
  * - quality assurance features
+ * - compiler warning suppression
+ * - obsolete features
  */
 
 
 /* /////////////////////////////////////////////////////////////////////////
  * predefined macros extensions
+ */
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * custom macros
  */
 
 
@@ -113,7 +129,15 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for built-in types
+ * compiler-specific features
+ */
+
+#ifdef __GNUC__
+# define STLSOFT_CF_gcc_pragma_diagnostic_pop
+#endif
+
+/* /////////////////////////////////////////////////////////////////////////
+ * support for built-in types
  *
  * - bool
  * - wchar_t
@@ -136,7 +160,11 @@
 #define STLSOFT_CF_BUILTIN_long_long_SUPPORT
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C/C++ language features
+ * built-in type characteristics
+ */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * support for C/C++ language features
  *
  * - nullptr (C++11)
  * - return void
@@ -186,9 +214,13 @@
  *    - compiler-specific keyword
  */
 
+#ifndef __cplusplus
+
+# define STLSOFT_CUSTOM_C_INLINE                            __inline__
+#endif
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C++ language features - 1
+ * support for C++ language features - 1
  *
  * - exceptions
  *    - exception signatures
@@ -270,7 +302,7 @@
 #define STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
 
 /* /////////////////////////////////////////////////////////////////////////
- * Support for C++ language features - 2
+ * support for C++ language features - 2
  *
  * - templates
  *    - specialisation syntax (template <>)
@@ -341,6 +373,10 @@
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
+ * inline assembler
+ */
+
+/* /////////////////////////////////////////////////////////////////////////
  * linkage specification
  */
 
@@ -368,14 +404,14 @@
  * integer sizes
  */
 
-#define _STLSOFT_SIZEOF_CHAR            (1)
-#define _STLSOFT_SIZEOF_SHORT           __SIZEOF_SHORT__
-#define _STLSOFT_SIZEOF_INT             __SIZEOF_INT__
-#define _STLSOFT_SIZEOF_LONG            __SIZEOF_LONG__
-#define _STLSOFT_SIZEOF_LONG_LONG       __SIZEOF_LONG_LONG__
+#define _STLSOFT_SIZEOF_CHAR                                (1)
+#define _STLSOFT_SIZEOF_SHORT                               __SIZEOF_SHORT__
+#define _STLSOFT_SIZEOF_INT                                 __SIZEOF_INT__
+#define _STLSOFT_SIZEOF_LONG                                __SIZEOF_LONG__
+#define _STLSOFT_SIZEOF_LONG_LONG                           __SIZEOF_LONG_LONG__
 
 /* /////////////////////////////////////////////////////////////////////////
- * Size-specific integer types
+ * size-specific integer types
  *
  * The purpose of this section is to define the following types:
  *
@@ -392,25 +428,25 @@
 
 /* 8-bit integer */
 #define STLSOFT_CF_8BIT_INT_SUPPORT
-#define STLSOFT_SI08_T_BASE_TYPE                __INT8_TYPE__
-#define STLSOFT_UI08_T_BASE_TYPE                __UINT8_TYPE__
+#define STLSOFT_SI08_T_BASE_TYPE                            __INT8_TYPE__
+#define STLSOFT_UI08_T_BASE_TYPE                            __UINT8_TYPE__
 
 /* 16-bit integer */
 #define STLSOFT_CF_16BIT_INT_SUPPORT
-#define STLSOFT_SI16_T_BASE_TYPE                __INT16_TYPE__
-#define STLSOFT_UI16_T_BASE_TYPE                __UINT16_TYPE__
+#define STLSOFT_SI16_T_BASE_TYPE                            __INT16_TYPE__
+#define STLSOFT_UI16_T_BASE_TYPE                            __UINT16_TYPE__
 
 /* 32-bit integer */
 #define STLSOFT_CF_32BIT_INT_SUPPORT
-#define STLSOFT_SI32_T_BASE_TYPE                __INT32_TYPE__
-#define STLSOFT_UI32_T_BASE_TYPE                __UINT32_TYPE__
+#define STLSOFT_SI32_T_BASE_TYPE                            __INT32_TYPE__
+#define STLSOFT_UI32_T_BASE_TYPE                            __UINT32_TYPE__
 #define STLSOFT_CF_LONG_DISTINCT_INT_TYPE
 
 /* 64-bit integer */
 #define STLSOFT_CF_64BIT_INT_SUPPORT
 #define STLSOFT_CF_64BIT_INT_IS_long_long
-#define STLSOFT_SI64_T_BASE_TYPE                __INT64_TYPE__
-#define STLSOFT_UI64_T_BASE_TYPE                __UINT64_TYPE__
+#define STLSOFT_SI64_T_BASE_TYPE                            __INT64_TYPE__
+#define STLSOFT_UI64_T_BASE_TYPE                            __UINT64_TYPE__
 
 /* /////////////////////////////////////////////////////////////////////////
  * still-to-be-determined features
@@ -427,11 +463,11 @@
 #define STLSOFT_CF_ASSERT_SUPPORT
 #if STLSOFT_HEAD_VER >= 0x010c0000
 # ifdef __cplusplus
-#  define STLSOFT_STOCK_ASSERT_INCLUDE_         <cassert>
+#  define STLSOFT_STOCK_ASSERT_INCLUDE_                     <cassert>
 # else /* ? __cplusplus */
-#  define STLSOFT_STOCK_ASSERT_INCLUDE_         <assert.h>
+#  define STLSOFT_STOCK_ASSERT_INCLUDE_                     <assert.h>
 # endif /* __cplusplus */
-# define STLSOFT_STOCK_ASSERT_(expr)            assert(expr)
+# define STLSOFT_STOCK_ASSERT_(expr)                        assert(expr)
 #else
 # define __STLSOFT_CF_USE_cassert
 #endif
