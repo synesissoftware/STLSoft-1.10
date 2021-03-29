@@ -1,7 +1,13 @@
 
 # directories (by name)
 
-ideas/
+/.git-old/
+/.vs/
+
+/_build/
+/_internal/
+
+/ideas/
 
 # directories (by pattern)
 
