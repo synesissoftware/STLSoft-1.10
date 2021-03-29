@@ -2,12 +2,14 @@
 STLSoft - News
 
 ; Created:  29th March 2002
-; Updated:  16th February 2021
+; Updated:  29th March 2021
 
 ============================================================================
 
 
 News:
+
+  29th March 2021       -   Release of STLSoft 1.10.1 beta 30
 
   16th February 2021    -   Release of STLSoft 1.10.1 beta 29
 

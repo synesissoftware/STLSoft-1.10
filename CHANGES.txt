@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  16th February 2021
+; Updated:  29th March 2021
 
 ============================================================================
 
@@ -17,6 +17,46 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.1 beta 30 (March 29th 2021)
+
+General:
+========
+
+ * Clang compatibility
+ * warnings
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/containers/util/array_policies.hpp:
+ ~ stlsoft/synch/concepts.hpp:
+    ~ warnings
+
+ ~ stlsoft/internal/cccap/clang.h:
+    ~ Clang compatibility
+
+ ~ stlsoft/util/std/iterator_helper.hpp:
+    ~ Clang compatibility
+
+ UNIXSTL:
+ ========
+
+ ~ unixstl/filesystem/path_classify_functions.h:
+ ~ unixstl/filesystem/path_functions/classify_functions_X_.h:
+    ~ Clang compatibility
+
+ WinSTL:
+ =======
+
+ ~ winstl/filesystem/path_classify_functions.h:
+ ~ winstl/filesystem/path_functions/classify_functions_X_.h:
+    ~ Clang compatibility
+
+
+============================================================================
 
 Changes for 1.10.1 beta 29 (16th February 2021)
 
