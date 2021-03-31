@@ -1,7 +1,12 @@
 
 # directories (by name)
 
-ideas/
+/_build/
+/_internal/
+
+/.vs/
+
+/ideas/
 
 # directories (by pattern)
 
@@ -20,23 +25,35 @@ sh.exe.stackdump
 *~
 *.a
 *.app
+*.bak
 *.dll
 *.dylib
 *.exe
 *.gch
+*.idb
+*.ilk
 *.lib
+*.log
+*.ncb
 *.o
 *.obj
 *.opensdf
+*.opt
+*.org
 *.out
 *.pch
-*.sdf
+*.pdb
+*.res
 *.sbr
 *.scc
+*.sdf
 *.so
+*.suo
 *.swp
+*.tlog
 *.tmp
-
+*.unsuccessfulbuild
 *.vcproj*.user
 *.vcxproj*.user
+*.zip
 
