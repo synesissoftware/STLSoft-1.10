@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     29th March 2021
+ * Updated:     1st April 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 2
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     528
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 3
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     529
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -3138,7 +3138,8 @@ inline void stlsoft_suppress_unused_func(size_t )
 
 # define STLSOFT_INLINE                                     inline
 #else /* ? __cplusplus */
-# if defined(STLSOFT_CF_C99_INLINE)
+# if 0
+# elif defined(STLSOFT_CF_C99_INLINE)
 
 #  define STLSOFT_INLINE                                    inline
 # elif defined(STLSOFT_CUSTOM_C_INLINE)
