@@ -2,7 +2,7 @@
 
 Version 1.10 of STLSoft libraries
 
-## Current Status (March 2021)
+## Current Status (April 2021)
 
 **NOTE:** **STLSoft** version **1.10** as obtained from [its Github repository](https://github.com/synesissoftware/STLSoft-1.10) is not yet released as a non-beta. Users should **not** obtain the **master** branch, but should instead use the [latest beta](https://github.com/synesissoftware/STLSoft-1.10/releases) of [STLSoft, v 1.10] branch. Each beta-branch contains a full set of all **STLSoft** library components current at the time of its release.
 
@@ -13,7 +13,13 @@ Working now (February 2021) on the 1.10 release candidate, and expect to be done
 
 ## Releases
 
-### 1.10.1 beta-30 (Latest) - 16th February 2021
+### 1.10.1 beta-30 (Latest) - 2nd April 2021
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta31>
+
+* Clang-compatibility
+
+### 1.10.1 beta-30 - 29th March 2021
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta30>
 
