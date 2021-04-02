@@ -4,11 +4,11 @@
  * Purpose:     auto_buffer functionality for C.
  *
  * Created:     5th August 2011
- * Updated:     24th December 2020
+ * Updated:     29th March 2021
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_MINOR     0
-# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_REVISION  2
-# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      18
+# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_REVISION  3
+# define STLSOFT_VER_STLSOFT_MEMORY_H_AUTO_BUFFER_EDIT      19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ namespace stlsoft
         type*   ptr;                                            \
         size_t  elementSize;                                    \
         type    internal_[internalSize];                        \
-    }   name = { 0, NULL, sizeof(type) }
+    }   name = { 0, NULL, sizeof(type), { 0 } }
 
 
 /** \def STLSOFT_C_AUTO_BUFFER_INITIALISE(name, requiredSize)
