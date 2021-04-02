@@ -4,7 +4,7 @@
  * Purpose:     Contains the c_str_ptr_extract_iterator template class and c_str_inserter creator function.
  *
  * Created:     12th October 2004
- * Updated:     16th February 2021
+ * Updated:     29th March 2021
  *
  * Thanks to:   Pablo Aguilar for spotting missing inclusions.
  *
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MINOR     0
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_REVISION  6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      44
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_REVISION  7
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ private:
     friend class deref_proxy;
 
 public:
-    ss_explicit_k c_str_ptr_extract_iterator(F &f)
+    ss_explicit_k c_str_ptr_extract_iterator(F f)
         : m_f(f)
     {}
 
@@ -147,7 +147,8 @@ private:
     class deref_proxy
     {
     public:
-        deref_proxy(c_str_ptr_extract_iterator *it)
+        ss_explicit_k
+        deref_proxy(c_str_ptr_extract_iterator* it)
             : m_it(it)
         {}
 
@@ -191,7 +192,7 @@ template <ss_typename_param_k F>
 inline
 c_str_ptr_extract_iterator<F>
 c_str_inserter(
-    F& f
+    F f
 )
 {
     return c_str_ptr_extract_iterator<F>(f);
@@ -207,7 +208,7 @@ template <ss_typename_param_k F>
 inline
 c_str_ptr_extract_iterator<F>
 c_str_ptr_inserter(
-    F& f
+    F f
 )
 {
     return c_str_ptr_extract_iterator<F>(f);
