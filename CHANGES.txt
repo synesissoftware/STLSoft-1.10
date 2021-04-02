@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  29th March 2021
+; Updated:  2nd April 2021
 
 ============================================================================
 
@@ -16,6 +16,40 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.1 beta 31 (April 2nd 2021)
+
+General:
+========
+
+ * Clang compatibility
+ * provision for customising inline (in C compilation)
+ * warnings
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/internal/cccap/clang.h:
+    ~ Clang inlines now 'extern inline'
+
+ ~ stlsoft/iterators/c_str_inserter.hpp:
+    ~ c_str_inserter() now does not need lvalue argument
+
+ ~ stlsoft/memory/auto_buffer.h:
+    ~ clearer initialisation
+
+ ~ stlsoft/stlsoft.h:
+    ~ allow STLSOFT_CUSTOM_C_INLINE to override STLSOFT_CF_C99_INLINE
+    ~ preparatory changes
+
+ ~ stlsoft/string/trim_functions.hpp:
+    ~ Clang compatibility
+
+
+============================================================================
 
 Changes for 1.10.1 beta 30 (March 29th 2021)
 

@@ -4,7 +4,7 @@
  * Purpose:     String utility functions for trimming and removing string contents.
  *
  * Created:     25th April 2005
- * Updated:     19th January 2021
+ * Updated:     29th March 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MAJOR       2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_MINOR       2
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_REVISION    2
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        57
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_REVISION    3
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_TRIM_FUNCTIONS_EDIT        58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -213,7 +213,7 @@ trim_left_impl(
 
     iterator_t const  it_b    =   str.begin();
     iterator_t const  it_e    =   str.end();
-#if __cplusplus < 201703L
+#if __cplusplus < 201103L
 
     iterator_t const  it_l    =   find_if(it_b, it_e, not1(bind1st(ptr_fun(pfn), trimChars)));
 #else /* ? C++ */
@@ -332,7 +332,7 @@ trim_right_impl(
     iterator_t const            it_l    =   it_b;
     reverse_iterator_t const    itr_b   =   cstr.rbegin();
     reverse_iterator_t const    itr_e   =   cstr.rend();
-#if __cplusplus < 201703L
+#if __cplusplus < 201103L
 
     reverse_iterator_t const    rit     =   find_if(itr_b, itr_e, not1(bind1st(ptr_fun(pfn), trimChars)));
 #else /* ? C++ */
@@ -456,7 +456,7 @@ trim_all_impl(
 
     iterator_t const            it_b    =   cstr.begin();
     iterator_t const            it_e    =   cstr.end();
-#if __cplusplus < 201703L
+#if __cplusplus < 201103L
 
     iterator_t const            it_l    =   find_if(it_b, it_e, not1(bind1st(ptr_fun(pfn), trimChars)));
 #else /* ? C++ */
@@ -478,7 +478,7 @@ trim_all_impl(
 
         reverse_iterator_t const    itr_b   =   cstr.rbegin();
         reverse_iterator_t const    itr_e   =   cstr.rend();
-#if __cplusplus < 201703L
+#if __cplusplus < 201103L
 
         reverse_iterator_t const    rit     =   find_if(itr_b, itr_e, not1(bind1st(ptr_fun(pfn), trimChars)));
 #else /* ? C++ */
@@ -605,7 +605,7 @@ remove_all_impl(
     iterator_t          it_b    =   str.begin();
     iterator_t          it_e    =   str.end();
     iterator_t const    it_l    =   it_b;
-#if __cplusplus < 201703L
+#if __cplusplus < 201103L
 
     iterator_t const    it_r    =   remove_if(it_b, it_e, bind1st(ptr_fun(pfn), removeChars));
 #else /* ? C++ */
