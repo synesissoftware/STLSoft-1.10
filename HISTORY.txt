@@ -2,10 +2,15 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  2nd April 2021
+; Updated:  26th April 2021
 
 ============================================================================
 
+
+26th April 2021 - 1.10.1 (beta 32) released
+-------------------------------------------
+
+ * GCC/Clang compatibility
 
 2nd April 2021 - 1.10.1 (beta 31) released
 ------------------------------------------
