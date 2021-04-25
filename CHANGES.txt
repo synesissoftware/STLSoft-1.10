@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  2nd April 2021
+; Updated:  26th April 2021
 
 ============================================================================
 
@@ -16,6 +16,24 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.1 beta 32 (April 26th 2021)
+
+General:
+========
+
+ * GCC/Clang compatibility
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/shims/access/string/fwd.h:
+    ~ GCC/Clang compatibility
+
+============================================================================
 
 Changes for 1.10.1 beta 31 (April 2nd 2021)
 

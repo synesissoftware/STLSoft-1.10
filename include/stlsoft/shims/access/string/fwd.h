@@ -5,7 +5,7 @@
  *              c_str_ptr_null, c_str_data, c_str_len, c_str_size.
  *
  * Created:     11th April 2005
- * Updated:     7th February 2021
+ * Updated:     25th April 2021
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_MAJOR    2
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_MINOR    0
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_REVISION 7
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_EDIT     27
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_REVISION 8
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_H_FWD_EDIT     28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,55 +82,65 @@ namespace stlsoft
  * forward declarations (C)
  */
 
+STLSOFT_INLINE
 ss_char_a_t const*
 c_str_data_a(
     ss_char_a_t const* s
 );
 
+STLSOFT_INLINE
 ss_char_w_t const*
 c_str_data_w(
     ss_char_w_t const* s
 );
 
 
+STLSOFT_INLINE
 ss_size_t
 c_str_len_a(
     ss_char_a_t const* s
 );
 
+STLSOFT_INLINE
 ss_size_t
 c_str_len_w(
     ss_char_w_t const* s
 );
 
 
+STLSOFT_INLINE
 ss_char_a_t const*
 c_str_ptr_a(
     ss_char_a_t const* s
 );
 
+STLSOFT_INLINE
 ss_char_w_t const*
 c_str_ptr_w(
     ss_char_w_t const* s
 );
 
 
+STLSOFT_INLINE
 ss_char_a_t const*
 c_str_ptr_null_a(
     ss_char_a_t const* s
 );
 
+STLSOFT_INLINE
 ss_char_w_t const*
 c_str_ptr_null_w(
     ss_char_w_t const* s
 );
 
 
+STLSOFT_INLINE
 ss_size_t
 c_str_size_a(
     ss_char_a_t const* s
 );
 
+STLSOFT_INLINE
 ss_size_t
 c_str_size_w(
     ss_char_w_t const* s
