@@ -13,7 +13,13 @@ Working now (February 2021) on the 1.10 release candidate, and expect to be done
 
 ## Releases
 
-### 1.10.1 beta-31 (Latest) - 2nd April 2021
+### 1.10.1 beta-32 (Latest) - 26th April 2021
+
+<https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta32>
+
+* GCC/Clang-compatibility
+
+### 1.10.1 beta-31 - 2nd April 2021
 
 <https://github.com/synesissoftware/STLSoft-1.10/releases/tag/1.10.1-beta31>
 
