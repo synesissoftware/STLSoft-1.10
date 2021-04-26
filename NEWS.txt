@@ -9,6 +9,8 @@ STLSoft - News
 
 News:
 
+  26th April 2021       -   Release of STLSoft 1.10.1 beta 33
+
   26th April 2021       -   Release of STLSoft 1.10.1 beta 32
 
   2nd April 2021        -   Release of STLSoft 1.10.1 beta 31
