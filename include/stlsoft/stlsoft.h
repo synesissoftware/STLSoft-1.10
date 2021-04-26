@@ -339,7 +339,7 @@
 #define _STLSOFT_VER_MAJOR      1
 #define _STLSOFT_VER_MINOR      10
 #define _STLSOFT_VER_REVISION   1
-#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B32
+#define _STLSOFT_VER            _STLSOFT_VER_1_10_1_B33
 
 /* /////////////////////////////////////
  * underlying version detection
