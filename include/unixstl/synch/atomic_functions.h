@@ -4,14 +4,14 @@
  * Purpose:     UNIXSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     26th December 2020
+ * Updated:     26th April 2021
  *
  * Thanks:      To Brad Cox, for helping out in testing and fixing the
  *              implementation for MAC OSX (Intel).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MAJOR     7
 # define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      218
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  4
+# define UNIXSTL_VER_UNIXSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      219
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -242,7 +242,7 @@ atomic_decrement(
     atomic_int_t volatile*  pv
 )
 {
-    return STLSOFT_INTERNAL_ATOMIC_GCC_atomic_decrement(pv);
+    STLSOFT_INTERNAL_ATOMIC_GCC_atomic_decrement(pv);
 }
 # define UNIXSTL_HAS_atomic_decrement
 # define UNIXSTL_HAS_ATOMIC_DECREMENT
@@ -253,7 +253,7 @@ atomic_increment(
     atomic_int_t volatile*  pv
 )
 {
-    return STLSOFT_INTERNAL_ATOMIC_GCC_atomic_increment(pv);
+    STLSOFT_INTERNAL_ATOMIC_GCC_atomic_increment(pv);
 }
 # define UNIXSTL_HAS_atomic_increment
 # define UNIXSTL_HAS_ATOMIC_INCREMENT
