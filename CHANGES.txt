@@ -17,6 +17,24 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.1 beta 33 (April 26th 2021)
+
+General:
+========
+
+ * Clang compatibility
+
+Changes:
+========
+
+ STLSoft:
+ ========
+
+ ~ stlsoft/internal/cccap/clang.h:
+    ~ Clang inlines now 'static inline'
+
+============================================================================
+
 Changes for 1.10.1 beta 32 (April 26th 2021)
 
 General:
