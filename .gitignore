@@ -7,23 +7,48 @@
 /_build/
 /_internal/
 
+/bin/
+/doc/
+/dox/
 /ideas/
-
-/include-3/
-/include-win/
 /included/
+/releases/
+/temp/
+
+Debug/
+DebugMt/
+Debug Multithreaded/
+Debug Multithreaded Dll/
+DebugNox/
+DebugUnix/
+Release/
+ReleaseMt/
+Release Multithreaded/
+Release Multithreaded Dll/
+ReleaseNox/
+ReleaseUnix/
+
+Win32/
+x64/
 
 # directories (by pattern)
+
+/include-*/
 
 # files (by name)
 
 .DS_Store
+.update_deps
 
 list_changes.cmd
+prepare.cmd
+sh.exe.stackdump
+
+build/makefile.tmpl
+build/makefile.tools.xml
 
 include/stlsoft/internal/dos2unix.has.been.performed
 
-sh.exe.stackdump
 
 # files (by pattern)
 
