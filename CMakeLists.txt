@@ -9,15 +9,16 @@ if(WIN32)
 endif()
 
 foreach(ITEM
-        stlsoft
-        platformstl
-        unixstl
-        )
+    stlsoft
+    platformstl
+    unixstl
+)
 
     install(
         DIRECTORY ${CMAKE_SOURCE_DIR}/include/${ITEM}/
         DESTINATION include/${ITEM}/
-        FILES_MATCHING PATTERN "*.h*"
-	)
+        FILES_MATCHING
+        PATTERN "*.h*"
+    )
 endforeach()
 

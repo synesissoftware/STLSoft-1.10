@@ -1488,7 +1488,7 @@ Changes:
 
  ~ stlsoft/string/string_view.hpp:
     ~ merging over from 1.10-delta (2010)
-	+ stlsoft::basic_string_view<>::substr()
+    + stlsoft::basic_string_view<>::substr()
 
  + stlsoft/shims/attribute/get_top.hpp:
  + stlsoft/shims/attribute/get_top/deque.hpp:

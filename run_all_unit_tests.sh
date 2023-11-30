@@ -17,11 +17,11 @@ cd $CMakePath
 echo "Executing make and then running all test programs"
 
 
-make && for f in $(find . -type f -name 'test.*' -o -name 'test_*' -perm +111 -print)
+make && for f in $(find . -type f -perm +111 -print -name 'test_*' -o -name 'test.*')
 do
-	techo
-	echo "executing $f:"
-	$f || break 1
+    echo
+    echo "executing $f:"
+    $f || break 1
 done
 
 cd ->/dev/null
