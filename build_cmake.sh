@@ -1,20 +1,22 @@
 #! /bin/bash
 
-Dir=$(cd $(dirname "$0"); pwd)
-Basename=$(basename "$0")
+ScriptPath=$0
+Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Basename=$(basename "$ScriptPath")
 CMakePath=$Dir/_build
+
 
 mkdir -p $CMakePath || exit 1
 
 cd $CMakePath
 
-cmake .. || exit 1
+
+
+
 
 echo "Executing make"
 
 make
 
-cd -
-
-ls -al $CMakePath
+cd ->/dev/null
 
