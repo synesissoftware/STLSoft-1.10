@@ -1,10 +1,12 @@
 #! /bin/bash
 
-Dir=$(cd $(dirname "$0"); pwd)
-Basename=$(basename "$0")
+ScriptPath=$0
+Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Basename=$(basename "$ScriptPath")
 CMakePath=$Dir/_build
 
-mkdir -p $CMakePath
+
+mkdir -p $CMakePath || exit 1
 
 cd $CMakePath
 
@@ -12,11 +14,11 @@ cd $CMakePath
 
 
 
-echo "Executing make clean"
+echo "Executing make (clean)"
 
 make clean
 
-cd ..
+cd ->/dev/null
 
 ls -al $CMakePath
 
