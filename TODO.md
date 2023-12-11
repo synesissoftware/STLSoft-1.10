@@ -1,38 +1,31 @@
-============================================================================
-STLSoft - TODO
+# STLSoft - TODO
 
-; Created:  29th March 2002
-; Updated:  28th January 2021
+**NOTE**: some of the following are very old, stretching back even into the 2000s, so this list will be updated a lot over the coming months. The most glaring of these is to ensure compatiblity with C++-14/17/20 as is necessary.
 
-============================================================================
+## STLSoft 1.10 TODOs:
 
+ * centralise `mbstowcs`/`mbstowcs_s` and `wcstombs`/`wcstombs_s` in single function
 
-STLSoft 1.10 TODOs:
-===================
+ * final filesystem fixes (found during testing of [**recls**](https://github.com/synesissoftware/recls) 1.10's significantly improved functionality)
 
- * centralise mbstowcs/mbstowcs_s and wcstombs/wcstombs_s in single function
-
- * final filesystem fixes (found during testing of recls 1.10's significantly improved functionality)
-
- * have basic_path_buffer use pre and post eye-catcher (STLSOFT_DEBUG-only)
+ * have `basic_path_buffer` use pre and post eye-catcher (`STLSOFT_DEBUG`-only)
 
  * take down https://github.com/synesissoftware/STLSoft-1.10-delta
 
  * update the downloads on SourceForge
 
- * flesh out README.md
+ * flesh out [**README.md**](./README.md)
 
  * sort the SourceForge site
 
- * CMake
+ * ~~CMake~~
 
  * VC++ common makefile(s)
 
  * STLSoft 1.10-related blog posts (focusing on new components)
 
 
-STLSoft 1.11+ TODOs:
-====================
+## STLSoft 1.11+ TODOs:
 
  * move include/stlsoft/util/string/*printf.h code to api/internal, and deprecate
  * same with the include/stlsoft/std/* files
@@ -45,9 +38,9 @@ STLSoft 1.11+ TODOs:
 
  * deprecate various iterator types ...
 
- * syslog in variadic templates, a la winstl::output_debug_line()
+ * syslog in variadic templates, a la `winstl::output_debug_line()`
 
- * find all STLSOFT_USING_SAFE_STR_FUNCTIONS and abstract all code to worker functions
+ * find all `STLSOFT_USING_SAFE_STR_FUNCTIONS` and abstract all code to worker functions
 
  * canonicalise all exception messages - consistency, lower-case, etc.
 
@@ -71,10 +64,7 @@ STLSoft 1.11+ TODOs:
  * Set-up donation
 
 
-abandoned TODOs:
-================
+## abandoned TODOs:
 
  * custom radix in integer_to_string - abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
-
-=============================== end of file ================================
 
