@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     28th November 2020
- * Updated:     23rd March 2021
+ * Updated:     12th Deccember 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2023, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -143,9 +143,9 @@ winstl_C_path_classify_find_UNC_server_and_share_X_(
 
 #ifdef __MINGW32__
 
-	last = -1;
+    last = -1;
 
-	STLSOFT_SUPPRESS_UNUSED(last);
+    STLSOFT_SUPPRESS_UNUSED(last);
 #endif
 
     WINSTL_ASSERT(ss_nullptr_k != ppServer);
@@ -583,7 +583,7 @@ winstl_C_path_classify_impl_X_(
 
 #ifdef __MINGW32__
 
-		STLSOFT_SUPPRESS_UNUSED(prev);
+        STLSOFT_SUPPRESS_UNUSED(prev);
 #endif
 
 
