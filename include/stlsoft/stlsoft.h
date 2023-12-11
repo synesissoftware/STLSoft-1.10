@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 9
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     535
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     536
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -335,7 +335,7 @@
 # define _STLSOFT_VER_1_10_1_B32    0x010a01a0  /*!< Version 1.10.1 beta 32 (26th April 2021) */
 # define _STLSOFT_VER_1_10_1_B33    0x010a01a1  /*!< Version 1.10.1 beta 33 (26th April 2021) */
 # define _STLSOFT_VER_1_10_1_B34    0x010a01a2  /*!< Version 1.10.1 beta 34 (26th April 2021) */
-# define _STLSOFT_VER_1_10_1_B35    0x010a01a3  /*!< Version 1.10.1 beta 34 (1st December 2023) */
+# define _STLSOFT_VER_1_10_1_B35    0x010a01a3  /*!< Version 1.10.1 beta 35 (1st December 2023) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR      1
@@ -2881,7 +2881,7 @@ private:
         __GNUC_MINOR__ >= 3 && \
         !defined(__APPLE__))
 
-  /* This version of the technique for GCC 3.3+ was suggested by Lars Rune Nøstdal,
+  /* This version of the technique for GCC 3.3+ was suggested by Lars Rune NÃ¸stdal,
    * from Norway. Many thanks, Lars!
    */
 

@@ -53,6 +53,7 @@
 * Julio César Carrascal Urquijo
 * Kevlin Henney
 * Lars Ivar Igesund
+* Lars Rune Nøstdal
 * Luoyi
 * Maciej Kaniewski
 * Magnificent Imbecil
