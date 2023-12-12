@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     STLSOFT_SUPPRESS_UNUSED(argv);
 
     fprintf(
-        stderr
+        stdout
     ,   "STLSoft = %d.%d.%d.%d\n"
     ,   (_STLSOFT_VER >> 24) & 0xff
     ,   (_STLSOFT_VER >> 16) & 0xff
@@ -18,13 +18,13 @@ int main(int argc, char* argv[])
     ,   (_STLSOFT_VER >> 0) & 0xff
     );
     fprintf(
-        stderr
+        stdout
     ,   "_STLSOFT_VER = 0x%04x%04x\n"
-    ,   static_cast<unsigned int>((_STLSOFT_VER >> 16) & 0xffff)
-    ,   static_cast<unsigned int>((_STLSOFT_VER >> 0) & 0xffff)
+    ,   (unsigned int)((_STLSOFT_VER >> 16) & 0xffff)
+    ,   (unsigned int)((_STLSOFT_VER >> 0) & 0xffff)
     );
     fprintf(
-        stderr
+        stdout
     ,   "STLSOFT_COMPILER_VERSION_STRING = %s\n"
     ,   STLSOFT_COMPILER_VERSION_STRING
     );
