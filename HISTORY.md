@@ -2,10 +2,15 @@
 STLSoft - History
 
 ; Created:  29th March 2002
-; Updated:  26th April 2021
+; Updated:  13th December 2023
 
 ============================================================================
 
+
+13th December 2023 - 1.10.1 released
+-------------------------------------------
+
+ * CMake support
 
 26th April 2021 - 1.10.1 (beta 33) released
 -------------------------------------------

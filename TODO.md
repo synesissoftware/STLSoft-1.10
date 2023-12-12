@@ -2,7 +2,7 @@
 
 **NOTE**: some of the following are very old, stretching back even into the 2000s, so this list will be updated a lot over the coming months. The most glaring of these is to ensure compatiblity with C++-14/17/20 as is necessary.
 
-## STLSoft 1.10 TODOs:
+## STLSoft 1.10.x TODOs:
 
  * centralise `mbstowcs`/`mbstowcs_s` and `wcstombs`/`wcstombs_s` in single function
 

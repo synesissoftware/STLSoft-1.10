@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  26th April 2021
+; Updated:  13th December 2023
 
 ============================================================================
 
@@ -16,6 +16,23 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.1 (December 13th 2023)
+
+General:
+========
+
+ * CMake support
+
+Changes:
+========
+
+ STLSoft / UNIXSTL / WinSTL:
+ ===========================
+
+ * trivial cleanup - whitespace, UTF-8 characters in comments in some headers
+
+============================================================================
 
 Changes for 1.10.1 beta 33 (April 26th 2021)
 
