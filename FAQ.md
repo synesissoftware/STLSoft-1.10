@@ -28,7 +28,7 @@ Basically, there are three ways:
 2. Cloning project, using environment variables;
 3. Cloning project, installing via CMake;
 
-Option 3 is preferred.
+Option 3 is recommended.
 
 See [INSTALL.md](./INSTALL.md) for details of these options.
 
