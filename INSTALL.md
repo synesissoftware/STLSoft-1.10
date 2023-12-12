@@ -1,8 +1,18 @@
-# STLSoft - Install
+# STLSoft - Install <!-- omit in toc -->
+
+- [Installing](#installing)
+  - [As downloaded archive, using environment variables](#as-downloaded-archive-using-environment-variables)
+  - [Cloning project, using environment variables](#cloning-project-using-environment-variables)
+  - [Cloning project, installing via CMake](#cloning-project-installing-via-cmake)
+- [Use of environment variables in other open-source projects.](#use-of-environment-variables-in-other-open-source-projects)
+
+
+## Installing
 
 There are three options for installing **STLSoft**, depending on how you obtain it.
 
-## As downloaded archive, using environment variables
+
+### As downloaded archive, using environment variables
 
 If you obtain the latest release as an archive, e.g. from the [STLSoft SourceForge project](https://sourceforge.net/projects/stlsoft/):
 
@@ -19,7 +29,7 @@ $ unzip STLSoft-1.10.1.zip
 3. Define an environment variable `STLSOFT`, whose value is the directory in which you unzipped it, e.g. `STLSOFT=~/open-source/STLSoft-1.10.1`, and then specify `$(STLSOFT)/include` (**UNIX**) or `%STLSOFT%\include` (**Windows**) in your project files and makefiles;
 
 
-## Cloning project, using environment variables
+### Cloning project, using environment variables
 
 If you clone the project from https://github.com/synesissoftware/STLSoft-1.10:
 
@@ -34,7 +44,7 @@ $ git clone -b master https://github.com/synesissoftware/STLSoft-1.10
 2. Define an environment variable `STLSOFT`, whose value is the directory in which you cloned it, e.g. `STLSOFT=~/open-source/STLSoft-1.10`, and then specify `$(STLSOFT)/include` (**UNIX**) or `%STLSOFT%\include` (**Windows**) in your project files and makefiles;
 
 
-## Cloning project, installing via CMake
+### Cloning project, installing via CMake
 
 1. Clone, e.g. **STLSoft-1.10.1.zip**;
 
@@ -60,7 +70,7 @@ $ sudo cmake --install ./_build --config Release
 
 ----
 
-## Use of environment variables.
+## Use of environment variables in other open-source projects.
 
 Unless you are certain that your projects, and all the projects upon which they depend, all use **STLSoft** via **CMake** then it is recommended that you define an `STLSOFT` environment variable.
 

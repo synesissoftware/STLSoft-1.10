@@ -1,14 +1,16 @@
-# STLSoft - FAQ
+# STLSoft - FAQ <!-- omit in toc -->
 
 The FAQ list is under (constant) development. If you post a question on the
 Issues forum (https://github.com/synesissoftware/STLSoft-1.10/issues)
 it will be used to create one.
 
 
-* [Q1](#q1-how-do-i-build-stlsoft): "How do I build STLSoft?"
-* [Q2](#q2-how-do-i-install-stlsoft): "How do I install STLSoft?"
-* [Q3](#q3-how-do-i-use-stlsoft): "How do I use STLSoft?"
-* [Q4](#q4-does-stlsoft-have-unit-tests): "Does STLSoft have unit-tests?"
+- [FAQs:](#faqs)
+  - [Q1: "How do I build STLSoft?"](#q1-how-do-i-build-stlsoft)
+  - [Q2: "How do I install STLSoft?"](#q2-how-do-i-install-stlsoft)
+  - [Q3: "How do I use STLSoft?"](#q3-how-do-i-use-stlsoft)
+  - [Q4: "Does STLSoft have unit-tests?"](#q4-does-stlsoft-have-unit-tests)
+  - [Q5: "Is STLSoft still relevant given the widespread support for 'Modern C++'?"](#q5-is-stlsoft-still-relevant-given-the-widespread-support-for-modern-c)
 
 
 # FAQs:
@@ -45,3 +47,13 @@ Assuming you've installed it using environment variables (as per instructions in
 
 Yes, there are *many* such, but for various reasons they're not available with the STLSoft 1.10 distribution. When STLSoft 1.11 is released it will include unit-tests, which will likely be a mix of [**xTests**](https://github.com/synesissoftware/xTests) and [**Catch2**](https://github.com/catchorg/Catch2) unit-test libraries, both of which will be bundled with distributions.
 
+
+## Q5: "Is STLSoft still relevant given the widespread support for 'Modern C++'?"
+
+This is a good question. Over the remainder of 2023 and into 2024 we will be updating all the "Synesis" open-source libraries - including
+[**b64**](https://github.com/synesissoftware/b64),
+[**FastFormat**](https://github.com/synesissoftware/FastFormat),
+[**Pantheios**](https://github.com/synesissoftware/Pantheios),
+[**recls**](https://github.com/synesissoftware/recls),
+[**shwild**](https://github.com/synesissoftware/shwild),
+and more - in light of 'Modern C++' and determining how well this can be achieved with standard C++ facilities alone. This will inform the future of **STLSoft**, which may be to invest much further effort into the exist 1.x stream or, perhaps, create a new 2.x stream that does not need to worry itself with the very extensive compiler-feature-detection and missing-feature-detection that comprises much of the current (1.x) **STLSoft** facilities.

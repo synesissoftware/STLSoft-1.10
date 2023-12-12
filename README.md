@@ -7,6 +7,11 @@
 - [Components](#components)
 - [Examples](#examples)
 - [Project Information](#project-information)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Dependencies](#dependencies)
+  - [Related projects](#related-projects)
+  - [License](#license)
 
 
 ## Introduction
@@ -53,21 +58,21 @@ T.B.C.
 
 ## Project Information
 
-### Where to get help <!-- omit in toc -->
+### Where to get help
 
 [GitHub Page](https://github.com/synesissoftware/STLSoft "GitHub Page")
 
-### Contribution guidelines <!-- omit in toc -->
+### Contribution guidelines
 
 Defect reports, feature requests, and pull requests are welcome on https://github.com/synesissoftware/STLSoft.
 
 If you'd like to help out with the project, please raise an issue via [GitHub Page](https://github.com/synesissoftware/STLSoft/issues "GitHub Page") - you'll be very welcome!
 
-### Dependencies <!-- omit in toc -->
+### Dependencies
 
 There are no dependencies
 
-### Related projects <!-- omit in toc -->
+### Related projects
 
 Projects that depend on **STLSoft** - though for some it is only for test - include:
 
@@ -81,7 +86,7 @@ Projects that depend on **STLSoft** - though for some it is only for test - incl
 * [**UNIXem**](https://github.com/synesissoftware/UNIXem)
 * [**xTests**](https://github.com/synesissoftware/xTests)
 
-### License <!-- omit in toc -->
+### License
 
 **STLSoft** is released under the 3-clause BSD license. See [LICENSE](./LICENSE) for details.
 

@@ -1,13 +1,13 @@
-# STLSoft - How You Can Help
+# STLSoft - How You Can Help <!-- omit in toc -->
 
 There are several ways in which you can help the **STLSoft** project:
 
-1. Defect reports
-2. Feature requests
-3. Volunteer your help
-4. Sponsor development
-5. Write articles, blog-posts about your experiences
-6. Help flesh out the Wikipedia page for STLSoft
+- [Defect reports](#defect-reports)
+- [Feature requests](#feature-requests)
+- [Volunteer your help](#volunteer-your-help)
+- [Sponsor development](#sponsor-development)
+- [Write articles, blog-posts about your experiences](#write-articles-blog-posts-about-your-experiences)
+- [Help flesh out the Wikipedia page for STLSoft](#help-flesh-out-the-wikipedia-page-for-stlsoft)
 
 
 ## Defect reports
