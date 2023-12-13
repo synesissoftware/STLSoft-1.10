@@ -4,14 +4,15 @@
  * Purpose:     Enumerates clipboard formats.
  *
  * Created:     11th May 2003
- * Updated:     23rd November 2020
+ * Updated:     13th December 2013
  *
  * Thanks:      To Martin Moene for reporting the lack of iterator traits
- *              of the const_iterator nested class
+ *              of the const_iterator nested class; wiluite for a defect
+ *              report.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_MAJOR    4
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_MINOR    0
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_REVISION 9
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_EDIT     47
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_REVISION 10
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_FORMAT_SEQUENCE_EDIT     48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -284,7 +285,7 @@ public:
     /// Indicates whether the search sequence is empty
     ws_bool_t empty() const
     {
-        return begin() != end();
+        return begin() == end();
     }
 
     /// Returns the number of elements in the sequence
