@@ -33,7 +33,6 @@ Flags/options:
 EOF
 
             exit 0
-
             ;;
         *)
             >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
