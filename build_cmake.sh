@@ -6,17 +6,73 @@ Basename=$(basename "$ScriptPath")
 CMakePath=$Dir/_build
 
 
-mkdir -p $CMakePath || exit 1
+# ##########################################################
+# command-line handling
 
-cd $CMakePath
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --help)
+            cat << EOF
+STLSoft is a suite of libraries that provide STL extensions and facades over operating-system and technology-specific APIs
+Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+Executes CMake-generated artefacts to (re)build project
+
+$ScriptPath [ ... flags/options ... ]
+
+Flags/options:
+
+    behaviour:
 
 
+    standard flags:
+
+    --help
+        displays this help and terminates
+
+EOF
+
+            exit 0
+
+            ;;
+        *)
+            >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
+
+            exit 1
+            ;;
+    esac
+
+    shift
+done
 
 
+# ##########################################################
+# main()
 
-echo "Executing make"
+if [ ! -d "$CMakePath" ]; then
 
-make
+    >&2 echo "$ScriptPath: CMake build directory '$CMakePath' not found so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
 
-cd ->/dev/null
+    exit 1
+else
+
+    cd $CMakePath
+
+    if [ ! -f "$CMakePath/Makefile" ]; then
+
+        >&2 echo "$ScriptPath: CMake build directory '$CMakePath' does not contain expected file 'Makefile', so a clean cannot be performed. It is recommended that you remove all CMake artefacts using script 'remove_cmake_artefacts.sh' followed by regeneration via 'prepare_cmake.sh'"
+
+        exit 1
+    else
+
+        echo "Executing build (via command \`make\`)"
+
+        make
+
+        cd ->/dev/null
+    fi
+fi
+
+
+# ############################## end of file ############################# #
 

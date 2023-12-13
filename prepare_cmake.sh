@@ -11,6 +11,9 @@ Configuration=Release
 RunMake=0
 
 
+# ##########################################################
+# command-line handling
+
 while [[ $# -gt 0 ]]; do
     case $1 in
         -d|--debug-configuration)
@@ -27,7 +30,7 @@ while [[ $# -gt 0 ]]; do
 STLSoft is a suite of libraries that provide STL extensions and facades over operating-system and technology-specific APIs
 Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
 Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
-Causes the creation/reinitialisation of the CMake build script(s)
+Creates/reinitialises the CMake build script(s)
 
 $ScriptPath [ ... flags/options ... ]
 
@@ -60,7 +63,7 @@ EOF
 
             ;;
         *)
-            echo -e "$ScriptPath: unrecognised argument '$1'; use --help for usage"
+            >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
 
             exit 1
             ;;
@@ -69,6 +72,9 @@ EOF
     shift
 done
 
+
+# ##########################################################
+# main()
 
 mkdir -p $CMakePath || exit 1
 
@@ -94,3 +100,7 @@ if [ $CmakeVerboseMakefile -ne 0 ]; then
     echo -e "contents of $CMakePath:"
     ls -al $CMakePath
 fi
+
+
+# ############################## end of file ############################# #
+

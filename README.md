@@ -43,7 +43,7 @@ There are three main ways to install **STLSoft**:
 
 Option 3 is recommended.
 
-See [INSTALL.md](./INSTALL.md) for details of these options.
+See [INSTALL.md](./INSTALL.md) for details of these options, and also for an explanation of the top-level build scripts in the project.
 
 
 ## Components
