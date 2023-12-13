@@ -4,13 +4,13 @@
  * Purpose:     Contains the combobox_sequence class.
  *
  * Created:     13th November 2002
- * Updated:     26th December 2020
+ * Updated:     13th December 2023
  *
  * Thanks:      To Pablo Aguilar for some patches.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMBOBOX_SEQUENCE_MAJOR      3
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMBOBOX_SEQUENCE_MINOR      4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMBOBOX_SEQUENCE_REVISION   7
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_COMBOBOX_SEQUENCE_EDIT       74
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_COMBOBOX_SEQUENCE_EDIT       75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,7 +194,7 @@ public:
     /// Indicates whether the combo-box is empty
     ws_bool_t empty() const
     {
-        return size() == 0;
+        return 0 == size();
     }
     /// Returns the maximum number of items that the combo-box can contain
     static size_type max_size()

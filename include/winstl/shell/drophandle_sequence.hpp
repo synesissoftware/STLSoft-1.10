@@ -5,11 +5,11 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     13th November 2002
- * Updated:     23rd November 2020
+ * Updated:     13th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SHELL_HPP_DROPHANDLE_SEQUENCE_MAJOR      4
 # define WINSTL_VER_WINSTL_SHELL_HPP_DROPHANDLE_SEQUENCE_MINOR      1
 # define WINSTL_VER_WINSTL_SHELL_HPP_DROPHANDLE_SEQUENCE_REVISION   12
-# define WINSTL_VER_WINSTL_SHELL_HPP_DROPHANDLE_SEQUENCE_EDIT       111
+# define WINSTL_VER_WINSTL_SHELL_HPP_DROPHANDLE_SEQUENCE_EDIT       112
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -602,7 +602,7 @@ inline ws_size_t basic_drophandle_sequence<C, T>::size() const
 template <ss_typename_param_k C, ss_typename_param_k T>
 inline ws_bool_t basic_drophandle_sequence<C, T>::empty() const
 {
-    return size() == 0;
+    return 0 == size();
 }
 
 template <ss_typename_param_k C, ss_typename_param_k T>

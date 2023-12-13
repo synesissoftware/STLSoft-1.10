@@ -4,11 +4,11 @@
  * Purpose:     basic_environment_sequence class.
  *
  * Created:     31st December 2002
- * Updated:     3rd December 2020
+ * Updated:     13th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_MINOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_REVISION 9
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_EDIT     98
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_SEQUENCE_EDIT     99
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -647,7 +647,7 @@ template <ss_typename_param_k C>
 inline ws_bool_t
 basic_environment_sequence<C>::empty() const
 {
-    return size() == 0;
+    return 0 == size();
 }
 
 template <ss_typename_param_k C>
