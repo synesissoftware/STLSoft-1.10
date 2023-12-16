@@ -49,7 +49,7 @@ build/makefile.tmpl
 build/makefile.tools.xml
 
 include/stlsoft/internal/dos2unix.has.been.performed
-
+include/stlsoft/dos2unix.has.been.performed
 
 # files (by pattern)
 
