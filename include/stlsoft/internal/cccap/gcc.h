@@ -6,7 +6,8 @@
  * Created:     7th February 2003
  * Updated:     13th December 2013
  *
- * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes
+ * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes;
+ *              wiluite for MinGW 64-bit compatibility.
  *
  * Home:        http://stlsoft.org/
  *
@@ -63,8 +64,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      30
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       111
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       112
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -486,12 +487,16 @@
 # endif /* STLSOFT_CF_CDECL_SUPPORTED */
 
 # if __GNUC__ > 2
-#  define STLSOFT_CF_FASTCALL_SUPPORTED
-#  define STLSOFT_FASTCALL                                  __fastcall
+#  if !defined(__MINGW64__)
+#   define STLSOFT_CF_FASTCALL_SUPPORTED
+#   define STLSOFT_FASTCALL                                 __fastcall
+#  endif /* !__MINGW64__ */
 # endif /* __GNUC__ > 2 */
 
-# define STLSOFT_CF_STDCALL_SUPPORTED
-# define STLSOFT_STDCALL                                    __stdcall
+# if !defined(__MINGW64__)
+#  define STLSOFT_CF_STDCALL_SUPPORTED
+#  define STLSOFT_STDCALL                                   __stdcall
+# endif /* !__MINGW64__ */
 
 
 # if (   __GNUC__ < 3 || \
