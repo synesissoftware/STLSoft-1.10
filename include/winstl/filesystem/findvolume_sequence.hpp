@@ -10,11 +10,11 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     13th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -61,7 +61,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_REVISION  15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      132
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      133
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -570,7 +570,7 @@ inline ss_typename_type_ret_k basic_findvolume_sequence<C, T>::const_iterator ba
 template <ss_typename_param_k C, ss_typename_param_k T>
 inline ws_bool_t basic_findvolume_sequence<C, T>::empty() const
 {
-    return begin() == end();
+    return end() == begin();
 }
 
 // basic_findvolume_sequence_value_type

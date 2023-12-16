@@ -4,11 +4,11 @@
  * Purpose:     STL sequence for COM collection interfaces.
  *
  * Created:     17th April 2004
- * Updated:     26th December 2020
+ * Updated:     13th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MAJOR     4
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MINOR     2
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_REVISION  8
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      76
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_REVISION  9
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -356,7 +356,7 @@ inline ss_typename_type_ret_k safearray_sequence<T>::size_type safearray_sequenc
 template <ss_typename_param_k T>
 inline bool safearray_sequence<T>::empty() const
 {
-    return 0 != size();
+    return 0 == size();
 }
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
