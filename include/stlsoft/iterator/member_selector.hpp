@@ -5,11 +5,11 @@
  *              class template.
  *
  * Created:     1st August 2010
- * Updated:     26th December 2020
+ * Updated:     13th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,3 +56,4 @@
 #include <stlsoft/iterators/member_selector_iterator.hpp>
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
