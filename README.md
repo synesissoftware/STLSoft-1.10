@@ -90,3 +90,6 @@ Projects that depend on **STLSoft** - though for some it is only for test - incl
 
 **STLSoft** is released under the 3-clause BSD license. See [LICENSE](./LICENSE) for details.
 
+
+<!-- ########################### end of file ########################### -->
+

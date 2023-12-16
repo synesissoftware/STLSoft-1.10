@@ -58,3 +58,7 @@ This is a good question. Over the remainder of 2023 and into 2024 we will be upd
 [**recls**](https://github.com/synesissoftware/recls),
 [**shwild**](https://github.com/synesissoftware/shwild),
 and more - in light of 'Modern C++' and determining how well this can be achieved with standard C++ facilities alone. This will inform the future of **STLSoft**, which may be to invest much further effort into the exist 1.x stream or, perhaps, create a new 2.x stream that does not need to worry itself with the very extensive compiler-feature-detection and missing-feature-detection that comprises much of the current (1.x) **STLSoft** facilities.
+
+
+<!-- ########################### end of file ########################### -->
+

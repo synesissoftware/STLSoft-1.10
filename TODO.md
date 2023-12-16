@@ -44,3 +44,6 @@
 
  * custom radix in integer_to_string - abandoned for performance reasons, and obviated by new conversion functions (oct, dec, hex) in 1.10
 
+
+<!-- ########################### end of file ########################### -->
+
