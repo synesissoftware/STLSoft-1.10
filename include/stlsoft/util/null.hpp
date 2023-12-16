@@ -1,0 +1,278 @@
+/* /////////////////////////////////////////////////////////////////////////
+ * File:        stlsoft/util/null.hpp (stlsoft_null.h
+ *
+ * Purpose:     NULL_v template class. Include stlsoft_nulldef.h for NULL to be
+ *              automatically the strong NULL.
+ *
+ * Created:     8th September 2002
+ * Updated:     26th December 2020
+ *
+ * Home:        http://stlsoft.org/
+ *
+ * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ * - Redistributions of source code must retain the above copyright notice,
+ *   this list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the distribution.
+ * - Neither the name(s) of Matthew Wilson and Synesis Information Systems
+ *   nor the names of any contributors may be used to endorse or promote
+ *   products derived from this software without specific prior written
+ *   permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * ////////////////////////////////////////////////////////////////////// */
+
+
+/** \file stlsoft/util/null.hpp
+ *
+ * \brief [C++] Definition of the stlsoft::NULL_v class
+ *   (\ref group__library__Utility "Utility" Library).
+ */
+
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_NULL
+#define STLSOFT_INCL_STLSOFT_UTIL_HPP_NULL
+
+#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_MAJOR     4
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_MINOR     0
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_REVISION  6
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_EDIT      63
+#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+
+#ifndef STLSOFT_INCL_STLSOFT_H_STLSOFT
+# include <stlsoft/stlsoft.h>
+#endif /* !STLSOFT_INCL_STLSOFT_H_STLSOFT */
+#ifdef STLSOFT_TRACE_INCLUDE
+# pragma message(__FILE__)
+#endif /* STLSOFT_TRACE_INCLUDE */
+
+/* _STLSOFT_NULL_v_DEFINED */
+
+#ifdef _STLSOFT_NULL_v_DEFINED
+# undef _STLSOFT_NULL_v_DEFINED
+#endif /* _STLSOFT_NULL_v_DEFINED */
+
+#define _STLSOFT_NULL_v_DEFINED
+
+#if defined(STLSOFT_COMPILER_IS_DMC) && \
+    __DMC__ < 0x0840
+# undef _STLSOFT_NULL_v_DEFINED
+#elif defined(STLSOFT_COMPILER_IS_MSVC) && \
+      _MSC_VER < 1310
+# undef _STLSOFT_NULL_v_DEFINED
+#elif defined(STLSOFT_COMPILER_IS_WATCOM)
+# undef _STLSOFT_NULL_v_DEFINED
+#endif /* compiler */
+
+/* _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT */
+
+#ifdef _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+# undef _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+#endif /* _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT */
+
+#define _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+
+#if 0 || \
+    defined(STLSOFT_COMPILER_IS_CLANG) || \
+    defined(STLSOFT_COMPILER_IS_GCC) || \
+    0
+# undef _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+#elif defined(STLSOFT_COMPILER_IS_MWERKS)
+# undef _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+#endif /* compiler */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * namespace
+ */
+
+#ifndef STLSOFT_NO_NAMESPACE
+namespace stlsoft
+{
+#endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * classes
+ */
+
+#ifdef _STLSOFT_NULL_v_DEFINED
+
+/** Represents a type that can be an active replacement for NULL
+ *
+ * \ingroup group__library__Utility
+ *
+ * This class can act as a replacement for the NULL macro, by being validly
+ * assigned to or equated with pointer types only, as in
+ *
+ *   int   i = NULL; // error
+ *   int   *p = NULL; // OK
+ *
+ *   if(i == NULL) {} // error
+ *   if(NULL == i) {} // error
+ *
+ *   if(p == NULL) {} // OK
+ *   if(NULL == p) {} // OK
+ *
+ *
+ * When used via inclusion of the file stlsoft_nulldef.h, the macro NULL is
+ * redefined as NULL_v(), such that expressions containing NULL will be valid
+ * against pointers only.
+ */
+struct NULL_v
+{
+// Construction
+public:
+    /// Default constructor
+    NULL_v()
+    {}
+
+/** Static creation
+ *
+ * \ingroup group__library__Utility
+ */
+public:
+    static NULL_v create()
+    {
+        return NULL_v();
+    }
+
+// Conversion
+public:
+    /// Implicit conversion operator (convertible to any pointer type)
+    template <ss_typename_param_k T>
+    operator T *() const
+    {
+        return 0;
+    }
+
+#ifdef _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT
+    /// Implicit conversion operator (convertible to any pointer type)
+    template<   ss_typename_param_k T2
+            ,   ss_typename_param_k C
+            >
+    operator T2 C::*() const
+    {
+        return 0;
+    }
+#endif /* _STLSOFT_NULL_v_DEFINED_PTR_TO_MEMBER_SUPPORT */
+
+    /// Evaluates whether an instance of a type is null
+    ///
+    /// \param rhs A reference arbitrary type which will be compared to null
+    template <ss_typename_param_k T>
+    ss_bool_t equal(T const& rhs) const
+    {
+        return rhs == 0;
+    }
+    /// \deprecated
+    template <ss_typename_param_k T>
+    ss_bool_t equals(T const& rhs) const
+    {
+        return equal(rhs);
+    }
+
+// Not to be implemented
+private:
+    void operator &() const;
+
+#if 1 && \
+    !defined(STLSOFT_COMPILER_IS_CLANG) && \
+    !defined(STLSOFT_COMPILER_IS_GCC) && \
+    1
+    NULL_v(NULL_v const&);
+    NULL_v const& operator =(NULL_v const&);
+#endif /* compiler */
+};
+
+#if 0
+/** operator == for NULL_v and an arbitrary type
+ *
+ * \ingroup group__library__Utility
+ */
+template <ss_typename_param_k T>
+inline ss_bool_t operator ==(NULL_v const& lhs, T const& rhs)
+{
+    STLSOFT_STATIC_ASSERT(sizeof(rhs) == 4);
+
+    return lhs.equal(rhs);
+}
+
+/** operator == for an arbitrary type and NULL_v
+ *
+ * \ingroup group__library__Utility
+ */
+template <ss_typename_param_k T>
+inline ss_bool_t operator ==(T const& lhs, NULL_v const& rhs)
+{
+    STLSOFT_STATIC_ASSERT(sizeof(lhs) == 4);
+
+    return rhs.equal(lhs);
+}
+
+/** operator != for NULL_v and an arbitrary type
+ *
+ * \ingroup group__library__Utility
+ */
+template <ss_typename_param_k T>
+inline ss_bool_t operator !=(NULL_v const& lhs, T const& rhs)
+{
+    STLSOFT_STATIC_ASSERT(sizeof(rhs) == 4);
+
+    return !lhs.equal(rhs);
+}
+
+/** operator != for an arbitrary type and NULL_v
+ *
+ * \ingroup group__library__Utility
+ */
+template <ss_typename_param_k T>
+inline ss_bool_t operator !=(T const& lhs, NULL_v const& rhs)
+{
+    STLSOFT_STATIC_ASSERT(sizeof(lhs) == 4);
+
+    return !rhs.equal(lhs);
+}
+#endif /* 0 */
+
+#endif /* _STLSOFT_NULL_v_DEFINED */
+
+/* ////////////////////////////////////////////////////////////////////// */
+
+#ifndef STLSOFT_NO_NAMESPACE
+} /* namespace stlsoft */
+#endif /* STLSOFT_NO_NAMESPACE */
+
+/* /////////////////////////////////////////////////////////////////////////
+ * inclusion control
+ */
+
+#ifdef STLSOFT_CF_PRAGMA_ONCE_SUPPORT
+# pragma once
+#endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
+
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_NULL */
+
+/* ///////////////////////////// end of file //////////////////////////// */
+
