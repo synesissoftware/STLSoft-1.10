@@ -5,6 +5,8 @@ Issues forum (https://github.com/synesissoftware/STLSoft-1.10/issues)
 it will be used to create one.
 
 
+## Table of Contents <!-- omit in toc -->
+
 - [Q1: "How do I build STLSoft?"](#q1-how-do-i-build-stlsoft)
 - [Q2: "How do I install STLSoft?"](#q2-how-do-i-install-stlsoft)
 - [Q3: "How do I use STLSoft?"](#q3-how-do-i-use-stlsoft)

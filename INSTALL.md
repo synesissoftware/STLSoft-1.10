@@ -1,5 +1,7 @@
 # STLSoft - Install <!-- omit in toc -->
 
+## Table of Contents <!-- omit in toc -->
+
 - [Installing](#installing)
   - [As downloaded archive, using environment variables](#as-downloaded-archive-using-environment-variables)
   - [Cloning project, using environment variables](#cloning-project-using-environment-variables)
@@ -69,7 +71,9 @@ $ cd ~/open-source/STLSoft-1.10
 $ sudo cmake --install ./_build --config Release
 ```
 
+
 ----
+
 
 ## Use of environment variables in other open-source projects.
 
@@ -106,6 +110,7 @@ The makefiles / project files of several other open-source projects expect this 
 
 
 ----
+
 
 ## Understanding the top-level project build scripts
 
