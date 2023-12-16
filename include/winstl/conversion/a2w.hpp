@@ -17,3 +17,5 @@
 
 #endif /* !WINSTL_INCL_WINSTL_CONVERSION_CHAR_CONVERSIONS_HPP_A2W */
 
+/* ///////////////////////////// end of file //////////////////////////// */
+

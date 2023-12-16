@@ -7,3 +7,5 @@
 
 #define STLSOFT_LEAD_VER    _STLSOFT_VER
 
+/* ///////////////////////////// end of file //////////////////////////// */
+

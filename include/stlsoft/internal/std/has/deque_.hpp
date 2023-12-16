@@ -23,3 +23,5 @@
 
 #endif /* !STLSOFT_INCL_stlsoft_internal_std_has_HPP_deque_ */
 
+/* ///////////////////////////// end of file //////////////////////////// */
+
