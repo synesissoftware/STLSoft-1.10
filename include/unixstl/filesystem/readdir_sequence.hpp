@@ -4,7 +4,7 @@
  * Purpose:     readdir_sequence class.
  *
  * Created:     15th January 2002
- * Updated:     13th December 2023
+ * Updated:     20th December 2023
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MAJOR      5
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MINOR      1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       153
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       154
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -297,17 +297,20 @@ public:
 
     /// The search directory
     ///
-    /// \note The value returned by this method always has a trailing path name separator, so
-    /// you can safely concatenate this with the value returned by the iterator's operator *()
-    /// with minimal fuss.
+    /// \note The value returned by this method always has a trailing path
+    /// name separator, so you can safely concatenate this with the value
+    /// returned by the iterator's <code>operator *()</code> with minimal
+    /// fuss, though you should do this only if you have not specified
+    /// \c fullPath nor \c absolutePath.
     string_type const&  get_directory() const;
 
     /// The flags used by the sequence
     ///
-    /// \note This value is the value used by the sequence, which may, as a result of the
-    /// determination of defaults, be different from those specified in its constructor. In
-    /// other words, if <code>includeDots</code> is specified, this function
-    /// will return <code>includeDots | directories | files</code>
+    /// \note This value is the value used by the sequence, which may, as a
+    /// result of the determination of defaults, be different from those
+    /// specified in its constructor. For example, if
+    /// <code>includeDots</code> was specified, this function will instead
+    /// return <code>includeDots | directories | files</code>.
     flags_type          get_flags() const;
 /// @}
 
@@ -415,11 +418,11 @@ public:
 private:
     struct shared_handle;
 
-    shared_handle*  m_handle;  // The DIR handle, shared with other iterator instances
-    struct dirent*  m_entry;   // The current entry
+    shared_handle*  m_handle;   // The DIR handle, shared with other iterator instances
+    struct dirent*  m_entry;    // The current entry
     flags_type      m_flags;    // flags. (Only non-const, to allow copy assignment)
     string_type     m_scratch;  // Holds the directory, and is a scratch area
-    size_type       m_dirLen;   // The length of the directory
+    size_type       m_dirLen;   // The length of the directory (in `m_scratch`)
 /// @}
 };
 
@@ -563,15 +566,21 @@ readdir_sequence::prepare_directory_(
         directory = s_thisDir;
     }
 
+    // NOTE: because this is an auto_buffer, which understands nothing about
+    // a nul-terminating character, the following code must account
+    // explicitly for it, marked "+nul"
     STLSOFT_NS_QUAL(auto_buffer)<char_type> path(1);
     size_type                               n;
 
     if (0 == path.size())
     {
+        // rather weak response to allocation failure, although this
+        // happens only when STLSOFT_CF_EXCEPTION_SUPPORT not defined
+
         return string_type();
     }
 
-    if(absolutePath & flags)
+    if (absolutePath & flags)
     {
         n = traits_type::get_full_path_name(directory, path);
 
@@ -582,6 +591,7 @@ readdir_sequence::prepare_directory_(
             STLSOFT_THROW_X(readdir_sequence_exception("failed to enumerate directory", errno, directory));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
+            // "+nul"
             if (!path.resize(1 + n))
             {
                 return string_type();
@@ -596,6 +606,7 @@ readdir_sequence::prepare_directory_(
     {
         n = traits_type::str_len(directory);
 
+        // "+nul"
         if (!path.resize(1 + n))
         {
             return string_type();
@@ -605,6 +616,7 @@ readdir_sequence::prepare_directory_(
         path[n] = '\0';
     }
 
+    // "+nul"
     traits_type::ensure_dir_end(&path[n - 1]);
 
     return string_type(path.data(), path.size());
