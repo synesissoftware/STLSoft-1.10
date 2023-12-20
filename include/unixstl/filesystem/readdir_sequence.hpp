@@ -582,6 +582,8 @@ readdir_sequence::prepare_directory_(
 
     if (absolutePath & flags)
     {
+        // NOTE: upon success, path will have been expanded to (at least)
+        // `n` elements
         n = traits_type::get_full_path_name(directory, path);
 
         if (0 == n)
@@ -608,7 +610,11 @@ readdir_sequence::prepare_directory_(
         n = traits_type::str_len(directory);
 
         // "+nul"
-        if (!path.resize(1 + n))
+        //
+        // NOTE: we ask for 2, not 1, so that the path-name-separator
+        // extension in the final step below will, if required, be
+        // cheap
+        if (!path.resize(2 + n))
         {
             return string_type();
         }
@@ -617,11 +623,25 @@ readdir_sequence::prepare_directory_(
         path[n] = '\0';
     }
 
+    // TODO: change this to `&path[n - 1]` when `ensure_dir_end()` can handle that
     // "+nul"
-    traits_type::ensure_dir_end(&path[n - 1]);
+    if (!traits_type::has_dir_end(&path[0]))
+    {
+        // at this point, `path` will be exactly `n` elements in length
+
+        // "+nul"
+        path.resize(2 + n);
+
+        // "+nul"
+        traits_type::ensure_dir_end(&path[0]);
+
+        // "+nul"
+        n++;
+    }
+
 
     // "+nul"
-    return string_type(path.data(), path.size() - 1);
+    return string_type(path.data(), n);
 }
 
 inline
