@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MAJOR      5
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       154
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       155
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -587,8 +587,9 @@ readdir_sequence::prepare_directory_(
         if (0 == n)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+            int e = (0 != errno) ? errno : ENOMEM;
 
-            STLSOFT_THROW_X(readdir_sequence_exception("failed to enumerate directory", errno, directory));
+            STLSOFT_THROW_X(readdir_sequence_exception("failed to obtain full path of search directory", e, directory));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
             // "+nul"
@@ -619,7 +620,8 @@ readdir_sequence::prepare_directory_(
     // "+nul"
     traits_type::ensure_dir_end(&path[n - 1]);
 
-    return string_type(path.data(), path.size());
+    // "+nul"
+    return string_type(path.data(), path.size() - 1);
 }
 
 inline
@@ -801,7 +803,7 @@ readdir_sequence::const_iterator::operator ++()
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 m_scratch.resize(m_dirLen);
 
-                STLSOFT_THROW_X(readdir_sequence_exception("Partial failure of directory enumeration", errno, m_scratch.c_str()));
+                STLSOFT_THROW_X(readdir_sequence_exception("failed to complete directory enumeration", errno, m_scratch.c_str()));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
             }
         }
