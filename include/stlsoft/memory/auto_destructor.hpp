@@ -5,11 +5,11 @@
  *              classes.
  *
  * Created:     1st November 1994
- * Updated:     26th December 2020
+ * Updated:     20th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_MINOR       2
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_REVISION    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        88
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_DESTRUCTOR_EDIT        89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -472,7 +472,7 @@ public:
     {}
 #endif /* STLSOFT_RETURN_VALUE_DESTRUCTOR_ENABLE_DIRECT_CTOR */
     /// Construct from an auto_destructor<T>, transferring the managed instance from it
-    return_value_destructor(auto_type& rhs) // Note: not explicit
+    return_value_destructor(auto_type& rhs) // NOTE: not explicit
         : m_value(rhs.detach())
     {}
     /// Move constructor
@@ -573,7 +573,7 @@ public:
     {}
 #endif /* STLSOFT_RETURN_VALUE_DESTRUCTOR_ENABLE_DIRECT_CTOR */
     /// Constructs from an auto_array_destructor<T> instance, transferring the managed array from it
-    return_value_array_destructor(auto_type& rhs) // Note: not explicit
+    return_value_array_destructor(auto_type& rhs) // NOTE: not explicit
         : m_value(rhs.detach())
     {}
 #if 1

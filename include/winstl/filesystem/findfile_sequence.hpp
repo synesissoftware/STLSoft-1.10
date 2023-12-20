@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     16th December 2023
+ * Updated:     20th December 2023
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -73,7 +73,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        263
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        264
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1863,7 +1863,7 @@ basic_findfile_sequence_const_input_iterator<C, T, V>::operator ++()
                     traits_type::char_copy(&search[0] + cch, m_pattern0, n1);
                     search[cch + n1] = '\0';
 
-                    // Note: At this point, cch may be 1 under, because ensure_dir_end() may have added
+                    // NOTE: At this point, cch may be 1 under, because ensure_dir_end() may have added
                     // a character that we've not counted. But that's ok, because we don't use it as an
                     // exact value, just a minimum value
 

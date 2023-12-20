@@ -4,11 +4,11 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     30th November 2020
+ * Updated:     20th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  10
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      36
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -245,7 +245,7 @@ else
   // This assert simply enforces what we know: that there is 1 or more
   // (1 in this case) pending events whose event code is 100
   //
-  // Note: we can only assert this here because we have not yet
+  // NOTE: we can only assert this here because we have not yet
   // started the reactor event loop; see step 11.
   assert(mh->has_custom_events(100));
 }
@@ -259,7 +259,7 @@ mh->schedule_custom_event(300, ACE_Time_Value(20), new std::string("300"));
 
 // 9. Cancel the 200 event
 //
-// Note: you can only cancel a single event via its unique event id.
+// NOTE: you can only cancel a single event via its unique event id.
 mh->cancel_custom_event(id200);
 
 // 10. Cancel all 300 events
@@ -269,7 +269,7 @@ mh->cancel_custom_event(id200);
 // the std::string instance would not be destroyed, and we'd have a
 // memory leak
 //
-// Note: Cancelling via an event code cancels *all* pending events with
+// NOTE: Cancelling via an event code cancels *all* pending events with
 // that code.
 int num300sCancelled = 0;
 
