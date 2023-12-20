@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     7th February 2021
+ * Updated:     20th December 2023
  *
  * Thanks:      To Sergey Nikulov, for spotting a preprocessor typo that
  *              broke GCC -pedantic; to Michal Makowski and Zar Eindl for
@@ -14,7 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR     4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR     15
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      178
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION  5
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT      180
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -653,7 +653,8 @@ public:
     ,   size_type           cchBuffer
     );
 
-    /// Gets the full path name into the given buffer
+    /// Gets the full path name into the given buffer, resizing it if
+    /// required
     ///
     /// \param fileName The path to be translated
     /// \param rb Reference to a resizeable buffer into which the
@@ -1079,11 +1080,6 @@ public: // directory-end
     )
     {
         UNIXSTL_ASSERT(0 == len || NULL != dir);
-
-        if (0 == len)
-        {
-            return false;
-        }
 
         switch (len)
         {
@@ -2797,11 +2793,6 @@ public: // directory-end
     )
     {
         UNIXSTL_ASSERT(0 == len || NULL != dir);
-
-        if (0 == len)
-        {
-            return false;
-        }
 
         switch (len)
         {
