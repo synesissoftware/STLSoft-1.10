@@ -37,3 +37,5 @@
 
 #endif /* !STLSOFT_INCL_stlsoft_internal_std_has_HPP_auto_ptr_ */
 
+/* ///////////////////////////// end of file //////////////////////////// */
+

@@ -35,7 +35,7 @@ The overarching characteristic of STLSoft is that it is *lightweight*. That soun
 
 ## Installation
 
-There are three main ways to install **STLSoft**:
+There are three main ways to install **STLSoft-1.10**:
 
 1. As downloaded archive, using environment variables;
 2. Cloning project, using environment variables;
@@ -43,7 +43,7 @@ There are three main ways to install **STLSoft**:
 
 Option 3 is recommended.
 
-See [INSTALL.md](./INSTALL.md) for details of these options.
+See [INSTALL.md](./INSTALL.md) for details of these options, and also for an explanation of the top-level build scripts in the project.
 
 
 ## Components
@@ -60,13 +60,13 @@ T.B.C.
 
 ### Where to get help
 
-[GitHub Page](https://github.com/synesissoftware/STLSoft "GitHub Page")
+[GitHub Page](https://github.com/synesissoftware/STLSoft-1.10 "GitHub Page")
 
 ### Contribution guidelines
 
-Defect reports, feature requests, and pull requests are welcome on https://github.com/synesissoftware/STLSoft.
+Defect reports, feature requests, and pull requests are welcome on https://github.com/synesissoftware/STLSoft-1.10.
 
-If you'd like to help out with the project, please raise an issue via [GitHub Page](https://github.com/synesissoftware/STLSoft/issues "GitHub Page") - you'll be very welcome!
+If you'd like to help out with the project, please raise an issue via [GitHub Issues Page](https://github.com/synesissoftware/STLSoft-1.10/issues "GitHub Issues Page") - you'll be very welcome!
 
 ### Dependencies
 
@@ -89,4 +89,7 @@ Projects that depend on **STLSoft** - though for some it is only for test - incl
 ### License
 
 **STLSoft** is released under the 3-clause BSD license. See [LICENSE](./LICENSE) for details.
+
+
+<!-- ########################### end of file ########################### -->
 

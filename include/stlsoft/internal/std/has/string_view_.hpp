@@ -22,3 +22,5 @@
 
 #endif /* !STLSOFT_INCL_stlsoft_internal_std_has_HPP_string_view_ */
 
+/* ///////////////////////////// end of file //////////////////////////// */
+

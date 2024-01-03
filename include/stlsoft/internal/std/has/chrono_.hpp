@@ -28,3 +28,5 @@
 
 #endif /* !STLSOFT_INCL_stlsoft_internal_std_has_HPP_chrono_ */
 
+/* ///////////////////////////// end of file //////////////////////////// */
+

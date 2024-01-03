@@ -4,11 +4,11 @@
  * Purpose:     Bounded algorithms.
  *
  * Created:     23rd October 2004
- * Updated:     26th December 2020
+ * Updated:     16th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -38,7 +38,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * ////////////////////////////////////////////////////////////////////////// */
+ * ////////////////////////////////////////////////////////////////////// */
 
 
 /** \file stlsoft/algorithms/bounded.hpp
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MINOR       1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        35
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        36
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Clipboard scoping and facade class.
  *
  * Created:     26th May 2005
- * Updated:     26th December 2020
+ * Updated:     16th December 2023
  *
  * Thanks:      To Martin Moene for reporting the problem with the data type
  *              in set_data_or_deallocate_and_throw_(), and for calling for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MAJOR      2
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_REVISION   1
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       52
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -349,28 +349,28 @@ private:
     ,   A&      ator
     ) stlsoft_throw_1(clipboard_scope_exception)
     {
-    #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         try
         {
-    #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
             set_data(fmt, static_cast<HANDLE>(memory));
 
-    #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         }
         catch(...)
         {
-#ifdef STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT
+# ifdef STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT
             ator.deallocate(memory, n);
-#else /* ? STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
+# else /* ? STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
             STLSOFT_SUPPRESS_UNUSED(n);
 
             ator.deallocate(memory);
-#endif /* STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
+# endif /* STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT */
 
             throw;
         }
-    #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 /// @}
 

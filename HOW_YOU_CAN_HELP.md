@@ -1,5 +1,7 @@
 # STLSoft - How You Can Help <!-- omit in toc -->
 
+## Table of Contents <!-- omit in toc -->
+
 There are several ways in which you can help the **STLSoft** project:
 
 - [Defect reports](#defect-reports)
@@ -78,4 +80,7 @@ there's lots more to be done. You can help out by updating the STLSoft
 Wikipedia page at:
 
   http://en.wikipedia.org/wiki/STLSoft
+
+
+<!-- ########################### end of file ########################### -->
 

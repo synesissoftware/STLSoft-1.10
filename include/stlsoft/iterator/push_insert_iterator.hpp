@@ -4,11 +4,11 @@
  * Purpose:     Push insert iterator for sequence containers.
  *
  * Created:     6th April 2005
- * Updated:     28th November 2020
+ * Updated:     16th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_MAJOR      2
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_REVISION   5
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_EDIT       28
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_PUSH_INSERT_ITERATOR_EDIT       29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,29 +102,29 @@ namespace stlsoft
  * found in the local directory to the vector of strings:
  *
 \code
-  #include <stlsoft/util/dimensionof.h>
+#include <stlsoft/util/dimensionof.h>
 
-  #include <queue>
+#include <queue>
 
-  . . .
+. . .
 
-  std::queue<int>  q;
+std::queue<int>  q;
 
-  int const ints[] = {
+int const ints[] = {
 
-    -2,
-    -1,
-    0,
-    1,
-    +2,
-    +3,
-  };
+  -2,
+  -1,
+  0,
+  1,
+  +2,
+  +3,
+};
 
-  std::copy(
-      &ints[0]
-  ,   &ints[0] + dimensionof(ints)
-  ,   stlsoft::push_inserter(q)
-  );
+std::copy(
+    &ints[0]
+, &ints[0] + dimensionof(ints)
+, stlsoft::push_inserter(q)
+);
 \endcode
  */
 

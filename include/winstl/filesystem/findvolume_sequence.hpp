@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     13th December 2023
+ * Updated:     16th December 2023
  *
  * Home:        http://stlsoft.org/
  *
@@ -61,7 +61,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_REVISION  15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      133
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      134
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -322,11 +322,11 @@ private:
                 delete this;
             }
         }
-    #if defined(STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR)
+# if defined(STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR)
     protected:
-    #else /* ? STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR */
+# else /* ? STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR */
     private:
-    #endif /* STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR */
+# endif /* STLSOFT_CF_COMPILER_WARNS_NO_PUBLIC_DTOR */
         ~shared_handle() STLSOFT_NOEXCEPT
         {
             WINSTL_MESSAGE_ASSERT("Shared search handle being destroyed with outstanding references!", 0 == cRefs);

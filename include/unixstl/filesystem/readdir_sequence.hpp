@@ -4,7 +4,7 @@
  * Purpose:     readdir_sequence class.
  *
  * Created:     15th January 2002
- * Updated:     13th December 2023
+ * Updated:     20th December 2023
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MAJOR      5
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       153
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   2
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       155
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -297,17 +297,20 @@ public:
 
     /// The search directory
     ///
-    /// \note The value returned by this method always has a trailing path name separator, so
-    /// you can safely concatenate this with the value returned by the iterator's operator *()
-    /// with minimal fuss.
+    /// \note The value returned by this method always has a trailing path
+    /// name separator, so you can safely concatenate this with the value
+    /// returned by the iterator's <code>operator *()</code> with minimal
+    /// fuss, though you should do this only if you have not specified
+    /// \c fullPath nor \c absolutePath.
     string_type const&  get_directory() const;
 
     /// The flags used by the sequence
     ///
-    /// \note This value is the value used by the sequence, which may, as a result of the
-    /// determination of defaults, be different from those specified in its constructor. In
-    /// other words, if <code>includeDots</code> is specified, this function
-    /// will return <code>includeDots | directories | files</code>
+    /// \note This value is the value used by the sequence, which may, as a
+    /// result of the determination of defaults, be different from those
+    /// specified in its constructor. For example, if
+    /// <code>includeDots</code> was specified, this function will instead
+    /// return <code>includeDots | directories | files</code>.
     flags_type          get_flags() const;
 /// @}
 
@@ -415,11 +418,11 @@ public:
 private:
     struct shared_handle;
 
-    shared_handle*  m_handle;  // The DIR handle, shared with other iterator instances
-    struct dirent*  m_entry;   // The current entry
+    shared_handle*  m_handle;   // The DIR handle, shared with other iterator instances
+    struct dirent*  m_entry;    // The current entry
     flags_type      m_flags;    // flags. (Only non-const, to allow copy assignment)
     string_type     m_scratch;  // Holds the directory, and is a scratch area
-    size_type       m_dirLen;   // The length of the directory
+    size_type       m_dirLen;   // The length of the directory (in `m_scratch`)
 /// @}
 };
 
@@ -563,25 +566,35 @@ readdir_sequence::prepare_directory_(
         directory = s_thisDir;
     }
 
+    // NOTE: because this is an auto_buffer, which understands nothing about
+    // a nul-terminating character, the following code must account
+    // explicitly for it, marked "+nul"
     STLSOFT_NS_QUAL(auto_buffer)<char_type> path(1);
     size_type                               n;
 
     if (0 == path.size())
     {
+        // rather weak response to allocation failure, although this
+        // happens only when STLSOFT_CF_EXCEPTION_SUPPORT not defined
+
         return string_type();
     }
 
-    if(absolutePath & flags)
+    if (absolutePath & flags)
     {
+        // NOTE: upon success, path will have been expanded to (at least)
+        // `n` elements
         n = traits_type::get_full_path_name(directory, path);
 
         if (0 == n)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+            int e = (0 != errno) ? errno : ENOMEM;
 
-            STLSOFT_THROW_X(readdir_sequence_exception("failed to enumerate directory", errno, directory));
+            STLSOFT_THROW_X(readdir_sequence_exception("failed to obtain full path of search directory", e, directory));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
+            // "+nul"
             if (!path.resize(1 + n))
             {
                 return string_type();
@@ -596,7 +609,12 @@ readdir_sequence::prepare_directory_(
     {
         n = traits_type::str_len(directory);
 
-        if (!path.resize(1 + n))
+        // "+nul"
+        //
+        // NOTE: we ask for 2, not 1, so that the path-name-separator
+        // extension in the final step below will, if required, be
+        // cheap
+        if (!path.resize(2 + n))
         {
             return string_type();
         }
@@ -605,9 +623,25 @@ readdir_sequence::prepare_directory_(
         path[n] = '\0';
     }
 
-    traits_type::ensure_dir_end(&path[n - 1]);
+    // TODO: change this to `&path[n - 1]` when `ensure_dir_end()` can handle that
+    // "+nul"
+    if (!traits_type::has_dir_end(&path[0]))
+    {
+        // at this point, `path` will be exactly `n` elements in length
 
-    return string_type(path.data(), path.size());
+        // "+nul"
+        path.resize(2 + n);
+
+        // "+nul"
+        traits_type::ensure_dir_end(&path[0]);
+
+        // "+nul"
+        n++;
+    }
+
+
+    // "+nul"
+    return string_type(path.data(), n);
 }
 
 inline
@@ -789,7 +823,7 @@ readdir_sequence::const_iterator::operator ++()
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 m_scratch.resize(m_dirLen);
 
-                STLSOFT_THROW_X(readdir_sequence_exception("Partial failure of directory enumeration", errno, m_scratch.c_str()));
+                STLSOFT_THROW_X(readdir_sequence_exception("failed to complete directory enumeration", errno, m_scratch.c_str()));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
             }
         }

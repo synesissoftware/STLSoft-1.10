@@ -4,7 +4,7 @@
  * Purpose:     Contains the pod_vector class.
  *
  * Created:     23rd December 2003
- * Updated:     26th December 2020
+ * Updated:     20th December 2023
  *
  * Thanks to:   Chris Newcombe for requesting sufficient enhancements to
  *              auto_buffer such that pod_vector was born.
@@ -14,7 +14,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -61,7 +61,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MINOR       2
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_REVISION    7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        89
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -224,7 +224,7 @@ public:
     void        clear();
     void        swap(class_type& rhs);
     void        reserve(size_type cItems) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */;
-// Note: resize() is split into two, so the one-param version can be very quick
+// NOTE: resize() is split into two, so the one-param version can be very quick
     void        resize(size_type cItems) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */;
     void        resize(size_type cItems, value_type const& value) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */;
     void        push_back(value_type const& value);

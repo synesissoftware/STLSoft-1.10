@@ -4,11 +4,11 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     2nd January 2021
+ * Updated:     16th December 2023
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     88
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     89
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -633,7 +633,7 @@ using ::char_traits;
 /* We only define (stlsoft::)char_traits if no std::char_traits is available, or
  * the stlsoft namespace is defined, or the std namespace is defined.
  */
- #if !defined(STLSOFT_CF_std_char_traits_AVAILABLE) || /* std does not define char_traits */ \
+# if !defined(STLSOFT_CF_std_char_traits_AVAILABLE) || /* std does not define char_traits */ \
      !defined(STLSOFT_NO_NAMESPACE) ||                 /* stlsoft namespace is defined */ \
      defined(STLSOFT_CF_std_NAMESPACE)
 template<   ss_typename_param_k C

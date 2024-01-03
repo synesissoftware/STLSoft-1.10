@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  13th December 2023
+; Updated:  3rd January 2024
 
 ============================================================================
 
@@ -16,6 +16,18 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.2 (3rd January 2024)
+
+General:
+========
+
+ * include/comstl/collections/safearray_sequence.hpp - defect fix in `safearray_sequence.empty()`;
+ * include/unixstl/filesystem/filesystem_traits.hpp - removing unused / repetitive code;
+ * include/unixstl/filesystem/readdir_sequence.hpp - various fixes, including significant defect whereby path would not be updated correctly (leading to FH exhaustion with recls);
+ * include/winstl/filesystem/filesystem_traits.hpp - removing unused / repetitive code;
+ * MinGW 64-bit compatibility improvements;
+ * large number of trivial / whitespace consistency fixes;
 
 Changes for 1.10.1 (December 13th 2023)
 
