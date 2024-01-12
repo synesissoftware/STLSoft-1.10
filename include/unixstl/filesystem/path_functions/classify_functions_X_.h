@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     23rd March 2021
+ * Updated:     12th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2024, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -291,6 +291,14 @@ unixstl_C_path_classify_impl_X_(
 
         char_t const*       lastDot     =   ss_nullptr_k;
         char_t const*       prev        =   ss_nullptr_k;
+
+#if 0 || \
+    defined(STLSOFT_COMPILER_IS_CLANG) || \
+    defined(STLSOFT_COMPILER_IS_GCC) || \
+    0
+
+        STLSOFT_SUPPRESS_UNUSED(prev);
+#endif
 
         int const           checkRuns   =   0 == (UNIXSTL_PATH_CLASSIFY_F_IGNORESLASHRUNS & parseFlags);
         int                 runLength   =   0;
