@@ -2,12 +2,11 @@
 
 ## Major Contributors:
 
-* Matthew Wilson        (most of the libraries)
-* Garth Lancaster       (many edits, fixes, and nuggets of advice over the years)
-* Pablo Aguilar         (Windows ToolHelp Library)
+* Matt Wilson ([mwsis](https://github.com/mwsis)) - primary contributor of most of the libraries
+* Pablo Aguilar - author of the Windows ToolHelp Library
 
 
-## Bug reports, fixes and suggestions (for which we are very grateful):
+## Defect reports, fixes and suggestions (for which we are very grateful):
 
 * Adi Shavit
 * Allan McLellan
@@ -36,6 +35,7 @@
 * Eugene Gershnik
 * Felix Gartsman
 * Gabor Fischer
+* Garth Lancaster
 * Greg Peet
 * HeartIcy
 * iceboy

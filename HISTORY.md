@@ -4,8 +4,16 @@
 ----
 
 
-3rd January 2024 - 1.10.2 released
+12th January 2024 - 1.10.3 released
 -----------------------------------
+
+ * warnings fix (Issue 14)
+ * fixed sub-project versions (Issue 15)
+ * minor project boilerplate fixes and tidying
+
+
+3rd January 2024 - 1.10.2 released
+----------------------------------
 
  * defect fixes;
  * Min-GW 64-bit compatibility

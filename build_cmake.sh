@@ -68,7 +68,11 @@ else
 
         make
 
+        status=$?
+
         cd ->/dev/null
+
+        exit $status
     fi
 fi
 

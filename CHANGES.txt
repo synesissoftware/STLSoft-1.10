@@ -17,6 +17,25 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.3 (12th January 2024)
+
+General:
+========
+
+ * include/unixstl/filesystem/path_functions/classify_functions_X_.h - GCC / Clang warning;
+ * include/winstl/filesystem/path_functions/classify_functions_X_.h - GCC / Clang warning;
+ * include/comstl/comstl.h - ~ fixed sub-project version;
+ * include/inetstl/inetstl.h - ~ fixed sub-project version;
+ * include/unixstl/unixstl.h - ~ fixed sub-project version;
+ * include/winstl/winstl.h - ~ fixed sub-project version;
+ * include/stlsoft/conversion/sas_to_string.hpp - typo;
+ * include/stlsoft/util/std/iterator_helper.hpp - typo;
+ * include/winstl/filesystem/path.hpp - typo;
+ * minor fixes to project boilerplate
+
+
+============================================================================
+
 Changes for 1.10.2 (3rd January 2024)
 
 General:
@@ -28,6 +47,9 @@ General:
  * include/winstl/filesystem/filesystem_traits.hpp - removing unused / repetitive code;
  * MinGW 64-bit compatibility improvements;
  * large number of trivial / whitespace consistency fixes;
+
+
+============================================================================
 
 Changes for 1.10.1 (December 13th 2023)
 
@@ -43,6 +65,7 @@ Changes:
  ===========================
 
  * trivial cleanup - whitespace, UTF-8 characters in comments in some headers
+
 
 ============================================================================
 

@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        stlsoft/string/sas_to_string.hpp
+ * File:        stlsoft/conversion/sas_to_string.hpp
  *
  * Purpose:     String creation functions (from String Access Shims)
  *
  * Created:     25th December 2018
- * Updated:     16th January 2021
+ * Updated:     12th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2018-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -41,20 +41,20 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file stlsoft/string/sas_to_string.hpp
+/** \file stlsoft/conversion/sas_to_string.hpp
  *
  * \brief [C++] String creation functions (from String Access Shims)
  *   (\ref group__library__String "String" Library).
  */
 
-#ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING
-#define STLSOFT_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING
+#ifndef STLSOFT_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING
+#define STLSOFT_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MAJOR    1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_MINOR    1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_REVISION 2
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING_EDIT     8
+# define STLSOFT_VER_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING_MAJOR    1
+# define STLSOFT_VER_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING_MINOR    1
+# define STLSOFT_VER_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING_REVISION 3
+# define STLSOFT_VER_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING_EDIT     9
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,7 +181,7 @@ sas_to_string(
 # pragma once
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
-#endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_SAS_TO_STRING */
+#endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_SAS_TO_STRING */
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

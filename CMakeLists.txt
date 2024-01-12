@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for STLSoft
 #
 # Created:  31st March 2021
-# Updated:  2nd January 2024
+# Updated:  10th January 2024
 #
 # ######################################################################## #
 
@@ -18,9 +18,9 @@ cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 # require out-of-source builds
 file(TO_CMAKE_PATH "${CMAKE_CURRENT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")
+
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
-
 
 # directory for CMake specific extensions and source files.
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -95,6 +95,7 @@ target_include_directories(STLSoft INTERFACE
 include(CTest)
 
 if(BUILD_TESTING)
+
     add_subdirectory(test)
 endif()
 
