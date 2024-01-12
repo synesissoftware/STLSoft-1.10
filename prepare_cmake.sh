@@ -17,15 +17,19 @@ RunMake=0
 while [[ $# -gt 0 ]]; do
     case $1 in
         -d|--debug-configuration)
+
             Configuration=Debug
             ;;
         -m|--run-make)
+
             RunMake=1
             ;;
         -v|--cmake-verbose-makefile)
+
             CmakeVerboseMakefile=1
             ;;
         --help)
+
             cat << EOF
 STLSoft is a suite of libraries that provide STL extensions and facades over operating-system and technology-specific APIs
 Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
@@ -62,6 +66,7 @@ EOF
             exit 0
             ;;
         *)
+
             >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
 
             exit 1
@@ -85,11 +90,15 @@ if [ $CmakeVerboseMakefile -eq 0 ]; then CmakeVerboseMakefileFlag="OFF" ; else C
 
 cmake -DCMAKE_VERBOSE_MAKEFILE:BOOL=$CmakeVerboseMakefileFlag -DCMAKE_BUILD_TYPE=$Configuration .. || (cd ->/dev/null ; exit 1)
 
+status=0
+
 if [ $RunMake -ne 0 ]; then
 
     echo "Executing make"
 
     make
+
+    status=$?
 fi
 
 cd ->/dev/null
@@ -99,6 +108,8 @@ if [ $CmakeVerboseMakefile -ne 0 ]; then
     echo -e "contents of $CMakePath:"
     ls -al $CMakePath
 fi
+
+exit $status
 
 
 # ############################## end of file ############################# #
