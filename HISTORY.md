@@ -4,6 +4,13 @@
 ----
 
 
+16th January 2024 - 1.10.4 released
+-----------------------------------
+
+ * C++17 compatibility
+ * unixstl::semaphore now fully implemented on Mac OSX;
+
+
 12th January 2024 - 1.10.3 released
 -----------------------------------
 

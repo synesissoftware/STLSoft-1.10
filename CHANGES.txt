@@ -17,6 +17,20 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.4 (16th January 2024)
+
+General:
+========
+
+ * C++17 compatibility, including: allocators, binders, auto_ptr;
+ * unixstl::semaphore now fully implemented on Mac OSX;
+ * unixstl::synchronisation_exception modern C++ compatibility
+ * added supporting test (for unixstl::semaphore)
+ * marked relevant files with 'STLSOFT:DEPRECATED' and 'STLSOFT:FILE_NOT_SELF_SUFFICIENT' to simplify automated compatibility checks
+
+
+============================================================================
+
 Changes for 1.10.3 (12th January 2024)
 
 General:
