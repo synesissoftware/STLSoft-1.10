@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 14
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     38
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@ public:
     /// Destroys an instance of the semaphore
     ~semaphore() STLSOFT_NOEXCEPT
     {
-        if( NULL != m_sem &&
+        if (NULL != m_sem &&
             m_bOwnHandle)
         {
             ::sem_destroy(m_sem);
@@ -185,7 +185,7 @@ private:
 #if 0
     void close() STLSOFT_NOEXCEPT
     {
-        if( NULL != m_sem &&
+        if (NULL != m_sem &&
             m_bOwnHandle)
         {
             ::sem_destroy(m_sem);
@@ -204,7 +204,7 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        if(::sem_wait(m_sem) < 0)
+        if (::sem_wait(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", errno));
@@ -220,13 +220,13 @@ public:
 
         int res =   ::sem_trywait(m_sem);
 
-        if(0 == res)
+        if (0 == res)
         {
             return true;
         }
         else
         {
-            if(EAGAIN != res)
+            if (EAGAIN != errno)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", errno));
@@ -242,7 +242,7 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        if(::sem_post(m_sem) < 0)
+        if (::sem_post(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(synchronisation_exception("semaphore release failed", errno));
@@ -274,7 +274,7 @@ private:
 
         handle_type sem = NULL;
 
-        if(::sem_init(internal, bInterProcessShared, initialCount) < 0)
+        if (::sem_init(internal, bInterProcessShared, initialCount) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
@@ -296,7 +296,7 @@ private:
 private:
     sem_t               m_semInternal;  // The actual object if internally initialised
     handle_type         m_sem;          // Handle to the underlying semaphore object
-    const bool_type     m_bOwnHandle;   // Does the instance own the handle?
+    bool_type const     m_bOwnHandle;   // Does the instance own the handle?
 };
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -318,7 +318,7 @@ private:
  *
  * \param sem The semaphore on which to acquire the lock.
  */
-inline void lock_instance(UNIXSTL_NS_QUAL(semaphore) &sem)
+inline void lock_instance(UNIXSTL_NS_QUAL(semaphore)& sem)
 {
     sem.lock();
 }
@@ -329,7 +329,7 @@ inline void lock_instance(UNIXSTL_NS_QUAL(semaphore) &sem)
  *
  * \param sem The semaphore on which to release the lock
  */
-inline void unlock_instance(UNIXSTL_NS_QUAL(semaphore) &sem)
+inline void unlock_instance(UNIXSTL_NS_QUAL(semaphore)& sem)
 {
     sem.unlock();
 }
@@ -366,15 +366,15 @@ public:
 // Operations
 public:
     /// Lock the given semaphore instance
-    static void lock(semaphore &c)
+    static void lock(semaphore& l)
     {
-        lock_instance(c);
+        lock_instance(l);
     }
 
     /// Unlock the given semaphore instance
-    static void unlock(semaphore &c)
+    static void unlock(semaphore& l)
     {
-        unlock_instance(c);
+        unlock_instance(l);
     }
 };
 
