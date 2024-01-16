@@ -4,11 +4,11 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     26th December 2020
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MAJOR       6
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MINOR       0
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_REVISION    2
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        52
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_REVISION    3
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        53
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -202,6 +202,8 @@
  * \note Effectively, this can be used to determine whether <i>any</i>
  *   allocator supports rebind.
  *
+ * \note This is not defined for any compiler when `__cplusplus >= 1103L`.
+ *
  * Use this symbol when determining whether to use <code>rebind</code> on an
  * allocator.
  */
@@ -229,6 +231,13 @@
 #  error Standard library not recognised
 # endif /* library */
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
+
+#ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
+# if __cplusplus >= 201703L
+#  undef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
+# endif /* C++ version */
+#endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * obsolete forwarding #defines

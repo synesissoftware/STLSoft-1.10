@@ -4,11 +4,11 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     30th November 2020
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MINOR    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 14
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     63
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 15
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -179,7 +179,7 @@ private:
 #else /* ? STLSOFT_CF_COMPILER_SUPPORTS_CRTP */
     typedef class_type                          concrete_allocator_type;
 private:
-    virtual void    *do_allocate(size_type n, void const* hint) = 0;
+    virtual void*   do_allocate(size_type n, void const* hint) = 0;
     virtual void    do_deallocate(void* pv, size_type n) = 0;
     virtual void    do_deallocate(void* pv) = 0;
 #endif /* !STLSOFT_CF_COMPILER_SUPPORTS_CRTP */
@@ -225,7 +225,7 @@ public:
     ///   translator does not support throwing exceptions upon memory exhaustion)
     pointer allocate(size_type n, void const* hint = NULL)
     {
-        void* p = static_cast<concrete_allocator_type*>(this)->do_allocate(n, hint);
+        void* const p = static_cast<concrete_allocator_type*>(this)->do_allocate(n, hint);
 
 #if !defined(STLSOFT_FORCE_ATORS_RETURN_NULL) && \
     (   defined(STLSOFT_FORCE_ATORS_THROW_BAD_ALLOC) || \
@@ -251,7 +251,11 @@ public:
     ///   \ref STLSOFT_CF_ALLOCATOR_CHARALLOC_METHOD is defined.
     char* _Charalloc(size_type n)
     {
+# if __cplusplus >= 201703L
+        return sap_cast<char*>(allocate(n));
+# else /* C++ version ? */
         return sap_cast<char*>(allocate(n, NULL));
+# endif /* C++ version */
     }
 #endif /* STLSOFT_CF_ALLOCATOR_CHARALLOC_METHOD */
 
