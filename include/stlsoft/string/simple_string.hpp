@@ -167,63 +167,67 @@ class basic_simple_string
 /// @{
 public:
     /// The value type
-    typedef C                               value_type;
+    typedef C                                               value_type;
     /// The traits type
-    typedef T                               traits_type;
+    typedef T                                               traits_type;
     /// The allocator type
-    typedef A                               allocator_type;
+    typedef A                                               allocator_type;
     /// The current parameterisation of the type
-    typedef basic_simple_string<C, T, A>    class_type;
+    typedef basic_simple_string<C, T, A>                    class_type;
     /// The character type
-    typedef value_type                      char_type;
+    typedef value_type                                      char_type;
     /// The pointer type
-    typedef value_type*                     pointer;
+    typedef value_type*                                     pointer;
     /// The non-mutable (const) pointer type
-    typedef value_type const*               const_pointer;
+    typedef value_type const*                               const_pointer;
     /// The reference type
-    typedef value_type&                     reference;
+    typedef value_type&                                     reference;
     /// The non-mutable (const) reference type
-    typedef value_type const&               const_reference;
+    typedef value_type const&                               const_reference;
     /// The size type
-    typedef ss_size_t                       size_type;
+    typedef ss_size_t                                       size_type;
     /// The difference type
-    typedef ss_ptrdiff_t                    difference_type;
+    typedef ss_ptrdiff_t                                    difference_type;
 
     /// The iterator type
     typedef
 #if !defined(STLSOFT_COMPILER_IS_BORLAND)
            ss_typename_type_k
 #endif /* compiler */
-                       pointer_iterator <   value_type
-                                        ,   pointer
-                                        ,   reference
-                                        >::type             iterator;
+                       pointer_iterator<
+                            value_type
+                        ,   pointer
+                        ,   reference
+                        >::type                             iterator;
     /// The non-mutating (const) iterator type
     typedef
 #if !defined(STLSOFT_COMPILER_IS_BORLAND)
          ss_typename_type_k
 #endif /* compiler */
-                       pointer_iterator <   value_type const
-                                        ,   const_pointer
-                                        ,   const_reference
-                                        >::type             const_iterator;
+                       pointer_iterator<
+                            value_type const
+                        ,   const_pointer
+                        ,   const_reference
+                        >::type                             const_iterator;
 
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
     /// The mutating (non-const) reverse iterator type
-    typedef ss_typename_type_k reverse_iterator_generator   <   iterator
-                                                            ,   value_type
-                                                            ,   reference
-                                                            ,   pointer
-                                                            ,   difference_type
-                                                            >::type             reverse_iterator;
+    typedef ss_typename_type_k reverse_iterator_generator<
+        iterator
+    ,   value_type
+    ,   reference
+    ,   pointer
+    ,   difference_type
+    >::type                                                 reverse_iterator;
 
     /// The non-mutating (const) reverse iterator type
-    typedef ss_typename_type_k const_reverse_iterator_generator <   const_iterator
-                                                            ,   value_type
-                                                            ,   const_reference
-                                                            ,   const_pointer
-                                                            ,   difference_type
-                                                            >::type             const_reverse_iterator;
+    typedef ss_typename_type_k const_reverse_iterator_generator<
+        const_iterator
+    ,   value_type
+    ,   const_reference
+    ,   const_pointer
+    ,   difference_type
+    >::type                                                 const_reverse_iterator;
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 
 private:
@@ -232,9 +236,13 @@ private:
     /// \note This has to be defined here, rather than on a use-by-use basis, because
     /// Borland gets very upset.
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
-    typedef ss_typename_type_k A::ss_template_qual_k rebind<ss_byte_t>::other   byte_ator_type;
+    typedef ss_typename_type_k A::ss_template_qual_k rebind<
+        ss_byte_t
+    >::other                                                byte_ator_type;
 #else /* ? STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-    typedef ss_typename_type_k allocator_selector<ss_byte_t>::allocator_type    byte_ator_type;
+    typedef ss_typename_type_k allocator_selector<
+        ss_byte_t
+    >::allocator_type                                       byte_ator_type;
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 /// @}
 
@@ -549,16 +557,17 @@ private:
         char_type   contents[1];    // The first element in the array
     };
 
-    typedef auto_buffer_old<char_type
-                        ,   allocator_type
-                        >       buffer_type_;
+    typedef auto_buffer_old<
+        char_type
+    ,   allocator_type
+    >                                                       buffer_type_;
 
 #ifdef STLSOFT_SIMPLE_STRING_NO_PTR_ADJUST
-    typedef string_buffer*       member_pointer;
-    typedef string_buffer const* member_const_pointer;
+    typedef string_buffer*                                  member_pointer;
+    typedef string_buffer const*                            member_const_pointer;
 #else /* ? STLSOFT_SIMPLE_STRING_NO_PTR_ADJUST */
-    typedef char_type*          member_pointer;
-    typedef char_type const*    member_const_pointer;
+    typedef char_type*                                      member_pointer;
+    typedef char_type const*                                member_const_pointer;
 #endif /* STLSOFT_SIMPLE_STRING_NO_PTR_ADJUST */
 
     // Conversion between member pointer and character pointer
@@ -621,7 +630,7 @@ private:
     class_type& assign_(II first, II last, STLSOFT_NS_QUAL_STD(forward_iterator_tag))
 # endif /* compiler */
     {
-        const ss_size_t n   =   static_cast<ss_size_t>(STLSOFT_NS_QUAL_STD(distance)(first, last));
+        ss_size_t const n   =   static_cast<ss_size_t>(STLSOFT_NS_QUAL_STD(distance)(first, last));
         buffer_type_    buffer(n);
 
         copy_n(first, buffer.size(), &buffer[0]);
@@ -656,7 +665,7 @@ private:
     class_type& append_(II first, II last, STLSOFT_NS_QUAL_STD(forward_iterator_tag))
 # endif /* compiler */
     {
-        buffer_type_    buffer(static_cast<ss_size_t>(STLSOFT_NS_QUAL_STD(distance)(first, last)));
+        buffer_type_  buffer(static_cast<ss_size_t>(STLSOFT_NS_QUAL_STD(distance)(first, last)));
 
         std_copy(first, last, &buffer[0]);
         append(buffer.data(), buffer.size());
@@ -679,17 +688,19 @@ private:
  */
 
 #ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-typedef basic_simple_string<ss_char_a_t>                                    simple_string;
-typedef basic_simple_string<ss_char_w_t>                                    simple_wstring;
+typedef basic_simple_string<ss_char_a_t>                    simple_string;
+typedef basic_simple_string<ss_char_w_t>                    simple_wstring;
 #else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-typedef basic_simple_string<ss_char_a_t
-                        ,   stlsoft_char_traits<ss_char_a_t>
-                        ,   allocator_selector<ss_char_a_t>::allocator_type
-                        >                                                   simple_string;
-typedef basic_simple_string<ss_char_w_t
-                        ,   stlsoft_char_traits<ss_char_w_t>
-                        ,   allocator_selector<ss_char_w_t>::allocator_type
-                        >                                                   simple_wstring;
+typedef basic_simple_string<
+    ss_char_a_t
+,   stlsoft_char_traits<ss_char_a_t>
+,   allocator_selector<ss_char_a_t>::allocator_type
+>                                                           simple_string;
+typedef basic_simple_string<
+    ss_char_w_t
+,   stlsoft_char_traits<ss_char_w_t>
+,   allocator_selector<ss_char_w_t>::allocator_type
+>                                                           simple_wstring;
 #endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1355,27 +1366,29 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_pointer basic_simple_string<C, T, A>::alloc_buffer_(ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
-                                                                                                                            ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type capacity
-                                                                                                                            ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type length)
+inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_pointer basic_simple_string<C, T, A>::alloc_buffer_(
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   s
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          capacity
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          length
+)
 {
     // Pre-conditions
     STLSOFT_ASSERT(length <= capacity);
     STLSOFT_ASSERT(length >= traits_type::length_max_null(s, length));
 
-    const ss_size_t members = (STLSOFT_RAW_OFFSETOF(string_buffer, contents) + (sizeof(char_type) - 1)) / sizeof(char_type);
+    ss_size_t const members = (STLSOFT_RAW_OFFSETOF(string_buffer, contents) + (sizeof(char_type) - 1)) / sizeof(char_type);
 
     capacity += 1;                                              // For null terminator
     capacity += members;                                        // Include the internal members.
     capacity = (alloc_quantum + capacity) & ~alloc_quantum;     // Round up to (alloc_quantum + 1)
 
-    byte_ator_type  byte_ator;
+    byte_ator_type          byte_ator;
 # ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
-    void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type), NULL);
+    void* const             raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type), NULL);
 # else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
-    void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type));
+    void* const             raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type));
 # endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
-    string_buffer*  buffer      =   sap_cast<string_buffer*>(raw_buffer);
+    string_buffer* const    buffer      =   sap_cast<string_buffer*>(raw_buffer);
 
     if(NULL != buffer)
     {
@@ -1404,8 +1417,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_pointer basic_simple_string<C, T, A>::alloc_buffer_(ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
-                                                                                                                            ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type cch)
+inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_pointer basic_simple_string<C, T, A>::alloc_buffer_(
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   s
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+)
 {
     size_type   length      =   traits_type::length_max_null(s, cch);
     size_type   capacity    =   cch;
@@ -1424,7 +1439,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_pointer basic_simple_string<C, T, A>::alloc_buffer_(ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s)
 {
-    member_pointer  res;
+    member_pointer res;
 
     if(NULL == s)
     {
@@ -1448,15 +1463,15 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_
 {
     if(NULL != m)
     {
-        byte_ator_type byte_ator;
-        string_buffer* buffer      =   string_buffer_from_member_pointer_(m);
-        ss_size_t      cb          =   buffer->capacity * sizeof(char_type) + STLSOFT_RAW_OFFSETOF(string_buffer, contents);
+        byte_ator_type          byte_ator;
+        string_buffer* const    buffer      =   string_buffer_from_member_pointer_(m);
+        ss_size_t const         cb          =   buffer->capacity * sizeof(char_type) + STLSOFT_RAW_OFFSETOF(string_buffer, contents);
 # ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
-        void*          raw_buffer  =   byte_ator.allocate(cb, NULL);
+        void* const             raw_buffer  =   byte_ator.allocate(cb, NULL);
 # else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
-        void*          raw_buffer  =   byte_ator.allocate(cb);
+        void* const             raw_buffer  =   byte_ator.allocate(cb);
 # endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
-        string_buffer* new_buffer  =   sap_cast<string_buffer*>(raw_buffer);
+        string_buffer* const    new_buffer  =   sap_cast<string_buffer*>(raw_buffer);
 
         if(NULL != new_buffer)
         {
@@ -1475,7 +1490,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ void basic_simple_string<C, T, A>::destroy_buffer_(ss_typename_type_k basic_simple_string<C, T, A>::string_buffer* buffer)
 {
-    byte_ator_type  byte_ator;
+    byte_ator_type byte_ator;
 
     byte_ator.deallocate(sap_cast<ss_byte_t*>(buffer), 0);
 }
@@ -1548,7 +1563,7 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::char_ty
     // This character array is initialised to 0, which conveniently happens to
     // be the empty string, by the module/application load, so it is
     // guaranteed to be valid, and there are no threading/race conditions
-    static char_type    s_empty[1];
+    static char_type s_empty[1];
 
     STLSOFT_ASSERT(s_empty[0] == '\0'); // Paranoid check
 
@@ -1582,8 +1597,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_simple_string<C, T, A>::basic_simple_string(   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos)
+inline basic_simple_string<C, T, A>::basic_simple_string(
+    ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+)
     : m_buffer(alloc_buffer_(&rhs[pos]))
 {
     STLSOFT_ASSERT(is_valid());
@@ -1593,9 +1610,11 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_simple_string<C, T, A>::basic_simple_string(   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch)
+inline basic_simple_string<C, T, A>::basic_simple_string(
+    ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+)
     : m_buffer(alloc_buffer_(&rhs[pos], cch, minimum(cch, rhs.length() - pos)))
 {
     STLSOFT_ASSERT(is_valid());
@@ -1615,8 +1634,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_simple_string<C, T, A>::basic_simple_string(   ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type cch)
+inline basic_simple_string<C, T, A>::basic_simple_string(
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type cch
+)
     : m_buffer(alloc_buffer_(s, cch))
 {
     STLSOFT_ASSERT(is_valid());
@@ -1626,8 +1647,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_simple_string<C, T, A>::basic_simple_string(   ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch)
+inline basic_simple_string<C, T, A>::basic_simple_string(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch
+)
     : m_buffer(NULL)
 {
     STLSOFT_ASSERT(is_valid());
@@ -1640,8 +1663,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline basic_simple_string<C, T, A>::basic_simple_string(   ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   first
-                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   last)
+inline basic_simple_string<C, T, A>::basic_simple_string(
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   first
+,   ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   last
+)
     : m_buffer(alloc_buffer_(first, last - first))
 {
     STLSOFT_ASSERT(is_valid());
@@ -1684,6 +1709,7 @@ inline basic_simple_string<C, T, A>::~basic_simple_string() STLSOFT_NOEXCEPT
     else
     {
         this->size();
+
         fprintf(stdin, "%.*s", int(this->size()), this->data());
     }
 #endif /* compiler */
@@ -1702,10 +1728,12 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline /* static */ ss_sint_t basic_simple_string<C, T, A>::compare_(   ss_typename_type_k basic_simple_string<C, T, A>::value_type const* lhs
-                                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type lhs_len
-                                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const* rhs
-                                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type rhs_len)
+inline /* static */ ss_sint_t basic_simple_string<C, T, A>::compare_(
+    ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  lhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          lhs_len
+,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          rhs_len
+)
 {
     size_type   cmp_len =   (lhs_len < rhs_len) ? lhs_len : rhs_len;
     ss_int_t    result  =   traits_type::compare(lhs, rhs, cmp_len);
@@ -1722,12 +1750,14 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  rhs
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cchRhs) const
+inline ss_sint_t basic_simple_string<C, T, A>::compare(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cchRhs
+) const
 {
-    size_type   lhs_len =   length();
+    size_type lhs_len = length();
 
     if(!(pos < lhs_len))
     {
@@ -1743,7 +1773,7 @@ inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic
         lhs_len = cch;
     }
 
-    size_type   rhs_len =   (NULL == rhs) ? 0 : traits_type::length(rhs);
+    size_type rhs_len = (NULL == rhs) ? 0 : traits_type::length(rhs);
 
     if(cchRhs < rhs_len)
     {
@@ -1757,11 +1787,13 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  rhs) const
+inline ss_sint_t basic_simple_string<C, T, A>::compare(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::value_type const*  rhs
+) const
 {
-    size_type   lhs_len =   length();
+    size_type lhs_len = length();
 
     if(!(pos < lhs_len))
     {
@@ -1777,7 +1809,7 @@ inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic
         lhs_len = cch;
     }
 
-    size_type   rhs_len =   (NULL == rhs) ? 0 : traits_type::length(rhs);
+    size_type rhs_len = (NULL == rhs) ? 0 : traits_type::length(rhs);
 
     return compare_(char_pointer_from_member_pointer_(m_buffer) + pos, lhs_len, rhs, rhs_len);
 }
@@ -1798,11 +1830,13 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          posRhs
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cchRhs) const
+inline ss_sint_t basic_simple_string<C, T, A>::compare(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          posRhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cchRhs
+) const
 {
     size_type lhs_len = length();
 
@@ -1843,11 +1877,13 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
-                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs) const
+inline ss_sint_t basic_simple_string<C, T, A>::compare(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+) const
 {
-    size_type   lhs_len =   length();
+    size_type lhs_len = length();
 
     if(!(pos < lhs_len))
     {
@@ -1863,7 +1899,7 @@ inline ss_sint_t basic_simple_string<C, T, A>::compare( ss_typename_type_k basic
         lhs_len = cch;
     }
 
-    size_type   rhs_len =   rhs.length();
+    size_type rhs_len = rhs.length();
 
     return compare_(char_pointer_from_member_pointer_(m_buffer) + pos, lhs_len, char_pointer_from_member_pointer_(rhs.m_buffer), rhs_len);
 }
@@ -2053,9 +2089,11 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::size_type basic_simple_string<C, T, A>::copy(   ss_typename_type_k basic_simple_string<C, T, A>::value_type*    dest
-                                                                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type      cch
-                                                                                                    ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type      pos /* = 0 */) const
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::size_type basic_simple_string<C, T, A>::copy(
+    ss_typename_type_k basic_simple_string<C, T, A>::value_type*    dest
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type      cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type      pos /* = 0 */
+) const
 {
     size_type len = length();
 
@@ -2160,8 +2198,8 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k A
         >
 inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(
-    ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
-,   ss_typename_type_k basic_simple_string<C, T, A>::size_type cch
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   s
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
 )
 {
     STLSOFT_ASSERT(is_valid());
@@ -2182,6 +2220,7 @@ inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_si
         if(NULL == s)
         {
             destroy_buffer_(m_buffer);
+
             m_buffer = NULL;
         }
         else
@@ -2190,7 +2229,7 @@ inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_si
             // later release, but for the moment we will reuse our existing
             // buffer if its capacity is sufficient for our purposes
 
-            string_buffer*  buffer  =   string_buffer_from_member_pointer_(m_buffer);
+            string_buffer* const buffer = string_buffer_from_member_pointer_(m_buffer);
 
             // If:
             //
@@ -2207,7 +2246,7 @@ inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_si
             }
             else
             {
-                member_pointer new_buffer = alloc_buffer_(s, cch, cch);
+                member_pointer const new_buffer = alloc_buffer_(s, cch, cch);
 
                 destroy_buffer_(m_buffer);
                 m_buffer = new_buffer;
@@ -2232,9 +2271,11 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(
+    ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+)
 {
     char_type*  s   =   char_pointer_from_member_pointer_(rhs.m_buffer);
     size_type   len =   rhs.length();
@@ -2274,8 +2315,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(   ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch
+)
 {
     buffer_type_    buffer(cch);
 
@@ -2289,8 +2332,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator     first
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator     last)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::assign(
+    ss_typename_type_k basic_simple_string<C, T, A>::const_iterator first
+,   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator last
+)
 {
     // We have to use this strange appearing this, because of Visual C++ .NET's
     // disgusting STL swill. Sigh!
@@ -2333,8 +2378,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(   ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type cch)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(
+    ss_typename_type_k basic_simple_string<C, T, A>::char_type const*   s
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+)
 {
     STLSOFT_ASSERT(is_valid());
 
@@ -2364,12 +2411,12 @@ inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_si
 
             string_buffer*  old_buffer  =   NULL;
             string_buffer*  buffer      =   string_buffer_from_member_pointer_(m_buffer);
-            size_type       buf_len     =   buffer->length;
+            size_type const buf_len     =   buffer->length;
 
             if(buffer->capacity - buf_len < 1 + cch)
             {
                 // Allocate a new buffer of sufficient size
-                member_pointer  new_buffer =   alloc_buffer_(buffer->contents, buf_len + cch);
+                member_pointer const new_buffer = alloc_buffer_(buffer->contents, buf_len + cch);
 
                 if(NULL == new_buffer) // Some allocators do not throw on failure!
                 {
@@ -2411,9 +2458,11 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(   ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(
+    ss_typename_type_k basic_simple_string<C, T, A>::class_type const&  rhs
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          pos
+,   ss_typename_type_k basic_simple_string<C, T, A>::size_type          cch
+)
 {
     char_type*  s   =   char_pointer_from_member_pointer_(rhs.m_buffer);
     size_type   len =   rhs.length();
@@ -2457,8 +2506,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(   ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::char_type  ch
+)
 {
     if(NULL == m_buffer)
     {
@@ -2481,8 +2532,10 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator first
-                                                                                                        ,   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator last)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::append(
+    ss_typename_type_k basic_simple_string<C, T, A>::const_iterator first
+,   ss_typename_type_k basic_simple_string<C, T, A>::const_iterator last
+)
 {
     // We have to use this strange appearing code because of Visual C++ .NET's
     // disgusting STL swill. Sigh!
@@ -2503,7 +2556,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::operator +=(const ss_typename_type_k basic_simple_string<C, T, A>::char_type* s)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::operator +=(ss_typename_type_k basic_simple_string<C, T, A>::char_type const* s)
 {
     return append(s);
 }
@@ -2512,7 +2565,7 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::operator +=(const ss_typename_type_k basic_simple_string<C, T, A>::class_type& rhs)
+inline ss_typename_type_ret_k basic_simple_string<C, T, A>::class_type& basic_simple_string<C, T, A>::operator +=(ss_typename_type_k basic_simple_string<C, T, A>::class_type const& rhs)
 {
     return append(rhs);
 }
@@ -2548,7 +2601,7 @@ inline void basic_simple_string<C, T, A>::reserve(ss_typename_type_k basic_simpl
             else
             {
                 // Allocate a new buffer of sufficient size
-                member_pointer  new_buffer =   alloc_buffer_(c_str(), cch, length());
+                member_pointer const new_buffer = alloc_buffer_(c_str(), cch, length());
 
                 if(NULL != new_buffer) // Some allocators do not throw on failure!
                 {
@@ -2576,12 +2629,14 @@ template<   ss_typename_param_k C
         ,   ss_typename_param_k T
         ,   ss_typename_param_k A
         >
-inline void basic_simple_string<C, T, A>::resize(   ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
-                                                ,   ss_typename_type_k basic_simple_string<C, T, A>::value_type ch)
+inline void basic_simple_string<C, T, A>::resize(
+    ss_typename_type_k basic_simple_string<C, T, A>::size_type  cch
+,   ss_typename_type_k basic_simple_string<C, T, A>::value_type ch
+)
 {
     STLSOFT_ASSERT(is_valid());
 
-    size_type const len =   length();
+    size_type const len = length();
 
     if(len != cch)
     {
