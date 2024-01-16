@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 14
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     39
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 15
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     40
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -207,7 +207,9 @@ public:
         if (::sem_wait(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", errno));
+            int const e = errno;
+
+            STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", e));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
     }
@@ -218,23 +220,23 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        int res =   ::sem_trywait(m_sem);
-
-        if (0 == res)
+        if (::sem_trywait(m_sem) < 0)
         {
-            return true;
+            int const e = errno;
+
+            if (EAGAIN != e)
+            {
+#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
+                STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", e));
+#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
+            }
+
+            return false;
         }
         else
         {
-            if (EAGAIN != errno)
-            {
-#ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-                STLSOFT_THROW_X(synchronisation_exception("semaphore wait failed", errno));
-#endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-            }
+            return true;
         }
-
-        return false;
     }
     /// Releases an acquired lock on the semaphore, increasing the
     ///  semaphore's counter by one.
@@ -245,7 +247,9 @@ public:
         if (::sem_post(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            STLSOFT_THROW_X(synchronisation_exception("semaphore release failed", errno));
+            int const e = errno;
+
+            STLSOFT_THROW_X(synchronisation_exception("semaphore release failed", e));
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
     }
@@ -278,7 +282,9 @@ private:
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-            STLSOFT_THROW_X(synchronisation_exception("failed to create kernel semaphore object", errno));
+            int const e = errno;
+
+            STLSOFT_THROW_X(synchronisation_exception("failed to create kernel semaphore object", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
             sem = NULL;
