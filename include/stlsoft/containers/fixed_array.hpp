@@ -5,7 +5,7 @@
  *              fixed_array_4d template classes.
  *
  * Created:     4th August 1998
- * Updated:     26th December 2020
+ * Updated:     16th January 2024
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode,
  *              requesting the function call operator, and for requesting
@@ -16,7 +16,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -63,8 +63,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MINOR      9
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   10
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       203
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   11
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       204
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -841,15 +841,19 @@ private:
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline ss_typename_type_ret_k fixed_array_1d<T, A, P, R>::pointer fixed_array_1d<T, A, P, R>::allocate_(ss_typename_type_k fixed_array_1d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
+# if __cplusplus >= 201703L
+    return ator.allocate(n);
+# else /* C++ version ? */
     return ator.allocate(n, NULL);
+# endif /* C++ version */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline void fixed_array_1d<T, A, P, R>::deallocate_(ss_typename_type_k fixed_array_1d<T, A, P, R>::pointer p, ss_typename_type_k fixed_array_1d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
     ator.deallocate(p, n);
 }
@@ -1175,15 +1179,19 @@ inline ss_typename_type_ret_k fixed_array_1d<T, A, P, R>::const_pointer fixed_ar
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline ss_typename_type_ret_k fixed_array_2d<T, A, P, R>::pointer fixed_array_2d<T, A, P, R>::allocate_(ss_typename_type_k fixed_array_2d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
+# if __cplusplus >= 201703L
+    return ator.allocate(n);
+# else /* C++ version ? */
     return ator.allocate(n, NULL);
+# endif /* C++ version */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline void fixed_array_2d<T, A, P, R>::deallocate_(ss_typename_type_k fixed_array_2d<T, A, P, R>::pointer p, ss_typename_type_k fixed_array_2d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
     ator.deallocate(p, n);
 }
@@ -1568,15 +1576,19 @@ inline ss_typename_type_ret_k fixed_array_2d<T, A, P, R>::const_pointer fixed_ar
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline ss_typename_type_ret_k fixed_array_3d<T, A, P, R>::pointer fixed_array_3d<T, A, P, R>::allocate_(ss_typename_type_k fixed_array_3d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
+# if __cplusplus >= 201703L
+    return ator.allocate(n);
+# else /* C++ version ? */
     return ator.allocate(n, NULL);
+# endif /* C++ version */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline void fixed_array_3d<T, A, P, R>::deallocate_(ss_typename_type_k fixed_array_3d<T, A, P, R>::pointer p, ss_typename_type_k fixed_array_3d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
     ator.deallocate(p, n);
 }
@@ -1966,15 +1978,19 @@ inline ss_typename_type_ret_k fixed_array_3d<T, A, P, R>::const_pointer fixed_ar
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline ss_typename_type_ret_k fixed_array_4d<T, A, P, R>::pointer fixed_array_4d<T, A, P, R>::allocate_(ss_typename_type_k fixed_array_4d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
+# if __cplusplus >= 201703L
+    return ator.allocate(n);
+# else /* C++ version ? */
     return ator.allocate(n, NULL);
+# endif /* C++ version */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline void fixed_array_4d<T, A, P, R>::deallocate_(ss_typename_type_k fixed_array_4d<T, A, P, R>::pointer p, ss_typename_type_k fixed_array_4d<T, A, P, R>::size_type n)
 {
-    allocator_type  &ator = *this;
+    allocator_type& ator = *this;
 
     ator.deallocate(p, n);
 }

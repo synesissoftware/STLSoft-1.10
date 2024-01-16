@@ -4,11 +4,11 @@
  * Purpose:     basic_simple_string class template.
  *
  * Created:     19th March 1993
- * Updated:     2nd January 2021
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MINOR    3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     266
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 4
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     267
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1370,7 +1370,11 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_
     capacity = (alloc_quantum + capacity) & ~alloc_quantum;     // Round up to (alloc_quantum + 1)
 
     byte_ator_type  byte_ator;
+# if __cplusplus >= 201703L
+    void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type));
+# else /* C++ version ? */
     void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type), NULL);
+# endif /* C++ version */
     string_buffer*  buffer      =   sap_cast<string_buffer*>(raw_buffer);
 
     if(NULL != buffer)
@@ -1447,7 +1451,11 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_
         byte_ator_type  byte_ator;
         string_buffer*  buffer      =   string_buffer_from_member_pointer_(m);
         ss_size_t       cb          =   buffer->capacity * sizeof(char_type) + STLSOFT_RAW_OFFSETOF(string_buffer, contents);
+# if __cplusplus >= 201703L
+        void*           raw_buffer  =   byte_ator.allocate(cb);
+# else /* C++ version ? */
         void*           raw_buffer  =   byte_ator.allocate(cb, NULL);
+# endif /* C++ version */
         string_buffer*  new_buffer  =   sap_cast<string_buffer*>(raw_buffer);
 
         if(NULL != new_buffer)
