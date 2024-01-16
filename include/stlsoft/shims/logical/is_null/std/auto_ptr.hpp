@@ -4,11 +4,11 @@
  * Purpose:     Generic adapted case of is_null shim std::auto_ptr<>.
  *
  * Created:     31st March 2007
- * Updated:     5th January 2021
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -41,6 +41,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:C++17:FILE_DEPRECATED */
+
 /** \file stlsoft/shims/logical/is_null/std/auto_ptr.hpp
  *
  * \brief [C++] Generic adapted case of is_null shim std::auto_ptr<>
@@ -53,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_MINOR       0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_REVISION    2
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_EDIT        19
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_REVISION    3
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_STD_HPP_AUTO_PTR_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
