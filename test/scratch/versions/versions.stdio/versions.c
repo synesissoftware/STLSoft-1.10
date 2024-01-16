@@ -11,6 +11,11 @@ int main(int argc, char* argv[])
 
     fprintf(
         stdout
+    ,   "__STDC__ = %d\n"
+    ,   __STDC__
+    );
+    fprintf(
+        stdout
     ,   "STLSoft = %d.%d.%d.%d\n"
     ,   (_STLSOFT_VER >> 24) & 0xff
     ,   (_STLSOFT_VER >> 16) & 0xff
