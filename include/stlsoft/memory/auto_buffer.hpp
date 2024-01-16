@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    3
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        197
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    4
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        198
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -134,16 +134,12 @@ struct auto_buffer_internal_size_calculator
     : private auto_buffer_internal_default
 {
 private:
-    // Stupid, stupid, stupid GCC requires them all to share the same
-    // enum, which totally sucks. It whinges about comparisons between
-    // enumerators of different types. Thankfully it's irrelevant
-    // because they're private
     enum
     {
             min_value        =   auto_buffer_internal_default::min_value
         ,   max_value        =   auto_buffer_internal_default::max_value
         ,   division_factor  =   auto_buffer_internal_default::division_factor
-        ,   divided_value_   =   static_cast<int>((division_factor * max_value) / sizeof(T))
+        ,   divided_value_   =   static_cast<int>((int(division_factor) * int(max_value)) / sizeof(T))
         ,   divided_value    =   (max_value < divided_value_)
                                     ?   max_value
                                     :   divided_value_

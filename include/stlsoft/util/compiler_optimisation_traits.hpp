@@ -4,11 +4,11 @@
  * Purpose:     compiler_optimisation_traits class.
  *
  * Created:     15th November 2003
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_MAJOR       4
 # define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_MINOR       0
-# define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_REVISION    4
-# define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_EDIT        31
+# define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_REVISION    5
+# define STLSOFT_VER_H_STLSOFT_COMPILER_OPTIMISATION_TRAITS_EDIT        32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -316,9 +316,9 @@ public:
     /// 7. With one empty base (the mixin), one non-empty base and empty child
     enum { supportsEBO7 = sizeof(compiler_optimisation_traits_ebo_mi_mixin_child) == sizeof(compiler_optimisation_traits_ebo_thick_peer) };
 
-    enum { supportsEBO = supportsEBO1 & supportsEBO2 & supportsEBO3 & supportsEBO4 };
-    enum { supportsMIEBO = supportsEBO5 & supportsEBO6 & supportsEBO7 /* & supportsEBO8 */ };
-    enum { supportsExtendedEBO = supportsEBO & supportsMIEBO };
+    enum { supportsEBO = int(supportsEBO1) & int(supportsEBO2) & int(supportsEBO3) & int(supportsEBO4) };
+    enum { supportsMIEBO = int(supportsEBO5) & int(supportsEBO6) & int(supportsEBO7) /* & int(supportsEBO8) */ };
+    enum { supportsExtendedEBO = int(supportsEBO) & int(supportsMIEBO) };
 
     // Empty Derived Optimisation (EDO)
     //
@@ -340,9 +340,9 @@ public:
     /// 8. With one empty base (the mixin), one non-empty base; child is template
     enum { supportsEDO8 = sizeof(compiler_optimisation_traits_edo_mi_child<compiler_optimisation_traits_edo_thick_base, compiler_optimisation_traits_edo_thin_base>) == sizeof(compiler_optimisation_traits_edo_thick_base) };
 
-    enum { supportsEDO = supportsEDO1 & supportsEDO2 & supportsEDO3 & supportsEDO4 };
-    enum { supportsMIEDO = supportsEDO5 & supportsEDO6 & supportsEDO7 & supportsEDO8 };
-    enum { supportsExtendedEDO = supportsEDO & supportsMIEDO };
+    enum { supportsEDO = int(supportsEDO1) & int(supportsEDO2) & int(supportsEDO3) & int(supportsEDO4) };
+    enum { supportsMIEDO = int(supportsEDO5) & int(supportsEDO6) & int(supportsEDO7) & int(supportsEDO8) };
+    enum { supportsExtendedEDO = int(supportsEDO) & int(supportsMIEDO) };
 };
 
 /* ////////////////////////////////////////////////////////////////////// */
