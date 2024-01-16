@@ -4,7 +4,7 @@
  * Purpose:     basic_simple_string class template.
  *
  * Created:     19th March 1993
- * Updated:     16th January 2024
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MINOR    3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     267
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     268
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1370,11 +1370,11 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_
     capacity = (alloc_quantum + capacity) & ~alloc_quantum;     // Round up to (alloc_quantum + 1)
 
     byte_ator_type  byte_ator;
-# if __cplusplus >= 201703L
-    void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type));
-# else /* C++ version ? */
+# ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
     void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type), NULL);
-# endif /* C++ version */
+# else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+    void*           raw_buffer  =   byte_ator.allocate(capacity * sizeof(char_type));
+# endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
     string_buffer*  buffer      =   sap_cast<string_buffer*>(raw_buffer);
 
     if(NULL != buffer)
@@ -1448,15 +1448,15 @@ inline /* static */ ss_typename_type_ret_k basic_simple_string<C, T, A>::member_
 {
     if(NULL != m)
     {
-        byte_ator_type  byte_ator;
-        string_buffer*  buffer      =   string_buffer_from_member_pointer_(m);
-        ss_size_t       cb          =   buffer->capacity * sizeof(char_type) + STLSOFT_RAW_OFFSETOF(string_buffer, contents);
-# if __cplusplus >= 201703L
-        void*           raw_buffer  =   byte_ator.allocate(cb);
-# else /* C++ version ? */
-        void*           raw_buffer  =   byte_ator.allocate(cb, NULL);
-# endif /* C++ version */
-        string_buffer*  new_buffer  =   sap_cast<string_buffer*>(raw_buffer);
+        byte_ator_type byte_ator;
+        string_buffer* buffer      =   string_buffer_from_member_pointer_(m);
+        ss_size_t      cb          =   buffer->capacity * sizeof(char_type) + STLSOFT_RAW_OFFSETOF(string_buffer, contents);
+# ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
+        void*          raw_buffer  =   byte_ator.allocate(cb, NULL);
+# else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+        void*          raw_buffer  =   byte_ator.allocate(cb);
+# endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+        string_buffer* new_buffer  =   sap_cast<string_buffer*>(raw_buffer);
 
         if(NULL != new_buffer)
         {

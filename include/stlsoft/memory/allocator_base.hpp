@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     16th January 2024
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MINOR    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 15
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     64
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 16
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -251,11 +251,11 @@ public:
     ///   \ref STLSOFT_CF_ALLOCATOR_CHARALLOC_METHOD is defined.
     char* _Charalloc(size_type n)
     {
-# if __cplusplus >= 201703L
-        return sap_cast<char*>(allocate(n));
-# else /* C++ version ? */
+# ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
         return sap_cast<char*>(allocate(n, NULL));
-# endif /* C++ version */
+# else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+        return sap_cast<char*>(allocate(n));
+# endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
     }
 #endif /* STLSOFT_CF_ALLOCATOR_CHARALLOC_METHOD */
 
