@@ -1,7 +1,5 @@
 
-add_subdirectory(unixstl)
-
-add_subdirectory(versions)
+add_subdirectory(synch)
 
 
 # ############################## end of file ############################# #

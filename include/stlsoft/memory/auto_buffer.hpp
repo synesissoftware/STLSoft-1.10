@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     20th December 2023
+ * Updated:     16th January 2024
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    1
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        195
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    2
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        196
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -486,7 +486,11 @@ private: // implementation
 # ifdef STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW
         return static_cast<pointer>(get_allocator().allocate(cItems, const_cast<void*>(hint)));
 # else /* ? STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW */
+#  if __cplusplus >= 201703L
+        return get_allocator().allocate(cItems);
+#  else /* C++ version ? */
         return get_allocator().allocate(cItems, hint);
+#  endif /* C++ version */
 # endif /* STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW */
 #else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
         STLSOFT_SUPPRESS_UNUSED(hint);

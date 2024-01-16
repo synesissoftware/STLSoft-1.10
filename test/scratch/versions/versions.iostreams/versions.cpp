@@ -8,6 +8,12 @@
 int main(int /* argc */, char* /* argv */[])
 {
     std::cout
+        << "__cplusplus = "
+        << __cplusplus
+        << std::endl
+        ;
+
+    std::cout
         << "STLSoft = "
         << ((_STLSOFT_VER >> 24) & 0xff)
         << "."
@@ -20,7 +26,7 @@ int main(int /* argc */, char* /* argv */[])
         ;
     std::cout
         << "_STLSOFT_VER = 0x"
-        << std::hex << _STLSOFT_VER
+        << std::hex << std::setfill('0') << std::setw(8) << _STLSOFT_VER
         << std::endl
         ;
     std::cout

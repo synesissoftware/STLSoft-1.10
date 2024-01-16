@@ -1,4 +1,6 @@
 
+/* STLSOFT:FILE_NOT_SELF_SUFFICIENT */
+
 #ifndef STLSOFT_INCL_stlsoft_internal_std_has_HPP_list_
 #define STLSOFT_INCL_stlsoft_internal_std_has_HPP_list_
 

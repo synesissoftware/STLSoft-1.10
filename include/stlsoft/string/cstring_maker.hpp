@@ -4,11 +4,11 @@
  * Purpose:     Simple utility class for creating (constant) C-strings.
  *
  * Created:     14th May 2004
- * Updated:     2nd January 2021
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     61
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 4
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -216,7 +216,11 @@ public:
 
         cb = (cb + (AllocationGranularity - 1)) & ~(AllocationGranularity - 1);
 
+#if __cplusplus >= 201703L
+        block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb)));
+#else /* C++ version ? */
         block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb, NULL)));
+#endif /* C++ version */
 
         if(NULL == pblock)
         {

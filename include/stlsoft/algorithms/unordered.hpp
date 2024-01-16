@@ -4,11 +4,11 @@
  * Purpose:     Algorithms for manipulating unordered sequences.
  *
  * Created:     17th January 2002
- * Updated:     26th December 2020
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MAJOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MINOR     3
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_REVISION  6
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      84
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_REVISION  7
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -74,6 +74,7 @@
 #ifdef STLSOFT_CF_std_NAMESPACE
 # include <functional>
 #endif /* STLSOFT_CF_std_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -237,7 +238,11 @@ inline FI unordered_unique(FI first, FI last, BP pred)
         {
             // ... for each element in the sequence, we see if it has
             // already in the 'accepted' sequence, and, if not, ...
+# if __cplusplus >= 201703L
+            if(dest == std_find_if(start, dest, std::bind(pred, std::placeholders::_1, *first)))
+# else /* C++ version ? */
             if(dest == std_find_if(start, dest, std::bind2nd(pred, *first)))
+# endif /* C++ version */
             {
                 // ... add it into the accepted sequence at the
                 // current point.
