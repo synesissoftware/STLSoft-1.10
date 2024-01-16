@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 15
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     40
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 1
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -71,6 +71,10 @@
 #ifndef UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_COMMON
 # include <unixstl/synch/common.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_COMMON */
+
+#ifndef UNIXSTL_INCL_UNIXSTL_SYNCH_UTIL_H_SEMAPHORE_API_
+# include <unixstl/synch/util/semaphore_api_.h>
+#endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_UTIL_H_SEMAPHORE_API_ */
 
 #ifndef STLSOFT_INCL_H_ERRNO
 # define STLSOFT_INCL_H_ERRNO
@@ -131,18 +135,22 @@ class semaphore
                                             >
     , public STLSOFT_NS_QUAL(synchronisable_object_tag)
 {
-/// \name Member Types
+/// \name Types
 /// @{
 public:
-    typedef semaphore       class_type;
-    typedef sem_t*          handle_type;
-    typedef us_bool_t       bool_type;
-    typedef unsigned int    count_type;
-
-    typedef sem_t*          resource_type;
+    /// This type
+    typedef semaphore                                       class_type;
+    /// The handle type
+    typedef UNIXSTL_INTERNAL_SYNCH_POSIX_sem_t*             handle_type;
+    /// The bool type
+    typedef us_bool_t                                       bool_type;
+    /// The count type
+    typedef unsigned int                                    count_type;
+    /// The resource type
+    typedef handle_type                                     resource_type;
 /// @}
 
-/// \name Member Constants
+/// \name Constants
 /// @{
 public:
     enum
@@ -173,7 +181,7 @@ public:
         if (NULL != m_sem &&
             m_bOwnHandle)
         {
-            ::sem_destroy(m_sem);
+            UNIXSTL_INTERNAL_SYNCH_POSIX_sem_destroy(m_sem);
         }
     }
 
@@ -188,12 +196,12 @@ private:
         if (NULL != m_sem &&
             m_bOwnHandle)
         {
-            ::sem_destroy(m_sem);
+            UNIXSTL_INTERNAL_SYNCH_POSIX_sem_destroy(m_sem);
+
             m_sem = NULL;
         }
     }
 #endif /* 0 */
-
 /// @}
 
 /// \name Operations
@@ -204,7 +212,7 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        if (::sem_wait(m_sem) < 0)
+        if (UNIXSTL_INTERNAL_SYNCH_POSIX_sem_wait(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             int const e = errno;
@@ -220,7 +228,7 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        if (::sem_trywait(m_sem) < 0)
+        if (UNIXSTL_INTERNAL_SYNCH_POSIX_sem_trywait(m_sem) < 0)
         {
             int const e = errno;
 
@@ -244,7 +252,7 @@ public:
     {
         UNIXSTL_ASSERT(NULL != m_sem);
 
-        if (::sem_post(m_sem) < 0)
+        if (UNIXSTL_INTERNAL_SYNCH_POSIX_sem_post(m_sem) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             int const e = errno;
@@ -272,13 +280,13 @@ public:
 
 // Implementation
 private:
-    static handle_type create_semaphore_(sem_t* internal, count_type initialCount, bool_type bInterProcessShared)
+    static handle_type create_semaphore_(handle_type internal, count_type initialCount, bool_type bInterProcessShared)
     {
         UNIXSTL_ASSERT(initialCount <= maxCountValue);
 
         handle_type sem = NULL;
 
-        if (::sem_init(internal, bInterProcessShared, initialCount) < 0)
+        if (UNIXSTL_INTERNAL_SYNCH_POSIX_sem_init(internal, bInterProcessShared, initialCount) < 0)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
@@ -300,7 +308,7 @@ private:
 
 // Members
 private:
-    sem_t               m_semInternal;  // The actual object if internally initialised
+    UNIXSTL_INTERNAL_SYNCH_POSIX_sem_t               m_semInternal;  // The actual object if internally initialised
     handle_type         m_sem;          // Handle to the underlying semaphore object
     bool_type const     m_bOwnHandle;   // Does the instance own the handle?
 };
