@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on POSIX semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     23rd November 2020
+ * Updated:     16th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 13
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     37
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_REVISION 14
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_SEMAPHORE_EDIT     38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,18 +72,25 @@
 # include <unixstl/synch/common.hpp>
 #endif /* !UNIXSTL_INCL_UNIXSTL_SYNCH_HPP_COMMON */
 
-#ifndef STLSOFT_INCL_H_LIMITS
-# define STLSOFT_INCL_H_LIMITS
-# include <limits.h>
-#endif /* !STLSOFT_INCL_H_LIMITS */
 #ifndef STLSOFT_INCL_H_ERRNO
 # define STLSOFT_INCL_H_ERRNO
 # include <errno.h>
 #endif /* !STLSOFT_INCL_H_ERRNO */
-#ifndef STLSOFT_INCL_H_PTHREAD
-# define STLSOFT_INCL_H_PTHREAD
-# include <pthread.h>
-#endif /* !STLSOFT_INCL_H_PTHREAD */
+#if 0
+#elif defined(_WIN32) && \
+      defined(_STLSOFT_FORCE_ANY_COMPILER)
+
+# ifndef STLSOFT_INCL_H_PTHREAD
+#  define STLSOFT_INCL_H_PTHREAD
+#  include <pthread.h>
+# endif /* !STLSOFT_INCL_H_PTHREAD */
+#else
+
+# ifndef STLSOFT_INCL_H_LIMITS
+#  define STLSOFT_INCL_H_LIMITS
+#  include <limits.h>
+# endif /* !STLSOFT_INCL_H_LIMITS */
+#endif /* _WIN32 */
 #ifndef STLSOFT_INCL_H_SEMAPHORE
 # define STLSOFT_INCL_H_SEMAPHORE
 # include <semaphore.h>
@@ -140,7 +147,7 @@ public:
 public:
     enum
     {
-        maxCountValue   =   _POSIX_SEM_VALUE_MAX    // Borrowed from PThreads-win32
+        maxCountValue   =   _POSIX_SEM_VALUE_MAX    // Obtained from limit.h or PThreads-win32
     };
 /// @}
 
