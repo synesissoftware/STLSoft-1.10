@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        200
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    6
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        201
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -428,12 +428,30 @@ public: // types
     typedef T                                               value_type;
     /// The allocator type
     typedef A                                               allocator_type;
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+    /// The allocator traits type
+    typedef std::allocator_traits<allocator_type>           allocator_traits_type;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The type of the current specialisation
 #ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
     typedef auto_buffer<T, A, space>                        class_type;
 #else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     typedef auto_buffer<T, space, A>                        class_type;
 #endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+    /// The reference type
+    typedef ss_typename_type_k allocator_traits_type::value_type&
+                                                            reference;
+    /// The non-mutating (const) reference type
+    typedef ss_typename_type_k allocator_traits_type::value_type const&
+                                                            const_reference;
+    /// The pointer type
+    typedef ss_typename_type_k allocator_traits_type::pointer
+                                                            pointer;
+    /// The non-mutating (const) pointer type
+    typedef ss_typename_type_k allocator_traits_type::const_pointer
+                                                            const_pointer;
+#else /* ? STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The reference type
     typedef ss_typename_type_k allocator_type::reference    reference;
     /// The non-mutating (const) reference type
@@ -444,6 +462,7 @@ public: // types
     /// The non-mutating (const) pointer type
     typedef ss_typename_type_k allocator_type::const_pointer
                                                             const_pointer;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The size type
     typedef ss_size_t                                       size_type;
     /// The difference type
