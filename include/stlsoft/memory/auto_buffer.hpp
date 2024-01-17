@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        198
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        199
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -399,11 +399,7 @@ class auto_buffer
     : public stl_collection_tag
 #endif /* !STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
 {
-public: // types
-    /// The value type
-    typedef T                                                   value_type;
-    /// The allocator type
-    typedef A                                                   allocator_type;
+public: // constants
 #if !defined(STLSOFT_COMPILER_IS_BORLAND)
     enum
     {
@@ -411,29 +407,37 @@ public: // types
         space = int(SPACE) // int() required for 64-bit compatibility
     };
 #endif /* compiler */
-    /// The type of the current parameterisation
+
+public: // types
+    /// The value type
+    typedef T                                               value_type;
+    /// The allocator type
+    typedef A                                               allocator_type;
+    /// The type of the current specialisation
 #ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-    typedef auto_buffer<T, A, space>                            class_type;
+    typedef auto_buffer<T, A, space>                        class_type;
 #else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer<T, space, A>                            class_type;
+    typedef auto_buffer<T, space, A>                        class_type;
 #endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     /// The reference type
-    typedef ss_typename_type_k allocator_type::reference        reference;
-    /// The non-mutable (const) reference type
-    typedef ss_typename_type_k allocator_type::const_reference  const_reference;
+    typedef ss_typename_type_k allocator_type::reference    reference;
+    /// The non-mutating (const) reference type
+    typedef ss_typename_type_k allocator_type::const_reference
+                                                            const_reference;
     /// The pointer type
-    typedef ss_typename_type_k allocator_type::pointer          pointer;
-    /// The non-mutable (const) pointer type
-    typedef ss_typename_type_k allocator_type::const_pointer    const_pointer;
+    typedef ss_typename_type_k allocator_type::pointer      pointer;
+    /// The non-mutating (const) pointer type
+    typedef ss_typename_type_k allocator_type::const_pointer
+                                                            const_pointer;
     /// The size type
-    typedef ss_size_t                                           size_type;
+    typedef ss_size_t                                       size_type;
     /// The difference type
-    typedef ss_ptrdiff_t                                        difference_type;
+    typedef ss_ptrdiff_t                                    difference_type;
 #if !defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
     /// The iterator type
-    typedef value_type*                                         iterator;
-    /// The non-mutable (const) iterator type
-    typedef value_type const*                                   const_iterator;
+    typedef value_type*                                     iterator;
+    /// The non-mutating (const) iterator type
+    typedef value_type const*                               const_iterator;
 #else /* ? !STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
     /// The iterator type
     typedef
@@ -444,7 +448,7 @@ public: // types
             value_type
         ,   pointer
         ,   reference
-        >::type                                                 iterator;
+        >::type                                             iterator;
     /// The non-mutating (const) iterator type
     typedef
 # if !defined(STLSOFT_COMPILER_IS_BORLAND)
@@ -454,7 +458,7 @@ public: // types
             value_type const
         ,   const_pointer
         ,   const_reference
-        >::type                                                 const_iterator;
+        >::type                                             const_iterator;
 
     /// The mutating (non-const) reverse iterator type
     typedef reverse_iterator_base<
@@ -463,7 +467,7 @@ public: // types
     ,   reference
     ,   pointer
     ,   difference_type
-    >                                                           reverse_iterator;
+    >                                                       reverse_iterator;
 
     /// The non-mutating (const) reverse iterator type
     typedef const_reverse_iterator_base<
@@ -472,7 +476,7 @@ public: // types
     ,   const_reference
     ,   const_pointer
     ,   difference_type
-    >                                                           const_reverse_iterator;
+    >                                                       const_reverse_iterator;
 #endif /* !STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 
 private: // implementation
@@ -1111,14 +1115,14 @@ public: // iteration
         return m_buffer + m_cItems;
     }
 
-    /// Returns a mutable iterator representing the start of the sequence
+    /// Returns a mutating iterator representing the start of the sequence
     iterator begin()
     {
         STLSOFT_ASSERT(is_valid());
 
         return m_buffer;
     }
-    /// Returns a mutable iterator representing the end of the sequence
+    /// Returns a mutating iterator representing the end of the sequence
     ///
     /// \note In the case where memory allocation has failed in the context
     /// where exceptions are not thrown for allocation failure, this method will

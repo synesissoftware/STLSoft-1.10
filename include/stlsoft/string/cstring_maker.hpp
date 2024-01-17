@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     63
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,10 +157,15 @@ template<
 struct cstring_maker
 {
 public: // types
+    /// The character type
     typedef C                                               char_type;
+    /// The allocator type
     typedef A                                               allocator_type;
+    /// The traits type
     typedef T                                               traits_type;
+    /// The size type
     typedef ss_size_t                                       size_type;
+    /// This type
     typedef cstring_maker<C, A, T>                          class_type;
 private:
     typedef long                                            count_type;
