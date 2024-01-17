@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    test.unit.stlsoft.string.shim_string.cpp
  *
- * Purpose: Tests `stlsoft::basic_shim_string`.
+ * Purpose: Unit-tests for `stlsoft::basic_shim_string`.
  *
  * Created: 9th November 2008
  * Updated: 17th January 2024

@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    test.unit.stlsoft.string.static_string.cpp
  *
- * Purpose: Tests `stlsoft::basic_static_string`.
+ * Purpose: Unit-tests for `stlsoft::basic_static_string`.
  *
  * Created: 4th November 2008
  * Updated: 17th January 2024
