@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    4
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        199
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    5
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        200
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -173,23 +173,23 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
 
 // class auto_buffer
 //
-/** This class provides an efficient variable automatic buffer
+/** This class template provides an efficient variable automatic buffer.
  *
  * \ingroup group__library__Memory
  *
  * \param T The type of the elements in the array
- * \param SPACE The number of elements in the array. For translators that
+ * \param V_space The number of elements in the array. For translators that
  *   support default template arguments, this is defaulted to <b>256</b>
  * \param A The allocator type. Defaults to
  *   \link stlsoft::allocator_selector allocator_selector<T>::allocator_type\endlink
  *   for translators that support default template arguments.
  *
  * This class provides an efficient replacement for dynamic memory block
- * allocation when the block size generally falls under a predictable limit. In
- * such cases, significant performance benefits can be achieved by using an
- * instance of a parameterisation of auto_buffer, whose size parameter SPACE
- * is set to a level to cater for most of the requested sizes. Only where
- * the size of the buffer needs to be larger than this limit does an
+ * allocation when the block size generally falls under a predictable limit.
+ * In such cases, significant performance benefits can be achieved by using
+ * an instance of a parameterisation of auto_buffer, whose size parameter
+ * V_space is set to a level to cater for most of the requested sizes. Only
+ * where the size of the buffer needs to be larger than this limit does an
  * allocation occur from the heap/free-store via the given allocator.
  *
  * Using <code>auto_buffer</code> means one can avoid use of heap memory in
@@ -199,17 +199,21 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  * following code extract from the core of the
  * <a href = "http://pantheios.org/">Pantheios</a> logging library:
 \code
-  int pantheios_log_n(  pan_sev_t           severity
-                     ,  size_t              numSlices
-                     ,  pan_slice_t const*  slices)
-  {
-    typedef stlsoft::auto_buffer<char, 2048>  buffer_t;
+int pantheios_log_n(
+    pan_sev_t           severity
+,   size_t              numSlices
+,   pan_slice_t const*  slices
+)
+{
+    typedef stlsoft::auto_buffer<char, 2048> buffer_t;
 
     // Calculate the total size of the log statement, by summation of the slice array
-    const size_t  n = std::accumulate(stlsoft::member_selector(slices, &pan_slice_t::len)
-                                    , stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
-                                    , size_t(0));
-    buffer_t      buffer(1 + n);
+    size_t const    n = std::accumulate(
+                            stlsoft::member_selector(slices, &pan_slice_t::len)
+                        ,   stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
+                        ,   size_t(0)
+                        );
+    buffer_t        buffer(1 + n);
 
     . . .
 \endcode
@@ -222,17 +226,21 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  *
  * 1. We could go to the heap in all cases:
 \code
-  int pantheios_log_n(  pan_sev_t           severity
-                     ,  size_t              numSlices
-                     ,  pan_slice_t const*  slices)
-  {
-    typedef stlsoft::vector<char>   buffer_t;
+int pantheios_log_n(
+    pan_sev_t           severity
+,   size_t              numSlices
+,   pan_slice_t const*  slices
+)
+{
+    typedef stlsoft::vector<char> buffer_t;
 
     // Calculate the total size of the log statement, by summation of the slice array
-    const size_t  n = std::accumulate(stlsoft::member_selector(slices, &pan_slice_t::len)
-                                    , stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
-                                    , size_t(0));
-    buffer_t      buffer(1 + n);
+    size_t const    n = std::accumulate(
+                            stlsoft::member_selector(slices, &pan_slice_t::len)
+                        ,   stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
+                        ,   size_t(0)
+                        );
+    buffer_t        buffer(1 + n);
 
     . . .
 \endcode
@@ -242,18 +250,19 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  * 2. We could use a stack buffer, and truncate any log statement exceeding
  *     the limit:
 \code
-  int pantheios_log_n(  pan_sev_t           severity
-                     ,  size_t              numSlices
-                     ,  pan_slice_t const*  slices)
-  {
+int pantheios_log_n(  pan_sev_t           severity
+                    ,  size_t              numSlices
+                    ,  pan_slice_t const*  slices)
+{
     // Calculate the total size of the log statement, by summation of the slice array
-    const size_t  n = std::accumulate(stlsoft::member_selector(slices, &pan_slice_t::len)
-                                    , stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
-                                    , size_t(0));
-    char          buffer[2048];
+    size_t const    n = std::accumulate(
+                            stlsoft::member_selector(slices, &pan_slice_t::len)
+                        ,   stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
+                        ,   size_t(0)
+                        );
+    char            buffer[2048];
 
     . . . // make sure to truncate the statement to a max 2047 characters
-
 \endcode
  * But this would unnecessarily constrain users of the Pantheios logging
  * functionality.
@@ -261,23 +270,29 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  * 3. Finally, we could synthesise the functionality of auto_buffer
  *     manually, as in:
 \code
-  int pantheios_log_n(  pan_sev_t           severity
-                     ,  size_t              numSlices
-                     ,  pan_slice_t const*  slices)
-  {
+int pantheios_log_n(
+    pan_sev_t           severity
+,   size_t              numSlices
+,   pan_slice_t const*  slices
+)
+{
     // Calculate the total size of the log statement, by summation of the slice array
-    const size_t  n = std::accumulate(stlsoft::member_selector(slices, &pan_slice_t::len)
-                                    , stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
-                                    , size_t(0));
-    char    buff[2048];
-    char*   buffer = (n < 2048) ? &buff[0] : new char[1 + n];
+    size_t const    n = std::accumulate(
+                            stlsoft::member_selector(slices, &pan_slice_t::len)
+                        ,   stlsoft::member_selector(slices + numSlices, &pan_slice_t::len)
+                        ,   size_t(0)
+                        );
+    char            buff[2048];
+    char* const     buffer = (n < 2048) ? &buff[0] : new char[1 + n];
 
     . . .
 
     if (buffer != &buff[0])
     {
-      delete [] buffer;
+        delete [] buffer;
     }
+
+    . . .
 \endcode
  * But this is onerous manual fiddling, and exception-unsafe. What would be
  * the point, when auto_buffer already does this (safely) for us?
@@ -334,17 +349,17 @@ template<
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           space   =   256
+,   ss_size_t           space       =   256
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
-,   ss_size_t           SPACE   =   256
+,   ss_size_t           V_space     =   256
 #  else /* ? compiler */
-,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T>::value */
 #  else /* ? compiler */
-,   ss_size_t           space   /* =   256 */
+,   ss_size_t           space    /* =   256 */
 #  endif /* compiler */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 >
@@ -366,17 +381,17 @@ template<
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if 0
 #  elif defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           space   =   256
+,   ss_size_t           space       =   256
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
-,   ss_size_t           SPACE   =   256
+,   ss_size_t           V_space     =   256
 #  else /* ? compiler */
-,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           SPACE   /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T>::value */
 #  else /* ? compiler */
-,   ss_size_t           space   /* =   256 */
+,   ss_size_t           space    /* =   256 */
 #  endif /* compiler */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
@@ -404,7 +419,7 @@ public: // constants
     enum
     {
         /// The number of items in the internal buffer
-        space = int(SPACE) // int() required for 64-bit compatibility
+        space = int(V_space) // int() required for 64-bit compatibility
     };
 #endif /* compiler */
 
@@ -1302,28 +1317,28 @@ template<
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND) && \
 !defined(STLSOFT_COMPILER_IS_DMC)
-,   ss_size_t           SPACE   =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
 #  else /* ? compiler */
-,   ss_size_t           SPACE   =   256
+,   ss_size_t           V_space     =   256
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-,   ss_size_t           SPACE /* = auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* = auto_buffer_internal_size_calculator<T>::value */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 >
 class auto_buffer_old
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
-    : public auto_buffer<T, A, SPACE>
+    : public auto_buffer<T, A, V_space>
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    : public auto_buffer<T, SPACE, A>
+    : public auto_buffer<T, V_space, A>
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
 private: // types
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
-    typedef auto_buffer<T, A, SPACE>                                        parent_class_type;
+    typedef auto_buffer<T, A, V_space>                                        parent_class_type;
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer<T, SPACE, A>                                        parent_class_type;
+    typedef auto_buffer<T, V_space, A>                                        parent_class_type;
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer_old<T, A, SPACE>                                    class_type;
+    typedef auto_buffer_old<T, A, V_space>                                    class_type;
 
 public:
     typedef ss_typename_type_k parent_class_type::value_type                value_type;
@@ -1364,9 +1379,9 @@ template<
     ss_typename_param_k T
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 ,   ss_typename_param_k A
-,   ss_size_t           SPACE
+,   ss_size_t           V_space
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-,   ss_size_t           SPACE
+,   ss_size_t           V_space
 ,   ss_typename_param_k A
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 >
@@ -1374,13 +1389,13 @@ inline
 void
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 swap(
-    auto_buffer<T, A, SPACE>&   lhs
-,   auto_buffer<T, A, SPACE>&   rhs
+    auto_buffer<T, A, V_space>&   lhs
+,   auto_buffer<T, A, V_space>&   rhs
 )
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 swap(
-    auto_buffer<T, SPACE, A>&   lhs
-,   auto_buffer<T, SPACE, A>&   rhs
+    auto_buffer<T, V_space, A>&   lhs
+,   auto_buffer<T, V_space, A>&   rhs
 )
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
@@ -1449,9 +1464,9 @@ template<
     ss_typename_param_k T
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 ,   ss_typename_param_k A
-,   ss_size_t           SPACE
+,   ss_size_t           V_space
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-,   ss_size_t           SPACE
+,   ss_size_t           V_space
 ,   ss_typename_param_k A
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 >
@@ -1459,11 +1474,11 @@ inline
 ss_bool_t
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 is_empty(
-    auto_buffer<T, A, SPACE> const& b
+    auto_buffer<T, A, V_space> const& b
 )
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 is_empty(
-    auto_buffer<T, SPACE, A> const& b
+    auto_buffer<T, V_space, A> const& b
 )
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
@@ -1494,9 +1509,9 @@ namespace std
         ss_typename_param_k         T
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
     ,   ss_typename_param_k         A
-    ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
+    ,   STLSOFT_NS_QUAL(ss_size_t)  V_space
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    ,   STLSOFT_NS_QUAL(ss_size_t)  SPACE
+    ,   STLSOFT_NS_QUAL(ss_size_t)  V_space
     ,   ss_typename_param_k         A
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     >
@@ -1504,13 +1519,13 @@ namespace std
     void
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
     swap(
-        STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>&  lhs
-    ,   STLSOFT_NS_QUAL(auto_buffer)<T, A, SPACE>&  rhs
+        STLSOFT_NS_QUAL(auto_buffer)<T, A, V_space>&  lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T, A, V_space>&  rhs
     )
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     swap(
-        STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>&  lhs
-    ,   STLSOFT_NS_QUAL(auto_buffer)<T, SPACE, A>&  rhs
+        STLSOFT_NS_QUAL(auto_buffer)<T, V_space, A>&  lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T, V_space, A>&  rhs
     )
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     {

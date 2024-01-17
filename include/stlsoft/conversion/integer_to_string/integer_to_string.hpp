@@ -4,11 +4,11 @@
  * Purpose:     Very efficient integer to string conversion functions.
  *
  * Created:     7th April 2002
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_MINOR       1
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_REVISION    7
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_EDIT        95
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_REVISION    8
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_EDIT        96
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -332,114 +332,120 @@ integer_to_string(C *buf, ss_size_t cchBuf, unsigned long i)
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_sint8_t i)
+integer_to_string(C (&buf)[V_dimension], ss_sint8_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 5));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 5));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_uint8_t i)
+integer_to_string(C (&buf)[V_dimension], ss_uint8_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 4));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 4));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_sint16_t i)
+integer_to_string(C (&buf)[V_dimension], ss_sint16_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 7));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 7));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_uint16_t i)
+integer_to_string(C (&buf)[V_dimension], ss_uint16_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 6));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 6));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_sint32_t i)
+integer_to_string(C (&buf)[V_dimension], ss_sint32_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 12));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 12));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_uint32_t i)
+integer_to_string(C (&buf)[V_dimension], ss_uint32_t i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 11));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 11));
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 #ifdef STLSOFT_CF_64BIT_INT_SUPPORT
@@ -447,52 +453,54 @@ integer_to_string(C (&buf)[N], ss_uint32_t i)
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_sint64_t const& i)
+integer_to_string(C (&buf)[V_dimension], ss_sint64_t const& i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 21));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 21));
 
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
     if(i < 0x80000000)
     {
-        return integer_to_decimal_string(buf, N, static_cast<ss_sint32_t>(i));
+        return integer_to_decimal_string(buf, V_dimension, static_cast<ss_sint32_t>(i));
     }
 #endif // STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], ss_uint64_t const& i)
+integer_to_string(C (&buf)[V_dimension], ss_uint64_t const& i)
 {
-    STLSOFT_STATIC_ASSERT(!(N < 21));
+    STLSOFT_STATIC_ASSERT(!(V_dimension < 21));
 
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
     if(i < 0x80000000)
     {
-        return integer_to_decimal_string(buf, N, static_cast<ss_uint32_t>(i));
+        return integer_to_decimal_string(buf, V_dimension, static_cast<ss_uint32_t>(i));
     }
 #endif // STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
 
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 #endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
 
@@ -501,34 +509,36 @@ integer_to_string(C (&buf)[N], ss_uint64_t const& i)
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], short i)
+integer_to_string(C (&buf)[V_dimension], short i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], unsigned short i)
+integer_to_string(C (&buf)[V_dimension], unsigned short i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 #endif /* STLSOFT_CF_SHORT_DISTINCT_INT_TYPE */
 
@@ -537,34 +547,36 @@ integer_to_string(C (&buf)[N], unsigned short i)
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], int i)
+integer_to_string(C (&buf)[V_dimension], int i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], unsigned int i)
+integer_to_string(C (&buf)[V_dimension], unsigned int i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 #endif /* !STLSOFT_CF_INT_DISTINCT_INT_TYPE */
 
@@ -573,34 +585,36 @@ integer_to_string(C (&buf)[N], unsigned int i)
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], long i)
+integer_to_string(C (&buf)[V_dimension], long i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 
 /** Highly efficient conversion of integer to string.
  *
  * \ingroup group__library__Conversion
  */
-template< ss_typename_param_k C
-        , ss_size_t           N
-        >
+template<
+    ss_typename_param_k C
+,   ss_size_t           V_dimension
+>
 #if _STLSOFT_VER >= 0x010a0000
 STLSOFT_DECLARE_FUNCTION_DEPRECATION_IN_FAVOUR_OF(integer_to_string, integer_to_decimal_string)
 #endif /* >= 1.10 */
 inline
 C const*
-integer_to_string(C (&buf)[N], unsigned long i)
+integer_to_string(C (&buf)[V_dimension], unsigned long i)
 {
-    return integer_to_decimal_string(buf, N, i);
+    return integer_to_decimal_string(buf, V_dimension, i);
 }
 #endif /* !STLSOFT_CF_LONG_DISTINCT_INT_TYPE */
 

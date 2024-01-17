@@ -4,11 +4,11 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     31st May 2003
- * Updated:     20th December 2023
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    4
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 12
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     113
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 13
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,33 +136,41 @@ namespace winstl_project
  *
  * \ingroup group__library__Conversion
  */
-template <ws_size_t CCH>
+template <
+    ws_size_t V_internalSize
+>
 class multibyte2wide
-    : private auto_buffer_old<ws_char_w_t, processheap_allocator<ws_char_w_t>, CCH>
+    : private auto_buffer_old<ws_char_w_t, processheap_allocator<ws_char_w_t>, V_internalSize>
 {
 /// \name Member Types
 /// @{
 private:
-    typedef auto_buffer_old<ws_char_w_t, processheap_allocator<ws_char_w_t>, CCH>   parent_class_type;
+    typedef auto_buffer_old<
+        ws_char_w_t
+    ,   processheap_allocator<ws_char_w_t>
+    ,   V_internalSize
+    >                                                       parent_class_type;
 public:
     /// The character type
-    typedef ws_char_w_t                                                             char_type;
+    typedef ws_char_w_t                                     char_type;
     /// The alternate character type
-    typedef ws_char_a_t                                                             alt_char_type;
+    typedef ws_char_a_t                                     alt_char_type;
     /// The size type
-    typedef ss_typename_type_k parent_class_type::size_type                         size_type;
+    typedef ss_typename_type_k parent_class_type::size_type size_type;
     /// The pointer type
-    typedef ss_typename_type_k parent_class_type::pointer                           pointer;
+    typedef ss_typename_type_k parent_class_type::pointer   pointer;
     /// This type
-    typedef multibyte2wide<CCH>                                                     class_type;
+    typedef multibyte2wide<
+        V_internalSize
+    >                                                       class_type;
 /// @}
 
 /// \name Construction
 /// @{
 public:
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
-    template <ss_typename_param_k S>
-    ss_explicit_k multibyte2wide(S const& s)
+    template <ss_typename_param_k T_string>
+    ss_explicit_k multibyte2wide(T_string const& s)
 #else
     ss_explicit_k multibyte2wide(alt_char_type const* s)
 #endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
@@ -185,8 +193,8 @@ public:
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
-    template <ss_typename_param_k S>
-    multibyte2wide(S const& s, size_type cch)
+    template <ss_typename_param_k T_string>
+    multibyte2wide(T_string const& s, size_type cch)
 #else
     multibyte2wide(alt_char_type const* s, size_type cch)
 #endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
@@ -279,7 +287,6 @@ private:
     multibyte2wide(class_type const&);
 #endif /* compiler */
     multibyte2wide& operator =(class_type const&);
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /// @}
 };
@@ -289,33 +296,39 @@ private:
  *
  * \ingroup group__library__Conversion
  */
-template <ws_size_t CCH>
+template <ws_size_t V_internalSize>
 class wide2multibyte
-    : private auto_buffer_old<ws_char_a_t, processheap_allocator<ws_char_a_t>, CCH>
+    : private auto_buffer_old<ws_char_a_t, processheap_allocator<ws_char_a_t>, V_internalSize>
 {
 /// \name Member Types
 /// @{
 private:
-    typedef auto_buffer_old<ws_char_a_t, processheap_allocator<ws_char_a_t>, CCH>   parent_class_type;
+    typedef auto_buffer_old<
+        ws_char_a_t
+    ,   processheap_allocator<ws_char_a_t>
+    ,   V_internalSize
+    >                                                       parent_class_type;
 public:
     /// The character type
-    typedef ws_char_a_t                                                             char_type;
+    typedef ws_char_a_t                                     char_type;
     /// The alternate character type
-    typedef ws_char_w_t                                                             alt_char_type;
+    typedef ws_char_w_t                                     alt_char_type;
     /// The size type
-    typedef ss_typename_type_k parent_class_type::size_type                         size_type;
+    typedef ss_typename_type_k parent_class_type::size_type size_type;
     /// The pointer type
-    typedef ss_typename_type_k parent_class_type::pointer                           pointer;
+    typedef ss_typename_type_k parent_class_type::pointer   pointer;
     /// This type
-    typedef wide2multibyte<CCH>                                                     class_type;
+    typedef wide2multibyte<
+        V_internalSize
+    >                                                       class_type;
 /// @}
 
 /// \name Construction
 /// @{
 public:
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
-    template <ss_typename_param_k S>
-    ss_explicit_k wide2multibyte(S const& s)
+    template <ss_typename_param_k T_string>
+    ss_explicit_k wide2multibyte(T_string const& s)
 #else
     ss_explicit_k wide2multibyte(alt_char_type const* s)
 #endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
@@ -338,8 +351,8 @@ public:
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #ifdef STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
-    template <ss_typename_param_k S>
-    ss_explicit_k wide2multibyte(S const& s, size_type cch)
+    template <ss_typename_param_k T_string>
+    ss_explicit_k wide2multibyte(T_string const& s, size_type cch)
 #else
     ss_explicit_k wide2multibyte(alt_char_type const* s, size_type cch)
 #endif // STLSOFT_CF_MEMBER_TEMPLATE_CTOR_SUPPORT
@@ -436,9 +449,10 @@ private:
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ss_typename_param_k S
-        ,   ss_typename_param_k C
-        >
+template <
+    ss_typename_param_k S
+,   ss_typename_param_k C
+>
 struct encoding2encoding_traits
 {
     static C const* elicit_ccs(S const& s)
@@ -496,12 +510,12 @@ private:
  *
  * \ingroup group__library__Conversion
  */
-typedef multibyte2wide<256>                 m2w;
+typedef multibyte2wide<256>                                 m2w;
 /** Type that converts a wide string to a multibyte string.
  *
  * \ingroup group__library__Conversion
  */
-typedef wide2multibyte<256>                 w2m;
+typedef wide2multibyte<256>                                 w2m;
 
 /** [Deprecated] Type that converts a multibyte string to a wide string.
  *
@@ -509,35 +523,34 @@ typedef wide2multibyte<256>                 w2m;
  *
  * \deprecated This name is deprecated in favour of winstl::m2w
  */
-typedef multibyte2wide<256>                 a2w;
+typedef multibyte2wide<256>                                 a2w;
 /** [Deprecated] Type that converts a wide string to a multibyte string.
  *
  * \ingroup group__library__Conversion
  *
  * \deprecated This name is deprecated in favour of winstl::w2m
  */
-typedef wide2multibyte<256>                 w2a;
+typedef wide2multibyte<256>                                 w2a;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 # if defined(UNICODE)
-typedef encoding2encoding<ws_char_w_t>  t2w;
-typedef encoding2encoding<ws_char_w_t>  w2t;
-typedef w2m                             t2m;
-typedef m2w                             m2t;
-typedef w2a                             t2a;
-typedef a2w                             a2t;
+typedef encoding2encoding<ws_char_w_t>                      t2w;
+typedef encoding2encoding<ws_char_w_t>                      w2t;
+typedef w2m                                                 t2m;
+typedef m2w                                                 m2t;
+typedef w2a                                                 t2a;
+typedef a2w                                                 a2t;
 # else /* ? UNICODE */
-typedef encoding2encoding<ws_char_a_t>  t2a;
-typedef encoding2encoding<ws_char_a_t>  a2t;
-typedef encoding2encoding<ws_char_a_t>  t2m;
-typedef encoding2encoding<ws_char_a_t>  m2t;
-typedef m2w                             t2w;
-typedef w2m                             w2t;
-typedef a2w                             t2w;
-typedef w2a                             w2t;
+typedef encoding2encoding<ws_char_a_t>                      t2a;
+typedef encoding2encoding<ws_char_a_t>                      a2t;
+typedef encoding2encoding<ws_char_a_t>                      t2m;
+typedef encoding2encoding<ws_char_a_t>                      m2t;
+typedef m2w                                                 t2w;
+typedef w2m                                                 w2t;
+typedef a2w                                                 t2w;
+typedef w2a                                                 w2t;
 # endif /* UNICODE */
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -548,22 +561,23 @@ typedef w2a                             w2t;
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_ptr_null(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_ptr_null(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return STLSOFT_NS_QUAL(c_str_ptr_null)(b.c_str());
+    return STLSOFT_NS_QUAL(c_str_ptr_null)(c.c_str());
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_ptr_null_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_ptr_null_w(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return STLSOFT_NS_QUAL(c_str_ptr_null)(b.c_str());
+    return STLSOFT_NS_QUAL(c_str_ptr_null)(c.c_str());
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -571,66 +585,69 @@ inline ws_char_w_t const* c_str_ptr_null_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> c
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_ptr(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_ptr(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.c_str();
+    return c.c_str();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_ptr_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_ptr_w(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.c_str();
+    return c.c_str();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \ref group__concept__Shim__string_access__c_str_data for winstl::multibyte2wide
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_data(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_data(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.data();
+    return c.data();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_w_t const* c_str_data_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_w_t const* c_str_data_w(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.data();
+    return c.data();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \ref group__concept__Shim__string_access__c_str_len for winstl::multibyte2wide
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_size_t c_str_len(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_size_t c_str_len(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.size();
+    return c.size();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_size_t c_str_len_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_size_t c_str_len_w(WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const& c)
 {
-    return b.size();
+    return c.size();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -639,88 +656,92 @@ inline ws_size_t c_str_len_w(WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_ptr_null(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_ptr_null(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return STLSOFT_NS_QUAL(c_str_ptr_null)(b.c_str());
+    return STLSOFT_NS_QUAL(c_str_ptr_null)(c.c_str());
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_ptr_null_a(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_ptr_null_a(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return STLSOFT_NS_QUAL(c_str_ptr_null)(b.c_str());
+    return STLSOFT_NS_QUAL(c_str_ptr_null)(c.c_str());
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \ref group__concept__Shim__string_access__c_str_ptr for winstl::wide2multibyte
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_ptr(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_ptr(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.c_str();
+    return c.c_str();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_ptr_a(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_ptr_a(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.c_str();
+    return c.c_str();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \ref group__concept__Shim__string_access__c_str_data for winstl::wide2multibyte
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_data(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_data(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.data();
+    return c.data();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_char_a_t const* c_str_data_a(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_char_a_t const* c_str_data_a(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.data();
+    return c.data();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \ref group__concept__Shim__string_access__c_str_len for winstl::wide2multibyte
  *
  * \ingroup group__concept__Shim__string_access
  */
-template<   ws_size_t   CCH
-        >
-inline ws_size_t c_str_len(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_size_t c_str_len(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.size();
+    return c.size();
 }
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<   ws_size_t   CCH
-        >
-inline ws_size_t c_str_len_a(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ws_size_t   V_internalSize
+>
+inline ws_size_t c_str_len_a(WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const& c)
 {
-    return b.size();
+    return c.size();
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -729,29 +750,53 @@ inline ws_size_t c_str_len_a(WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
 /** \ref group__concept__Shim__stream_insertion "stream insertion shim" for winstl::multibyte2wide
  *
  * \ingroup group__concept__Shim__stream_insertion
+ *
+ * \tparam T_stream The stream type
+ * \tparam V_internalSize The internal size of the multibyte2wide specialisation
+ *
+ * \param stm The stream
+ * \param c The converter
  */
-template<   ss_typename_param_k S
-        ,   ws_size_t           CCH
-        >
-inline S& operator <<(S& s, WINSTL_NS_QUAL(multibyte2wide)<CCH> const& b)
+template <
+    ss_typename_param_k T_stream
+,   ws_size_t           V_internalSize
+>
+inline
+T_stream&
+operator <<(
+    T_stream&                                               stm
+,   WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const&   c
+)
 {
-    s << b.c_str();
+    stm << c.c_str();
 
-    return s;
+    return stm;
 }
 
 /** \ref group__concept__Shim__stream_insertion "stream insertion shim" for winstl::wide2multibyte
  *
  * \ingroup group__concept__Shim__stream_insertion
+ *
+ * \tparam T_stream The stream type
+ * \tparam V_internalSize The internal size of the wide2multibyte specialisation
+ *
+ * \param stm The stream
+ * \param c The converter
  */
-template<   ss_typename_param_k S
-        ,   ws_size_t           CCH
-        >
-inline S& operator <<(S& s, WINSTL_NS_QUAL(wide2multibyte)<CCH> const& b)
+template <
+    ss_typename_param_k T_stream
+,   ws_size_t           V_internalSize
+>
+inline
+T_stream&
+operator <<(
+    T_stream&                                               stm
+,   WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const&   c
+)
 {
-    s << b.c_str();
+    stm << c.c_str();
 
-    return s;
+    return stm;
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -822,28 +867,31 @@ using ::winstl::c_str_ptr_null_w;
 
 # include <iosfwd>
 
-template <WINSTL_NS_QUAL(ws_size_t) CCH>
+template <
+    WINSTL_NS_QUAL(ws_size_t) V_internalSize
+>
 inline
 STLSOFT_NS_QUAL_STD(basic_ostream)<char>&
 operator <<(
-    STLSOFT_NS_QUAL_STD(basic_ostream)<char>&   stm
-,   WINSTL_NS_QUAL(wide2multibyte)<CCH> const&  b
+    STLSOFT_NS_QUAL_STD(basic_ostream)<char>&               stm
+,   WINSTL_NS_QUAL(wide2multibyte)<V_internalSize> const&   c
 )
 {
-    return stm << b.c_str();
+    return stm << c.c_str();
 }
 
-template <WINSTL_NS_QUAL(ws_size_t) CCH>
+template <
+    WINSTL_NS_QUAL(ws_size_t) V_internalSize
+>
 inline
 STLSOFT_NS_QUAL_STD(basic_ostream)<wchar_t>&
 operator <<(
-    STLSOFT_NS_QUAL_STD(basic_ostream)<wchar_t>&    stm
-,   WINSTL_NS_QUAL(multibyte2wide)<CCH> const&      b
+    STLSOFT_NS_QUAL_STD(basic_ostream)<wchar_t>&            stm
+,   WINSTL_NS_QUAL(multibyte2wide)<V_internalSize> const&   c
 )
 {
-    return stm << b.c_str();
+    return stm << c.c_str();
 }
-
 #endif /* library */
 
 /* /////////////////////////////////////////////////////////////////////////
