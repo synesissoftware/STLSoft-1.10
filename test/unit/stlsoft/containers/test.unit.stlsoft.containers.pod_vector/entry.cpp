@@ -143,7 +143,12 @@ static void test_ctor_size()
 
     XTESTS_TEST_INTEGER_EQUAL(10u, v.size());
     XTESTS_TEST_BOOLEAN_FALSE(v.empty());
-    STLSOFT_SUPPRESS_UNUSED(cv);
+    XTESTS_TEST_INTEGER_EQUAL(0, std::accumulate(v.begin(), v.end(), 0));
+    XTESTS_TEST_INTEGER_EQUAL(0, std::accumulate(cv.begin(), cv.end(), 0));
+#ifdef STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT
+    XTESTS_TEST_INTEGER_EQUAL(0, std::accumulate(v.rbegin(), v.rend(), 0));
+    XTESTS_TEST_INTEGER_EQUAL(0, std::accumulate(cv.rbegin(), cv.rend(), 0));
+#endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
     XTESTS_TEST_INTEGER_GREATER_OR_EQUAL(v.size(), v.capacity());
 }
 
