@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     12th January 2024
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -39,6 +39,8 @@
  *
  * ////////////////////////////////////////////////////////////////////// */
 
+
+/* STLSOFT:FILE_NOT_SELF_SUFFICIENT */
 
 #ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS
 # error This file must be included from unixstl/filesystem/path_classify_functions.h

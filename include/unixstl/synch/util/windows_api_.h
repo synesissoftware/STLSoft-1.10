@@ -4,11 +4,11 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     26th December 2020
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -41,6 +41,8 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:Windows:FILE_EXCEPTED */
+
 /** \file unixstl/synch/util/windows_api_.h
  *
  * \brief [INTERNAL] Discrimination of synchronisation features
@@ -53,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 3
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     9
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 4
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
