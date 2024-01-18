@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    6
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        201
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    7
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        202
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,7 +127,7 @@ struct auto_buffer_internal_default
     enum { division_factor  =   2       };
 };
 
-template<
+template <
     ss_typename_param_k T
 >
 struct auto_buffer_internal_size_calculator
@@ -173,15 +173,20 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
 
 // class auto_buffer
 //
-/** This class template provides an efficient variable automatic buffer.
+/** This class template provides an efficient variable automatic buffer (as
+ * documented in the article
+ * "Efficient Variable Automatic Buffers", Matthew Wilson, C/C++ User's Journal, Volume 21 Number 12, December 2003
+ * and the book
+ * "Imperfect C++", Matthew Wilson, Addison-Wesley, 2004
+ * ).
  *
  * \ingroup group__library__Memory
  *
- * \param T The type of the elements in the array
- * \param V_space The number of elements in the array. For translators that
+ * \tparam T_value The type of the elements in the array
+ * \tparam V_space The number of elements in the array. For translators that
  *   support default template arguments, this is defaulted to <b>256</b>
- * \param A The allocator type. Defaults to
- *   \link stlsoft::allocator_selector allocator_selector<T>::allocator_type\endlink
+ * \tparam T_allocator The allocator type. Defaults to
+ *   \link stlsoft::allocator_selector allocator_selector<T_value>::allocator_type\endlink
  *   for translators that support default template arguments.
  *
  * This class provides an efficient replacement for dynamic memory block
@@ -340,12 +345,12 @@ int pantheios_log_n(
  // //////////////////////////////////////////////
  // This is the pre-1.9 template parameter list
 
-template<
-    ss_typename_param_k T
+template <
+    ss_typename_param_k T_value
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k T_allocator = ss_typename_type_def_k allocator_selector<T_value>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if defined(STLSOFT_COMPILER_IS_BORLAND)
@@ -353,11 +358,11 @@ template<
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
 ,   ss_size_t           V_space     =   256
 #  else /* ? compiler */
-,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T_value>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T_value>::value */
 #  else /* ? compiler */
 ,   ss_size_t           space    /* =   256 */
 #  endif /* compiler */
@@ -376,8 +381,8 @@ template<
 #  define STLSOFT_AUTO_BUFFER_NEW_FORM
 # endif /* !STLSOFT_AUTO_BUFFER_NEW_FORM */
 
-template<
-    ss_typename_param_k T
+template <
+    ss_typename_param_k T_value
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if 0
 #  elif defined(STLSOFT_COMPILER_IS_BORLAND)
@@ -385,19 +390,19 @@ template<
 #  elif defined(STLSOFT_COMPILER_IS_DMC)
 ,   ss_size_t           V_space     =   256
 #  else /* ? compiler */
-,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T_value>::value
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND)
-,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T_value>::value */
 #  else /* ? compiler */
 ,   ss_size_t           space    /* =   256 */
 #  endif /* compiler */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k T_allocator = ss_typename_type_def_k allocator_selector<T_value>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 >
 
@@ -408,7 +413,7 @@ template<
 
 class auto_buffer
 #if !defined(STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE)
-    : protected A
+    : protected T_allocator
     , public stl_collection_tag
 #else /* ? STLSOFT_CF_ALLOCATOR_BASE_EXPENSIVE */
     : public stl_collection_tag
@@ -425,18 +430,26 @@ public: // constants
 
 public: // types
     /// The value type
-    typedef T                                               value_type;
+    typedef T_value                                         value_type;
     /// The allocator type
-    typedef A                                               allocator_type;
+    typedef T_allocator                                     allocator_type;
 #ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
     /// The allocator traits type
     typedef std::allocator_traits<allocator_type>           allocator_traits_type;
 #endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The type of the current specialisation
 #ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-    typedef auto_buffer<T, A, space>                        class_type;
+    typedef auto_buffer<
+        T_value
+    ,   T_allocator
+    ,   space
+    >                                                       class_type;
 #else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer<T, space, A>                        class_type;
+    typedef auto_buffer<
+        T_value
+    ,   space
+    ,   T_allocator
+    >                                                       class_type;
 #endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 #ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
     /// The reference type
@@ -1326,38 +1339,50 @@ private: // fields
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-template<
-    ss_typename_param_k T
+template <
+    ss_typename_param_k T_value
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-,   ss_typename_param_k A = ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k T_allocator = ss_typename_type_def_k allocator_selector<T_value>::allocator_type
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
 # ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT
 #  if !defined(STLSOFT_COMPILER_IS_BORLAND) && \
 !defined(STLSOFT_COMPILER_IS_DMC)
-,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T>::value
+,   ss_size_t           V_space     =   auto_buffer_internal_size_calculator<T_value>::value
 #  else /* ? compiler */
 ,   ss_size_t           V_space     =   256
 #  endif /* compiler */
 # else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-,   ss_size_t           V_space  /* = auto_buffer_internal_size_calculator<T>::value */
+,   ss_size_t           V_space  /* =   auto_buffer_internal_size_calculator<T_value>::value */
 # endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 >
 class auto_buffer_old
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
-    : public auto_buffer<T, A, V_space>
+    : public auto_buffer<T_value, T_allocator, V_space>
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    : public auto_buffer<T, V_space, A>
+    : public auto_buffer<T_value, V_space, T_allocator>
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
 private: // types
 # if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
-    typedef auto_buffer<T, A, V_space>                                        parent_class_type;
+    typedef auto_buffer<
+        T_value
+    ,   T_allocator
+    ,   V_space
+    >                                                                       parent_class_type;
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer<T, V_space, A>                                        parent_class_type;
+    typedef auto_buffer<
+        T_value
+    ,   V_space
+    ,   T_allocator
+    >                                                                       parent_class_type;
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
-    typedef auto_buffer_old<T, A, V_space>                                    class_type;
+    typedef auto_buffer_old<
+        T_value
+    ,   T_allocator
+    ,   V_space
+    >                                                                       class_type;
 
 public:
     typedef ss_typename_type_k parent_class_type::value_type                value_type;
@@ -1394,27 +1419,27 @@ private:
  */
 
 #if !defined(STLSOFT_COMPILER_IS_WATCOM)
-template<
-    ss_typename_param_k T
+template <
+    ss_typename_param_k T_value
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_space
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 ,   ss_size_t           V_space
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 >
 inline
 void
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 swap(
-    auto_buffer<T, A, V_space>&   lhs
-,   auto_buffer<T, A, V_space>&   rhs
+    auto_buffer<T_value, T_allocator, V_space>& lhs
+,   auto_buffer<T_value, T_allocator, V_space>& rhs
 )
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 swap(
-    auto_buffer<T, V_space, A>&   lhs
-,   auto_buffer<T, V_space, A>&   rhs
+    auto_buffer<T_value, V_space, T_allocator>& lhs
+,   auto_buffer<T_value, V_space, T_allocator>& rhs
 )
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
@@ -1440,14 +1465,14 @@ swap(
  */
 #if defined(STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS)
 
-template<
+template <
     ss_typename_param_k             T_value
 ,   ss_typename_param_k             T_allocator
 ,   STLSOFT_NS_QUAL(ss_size_t)      V_space
 >
 #else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 
-template<
+template <
     ss_typename_param_k             T_value
 ,   STLSOFT_NS_QUAL(ss_size_t)      V_space
 ,   ss_typename_param_k             T_allocator
@@ -1479,31 +1504,30 @@ operator -(
 
 #ifndef STLSOFT_CF_TEMPLATE_SHIMS_NOT_SUPPORTED
 
-template<
-    ss_typename_param_k T
+template <
+    ss_typename_param_k T_value
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_space
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 ,   ss_size_t           V_space
-,   ss_typename_param_k A
+,   ss_typename_param_k T_allocator
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 >
 inline
 ss_bool_t
 # ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
 is_empty(
-    auto_buffer<T, A, V_space> const& b
+    auto_buffer<T_value, T_allocator, V_space> const& b
 )
 # else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 is_empty(
-    auto_buffer<T, V_space, A> const& b
+    auto_buffer<T_value, V_space, T_allocator> const& b
 )
 # endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
 {
     return b.empty();
 }
-
 #endif /* !STLSOFT_CF_TEMPLATE_SHIMS_NOT_SUPPORTED */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1524,27 +1548,27 @@ is_empty(
 
 namespace std
 {
-    template<
-        ss_typename_param_k         T
+    template <
+        ss_typename_param_k         T_value
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
-    ,   ss_typename_param_k         A
+    ,   ss_typename_param_k         T_allocator
     ,   STLSOFT_NS_QUAL(ss_size_t)  V_space
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     ,   STLSOFT_NS_QUAL(ss_size_t)  V_space
-    ,   ss_typename_param_k         A
+    ,   ss_typename_param_k         T_allocator
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     >
     inline
     void
 #  ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
     swap(
-        STLSOFT_NS_QUAL(auto_buffer)<T, A, V_space>&  lhs
-    ,   STLSOFT_NS_QUAL(auto_buffer)<T, A, V_space>&  rhs
+        STLSOFT_NS_QUAL(auto_buffer)<T_value, T_allocator, V_space>&    lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T_value, T_allocator, V_space>&    rhs
     )
 #  else /* ? STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     swap(
-        STLSOFT_NS_QUAL(auto_buffer)<T, V_space, A>&  lhs
-    ,   STLSOFT_NS_QUAL(auto_buffer)<T, V_space, A>&  rhs
+        STLSOFT_NS_QUAL(auto_buffer)<T_value, V_space, T_allocator>&    lhs
+    ,   STLSOFT_NS_QUAL(auto_buffer)<T_value, V_space, T_allocator>&    rhs
     )
 #  endif /* STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS */
     {

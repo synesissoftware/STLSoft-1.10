@@ -1,8 +1,7 @@
 
-add_subdirectory(containers)
-add_subdirectory(memory)
-add_subdirectory(string)
+add_subdirectory(test.unit.stlsoft.memory.auto_buffer)
 
 
 # ############################## end of file ############################# #
+
 

@@ -60,8 +60,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MINOR       2
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_REVISION    10
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        93
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_REVISION    11
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,13 +122,13 @@ namespace stlsoft
  * \ingroup group__library__Container
  */
 template <
-    ss_typename_param_k T
+    ss_typename_param_k T_value
 #if defined(STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT) && \
     defined(STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT)
-,   ss_typename_param_k A                   =   ss_typename_type_def_k allocator_selector<T>::allocator_type
+,   ss_typename_param_k T_allocator         =   ss_typename_type_def_k allocator_selector<T_value>::allocator_type
 ,   ss_size_t           V_internalSize      =   64
 #else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT && STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
-,   ss_typename_param_k A                /* =   ss_typename_type_def_k STLSOFT_NS_QUAL(allocator_selector)<T>::allocator_type */
+,   ss_typename_param_k T_allocator      /* =   ss_typename_type_def_k STLSOFT_NS_QUAL(allocator_selector)<T_value>::allocator_type */
 ,   ss_size_t           V_internalSize   /* =   64 */
 #endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT && STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_FUNDAMENTAL_ARGUMENT_SUPPORT */
 >
@@ -139,8 +139,8 @@ class pod_vector
 /// @{
 private:
     typedef auto_buffer_old<
-        T
-    ,   A
+        T_value
+    ,   T_allocator
     ,   V_internalSize
     >                                                       buffer_type_;
 public:
@@ -150,8 +150,8 @@ public:
     typedef ss_typename_type_k buffer_type_::allocator_type allocator_type;
     /// The type of the current parameterisation
     typedef pod_vector<
-        T
-    ,   A
+        T_value
+    ,   T_allocator
     ,   V_internalSize
     >                                                       class_type;
     /// The reference type
@@ -280,15 +280,15 @@ private:
  */
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 ss_bool_t
 operator ==(
-    pod_vector<T, A, V_internalSize> const& lhs
-,   pod_vector<T, A, V_internalSize> const& rhs
+    pod_vector<T_value, T_allocator, V_internalSize> const& lhs
+,   pod_vector<T_value, T_allocator, V_internalSize> const& rhs
 )
 {
     if (lhs.size() != rhs.size())
@@ -298,7 +298,7 @@ operator ==(
     else
     {
 #if 0
-        for (ss_typename_type_k pod_vector<T, A, V_internalSize>::size_type i = 0, size = lhs.size(); i < size; ++i)
+        for (ss_typename_type_k pod_vector<T_value, T_allocator, V_internalSize>::size_type i = 0, size = lhs.size(); i < size; ++i)
         {
             if (lhs[i] != rhs[i])
             {
@@ -308,21 +308,21 @@ operator ==(
 
         return true;
 #else /* ? 0 */
-        return 0 == memcmp(&lhs[0], &rhs[0], sizeof(ss_typename_type_k pod_vector<T, A, V_internalSize>::size_type) * lhs.size());
+        return 0 == memcmp(&lhs[0], &rhs[0], sizeof(ss_typename_type_k pod_vector<T_value, T_allocator, V_internalSize>::size_type) * lhs.size());
 #endif /* 0 */
     }
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 ss_bool_t
 operator !=(
-    pod_vector<T, A, V_internalSize> const& lhs
-,   pod_vector<T, A, V_internalSize> const& rhs
+    pod_vector<T_value, T_allocator, V_internalSize> const& lhs
+,   pod_vector<T_value, T_allocator, V_internalSize> const& rhs
 )
 {
     return !operator ==(lhs, rhs);
@@ -333,15 +333,15 @@ operator !=(
  */
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
 swap(
-    pod_vector<T, A, V_internalSize>&   lhs
-,   pod_vector<T, A, V_internalSize>&   rhs
+    pod_vector<T_value, T_allocator, V_internalSize>&   lhs
+,   pod_vector<T_value, T_allocator, V_internalSize>&   rhs
 )
 {
     lhs.swap(rhs);
@@ -362,7 +362,7 @@ swap(
      defined(STLSOFT_CF_FUNCTION_SIGNATURE_FULL_ARG_QUALIFICATION_REQUIRED) || \
      0
 
-#  define STLSOFT_pod_vector_pt_(pt)                        ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::pt
+#  define STLSOFT_pod_vector_pt_(pt)                        ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::pt
 # else
 
 #  define STLSOFT_pod_vector_pt_(pt)                        pt
@@ -373,7 +373,7 @@ swap(
      defined(STLSOFT_CF_FUNCTION_SIGNATURE_FULL_ARG_QUALIFICATION_REQUIRED_EXCEPT_ARGS) || \
      0
 
-#  define STLSOFT_pod_vector_rt_(qrt, rrt)                  ss_typename_type_k pod_vector<T, A, V_internalSize>::qrt
+#  define STLSOFT_pod_vector_rt_(qrt, rrt)                  ss_typename_type_k pod_vector<T_value, T_allocator, V_internalSize>::qrt
 # else
 
 #  define STLSOFT_pod_vector_rt_(qrt, rrt)                  rrt
@@ -381,37 +381,37 @@ swap(
 
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::pointer
-pod_vector<T, A, V_internalSize>::begin_()
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::pointer
+pod_vector<T_value, T_allocator, V_internalSize>::begin_()
 {
     return m_buffer.data();
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::const_pointer
-pod_vector<T, A, V_internalSize>::begin_() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::const_pointer
+pod_vector<T_value, T_allocator, V_internalSize>::begin_() const
 {
     return m_buffer.data();
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::range_check_(
+pod_vector<T_value, T_allocator, V_internalSize>::range_check_(
     STLSOFT_pod_vector_pt_(size_type) index
 ) const /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) ) */
 {
@@ -428,13 +428,13 @@ pod_vector<T, A, V_internalSize>::range_check_(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 ss_bool_t
-pod_vector<T, A, V_internalSize>::resize_(
+pod_vector<T_value, T_allocator, V_internalSize>::resize_(
     STLSOFT_pod_vector_pt_(size_type) cItems
 ) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */
 {
@@ -462,13 +462,13 @@ pod_vector<T, A, V_internalSize>::resize_(
 
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 ss_bool_t
-pod_vector<T, A, V_internalSize>::is_valid_() const
+pod_vector<T_value, T_allocator, V_internalSize>::is_valid_() const
 {
     if (m_buffer.size() < m_cItems)
     {
@@ -482,13 +482,13 @@ pod_vector<T, A, V_internalSize>::is_valid_() const
 // Construction
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 /* ss_explicit_k */
-pod_vector<T, A, V_internalSize>::pod_vector(
+pod_vector<T_value, T_allocator, V_internalSize>::pod_vector(
     STLSOFT_pod_vector_pt_(size_type) cItems /* = 0 */
 )
     : m_buffer(cItems)
@@ -500,12 +500,12 @@ pod_vector<T, A, V_internalSize>::pod_vector(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-pod_vector<T, A, V_internalSize>::pod_vector(
+pod_vector<T_value, T_allocator, V_internalSize>::pod_vector(
     STLSOFT_pod_vector_pt_(size_type)           cItems
 ,   STLSOFT_pod_vector_pt_(value_type) const&   value
 )
@@ -520,12 +520,12 @@ pod_vector<T, A, V_internalSize>::pod_vector(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-pod_vector<T, A, V_internalSize>::pod_vector(
+pod_vector<T_value, T_allocator, V_internalSize>::pod_vector(
     STLSOFT_pod_vector_pt_(class_type) const& rhs
 )
     : m_buffer(rhs.size())
@@ -539,12 +539,12 @@ pod_vector<T, A, V_internalSize>::pod_vector(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-pod_vector<T, A, V_internalSize>::pod_vector(
+pod_vector<T_value, T_allocator, V_internalSize>::pod_vector(
     STLSOFT_pod_vector_pt_(const_iterator)  first
 ,   STLSOFT_pod_vector_pt_(const_iterator)  last
 )
@@ -562,13 +562,13 @@ pod_vector<T, A, V_internalSize>::pod_vector(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-pod_vector<T, A, V_internalSize>&
-pod_vector<T, A, V_internalSize>::operator =(
+pod_vector<T_value, T_allocator, V_internalSize>&
+pod_vector<T_value, T_allocator, V_internalSize>::operator =(
     STLSOFT_pod_vector_pt_(class_type) const& rhs
 )
 {
@@ -589,13 +589,13 @@ pod_vector<T, A, V_internalSize>::operator =(
 
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::iterator
-pod_vector<T, A, V_internalSize>::begin()
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::iterator
+pod_vector<T_value, T_allocator, V_internalSize>::begin()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -603,13 +603,13 @@ pod_vector<T, A, V_internalSize>::begin()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::const_iterator
-pod_vector<T, A, V_internalSize>::begin() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::const_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::begin() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -617,13 +617,13 @@ pod_vector<T, A, V_internalSize>::begin() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::iterator
-pod_vector<T, A, V_internalSize>::end()
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::iterator
+pod_vector<T_value, T_allocator, V_internalSize>::end()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -631,13 +631,13 @@ pod_vector<T, A, V_internalSize>::end()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::const_iterator
-pod_vector<T, A, V_internalSize>::end() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::const_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::end() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -646,13 +646,13 @@ pod_vector<T, A, V_internalSize>::end() const
 
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::reverse_iterator
-pod_vector<T, A, V_internalSize>::rbegin()
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::reverse_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::rbegin()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -660,13 +660,13 @@ pod_vector<T, A, V_internalSize>::rbegin()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::const_reverse_iterator
-pod_vector<T, A, V_internalSize>::rbegin() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::const_reverse_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::rbegin() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -674,13 +674,13 @@ pod_vector<T, A, V_internalSize>::rbegin() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::reverse_iterator
-pod_vector<T, A, V_internalSize>::rend()
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::reverse_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::rend()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -688,13 +688,13 @@ pod_vector<T, A, V_internalSize>::rend()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::const_reverse_iterator
-pod_vector<T, A, V_internalSize>::rend() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::const_reverse_iterator
+pod_vector<T_value, T_allocator, V_internalSize>::rend() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -705,13 +705,13 @@ pod_vector<T, A, V_internalSize>::rend() const
 // Attributes
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 STLSOFT_pod_vector_rt_(size_type, ss_size_t)
-pod_vector<T, A, V_internalSize>::size() const
+pod_vector<T_value, T_allocator, V_internalSize>::size() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -719,13 +719,13 @@ pod_vector<T, A, V_internalSize>::size() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 STLSOFT_pod_vector_rt_(size_type, ss_size_t)
-pod_vector<T, A, V_internalSize>::capacity() const
+pod_vector<T_value, T_allocator, V_internalSize>::capacity() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -733,13 +733,13 @@ pod_vector<T, A, V_internalSize>::capacity() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 STLSOFT_pod_vector_rt_(size_type, ss_size_t)
-pod_vector<T, A, V_internalSize>::max_size() const
+pod_vector<T_value, T_allocator, V_internalSize>::max_size() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -747,13 +747,13 @@ pod_vector<T, A, V_internalSize>::max_size() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 ss_bool_t
-pod_vector<T, A, V_internalSize>::empty() const
+pod_vector<T_value, T_allocator, V_internalSize>::empty() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -761,13 +761,13 @@ pod_vector<T, A, V_internalSize>::empty() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::allocator_type
-pod_vector<T, A, V_internalSize>::get_allocator() const
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::allocator_type
+pod_vector<T_value, T_allocator, V_internalSize>::get_allocator() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -776,13 +776,13 @@ pod_vector<T, A, V_internalSize>::get_allocator() const
 
 // Accessors
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(reference, T&)
-pod_vector<T, A, V_internalSize>::at(
+STLSOFT_pod_vector_rt_(reference, T_value&)
+pod_vector<T_value, T_allocator, V_internalSize>::at(
     STLSOFT_pod_vector_pt_(size_type) index
 )
 {
@@ -796,13 +796,13 @@ pod_vector<T, A, V_internalSize>::at(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(const_reference, T const&)
-pod_vector<T, A, V_internalSize>::at(
+STLSOFT_pod_vector_rt_(const_reference, T_value const&)
+pod_vector<T_value, T_allocator, V_internalSize>::at(
     STLSOFT_pod_vector_pt_(size_type) index
 ) const
 {
@@ -816,13 +816,13 @@ pod_vector<T, A, V_internalSize>::at(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(reference, T&)
-pod_vector<T, A, V_internalSize>::operator [](
+STLSOFT_pod_vector_rt_(reference, T_value&)
+pod_vector<T_value, T_allocator, V_internalSize>::operator [](
     STLSOFT_pod_vector_pt_(size_type) index
 )
 {
@@ -836,13 +836,13 @@ pod_vector<T, A, V_internalSize>::operator [](
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(const_reference, T const&)
-pod_vector<T, A, V_internalSize>::operator [](
+STLSOFT_pod_vector_rt_(const_reference, T_value const&)
+pod_vector<T_value, T_allocator, V_internalSize>::operator [](
     STLSOFT_pod_vector_pt_(size_type) index
 ) const
 {
@@ -854,13 +854,13 @@ pod_vector<T, A, V_internalSize>::operator [](
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(reference, T&)
-pod_vector<T, A, V_internalSize>::front()
+STLSOFT_pod_vector_rt_(reference, T_value&)
+pod_vector<T_value, T_allocator, V_internalSize>::front()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -870,13 +870,13 @@ pod_vector<T, A, V_internalSize>::front()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(const_reference, T const&)
-pod_vector<T, A, V_internalSize>::front() const
+STLSOFT_pod_vector_rt_(const_reference, T_value const&)
+pod_vector<T_value, T_allocator, V_internalSize>::front() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -886,13 +886,13 @@ pod_vector<T, A, V_internalSize>::front() const
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(reference, T&)
-pod_vector<T, A, V_internalSize>::back()
+STLSOFT_pod_vector_rt_(reference, T_value&)
+pod_vector<T_value, T_allocator, V_internalSize>::back()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -903,13 +903,13 @@ pod_vector<T, A, V_internalSize>::back()
 
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-STLSOFT_pod_vector_rt_(const_reference, T const&)
-pod_vector<T, A, V_internalSize>::back() const
+STLSOFT_pod_vector_rt_(const_reference, T_value const&)
+pod_vector<T_value, T_allocator, V_internalSize>::back() const
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -921,13 +921,13 @@ pod_vector<T, A, V_internalSize>::back() const
 // Operations
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::clear()
+pod_vector<T_value, T_allocator, V_internalSize>::clear()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -940,13 +940,15 @@ pod_vector<T, A, V_internalSize>::clear()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::swap(pod_vector<T, A, V_internalSize>& rhs)
+pod_vector<T_value, T_allocator, V_internalSize>::swap(
+    pod_vector<T_value, T_allocator, V_internalSize>& rhs
+)
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -957,13 +959,13 @@ pod_vector<T, A, V_internalSize>::swap(pod_vector<T, A, V_internalSize>& rhs)
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::reserve(
+pod_vector<T_value, T_allocator, V_internalSize>::reserve(
     STLSOFT_pod_vector_pt_(size_type) cItems
 ) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */
 {
@@ -981,13 +983,13 @@ pod_vector<T, A, V_internalSize>::reserve(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::resize(
+pod_vector<T_value, T_allocator, V_internalSize>::resize(
     STLSOFT_pod_vector_pt_(size_type) cItems
 ) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */
 {
@@ -999,13 +1001,13 @@ pod_vector<T, A, V_internalSize>::resize(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::resize(
+pod_vector<T_value, T_allocator, V_internalSize>::resize(
     STLSOFT_pod_vector_pt_(size_type)           cItems
 ,   STLSOFT_pod_vector_pt_(value_type) const&   value
 ) /* stlsoft_throw_1(STLSOFT_NS_QUAL_STD(bad_alloc) ) */
@@ -1026,13 +1028,13 @@ pod_vector<T, A, V_internalSize>::resize(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::push_back(
+pod_vector<T_value, T_allocator, V_internalSize>::push_back(
     STLSOFT_pod_vector_pt_(value_type) const& value
 )
 {
@@ -1044,13 +1046,13 @@ pod_vector<T, A, V_internalSize>::push_back(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::pop_back()
+pod_vector<T_value, T_allocator, V_internalSize>::pop_back()
 {
     STLSOFT_ASSERT(is_valid_());
 
@@ -1065,13 +1067,13 @@ pod_vector<T, A, V_internalSize>::pop_back()
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::assign(
+pod_vector<T_value, T_allocator, V_internalSize>::assign(
     STLSOFT_pod_vector_pt_(const_iterator)  first
 ,   STLSOFT_pod_vector_pt_(const_iterator)  last
 )
@@ -1088,13 +1090,13 @@ pod_vector<T, A, V_internalSize>::assign(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::assign(
+pod_vector<T_value, T_allocator, V_internalSize>::assign(
     STLSOFT_pod_vector_pt_(size_type)           cItems
 ,   STLSOFT_pod_vector_pt_(value_type) const&   value /* = value_type() */
 )
@@ -1111,13 +1113,13 @@ pod_vector<T, A, V_internalSize>::assign(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::iterator
-pod_vector<T, A, V_internalSize>::insert(
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::iterator
+pod_vector<T_value, T_allocator, V_internalSize>::insert(
     STLSOFT_pod_vector_pt_(iterator)            it
 ,   STLSOFT_pod_vector_pt_(value_type) const&   value /* = value_type() */
 )
@@ -1137,13 +1139,13 @@ pod_vector<T, A, V_internalSize>::insert(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::insert(
+pod_vector<T_value, T_allocator, V_internalSize>::insert(
     STLSOFT_pod_vector_pt_(iterator)            it
 ,   STLSOFT_pod_vector_pt_(size_type)           cItems
 ,   STLSOFT_pod_vector_pt_(value_type) const&   value
@@ -1175,13 +1177,13 @@ pod_vector<T, A, V_internalSize>::insert(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
 void
-pod_vector<T, A, V_internalSize>::insert(
+pod_vector<T_value, T_allocator, V_internalSize>::insert(
     STLSOFT_pod_vector_pt_(iterator)        it
 ,   STLSOFT_pod_vector_pt_(const_iterator)  first
 ,   STLSOFT_pod_vector_pt_(const_iterator)  last
@@ -1214,13 +1216,13 @@ pod_vector<T, A, V_internalSize>::insert(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::iterator
-pod_vector<T, A, V_internalSize>::erase(
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::iterator
+pod_vector<T_value, T_allocator, V_internalSize>::erase(
     STLSOFT_pod_vector_pt_(iterator) it
 )
 {
@@ -1247,13 +1249,13 @@ pod_vector<T, A, V_internalSize>::erase(
 }
 
 template <
-    ss_typename_param_k T
-,   ss_typename_param_k A
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_allocator
 ,   ss_size_t           V_internalSize
 >
 inline
-ss_typename_type_ret_k pod_vector<T, A, V_internalSize>::iterator
-pod_vector<T, A, V_internalSize>::erase(
+ss_typename_type_ret_k pod_vector<T_value, T_allocator, V_internalSize>::iterator
+pod_vector<T_value, T_allocator, V_internalSize>::erase(
     STLSOFT_pod_vector_pt_(iterator)    first
 ,   STLSOFT_pod_vector_pt_(iterator)    last
 )
@@ -1299,15 +1301,15 @@ pod_vector<T, A, V_internalSize>::erase(
 namespace std
 {
     template <
-        ss_typename_param_k         T
-    ,   ss_typename_param_k         A
+        ss_typename_param_k         T_value
+    ,   ss_typename_param_k         T_allocator
     ,   STLSOFT_NS_QUAL(ss_size_t)  V_internalSize
     >
     inline
     void
     swap(
-        STLSOFT_NS_QUAL(pod_vector)<T, A, V_internalSize>&  lhs
-    ,   STLSOFT_NS_QUAL(pod_vector)<T, A, V_internalSize>&  rhs
+        STLSOFT_NS_QUAL(pod_vector)<T_value, T_allocator, V_internalSize>&  lhs
+    ,   STLSOFT_NS_QUAL(pod_vector)<T_value, T_allocator, V_internalSize>&  rhs
     )
     {
         lhs.swap(rhs);
