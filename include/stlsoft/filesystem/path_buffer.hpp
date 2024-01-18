@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_path_buffer template class.
  *
  * Created:     27th May 2020
- * Updated:     7th February 2021
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2024, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MAJOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_MINOR       3
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    2
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        7
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_REVISION    3
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_PATH_BUFFER_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,6 +123,11 @@ public: // types
     typedef T_character                                     char_type;
     // The allocator type
     typedef T_allocator                                     allocator_type;
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+
+    /// The allocator traits type
+    typedef std::allocator_traits<allocator_type>           allocator_traits_type;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     // This type
     typedef basic_path_buffer<
         char_type
@@ -133,6 +138,20 @@ public: // types
     typedef size_t                                          size_type;
     /// The value type
     typedef char_type                                       value_type;
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+    /// The reference type
+    typedef ss_typename_type_k allocator_traits_type::value_type&
+                                                            reference;
+    /// The non-mutating (const) reference type
+    typedef ss_typename_type_k allocator_traits_type::value_type const&
+                                                            const_reference;
+    /// The pointer type
+    typedef ss_typename_type_k allocator_traits_type::pointer
+                                                            pointer;
+    /// The non-mutating (const) pointer type
+    typedef ss_typename_type_k allocator_traits_type::const_pointer
+                                                            const_pointer;
+#else /* ? STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The mutating (non-const) reference type
     typedef ss_typename_type_k allocator_type::reference    reference;
     /// The non-mutating (const) reference type
@@ -143,6 +162,7 @@ public: // types
     /// The non-mutating (const) pointer type
     typedef ss_typename_type_k allocator_type::const_pointer
                                                             const_pointer;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
 private:
     typedef STLSOFT_NS_QUAL(auto_buffer)<
 
@@ -151,6 +171,7 @@ private:
     ,   allocator_type
     >                                                       buffer_type_;
 public:
+    /// The buffer type
     typedef buffer_type_                                    buffer_type;
 
 public: // construction

@@ -4,7 +4,7 @@
  * Purpose:     Path classification functions char-X implementation
  *
  * Created:     21st December 2020
- * Updated:     12th January 2024
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -39,6 +39,8 @@
  *
  * ////////////////////////////////////////////////////////////////////// */
 
+
+/* STLSOFT:FILE_NOT_SELF_SUFFICIENT */
 
 #ifndef UNIXSTL_INCL_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS
 # error This file must be included from unixstl/filesystem/path_classify_functions.h
@@ -104,7 +106,7 @@ unixstl_C_path_classify_alwaysInvalidChars_X_()
     UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_  r = { STLSOFT_NUM_ELEMENTS(s_invalidCards), s_invalidCards };
 
 #if 0
-
+/*
     < (less than)
     > (greater than)
     | (vertical bar or pipe)
@@ -116,6 +118,7 @@ unixstl_C_path_classify_alwaysInvalidChars_X_()
     : (colon)
     / (forward slash)
     \ (backslash)
+*/
 #endif
 
     return r;
@@ -318,7 +321,7 @@ unixstl_C_path_classify_impl_X_(
             case '/':
             case '\\':
 
-                ((*p0 == '\\') ? lastBSlash : lastFSlash) = p0;
+                *((*p0 == '\\') ? &lastBSlash : &lastFSlash) = p0;
 
                 lastDot = ss_nullptr_k;
 

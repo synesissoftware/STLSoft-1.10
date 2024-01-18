@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  3rd January 2024
+; Updated:  18th January 2024
 
 ============================================================================
 
@@ -16,6 +16,18 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.5 (18th January 2024)
+
+General:
+========
+
+ * C++20 and C17 compatibility changes, including `std::allocator_traits`, allocator hints, tightening rules on anonymous enums
+ * brought over (from internal repository) more unit tests, for: `pod_vector`, `auto_buffer`, `shim_string`, `simple_string`, `static_string`
+ * stlsoft::pod_vector now default-initialses elements in size-constructor
+
+
+============================================================================
 
 Changes for 1.10.4 (16th January 2024)
 

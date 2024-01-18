@@ -5,11 +5,11 @@
  *              hexadecimal representation.
  *
  * Created:     7th April 2002
- * Updated:     2nd January 2021
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_MINOR       0
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    20
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        96
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_REVISION    21
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_HEXADECIMAL_STRING_EDIT        97
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -680,18 +680,18 @@ integer_to_hexadecimal_string(
 /** Converts an integer value into a hexadecimal string representation in the
  * given character buffer.
  *
- * \param ar Reference to a character buffer of size \c N
+ * \param ar Reference to a character buffer of size \c V_dimension
  * \param i The value to be converted to octal string
  */
 template<
     ss_typename_param_k I
 ,   ss_typename_param_k C
-,   ss_size_t           N
+,   ss_size_t           V_dimension
 >
 inline
 C const*
 integer_to_hexadecimal_string(
-    C         (&ar)[N]
+    C         (&ar)[V_dimension]
 ,   I const&    i
 )
 {
@@ -699,12 +699,12 @@ integer_to_hexadecimal_string(
 
     typedef integral_format_width_limits<I> width_traits_t;
 
-    STLSOFT_MESSAGE_STATIC_ASSERT(N >= 1 + width_traits_t::maxHexadecimalWidth, "array is of insufficient size for the longest expressable value of the integral type");
+    STLSOFT_MESSAGE_STATIC_ASSERT(V_dimension >= 1 + width_traits_t::maxHexadecimalWidth, "array is of insufficient size for the longest expressable value of the integral type");
     STLSOFT_SUPPRESS_UNUSED(width_traits_t::maxHexadecimalWidth);
 
     STLSOFT_COVER_MARK_LINE();
 
-    return integer_to_hexadecimal_string(&ar[0], N, i);
+    return integer_to_hexadecimal_string(&ar[0], V_dimension, i);
 }
 #endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
 

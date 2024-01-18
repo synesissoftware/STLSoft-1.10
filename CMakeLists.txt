@@ -63,7 +63,7 @@ message(NOTICE "Generating CMake build scripts for ${PROJECT_NAME} ${PROJECT_VER
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON) # GNU extensions and POSIX standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
@@ -95,6 +95,12 @@ target_include_directories(STLSoft INTERFACE
 include(CTest)
 
 if(BUILD_TESTING)
+
+    set(xTests_REQUIRED_VERSION_ 0.21.1)
+
+    find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
+
+    message("-- CMake package xTests found (version ${xTests_VERSION}; ${xTests_REQUIRED_VERSION_} requested)")
 
     add_subdirectory(test)
 endif()

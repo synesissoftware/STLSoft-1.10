@@ -4,6 +4,15 @@
 ----
 
 
+18th January 2024 - 1.10.5 released
+-----------------------------------
+
+ * C++20 compatibility
+ * C17 compatibility
+ * introduced several unit-tests (previously in private repo);
+ * stlsoft::pod_vector now default-initialses elements in size-constructor
+
+
 16th January 2024 - 1.10.4 released
 -----------------------------------
 

@@ -4,11 +4,11 @@
  * Purpose:     type traits classes.
  *
  * Created:     24th August 2003
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_MINOR    2
-# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_REVISION 5
-# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_EDIT     47
+# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_REVISION 6
+# define STLSOFT_VER_STLSOFT_META_HPP_BASE_TYPE_TRAITS_EDIT     48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,10 +92,11 @@ struct base_type_traits_array_detector
     enum { value            =   0 };
 };
 
-template<   ss_typename_param_k T
-        ,   ss_size_t           N
-        >
-struct base_type_traits_array_detector<T[N]>
+template <
+    ss_typename_param_k T
+,   ss_size_t           V_dimension
+>
+struct base_type_traits_array_detector<T[V_dimension]>
 {
     enum { value            =   1 };
 };
@@ -280,8 +281,8 @@ struct base_type_traits<T const volatile*>
 #  if defined(STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT)
 
 #if 0
-template <ss_typename_param_k T, ss_size_t N>
-struct base_type_traits<T[N]>
+template <ss_typename_param_k T, ss_size_t V_dimension>
+struct base_type_traits<T[V_dimension]>
 {
     enum { is_pointer           =   0 };
     enum { is_reference         =   0 };
@@ -294,8 +295,8 @@ struct base_type_traits<T[N]>
     typedef T   cv_type;
 };
 
-template <ss_typename_param_k T, ss_size_t N>
-struct base_type_traits<T const[N]>
+template <ss_typename_param_k T, ss_size_t V_dimension>
+struct base_type_traits<T const[V_dimension]>
 {
     enum { is_pointer           =   0 };
     enum { is_reference         =   0 };
@@ -308,8 +309,8 @@ struct base_type_traits<T const[N]>
     typedef T const cv_type;
 };
 
-template <ss_typename_param_k T, ss_size_t N>
-struct base_type_traits<T volatile[N]>
+template <ss_typename_param_k T, ss_size_t V_dimension>
+struct base_type_traits<T volatile[V_dimension]>
 {
     enum { is_pointer           =   0 };
     enum { is_reference         =   0 };
@@ -322,8 +323,8 @@ struct base_type_traits<T volatile[N]>
     typedef T volatile  cv_type;
 };
 
-template <ss_typename_param_k T, ss_size_t N>
-struct base_type_traits<T const volatile[N]>
+template <ss_typename_param_k T, ss_size_t V_dimension>
+struct base_type_traits<T const volatile[V_dimension]>
 {
     enum { is_pointer           =   0 };
     enum { is_reference         =   0 };

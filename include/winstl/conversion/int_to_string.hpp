@@ -4,11 +4,11 @@
  * Purpose:     WinSTL integer to string conversions.
  *
  * Created:     31st July 2002
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MAJOR      2
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MINOR      1
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   14
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       58
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   15
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,9 +162,10 @@ public:
 };
 
 
-template< ss_typename_param_k C
-        , ws_size_t           CCH
-        >
+template<
+    ss_typename_param_k C
+,   ws_size_t           V_internalSize
+>
 struct Slot
 {
     Slot(Slot* next)
@@ -197,16 +198,17 @@ struct Slot
         WINSTL_API_EXTERNAL_MemoryManagement_HeapFree(WINSTL_API_EXTERNAL_MemoryManagement_GetProcessHeap(), 0, pv);
     }
 
-    C       buff[CCH];
+    C       buff[V_internalSize];
     Slot*   next;
 };
 
-template< ss_typename_param_k C
-        , ws_size_t           CCH
-        >
+template<
+    ss_typename_param_k C
+,   ws_size_t           V_internalSize
+>
 struct Key
 {
-    typedef Slot<C, CCH>    Slot;
+    typedef Slot<C, V_internalSize>                         Slot;
 
     // This is admittedly totally gross, but it works and will be portable
     // across different compilers. The reason it works is that s_index is
@@ -337,24 +339,25 @@ private:
 #endif /* STLSOFT_CF_NAMESPACE_SUPPORT */
 
 
-template< ss_typename_param_k C
-        , ws_size_t           CCH
-        >
+template<
+    ss_typename_param_k C
+,   ws_size_t           V_internalSize
+>
 inline C* i2str_get_tss_buffer()
 {
 #if defined(_WINSTL_INT_TO_STRING_USE_DECLSPECTHREAD_FOR_EXES)
-    __declspec(thread) static C s_buffer[CCH];
+    __declspec(thread) static C s_buffer[V_internalSize];
 
     return s_buffer;
 #else
 
-#ifdef STLSOFT_CF_NAMESPACE_SUPPORT
-    typedef int_to_string_tls::Key<C, CCH>      Key;
-    typedef int_to_string_tls::Slot<C, CCH>     Slot;
-#else
-    typedef Key<C, CCH>                         Key;
-    typedef Slot<C, CCH>                        Slot;
-#endif /* STLSOFT_CF_NAMESPACE_SUPPORT */
+# ifdef STLSOFT_CF_NAMESPACE_SUPPORT
+    typedef int_to_string_tls::Key<C, V_internalSize>       Key;
+    typedef int_to_string_tls::Slot<C, V_internalSize>      Slot;
+# else
+    typedef Key<C, V_internalSize>                          Key;
+    typedef Slot<C, V_internalSize>                         Slot;
+# endif /* STLSOFT_CF_NAMESPACE_SUPPORT */
 
     static Key  s_index;
     Slot*       slot = s_index.GetSlot();
@@ -367,7 +370,6 @@ inline C* i2str_get_tss_buffer()
     return slot->buff;
 #endif /* dll */
 }
-
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** Converts a signed 8-bit integer to a character string

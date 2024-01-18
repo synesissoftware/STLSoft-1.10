@@ -3,6 +3,10 @@
 
 | Date                  | News Item                                                 |
 | --------------------- | --------------------------------------------------------- |
+| 18th January 2024     |   Release of STLSoft 1.10.5                               |
+| 16th January 2024     |   Release of STLSoft 1.10.4                               |
+| 12th January 2024     |   Release of STLSoft 1.10.3                               |
+| 3rd January 2024      |   Release of STLSoft 1.10.2                               |
 | 16th December 2023    |   Release of [STLSoft 1.9.136](https://github.com/synesissoftware/STLSoft-1.9)  |
 | 13th December 2023    |   Release of STLSoft 1.10.1                               |
 | 26th April 2021       |   Release of STLSoft 1.10.1 beta 33                       |

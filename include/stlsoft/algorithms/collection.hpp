@@ -4,11 +4,11 @@
  * Purpose:     Whole collection algorithms.
  *
  * Created:     17th January 2002
- * Updated:     16th December 2023
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MAJOR    3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_MINOR    1
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_REVISION 5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     82
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_REVISION 6
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_COLLECTION_EDIT     83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,14 +109,15 @@ inline void fill_all(C &container, V const& value)
  * \param ar The array
  * \param value The value to set to each element in the array
  */
-// [[synesis:function:algorithm: fill_all(T-A<T, N> ar, T<T> const& value)]]
-template<   ss_typename_param_k T
-        ,   ss_size_t           N
-        ,   ss_typename_param_k V
-        >
-inline void fill_all(T (&ar)[N], V const& value)
+// [[synesis:function:algorithm: fill_all(T-A<T, V_dimension> ar, T<T> const& value)]]
+template<
+    ss_typename_param_k T
+,   ss_size_t           V_dimension
+,   ss_typename_param_k V
+>
+inline void fill_all(T (&ar)[V_dimension], V const& value)
 {
-    fill(&ar[0], &ar[N], value);
+    fill(&ar[0], &ar[V_dimension], value);
 }
 #endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
 
@@ -146,14 +147,15 @@ inline UF for_all(C &container, UF func)
  * \param ar The array
  * \param func The function to be applied to each element in the array
  */
-// [[synesis:function:algorithm: for_all(T-A<T, N> ar, T<UF> func)]]
-template<   ss_typename_param_k T
-        ,   ss_size_t           N
-        ,   ss_typename_param_k UF
-        >
-inline UF for_all(T (&ar)[N], UF func)
+// [[synesis:function:algorithm: for_all(T-A<T, V_dimension> ar, T<UF> func)]]
+template<
+    ss_typename_param_k T
+,   ss_size_t           V_dimension
+,   ss_typename_param_k UF
+>
+inline UF for_all(T (&ar)[V_dimension], UF func)
 {
-    return std_for_each(&ar[0], &ar[N], func);
+    return std_for_each(&ar[0], &ar[V_dimension], func);
 }
 #endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
 
@@ -201,14 +203,15 @@ inline O copy_all(C &container, O dest)
  * \param ar The array
  * \param dest The output iterator to which each element will be copied
  */
-template<   ss_typename_param_k T
-        ,   ss_size_t           N
-        ,   ss_typename_param_k O
-        >
-// [[synesis:function:algorithm: copy_all(T-A<T, N> ar, T<O> dest)]]
-inline O copy_all(T (&ar)[N], O dest)
+template<
+    ss_typename_param_k T
+,   ss_size_t           V_dimension
+,   ss_typename_param_k O
+>
+// [[synesis:function:algorithm: copy_all(T-A<T, V_dimension> ar, T<O> dest)]]
+inline O copy_all(T (&ar)[V_dimension], O dest)
 {
-    return std_copy(&ar[0], &ar[N], dest);
+    return std_copy(&ar[0], &ar[V_dimension], dest);
 }
 #endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
 

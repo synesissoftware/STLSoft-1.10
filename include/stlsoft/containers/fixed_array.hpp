@@ -5,7 +5,7 @@
  *              fixed_array_4d template classes.
  *
  * Created:     4th August 1998
- * Updated:     16th January 2024
+ * Updated:     17th January 2024
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode,
  *              requesting the function call operator, and for requesting
@@ -63,8 +63,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MINOR      9
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   11
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       204
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   12
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       205
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -843,11 +843,11 @@ inline ss_typename_type_ret_k fixed_array_1d<T, A, P, R>::pointer fixed_array_1d
 {
     allocator_type& ator = *this;
 
-# if __cplusplus >= 201703L
-    return ator.allocate(n);
-# else /* C++ version ? */
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
     return ator.allocate(n, NULL);
-# endif /* C++ version */
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+    return ator.allocate(n);
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
@@ -1181,11 +1181,11 @@ inline ss_typename_type_ret_k fixed_array_2d<T, A, P, R>::pointer fixed_array_2d
 {
     allocator_type& ator = *this;
 
-# if __cplusplus >= 201703L
-    return ator.allocate(n);
-# else /* C++ version ? */
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
     return ator.allocate(n, NULL);
-# endif /* C++ version */
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+    return ator.allocate(n);
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
@@ -1578,11 +1578,11 @@ inline ss_typename_type_ret_k fixed_array_3d<T, A, P, R>::pointer fixed_array_3d
 {
     allocator_type& ator = *this;
 
-# if __cplusplus >= 201703L
-    return ator.allocate(n);
-# else /* C++ version ? */
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
     return ator.allocate(n, NULL);
-# endif /* C++ version */
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+    return ator.allocate(n);
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
@@ -1980,11 +1980,11 @@ inline ss_typename_type_ret_k fixed_array_4d<T, A, P, R>::pointer fixed_array_4d
 {
     allocator_type& ator = *this;
 
-# if __cplusplus >= 201703L
-    return ator.allocate(n);
-# else /* C++ version ? */
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
     return ator.allocate(n, NULL);
-# endif /* C++ version */
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+    return ator.allocate(n);
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 }
 
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>

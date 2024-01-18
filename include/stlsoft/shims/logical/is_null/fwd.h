@@ -4,11 +4,11 @@
  * Purpose:     Forward declaration for logical shim is_null.
  *
  * Created:     31st March 2007
- * Updated:     26th December 2020
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_MAJOR      2
 # define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_MINOR      0
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_REVISION   3
-# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_EDIT       21
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_REVISION   4
+# define STLSOFT_VER_STLSOFT_SHIMS_LOGICAL_IS_NULL_H_FWD_EDIT       22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -82,6 +82,9 @@ namespace stlsoft
  * forward declarations
  */
 
+#ifndef __cplusplus
+STLSOFT_INLINE
+#endif
 ss_truthy_t
 is_null(
     void const volatile* pv

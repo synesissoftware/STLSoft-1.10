@@ -4,11 +4,11 @@
  * Purpose:     integer to string slice conversions.
  *
  * Created:     18th December 2016
- * Updated:     26th December 2020
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_MINOR    0
-# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_REVISION 1
-# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_EDIT     6
+# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_REVISION 2
+# define STLSOFT_VER_STLSOFT_CONVERSION_H_ITOSLICE_EDIT     7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -90,7 +90,7 @@ namespace stlsoft
  */
 
 STLSOFT_INLINE
-STLSOFT_NS_QUAL(stlsoft_C_string_slice_a_t)
+stlsoft_C_string_slice_a_t
 stlsoft_C_itoslice_a(
     int             value
 ,   ss_char_a_t*    dest
@@ -100,7 +100,7 @@ stlsoft_C_itoslice_a(
     stlsoft_C_string_slice_a_t  r;
     int const                   n = stlsoft_C_snprintf(dest, cchDest, "%d", value);
 
-    if(n < 0)
+    if (n < 0)
     {
         r.len   =   0;
         r.ptr   =   NULL;
@@ -125,7 +125,7 @@ stlsoft_C_utoslice_a(
     stlsoft_C_string_slice_a_t  r;
     int const                   n = stlsoft_C_snprintf(dest, cchDest, "%u", value);
 
-    if(n < 0)
+    if (n < 0)
     {
         r.len   =   0;
         r.ptr   =   NULL;
@@ -150,7 +150,7 @@ stlsoft_C_ltoslice_a(
     stlsoft_C_string_slice_a_t  r;
     int const                   n = stlsoft_C_snprintf(dest, cchDest, "%ld", value);
 
-    if(n < 0)
+    if (n < 0)
     {
         r.len   =   0;
         r.ptr   =   NULL;
@@ -175,7 +175,7 @@ stlsoft_C_lutoslice_a(
     stlsoft_C_string_slice_a_t  r;
     int const                   n = stlsoft_C_snprintf(dest, cchDest, "%lu", value);
 
-    if(n < 0)
+    if (n < 0)
     {
         r.len   =   0;
         r.ptr   =   NULL;

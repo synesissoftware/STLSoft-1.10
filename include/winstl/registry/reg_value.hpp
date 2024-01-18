@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -23,7 +23,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -69,8 +69,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  10
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      126
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  11
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      127
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,10 +159,11 @@ class reg_blob
 {
 /// \name Member Types
 /// @{
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   ws_byte_t
-                                            ,   processheap_allocator<ws_byte_t>
-                                            ,   CCH_REG_API_AUTO_BUFFER
-                                            >               buffer_type;
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        ws_byte_t
+    ,   processheap_allocator<ws_byte_t>
+    ,   CCH_REG_API_AUTO_BUFFER
+    >                                                       buffer_type;
 public:
     /// The allocator type
     typedef A                                               allocator_type;
@@ -182,12 +183,13 @@ public:
     typedef ws_ptrdiff_t                                    difference_type;
 #if defined(STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT)
     /// The non-mutating (const) reverse iterator type
-    typedef const_reverse_iterator_base <   const_iterator
-                                        ,   value_type const
-                                        ,   const_reference
-                                        ,   const_pointer
-                                        ,   difference_type
-                                        >                   const_reverse_iterator;
+    typedef const_reverse_iterator_base<
+        const_iterator
+    ,   value_type const
+    ,   const_reference
+    ,   const_pointer
+    ,   difference_type
+    >                                                       const_reverse_iterator;
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 /// @}
 
@@ -279,48 +281,50 @@ class basic_reg_value
 /// @{
 public:
     /// The character type
-    typedef C                                                           char_type;
+    typedef C                                               char_type;
     /// The traits type
-    typedef T                                                           traits_type;
+    typedef T                                               traits_type;
     /// The allocator type
-    typedef A                                                           allocator_type;
+    typedef A                                               allocator_type;
     /// The current parameterisation of the type
-    typedef basic_reg_value<C, T, A>                                    class_type;
+    typedef basic_reg_value<C, T, A>                        class_type;
     /// The size type
-    typedef ss_typename_type_k traits_type::size_type                   size_type;
+    typedef ss_typename_type_k traits_type::size_type       size_type;
     /// The string type
-    typedef ss_typename_type_k traits_type::string_type                 string_type;
+    typedef ss_typename_type_k traits_type::string_type     string_type;
 #ifndef WINSTL_REG_VALUE_NO_MULTI_SZ
     /// The string vector type
-    typedef STLSOFT_NS_QUAL_STD(vector)<string_type>                    strings_type;
+    typedef STLSOFT_NS_QUAL_STD(vector)<string_type>        strings_type;
 #endif /* !WINSTL_REG_VALUE_NO_MULTI_SZ */
     /// The key type
 #if defined(STLSOFT_CF_THROW_BAD_ALLOC) && \
     defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER == 1100
     /* WSCB: VC5 has an internal compiler error if use traits_type::hkey_type */
-    typedef HKEY                                                        hkey_type;
+    typedef HKEY                                            hkey_type;
 #else /* ? compiler */
-    typedef ss_typename_type_k traits_type::hkey_type                   hkey_type;
+    typedef ss_typename_type_k traits_type::hkey_type       hkey_type;
 #endif /* compiler */
     /// The blob type
-    typedef reg_blob<A>                                                 blob_type;
+    typedef reg_blob<A>                                     blob_type;
 private:
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   char_type
-                                            ,   allocator_type
-                                            ,   CCH_REG_API_AUTO_BUFFER
-                                            >                           char_buffer_type_;
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   ws_byte_t
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        char_type
+    ,   allocator_type
+    ,   CCH_REG_API_AUTO_BUFFER
+    >                                                       char_buffer_type_;
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        ws_byte_t
 #ifdef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
-                                            ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<ws_byte_t>::other
+    ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<ws_byte_t>::other
 #else /* ? STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   processheap_allocator<ws_byte_t>
+    ,   processheap_allocator<ws_byte_t>
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   CCH_REG_API_AUTO_BUFFER
-                                            >                           byte_buffer_type_;
+    ,   CCH_REG_API_AUTO_BUFFER
+    >                                                       byte_buffer_type_;
 private:
     /// The results type of the Registry API
-    typedef ss_typename_type_k traits_type::result_type                 result_type;
+    typedef ss_typename_type_k traits_type::result_type     result_type;
 /// @}
 
 /// \name Construction
@@ -419,17 +423,30 @@ private:
  *
  * \ingroup group__library__Windows_Registry
  */
-typedef basic_reg_value<ws_char_a_t, reg_traits<ws_char_a_t>, processheap_allocator<ws_char_a_t> >  reg_value_a;
+typedef basic_reg_value<
+    ws_char_a_t
+,   reg_traits<ws_char_a_t>
+,   processheap_allocator<ws_char_a_t>
+>                                                           reg_value_a;
 /** Specialisation of the basic_reg_value template for the Unicode character type \c wchar_t
  *
  * \ingroup group__library__Windows_Registry
  */
-typedef basic_reg_value<ws_char_w_t, reg_traits<ws_char_w_t>, processheap_allocator<ws_char_w_t> >  reg_value_w;
+typedef basic_reg_value<
+    ws_char_w_t
+,   reg_traits<ws_char_w_t>
+,   processheap_allocator<ws_char_w_t>
+>                                                           reg_value_w;
 /** Specialisation of the basic_reg_value template for the Win32 character type \c TCHAR
  *
  * \ingroup group__library__Windows_Registry
  */
-typedef basic_reg_value<TCHAR, reg_traits<TCHAR>, processheap_allocator<TCHAR> >                    reg_value;
+typedef basic_reg_value<
+    TCHAR
+,   reg_traits<TCHAR>
+,   processheap_allocator<TCHAR>
+>                                                           reg_value;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
