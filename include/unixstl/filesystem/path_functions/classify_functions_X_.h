@@ -106,7 +106,7 @@ unixstl_C_path_classify_alwaysInvalidChars_X_()
     UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_  r = { STLSOFT_NUM_ELEMENTS(s_invalidCards), s_invalidCards };
 
 #if 0
-
+/*
     < (less than)
     > (greater than)
     | (vertical bar or pipe)
@@ -118,6 +118,7 @@ unixstl_C_path_classify_alwaysInvalidChars_X_()
     : (colon)
     / (forward slash)
     \ (backslash)
+*/
 #endif
 
     return r;
@@ -320,7 +321,7 @@ unixstl_C_path_classify_impl_X_(
             case '/':
             case '\\':
 
-                ((*p0 == '\\') ? lastBSlash : lastFSlash) = p0;
+                *((*p0 == '\\') ? &lastBSlash : &lastFSlash) = p0;
 
                 lastDot = ss_nullptr_k;
 

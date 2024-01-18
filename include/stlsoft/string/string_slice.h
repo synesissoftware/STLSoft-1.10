@@ -4,11 +4,11 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     24th December 2020
+ * Updated:     18th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    5
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     28
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 2
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,7 +162,7 @@ namespace stlsoft
  */
 
 #ifdef __cplusplus
-#ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
+# ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
 template <ss_typename_param_k C>
 struct string_slice_selection_traits_t;
@@ -178,22 +178,20 @@ struct string_slice_selection_traits_t<wchar_t>
 {
     typedef stlsoft_C_string_slice_w_t  slice_type;
 };
-
-#endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+# endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////
  * shims
  */
 
+typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       stlsoft_C_string_slice_a_t;
+
 #ifndef STLSOFT_NO_NAMESPACE
 
 typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       string_slice_a_t;
 typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       string_slice_m_t;
 typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_w_t)       string_slice_w_t;
-
-typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_m_t)       stlsoft_C_string_slice_a_t;
-typedef STLSOFT_NS_GLOBAL(stlsoft_C_string_slice_w_t)       stlsoft_C_string_slice_w_t;
 
 /* stlsoft_C_string_slice_m_t const& */
 
