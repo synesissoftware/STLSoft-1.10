@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     16th January 2024
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MAJOR       6
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MINOR       0
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_REVISION    3
-# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        53
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_MINOR       1
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_REVISION    1
+# define STLSOFT_VER_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_FEATURES_EDIT        55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,13 +136,16 @@
  * TODO: This should be resolving solely on the library (and version), and not
  * involving the compiler.
  */
-#define STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT  /* This is standard behaviour */
 
-#if defined(STLSOFT_COMPILER_IS_DMC)
-# if defined(STLSOFT_CF_STD_LIBRARY_IS_HP_SGI)
-#  undef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
-# endif /* std library */
-#endif /* compiler */
+#if __cplusplus < 201703L
+# define STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT  /* This is standard behaviour */
+
+# if defined(STLSOFT_COMPILER_IS_DMC)
+#  if defined(STLSOFT_CF_STD_LIBRARY_IS_HP_SGI)
+#   undef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
+#  endif /* std library */
+# endif /* compiler */
+#endif /* C++ version */
 
 
 /** \def STLSOFT_LF_ALLOCATOR_DEALLOCATE_HAS_COUNT
@@ -237,6 +240,31 @@
 #  undef STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT
 # endif /* C++ version */
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
+
+
+/** \def STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+ *
+ * \ingroup group__library__Memory
+ *
+ * Indicates, when defined, that <code>std::allocator_traits</code> are
+ * defined and well-supported.
+ */
+
+#if 0
+#elif __cplusplus >= 201703L
+
+# define STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+#elif __cplusplus >= 201403L
+
+# if 0 || \
+     defined(STLSOFT_COMPILER_IS_CLANG) || \
+     defined(STLSOFT_COMPILER_IS_GCC) || \
+     0
+
+#  define STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+# endif
+#else
+#endif
 
 
 /* /////////////////////////////////////////////////////////////////////////

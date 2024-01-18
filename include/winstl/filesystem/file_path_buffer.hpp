@@ -5,14 +5,14 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     7th February 2002
- * Updated:     2nd January 2021
+ * Updated:     17th January 2024
  *
  * Thanks to:   Pablo Aguilar for discovering the Borland weirdness which is now
  *              addressed with the calc_path_max_() method.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_MAJOR    4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_MINOR    6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_REVISION 14
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_EDIT     148
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_REVISION 15
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_PATH_BUFFER_EDIT     149
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,17 +169,17 @@ struct is_ansi<ws_char_a_t>
  * of the get_drivesvar_() method, although it can be reset by calling the
  * refresh() method on the buffer class.
  *
- * \param C The character type
- * \param A The allocator type
- * \param CCH The size of the internal member path structure. On translators that support default template arguments this default to (\c 1 + \c WINSTL_CONST_MAX_PATH)
+ * \tparam C The character type
+ * \tparam A The allocator type
  */
-template<   ss_typename_param_k C
+template <
+    ss_typename_param_k C
 #ifdef STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT
-        ,   ss_typename_param_k A = processheap_allocator<C>
+,   ss_typename_param_k A = processheap_allocator<C>
 #else /* ? STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        ,   ss_typename_param_k A /* = processheap_allocator<C> */
+,   ss_typename_param_k A /* = processheap_allocator<C> */
 #endif /* STLSOFT_CF_TEMPLATE_CLASS_DEFAULT_CLASS_ARGUMENT_SUPPORT */
-        >
+>
 class basic_file_path_buffer
 {
 /// \name Member Constants
@@ -198,18 +198,19 @@ private:
 
     /// The buffer type
 #ifdef WINSTL_FILE_PATH_BUFFER_USE_AUTO_BUFFER
-    typedef STLSOFT_NS_QUAL(auto_buffer)<   C
+    typedef STLSOFT_NS_QUAL(auto_buffer)<
+        C
 # if defined(STLSOFT_COMPILER_IS_BORLAND)
     // This is necessary, since Borland will attempt an auto_buffer with what
     // seems like 0 size, or maybe it just can't define the type. Who can tell?
-                                            ,   1 + WINSTL_CONST_MAX_PATH
+    ,   1 + WINSTL_CONST_MAX_PATH
 # else /* ? compiler */
-                                            ,   internalBufferSize
+    ,   internalBufferSize
 # endif /* compiler */
-                                            ,   A
-                                            >                       buffer_type;
+    ,   A
+    >                                                       buffer_type;
 #else /* ? WINSTL_FILE_PATH_BUFFER_USE_AUTO_BUFFER */
-    typedef STLSOFT_NS_QUAL_STD(vector)<C, A>                       buffer_type;
+    typedef STLSOFT_NS_QUAL_STD(vector)<C, A>               buffer_type;
 #endif /* WINSTL_FILE_PATH_BUFFER_USE_AUTO_BUFFER */
 /// @}
 
@@ -217,19 +218,19 @@ private:
 /// @{
 public:
     /// The character type
-    typedef C                                                       char_type;
+    typedef C                                               char_type;
     /// The allocator type
-    typedef A                                                       allocator_type;
+    typedef A                                               allocator_type;
     /// The current parameterisation of the type
-    typedef basic_file_path_buffer<C, A>                            class_type;
+    typedef basic_file_path_buffer<C, A>                    class_type;
     /// The value type
-    typedef ss_typename_type_k buffer_type::value_type              value_type;
+    typedef ss_typename_type_k buffer_type::value_type      value_type;
     /// The reference type
-    typedef value_type&                                             reference;
+    typedef value_type&                                     reference;
     /// The non-mutating (const) reference type
-    typedef value_type const&                                       const_reference;
+    typedef value_type const&                               const_reference;
     /// The size type
-    typedef ss_typename_type_k buffer_type::size_type               size_type;
+    typedef ss_typename_type_k buffer_type::size_type       size_type;
 /// @}
 
 /// \name Construction
@@ -447,7 +448,7 @@ private:
             size_type const         n   =   m_buffer.size() - ecs;
             char_type const*        p   =   &m_buffer[0] + n;
 
-            if(0 != ::memcmp(p, ec, sizeof(char_type) * ecs))
+            if (0 != ::memcmp(p, ec, sizeof(char_type) * ecs))
             {
                 return false;
             }
@@ -464,7 +465,7 @@ private:
     {
         size_type   n;
 
-        if(winstl_C_internal_IsWindows9x(NULL, NULL, NULL))
+        if (winstl_C_internal_IsWindows9x(NULL, NULL, NULL))
         {
             n = CCH_9x;
         }
@@ -520,17 +521,26 @@ private:
  *
  * \ingroup group__library__FileSystem
  */
-typedef basic_file_path_buffer<ws_char_a_t, processheap_allocator<ws_char_a_t> >    file_path_buffer_a;
+typedef basic_file_path_buffer<
+    ws_char_a_t
+,   processheap_allocator<ws_char_a_t>
+>                                                           file_path_buffer_a;
 /** Specialisation of the basic_file_path_buffer template for the Unicode character type \c wchar_t
  *
  * \ingroup group__library__FileSystem
  */
-typedef basic_file_path_buffer<ws_char_w_t, processheap_allocator<ws_char_w_t> >    file_path_buffer_w;
+typedef basic_file_path_buffer<
+    ws_char_w_t
+,   processheap_allocator<ws_char_w_t>
+>                                                           file_path_buffer_w;
 /** Specialisation of the basic_file_path_buffer template for the ambient character type \c TCHAR
  *
  * \ingroup group__library__FileSystem
  */
-typedef basic_file_path_buffer<TCHAR, processheap_allocator<TCHAR> >                file_path_buffer;
+typedef basic_file_path_buffer<
+    TCHAR
+,   processheap_allocator<TCHAR>
+>                                                           file_path_buffer;
 
 /* /////////////////////////////////////////////////////////////////////////
  * Support for PlatformSTL redefinition by inheritance+namespace, for confused

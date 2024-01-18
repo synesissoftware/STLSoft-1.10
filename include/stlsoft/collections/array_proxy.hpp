@@ -6,11 +6,11 @@
  *              problems.
  *
  * Created:     11th November 2002
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,10 +54,10 @@
 #define STLSOFT_INCL_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_MAJOR    4
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_MINOR    0
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_REVISION 7
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_EDIT     68
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_MAJOR      4
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_MINOR      0
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_REVISION   8
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ARRAY_PROXY_EDIT       69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -148,12 +148,12 @@ public:
     /// \param ar The array
     template<
         ss_typename_param_k D
-    ,   ss_size_t           N
+    ,   ss_size_t           V_dimension
     >
     ss_explicit_k
-    array_proxy(D (&ar)[N])
+    array_proxy(D (&ar)[V_dimension])
         : m_begin(&ar[0])
-        , m_end(&ar[0] + N)
+        , m_end(&ar[0] + V_dimension)
     {
         // Ensures that D is a derived type of T. (Actually that is
         // handled in the initialiser list, but putting it here
@@ -169,12 +169,12 @@ public:
     ///
     /// \param ar The array
     template<
-        ss_size_t N
+        ss_size_t V_dimension
     >
     ss_explicit_k
-    array_proxy(T (&ar)[N])
+    array_proxy(T (&ar)[V_dimension])
         : m_begin(&ar[0])
-        , m_end(&ar[0] + N)
+        , m_end(&ar[0] + V_dimension)
     {}
 #  endif /* STLSOFT_CF_NON_TEMPLATE_CTOR_REQUIRED_WITH_TEMPLATE_CTOR */
 # endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */
@@ -362,15 +362,15 @@ private:
 #ifdef STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
 template<
     ss_typename_param_k T
-,   ss_size_t           N
+,   ss_size_t           V_dimension
 >
 inline
 array_proxy<T>
 make_array_proxy(
-    T (&t)[N]
+    T (&t)[V_dimension]
 )
 {
-    return array_proxy<T>(&t[0], &t[N]);
+    return array_proxy<T>(&t[0], &t[V_dimension]);
 //    return array_proxy<T>(t); // This one not used, because CodeWarrior gets confused
 }
 #endif /* STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT */

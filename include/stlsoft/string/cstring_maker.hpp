@@ -4,7 +4,7 @@
  * Purpose:     Simple utility class for creating (constant) C-strings.
  *
  * Created:     14th May 2004
- * Updated:     16th January 2024
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     62
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -157,10 +157,15 @@ template<
 struct cstring_maker
 {
 public: // types
+    /// The character type
     typedef C                                               char_type;
+    /// The allocator type
     typedef A                                               allocator_type;
+    /// The traits type
     typedef T                                               traits_type;
+    /// The size type
     typedef ss_size_t                                       size_type;
+    /// This type
     typedef cstring_maker<C, A, T>                          class_type;
 private:
     typedef long                                            count_type;
@@ -216,11 +221,11 @@ public:
 
         cb = (cb + (AllocationGranularity - 1)) & ~(AllocationGranularity - 1);
 
-#if __cplusplus >= 201703L
-        block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb)));
-#else /* C++ version ? */
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
         block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb, NULL)));
-#endif /* C++ version */
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+        block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb)));
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 
         if(NULL == pblock)
         {

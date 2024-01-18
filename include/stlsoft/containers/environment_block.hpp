@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     26th December 2020
+ * Updated:     17th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,10 +52,10 @@
 #define STLSOFT_INCL_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MAJOR    4
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MINOR    2
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION 9
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT     58
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MAJOR     4
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MINOR     2
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION  10
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT      59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,21 +122,21 @@ class basic_environment_block
 /// @{
 public:
     /// The value type
-    typedef C                                   value_type;
+    typedef C                                               value_type;
     /// The char type
-    typedef C                                   char_type;
+    typedef C                                               char_type;
     /// The traits type
-    typedef T                                   traits_type;
+    typedef T                                               traits_type;
     /// The allocator type
-    typedef A                                   allocator_type;
+    typedef A                                               allocator_type;
     /// The current parameterisation of the type
-    typedef basic_environment_block<C, T, A>    class_type;
+    typedef basic_environment_block<C, T, A>                class_type;
     /// The mutating (non-const) pointer type
-    typedef char_type*                          pointer;
+    typedef char_type*                                      pointer;
     /// The non-mutating (const) pointer type
-    typedef char_type const*                    const_pointer;
+    typedef char_type const*                                const_pointer;
     /// The size type
-    typedef ss_size_t                           size_type;
+    typedef ss_size_t                                       size_type;
 /// @}
 
 /// \name Construction
@@ -283,28 +283,31 @@ private:
 
 // Members
 private:
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   char_type
-                                            ,   allocator_type
-                                            ,   1024
-                                            >               char_buffer_type;
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        char_type
+    ,   allocator_type
+    ,   1024
+    >                                                       char_buffer_type;
 
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   size_type
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        size_type
 #if defined(STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT)
-                                            ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<size_type>::other
+    ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<size_type>::other
 #else /* ? STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   ss_typename_type_k allocator_selector<size_type>::allocator_type
+    ,   ss_typename_type_k allocator_selector<size_type>::allocator_type
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   32
-                                            >               offset_buffer_type;
+    ,   32
+    >                                                       offset_buffer_type;
 
-    typedef STLSOFT_NS_QUAL(auto_buffer_old)<   const_pointer
+    typedef STLSOFT_NS_QUAL(auto_buffer_old)<
+        const_pointer
 #if defined(STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT)
-                                            ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<pointer>::other
+    ,   ss_typename_type_k allocator_type::ss_template_qual_k rebind<pointer>::other
 #else /* ? STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   ss_typename_type_k allocator_selector<pointer>::allocator_type
+    ,   ss_typename_type_k allocator_selector<pointer>::allocator_type
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
-                                            ,   32
-                                            >               pointer_buffer_type;
+    ,   32
+    >                                                       pointer_buffer_type;
 
     char_buffer_type        m_chars;
     offset_buffer_type      m_offsets;

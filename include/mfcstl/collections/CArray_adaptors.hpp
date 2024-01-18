@@ -5,7 +5,7 @@
  *              class templates.
  *
  * Created:     1st December 2002
- * Updated:     28th November 2020
+ * Updated:     17th January 2024
  *
  * Thanks to:   Nevin Liber and Scott Meyers for kicking my lazy behind, and
  *              requiring that I implement the full complement of standard
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,8 +59,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MAJOR    4
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MINOR    3
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_REVISION 10
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     100
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_REVISION 11
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     101
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,71 +181,97 @@ class CArray_adaptor_base
 /// @{
 public:
     /// The type of the underlying MFC array
-    typedef A                                                                   array_type;
+    typedef A                                               array_type;
 private:
-    typedef I                                                                   interface_class_type;
-    typedef T                                                                   array_traits_type;
+    typedef I                                               interface_class_type;
+    typedef T                                               array_traits_type;
 #if defined(MFCSTL_CARRAY_ADAPTORS_USE_BAD_ALLOC_POLICY)
-    typedef bad_alloc_throwing_policy                                           exception_translation_policy_type;
+    typedef bad_alloc_throwing_policy                       exception_translation_policy_type;
 #else /* ? MFCSTL_CARRAY_ADAPTORS_USE_BAD_ALLOC_POLICY */
-    typedef CMemoryException_throwing_policy                                    exception_translation_policy_type;
+    typedef CMemoryException_throwing_policy                exception_translation_policy_type;
 #endif /* MFCSTL_CARRAY_ADAPTORS_USE_BAD_ALLOC_POLICY */
 public:
     /// The value type
     ///
     /// \note If the compiler report "use of undefined type" when you're using the adaptor class(es)
     /// with CArray<>, ensure that you've included <b>afxtempl</b> <i>before</i> you include this file.
-    typedef ss_typename_type_k array_traits_type::value_type                    value_type;
+    typedef ss_typename_type_k array_traits_type::value_type
+                                                            value_type;
     /// The allocator type
-    typedef afx_allocator<value_type>                                           allocator_type;
-    /// The mutating (non-const) reference type
-    typedef ss_typename_type_k allocator_type::reference                        reference;
+    typedef afx_allocator<value_type>                       allocator_type;
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+    /// The allocator traits type
+    typedef std::allocator_traits<allocator_type>           allocator_traits_type;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
+#ifdef STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT
+    /// The reference type
+    typedef ss_typename_type_k allocator_traits_type::value_type&
+                                                            reference;
     /// The non-mutating (const) reference type
-    typedef ss_typename_type_k allocator_type::const_reference                  const_reference;
-    /// The mutating (non-const) pointer type
-    typedef ss_typename_type_k allocator_type::pointer                          pointer;
+    typedef ss_typename_type_k allocator_traits_type::value_type const&
+                                                            const_reference;
+    /// The pointer type
+    typedef ss_typename_type_k allocator_traits_type::pointer
+                                                            pointer;
     /// The non-mutating (const) pointer type
-    typedef ss_typename_type_k allocator_type::const_pointer                    const_pointer;
+    typedef ss_typename_type_k allocator_traits_type::const_pointer
+                                                            const_pointer;
+#else /* ? STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
+    /// The mutating (non-const) reference type
+    typedef ss_typename_type_k allocator_type::reference    reference;
+    /// The non-mutating (const) reference type
+    typedef ss_typename_type_k allocator_type::const_reference
+                                                            const_reference;
+    /// The mutating (non-const) pointer type
+    typedef ss_typename_type_k allocator_type::pointer      pointer;
+    /// The non-mutating (const) pointer type
+    typedef ss_typename_type_k allocator_type::const_pointer
+                                                            const_pointer;
+#endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
     /// The mutating (non-const) iterator type
     typedef
 # if !defined(STLSOFT_COMPILER_IS_BORLAND)
            ss_typename_type_k
 # endif /* compiler */
-                       pointer_iterator <   value_type
-                                        ,   pointer
-                                        ,   reference
-                                        >::type                                 iterator;
+                       pointer_iterator<
+                            value_type
+                        ,   pointer
+                        ,   reference
+                        >::type                             iterator;
     /// The non-mutating (const) iterator type
     typedef
 # if !defined(STLSOFT_COMPILER_IS_BORLAND)
          ss_typename_type_k
 # endif /* compiler */
-                       pointer_iterator <   value_type const
-                                        ,   const_pointer
-                                        ,   const_reference
-                                        >::type                                 const_iterator;
+                       pointer_iterator<
+                            value_type const
+                        ,   const_pointer
+                        ,   const_reference
+                        >::type                             const_iterator;
     /// The size type
-    typedef ms_size_t                                                           size_type;
+    typedef ms_size_t                                       size_type;
     /// The difference type
-    typedef ms_ptrdiff_t                                                        difference_type;
+    typedef ms_ptrdiff_t                                    difference_type;
     /// The instantiation of the current type
-    typedef CArray_adaptor_base<A, I, T>                                        class_type;
+    typedef CArray_adaptor_base<A, I, T>                    class_type;
 #ifdef STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT
     /// The mutating (non-const) reverse iterator type
-    typedef ss_typename_type_k reverse_iterator_generator   <   iterator
-                                                            ,   value_type
-                                                            ,   reference
-                                                            ,   pointer
-                                                            ,   difference_type
-                                                            >::type             reverse_iterator;
+    typedef ss_typename_type_k reverse_iterator_generator<
+        iterator
+    ,   value_type
+    ,   reference
+    ,   pointer
+    ,   difference_type
+    >::type                                                 reverse_iterator;
 
     /// The non-mutating (const) reverse iterator type
-    typedef ss_typename_type_k const_reverse_iterator_generator <   const_iterator
-                                                            ,   value_type
-                                                            ,   const_reference
-                                                            ,   const_pointer
-                                                            ,   difference_type
-                                                            >::type             const_reverse_iterator;
+    typedef ss_typename_type_k const_reverse_iterator_generator<
+        const_iterator
+    ,   value_type
+    ,   const_reference
+    ,   const_pointer
+    ,   difference_type
+    >::type                                                 const_reverse_iterator;
 #endif /* STLSOFT_LF_BIDIRECTIONAL_ITERATOR_SUPPORT */
 /// @}
 
