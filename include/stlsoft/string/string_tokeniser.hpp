@@ -4,11 +4,11 @@
  * Purpose:     String token parsing class.
  *
  * Created:     6th January 2001
- * Updated:     13th December 2023
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_MINOR     1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_REVISION  14
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      237
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_TOKENISER_EDIT      238
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -542,9 +542,9 @@ class string_tokeniser
 /// \name Member Types
 /// @{
 public:
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef string_tokeniser<S, D, B, V, T, P>              class_type;
-    /// This tokeniser parameterisation
+    /// The current specialisation of the type
     typedef string_tokeniser<S, D, B, V, T, P>              tokeniser_type;
     /// The sequence string type
     typedef S                                               string_type;

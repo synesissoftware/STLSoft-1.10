@@ -4,11 +4,11 @@
  * Purpose:     String token parsing class using char-sets.
  *
  * Created:     17th October 2005
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_MINOR     0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_REVISION  8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_EDIT      37
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHARSET_TOKENISER_EDIT      38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -207,7 +207,7 @@ class charset_tokeniser
 private:
     typedef string_tokeniser<S, D, B, V, T, P>                          parent_class_type;
 public:
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef charset_tokeniser<S, B, V, T, D, P>                         class_type;
     /// The sequence string type
     typedef ss_typename_type_k parent_class_type::string_type           string_type;

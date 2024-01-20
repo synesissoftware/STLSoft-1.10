@@ -4,11 +4,11 @@
  * Purpose:     Safe interface casting functions.
  *
  * Created:     25th June 2002
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -64,7 +64,7 @@
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_MAJOR      5
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_MINOR      2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_REVISION   14
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_EDIT       134
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_EDIT       135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -325,7 +325,7 @@ public:
     typedef X                                                               exception_policy_type;
     /// The thrown type
     typedef ss_typename_type_k exception_policy_type::thrown_type           thrown_type;
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef interface_cast_base<I, R, X>                                    class_type;
 /// @}
 
@@ -465,7 +465,7 @@ class interface_cast_noaddref
 private: // Member Types
     typedef interface_cast_base<I, noaddref_release<I>, X>                  parent_class_type;
 public:
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef interface_cast_noaddref<I, X>                                   class_type;
     /// The interface pointer type
     typedef ss_typename_type_k parent_class_type::interface_pointer_type    interface_pointer_type;
@@ -551,7 +551,7 @@ class interface_cast_addref
 private: // Member Types
     typedef interface_cast_base<I, addref_release<I>, X>                    parent_class_type;
 public:
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef interface_cast_addref<I, X>                                     class_type;
     /// The interface pointer type
     typedef ss_typename_type_k parent_class_type::interface_pointer_type    interface_pointer_type;
@@ -613,7 +613,7 @@ class interface_cast_tester
 private: // Member Types
     typedef interface_cast_base<I, noaddref_release<I>, ignore_interface_cast_exception>    parent_class_type;
 public:
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef interface_cast_tester<I>                                                        class_type;
     /// The interface pointer type
     typedef ss_typename_type_k parent_class_type::interface_pointer_type                    interface_pointer_type;

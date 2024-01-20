@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     17th January 2024
+ * Updated:     20th January 2024
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -70,7 +70,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      127
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      128
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@ class reg_blob
 public:
     /// The allocator type
     typedef A                                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef reg_blob<A>                                     class_type;
     /// The value type
     typedef ws_byte_t                                       value_type;
@@ -286,7 +286,7 @@ public:
     typedef T                                               traits_type;
     /// The allocator type
     typedef A                                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_reg_value<C, T, A>                        class_type;
     /// The size type
     typedef ss_typename_type_k traits_type::size_type       size_type;

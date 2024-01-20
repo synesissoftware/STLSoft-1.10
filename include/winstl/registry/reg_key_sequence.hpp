@@ -13,11 +13,11 @@
  *              basic_reg_key_sequence class interface.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -64,7 +64,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_MAJOR      3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_MINOR      9
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_REVISION   11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_EDIT       151
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_EDIT       152
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@ public:
     typedef T                                                                   traits_type;
     /// The allocator type
     typedef A                                                                   allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_reg_key_sequence<C, T, A>                                     class_type;
     /// The key type
     typedef basic_reg_key<C, T, A>                                              key_type;
@@ -405,7 +405,7 @@ public:
     typedef V                                                           value_type;
     /// The allocator type
     typedef A                                                           allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_reg_key_sequence_iterator<C, T, V, A>                 class_type;
     /// The size type
     typedef ss_typename_type_k traits_type::size_type                   size_type;

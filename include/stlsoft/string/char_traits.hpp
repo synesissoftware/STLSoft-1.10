@@ -4,11 +4,11 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     16th December 2023
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     89
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@ struct stlsoft_char_traits
 public:
     /// The char type
     typedef C                                   char_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef stlsoft_char_traits<C>              class_type;
     /// The integer type
     typedef ss_int_t                            int_type;
@@ -450,7 +450,7 @@ private:
 public:
     /// The character type
     typedef C                                   char_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef stlsoft_char_traits_safe<C>         class_type;
     /// The integer type
     typedef ss_int_t                            int_type;
@@ -643,7 +643,7 @@ struct char_traits
 {
     typedef stlsoft_char_traits<C>                          parent_class_type;
 public:
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef char_traits<C>                                  class_type;
     /// The character type
     typedef ss_typename_type_k parent_class_type::char_type char_type;
@@ -671,7 +671,7 @@ struct char_traits_safe
 {
     typedef stlsoft_char_traits_safe<C>                     parent_class_type;
 public:
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef char_traits_safe<C>                             class_type;
     /// The character type
     typedef ss_typename_type_k parent_class_type::char_type char_type;

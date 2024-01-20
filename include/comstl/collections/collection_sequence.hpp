@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for COM collection interfaces.
  *
  * Created:     17th September 1998
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Thanks:      To Eduardo Bezerra and Vivi Orunitia for reporting
  *              incompatibilities with Borland's 5.82 (Turbo C++). The awful
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_REVISION 17
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     118
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     119
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,18 +140,19 @@ namespace comstl_project
  * The various parameterising types are used to stipulate the interface and the
  * value type, and how they are to be handled.
  *
- * For example, the following parameterisation defines a sequence operating
+ * For example, the following specialisation defines a sequence operating
  * over a notional <b>IGUIDCollection</b> collection instance.
  *
 \code
-typedef collection_sequence<IGUIDCollection
-                          , IEnumGUID
-                          , GUID
-                          , GUID_policy
-                          , GUID const&
-                          , forward_cloning_policy<IEnumGUID>
-                          , 5
-                          >    collection_sequence_t;
+typedef collection_sequence<
+    IGUIDCollection
+,   IEnumGUID
+,   GUID
+,   GUID_policy
+,   GUID const&
+,   forward_cloning_policy<IEnumGUID>
+,   5
+>           collection_sequence_t;
 \endcode
  *
  * The value type is <b>GUID</b> and it is returned as a reference, as
@@ -239,7 +240,7 @@ public:
 #endif /* compiler */
     /// The policy for acquiring the enumerator from the collection
     typedef EAP                                                                 enumerator_acquisition_policy_type;
-    /// Type of the current parameterisation
+    /// The current specialisation of the type
     typedef collection_sequence<CI, EI, V, VP, R, CP, Q, EAP>                   class_type;
     /// The size type
     typedef ss_typename_type_k enumerator_sequence_type::size_type              size_type;

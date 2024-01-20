@@ -18,7 +18,7 @@
  *              ownership issues described in the article.
  *
  * Created:     15th January 2002
- * Updated:     20th December 2023
+ * Updated:     20th January 2024
  *
  * Thanks:      To Nevin Liber for pressing upon me the need to lead by
  *              example when writing books about good design/implementation;
@@ -26,7 +26,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -73,7 +73,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR       10
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION    9
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        264
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT        265
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -220,7 +220,7 @@ public:
     typedef C                                               char_type;
     /// The traits type
     typedef T                                               traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence<C, T>                   class_type;
     /// The value type
     typedef basic_findfile_sequence_value_type<C, T>        value_type;
@@ -425,7 +425,7 @@ public:
     typedef C                                               char_type;
     /// The traits type
     typedef T                                               traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence_value_type<C, T>        class_type;
     /// The find-data type
     typedef ss_typename_type_k traits_type::find_data_type  find_data_type;
@@ -567,7 +567,7 @@ public:
     typedef T                                               traits_type;
     /// The value type
     typedef V                                               value_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence_const_input_iterator<
         C
     ,   T

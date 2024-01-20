@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        109
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        110
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -151,7 +151,7 @@ public:
     typedef T                               traits_type;
     /// The allocator type
     typedef A                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_string_view<C, T, A>      class_type;
     /// The character type
     typedef value_type                      char_type;
@@ -330,7 +330,7 @@ public:
     /// string changes after this point, this will not be reflected in the value returned
     /// by c_str(), until such time as refresh() is called.
     ///
-    /// \note If the view's parameterisation is with a no-throw allocator, behaviour
+    /// \note If the view's specialisation is with a no-throw allocator, behaviour
     /// is undefined in con
     value_type const*       c_str() const;
 #if 0

@@ -4,11 +4,11 @@
  * Purpose:     Converts a Win32 error code to a printable string.
  *
  * Created:     13th July 2003
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MAJOR       4
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MINOR       6
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    12
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        106
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        107
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -186,7 +186,7 @@ public:
     typedef C                                               char_type;
     /// The traits_type
     typedef T                                               traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_error_desc<C, T>                          class_type;
     /// The error type
     typedef ws_dword_t                                      error_type;

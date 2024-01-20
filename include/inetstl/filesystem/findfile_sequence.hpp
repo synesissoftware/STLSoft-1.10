@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     18th January 2024
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR     3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR     0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION  24
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      163
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      164
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -190,7 +190,7 @@ public:
     typedef ss_typename_param_k exception_policy_type::thrown_type              thrown_type;
     /// The traits type
     typedef T                                                                   traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence<C, T, X>                                    class_type;
     /// The value type
     typedef basic_findfile_sequence_value_type<C, T, X>                         value_type;
@@ -392,7 +392,7 @@ public:
     typedef ss_typename_param_k exception_policy_type::thrown_type  thrown_type;
     /// The traits type
     typedef T                                                       traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence_value_type<C, T, X>             class_type;
     /// The find-data type
     typedef ss_typename_type_k traits_type::find_data_type          find_data_type;
@@ -521,7 +521,7 @@ public:
     typedef T                                                           traits_type;
     /// The value type
     typedef V                                                           value_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findfile_sequence_const_input_iterator<C, T, X, V>    class_type;
     /// The find-data type
     typedef ss_typename_type_k traits_type::find_data_type              find_data_type;

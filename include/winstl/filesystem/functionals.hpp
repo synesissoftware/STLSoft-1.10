@@ -4,11 +4,11 @@
  * Purpose:     File-system related functions and predicates.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR     2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION  5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      103
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT      104
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -261,7 +261,7 @@ public:
     typedef ss_typename_type_k parent_class_type::second_argument_type  second_argument_type;
     /// The result type
     typedef ss_typename_type_k parent_class_type::result_type           result_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_compare<T_character, A1, A2>                           class_type;
 
 public: // operations
@@ -311,7 +311,7 @@ public:
     typedef ss_typename_type_k parent_class_type::second_argument_type  second_argument_type;
     /// The result type
     typedef ss_typename_type_k parent_class_type::result_type           result_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_compare_env<T_character, A1, A2>                       class_type;
 
 public: // operations
@@ -357,7 +357,7 @@ public:
     typedef T_character                                     char_type;
     /// The argument type
     typedef A                                               argument_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_exists<T_character, A>                     class_type;
 
 public: // operations
@@ -401,7 +401,7 @@ public:
     typedef T_character                                     char_type;
     /// The argument type
     typedef A                                               argument_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_exists_env<T_character, A>                 class_type;
 
 public: // operations
@@ -451,7 +451,7 @@ public:
     typedef T_character                                     char_type;
     /// The argument type
     typedef A                                               argument_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef directory_contains_file<T_character, A>         class_type;
 
 public: // construction

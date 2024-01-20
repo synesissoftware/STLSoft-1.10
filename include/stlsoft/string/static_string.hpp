@@ -4,7 +4,7 @@
  * Purpose:     basic_static_string class template.
  *
  * Created:     11th June 1994
- * Updated:     17th January 2024
+ * Updated:     20th January 2024
  *
  * Thanks:      To Cláudio Albuquerque for supplying the pop_back() member.
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     219
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     220
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -168,7 +168,7 @@ public:
     typedef ss_typename_type_k allocator_selector<
         C
     >::allocator_type                                       allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_static_string<
         C
     ,   V_internalSize

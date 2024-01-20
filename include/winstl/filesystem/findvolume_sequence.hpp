@@ -10,11 +10,11 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     16th December 2023
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -61,7 +61,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_REVISION  15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      134
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,7 +169,7 @@ public:
     typedef C                                                           char_type;
     /// The traits type
     typedef T                                                           traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findvolume_sequence<C, T>                             class_type;
     /// The value type
     typedef basic_findvolume_sequence_value_type<C, T>                  value_type;
@@ -234,7 +234,7 @@ public:
     typedef C                                           char_type;
     /// The traits type
     typedef T                                           traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findvolume_sequence_value_type<C, T>  class_type;
 
 public:
@@ -288,7 +288,7 @@ public:
     typedef T                                                   traits_type;
     /// The traits type
     typedef V                                                   value_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_findvolume_sequence_const_iterator<C, T, V>   class_type;
 
 /// \name Utility classes

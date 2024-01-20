@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_shim_string template class.
  *
  * Created:     9th July 2004
- * Updated:     17th January 2024
+ * Updated:     20th January 2024
  *
  * Thanks to:   Dimitri Kaparis, for spotting a typo in the string access
  *              shims.
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_REVISION    8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        65
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@ public:
     typedef A                                                   allocator_type;
     /// The traits type
     typedef T                                                   traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_shim_string<C, N, U, A, T>                    class_type;
     /// The size type
     typedef ss_size_t                                           size_type;
