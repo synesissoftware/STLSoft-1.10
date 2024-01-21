@@ -138,10 +138,10 @@
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetSystemDirectoryW */
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA                 STLSOFT_NS_GLOBAL_(GetUserNameA)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA STLSOFT_NS_GLOBAL_(GetUserNameA)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameA */
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW
-# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW                 STLSOFT_NS_GLOBAL_(GetUserNameW)
+# define WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW STLSOFT_NS_GLOBAL_(GetUserNameW)
 #endif /* !WINSTL_API_EXTERNAL_SystemInformation_GetUserNameW */
 
 #ifndef WINSTL_API_EXTERNAL_SystemInformation_GetWindowsDirectoryA

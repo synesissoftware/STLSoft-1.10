@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 6
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     31
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -205,9 +205,9 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcess0A(ws_char_a_t const* cmdLine)
  * obsolete functions
  */
 
-#define winstl__CreateProcessFEA    winstl_C_CreateProcessFEA_a
-#define winstl__CreateProcessEA     winstl_C_CreateProcessEA
-#define winstl__CreateProcess0A     winstl_C_CreateProcess0A
+#define winstl__CreateProcessFEA                            winstl_C_CreateProcessFEA_a
+#define winstl__CreateProcessEA                             winstl_C_CreateProcessEA
+#define winstl__CreateProcess0A                             winstl_C_CreateProcess0A
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace

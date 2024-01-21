@@ -69,17 +69,17 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Debugging_DebugBreak
-# define WINSTL_API_EXTERNAL_Debugging_DebugBreak                               STLSOFT_NS_GLOBAL_(DebugBreak)
+# define WINSTL_API_EXTERNAL_Debugging_DebugBreak           STLSOFT_NS_GLOBAL_(DebugBreak)
 #endif /* !WINSTL_API_EXTERNAL_Debugging_DebugBreak */
 
 #ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugString
-# define WINSTL_API_EXTERNAL_Debugging_OutputDebugString                        STLSOFT_NS_GLOBAL_(OutputDebugString)
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugString    STLSOFT_NS_GLOBAL_(OutputDebugString)
 #endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugString */
 #ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA
-# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA                       STLSOFT_NS_GLOBAL_(OutputDebugStringA)
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA   STLSOFT_NS_GLOBAL_(OutputDebugStringA)
 #endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugStringA */
 #ifndef WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW
-# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW                       STLSOFT_NS_GLOBAL_(OutputDebugStringW)
+# define WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW   STLSOFT_NS_GLOBAL_(OutputDebugStringW)
 #endif /* !WINSTL_API_EXTERNAL_Debugging_OutputDebugStringW */
 
 /* /////////////////////////////////////////////////////////////////////////

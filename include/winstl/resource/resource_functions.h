@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     21
+# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,9 +181,9 @@ winstl_C_Resource_loadCustomResource_W(
 }
 
 # ifdef UNICODE
-#  define winstl_C_Resource_loadCustomResource  winstl_C_Resource_loadCustomResource_W
+#  define winstl_C_Resource_loadCustomResource              winstl_C_Resource_loadCustomResource_W
 # else /* ? UNICODE */
-#  define winstl_C_Resource_loadCustomResource  winstl_C_Resource_loadCustomResource_A
+#  define winstl_C_Resource_loadCustomResource              winstl_C_Resource_loadCustomResource_A
 # endif /* UNICODE */
 
 /* /////////////////////////////////////////////////////////////////////////

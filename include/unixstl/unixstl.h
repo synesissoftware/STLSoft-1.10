@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     18th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,7 +51,7 @@
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MAJOR    3
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_MINOR    10
 # define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_REVISION 6
-# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     112
+# define UNIXSTL_VER_UNIXSTL_H_UNIXSTL_EDIT     113
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file unixstl/unixstl.h
@@ -718,8 +718,8 @@ typedef us_streamoff_t      streamoff_t;        /*!< streamoff */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define us_true_v       ss_true_v
-#define us_false_v      ss_false_v
+#define us_true_v                                           ss_true_v
+#define us_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* /////////////////////////////////////////////////////////////////////////

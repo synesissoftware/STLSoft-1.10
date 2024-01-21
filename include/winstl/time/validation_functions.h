@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     12
+# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,11 +116,11 @@ namespace winstl_project
  * Mask of invalid time flags
  */
 
-#define WINSTL_INVALID_TIME_MILLISECONDS    (0x0010)
-#define WINSTL_INVALID_TIME_SECONDS         (0x0020)
-#define WINSTL_INVALID_TIME_MINUTES         (0x0040)
-#define WINSTL_INVALID_TIME_HOURS           (0x0080)
-#define WINSTL_INVALID_TIME_MASK            (0x00f0)
+#define WINSTL_INVALID_TIME_MILLISECONDS                    (0x0010)
+#define WINSTL_INVALID_TIME_SECONDS                         (0x0020)
+#define WINSTL_INVALID_TIME_MINUTES                         (0x0040)
+#define WINSTL_INVALID_TIME_HOURS                           (0x0080)
+#define WINSTL_INVALID_TIME_MASK                            (0x00f0)
 
 /** \def WINSTL_INVALID_DATE_DAYS
  * The time has an invalid days value
@@ -138,10 +138,10 @@ namespace winstl_project
  * Mask of invalid date flags
  */
 
-#define WINSTL_INVALID_DATE_DAYS            (0x0100)
-#define WINSTL_INVALID_DATE_MONTHS          (0x0200)
-#define WINSTL_INVALID_DATE_YEARS           (0x0400)
-#define WINSTL_INVALID_DATE_MASK            (0x0700)
+#define WINSTL_INVALID_DATE_DAYS                            (0x0100)
+#define WINSTL_INVALID_DATE_MONTHS                          (0x0200)
+#define WINSTL_INVALID_DATE_YEARS                           (0x0400)
+#define WINSTL_INVALID_DATE_MASK                            (0x0700)
 
 /** @} */
 
@@ -155,8 +155,8 @@ namespace winstl_project
  * Mask of invalid date flags
  */
 
-#define WINSTL_E_TIME_INVALIDDATE           MAKE_HRESULT(SEVERITY_ERROR, FACILITY_ITF, ERROR_INVALID_PARAMETER)
-#define WINSTL_E_TIME_INVALIDTIME           HRESULT_FROM_WIN32(ERROR_INVALID_TIME)
+#define WINSTL_E_TIME_INVALIDDATE                           MAKE_HRESULT(SEVERITY_ERROR, FACILITY_ITF, ERROR_INVALID_PARAMETER)
+#define WINSTL_E_TIME_INVALIDTIME                           HRESULT_FROM_WIN32(ERROR_INVALID_TIME)
 
 /** @} */
 

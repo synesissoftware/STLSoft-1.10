@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_REVISION 17
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     120
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     121
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -205,47 +205,76 @@ class collection_sequence
 /// \name Member Types
 /// @{
 private:
-    typedef enumerator_sequence<EI, V, VP, R, CP, Q>                            enumerator_sequence_type;
+    typedef enumerator_sequence<
+        EI
+    ,   V
+    ,   VP
+    ,   R
+    ,   CP
+    ,   Q
+    >                                                       enumerator_sequence_type;
 public:
     /// Collection interface type
-    typedef CI                                                                  collection_interface_type;
+    typedef CI                                              collection_interface_type;
     /// Enumerator interface type
-    typedef ss_typename_type_k enumerator_sequence_type::interface_type         enumerator_interface_type;
+    typedef ss_typename_type_k enumerator_sequence_type::interface_type
+                                                            enumerator_interface_type;
     /// Value type
-    typedef ss_typename_type_k enumerator_sequence_type::value_type             value_type;
+    typedef ss_typename_type_k enumerator_sequence_type::value_type
+                                                            value_type;
     /// Value policy type
-    typedef ss_typename_type_k enumerator_sequence_type::value_policy_type      value_policy_type;
+    typedef ss_typename_type_k enumerator_sequence_type::value_policy_type
+                                                            value_policy_type;
     /// Reference type
-    typedef ss_typename_type_k enumerator_sequence_type::reference              reference;
+    typedef ss_typename_type_k enumerator_sequence_type::reference
+                                                            reference;
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-    typedef ss_typename_type_k enumerator_sequence_type::reference_type         reference_type; // For backwards compatiblity
+    typedef ss_typename_type_k enumerator_sequence_type::reference_type
+                                                            reference_type; // For backwards compatiblity
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// The mutating (non-const) pointer type
-    typedef ss_typename_type_k enumerator_sequence_type::pointer                pointer;
+    typedef ss_typename_type_k enumerator_sequence_type::pointer
+                                                            pointer;
     /// The non-mutating (const) pointer type
-    typedef ss_typename_type_k enumerator_sequence_type::const_pointer          const_pointer;
+    typedef ss_typename_type_k enumerator_sequence_type::const_pointer
+                                                            const_pointer;
     /// The mutating (non-const) iterator type
-    typedef ss_typename_type_k enumerator_sequence_type::iterator               iterator;
+    typedef ss_typename_type_k enumerator_sequence_type::iterator
+                                                            iterator;
     /// The non-mutating (const) iterator type
-    typedef ss_typename_type_k enumerator_sequence_type::const_iterator         const_iterator;
+    typedef ss_typename_type_k enumerator_sequence_type::const_iterator
+                                                            const_iterator;
     /// Cloning policy type
-    typedef ss_typename_type_k enumerator_sequence_type::cloning_policy_type    cloning_policy_type;
+    typedef ss_typename_type_k enumerator_sequence_type::cloning_policy_type
+                                                            cloning_policy_type;
     /// Iterator tag type
-    typedef ss_typename_type_k enumerator_sequence_type::iterator_tag_type      iterator_tag_type;
+    typedef ss_typename_type_k enumerator_sequence_type::iterator_tag_type
+                                                            iterator_tag_type;
 #ifdef STLSOFT_COMPILER_IS_BORLAND
-# define retrievalQuanta                                                        Q
+# define retrievalQuanta                                    Q
 #else /* ? compiler */
     /// Retrieval quanta
-    enum                                                                      { retrievalQuanta = enumerator_sequence_type::retrievalQuanta };
+    enum                                                    { retrievalQuanta = enumerator_sequence_type::retrievalQuanta };
 #endif /* compiler */
     /// The policy for acquiring the enumerator from the collection
-    typedef EAP                                                                 enumerator_acquisition_policy_type;
+    typedef EAP                                             enumerator_acquisition_policy_type;
     /// The current specialisation of the type
-    typedef collection_sequence<CI, EI, V, VP, R, CP, Q, EAP>                   class_type;
+    typedef collection_sequence<
+        CI
+    ,   EI
+    ,   V
+    ,   VP
+    ,   R
+    ,   CP
+    ,   Q
+    ,   EAP
+    >                                                       class_type;
     /// The size type
-    typedef ss_typename_type_k enumerator_sequence_type::size_type              size_type;
+    typedef ss_typename_type_k enumerator_sequence_type::size_type
+                                                            size_type;
     /// The difference type
-    typedef ss_typename_type_k enumerator_sequence_type::difference_type        difference_type;
+    typedef ss_typename_type_k enumerator_sequence_type::difference_type
+                                                            difference_type;
 /// @}
 
 public:

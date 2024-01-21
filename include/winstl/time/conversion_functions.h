@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_MINOR    1
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_REVISION 7
-# define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_EDIT     66
+# define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_EDIT     67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -200,17 +200,17 @@ winstl_C_FILETIMEToUNIXTime(
  *
  * \deprecated Use winstl_C_UNIXTimeToFILETIME
  */
-# define winstl__UNIXTimeToFILETIME                 winstl_C_UNIXTimeToFILETIME
+# define winstl__UNIXTimeToFILETIME                         winstl_C_UNIXTimeToFILETIME
 /** \def winstl__UNIXTimeToFILETIME_us
  *
  * \deprecated Use winstl_C_UNIXTimeToFILETIME_us
  */
-# define winstl__UNIXTimeToFILETIME_us              winstl_C_UNIXTimeToFILETIME_us
+# define winstl__UNIXTimeToFILETIME_us                      winstl_C_UNIXTimeToFILETIME_us
 /** \def winstl__FILETIMEToUNIXTime
  *
  * \deprecated Use winstl_C_FILETIMEToUNIXTime
  */
-# define winstl__FILETIMEToUNIXTime                 winstl_C_FILETIMEToUNIXTime
+# define winstl__FILETIMEToUNIXTime                         winstl_C_FILETIMEToUNIXTime
 
 #endif /* obsolete || 1.9 */
 

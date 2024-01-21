@@ -4,13 +4,13 @@
  * Purpose:     TOOLHELP thread sequence class.
  *
  * Created:     21st May 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo for contributing this great library.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2007, Pablo Aguilar
  * Copyright (c) 2006-2007, Matthew Wilson
  * All rights reserved.
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_MAJOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_MINOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_REVISION    4
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_EDIT        21
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_THREAD_SEQUENCE_EDIT        22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -103,10 +103,10 @@ namespace winstl_project
  */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE                           THREADENTRY32
-#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST                           Thread32First
-#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT                            Thread32Next
-#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG                            TH32CS_SNAPTHREAD
+#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE           THREADENTRY32
+#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST           Thread32First
+#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT            Thread32Next
+#define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG            TH32CS_SNAPTHREAD
 #define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_CREATE_SNAPSHOT_FAIL_MESSAGE    ("Could not create thread list snapshot")
 #include <winstl/toolhelp/sequence_value_traits.hpp>
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */

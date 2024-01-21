@@ -69,7 +69,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     35
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      152
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      153
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,12 +116,12 @@
  */
 
 #ifdef _MSC_FULL_VER
-# define STLSOFT_MSVC_VER                   _MSC_FULL_VER
+# define STLSOFT_MSVC_VER                                   _MSC_FULL_VER
 #else /* ? _MSC_FULL_VER */
 # if _MSC_VER < 1200
-#  define STLSOFT_MSVC_VER                  (_MSC_VER * 10000)
+#  define STLSOFT_MSVC_VER                                  (_MSC_VER * 10000)
 # else
-#  define STLSOFT_MSVC_VER                  (_MSC_VER * 100000)
+#  define STLSOFT_MSVC_VER                                  (_MSC_VER * 100000)
 # endif
 #endif /* _MSC_FULL_VER */
 
@@ -269,7 +269,7 @@
 
 /* #define STLSOFT_CF_C99_INLINE_SUPPORT */
 
-#define STLSOFT_CUSTOM_C_INLINE             __inline
+#define STLSOFT_CUSTOM_C_INLINE                             __inline
 
 /* /////////////////////////////////////////////////////////////////////////
  * Support for C++ language features - 1
@@ -612,11 +612,11 @@
 # endif /* !_MANAGED */
 # define STLSOFT_CF_STDCALL_SUPPORTED
 
-# define STLSOFT_CDECL                  __cdecl
+# define STLSOFT_CDECL                                      __cdecl
 # ifndef _MANAGED
-#  define STLSOFT_FASTCALL              __fastcall
+#  define STLSOFT_FASTCALL                                  __fastcall
 # endif /* !_MANAGED */
-# define STLSOFT_STDCALL                __stdcall
+# define STLSOFT_STDCALL                                    __stdcall
 
 #elif defined(_M_IA64) || \
       defined(_M_X64)
@@ -633,12 +633,12 @@
  * integer sizes
  */
 
-#define _STLSOFT_SIZEOF_CHAR            (1)
-#define _STLSOFT_SIZEOF_SHORT           (2)
-#define _STLSOFT_SIZEOF_INT             (4)
-#define _STLSOFT_SIZEOF_LONG            (4)
+#define _STLSOFT_SIZEOF_CHAR                                (1)
+#define _STLSOFT_SIZEOF_SHORT                               (2)
+#define _STLSOFT_SIZEOF_INT                                 (4)
+#define _STLSOFT_SIZEOF_LONG                                (4)
 #if _MSC_VER >= 1400
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -666,42 +666,42 @@
 /* 8-bit integer */
 #define STLSOFT_CF_8BIT_INT_SUPPORT
 #if _MSC_VER >= 1020
-# define STLSOFT_SI08_T_BASE_TYPE   signed      __int8
-# define STLSOFT_UI08_T_BASE_TYPE   unsigned    __int8
+# define STLSOFT_SI08_T_BASE_TYPE                           signed      __int8
+# define STLSOFT_UI08_T_BASE_TYPE                           unsigned    __int8
 # if _MSC_VER == 1200
 #  define STLSOFT_CF_CHAR_DISTINCT_INT_TYPE
 # endif /* compiler */
 #else /* ? compiler */
-# define STLSOFT_SI08_T_BASE_TYPE   signed      char
-# define STLSOFT_UI08_T_BASE_TYPE   unsigned    char
+# define STLSOFT_SI08_T_BASE_TYPE                           signed      char
+# define STLSOFT_UI08_T_BASE_TYPE                           unsigned    char
 #endif /* compiler */
 
 /* 16-bit integer */
 #define STLSOFT_CF_16BIT_INT_SUPPORT
 #if _MSC_VER >= 1020
-# define STLSOFT_SI16_T_BASE_TYPE   signed      __int16
-# define STLSOFT_UI16_T_BASE_TYPE   unsigned    __int16
+# define STLSOFT_SI16_T_BASE_TYPE                           signed      __int16
+# define STLSOFT_UI16_T_BASE_TYPE                           unsigned    __int16
 # if _MSC_VER == 1200
 #  define STLSOFT_CF_SHORT_DISTINCT_INT_TYPE
 # endif /* compiler */
 #else /* ? compiler */
-# define STLSOFT_SI16_T_BASE_TYPE   signed      short
-# define STLSOFT_UI16_T_BASE_TYPE   unsigned    short
+# define STLSOFT_SI16_T_BASE_TYPE                           signed      short
+# define STLSOFT_UI16_T_BASE_TYPE                           unsigned    short
 #endif /* compiler */
 
 /* 32-bit integer */
 #define STLSOFT_CF_32BIT_INT_SUPPORT
 #if 0
 #elif _MSC_VER >= 1020
-# define STLSOFT_SI32_T_BASE_TYPE   signed      __int32
-# define STLSOFT_UI32_T_BASE_TYPE   unsigned    __int32
+# define STLSOFT_SI32_T_BASE_TYPE                           signed      __int32
+# define STLSOFT_UI32_T_BASE_TYPE                           unsigned    __int32
 # if _MSC_VER == 1200
 #  define STLSOFT_CF_INT_DISTINCT_INT_TYPE
 # endif /* compiler */
 # define STLSOFT_CF_LONG_DISTINCT_INT_TYPE
 #else /* ? compiler */
-# define STLSOFT_SI32_T_BASE_TYPE   signed      long
-# define STLSOFT_UI32_T_BASE_TYPE   unsigned    long
+# define STLSOFT_SI32_T_BASE_TYPE                           signed      long
+# define STLSOFT_UI32_T_BASE_TYPE                           unsigned    long
 # define STLSOFT_CF_INT_DISTINCT_INT_TYPE
 #endif /* compiler */
 
@@ -709,8 +709,8 @@
 #if _MSC_VER >= 1020
 # define STLSOFT_CF_64BIT_INT_SUPPORT
 # define STLSOFT_CF_64BIT_INT_IS___int64
-# define STLSOFT_SI64_T_BASE_TYPE   signed      __int64
-# define STLSOFT_UI64_T_BASE_TYPE   unsigned    __int64
+# define STLSOFT_SI64_T_BASE_TYPE                           signed      __int64
+# define STLSOFT_UI64_T_BASE_TYPE                           unsigned    __int64
 #endif /* compiler */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -819,7 +819,7 @@
 # define STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_ASSERT(expr)                   _STLSOFT_CUSTOM_ASSERT(expr)
 # if defined(_STLSOFT_CUSTOM_ASSERT_INCLUDE)
-#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME    _STLSOFT_CUSTOM_ASSERT_INCLUDE
+#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME                _STLSOFT_CUSTOM_ASSERT_INCLUDE
 # else /* ? _STLSOFT_CUSTOM_ASSERT_INCLUDE */
 #  error You must define _STLSOFT_CUSTOM_ASSERT_INCLUDE along with _STLSOFT_CUSTOM_ASSERT()
 # endif /* !_STLSOFT_CUSTOM_ASSERT_INCLUDE */
@@ -827,7 +827,7 @@
 # define __STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_CF_ASSERT_SUPPORT
  /* #define   __STLSOFT_CF_USE_cassert */
-# define __STLSOFT_CF_ASSERT_INCLUDE_NAME       <crtdbg.h>
+# define __STLSOFT_CF_ASSERT_INCLUDE_NAME                   <crtdbg.h>
 # define STLSOFT_ASSERT(expr)                   _ASSERTE(expr)
 #endif /* _STLSOFT_CUSTOM_ASSERT */
 
@@ -987,13 +987,13 @@
 # include <cstddef>
 # ifdef _XSTDDEF_
 #  undef _TRY_BEGIN
-#  define _TRY_BEGIN    if (1) {
+#  define _TRY_BEGIN                                        if (1) {
 #  undef _CATCH
 #  define _CATCH(x)     } else {
 #  undef _CATCH_ALL
-#  define _CATCH_ALL    } else {
+#  define _CATCH_ALL                                        } else {
 #  undef _CATCH_END
-#  define _CATCH_END    }
+#  define _CATCH_END                                        }
 # endif /* _XSTDDEF_ */
 #endif /* compiler */
 

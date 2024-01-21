@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_REVISION 12
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     271
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     272
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -204,48 +204,57 @@ class enumerator_sequence
 /// @{
 public:
     /// Interface type
-    typedef I                                                                   interface_type;
+    typedef I                                               interface_type;
     /// Value type
-    typedef V                                                                   value_type;
+    typedef V                                               value_type;
     /// Value policy type
-    typedef value_policy_adaptor<VP>                                            value_policy_type;
+    typedef value_policy_adaptor<VP>                        value_policy_type;
     /// Reference type
-    typedef R                                                                   reference;
+    typedef R                                               reference;
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-    typedef R                                                                   reference_type; // For backwards compatiblity
+    typedef R                                               reference_type; // For backwards compatiblity
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// The mutating (non-const) pointer type
 #if defined(STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF) && \
        !defined(STLSOFT_COMPILER_IS_BORLAND)
-    typedef ss_typename_type_k STLSOFT_NS_QUAL(select_first_type_if)<   value_type const*
-                                                                    ,   value_type*
-                                                                    ,   STLSOFT_NS_QUAL(base_type_traits)<R>::is_const
-                                                                    >::type     pointer;
+    typedef ss_typename_type_k STLSOFT_NS_QUAL(select_first_type_if)<
+        value_type const*
+    ,   value_type*
+    ,   STLSOFT_NS_QUAL(base_type_traits)<R>::is_const
+    >::type                                                 pointer;
 #else /* ? STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF */
-    typedef value_type*                                                         pointer;
+    typedef value_type*                                     pointer;
 #endif /* !STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF */
     /// The non-mutating (const) pointer type
-    typedef value_type const*                                                   const_pointer;
+    typedef value_type const*                               const_pointer;
     /// Cloning policy type
-    typedef CP                                                                  cloning_policy_type;
+    typedef CP                                              cloning_policy_type;
     /// Iterator tag type
-    typedef ss_typename_type_k cloning_policy_type::iterator_tag_type           iterator_tag_type;
+    typedef ss_typename_type_k cloning_policy_type::iterator_tag_type
+                                                            iterator_tag_type;
 #ifdef STLSOFT_COMPILER_IS_BORLAND
-# define retrievalQuanta                                                        Q
+# define retrievalQuanta                                    Q
 #else /* ? compiler */
     /// Retrieval quanta
-    enum                                                                      { retrievalQuanta = Q };
+    enum                                                    { retrievalQuanta = Q };
 #endif /* compiler */
     /// The current specialisation of the type
-    typedef enumerator_sequence<I, V, VP, R, CP, Q>                             class_type;
+    typedef enumerator_sequence<
+        I
+    ,   V
+    ,   VP
+    ,   R
+    ,   CP
+    ,   Q
+    >                                                       class_type;
     /// The current specialisation of the type
-    typedef class_type                                                          sequence_type;
+    typedef class_type                                      sequence_type;
     /// The size type
-    typedef cs_size_t                                                           size_type;
+    typedef cs_size_t                                       size_type;
     /// The difference type
-    typedef cs_ptrdiff_t                                                        difference_type;
+    typedef cs_ptrdiff_t                                    difference_type;
     /// The Boolean type
-    typedef cs_bool_t                                                           bool_type;
+    typedef cs_bool_t                                       bool_type;
 /// @}
 
 public:

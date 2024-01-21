@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions
  *
  * Created:     21st December 2020
- * Updated:     23rd March 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2024, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR     1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION  6
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      6
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT      7
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,12 +86,12 @@
 
 enum unixstl_C_path_classification_t
 {
-        UNIXSTL_C_PathType_MIN_VALUE                        =   -10000
+        UNIXSTL_C_PathType_MIN_VALUE            =   -10000
 
-    ,   UNIXSTL_C_PathType_InvalidSlashRuns                 =   -3
-    ,   UNIXSTL_C_PathType_InvalidChars                     =   -2
-    ,   UNIXSTL_C_PathType_Invalid                          =   -1
-    ,   UNIXSTL_C_PathType_Unknown                          =   0
+    ,   UNIXSTL_C_PathType_InvalidSlashRuns     =   -3
+    ,   UNIXSTL_C_PathType_InvalidChars         =   -2
+    ,   UNIXSTL_C_PathType_Invalid              =   -1
+    ,   UNIXSTL_C_PathType_Unknown              =   0
     ,   UNIXSTL_C_PathType_Empty
     ,   UNIXSTL_C_PathType_Relative
     ,   UNIXSTL_C_PathType_SlashRooted
@@ -145,15 +145,17 @@ typedef struct unixstl_C_path_classification_results_m_t    unixstl_C_path_class
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-# define UNIXSTL_C_PATH_CLASSIFY_IMPL_char_t_                       char
-# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_   stlsoft_C_string_slice_m_t
-# define unixstl_C_path_classification_results_X_t_                 unixstl_C_path_classification_results_m_t
-# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_          stlsoft_C_strnchr
-# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_        stlsoft_C_strnpbrkn
-# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_         stlsoft_C_strnstrn
-# define unixstl_C_path_classify_alwaysInvalidChars_X_              unixstl_C_path_classify_alwaysInvalidChars_m_
-# define unixstl_C_path_classify_root_X_                            unixstl_C_path_classify_root_m_
-# define unixstl_C_path_classify_impl_X_                            unixstl_C_path_classify_impl_m_
+# define UNIXSTL_C_PATH_CLASSIFY_IMPL_char_t_               char
+# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_ \
+                                                            stlsoft_C_string_slice_m_t
+# define unixstl_C_path_classification_results_X_t_         unixstl_C_path_classification_results_m_t
+# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_  stlsoft_C_strnchr
+# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_ \
+                                                            stlsoft_C_strnpbrkn
+# define UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_ stlsoft_C_strnstrn
+# define unixstl_C_path_classify_alwaysInvalidChars_X_      unixstl_C_path_classify_alwaysInvalidChars_m_
+# define unixstl_C_path_classify_root_X_                    unixstl_C_path_classify_root_m_
+# define unixstl_C_path_classify_impl_X_                    unixstl_C_path_classify_impl_m_
 # include <unixstl/filesystem/path_functions/classify_functions_X_.h>
 # undef UNIXSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef UNIXSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_

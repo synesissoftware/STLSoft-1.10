@@ -4,7 +4,7 @@
  * Purpose:     Compiler feature discrimination for SunPro C / SunPro C++.
  *
  * Created:     24th April 2008
- * Updated:     26th November 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Jonathan Wakely and Lars Ivar Igesund for help with
  *              getting STLSoft (and Pantheios) compatible with Solaris.
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -67,7 +67,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_SUNPRO_MAJOR      1
 # define STLSOFT_VER_H_STLSOFT_CCCAP_SUNPRO_MINOR      2
 # define STLSOFT_VER_H_STLSOFT_CCCAP_SUNPRO_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_SUNPRO_EDIT       16
+# define STLSOFT_VER_H_STLSOFT_CCCAP_SUNPRO_EDIT       17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -86,9 +86,9 @@
  */
 
 #ifdef __cplusplus
-# define _STLSOFT_SUNPRO_VER_   __SUNPRO_CC
+# define _STLSOFT_SUNPRO_VER_                               __SUNPRO_CC
 #else /* ? __cplusplus */
-# define _STLSOFT_SUNPRO_VER_   __SUNPRO_C
+# define _STLSOFT_SUNPRO_VER_                               __SUNPRO_C
 #endif /* __cplusplus */
 
 #define _STLSOFT_SUNPRO_VER_MAJOR   ((_STLSOFT_SUNPRO_VER_ & 0xff00) >> 8)
@@ -194,17 +194,17 @@
 
 #if defined(_LP64) || \
     defined(__LP64__)
-# define _STLSOFT_SIZEOF_CHAR           (1)
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (8)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_CHAR                               (1)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (8)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #else /* ? data model */
-# define _STLSOFT_SIZEOF_CHAR           (1)
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (4)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_CHAR                               (1)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (4)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #endif /* data model */
 
 
@@ -216,18 +216,18 @@
 # ifndef __LP64__
 #  error LP64 memory model is assumed on x64. Please contact Synesis Software
 # endif /* __LP64__ */
-# define _STLSOFT_SIZEOF_CHAR           (1)
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (8)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_CHAR                               (1)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (8)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #elif defined(__sparc) || \
       defined(__i386)
-# define _STLSOFT_SIZEOF_CHAR           (1)
-# define _STLSOFT_SIZEOF_SHORT          (2)
-# define _STLSOFT_SIZEOF_INT            (4)
-# define _STLSOFT_SIZEOF_LONG           (4)
-# define _STLSOFT_SIZEOF_LONG_LONG      (8)
+# define _STLSOFT_SIZEOF_CHAR                               (1)
+# define _STLSOFT_SIZEOF_SHORT                              (2)
+# define _STLSOFT_SIZEOF_INT                                (4)
+# define _STLSOFT_SIZEOF_LONG                               (4)
+# define _STLSOFT_SIZEOF_LONG_LONG                          (8)
 #else /* ? data model */
 # error Use of Sun Pro has not been verified on any operation system other than x86, x64 and Sparc. Please contact Synesis Software
 #endif /* data model */
@@ -235,25 +235,25 @@
 
 /* 8-bit integer */
 #define STLSOFT_CF_8BIT_INT_SUPPORT
-#define STLSOFT_SI08_T_BASE_TYPE        signed      char
-#define STLSOFT_UI08_T_BASE_TYPE        unsigned    char
+#define STLSOFT_SI08_T_BASE_TYPE                            signed      char
+#define STLSOFT_UI08_T_BASE_TYPE                            unsigned    char
 
 /* 16-bit integer */
 #define STLSOFT_CF_16BIT_INT_SUPPORT
-#define STLSOFT_SI16_T_BASE_TYPE        signed      short
-#define STLSOFT_UI16_T_BASE_TYPE        unsigned    short
+#define STLSOFT_SI16_T_BASE_TYPE                            signed      short
+#define STLSOFT_UI16_T_BASE_TYPE                            unsigned    short
 
 /* 32-bit integer */
 #define STLSOFT_CF_32BIT_INT_SUPPORT
-#define STLSOFT_SI32_T_BASE_TYPE        signed      int
-#define STLSOFT_UI32_T_BASE_TYPE        unsigned    int
+#define STLSOFT_SI32_T_BASE_TYPE                            signed      int
+#define STLSOFT_UI32_T_BASE_TYPE                            unsigned    int
 #define STLSOFT_CF_LONG_DISTINCT_INT_TYPE
 
 /* 64-bit integer */
 #define STLSOFT_CF_64BIT_INT_SUPPORT
 #define STLSOFT_CF_64BIT_INT_IS_long_long
-#define STLSOFT_SI64_T_BASE_TYPE        signed      long long
-#define STLSOFT_UI64_T_BASE_TYPE        unsigned    long long
+#define STLSOFT_SI64_T_BASE_TYPE                            signed      long long
+#define STLSOFT_UI64_T_BASE_TYPE                            unsigned    long long
 
 /* ///////////////////////////////////////////////
  * language features
@@ -415,7 +415,7 @@
 # define STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_ASSERT(expr)                   _STLSOFT_CUSTOM_ASSERT(expr)
 # if defined(_STLSOFT_CUSTOM_ASSERT_INCLUDE)
-#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME    _STLSOFT_CUSTOM_ASSERT_INCLUDE
+#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME                _STLSOFT_CUSTOM_ASSERT_INCLUDE
 # else
 #  error You must define _STLSOFT_CUSTOM_ASSERT_INCLUDE along with _STLSOFT_CUSTOM_ASSERT()
 # endif /* !_STLSOFT_CUSTOM_ASSERT_INCLUDE */
@@ -423,7 +423,7 @@
 # define __STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_CF_ASSERT_SUPPORT
 /* # define   __STLSOFT_CF_USE_cassert */
-# define __STLSOFT_CF_ASSERT_INCLUDE_NAME       <assert.h>
+# define __STLSOFT_CF_ASSERT_INCLUDE_NAME                   <assert.h>
 # define STLSOFT_ASSERT(expr)                   assert(expr)
 #endif /* _STLSOFT_CUSTOM_ASSERT */
 

@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    9
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        18
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -196,7 +196,7 @@ unixstl_C_get_home_directory_invoke_getenv_a_(
 # include <stlsoft/internal/warnings/pop/suppress_deprecation_.h>
 #else
 
-# define unixstl_C_get_home_directory_invoke_getenv_a_          STLSOFT_NS_GLOBAL(getenv)
+# define unixstl_C_get_home_directory_invoke_getenv_a_      STLSOFT_NS_GLOBAL(getenv)
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////

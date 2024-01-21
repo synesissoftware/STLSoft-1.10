@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_REVISION    8
-# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        78
+# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -309,37 +309,37 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_EnumRunning(IEnumMoniker** ppenumMoniker)
  *
  * \deprecated Use comstl_C_Rot_Register
  */
-# define comstl__Rot_Register               comstl_C_Rot_Register
+# define comstl__Rot_Register                               comstl_C_Rot_Register
 /** \def comstl__Rot_Revoke
  *
  * \deprecated Use comstl_C_Rot_Revoke
  */
-# define comstl__Rot_Revoke                 comstl_C_Rot_Revoke
+# define comstl__Rot_Revoke                                 comstl_C_Rot_Revoke
 /** \def comstl__Rot_IsRunning
  *
  * \deprecated Use comstl_C_Rot_IsRunning
  */
-# define comstl__Rot_IsRunning              comstl_C_Rot_IsRunning
+# define comstl__Rot_IsRunning                              comstl_C_Rot_IsRunning
 /** \def comstl__Rot_GetObject
  *
  * \deprecated Use comstl_C_Rot_GetObject
  */
-# define comstl__Rot_GetObject              comstl_C_Rot_GetObject
+# define comstl__Rot_GetObject                              comstl_C_Rot_GetObject
 /** \def comstl__Rot_NoteChangeTime
  *
  * \deprecated Use comstl_C_Rot_NoteChangeTime
  */
-# define comstl__Rot_NoteChangeTime         comstl_C_Rot_NoteChangeTime
+# define comstl__Rot_NoteChangeTime                         comstl_C_Rot_NoteChangeTime
 /** \def comstl__Rot_GetTimeOfLastChange
  *
  * \deprecated Use comstl_C_Rot_GetTimeOfLastChange
  */
-# define comstl__Rot_GetTimeOfLastChange    comstl_C_Rot_GetTimeOfLastChange
+# define comstl__Rot_GetTimeOfLastChange                    comstl_C_Rot_GetTimeOfLastChange
 /** \def comstl__Rot_EnumRunning
  *
  * \deprecated Use comstl_C_Rot_EnumRunning
  */
-# define comstl__Rot_EnumRunning            comstl_C_Rot_EnumRunning
+# define comstl__Rot_EnumRunning                            comstl_C_Rot_EnumRunning
 
 #endif /* obsolete || 1.9 */
 

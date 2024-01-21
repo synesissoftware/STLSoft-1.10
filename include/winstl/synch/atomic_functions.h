@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_MINOR     8
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  3
-# define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      230
+# define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      231
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,10 +109,10 @@
 # if defined(STLSOFT_CF_FASTCALL_SUPPORTED) && \
      !defined(STLSOFT_NO_FASTCALL)
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_FASTCALL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __fastcall
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __fastcall
 # elif defined(STLSOFT_CF_STDCALL_SUPPORTED)
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_STDCALL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __stdcall
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __stdcall
 # else
 #  error Need to define calling convention
 # endif /* call-conv */
@@ -121,7 +121,7 @@
       defined(WINSTL_ARCH_IS_X64)
 
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_CDECL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __cdecl
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __cdecl
 
 #else /* ? arch */
 # error Only defined for the Intel x86 and IA64 architectures

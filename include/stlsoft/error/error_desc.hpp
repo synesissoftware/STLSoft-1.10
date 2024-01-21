@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MINOR     3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  1
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      44
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,13 +111,13 @@
 #if (   defined(STLSOFT_COMPILER_IS_MSVC) || \
         defined(STLSOFT_COMPILER_IS_INTEL)) && \
     _MSC_VER >= 1300
-# define STLSOFT_ERROR_DESC_wcserror    ::_wcserror
+# define STLSOFT_ERROR_DESC_wcserror                        ::_wcserror
 #endif /* compiler */
 
 #if (   defined(STLSOFT_COMPILER_IS_MSVC) || \
         defined(STLSOFT_COMPILER_IS_INTEL)) && \
     _MSC_VER >= 1400
-# define STLSOFT_ERROR_DESC_wcserror_s  ::_wcserror_s
+# define STLSOFT_ERROR_DESC_wcserror_s                      ::_wcserror_s
 #endif /* compiler */
 
 #ifdef STLSOFT_USING_SAFE_STR_FUNCTIONS

@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       25
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -429,11 +429,11 @@ comstl_C_GUID_to_string(
 #else /* ? __cplusplus */
 
 # ifdef UNICODE
-#  define comstl_C_GUID_from_string     comstl_C_GUID_from_string_w
-#  define comstl_C_GUID_to_string       comstl_C_GUID_to_string_w
+#  define comstl_C_GUID_from_string                         comstl_C_GUID_from_string_w
+#  define comstl_C_GUID_to_string                           comstl_C_GUID_to_string_w
 # else /* ? UNICODE */
-#  define comstl_C_GUID_from_string     comstl_C_GUID_from_string_a
-#  define comstl_C_GUID_to_string       comstl_C_GUID_to_string_a
+#  define comstl_C_GUID_from_string                         comstl_C_GUID_from_string_a
+#  define comstl_C_GUID_to_string                           comstl_C_GUID_to_string_a
 # endif /* UNICODE */
 
 #endif /* __cplusplus */

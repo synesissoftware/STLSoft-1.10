@@ -44,14 +44,14 @@
 
 #ifndef WINSTL_INCL_WINSTL_H_WINSTL
 #define WINSTL_INCL_WINSTL_H_WINSTL
-#define WINSTL_INCL_H_WINSTL    /*!< Definition of previous include-guard symbol for winstl/winstl.h, for backwards compatibility. */
+#define WINSTL_INCL_H_WINSTL                                /*!< Definition of previous include-guard symbol for winstl/winstl.h, for backwards compatibility. */
 
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_H_WINSTL_MAJOR       3
 # define WINSTL_VER_WINSTL_H_WINSTL_MINOR       17
 # define WINSTL_VER_WINSTL_H_WINSTL_REVISION    6
-# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        220
+# define WINSTL_VER_WINSTL_H_WINSTL_EDIT        221
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file winstl/winstl.h
@@ -183,7 +183,7 @@
      !defined(NO_STRICT) &&\
      1
 #  ifdef _WINSTL_STRICT
-#   define STRICT 1
+#   define STRICT                                           1
 #  endif /* _WINSTL_STRICT */
 # endif /* !NO_STRICT && !_WINSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -322,9 +322,9 @@
  *  avoid C-style cast warnings.
  */
 # if defined(STLSOFT_COMPILER_IS_INTEL)
-#  define   INVALID_HANDLE_VALUE        STLSOFT_NS_QUAL(union_cast)<HANDLE>(WINSTL_NS_QUAL(ws_sptrint_t)(-1))
+#  define   INVALID_HANDLE_VALUE                            STLSOFT_NS_QUAL(union_cast)<HANDLE>(WINSTL_NS_QUAL(ws_sptrint_t)(-1))
 # else /* ? compiler */
-#  define   INVALID_HANDLE_VALUE        reinterpret_cast<HANDLE>(-1)
+#  define   INVALID_HANDLE_VALUE                            reinterpret_cast<HANDLE>(-1)
 # endif /* compiler */
 
 /** \def MAKEINTRESOURCEA
@@ -379,7 +379,7 @@
  *  avoid C-style cast warnings.
  */
 # undef     INVALID_FILE_SIZE
-# define    INVALID_FILE_SIZE           static_cast<DWORD>(0xFFFFFFFF)
+# define    INVALID_FILE_SIZE                               static_cast<DWORD>(0xFFFFFFFF)
 
 
 /** \def INVALID_SET_FILE_POINTER
@@ -387,7 +387,7 @@
  *  avoid C-style cast warnings.
  */
 # undef     INVALID_SET_FILE_POINTER
-# define    INVALID_SET_FILE_POINTER    static_cast<DWORD>(0xFFFFFFFF)
+# define    INVALID_SET_FILE_POINTER                        static_cast<DWORD>(0xFFFFFFFF)
 
 /** \def INVALID_FILE_ATTRIBUTES
  * A C++-only redefinition of this \#define which uses C++ cast operators to
@@ -396,16 +396,16 @@
 # ifdef INVALID_FILE_ATTRIBUTES
 #  undef INVALID_FILE_ATTRIBUTES
 # endif /* INVALID_FILE_ATTRIBUTES */
-# define INVALID_FILE_ATTRIBUTES        static_cast<DWORD>(0xFFFFFFFF)
+# define INVALID_FILE_ATTRIBUTES                            static_cast<DWORD>(0xFFFFFFFF)
 
 #else /* ? __cplusplus */
 
 # ifndef INVALID_SET_FILE_POINTER
-#  define INVALID_SET_FILE_POINTER      stlsoft_c_cast(DWORD, -1)
+#  define INVALID_SET_FILE_POINTER                          stlsoft_c_cast(DWORD, -1)
 # endif /* !INVALID_SET_FILE_POINTER */
 
 # ifndef INVALID_FILE_ATTRIBUTES
-#  define INVALID_FILE_ATTRIBUTES       stlsoft_c_cast(DWORD, -1)
+#  define INVALID_FILE_ATTRIBUTES                           stlsoft_c_cast(DWORD, -1)
 # endif /* !INVALID_FILE_ATTRIBUTES */
 
 #endif /* __cplusplus */
@@ -950,7 +950,7 @@ typedef ws_uptrint_t        uptrint_t;
  * used when there is a need to allocate the maximum possible size for a
  * file system path.
  */
-#define WINSTL_CONST_NT_MAX_PATH            (4 + 32767)
+#define WINSTL_CONST_NT_MAX_PATH                            (4 + 32767)
 
 /** \def WINSTL_CONST_MAX_PATH
  *
@@ -958,15 +958,15 @@ typedef ws_uptrint_t        uptrint_t;
 #if 0
 #elif defined(STLSOFT_DOCUMENTATION_SKIP_SECTION)
 
-# define WINSTL_CONST_MAX_PATH              (260)
+# define WINSTL_CONST_MAX_PATH                              (260)
 #elif defined(_MAX_PATH)
 
-# define WINSTL_CONST_MAX_PATH              _MAX_PATH
+# define WINSTL_CONST_MAX_PATH                              _MAX_PATH
 #elif defined(__CYGWIN__) || \
       defined(__MINGW32__) || \
       defined(__MINGW64__)
 
-# define WINSTL_CONST_MAX_PATH              (260)
+# define WINSTL_CONST_MAX_PATH                              (260)
 #else
 
 # error _MAX_PATH not defined, and not CygWin/MinGW compiler
@@ -994,8 +994,8 @@ const ws_size_t CONST_MAX_PATH          =   WINSTL_CONST_MAX_PATH;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define ws_true_v       ss_true_v
-#define ws_false_v      ss_false_v
+#define ws_true_v                                           ss_true_v
+#define ws_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* /////////////////////////////////////////////////////////////////////////

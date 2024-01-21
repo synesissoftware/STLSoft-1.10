@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     24th April 2004
- * Updated:     12th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -51,7 +51,7 @@
 # define INETSTL_VER_INETSTL_H_INETSTL_MAJOR    3
 # define INETSTL_VER_INETSTL_H_INETSTL_MINOR    10
 # define INETSTL_VER_INETSTL_H_INETSTL_REVISION 3
-# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     569
+# define INETSTL_VER_INETSTL_H_INETSTL_EDIT     570
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file inetstl/inetstl.h
@@ -151,7 +151,7 @@
      !defined(NO_STRICT) &&\
      1
 #  ifdef _INETSTL_STRICT
-#   define STRICT 1
+#   define STRICT                                           1
 #  endif /* _INETSTL_STRICT */
 # endif /* !NO_STRICT && !_INETSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -615,8 +615,8 @@ const is_size_t CONST_MAX_PATH          =   INETSTL_CONST_MAX_PATH;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define is_true_v       ss_true_v
-#define is_false_v      ss_false_v
+#define is_true_v                                           ss_true_v
+#define is_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
