@@ -5,11 +5,11 @@
  *              do or do not have a standard library.
  *
  * Created:     17th January 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MAJOR       3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_MINOR       5
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        91
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_STD_HPP_ALT_EDIT        92
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,14 +121,14 @@ void std_advance_impl(  I               &i
 # endif /* !STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT */
                     )
 {
-    if(n < 0)
+    if (n < 0)
     {
-        for(; 0 != n; --i, ++n)
+        for (; 0 != n; --i, ++n)
         {}
     }
     else
     {
-        for(; 0 != n; ++i, --n)
+        for (; 0 != n; ++i, --n)
         {}
     }
 }
@@ -212,7 +212,7 @@ inline O std_copy(I first, I last, O dest)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first, ++dest)
+    for (; first != last; ++first, ++dest)
     {
         *dest = *first;
     }
@@ -242,7 +242,7 @@ inline ss_size_t std_count_if(I first, I last, UP pred)
 
     for (r = 0; first != last; ++first)
     {
-        if(pred(*first))
+        if (pred(*first))
         {
             ++r;
         }
@@ -269,7 +269,7 @@ inline void std_fill(O first, O last, V const& value)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
         *first = value;
     }
@@ -294,7 +294,7 @@ inline void std_fill_n(O dest, ss_size_t n, V const& value)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; 0 != n; ++dest, --n)
+    for (; 0 != n; ++dest, --n)
     {
         *dest = value;
     }
@@ -318,9 +318,9 @@ inline I std_find(I first, I last, V const& value)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
-        if(value == *first)
+        if (value == *first)
         {
             break;
         }
@@ -347,9 +347,9 @@ inline I std_find_if(I first, I last, UP pred)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
-        if(pred(*first))
+        if (pred(*first))
         {
             break;
         }
@@ -376,7 +376,7 @@ inline UF std_for_each(I first, I last, UF func)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
         func(*first);
     }
@@ -396,9 +396,9 @@ template<   ss_typename_param_k I
 // [[synesis:function:algorithm: std_replace(T<I> first, T<I> last, T<V> const& valFind, T<V> const& valReplace)]]
 inline void std_replace(I first, I last, T const& valFind, T const& valReplace)
 {
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
-        if(valFind == *first)
+        if (valFind == *first)
         {
             *first = valReplace;
         }
@@ -462,7 +462,7 @@ inline O std_transform(I first, I last, O dest, UF func)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    for(; first != last; ++first, ++dest)
+    for (; first != last; ++first, ++dest)
     {
         *dest = func(*first);
     }
@@ -492,23 +492,23 @@ inline FI std_unique(FI first, FI last, BP pred)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    if(first != last)
+    if (first != last)
     {
 # ifdef STLSOFT_DEBUG
         const FI    start   =   first;
 # endif /* STLSOFT_DEBUG */
         FI          curr    =   first;  // The first elements is always unique
 
-        for(++first; first != last; ++first)
+        for (++first; first != last; ++first)
         {
-            if(pred(*first, *curr))
+            if (pred(*first, *curr))
             {
                 ; // Same, so skip it
             }
             else
             {
                 ++curr;
-                if(first != curr)
+                if (first != curr)
                 {
                     *curr = *first;
                 }
@@ -541,23 +541,23 @@ inline FI std_unique(FI first, FI last)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    if(first != last)
+    if (first != last)
     {
 # ifdef STLSOFT_DEBUG
         const FI    start   =   first;
 # endif /* STLSOFT_DEBUG */
         FI          curr    =   first;  // The first elements is always unique
 
-        for(++first; first != last; ++first)
+        for (++first; first != last; ++first)
         {
-            if(*first == *curr)
+            if (*first == *curr)
             {
                 ; // Same, so skip it
             }
             else
             {
                 ++curr;
-                if(first != curr)
+                if (first != curr)
                 {
                     *curr = *first;
                 }
@@ -592,7 +592,7 @@ inline OI std_unique_copy(FI first, FI last, OI dest)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    if(first != last)
+    if (first != last)
     {
 # ifdef STLSOFT_DEBUG
         const FI    start   =   first;
@@ -600,9 +600,9 @@ inline OI std_unique_copy(FI first, FI last, OI dest)
         FI          curr    =   first;  // The first elements is always unique
 
         *dest++ = *first++;
-        for(; first != last; ++first)
+        for (; first != last; ++first)
         {
-            if(*first == *curr)
+            if (*first == *curr)
             {
                 ; // Same, so skip it
             }
@@ -642,7 +642,7 @@ inline OI std_unique_copy(FI first, FI last, OI dest, BP pred)
 
 #else /* ? STLSOFT_CF_std_NAMESPACE */
 
-    if(first != last)
+    if (first != last)
     {
 # ifdef STLSOFT_DEBUG
         const FI    start   =   first;
@@ -650,9 +650,9 @@ inline OI std_unique_copy(FI first, FI last, OI dest, BP pred)
         FI          curr    =   first;  // The first elements is always unique
 
         *dest++ = *first++;
-        for(; first != last; ++first)
+        for (; first != last; ++first)
         {
-            if(pred(*first, *curr))
+            if (pred(*first, *curr))
             {
                 ; // Same, so skip it
             }

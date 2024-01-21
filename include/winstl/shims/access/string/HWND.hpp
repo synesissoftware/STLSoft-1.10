@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with Win32 strings.
  *
  * Created:     24th May 2002
- * Updated:     22nd December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MAJOR       4
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_MINOR       1
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_REVISION    10
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        128
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_HWND_EDIT        129
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ GetWindowTextLength_T_(
     const long          lbsStyle    =   0x0008L | 0x0800L;
 # endif /* NOWINSTYLES */
 
-    switch(ident)
+    switch (ident)
     {
         case    WindowIdent_ListBox:
             if (0 == (GetStyle(hwnd) & lbsStyle))
@@ -240,7 +240,7 @@ GetWindowText_A_(
     int                 sel;
     ws_size_t           cch;
 
-    switch(ident)
+    switch (ident)
     {
         case    WindowIdent_ListBox:
             if (0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))
@@ -290,7 +290,7 @@ GetWindowText_W_(
     WindowIdent const   ident   =   GetWindowIdent(hwnd);
     int                 sel;
 
-    switch(ident)
+    switch (ident)
     {
         case    WindowIdent_ListBox:
             if (0 == (GetStyle(hwnd) & (LBS_MULTIPLESEL | LBS_EXTENDEDSEL)))

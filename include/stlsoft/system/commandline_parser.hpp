@@ -4,11 +4,11 @@
  * Purpose:     commandline_parser class.
  *
  * Created:     20th May 2000
- * Updated:     25th October 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MAJOR    2
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_MINOR    1
 # define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_REVISION 9
-# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     50
+# define STLSOFT_VER_STLSOFT_SYSTEM_HPP_COMMANDLINE_PARSER_EDIT     51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -198,24 +198,24 @@ public:
         iterator        b       =   m_buffer.begin();
         iterator const  e       =   m_buffer.end() - 1;
 
-        for(; b != e; ++b)
+        for (; b != e; ++b)
         {
             const char_type ch  =   *b;
 
             STLSOFT_ASSERT('\0' != ch);
 
-            if('"' == ch)
+            if ('"' == ch)
             {
-                if(quotedArgumentStart == state)
+                if (quotedArgumentStart == state)
                 {
                     state   =   space;
                 }
-                else if(quotedArgument == state)
+                else if (quotedArgument == state)
                 {
                     *b      =   '\0';
                     state   =   space;
                 }
-                else if(space == state)
+                else if (space == state)
                 {
                     state   =   quotedArgumentStart;
                 }
@@ -223,18 +223,18 @@ public:
                 {
                 }
             }
-            else if(isspace(ch))
+            else if (isspace(ch))
             {
-                if(quotedArgumentStart == state)
+                if (quotedArgumentStart == state)
                 {
                     state   =   quotedArgument;
 
                     add_pointer(&*b);
                 }
-                else if(quotedArgument == state)
+                else if (quotedArgument == state)
                 {
                 }
-                else if(space == state)
+                else if (space == state)
                 {
                 }
                 else
@@ -248,13 +248,13 @@ public:
             }
             else
             {
-                if(quotedArgumentStart == state)
+                if (quotedArgumentStart == state)
                 {
                     state   =   quotedArgument;
 
                     add_pointer(&*b);
                 }
-                else if(space == state)
+                else if (space == state)
                 {
                     state   =   argument;
 
@@ -310,7 +310,7 @@ public:
 private:
     ss_bool_t   add_pointer(pointer_type p)
     {
-        if(!m_pointers.resize(1 + m_pointers.size()))
+        if (!m_pointers.resize(1 + m_pointers.size()))
         {
             return false;
         }

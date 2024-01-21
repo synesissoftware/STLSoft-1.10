@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        110
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        111
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -904,7 +904,7 @@ inline /* static */ ss_sint_t basic_string_view<C, T, A>::compare_( ss_typename_
     size_type   cmp_len =   (lhs_len < rhs_len) ? lhs_len : rhs_len;
     ss_int_t    result  =   traits_type::compare(lhs, rhs, cmp_len);
 
-    if(0 == result)
+    if (0 == result)
     {
         result = static_cast<ss_int_t>(lhs_len) - static_cast<ss_int_t>(rhs_len);
     }
@@ -935,7 +935,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ void basic_string_view<C, T, A>::close_set_null_() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         close_();
 
@@ -973,13 +973,13 @@ inline ss_bool_t basic_string_view<C, T, A>::is_valid() const
 {
     // NOTE: Must not call any methods or ctors in this function!!
 
-    if( 0 == m_length &&
+    if (0 == m_length &&
         NULL != m_cstr)
     {
         return false; // If the slice is empty, there should be no m_cstr
     }
 
-    if( 0 != m_length &&
+    if (0 != m_length &&
         NULL == m_base)
     {
         return false; // If the slice is non-empty, m_base should not be NULL
@@ -1091,7 +1091,7 @@ inline basic_string_view<C, T, A>::~basic_string_view() STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         close_();
     }
@@ -1261,7 +1261,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type   lhs_len =   length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1270,14 +1270,14 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type   rhs_len =   (NULL == rhs) ? 0 : traits_type::length(rhs);
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1299,7 +1299,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type   lhs_len =   length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1308,7 +1308,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1350,32 +1350,32 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type lhs_len = length();
 
-    if(pos == lhs_len)
+    if (pos == lhs_len)
     {
         lhs_len = 0u;
     }
-    else if(pos + cch > lhs_len)
+    else if (pos + cch > lhs_len)
     {
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type rhs_len = rhs.length();
 
-    if(posRhs == rhs_len)
+    if (posRhs == rhs_len)
     {
         rhs_len = 0u;
     }
-    else if(posRhs + cchRhs > rhs_len)
+    else if (posRhs + cchRhs > rhs_len)
     {
         rhs_len -= posRhs;
     }
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1397,16 +1397,16 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type lhs_len = length();
 
-    if(pos == lhs_len)
+    if (pos == lhs_len)
     {
         lhs_len = 0u;
     }
-    else if(pos + cch > lhs_len)
+    else if (pos + cch > lhs_len)
     {
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1471,7 +1471,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::const_reference basic_
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(!(index < size()))
+    if (!(index < size()))
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
@@ -1494,14 +1494,14 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(pos > size())
+    if (pos > size())
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
 
     STLSOFT_ASSERT(is_valid());
 
-    if(cch > (this->length() - pos))
+    if (cch > (this->length() - pos))
     {
         cch = this->length() - pos;
     }
@@ -1521,7 +1521,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(pos > size())
+    if (pos > size())
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
@@ -1551,14 +1551,14 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         // Already allocated, so return; if underlying
         return m_cstr;
     }
     else
     {
-        if(0 == m_length)
+        if (0 == m_length)
         {
             return empty_string_();
         }
@@ -1577,7 +1577,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
             // exhaustion is non-local and that the callee is going to suffer and die
             // anyway, irrespective of the fact that we've returned an invalid value
             // to it.
-            if(NULL != s)
+            if (NULL != s)
             {
                 traits_type::copy(s, m_base, m_length);
                 s[m_length] = '\0';
@@ -1599,7 +1599,7 @@ template<   ss_typename_param_k C
         >
 inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basic_string_view<C, T, A>::c_str(ss_bool_t bRefresh) const
 {
-    if(bRefresh)
+    if (bRefresh)
     {
         const_cast<class_type*>(this)->refresh();
     }
@@ -1688,9 +1688,9 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::size_type basic_string
 
     size_type   len =   length();
 
-    if(pos < len)
+    if (pos < len)
     {
-        if(len < pos + cch)
+        if (len < pos + cch)
         {
             cch = len - pos;
         }

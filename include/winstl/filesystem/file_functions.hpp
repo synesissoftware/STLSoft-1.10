@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for file handling
  *
  * Created:     1st January 2005
- * Updated:     15th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MAJOR      2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_MINOR      3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_REVISION   18
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       71
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FILE_FUNCTIONS_EDIT       72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -228,7 +228,7 @@ load_text_file_impl(
                             ,   (void (STLSOFT_CDECL *)(HANDLE))&filesys_traits_t::close_handle // This cast required by VC++ 5
                             ,   INVALID_HANDLE_VALUE);
 
-    if(INVALID_HANDLE_VALUE == h.get())
+    if (INVALID_HANDLE_VALUE == h.get())
     {
         DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -237,10 +237,10 @@ load_text_file_impl(
 
     ws_uint64_t             size    =   filesys_traits_t::get_file_size(h.get());
 
-    if( 0 != size &&
+    if (0 != size &&
         static_cast<ws_uint64_t>(~0) != size)
     {
-        if(size > 0xFFFFFFFF)
+        if (size > 0xFFFFFFFF)
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("Cannot read in files larger than 4GB"));
         }
@@ -256,7 +256,7 @@ load_text_file_impl(
             buffer_t    buffer(static_cast<ss_typename_type_k buffer_t::size_type>(size));
             DWORD       dw;
 
-            if(!::ReadFile(h.get(), &buffer[0], DWORD(buffer.size()), &dw, NULL))
+            if (!::ReadFile(h.get(), &buffer[0], DWORD(buffer.size()), &dw, NULL))
             {
                 DWORD const le = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -360,7 +360,7 @@ public:
     {
         ss_size_t   len =   STLSOFT_NS_QUAL(c_str_len)(s);
 
-        if( len > 0 &&
+        if (len > 0 &&
             '\r' == s[len])
         {
             return s;
@@ -383,9 +383,9 @@ void readlines_impl(CH const* p, ss_size_t len, C &container)
     char_t const*   p1  =   p0;
     char_t const*   end =   p + len;
 
-    while(end != STLSOFT_NS_QUAL(find_next_token)(p0, p1, end, static_cast<char_t>('\n')))
+    while (end != STLSOFT_NS_QUAL(find_next_token)(p0, p1, end, static_cast<char_t>('\n')))
     {
-        if( p1 > p0 &&
+        if (p1 > p0 &&
             '\r' == p1[-1])
         {
             --p1;
@@ -393,7 +393,7 @@ void readlines_impl(CH const* p, ss_size_t len, C &container)
 
         container.push_back(value_t(p0, static_cast<ws_size_t>(p1 - p0)));
 
-        if('\r' == *p1)
+        if ('\r' == *p1)
         {
             ++p1;
         }

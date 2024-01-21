@@ -4,11 +4,11 @@
  * Purpose:     String-switch functions.
  *
  * Created:     10th May 2010
- * Updated:     1st November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_MINOR    3
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_REVISION 4
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     30
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_HPP_STRING_SWITCH_EDIT     31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ namespace ximpl
 
             STLSOFT_COVER_MARK_LINE();
 
-            { for(ss_size_t i = 0; i != n; ++i, ++p)
+            { for (ss_size_t i = 0; i != n; ++i, ++p)
             {
                 STLSOFT_COVER_MARK_LINE();
 
@@ -1331,14 +1331,14 @@ string_switch_(
 
     typedef stlsoft_char_traits<C> char_traits_t;
 
-    { for(ss_size_t i = 0; i != cases.size(); ++i)
+    { for (ss_size_t i = 0; i != cases.size(); ++i)
     {
         STLSOFT_COVER_MARK_LINE();
 
         ximpl::string_case_item_t<C, V> const&  case_   =   cases[i];
         size_t const                            caselen =   char_traits_t::length(case_.name);
 
-        if( caselen == len &&
+        if (caselen == len &&
             0 == char_traits_t::compare(case_.name, s, len))
         {
             STLSOFT_COVER_MARK_LINE();
@@ -1377,14 +1377,14 @@ string_switch_(
 
     typedef stlsoft_char_traits<C> char_traits_t;
 
-    { for(ss_size_t i = 0; i != cases.size(); ++i)
+    { for (ss_size_t i = 0; i != cases.size(); ++i)
     {
         STLSOFT_COVER_MARK_LINE();
 
         ximpl::string_case_item_t<C, V> const&  case_   =   cases[i];
         size_t const                            caselen =   char_traits_t::length(case_.name);
 
-        if( caselen == len &&
+        if (caselen == len &&
             0 == char_traits_t::compare(case_.name, s, len))
         {
             STLSOFT_COVER_MARK_LINE();

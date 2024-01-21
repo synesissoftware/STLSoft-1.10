@@ -4,11 +4,11 @@
  * Purpose:     String shims for standard time structures.
  *
  * Created:     25th July 2005
- * Updated:     29th October 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MAJOR     3
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_MINOR     1
 # define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_REVISION  0
-# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      37
+# define STLSOFT_VER_STLSOFT_SHIMS_ACCESS_STRING_STD_HPP_TIME_EDIT      38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@ c_str_data_a(
 {
     typedef basic_shim_string<ss_char_a_t>  shim_string_t;
 
-    if(NULL == t)
+    if (NULL == t)
     {
         return shim_string_t();
     }
@@ -123,12 +123,12 @@ c_str_data_a(
         ss_char_a_t     fmt[101];
         ss_size_t const n0  =   STLSOFT_NS_GLOBAL(strftime)(&fmt[0], STLSOFT_NUM_ELEMENTS(fmt), "%a %b %%d %%H:%%M:%%S %%Y", t);
 
-        if(0 != n0)
+        if (0 != n0)
         {
             shim_string_t   s(n0 + 2);
             ss_size_t const n1  =   STLSOFT_NS_GLOBAL(strftime)(s.data(), 1 + s.size(), fmt, t);
 
-            if(0 != n1)
+            if (0 != n1)
             {
                 STLSOFT_ASSERT(n1 <= s.size());
 
@@ -163,7 +163,7 @@ c_str_data_a(
 
     typedef basic_shim_string<ss_char_a_t>  shim_string_t;
 
-    if(NULL == t)
+    if (NULL == t)
     {
         return shim_string_t();
     }
@@ -173,7 +173,7 @@ c_str_data_a(
         shim_string_t   s(2 + 7 * n);
         ss_size_t const n1  =   STLSOFT_NS_GLOBAL(strftime)(s.data(), 1 + s.size(), fmt, t);
 
-        if(0 != n1)
+        if (0 != n1)
         {
             STLSOFT_ASSERT(n1 <= s.size());
 
@@ -217,7 +217,7 @@ c_str_len_a(
     struct tm const* t
 )
 {
-    if(NULL == t)
+    if (NULL == t)
     {
         return 0;
     }
@@ -226,7 +226,7 @@ c_str_len_a(
         ss_char_a_t     sz[101];
         ss_size_t const n1  =   STLSOFT_NS_GLOBAL(strftime)(&sz[0], STLSOFT_NUM_ELEMENTS(sz), "%a %b", t);
 
-        if(0 != n1)
+        if (0 != n1)
         {
             // See implementation of c_str_data_a(struct tm const*)
             return 17 + n1;
@@ -254,7 +254,7 @@ c_str_len_a(
 {
     STLSOFT_ASSERT(NULL != fmt);
 
-    if(NULL == t)
+    if (NULL == t)
     {
         return 0;
     }
@@ -263,7 +263,7 @@ c_str_len_a(
         ss_char_a_t     sz[101];
         ss_size_t const n1  =   STLSOFT_NS_GLOBAL(strftime)(&sz[0], STLSOFT_NUM_ELEMENTS(sz), fmt, t);
 
-        if(0 != n1)
+        if (0 != n1)
         {
             return n1;
         }

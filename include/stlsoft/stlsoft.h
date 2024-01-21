@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     16th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 13
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     540
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     541
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -1588,17 +1588,17 @@
             STLSOFT_GCC_VER >= 40800) || \
        0
 
-#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while(0)
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1] __attribute__((unused)); } while (0)
 # elif 0 || \
      defined(STLSOFT_COMPILER_IS_CLANG) || \
      defined(STLSOFT_COMPILER_IS_GCC) || \
      defined(STLSOFT_COMPILER_IS_INTEL) || \
      0
 
-#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1]; } while(0)
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : -1]; } while (0)
 # else /* ? compiler */
 
-#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : 0]; } while(0)
+#  define STLSOFT_STATIC_ASSERT(expr)                       do { typedef int ai[(expr) ? 1 : 0]; } while (0)
 # endif /* compiler */
 #else /* ? STLSOFT_CF_STATIC_ASSERT_SUPPORT */
 
@@ -2794,7 +2794,7 @@ stlsoft_destroy_instance_fn(
  */
 # if defined(STLSOFT_DOCUMENTATION_SKIP_SECTION) || \
      defined(STLSOFT_COMPILER_IS_DMC)
-#  define STLSOFT_DESTROY_INSTANCE(T1, T2, P)           do { (P)->~T1(); } while(0)
+#  define STLSOFT_DESTROY_INSTANCE(T1, T2, P)           do { (P)->~T1(); } while (0)
 # else /* ? compiler */
 #  define STLSOFT_DESTROY_INSTANCE(T1, T2, P)           STLSOFT_NS_QUAL(stlsoft_destroy_instance_fn)((P))
 # endif /* compiler */

@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with BSTR strings.
  *
  * Created:     24th June 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_MAJOR    4
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_MINOR    4
 # define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_REVISION 8
-# define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_EDIT     104
+# define COMSTL_VER_COMSTL_STRING_H_BSTR_FUNCTIONS_EDIT     105
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,18 +181,18 @@ comstl_C_BSTR_create_a(
 {
     BSTR bstr = NULL;
 
-    if(s != NULL)
+    if (s != NULL)
     {
         const cs_size_t len     =   STLSOFT_NS_GLOBAL(strlen)(s);
         cs_char_w_t*    pwsz    =   stlsoft_static_cast(cs_char_w_t*, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)((1 + len) * sizeof(cs_char_w_t)));
 
-        if(NULL != pwsz)
+        if (NULL != pwsz)
         {
             int n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, pwsz, stlsoft_static_cast(int, 1 + len));
 
-            if(0 != n)
+            if (0 != n)
             {
-                if(stlsoft_static_cast(cs_size_t, n) < len)
+                if (stlsoft_static_cast(cs_size_t, n) < len)
                 {
                     pwsz[n] = L'\0';
                 }
@@ -227,21 +227,21 @@ comstl_C_BSTR_create_len_a(
 
     COMSTL_MESSAGE_ASSERT("Cannot pass size_t(-1) as length!", 0 != len + 1);
 
-    if(s != NULL)
+    if (s != NULL)
     {
         cs_char_w_t* pwsz = stlsoft_static_cast(cs_char_w_t*, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)((1 + len) * sizeof(cs_char_w_t)));
 
-        if(NULL != pwsz)
+        if (NULL != pwsz)
         {
             int n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, stlsoft_static_cast(int, len), pwsz, stlsoft_static_cast(int, 1 + len));
 
 #ifdef STLSOFT_DEBUG
-            if(0 == n)
+            if (0 == n)
             {
                 WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
             }
 #endif /* STLSOFT_DEBUG */
-            if(0 != n)
+            if (0 != n)
             {
                 bstr = comstl_C_BSTR_create_len_w(pwsz, len);
             }
@@ -303,9 +303,9 @@ comstl_C_BSTR_compare(
 ,   BSTR    s2
 )
 {
-    if(NULL == s1)
+    if (NULL == s1)
     {
-        if(NULL == s2)
+        if (NULL == s2)
         {
             return 0;   /* Two NULLs are equal */
         }
@@ -316,7 +316,7 @@ comstl_C_BSTR_compare(
     }
     else
     {
-        if(NULL == s2)
+        if (NULL == s2)
         {
             return +1;
         }

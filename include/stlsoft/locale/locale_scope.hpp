@@ -4,11 +4,11 @@
  * Purpose:     Defines the locale_scope class.
  *
  * Created:     23rd December 2018
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2018-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_MAJOR      1
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_MINOR      0
 # define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_REVISION   1
-# define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_EDIT       4
+# define STLSOFT_VER_STLSOFT_LOCALE_HPP_LOCALE_SCOPE_EDIT       5
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ public: // construction
     /// the original locale cannot be restored.
     ~locale_scope()
     {
-        if(!std::uncaught_exception())
+        if (!std::uncaught_exception())
         {
             set_or_throw_(m_category, m_previousLocale.c_str());
         }
@@ -147,7 +147,7 @@ private: // implementation
     {
         char* const r = ::setlocale(category, localeName);
 
-        if(ss_nullptr_k == r)
+        if (ss_nullptr_k == r)
         {
             int const e = errno;
 
@@ -165,7 +165,7 @@ private: // implementation
     {
         char* const r = ::setlocale(category, localeName);
 
-        if(ss_nullptr_k == r)
+        if (ss_nullptr_k == r)
         {
             int const e = errno;
 

@@ -4,11 +4,11 @@
  * Purpose:     String access shims for Internet types
  *
  * Created:     21st October 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MAJOR      1
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_MINOR      1
 # define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_REVISION   3
-# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       24
+# define INETSTL_VER_INETSTL_SHIMS_ACCESS_STRING_STD_HPP_IN_ADDR_EDIT       25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -346,7 +346,7 @@ c_str_data_a(
 {
     typedef stlsoft::basic_shim_string<is_char_a_t, 16> shim_string_t;
 
-    if(NULL != addr)
+    if (NULL != addr)
     {
         return c_str_data_a(*addr);
     }
@@ -364,7 +364,7 @@ c_str_data_w(
 {
     typedef stlsoft::basic_shim_string<is_char_w_t, 16> shim_string_t;
 
-    if(NULL != addr)
+    if (NULL != addr)
     {
         return c_str_data_w(*addr);
     }
@@ -408,7 +408,7 @@ c_str_len_a(
     struct in_addr const* addr
 )
 {
-    if(NULL != addr)
+    if (NULL != addr)
     {
         return c_str_len_a(*addr);
     }
@@ -424,7 +424,7 @@ c_str_len_w(
     struct in_addr const* addr
 )
 {
-    if(NULL != addr)
+    if (NULL != addr)
     {
         return c_str_len_w(*addr);
     }

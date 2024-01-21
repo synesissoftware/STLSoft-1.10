@@ -4,11 +4,11 @@
  * Purpose:     Debug algorithms.
  *
  * Created:     17th January 2002
- * Updated:     16th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_MAJOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_MINOR     1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_REVISION  5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_EDIT      81
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_DEBUG_EDIT      82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,7 +91,7 @@ inline O copy_preinc(
 ,   O   o
 )
 {
-    for(; first != last; ++o, ++first)
+    for (; first != last; ++o, ++first)
     {
         *o = *first;
     }
@@ -109,7 +109,7 @@ inline O copy_postinc(
 ,   O   o
 )
 {
-    for(; first != last; o++, first++)
+    for (; first != last; o++, first++)
     {
         *o = *first;
     }
@@ -133,7 +133,7 @@ template<   ss_typename_param_k I
         >
 inline UF for_each_preinc(I first, I last, UF func)
 {
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
         func(*first);
     }
@@ -155,7 +155,7 @@ template<   ss_typename_param_k I
         >
 inline UF for_each_postinc(I first, I last, UF func)
 {
-    for(; first != last; first++)
+    for (; first != last; first++)
     {
         func(*first);
     }

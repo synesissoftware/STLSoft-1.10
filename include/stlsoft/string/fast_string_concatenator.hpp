@@ -4,14 +4,14 @@
  * Purpose:     Fast string concatenator.
  *
  * Created:     4th November 2003 (the time added to STLSoft libraries)
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Sean Kelly for picking up on my gratuitous use of pointers
  *              in the first implementation.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FAST_STRING_CONCATENATOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FAST_STRING_CONCATENATOR_MINOR       0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FAST_STRING_CONCATENATOR_REVISION    8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_FAST_STRING_CONCATENATOR_EDIT        149
+# define STLSOFT_VER_STLSOFT_STRING_HPP_FAST_STRING_CONCATENATOR_EDIT        150
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -268,7 +268,7 @@ private:
             // optimisations, it caused a 1-4% hit on most of the compilers
             STLSOFT_ASSERT(type == cstring || type == single || type == concat || type == seed);
 
-            switch(type)
+            switch (type)
             {
                 case    seed:
                     len = 0;
@@ -309,7 +309,7 @@ private:
             STLSOFT_ASSERT(&s[1] == s + 1);
 #endif /* STLSOFT_FAST_STRING_CONCATENATION_ASSUME_CONTIGUOUS_STORAGE */
 
-            switch(type)
+            switch (type)
             {
                 case    seed:
                     break;

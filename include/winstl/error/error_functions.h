@@ -4,11 +4,11 @@
  * Purpose:     Error functions.
  *
  * Created:     7th May 2000
- * Updated:     30th November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_MINOR     5
 # define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_REVISION  3
-# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      83
+# define WINSTL_VER_WINSTL_ERROR_H_ERROR_FUNCTIONS_EDIT      84
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -182,7 +182,7 @@ winstl_C_fmtmsg_elide_message_a_(
     {
         ws_char_a_t const* s;
 
-        for(s = first; s != last; ++s)
+        for (s = first; s != last; ++s)
         {
             if ('.' == *s)
             {
@@ -192,9 +192,9 @@ winstl_C_fmtmsg_elide_message_a_(
         }
     }
 
-    for(; first != last; )
+    for (; first != last; )
     {
-        switch(*(last - 1))
+        switch (*(last - 1))
         {
             case    '.':
                 if ((WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&
@@ -240,7 +240,7 @@ winstl_C_fmtmsg_elide_message_w_(
     {
         ws_char_w_t const* s;
 
-        for(s = first; s != last; ++s)
+        for (s = first; s != last; ++s)
         {
             if (L'.' == *s)
             {
@@ -250,9 +250,9 @@ winstl_C_fmtmsg_elide_message_w_(
         }
     }
 
-    for(; first != last; )
+    for (; first != last; )
     {
-        switch(*(last - 1))
+        switch (*(last - 1))
         {
             case    L'.':
                 if ((WINSTL_ERROR_FUNCTIONS_ELIDE_DOT & elisionFlags) &&

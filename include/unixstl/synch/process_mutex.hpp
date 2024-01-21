@@ -4,11 +4,11 @@
  * Purpose:     Intra-process mutext, based on PTHREADS.
  *
  * Created:     15th May 2002
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_PROCESS_MUTEX_MAJOR      4
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR      6
 # define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION   11
-# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT       87
+# define UNIXSTL_VER_UNIXSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT       88
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,7 +194,7 @@ public:
     /// Destroys an instance of the mutex
     ~process_mutex() STLSOFT_NOEXCEPT
     {
-        if( 0 == m_error &&
+        if (0 == m_error &&
             m_bOwnHandle)
         {
             ::pthread_mutex_destroy(m_mx);
@@ -219,7 +219,7 @@ public:
         m_error = ::pthread_mutex_lock(m_mx);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(0 != m_error)
+        if (0 != m_error)
         {
             STLSOFT_THROW_X(synchronisation_exception("Mutex lock failed", m_error));
         }
@@ -238,14 +238,14 @@ public:
     {
         m_error = ::pthread_mutex_trylock(m_mx);
 
-        if(0 == m_error)
+        if (0 == m_error)
         {
             return true;
         }
         else
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-            if(EBUSY != m_error)
+            if (EBUSY != m_error)
             {
                 STLSOFT_THROW_X(synchronisation_exception("Mutex try-lock failed", m_error));
             }
@@ -265,7 +265,7 @@ public:
         m_error = ::pthread_mutex_unlock(m_mx);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(0 != m_error)
+        if (0 != m_error)
         {
             STLSOFT_THROW_X(synchronisation_exception("Mutex unlock failed", m_error));
         }
@@ -308,15 +308,15 @@ private:
         pthread_mutexattr_t attr;
         int                 res = 0;
 
-        if(0 == (res = ::pthread_mutexattr_init(&attr)))
+        if (0 == (res = ::pthread_mutexattr_init(&attr)))
         {
             stlsoft::scoped_handle<pthread_mutexattr_t*>    attr_(&attr, pthread_mutexattr_destroy);
 
-            if( !bRecursive ||
+            if (!bRecursive ||
                 0 == (res = ::pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE)))
             {
 #if defined(_POSIX_THREAD_PROCESS_SHARED)
-                if(0 != (res = ::pthread_mutexattr_setpshared(&attr, pshared)))
+                if (0 != (res = ::pthread_mutexattr_setpshared(&attr, pshared)))
                 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                     STLSOFT_THROW_X(synchronisation_exception("failed to set process-sharing attribute for PTHREADS mutex", res));
@@ -327,7 +327,7 @@ private:
                 STLSOFT_SUPPRESS_UNUSED(pshared);
 #endif /* _POSIX_THREAD_PROCESS_SHARED */
                 {
-                    if(0 == (res = ::pthread_mutex_init(mx, &attr)))
+                    if (0 == (res = ::pthread_mutex_init(mx, &attr)))
                     {
                     }
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT

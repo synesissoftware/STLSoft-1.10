@@ -4,11 +4,11 @@
  * Purpose:     Stream functions.
  *
  * Created:     22nd October 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MAJOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_MINOR    1
 # define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_REVISION 7
-# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     27
+# define COMSTL_VER_COMSTL_UTIL_H_STREAM_FUNCTIONS_EDIT     28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ STLSOFT_INLINE HRESULT comstl__get_stream_size(LPSTREAM pstm, ULARGE_INTEGER *ps
     STATSTG statstg;
     HRESULT hr  =   COMSTL_ITF_CALL(pstm)->Stat(COMSTL_ITF_THIS(pstm) &statstg, STATFLAG_NONAME);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         *psize = statstg.cbSize;
     }
@@ -151,7 +151,7 @@ inline HRESULT get_stream_size(LPSTREAM pstm, cs_uint64_t &size)
     ULARGE_INTEGER  uli;
     HRESULT         hr  =   comstl__get_stream_size(pstm, &uli);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         size = uli.QuadPart;
     }

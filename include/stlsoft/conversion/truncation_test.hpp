@@ -4,11 +4,11 @@
  * Purpose:     Runtime checking for numeric conversions.
  *
  * Created:     10th August 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_MAJOR      1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_MINOR      1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_REVISION   10
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_EDIT       66
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_EDIT       67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -159,12 +159,12 @@ public:
  * The strategy is as follows:
  *
 
-if( signof(FROM) == signof(TO) &&       // Compile-time test 1
+if (signof(FROM) == signof(TO) &&       // Compile-time test 1
     sizeof(FROM) <= sizeof(TO))
 {
     return true;
 }
-else if(unsigned == signof(FROM) &&     // Compile-time test 2
+else if (unsigned == signof(FROM) &&     // Compile-time test 2
         sizeof(FROM) < sizeof(TO))
 {
     return true;
@@ -232,7 +232,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed_FROM_largertha
 
     T_from toMax = static_cast<T_from>(integral_limits<T_to>::maximum());
 
-    if(from > toMax)
+    if (from > toMax)
     {
         return false;
     }
@@ -273,7 +273,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed_FROM_largertha
 
     T_to const toMax = integral_limits<T_to>::maximum();
 
-    if(toMax < static_cast<T_to>(from))
+    if (toMax < static_cast<T_to>(from))
     {
         return false;
     }
@@ -399,7 +399,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed(
     // - from > toMax
     // - from
 
-    if(from < 0)
+    if (from < 0)
     {
         return false;
     }
@@ -451,7 +451,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed(
 
     T_from const toMax = static_cast<T_from>(integral_limits<T_to>::maximum());
 
-    if(from > toMax)
+    if (from > toMax)
     {
         return false;
     }
@@ -498,7 +498,7 @@ truncation_test_helper_runtime_test_same_sign(
     T_from const    toMax   =   static_cast<T_from>(integral_limits<T_to>::maximum());
     T_from const    toMin   =   static_cast<T_from>(integral_limits<T_to>::minimum());
 
-    if( from < toMin ||
+    if (from < toMin ||
         from > toMax)
     {
         return false;

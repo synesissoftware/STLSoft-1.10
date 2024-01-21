@@ -4,11 +4,11 @@
  * Purpose:     Byte formatting functions.
  *
  * Created:     23rd July 2006
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_MINOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_REVISION  10
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_EDIT      33
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_EDIT      34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -272,13 +272,13 @@ format_bytes(
     STLSOFT_API_INTERNAL_memfns_memset(buff, '~', cchBuff);
 #endif /* STLSOFT_DEBUG */
 
-    if(0 == cb)
+    if (0 == cb)
     {
         return 0;
     }
     else
     {
-        if(0 == byteGrouping)
+        if (0 == byteGrouping)
         {
             byteGrouping = sizeof(int);
         }
@@ -290,20 +290,20 @@ format_bytes(
         const ss_size_t numLineSeparators   =   numLines - 1;
         ss_size_t       size                =   (numGroups * (cchSeparator + (2 * byteGrouping))) + (numLineSeparators * cchLineSeparator) - (numLines * cchSeparator);
 
-        if(size <= cchBuff)
+        if (size <= cchBuff)
         {
             byte_t const*   py =   static_cast<byte_t const*>(pv);
             ss_size_t       lineIndex;
             ss_size_t       groupIndex;
 
-            for(lineIndex = 0, groupIndex = 0; 0 != cb; py += byteGrouping)
+            for (lineIndex = 0, groupIndex = 0; 0 != cb; py += byteGrouping)
             {
                 byte_t  remaining[32];
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
                 int     cch;
 #endif /* STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
 
-                if(cb < byteGrouping)
+                if (cb < byteGrouping)
                 {
                     STLSOFT_API_INTERNAL_memfns_memcpy(&remaining[0], py, cb);
                     STLSOFT_API_INTERNAL_memfns_memset(&remaining[0] + cb, 0x00, STLSOFT_NUM_ELEMENTS(remaining) - cb);
@@ -333,7 +333,7 @@ format_bytes(
                 const bool  requestUppercaseAlpha = false;
                 const bool  highByteFirst = false;
 
-                switch(byteGrouping)
+                switch (byteGrouping)
                 {
                     default:
                         STLSOFT_MESSAGE_ASSERT(0, "invalid byte grouping");
@@ -418,23 +418,23 @@ format_bytes(
                         break;
                 }
 
-                if(static_cast<ss_size_t>(groupsPerLine) == ++groupIndex)
+                if (static_cast<ss_size_t>(groupsPerLine) == ++groupIndex)
                 {
-                    if(++lineIndex < numLines)
+                    if (++lineIndex < numLines)
                     {
                         STLSOFT_API_INTERNAL_memfns_memcpy(buff, lineSeparator, cchLineSeparator * sizeof(char));
                         buff += cchLineSeparator;
                     }
                     groupIndex = 0;
                 }
-                else if(0 != cb)
+                else if (0 != cb)
                 {
                     STLSOFT_API_INTERNAL_memfns_memcpy(buff, groupSeparator, cchSeparator * sizeof(char));
                     buff += cchSeparator;
                 }
             }
 
-            if(size < cchBuff)
+            if (size < cchBuff)
             {
                 0[buff] = '\0';
             }

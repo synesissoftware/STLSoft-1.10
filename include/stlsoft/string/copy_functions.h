@@ -4,11 +4,11 @@
  * Purpose:     String copy functions.
  *
  * Created:     29th September 2016
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_MINOR      0
 # define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_REVISION   3
-# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       11
+# define STLSOFT_VER_STLSOFT_STRING_H_COPY_FUNCTIONS_EDIT       12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -132,12 +132,12 @@ STLSoft_C_string_copy_a(
 
     n = (cchDest < cchSrc) ? cchDest : cchSrc;
 
-    if( 0 != n &&
+    if (0 != n &&
         0 != cchSrc)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_a_t) * n);
 
-        if(n < cchDest)
+        if (n < cchDest)
         {
             dest[n] = '\0';
         }
@@ -162,13 +162,13 @@ STLSoft_C_string_copy_w(
 
     n = (cchDest < cchSrc) ? cchDest : cchSrc;
 
-    if( 0 != n &&
+    if (0 != n &&
         0 != cchSrc)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_w_t) * n);
     }
 
-    if(n < cchDest)
+    if (n < cchDest)
     {
         dest[n] = '\0';
     }
@@ -206,13 +206,13 @@ STLSoft_C_string_copy_with_nul_a(
     STLSOFT_ASSERT(0 == cchDest || NULL != dest);
     STLSOFT_ASSERT(0 == cchSrc || NULL != src);
 
-    if(cchSrc < cchDest)
+    if (cchSrc < cchDest)
     {
         n = cchSrc;
     }
     else
     {
-        if(0 == cchDest)
+        if (0 == cchDest)
         {
             n = 0;
         }
@@ -222,7 +222,7 @@ STLSoft_C_string_copy_with_nul_a(
         }
     }
 
-    if(0 != n)
+    if (0 != n)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_a_t) * n);
 
@@ -246,13 +246,13 @@ STLSoft_C_string_copy_with_nul_w(
     STLSOFT_ASSERT(0 == cchDest || NULL != dest);
     STLSOFT_ASSERT(0 == cchSrc || NULL != src);
 
-    if(cchSrc < cchDest)
+    if (cchSrc < cchDest)
     {
         n = cchSrc;
     }
     else
     {
-        if(0 == cchDest)
+        if (0 == cchDest)
         {
             n = 0;
         }
@@ -262,12 +262,12 @@ STLSoft_C_string_copy_with_nul_w(
         }
     }
 
-    if(0 != n)
+    if (0 != n)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(dest, src, sizeof(ss_char_w_t) * n);
     }
 
-    if(0 != cchDest)
+    if (0 != cchDest)
     {
         dest[n] = '\0';
     }

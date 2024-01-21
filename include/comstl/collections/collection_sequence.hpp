@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for COM collection interfaces.
  *
  * Created:     17th September 1998
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Eduardo Bezerra and Vivi Orunitia for reporting
  *              incompatibilities with Borland's 5.82 (Turbo C++). The awful
@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_REVISION 17
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     119
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_COLLECTION_SEQUENCE_EDIT     120
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -269,7 +269,7 @@ public:
         COMSTL_ASSERT(NULL != i);
         COMSTL_MESSAGE_ASSERT("Cannot set a quantum that exceeds the value specified in the template specialisation", quanta <= retrievalQuanta); // Could have named these things better!
 
-        if(bAddRef)
+        if (bAddRef)
         {
             m_i->AddRef();
         }
@@ -297,7 +297,7 @@ public:
         LPUNKNOWN   punkEnum;
         HRESULT     hr  =   enumerator_acquisition_policy_type::acquire(m_i, &punkEnum);
 
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             enumerator_interface_type   *ei;
 
@@ -305,7 +305,7 @@ public:
 
             punkEnum->Release();
 
-            if(SUCCEEDED(hr))
+            if (SUCCEEDED(hr))
             {
                 COMSTL_ASSERT(is_valid());
 
@@ -377,7 +377,7 @@ public:
 private:
     cs_bool_t is_valid() const
     {
-        if(NULL == m_i)
+        if (NULL == m_i)
         {
             return false;
         }
@@ -392,7 +392,7 @@ private:
     {
         COMSTL_MESSAGE_ASSERT("Cannot set a quantum that exceeds the value specified in the template specialisation", quanta <= retrievalQuanta); // Could have named these things better!
 
-        if( 0 == quanta ||
+        if (0 == quanta ||
             quanta > retrievalQuanta)
         {
             quanta = retrievalQuanta;

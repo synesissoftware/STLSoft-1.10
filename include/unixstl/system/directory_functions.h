@@ -4,11 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     1st October 2016
- * Updated:     23rd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2016-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    9
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        17
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        18
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,14 +123,14 @@ unixstl_C_get_home_directory_invoke_getenv_a_(
 
     STLSOFT_ASSERT(NULL != ev);
 
-    if( NULL == r &&
+    if (NULL == r &&
         0 == STLSOFT_API_EXTERNAL_string_stricmp("HOME", ev))
     {
         /* See if the synthetic home is present */
 
         r = STLSOFT_NS_GLOBAL(getenv)(s_szHomeUnique);
 
-        if(NULL != r)
+        if (NULL != r)
         {
             return r;
         }
@@ -141,7 +141,7 @@ unixstl_C_get_home_directory_invoke_getenv_a_(
             char const* const   homeDrive   =   STLSOFT_NS_GLOBAL(getenv)("HOMEDRIVE");
             char const* const   homePath    =   STLSOFT_NS_GLOBAL(getenv)("HOMEPATH");
 
-            if( NULL != homeDrive &&
+            if (NULL != homeDrive &&
                 NULL != homePath)
             {
                 us_size_t const cchHomeUnique   =   STLSOFT_NUM_ELEMENTS(s_szHomeUnique) - 1;
@@ -153,7 +153,7 @@ unixstl_C_get_home_directory_invoke_getenv_a_(
 
                 STLSOFT_C_AUTO_BUFFER_INITIALISE_FROM_INTERNAL(buff);
 
-                if(0 != STLSOFT_C_AUTO_BUFFER_RESIZE(buff, 1 + cchTotal))
+                if (0 != STLSOFT_C_AUTO_BUFFER_RESIZE(buff, 1 + cchTotal))
                 {
                     errno = ENOMEM;
 
@@ -212,7 +212,7 @@ unixstl_C_get_home_directory_a(
 {
     us_char_a_t const* const home = unixstl_C_get_home_directory_invoke_getenv_a_("HOME");
 
-    if(NULL == home)
+    if (NULL == home)
     {
         return 0;
     }
@@ -220,7 +220,7 @@ unixstl_C_get_home_directory_a(
     {
         us_size_t const cchHome = STLSOFT_NS_GLOBAL(strlen)(home);
 
-        if(0 == cchBuffer)
+        if (0 == cchBuffer)
         {
             return cchHome + 1;
         }

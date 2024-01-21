@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Sam Fisher for spotting the defect in the set_value_()
  *              overload for REG_MULTI_SZ values (widestring only).
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MAJOR       3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_MINOR       10
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_REVISION    13
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        162
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_EDIT        163
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1241,7 +1241,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
 
     result_type res = traits_type::reg_delete_key(m_hkey, subKeyName);
 
-    switch(res)
+    switch (res)
     {
         case    ERROR_SUCCESS:
             return true;
@@ -1389,7 +1389,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
     // Now synthesise all the data
     char_type *p = &buff[0];
 
-    { for(size_type i = 0; i != numValues; ++i)
+    { for (size_type i = 0; i != numValues; ++i)
     {
         char_type const* const  s   =   values[i];
         const size_type         len =   traits_type::str_len(s);
@@ -1453,7 +1453,7 @@ inline ss_typename_type_ret_k basic_reg_key<C, T, A>::bool_type basic_reg_key<C,
 
     result_type res = traits_type::reg_delete_value(m_hkey, valueName);
 
-    switch(res)
+    switch (res)
     {
         case    ERROR_SUCCESS:
             return true;
@@ -1485,7 +1485,7 @@ basic_reg_key<C, T, A>::has_sub_key_(ss_typename_type_k basic_reg_key<C, T, A>::
     hkey_type   hkey;
     result_type res = traits_type::reg_open_key(m_hkey, subKeyName, &hkey, KEY_READ);
 
-    switch(res)
+    switch (res)
     {
         case    ERROR_SUCCESS:
             WINSTL_API_EXTERNAL_Registry_RegCloseKey(hkey);
@@ -1506,7 +1506,7 @@ basic_reg_key<C, T, A>::has_value_(ss_typename_type_k basic_reg_key<C, T, A>::ch
     size_type   cbData = sizeof(data);
     result_type res = traits_type::reg_query_value(m_hkey, valueName, valueType, &data[0], cbData);
 
-    switch(res)
+    switch (res)
     {
         case    ERROR_SUCCESS:
         case    ERROR_MORE_DATA:

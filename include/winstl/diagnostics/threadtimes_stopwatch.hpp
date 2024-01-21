@@ -4,11 +4,11 @@
  * Purpose:     WinSTL thread-time stopwatch class.
  *
  * Created:     22nd March 2002
- * Updated:     24th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_THREADTIMES_STOPWATCH_MAJOR      5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_THREADTIMES_STOPWATCH_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_THREADTIMES_STOPWATCH_REVISION   2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_THREADTIMES_STOPWATCH_EDIT       60
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_THREADTIMES_STOPWATCH_EDIT       61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -256,7 +256,7 @@ threadtimes_stopwatch::start()
     FILETIME    kernelTime;
     FILETIME    userTime;
 
-    if(!::GetThreadTimes(m_thread, &creationTime, &exitTime, &kernelTime, &userTime))
+    if (!::GetThreadTimes(m_thread, &creationTime, &exitTime, &kernelTime, &userTime))
     {
         m_kernelStart   =   0;
         m_userStart     =   0;
@@ -281,7 +281,7 @@ threadtimes_stopwatch::stop()
     FILETIME    kernelTime;
     FILETIME    userTime;
 
-    if(!::GetThreadTimes(m_thread, &creationTime, &exitTime, &kernelTime, &userTime))
+    if (!::GetThreadTimes(m_thread, &creationTime, &exitTime, &kernelTime, &userTime))
     {
         m_kernelEnd     =   0;
         m_userEnd       =   0;

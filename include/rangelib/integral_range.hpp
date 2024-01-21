@@ -4,11 +4,11 @@
  * Purpose:     Integral range class.
  *
  * Created:     4th November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,7 +50,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_INTEGRAL_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_INTEGRAL_RANGE_MINOR    6
 # define RANGELIB_VER_RANGELIB_HPP_INTEGRAL_RANGE_REVISION 11
-# define RANGELIB_VER_RANGELIB_HPP_INTEGRAL_RANGE_EDIT     69
+# define RANGELIB_VER_RANGELIB_HPP_INTEGRAL_RANGE_EDIT     70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -278,11 +278,11 @@ public:
         , m_last(last)
         , m_increment(increment)
     {
-        if(m_last < m_position)
+        if (m_last < m_position)
         {
 //          std_swap(m_position, m_last);
 
-            if(m_increment > 0)
+            if (m_increment > 0)
             {
                 m_increment = -m_increment;
             }
@@ -379,9 +379,9 @@ private:
         ss_bool_t   bValid = true;
 
         // Check modulus
-        if(bValid)
+        if (bValid)
         {
-            if( first != last &&
+            if (first != last &&
                 0 != increment)
             {
                 bValid = (0 == ((last - first) % increment));
@@ -389,9 +389,9 @@ private:
         }
 
         // Check direction
-        if(bValid)
+        if (bValid)
         {
-            if( (   last < first &&
+            if ((   last < first &&
                     increment > 0) ||
                 (   first < last &&
                     increment < 0))
@@ -403,7 +403,7 @@ private:
 //        STLSOFT_MESSAGE_ASSERT("The range you have specified will not close with the given increment", (first == last || (increment > 0 && last > first) || (increment < 0 && last < first)));
 //        STLSOFT_MESSAGE_ASSERT("The range you have specified will not close with the given increment", 0 == ((last - first) % increment));
 
-        if(!bValid)
+        if (!bValid)
         {
             exception_policy_type()(first, last, increment);
         }

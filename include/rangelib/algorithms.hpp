@@ -4,7 +4,7 @@
  * Purpose:     Range algorithms.
  *
  * Created:     4th November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Pablo Aguilar for requesting r_copy_if(); to Luoyi, for pointing
  *              out some gaps in the compatibility with the sequence_range; to
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -80,7 +80,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_ALGORITHMS_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_ALGORITHMS_MINOR    3
 # define RANGELIB_VER_RANGELIB_HPP_ALGORITHMS_REVISION 10
-# define RANGELIB_VER_RANGELIB_HPP_ALGORITHMS_EDIT     57
+# define RANGELIB_VER_RANGELIB_HPP_ALGORITHMS_EDIT     58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -156,7 +156,7 @@ template<   ss_typename_param_k R
         >
 inline T r_accumulate_2_impl(R r, T val, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
         val = val + *r;
     }
@@ -216,7 +216,7 @@ template<   ss_typename_param_k R
         >
 inline T r_accumulate_3_impl(R r, T val, P pred, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
         val = pred(val, *r);
     }
@@ -281,7 +281,7 @@ template<   ss_typename_param_k R
         >
 inline O r_copy_impl(R r, O o, notional_range_tag const&)
 {
-    for(; r; ++r, ++o)
+    for (; r; ++r, ++o)
     {
         *o = *r;
     }
@@ -341,9 +341,9 @@ template<   ss_typename_param_k R
         >
 inline O r_copy_if_impl(R r, O o, P pred, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(pred(*r))
+        if (pred(*r))
         {
             *o = *r;
 
@@ -414,9 +414,9 @@ inline ss_size_t r_count_impl(R r, T const& val, notional_range_tag const&)
 {
     ss_size_t n;
 
-    for(n = 0; r; ++r)
+    for (n = 0; r; ++r)
     {
-        if(val == *r)
+        if (val == *r)
         {
             ++n;
         }
@@ -479,9 +479,9 @@ inline ss_size_t r_count_if_impl(R r, P pred, notional_range_tag const&)
 {
     ss_size_t n;
 
-    for(n = 0; r; ++r)
+    for (n = 0; r; ++r)
     {
-        if(pred(*r))
+        if (pred(*r))
         {
             ++n;
         }
@@ -542,7 +542,7 @@ inline ss_ptrdiff_t r_distance_1_impl(R r, notional_range_tag const&)
 {
     ss_ptrdiff_t    d = 0;
 
-    for(; r; ++r, ++d)
+    for (; r; ++r, ++d)
     {}
 
     return d;
@@ -590,9 +590,9 @@ template<   ss_typename_param_k R1
         >
 inline ss_bool_t r_equal_1_impl(R1 r1, R2 r2, notional_range_tag const&, notional_range_tag const&)
 {
-    for(; r1 && r2; ++r1, ++r2)
+    for (; r1 && r2; ++r1, ++r2)
     {
-        if(*r1 != *r2)
+        if (*r1 != *r2)
         {
             return false;
         }
@@ -626,7 +626,7 @@ template<   ss_typename_param_k R1
         >
 inline ss_bool_t r_equal(R1 r1, R2 r2)
 {
-    if(r_distance(r1) > r_distance(r2))
+    if (r_distance(r1) > r_distance(r2))
     {
         return false;
     }
@@ -644,9 +644,9 @@ template<   ss_typename_param_k R1
         >
 inline ss_bool_t r_equal_1_impl(R1 r1, R2 r2, P pred, notional_range_tag const&, notional_range_tag const&)
 {
-    for(; r1 && r2; ++r1, ++r2)
+    for (; r1 && r2; ++r1, ++r2)
     {
-        if(!pred(*r1, *r2))
+        if (!pred(*r1, *r2))
         {
             return false;
         }
@@ -695,9 +695,9 @@ template<   ss_typename_param_k R
         >
 inline ss_bool_t r_exists_impl(R r, T const& val, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(val == *r)
+        if (val == *r)
         {
             return true;
         }
@@ -756,9 +756,9 @@ template<   ss_typename_param_k R
         >
 inline ss_bool_t r_exists_if_1_impl(R r, P pred, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(pred(*r))
+        if (pred(*r))
         {
             return true;
         }
@@ -818,9 +818,9 @@ template<   ss_typename_param_k R
         >
 inline ss_bool_t r_exists_if_2_impl(R r, P pred, T &result, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(pred(*r))
+        if (pred(*r))
         {
             result = *r;
 
@@ -836,7 +836,7 @@ template<   ss_typename_param_k I
         >
 inline ss_bool_t r_exists_if_2_impl_helper_(I from, I to, V &val)
 {
-    if(from == to)
+    if (from == to)
     {
         return false;
     }
@@ -966,9 +966,9 @@ template<   ss_typename_param_k R
         >
 inline R r_find_impl(R r, T const& val, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(val == *r)
+        if (val == *r)
         {
             break;
         }
@@ -1013,9 +1013,9 @@ template<   ss_typename_param_k R
         >
 inline R r_find_if_impl(R r, P pred, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(pred(*r))
+        if (pred(*r))
         {
             break;
         }
@@ -1058,7 +1058,7 @@ template<   ss_typename_param_k R
         >
 inline F r_for_each_impl(R r, F f, notional_range_tag const&)
 {
-    for(; r; ++r)
+    for (; r; ++r)
     {
         f(*r);
     }
@@ -1147,9 +1147,9 @@ inline ss_typename_type_ret_k R::value_type r_max_element_1_impl(R r, notional_r
 
     value_type_t    max_    =   value_type_t();
 
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(max_ < *r)
+        if (max_ < *r)
         {
             max_ = *r;
         }
@@ -1161,7 +1161,7 @@ inline ss_typename_type_ret_k R::value_type r_max_element_1_impl(R r, notional_r
 template <ss_typename_param_k I>
 inline I r_max_element_1_impl_iterable(I from, I to)
 {
-    if(from == to)
+    if (from == to)
     {
         STLSOFT_THROW_X(empty_range_exception("Cannot determine maximum element of empty range"));
     }
@@ -1213,7 +1213,7 @@ template<   ss_typename_param_k I
         >
 inline I r_max_element_2_impl_iterable(I from, I to, F f)
 {
-    if(from == to)
+    if (from == to)
     {
         STLSOFT_THROW_X(empty_range_exception("Cannot determine maximum element of empty range"));
     }
@@ -1238,9 +1238,9 @@ inline ss_typename_type_ret_k R::value_type r_max_element_2_impl(R r, F f, notio
 
     value_type_t    max_    =   value_type_t();
 
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(f(max_, *r))
+        if (f(max_, *r))
         {
             max_ = *r;
         }
@@ -1294,7 +1294,7 @@ inline ss_typename_type_ret_k R::value_type r_min_element_1_impl(R r, notional_r
 {
     typedef ss_typename_type_k R::value_type    value_type_t;
 
-    if(!r)
+    if (!r)
     {
         return value_type_t();
     }
@@ -1302,9 +1302,9 @@ inline ss_typename_type_ret_k R::value_type r_min_element_1_impl(R r, notional_r
     {
         value_type_t    min_    =   *r;
 
-        for(; ++r; )
+        for (; ++r; )
         {
-            if(*r < min_)
+            if (*r < min_)
             {
                 min_ = *r;
             }
@@ -1317,7 +1317,7 @@ inline ss_typename_type_ret_k R::value_type r_min_element_1_impl(R r, notional_r
 template <ss_typename_param_k I>
 inline I r_min_element_1_impl_iterable(I from, I to)
 {
-    if(from == to)
+    if (from == to)
     {
         STLSOFT_THROW_X(empty_range_exception("Cannot determine minimum element of empty range"));
     }
@@ -1369,7 +1369,7 @@ template<   ss_typename_param_k I
         >
 inline I r_min_element_2_impl_iterable(I from, I to, F f)
 {
-    if(from == to)
+    if (from == to)
     {
         STLSOFT_THROW_X(empty_range_exception("Cannot determine minimum element of empty range"));
     }
@@ -1394,9 +1394,9 @@ inline ss_typename_type_ret_k R::value_type r_min_element_2_impl(R r, F f, notio
 
     value_type_t    min_    =   value_type_t();
 
-    for(; r; ++r)
+    for (; r; ++r)
     {
-        if(f(min_, *r))
+        if (f(min_, *r))
         {
             min_ = *r;
         }
@@ -1588,11 +1588,11 @@ template<   ss_typename_param_k RI
         >
 inline void r_replace_copy_if_impl(RI ri, RO ro, P pred, T newVal, notional_range_tag const&, notional_range_tag const&)
 {
-    for(; ri; ++ri, ++ro)
+    for (; ri; ++ri, ++ro)
     {
         STLSOFT_ASSERT(!(!ro));
 
-        if(pred(*ri))
+        if (pred(*ri))
         {
             *ro = newVal;
         }

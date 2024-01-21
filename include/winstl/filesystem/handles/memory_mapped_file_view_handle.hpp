@@ -5,11 +5,11 @@
  *              Windows memory mapped file view handles.
  *
  * Created:     30th August 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MAJOR      1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_MINOR      0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       12
+# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_MEMORY_MAPPED_FILE_VIEW_HANDLE_EDIT       13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,7 +171,7 @@ public: // Construction
     /// Destroys an instance of the underlying handle type
     static void destroy(handle_type h)
     {
-        if(NULL != h.memory)
+        if (NULL != h.memory)
         {
             ::UnmapViewOfFile(h.memory);
         }
@@ -198,9 +198,9 @@ public: // Reference-counting Operations
     /// Releases/decrements the reference
     void Release()
     {
-        if(0 == refcount_policy::release(refCount))
+        if (0 == refcount_policy::release(refCount))
         {
-            if(isOwner)
+            if (isOwner)
             {
                 destroy(handle);
             }

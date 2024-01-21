@@ -4,7 +4,7 @@
  * Purpose:     Contains the edit_line_sequence class.
  *
  * Created:     23rd March 2006
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_MINOR    0
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_REVISION 12
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_EDIT     29
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_EDIT_LINE_SEQUENCE_EDIT     30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -213,7 +213,7 @@ inline /* ss_explicit_k */ edit_line_sequence<C, A, S, Q>::edit_line_sequence(HW
     int         numLines    =   edit_getcount(hwndEdit);
 
     { int   charTotal = 0;
-        for(int i = 0; i < numLines; ++i)
+        for (int i = 0; i < numLines; ++i)
     {
         int                                 charIndex   =   charTotal + i;
         int                                 lineLength  =   edit_linelength(hwndEdit, charIndex);

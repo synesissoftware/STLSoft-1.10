@@ -4,7 +4,7 @@
  * Purpose:     Converts a Win32 error code to a printable string.
  *
  * Created:     13th July 2003
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MAJOR       4
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_MINOR       6
 # define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_REVISION    12
-# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        107
+# define WINSTL_VER_WINSTL_ERROR_HPP_ERROR_DESC_EDIT        108
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -275,7 +275,7 @@ public:
         : m_length(0)
         , m_message(find_message_(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM, error, modulePath, &m_length))
     {
-        if( NULL == m_message &&
+        if (NULL == m_message &&
             NULL != modulePath)
         {
             m_message = find_message_(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM, error, NULL, &m_length);
@@ -336,10 +336,10 @@ public:
         ss_typename_type_k S::const_iterator    b   =   modulePaths.begin();
         ss_typename_type_k S::const_iterator    e   =   modulePaths.end();
 
-        for(; b != e && NULL == (m_message = find_message_(FORMAT_MESSAGE_IGNORE_INSERTS, error, STLSOFT_NS_QUAL(c_str_ptr)(*b), &m_length)); ++b)
+        for (; b != e && NULL == (m_message = find_message_(FORMAT_MESSAGE_IGNORE_INSERTS, error, STLSOFT_NS_QUAL(c_str_ptr)(*b), &m_length)); ++b)
         {}
 
-        if(NULL == m_message)
+        if (NULL == m_message)
         {
             m_message = find_message_(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM, error, NULL, &m_length);
         }
@@ -459,12 +459,12 @@ basic_error_desc<C, T>::find_message_(
 
     STLSOFT_SUPPRESS_UNUSED(message);
 
-    if( NULL != modulePath &&
+    if (NULL != modulePath &&
         '\0' != modulePath[0])
     {
         HINSTANCE hinstSource = traits_type::load_library(modulePath);
 
-        if(NULL != hinstSource)
+        if (NULL != hinstSource)
         {
             cch = format_message(FORMAT_MESSAGE_FROM_HMODULE | flags, hinstSource, error, &message);
 
@@ -476,7 +476,7 @@ basic_error_desc<C, T>::find_message_(
         cch = format_message(flags, NULL, error, &message);
     }
 
-    if(0 == cch)
+    if (0 == cch)
     {
         message = NULL;
     }
@@ -497,7 +497,7 @@ basic_error_desc<C, T>::~basic_error_desc() STLSOFT_NOEXCEPT
     STLSOFT_STATIC_ASSERT(STLSOFT_RAW_OFFSETOF(class_type, m_length) < STLSOFT_RAW_OFFSETOF(class_type, m_message));
 #endif /* STLSOFT_CF_USE_RAW_OFFSETOF_IN_STATIC_ASSERT */
 
-    if(m_message != NULL)
+    if (m_message != NULL)
     {
         format_message_free_buff(m_message);
     }

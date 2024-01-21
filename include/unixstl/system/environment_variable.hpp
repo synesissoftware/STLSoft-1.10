@@ -4,7 +4,7 @@
  * Purpose:     Simple class that provides access to an environment variable.
  *
  * Created:     2nd November 2003
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MAJOR      4
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MINOR      3
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_REVISION   6
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT       80
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT       81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -156,7 +156,7 @@ public:
     ss_explicit_k basic_environment_variable(char_type const* name)
         : m_buffer(1 + traits_type::get_environment_variable(name, 0, 0))
     {
-        if( 0 == traits_type::get_environment_variable(name, &m_buffer[0], m_buffer.size()) &&
+        if (0 == traits_type::get_environment_variable(name, &m_buffer[0], m_buffer.size()) &&
             0 != m_buffer.size())
         {
             m_buffer[0] = 0;
@@ -168,7 +168,7 @@ public:
     ss_explicit_k basic_environment_variable(S const& name)
         : m_buffer(1 + traits_type::get_environment_variable(STLSOFT_NS_QUAL(c_str_ptr)(name), 0, 0))
     {
-        if( 0 == traits_type::get_environment_variable(STLSOFT_NS_QUAL(c_str_ptr)(name), &m_buffer[0], m_buffer.size()) &&
+        if (0 == traits_type::get_environment_variable(STLSOFT_NS_QUAL(c_str_ptr)(name), &m_buffer[0], m_buffer.size()) &&
             0 != m_buffer.size())
         {
             m_buffer[0] = 0;

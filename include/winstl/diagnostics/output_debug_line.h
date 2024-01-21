@@ -4,11 +4,11 @@
  * Purpose:     Functions to write lines to the Windows debugger.
  *
  * Created:     5th January 2011
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MAJOR    2
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_MINOR    0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_REVISION 2
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     21
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_H_OUTPUT_DEBUG_LINE_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ stlsoft_C_concatenate_N_m(
 
             va_start(args, n);
 
-            for(i = 0; i != n; ++i)
+            for (i = 0; i != n; ++i)
             {
                 ss_char_a_t const*  s   =   va_arg(args, ss_char_a_t const*);
                 ss_size_t           len =   STLSOFT_NS_QUAL(c_str_len_a)(s);
@@ -161,7 +161,7 @@ stlsoft_C_concatenate_N_m(
 
             va_start(args, n);
 
-            for(i = 0; i != n; ++i)
+            for (i = 0; i != n; ++i)
             {
                 ss_char_a_t const*  s   =   va_arg(args, ss_char_a_t const*);
                 ss_size_t           len =   STLSOFT_NS_QUAL(c_str_len_a)(s);

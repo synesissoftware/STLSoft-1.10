@@ -4,11 +4,11 @@
  * Purpose:     Scoping class for ATL _Module
  *
  * Created:     8th December 2004
- * Updated:     25th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define ATLSTL_VER_ATLSTL_UTIL_HPP_MODULE_SCOPE_MAJOR       2
 # define ATLSTL_VER_ATLSTL_UTIL_HPP_MODULE_SCOPE_MINOR       1
 # define ATLSTL_VER_ATLSTL_UTIL_HPP_MODULE_SCOPE_REVISION    8
-# define ATLSTL_VER_ATLSTL_UTIL_HPP_MODULE_SCOPE_EDIT        40
+# define ATLSTL_VER_ATLSTL_UTIL_HPP_MODULE_SCOPE_EDIT        41
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ public:
         : m_m(m)
         , m_hr(m.Init(pObjMap, hinst, pLibID))
     {
-        if(FAILED(m_hr))
+        if (FAILED(m_hr))
         {
             exception_policy_type   xp;
 

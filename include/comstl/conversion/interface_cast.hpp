@@ -4,7 +4,7 @@
  * Purpose:     Safe interface casting functions.
  *
  * Created:     25th June 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -64,7 +64,7 @@
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_MAJOR      5
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_MINOR      2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_REVISION   14
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_EDIT       135
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_INTERFACE_CAST_EDIT       136
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -364,7 +364,7 @@ protected:
     /// Releases the acquired interface pointer according to the \c release_type policy
     ~interface_cast_base() STLSOFT_NOEXCEPT
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             release_type()(m_pi);
         }
@@ -383,9 +383,9 @@ private:
     {
         interface_pointer_type  pi;
 
-        if(NULL == punk)
+        if (NULL == punk)
         {
-            if(throwOnNull == permission)
+            if (throwOnNull == permission)
             {
                 exception_policy_type()(E_INVALIDARG, IID_traits<interface_pointer_type>().iid());
 
@@ -399,7 +399,7 @@ private:
             REFIID  iid =   IID_traits<interface_pointer_type>().iid();
             HRESULT hr  =   punk->QueryInterface(iid, reinterpret_cast<void**>(&pi));
 
-            if(FAILED(hr))
+            if (FAILED(hr))
             {
                 pi = NULL;
 
@@ -696,7 +696,7 @@ private:
 \code
 IStream* stm = . . .
 
-if(comstl::interface_cast_test<IStorage*>(stm))
+if (comstl::interface_cast_test<IStorage*>(stm))
 {
   printf("Object has IStorage interface\n");
 }
@@ -738,7 +738,7 @@ interface_cast_test(
 \code
 stlsoft::ref_ptr<IStream>   stm = . . .
 
-if(comstl::interface_cast_test<IStorage>(stm))
+if (comstl::interface_cast_test<IStorage>(stm))
 {
   printf("Wrapper object has IStorage interface\n");
 }
@@ -880,7 +880,7 @@ interface_cast(
 IStream*                    pstm  = . . .
 stlsoft::ref_ptr<IStorage>  stg   = comstl::interface_cast<IStorage>(pstm);
 
-if(!stg.empty())
+if (!stg.empty())
 {
   . . . // use stg->
 }

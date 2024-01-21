@@ -10,11 +10,11 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,7 +60,7 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_MAJOR       4
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_MINOR       0
 # define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_REVISION    12
-# define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_EDIT        80
+# define WINSTL_VER_WINSTL_MEMORY_HPP_HEAPWALK_SEQUENCE_EDIT        81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -128,7 +128,7 @@ winstl::heapwalk_sequence   blocks(hHeap);
 winstl::heapwalk_sequence::const_iterator   b = blocks.begin();
 winstl::heapwalk_sequence::const_iterator   e = blocks.end();
 
-for(; b != e; ++b)
+for (; b != e; ++b)
 {
   printf("  Block of size %lu at %p\n", (*b).cbData, (*b).lpData);
 }
@@ -142,7 +142,7 @@ winstl::heapwalk_sequence   blocks; // Uses process heap
 winstl::heapwalk_sequence::const_iterator   b = blocks.begin();
 winstl::heapwalk_sequence::const_iterator   e = blocks.end();
 
-for(; b != e; ++b)
+for (; b != e; ++b)
 {
   printf("  Block of size %lu at %p\n", (*b).cbData, (*b).lpData);
 }
@@ -309,7 +309,7 @@ inline heapwalk_sequence::const_iterator heapwalk_sequence::begin() const
 
     value.lpData    =   NULL;   // Want start of iteration
 
-    if(WINSTL_API_EXTERNAL_MemoryManagement_HeapWalk(m_hHeap, &value))
+    if (WINSTL_API_EXTERNAL_MemoryManagement_HeapWalk(m_hHeap, &value))
     {
         return const_iterator(*this, value);
     }
@@ -357,7 +357,7 @@ inline heapwalk_sequence_const_iterator::~heapwalk_sequence_const_iterator() STL
 
 inline heapwalk_sequence_const_iterator::class_type& heapwalk_sequence_const_iterator::operator ++()
 {
-    if( NULL != m_list &&
+    if (NULL != m_list &&
         !WINSTL_API_EXTERNAL_MemoryManagement_HeapWalk(m_list->m_hHeap, &m_value))
     {
         m_value.lpData  =   reinterpret_cast<LPVOID>(-1);
@@ -387,7 +387,7 @@ inline ws_bool_t heapwalk_sequence_const_iterator::operator ==(class_type const&
     WINSTL_ASSERT(m_list == rhs.m_list);    // Should only be comparing iterators from same container
 
     // Not equal if one but not both handles are not equal.
-    if(m_value.lpData != rhs.m_value.lpData)
+    if (m_value.lpData != rhs.m_value.lpData)
     {
         eq = ws_false_v;
     }

@@ -5,11 +5,11 @@
  *              streams.
  *
  * Created:     31st May 2009
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2009-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_MAJOR    1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_MINOR    0
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_REVISION 10
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_EDIT     21
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HANDLES_HPP_FILE_STREAM_HANDLE_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -152,9 +152,9 @@ public: // Reference-counting Operations
     /// Releases/decrements the reference
     void Release()
     {
-        if(0 == refcount_policy::release(refCount))
+        if (0 == refcount_policy::release(refCount))
         {
-            if(isOwner)
+            if (isOwner)
             {
                 destroy(handle);
             }

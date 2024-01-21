@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_connection class.
  *
  * Created:     30th April 1999
- * Updated:     23rd December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    11
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        84
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        85
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -305,7 +305,7 @@ basic_connection<C, X, T>::basic_connection(
     : m_hConn(traits_type::internet_connect(hsess, server, port, userName, password, service, flags, context))
     , m_lastError(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
 {
-    if(NULL == m_hConn)
+    if (NULL == m_hConn)
     {
         exception_policy_type()("Failed to open connection", m_lastError);
     }
@@ -319,7 +319,7 @@ template<
 inline
 basic_connection<C, X, T>::~basic_connection() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_hConn)
+    if (NULL != m_hConn)
     {
         traits_type::close_connection(m_hConn);
     }
@@ -345,7 +345,7 @@ basic_connection<C, X, T>::connect(
 {
     is_bool_t    bRet;
 
-    if(is_connected())
+    if (is_connected())
     {
         bRet = false;
     }
@@ -354,7 +354,7 @@ basic_connection<C, X, T>::connect(
         m_hConn     =   traits_type::internet_connect(hsess, server, port, userName, password, service, flags, context);
         m_lastError =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(NULL == m_hConn)
+        if (NULL == m_hConn)
         {
             exception_policy_type()("Failed to open connection", m_lastError);
 
@@ -378,7 +378,7 @@ inline
 void
 basic_connection<C, X, T>::close()
 {
-    if(NULL != m_hConn)
+    if (NULL != m_hConn)
     {
         traits_type::close_connection(m_hConn);
 

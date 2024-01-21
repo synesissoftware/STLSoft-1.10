@@ -4,11 +4,11 @@
  * Purpose:     Error info functions.
  *
  * Created:     5th February 2004
- * Updated:     16th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_MAJOR    4
 # define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_MINOR    2
 # define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_REVISION 11
-# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_EDIT     58
+# define COMSTL_VER_COMSTL_ERROR_H_ERRORINFO_FUNCTIONS_EDIT     59
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_w_(   cs_char_w_t const*  descript
 
     hr = STLSOFT_NS_GLOBAL(CreateErrorInfo)(&pCEI);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         IErrorInfo  *pEI;
 
@@ -133,34 +133,34 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_w_(   cs_char_w_t const*  descript
                                                     COMSTL_IID_2_REF(IID_IErrorInfo)
                                                 ,   stlsoft_reinterpret_cast(void**, &pEI));
 
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
-            if(NULL != description)
+            if (NULL != description)
             {
                 hr = COMSTL_ITF_CALL(pCEI)->SetDescription(COMSTL_ITF_THIS(pCEI) stlsoft_const_cast(LPOLESTR, description));
             }
 
-            if(NULL != source)
+            if (NULL != source)
             {
                 hr = COMSTL_ITF_CALL(pCEI)->SetSource(COMSTL_ITF_THIS(pCEI) stlsoft_const_cast(LPOLESTR, source));
             }
 
-            if(NULL != guid)
+            if (NULL != guid)
             {
                 hr = COMSTL_ITF_CALL(pCEI)->SetGUID(COMSTL_ITF_THIS(pCEI) COMSTL_IID_2_REF(*guid));
             }
 
-            if(NULL != helpFile)
+            if (NULL != helpFile)
             {
                 hr = COMSTL_ITF_CALL(pCEI)->SetHelpFile(COMSTL_ITF_THIS(pCEI) stlsoft_const_cast(LPOLESTR, helpFile));
             }
 
-            if(NULL != helpContext)
+            if (NULL != helpContext)
             {
                 hr = COMSTL_ITF_CALL(pCEI)->SetHelpContext(COMSTL_ITF_THIS(pCEI) *helpContext);
             }
 
-            if(SUCCEEDED(hr))
+            if (SUCCEEDED(hr))
             {
                 hr = STLSOFT_NS_GLOBAL(SetErrorInfo)(0, pEI);
             }
@@ -178,7 +178,7 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_a_helper_(cs_char_a_t const* s_a, 
 {
     COMSTL_ASSERT(NULL != ps_w);
 
-    if(NULL == s_a)
+    if (NULL == s_a)
     {
         return S_FALSE;
     }
@@ -186,7 +186,7 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_a_helper_(cs_char_a_t const* s_a, 
     {
         const cs_size_t len = STLSOFT_NS_GLOBAL(strlen)(s_a);
 
-        if(NULL == (*ps_w = stlsoft_static_cast(cs_char_w_t*, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)((1 + len) * sizeof(cs_char_w_t)))))
+        if (NULL == (*ps_w = stlsoft_static_cast(cs_char_w_t*, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)((1 + len) * sizeof(cs_char_w_t)))))
         {
             return E_OUTOFMEMORY;
         }
@@ -194,13 +194,13 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_a_helper_(cs_char_a_t const* s_a, 
         {
             int n = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s_a, -1, *ps_w, stlsoft_static_cast(int, 1 + len));
 
-            if(0 == n)
+            if (0 == n)
             {
                 return HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
             else
             {
-                if(stlsoft_static_cast(cs_size_t, n) < len)
+                if (stlsoft_static_cast(cs_size_t, n) < len)
                 {
                     (*ps_w)[n] = L'\0';
                 }
@@ -222,20 +222,20 @@ STLSOFT_INLINE HRESULT comstl__set_error_info_a_(   cs_char_a_t const*  descript
     cs_char_w_t     *source_w       =   NULL;
     cs_char_w_t     *helpFile_w     =   NULL;
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = comstl__set_error_info_a_helper_(description, &description_w);
     }
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = comstl__set_error_info_a_helper_(source, &source_w);
     }
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = comstl__set_error_info_a_helper_(helpFile, &helpFile_w);
     }
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = comstl__set_error_info_w_(description_w, source_w, guid, helpFile_w, helpContext);
     }

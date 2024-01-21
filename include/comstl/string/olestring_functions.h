@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     2nd March 1996
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_REVISION    10
-# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        172
+# define COMSTL_VER_COMSTL_STRING_H_OLESTRING_FUNCTIONS_EDIT        173
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_a(cs_char_a_t const* s)
 {
     LPOLESTR    posz;
 
-    if(NULL == s)
+    if (NULL == s)
     {
         posz = NULL;
     }
@@ -130,11 +130,11 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_a(cs_char_a_t const* s)
 
         posz = posz2;
 
-        if(NULL != posz)
+        if (NULL != posz)
         {
             cs_size_t n = stlsoft_static_cast(cs_size_t, WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, -1, posz2, stlsoft_static_cast(int, cch + 1)));
 
-            if(n < cch)
+            if (n < cch)
             {
                 posz[n] = L'\0';
             }
@@ -155,7 +155,7 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_w(cs_char_w_t const* s)
 {
     LPOLESTR posz;
 
-    if(NULL == s)
+    if (NULL == s)
     {
         posz = NULL;
     }
@@ -165,7 +165,7 @@ STLSOFT_INLINE LPOLESTR comstl__olestring_create_w(cs_char_w_t const* s)
 
         posz = stlsoft_static_cast(LPOLESTR, STLSOFT_NS_GLOBAL(CoTaskMemAlloc)(sizeof(OLECHAR) * (cch + 1)));
 
-        if(NULL != posz)
+        if (NULL != posz)
         {
 #ifdef STLSOFT_USING_SAFE_STR_FUNCTIONS
             STLSOFT_NS_GLOBAL(wcscpy_s)(posz, 1 + cch, s);

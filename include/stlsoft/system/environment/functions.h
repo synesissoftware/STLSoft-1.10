@@ -4,11 +4,11 @@
  * Purpose:     Environment functions.
  *
  * Created:     4th March 2011
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_REVISION    1
-# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_EDIT        10
+# define STLSOFT_VER_STLSOFT_SYSTEM_ENVIRONMENT_H_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,9 +114,9 @@ stlsoft_C_environment_variable_exists_a(
     size_t  n;
     errno_t e = STLSOFT_NS_GLOBAL(getenv_s)(&n, &buff[0], STLSOFT_NUM_ELEMENTS(buff), name);
 
-    if(0 == e)
+    if (0 == e)
     {
-        if('\0' == buff[0])
+        if ('\0' == buff[0])
         {
             // variable doesn't exist
             return 0;
@@ -128,7 +128,7 @@ stlsoft_C_environment_variable_exists_a(
     }
     else
     {
-        if(ERANGE == e)
+        if (ERANGE == e)
         {
             return 1;
         }

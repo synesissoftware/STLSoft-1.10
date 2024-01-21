@@ -4,11 +4,11 @@
  * Purpose:     String function classes
  *
  * Created:     22nd April 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MAJOR       2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_MINOR       2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_REVISION    10
-# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        47
+# define STLSOFT_VER_STLSOFT_STRING_HPP_FUNCTIONALS_EDIT        48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,10 +114,10 @@ struct quoter
 public:
     S operator()(S const& s) const
     {
-        if(NULL != ::strpbrk(c_str_ptr(s), " \t\""))
+        if (NULL != ::strpbrk(c_str_ptr(s), " \t\""))
         {
             // Check whether it has quotes. If it does, we'll just assume it's ok
-            if(NULL != ::strchr(c_str_ptr(s), '"'))
+            if (NULL != ::strchr(c_str_ptr(s), '"'))
             {
                 return s;
             }

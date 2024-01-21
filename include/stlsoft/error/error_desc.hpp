@@ -4,7 +4,7 @@
  * Purpose:     Converts a standard rerror code (errno) to a printable string.
  *
  * Created:     18th July 2006
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MINOR     3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  1
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      43
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -400,7 +400,7 @@ basic_error_desc<C>::basic_error_desc(
 {
     stlsoft::auto_buffer<char_type, 128, allocator_type>    buff(128);
 
-    for(;;)
+    for (;;)
     {
         // If you get compiler errors on the following line, it may be because
         // you are trying to use a wide char specialisation of basic_error_desc

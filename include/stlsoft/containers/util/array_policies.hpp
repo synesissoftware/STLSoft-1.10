@@ -5,13 +5,13 @@
  *              frame) classes.
  *
  * Created:     1st September 2002
- * Updated:     25th March 2021
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,7 +60,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_MINOR       1
 # define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_REVISION    9
-# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        150
+# define STLSOFT_VER_STLSOFT_CONTAINERS_UTIL_HPP_ARRAY_POLICIES_EDIT        151
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -256,7 +256,7 @@ template<   ss_typename_param_k T
         >
 void do_construct_1(A& ator, T *p, ss_size_t n, one_type)
 {
-    for(T *e = p + n; p != e; ++p)
+    for (T *e = p + n; p != e; ++p)
     {
         ator.construct(p, T());
     }
@@ -292,7 +292,7 @@ void do_construct_2(A& ator, T *p, ss_size_t n, T const& value, one_type)
 #if 0
     std::uninitialized_fill_n(p, n, value);
 #else /* ? 0 */
-    for(T *e = p + n; p != e; ++p)
+    for (T *e = p + n; p != e; ++p)
     {
         ator.construct(p, value);
     }
@@ -304,7 +304,7 @@ template<   ss_typename_param_k T
         >
 void do_construct_2(A& /* ator */, T* p, ss_size_t n, T const& value, two_type)
 {
-    for(T* e = p + n; p != e; ++p)
+    for (T* e = p + n; p != e; ++p)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(p, &value, sizeof(T));
     }
@@ -325,7 +325,7 @@ template<   ss_typename_param_k T
         >
 void do_copy_construct_1(A& ator, T* p, T const* src, ss_size_t n, one_type)
 {
-    for(T* e = p + n; p != e; ++p, ++src)
+    for (T* e = p + n; p != e; ++p, ++src)
     {
         ator.construct(p, *src);
     }
@@ -336,7 +336,7 @@ template<   ss_typename_param_k T
         >
 void do_copy_construct_1(A& /* ator */, T* p, T const* src, ss_size_t n, two_type)
 {
-    for(T* e = p + n; p != e; ++p, ++src)
+    for (T* e = p + n; p != e; ++p, ++src)
     {
         STLSOFT_API_INTERNAL_memfns_memcpy(p, src, sizeof(T));
     }
@@ -357,7 +357,7 @@ template<   ss_typename_param_k T
         >
 void do_destroy_1(A& ator, T* p, ss_size_t n, one_type)
 {
-    for(T* e = p + n; p != e; ++p)
+    for (T* e = p + n; p != e; ++p)
     {
         ator.destroy(p);
     }

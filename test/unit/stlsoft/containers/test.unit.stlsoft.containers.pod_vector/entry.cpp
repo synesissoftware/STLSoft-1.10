@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.unit.stlsoft.container.pod_vector", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.stlsoft.container.pod_vector", verbosity))
     {
         XTESTS_RUN_CASE(test_default_ctor);
         XTESTS_RUN_CASE(test_ctor_size);

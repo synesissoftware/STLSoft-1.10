@@ -4,11 +4,11 @@
  * Purpose:     pipe class, based on UNIX pipe.
  *
  * Created:     19th June 2004
- * Updated:     23rd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_MAJOR      4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_MINOR      1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_REVISION   10
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_EDIT       56
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PIPE_EDIT       57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,9 +137,9 @@ public:
 #if defined(_WIN32) && \
     (   defined(_MSC_VER) || \
         defined(STLSOFT_COMPILER_IS_DMC))
-        if(0 != ::_pipe(&m_handles[0], 10240, _O_TEXT))
+        if (0 != ::_pipe(&m_handles[0], 10240, _O_TEXT))
 #else /* ? _WIN32 */
-        if(0 != ::pipe(&m_handles[0]))
+        if (0 != ::pipe(&m_handles[0]))
 #endif /* _WIN32 */
         {
             exception_policy_type()(errno);
@@ -151,11 +151,11 @@ public:
 
     ~pipe() STLSOFT_NOEXCEPT
     {
-        if(-1 != read_handle())
+        if (-1 != read_handle())
         {
             close_(m_handles[0]);
         }
-        if(-1 != write_handle())
+        if (-1 != write_handle())
         {
             close_(m_handles[1]);
         }
@@ -182,7 +182,7 @@ public:
     /// Closes the read handle, if not already closed
     void close_read()
     {
-        if(-1 != read_handle())
+        if (-1 != read_handle())
         {
             close_(m_handles[0]);
             m_handles[0] = -1;
@@ -191,7 +191,7 @@ public:
     /// Closes the write handle, if not already closed
     void close_write()
     {
-        if(-1 != write_handle())
+        if (-1 != write_handle())
         {
             close_(m_handles[1]);
             m_handles[1] = -1;

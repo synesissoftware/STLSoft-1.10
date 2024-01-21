@@ -4,11 +4,11 @@
  * Purpose:     event class, based on Windows EVENT.
  *
  * Created:     3rd July 2003
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_MINOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_REVISION 6
-# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     80
+# define WINSTL_VER_WINSTL_SYNCH_HPP_EVENT_EDIT     81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -147,7 +147,7 @@ public:
     /// Destroys the event instance
     ~event() STLSOFT_NOEXCEPT
     {
-        if( NULL != m_ev &&
+        if (NULL != m_ev &&
             m_bOwnHandle)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_ev);
@@ -166,7 +166,7 @@ public:
     {
         WINSTL_ASSERT(NULL != m_ev);
 
-        if(!WINSTL_API_EXTERNAL_Synchronisation_SetEvent(m_ev))
+        if (!WINSTL_API_EXTERNAL_Synchronisation_SetEvent(m_ev))
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -182,7 +182,7 @@ public:
     {
         WINSTL_ASSERT(NULL != m_ev);
 
-        if(!WINSTL_API_EXTERNAL_Synchronisation_ResetEvent(m_ev))
+        if (!WINSTL_API_EXTERNAL_Synchronisation_ResetEvent(m_ev))
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -216,7 +216,7 @@ private:
     {
         HANDLE  h = WINSTL_API_EXTERNAL_Synchronisation_CreateEventA(psa, bManualReset, bInitialState, name);
 
-        if(NULL == h)
+        if (NULL == h)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -233,7 +233,7 @@ private:
     {
         HANDLE h = WINSTL_API_EXTERNAL_Synchronisation_CreateEventW(psa, bManualReset, bInitialState, name);
 
-        if(NULL == h)
+        if (NULL == h)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -324,7 +324,7 @@ lock_instance(
 
     DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(h, INFINITE);
 
-    if(WAIT_OBJECT_0 != dwRes)
+    if (WAIT_OBJECT_0 != dwRes)
     {
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 

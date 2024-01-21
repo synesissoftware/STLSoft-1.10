@@ -5,11 +5,11 @@
  *              type methods.
  *
  * Created:     1st January 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_MINOR       0
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_REVISION    4
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_EDIT        9
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_METHOD_EDIT        10
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -249,7 +249,7 @@ public: // construction
 
     ~scoped_method() STLSOFT_NOEXCEPT
     {
-        if(NULL != m_instance)
+        if (NULL != m_instance)
         {
             m_invoker->invoke(m_instance);
         }
@@ -275,7 +275,7 @@ public: // operations
 
     void reset() STLSOFT_NOEXCEPT
     {
-        if(NULL != m_instance)
+        if (NULL != m_instance)
         {
             C* const instance = m_instance;
 

@@ -4,11 +4,11 @@
  * Purpose:     Process functions.
  *
  * Created:     12th March 2006
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_MINOR    1
 # define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_REVISION 6
-# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     30
+# define WINSTL_VER_WINSTL_PROCESS_H_FUNCTIONS_EDIT     31
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,21 +136,21 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcess9_a(
     PROCESS_INFORMATION pi_;
     BOOL                b;
 
-    if(NULL == si)
+    if (NULL == si)
     {
         STLSOFT_API_INTERNAL_memfns_memset(&si_, 0, sizeof(si_));
         si = &si_;
     }
-    if(NULL == pi)
+    if (NULL == pi)
     {
         pi = &pi_;
     }
 
     b = STLSOFT_NS_GLOBAL(CreateProcessA)(NULL, stlsoft_const_cast(ws_char_a_t*, cmdLine), processAttributes, threadAttributes, inheritsHandles, creationFlags, stlsoft_const_cast(ws_char_a_t*, environment), currentDirectory, si, pi);
 
-    if(b)
+    if (b)
     {
-        if(pi == &pi_)
+        if (pi == &pi_)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi->hProcess);
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi->hThread);
@@ -174,7 +174,7 @@ STLSOFT_INLINE BOOL winstl_C_CreateProcessFEA_a(ws_char_a_t const* cmdLine, DWOR
 
     b = STLSOFT_NS_GLOBAL(CreateProcessA)(NULL, stlsoft_const_cast(ws_char_a_t*, cmdLine), NULL, NULL, FALSE, flags, stlsoft_const_cast(ws_char_a_t*, envBlock), NULL, &si, &pi);
 
-    if(b)
+    if (b)
     {
         WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi.hProcess);
         WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(pi.hThread);

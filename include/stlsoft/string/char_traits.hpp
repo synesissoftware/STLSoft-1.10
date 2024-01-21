@@ -4,7 +4,7 @@
  * Purpose:     char_traits classes.
  *
  * Created:     19th November 1998
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MAJOR    4
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_MINOR    1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_REVISION 7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     90
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CHAR_TRAITS_EDIT     91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -184,7 +184,7 @@ public:
 
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::assign called with NULL destination", (0 == cch || NULL != dest));
 
-        for(ret = dest; 0 < cch; --cch, ++dest)
+        for (ret = dest; 0 < cch; --cch, ++dest)
         {
             assign(*dest, c);
         }
@@ -218,9 +218,9 @@ public:
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::compare called with NULL string", (0 == cch || NULL != s1));
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::compare called with NULL string", (0 == cch || NULL != s2));
 
-        for(size_type n = 0; n < cch; ++n, ++s1, ++s2)
+        for (size_type n = 0; n < cch; ++n, ++s1, ++s2)
         {
-            if(!eq(*s1, *s2))
+            if (!eq(*s1, *s2))
             {
                 return lt(*s1, *s2) ? -1 : +1;
             }
@@ -234,13 +234,13 @@ public:
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::compare_max called with NULL string", (0 == cch || NULL != s1));
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::compare_max called with NULL string", (0 == cch || NULL != s2));
 
-        for(size_type n = 0; n < cch; ++n, ++s1, ++s2)
+        for (size_type n = 0; n < cch; ++n, ++s1, ++s2)
         {
-            if(!eq(*s1, *s2))
+            if (!eq(*s1, *s2))
             {
                 return lt(*s1, *s2) ? -1 : +1;
             }
-            else if(eq(*s1, char_type(0)))
+            else if (eq(*s1, char_type(0)))
             {
                 break;
             }
@@ -254,7 +254,7 @@ public:
     {
         int_type    result;
 
-        if(NULL == s1)
+        if (NULL == s1)
         {
             result = (NULL == s2) ? 0 : -1;
         }
@@ -271,7 +271,7 @@ public:
     {
         int_type    result;
 
-        if(NULL == s1)
+        if (NULL == s1)
         {
             result = (NULL == s2) ? 0 : -1;
         }
@@ -290,7 +290,7 @@ public:
 
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::length called with NULL string", NULL != s);
 
-        for(cch = 0; !eq(*s, char_type(0)); ++s)
+        for (cch = 0; !eq(*s, char_type(0)); ++s)
         {
             ++cch;
         }
@@ -315,7 +315,7 @@ public:
 
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::length_max called with NULL string", NULL != s);
 
-        for(cch = 0; cch < limit && !eq(*s, char_type(0)); ++s)
+        for (cch = 0; cch < limit && !eq(*s, char_type(0)); ++s)
         {
             ++cch;
         }
@@ -345,7 +345,7 @@ public:
         STLSOFT_API_INTERNAL_memfns_memset(dest, 0, cch * sizeof(char_type));
 #endif /* STLSOFT_DEBUG */
 
-        for(ret = dest; 0 < cch; --cch, ++dest, ++src)
+        for (ret = dest; 0 < cch; --cch, ++dest, ++src)
         {
             assign(*dest, *src);
         }
@@ -361,17 +361,17 @@ public:
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::move called with NULL destination", (0 == cch || NULL != dest));
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::move called with NULL source", (0 == cch || NULL != src));
 
-        if( src < dest &&
+        if (src < dest &&
             dest < src + cch)
         {
-            for(dest += cch, src += cch; 0 < cch; --cch)
+            for (dest += cch, src += cch; 0 < cch; --cch)
             {
                 assign(*--dest, *--src);
             }
         }
         else
         {
-            for(; 0 < cch; --cch, ++dest, ++src)
+            for (; 0 < cch; --cch, ++dest, ++src)
             {
                 assign(*dest, *src);
             }
@@ -385,9 +385,9 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("char_traits<X>::find called with NULL string", (0 == cch || NULL != s));
 
-        for(; 0 < cch; --cch, ++s)
+        for (; 0 < cch; --cch, ++s)
         {
-            if(eq(*s, c))
+            if (eq(*s, c))
             {
                 break;
             }

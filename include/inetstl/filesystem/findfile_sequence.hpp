@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR     3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR     0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION  24
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      164
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      165
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -420,10 +420,10 @@ private:
 
         size_type cchFile = traits_type::str_len(data.cFileName);
 
-        if('/' != data.cFileName[0])
+        if ('/' != data.cFileName[0])
         {
             traits_type::char_copy(m_path, path, cchPath + 1);
-            if(!traits_type::has_dir_end(m_path))
+            if (!traits_type::has_dir_end(m_path))
             {
                 traits_type::ensure_dir_end(m_path);
                 ++cchPath;
@@ -570,7 +570,7 @@ private:
         {
             INETSTL_MESSAGE_ASSERT("Shared search handle being destroyed with outstanding references!", 0 == m_refCount);
 
-            if(NULL != hSrch)
+            if (NULL != hSrch)
             {
                 traits_type::find_close(hSrch);
             }
@@ -588,7 +588,7 @@ private:
         {
             ss_sint32_t rc = --m_refCount;
 
-            if(0 == rc)
+            if (0 == rc)
             {
                 delete this;
             }
@@ -896,11 +896,11 @@ basic_findfile_sequence<C, T, X>::find_first_file_(
 {
     HINTERNET hSrch = traits_type::find_first_file(hconn, spec, findData);
 
-    if(NULL == hSrch)
+    if (NULL == hSrch)
     {
         DWORD const dwErr = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-        if(ERROR_FTP_TRANSFER_IN_PROGRESS == dwErr)
+        if (ERROR_FTP_TRANSFER_IN_PROGRESS == dwErr)
         {
             exception_policy_type()("Already enumerating using current connection", dwErr);
         }
@@ -933,7 +933,7 @@ basic_findfile_sequence<C, T, X>::validate_flags_(
     INETSTL_MESSAGE_ASSERT("Specification of unrecognised/unsupported flags", flags == (flags & validFlags));
     STLSOFT_SUPPRESS_UNUSED(validFlags);
 
-    if(0 == (flags & (directories | files)))
+    if (0 == (flags & (directories | files)))
     {
         flags |= (directories | files);
     }
@@ -954,7 +954,7 @@ inline /* static */ void basic_findfile_sequence<C, T, X>::extract_subpath_(HINT
 
     traits_type::get_full_path_name(hconn, pattern, INETSTL_CONST_MAX_PATH, dest, &pFile);
 
-    if(NULL != pFile)
+    if (NULL != pFile)
     {
         *pFile = '\0';
     }
@@ -1045,7 +1045,7 @@ const* basic_findfile_sequence<C, T, X>::get_directory(
 
     size_type n_;
 
-    if(NULL == pn)
+    if (NULL == pn)
     {
         pn = &n_;
     }
@@ -1199,37 +1199,37 @@ inline /* static */ HINTERNET basic_findfile_sequence_const_input_iterator<C, T,
 {
     HINTERNET   hSrch = traits_type::find_first_file(hconn, pattern, findData);
 
-    if(hSrch != NULL)
+    if (hSrch != NULL)
     {
         // Now need to validate against the flags
-        for(; hSrch != NULL; )
+        for (; hSrch != NULL; )
         {
-            if(0 == (findData->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+            if (0 == (findData->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
             {
                 // A file, and files requested, so break
-                if(flags & sequence_type::files)
+                if (flags & sequence_type::files)
                 {
                     break;
                 }
             }
             else
             {
-                if(traits_type::is_dots(findData->cFileName))
+                if (traits_type::is_dots(findData->cFileName))
                 {
-                    if(flags & sequence_type::includeDots)
+                    if (flags & sequence_type::includeDots)
                     {
                         // A dots file, and dots are requested
                         break;
                     }
                 }
-                else if(flags & sequence_type::directories)
+                else if (flags & sequence_type::directories)
                 {
                     // A directory, and directories requested
                     break;
                 }
             }
 
-            if(!traits_type::find_next_file(hSrch, findData))
+            if (!traits_type::find_next_file(hSrch, findData))
             {
                 traits_type::find_close(hSrch);
 
@@ -1300,7 +1300,7 @@ inline basic_findfile_sequence_const_input_iterator<C, T, X, V>::basic_findfile_
     , m_delim(rhs.m_delim)
     , m_flags(rhs.m_flags)
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
@@ -1325,12 +1325,12 @@ inline basic_findfile_sequence_const_input_iterator<C, T, X, V> &basic_findfile_
     m_delim     =   rhs.m_delim;
     m_flags     =   rhs.m_flags;
 
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
 
-    if(NULL != this_handle)
+    if (NULL != this_handle)
     {
         this_handle->Release();
     }
@@ -1341,7 +1341,7 @@ inline basic_findfile_sequence_const_input_iterator<C, T, X, V> &basic_findfile_
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k X, ss_typename_param_k V>
 inline basic_findfile_sequence_const_input_iterator<C, T, X, V>::~basic_findfile_sequence_const_input_iterator() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->Release();
     }
@@ -1360,20 +1360,20 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
     //  1. starting out
     //  2.
 
-    for(; '\0' != *m_pattern0 || '\0' != *m_pattern1;)
+    for (; '\0' != *m_pattern0 || '\0' != *m_pattern1;)
     {
-        if(NULL == m_handle)
+        if (NULL == m_handle)
         {
             // Need to work through the
 
-            while(find_next_pattern_(m_pattern0, m_pattern1, m_delim))
+            while (find_next_pattern_(m_pattern0, m_pattern1, m_delim))
             {
-                if(m_pattern1 != m_pattern0)    // Will return m_pattern0 == m_pattern1 for empty tokens
+                if (m_pattern1 != m_pattern0)    // Will return m_pattern0 == m_pattern1 for empty tokens
                 {
                     string_type     pattern(m_pattern0, m_pattern1);
                     string_type     search  =   m_rootDir;
 
-                    if(search.back() != '/')
+                    if (search.back() != '/')
                     {
                         static const char_type  slash[] = { '/', '\0' };
 
@@ -1384,7 +1384,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
 //printf("[%s]\n", search.c_str());
                     HINTERNET       hSrch   =   find_first_file_(m_list->m_hconn, STLSOFT_NS_QUAL(c_str_ptr)(search), m_flags, &m_data);
 
-                    if(NULL != hSrch)
+                    if (NULL != hSrch)
                     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                         try
@@ -1392,7 +1392,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
                             m_handle = new shared_handle(hSrch);
 
-                            if(NULL == m_handle)
+                            if (NULL == m_handle)
                             {
                                 WINSTL_API_EXTERNAL_FileManagement_FindClose(hSrch);
                             }
@@ -1412,11 +1412,11 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
             }
         }
 
-        if(NULL != m_handle)
+        if (NULL != m_handle)
         {
-            for(; m_handle->hSrch != NULL; )
+            for (; m_handle->hSrch != NULL; )
             {
-                if(!traits_type::find_next_file(m_handle->hSrch, &m_data))
+                if (!traits_type::find_next_file(m_handle->hSrch, &m_data))
                 {
                     m_handle->Release();
 
@@ -1426,25 +1426,25 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
                 }
                 else
                 {
-                    if((m_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
+                    if ((m_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) == 0)
                     {
                         // A file, and files requested, so break
-                        if(m_flags & sequence_type::files)
+                        if (m_flags & sequence_type::files)
                         {
                             return *this;
                         }
                     }
                     else
                     {
-                        if(traits_type::is_dots(m_data.cFileName))
+                        if (traits_type::is_dots(m_data.cFileName))
                         {
-                            if(m_flags & sequence_type::includeDots)
+                            if (m_flags & sequence_type::includeDots)
                             {
                                 // A dots file, and dots are requested
                                 return *this;
                             }
                         }
-                        else if(m_flags & sequence_type::directories)
+                        else if (m_flags & sequence_type::directories)
                         {
                             // A directory, and directories requested
                             return *this;
@@ -1471,7 +1471,7 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k X, ss_typename_param_k V>
 inline const ss_typename_type_k basic_findfile_sequence_const_input_iterator<C, T, X, V>::value_type basic_findfile_sequence_const_input_iterator<C, T, X, V>::operator *() const
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         size_type           dirLen  =   0;
         char_type const*    dir     =   m_list->get_directory(&dirLen);

@@ -5,11 +5,11 @@
  *              functions for decimal representation.
  *
  * Created:     1st November 2011
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_MINOR    0
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_REVISION 13
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_EDIT     18
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_LC_STRING_EDIT     19
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,12 +113,12 @@ integer_to_lc_string(
 
     ss_size_t dummy;
 
-    if(NULL == numWritten)
+    if (NULL == numWritten)
     {
         numWritten = &dummy;
     }
 
-    if('\0' == grouping[0])
+    if ('\0' == grouping[0])
     {
         return stlsoft::integer_to_decimal_string(dest, cchDest, value, numWritten);
     }
@@ -138,20 +138,20 @@ integer_to_lc_string(
 
         *d = '\0';
 
-        for(ss_size_t i = 0; i != nRaw; ++i)
+        for (ss_size_t i = 0; i != nRaw; ++i)
         {
-            if( 0 < width &&
+            if (0 < width &&
                 n == width)
             {
                 *--d = thousands_sep;
 
                 int const nextWidth = grouping[1 + index];
-                if( nextWidth < 0 ||
+                if (nextWidth < 0 ||
                     CHAR_MAX == nextWidth)
                 {
                     width = -1;
                 }
-                else if('\0' == nextWidth)
+                else if ('\0' == nextWidth)
                 {
                     ; // Do nothing, and therefore reuse previous width
                 }

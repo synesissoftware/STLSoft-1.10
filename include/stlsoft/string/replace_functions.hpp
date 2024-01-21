@@ -4,11 +4,11 @@
  * Purpose:     String replace functions.
  *
  * Created:     11th May 2010
- * Updated:     28th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_REPLACE_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_REPLACE_FUNCTIONS_MINOR     1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_REPLACE_FUNCTIONS_REVISION  2
-# define STLSOFT_VER_STLSOFT_STRING_HPP_REPLACE_FUNCTIONS_EDIT      13
+# define STLSOFT_VER_STLSOFT_STRING_HPP_REPLACE_FUNCTIONS_EDIT      14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -110,11 +110,11 @@ replace_impl(
 {
     size_t const lenOrig = str.size();
 
-    if(lf <= lenOrig)
+    if (lf <= lenOrig)
     {
         ss_typename_type_k S0::size_type p;
 
-        { for(p = str.find(f, 0, lf); p < str.size(); p = str.find(f, p, lf))
+        { for (p = str.find(f, 0, lf); p < str.size(); p = str.find(f, p, lf))
         {
             str.replace(str.begin() + p, str.begin() + p + lf, r, lr);
             p = p + lr - lf + 1;

@@ -4,11 +4,11 @@
  * Purpose:     ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_MINOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_REVISION    5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_EDIT        56
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_ZERO_EDIT        57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,11 +91,11 @@ namespace stlsoft
  *   int   i = ZERO; // error
  *   int   *p = ZERO; // OK
  *
- *   if(i == ZERO) {} // error
- *   if(ZERO == i) {} // error
+ *   if (i == ZERO) {} // error
+ *   if (ZERO == i) {} // error
  *
- *   if(p == ZERO) {} // OK
- *   if(ZERO == p) {} // OK
+ *   if (p == ZERO) {} // OK
+ *   if (ZERO == p) {} // OK
  *
  *
  * When used via inclusion of the file stlsoft_zerodef.h, the macro ZERO is

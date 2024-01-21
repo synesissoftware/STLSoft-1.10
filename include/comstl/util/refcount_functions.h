@@ -4,11 +4,11 @@
  * Purpose:     Reference-counting helper functions.
  *
  * Created:     25th June 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MAJOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_MINOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       71
+# define COMSTL_VER_COMSTL_UTIL_H_REFCOUNT_FUNCTIONS_EDIT       72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ STLSOFT_INLINE void comstl__release(LPUNKNOWN punk)
  */
 STLSOFT_INLINE void comstl__safe_addref(LPUNKNOWN punk)
 {
-    if(NULL != punk)
+    if (NULL != punk)
     {
         comstl__addref(punk);
     }
@@ -139,7 +139,7 @@ STLSOFT_INLINE void comstl__safe_addref(LPUNKNOWN punk)
  */
 STLSOFT_INLINE void comstl__safe_release(LPUNKNOWN punk)
 {
-    if(NULL != punk)
+    if (NULL != punk)
     {
         comstl__release(punk);
     }
@@ -215,7 +215,7 @@ inline void safe_release(LPUNKNOWN punk)
 template <ss_typename_param_k T>
 inline void release_set_null(T *&pt)
 {
-    if(NULL != pt)
+    if (NULL != pt)
     {
         release(pt);
         pt = NULL;

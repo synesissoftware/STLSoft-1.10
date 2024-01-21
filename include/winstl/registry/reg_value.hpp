@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     19th January 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Diego Chanoux for spotting a defect in the value_sz() method.
  *
@@ -70,7 +70,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_MINOR     5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_REVISION  11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      128
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_VALUE_EDIT      129
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -483,7 +483,7 @@ inline basic_reg_value<C, T, A>::basic_reg_value(basic_reg_value<C, T, A>::hkey_
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline basic_reg_value<C, T, A>::~basic_reg_value() STLSOFT_NOEXCEPT
 {
-    if(m_hkey != NULL)
+    if (m_hkey != NULL)
     {
         WINSTL_API_EXTERNAL_Registry_RegCloseKey(m_hkey);
     }
@@ -498,7 +498,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::class_type& basic_reg_va
 
     hkey_type   hkey    =   m_hkey;
     m_hkey              =   dup_key_(rhs.m_hkey, KEY_READ);
-    if(hkey != NULL)
+    if (hkey != NULL)
     {
         WINSTL_API_EXTERNAL_Registry_RegCloseKey(hkey);
     }
@@ -510,7 +510,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::class_type& basic_reg_va
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline ws_dword_t basic_reg_value<C, T, A>::get_type_() const
 {
-    if(!m_bTypeRetrieved)
+    if (!m_bTypeRetrieved)
     {
         size_type   data_size = 0;
         ws_dword_t  type;
@@ -523,7 +523,7 @@ inline ws_dword_t basic_reg_value<C, T, A>::get_type_() const
         ws_bool_t&   m_bTypeRetrieved   =   const_cast<ws_bool_t &>(this->m_bTypeRetrieved);
 #endif /* STLSOFT_CF_mutable_KEYWORD_SUPPORT */
 
-        if(0 == traits_type::reg_query_value(m_hkey, m_name.c_str(), type, NULL, data_size))
+        if (0 == traits_type::reg_query_value(m_hkey, m_name.c_str(), type, NULL, data_size))
         {
             m_type              =   type;
             m_bTypeRetrieved    =   ws_true_v;
@@ -536,7 +536,7 @@ inline ws_dword_t basic_reg_value<C, T, A>::get_type_() const
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline /* static */ ss_typename_type_ret_k basic_reg_value<C, T, A>::hkey_type basic_reg_value<C, T, A>::dup_key_(ss_typename_type_k basic_reg_value<C, T, A>::hkey_type hkey, REGSAM accessMask/* , ss_typename_type_k basic_reg_value<C, T, A>::result_type *res */)
 {
-    if(NULL == hkey)
+    if (NULL == hkey)
     {
         return NULL;
     }
@@ -545,12 +545,12 @@ inline /* static */ ss_typename_type_ret_k basic_reg_value<C, T, A>::hkey_type b
         result_type res;
         HKEY        hkeyDup = traits_type::key_dup(hkey, accessMask, &res);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char message[] = "could not duplicate key";
 
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }
@@ -590,12 +590,12 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
     size_type   data_size   =   0;
     ws_long_t   res         =   traits_type::reg_query_info(m_hkey, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &data_size, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not determine the data size";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -605,7 +605,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
         }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
-    else if(data_size > 0) // Are there _any_ values have non-zero size
+    else if (data_size > 0) // Are there _any_ values have non-zero size
     {
         char_buffer_type_   buffer(1 + data_size);
         ws_dword_t          dw;
@@ -613,12 +613,12 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
         data_size = buffer.size();
         res = traits_type::reg_query_value(m_hkey, m_name.c_str(), dw, &buffer[0], data_size);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char message[] = "could not elicit string value";
 
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }
@@ -628,7 +628,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
             }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
-        else if(data_size > 0) // We do a second check here because the requested value might have 0-size, and because registry contents can be changed by other processes
+        else if (data_size > 0) // We do a second check here because the requested value might have 0-size, and because registry contents can be changed by other processes
         {
             WINSTL_ASSERT(0 != data_size);
 
@@ -649,22 +649,22 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::string_type basic_reg_va
     // Does expand environment strings
     string_type ret = value_sz();
 
-    if( ret.length() > 0 &&
+    if (ret.length() > 0 &&
         REG_EXPAND_SZ == get_type_())
     {
         size_type size = traits_type::expand_environment_strings(ret.c_str(), NULL, 0);
 
-        if(0 != size)
+        if (0 != size)
         {
             char_buffer_type_ buffer(1 + size);
 
-            if(0 == traits_type::expand_environment_strings(ret.c_str(), &buffer[0], size))
+            if (0 == traits_type::expand_environment_strings(ret.c_str(), &buffer[0], size))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 static const char   message[]   =   "could not expand environment strings";
                 DWORD const         res         =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-                if(ERROR_ACCESS_DENIED == res)
+                if (ERROR_ACCESS_DENIED == res)
                 {
                     STLSOFT_THROW_X(access_denied_exception(message, res));
                 }
@@ -692,12 +692,12 @@ inline ws_dword_t basic_reg_value<C, T, A>::value_dword() const
     ws_dword_t  value_type;
     ws_long_t   res     =   traits_type::reg_query_value(m_hkey, m_name.c_str(), value_type, &dwValue, cbData);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not query value";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -730,7 +730,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::blob_type basic_reg_valu
     ws_dword_t  dw;
     ws_long_t   res         =   traits_type::reg_query_value(m_hkey, m_name.c_str(), dw, NULL, data_size);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
@@ -738,7 +738,7 @@ query_failed:
 
         static const char message[] = "could not elicit binary value";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -752,14 +752,14 @@ query_failed:
     {
         WINSTL_MESSAGE_ASSERT("queried registry value is not binary", dw == REG_BINARY);
 
-        if(data_size > 0)
+        if (data_size > 0)
         {
             byte_buffer_type_   buffer(data_size);
 
             data_size = buffer.size();
             res = traits_type::reg_query_value(m_hkey, m_name.c_str(), dw, buffer.data(), data_size);
 
-            if(ERROR_SUCCESS != res)
+            if (ERROR_SUCCESS != res)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 goto query_failed;
@@ -783,12 +783,12 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::strings_type basic_reg_v
     size_type       data_size   =   0;
     ws_long_t       res         =   traits_type::reg_query_info(m_hkey, NULL, NULL, NULL, NULL, NULL, NULL, NULL, &data_size, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not determine the data size";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -798,7 +798,7 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::strings_type basic_reg_v
         }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
-    else if(data_size > 0) // Are there _any_ values have non-zero size
+    else if (data_size > 0) // Are there _any_ values have non-zero size
     {
         char_buffer_type_   buffer(1 + data_size);
         ws_dword_t          dw;
@@ -806,12 +806,12 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::strings_type basic_reg_v
         data_size   =   buffer.size();
         res         =   traits_type::reg_query_value(m_hkey, m_name.c_str(), dw, &buffer[0], data_size);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char message[] = "could not elicit string values";
 
-            if(ERROR_ACCESS_DENIED == res)
+            if (ERROR_ACCESS_DENIED == res)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, res));
             }
@@ -821,13 +821,13 @@ inline ss_typename_type_ret_k basic_reg_value<C, T, A>::strings_type basic_reg_v
             }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
         }
-        else if(data_size > 0) // We do a second check here because the requested value might have 0-size, and because registry contents can be changed by other processes
+        else if (data_size > 0) // We do a second check here because the requested value might have 0-size, and because registry contents can be changed by other processes
         {
             buffer[data_size / sizeof(char_type)] = 0;
 
             ss_typename_type_k char_buffer_type_::const_iterator start = buffer.begin();
 
-            { for(ss_typename_type_k char_buffer_type_::const_iterator ii = buffer.begin(); buffer.end() != ii;)
+            { for (ss_typename_type_k char_buffer_type_::const_iterator ii = buffer.begin(); buffer.end() != ii;)
             {
                 if (*ii != (char_type)0)
                 {

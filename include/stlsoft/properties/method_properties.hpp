@@ -4,11 +4,11 @@
  * Purpose:     Method-based properties.
  *
  * Created:     6th October 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -68,7 +68,7 @@
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_MAJOR     4
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_MINOR     0
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_REVISION  7
-# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_EDIT      69
+# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_EDIT      70
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -467,7 +467,7 @@ private:
 
         STLSOFT_MESSAGE_ASSERT("member_get_pointer called before being initialised!", NULL != s_pfn);
 
-        if(NULL != pC)
+        if (NULL != pC)
         {
             *pR = (pC->*s_pfn)();
         }
@@ -506,7 +506,7 @@ private:
 
         STLSOFT_MESSAGE_ASSERT("member_set_pointer called before being initialised!", NULL != s_pfn);
 
-        if(NULL != pC)
+        if (NULL != pC)
         {
             (pC->*s_pfn)(*pR);
         }

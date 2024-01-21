@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MAJOR       4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_REVISION    8
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        71
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_BLOCK_EDIT        72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@ public:
     /// instance unchanged.
     class_type& operator =(class_type const& rhs)
     {
-        if(m_buffer.resize(rhs.m_buffer.size()))
+        if (m_buffer.resize(rhs.m_buffer.size()))
         {
             pod_copy_n(&m_buffer.data()[0], &rhs.m_buffer.data()[0], m_buffer.size());
         }
@@ -221,7 +221,7 @@ public:
         WINSTL_ASSERT('\0' == m_buffer[m_buffer.size() - 1]);
         WINSTL_ASSERT('\0' == m_buffer[m_buffer.size() - 2]);
 
-        if(!m_buffer.resize(oldSize + cch + 1))
+        if (!m_buffer.resize(oldSize + cch + 1))
         {
             return false;
         }
@@ -283,7 +283,7 @@ public:
         WINSTL_ASSERT('\0' == m_buffer[m_buffer.size() - 1]);
         WINSTL_ASSERT('\0' == m_buffer[m_buffer.size() - 2]);
 
-        if(!m_buffer.resize(oldSize + cchName + 1 + cchValue + 1))
+        if (!m_buffer.resize(oldSize + cchName + 1 + cchValue + 1))
         {
             return false;
         }

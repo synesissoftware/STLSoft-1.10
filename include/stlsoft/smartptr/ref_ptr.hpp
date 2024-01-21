@@ -4,11 +4,11 @@
  * Purpose:     Contains the ref_ptr template class.
  *
  * Created:     2nd November 1994
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MAJOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_MINOR      5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_REVISION   1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       512
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_REF_PTR_EDIT       513
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -245,7 +245,7 @@ public: // construction
     ref_ptr(counted_type* c, bool_type bAddRef)
         : m_pi(i_from_c(c))
     {
-        if( bAddRef &&
+        if (bAddRef &&
             NULL != m_pi)
         {
             add_reference(m_pi);
@@ -259,7 +259,7 @@ public: // construction
     ref_ptr(class_type const& rhs)
         : m_pi(rhs.m_pi)
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             add_reference(m_pi);
         }
@@ -292,7 +292,7 @@ public: // construction
         : m_pi(i_from_const_c(rhs.get()))
 #  endif /* 0 */
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             add_reference(m_pi);
         }
@@ -308,7 +308,7 @@ public: // construction
         : m_pi(i_from_c(rhs.get()))
 #  endif /* 0 */
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             add_reference(m_pi);
         }
@@ -322,7 +322,7 @@ public: // construction
     /// it will be released.
     ~ref_ptr() STLSOFT_NOEXCEPT
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             release_reference(m_pi);
         }
@@ -385,7 +385,7 @@ public: // construction
     {
         class_type r;
 
-        if(ss_nullptr_k != c)
+        if (ss_nullptr_k != c)
         {
             borrow_reference(c);
 
@@ -411,7 +411,7 @@ public: // construction
     {
         class_type r;
 
-        if(ss_nullptr_k != c)
+        if (ss_nullptr_k != c)
         {
             own_reference(c);
 
@@ -453,7 +453,7 @@ public:
     /// \note Calling this method more than once has no effect.
     void close() STLSOFT_NOEXCEPT
     {
-        if(NULL != m_pi)
+        if (NULL != m_pi)
         {
             release_reference(m_pi);
             m_pi = NULL;

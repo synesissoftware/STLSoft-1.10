@@ -4,14 +4,14 @@
  * Purpose:     Compiler feature discrimination for Visual C++.
  *
  * Created:     7th February 2003
- * Updated:     12th December 2023
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Cláudio Albuquerque for working on the
  *              Win64-compatibility.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -69,7 +69,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MAJOR     3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_MINOR     35
 # define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_REVISION  1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      151
+# define STLSOFT_VER_H_STLSOFT_CCCAP_MSVC_EDIT      152
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -987,7 +987,7 @@
 # include <cstddef>
 # ifdef _XSTDDEF_
 #  undef _TRY_BEGIN
-#  define _TRY_BEGIN    if(1) {
+#  define _TRY_BEGIN    if (1) {
 #  undef _CATCH
 #  define _CATCH(x)     } else {
 #  undef _CATCH_ALL

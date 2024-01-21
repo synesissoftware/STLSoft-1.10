@@ -4,11 +4,11 @@
  * Purpose:     Options verification.
  *
  * Created:     9th November 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_REVISION  9
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      57
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPTIONS_VERIFIER_EDIT      58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -239,7 +239,7 @@ public:
     /// not a value.
     ~options_verifier()
     {
-        if( !m_bMatched &&
+        if (!m_bMatched &&
 # if defined(STLSOFT_COMPILER_IS_MWERKS)
             1)
 # else /* ? compiler */
@@ -256,7 +256,7 @@ public:
     template <ss_typename_param_k U>
     class_type& test(U const& u)
     {
-        if( !m_bMatched &&
+        if (!m_bMatched &&
             m_value == u)
         {
             m_bMatched = true;

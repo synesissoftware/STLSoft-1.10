@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.unit.stlsoft.string.shim_string", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.stlsoft.string.shim_string", verbosity))
     {
         XTESTS_RUN_CASE(test_sizes);
         XTESTS_RUN_CASE(test_construction);
@@ -269,14 +269,14 @@ static void test_truncate()
 {
     stlsoft::basic_shim_string<char> str("abcdefghijklmnopqrstuvwx");
 
-    { for(size_t i = 0;; ++i)
+    { for (size_t i = 0;; ++i)
     {
         size_t numTriplets = (8 - i);
 
         XTESTS_TEST_INTEGER_EQUAL(3u * numTriplets, str.size());
         XTESTS_TEST_MULTIBYTE_STRING_EQUAL(std::string(alphabet, 3u * numTriplets), str);
 
-        if(8 == i)
+        if (8 == i)
         {
             break;
         }
@@ -349,7 +349,7 @@ static void test_append_c_string()
 
     stlsoft::basic_shim_string<char>    str(size_t(0u));
 
-    { for(size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
+    { for (size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
     {
         str.append(strings[i]);
 
@@ -378,7 +378,7 @@ static void test_append_c_string_after_truncate()
 
     str.truncate(0u);
 
-    { for(size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
+    { for (size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
     {
         str.append(strings[i]);
 

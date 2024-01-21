@@ -4,7 +4,7 @@
  * Purpose:     Compile-time template constraints templates.
  *
  * Created:     19th November 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Peter Bannister for having the clear thinking to see the
  *              obvious (but only in hindsight) tactic of overloading the
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_MAJOR      5
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_MINOR      0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_REVISION   9
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_EDIT       111
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_CONSTRAINTS_EDIT       112
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -93,11 +93,11 @@ namespace stlsoft
 #if defined(STLSOFT_COMPILER_IS_BORLAND) || \
     defined(STLSOFT_COMPILER_IS_INTEL) || \
     defined(STLSOFT_COMPILER_IS_MWERKS)
-# define stlsoft_constraint_must_be_pod(T)              do { STLSOFT_NS_QUAL(must_be_pod)<T>::func_ptr_type const pfn = STLSOFT_NS_QUAL(must_be_pod)<T>::constraint(); STLSOFT_SUPPRESS_UNUSED(pfn); } while(0)
-# define stlsoft_constraint_must_be_pod_or_void(T)      do { STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::func_ptr_type const pfn = STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::constraint(); STLSOFT_SUPPRESS_UNUSED(pfn); } while(0)
+# define stlsoft_constraint_must_be_pod(T)              do { STLSOFT_NS_QUAL(must_be_pod)<T>::func_ptr_type const pfn = STLSOFT_NS_QUAL(must_be_pod)<T>::constraint(); STLSOFT_SUPPRESS_UNUSED(pfn); } while (0)
+# define stlsoft_constraint_must_be_pod_or_void(T)      do { STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::func_ptr_type const pfn = STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::constraint(); STLSOFT_SUPPRESS_UNUSED(pfn); } while (0)
 #elif defined(STLSOFT_COMPILER_IS_DMC)
-# define stlsoft_constraint_must_be_pod(T)              do { int i = sizeof(STLSOFT_NS_QUAL(must_be_pod)<T>::constraint()); } while(0)
-# define stlsoft_constraint_must_be_pod_or_void(T)      do { int i = sizeof(STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::constraint()); } while(0)
+# define stlsoft_constraint_must_be_pod(T)              do { int i = sizeof(STLSOFT_NS_QUAL(must_be_pod)<T>::constraint()); } while (0)
+# define stlsoft_constraint_must_be_pod_or_void(T)      do { int i = sizeof(STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::constraint()); } while (0)
 #else /* ? compiler */
 # define stlsoft_constraint_must_be_pod(T)              STLSOFT_STATIC_ASSERT(sizeof(STLSOFT_NS_QUAL(must_be_pod)<T>::constraint()) != 0)
 # define stlsoft_constraint_must_be_pod_or_void(T)      STLSOFT_STATIC_ASSERT(sizeof(STLSOFT_NS_QUAL(must_be_pod_or_void)<T>::constraint()) != 0)

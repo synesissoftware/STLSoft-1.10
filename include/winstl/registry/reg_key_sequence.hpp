@@ -13,7 +13,7 @@
  *              basic_reg_key_sequence class interface.
  *
  * Created:     19th January 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -64,7 +64,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_MAJOR      3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_MINOR      9
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_REVISION   11
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_EDIT       152
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_KEY_SEQUENCE_EDIT       153
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -518,12 +518,12 @@ basic_reg_key_sequence<C, T, A>::create_shared_handle_(result_type& res)
 
     hkey_type hkey2 = traits_type::key_dup(m_hkey, m_accessMask, &res);
 
-    if(NULL == hkey2)
+    if (NULL == hkey2)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not duplicate key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -541,13 +541,13 @@ basic_reg_key_sequence<C, T, A>::create_shared_handle_(result_type& res)
         scoped_handle<HKEY>                 sh(hkey2, WINSTL_API_EXTERNAL_Registry_RegCloseKey);
         registry_util::shared_handle* const handle = registry_util::create_shared_handle(hkey2, m_bMonitorExternalInvalidation, REG_NOTIFY_CHANGE_NAME);
 
-        if(NULL == handle)
+        if (NULL == handle)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             static const char   message[]   =   "could not create shared enumeration context";
             DWORD const         err         =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-            if(ERROR_ACCESS_DENIED == err)
+            if (ERROR_ACCESS_DENIED == err)
             {
                 STLSOFT_THROW_X(access_denied_exception(message, err));
             }
@@ -573,7 +573,7 @@ basic_reg_key_sequence<C, T, A>::create_shared_handle_(result_type& res)
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline /* static */ REGSAM basic_reg_key_sequence<C, T, A>::validate_access_mask_(REGSAM accessMask, ss_typename_type_k basic_reg_key_sequence<C, T, A>::bool_type bMonitorExternalInvalidation)
 {
-    if(bMonitorExternalInvalidation)
+    if (bMonitorExternalInvalidation)
     {
         return accessMask | KEY_NOTIFY;
     }
@@ -589,12 +589,12 @@ inline /* static */ ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::hkey
     result_type res;
     HKEY        hkeyDup =   traits_type::key_dup(hkey, accessMask, &res);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not duplicate key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -620,12 +620,12 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence( ss_typename_type
 {
     result_type res;
 
-    if(ERROR_SUCCESS != (res = traits_type::reg_open_key(hkey, sub_key_name, &m_hkey, accessMask)))
+    if (ERROR_SUCCESS != (res = traits_type::reg_open_key(hkey, sub_key_name, &m_hkey, accessMask)))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not open key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -650,12 +650,12 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence( ss_typename_type
 {
     result_type res;
 
-    if(ERROR_SUCCESS != (res = traits_type::reg_open_key(hkey, sub_key_name, &m_hkey, accessMask)))
+    if (ERROR_SUCCESS != (res = traits_type::reg_open_key(hkey, sub_key_name, &m_hkey, accessMask)))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not open key";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -676,7 +676,7 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence(ss_typename_type_
     , m_bMonitorExternalInvalidation(0 != (KEY_NOTIFY & key.get_access_mask()))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hkey)
+    if (NULL == m_hkey)
     {
         STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -691,7 +691,7 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence( ss_typename_type
     , m_bMonitorExternalInvalidation(0 != (KEY_NOTIFY & accessMask))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hkey)
+    if (NULL == m_hkey)
     {
         STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -707,7 +707,7 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence( ss_typename_type
     , m_bMonitorExternalInvalidation(bMonitorExternalInvalidation)
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hkey)
+    if (NULL == m_hkey)
     {
         STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -717,7 +717,7 @@ inline basic_reg_key_sequence<C, T, A>::basic_reg_key_sequence( ss_typename_type
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k A>
 inline basic_reg_key_sequence<C, T, A>::~basic_reg_key_sequence() STLSOFT_NOEXCEPT
 {
-    if(m_hkey != NULL)
+    if (m_hkey != NULL)
     {
         WINSTL_API_EXTERNAL_Registry_RegCloseKey(m_hkey);
     }
@@ -742,12 +742,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::iterator basic_re
     ws_uint32_t numEntries  =   0;
     result_type res         =   traits_type::reg_query_info(m_hkey, NULL, NULL, &numEntries, &cchName, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not elicit sub-key information";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -761,18 +761,18 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::iterator basic_re
     }
     else
     {
-        if(0 != numEntries)
+        if (0 != numEntries)
         {
             // 2. Duplicate the registry key handle & create the shared handle
             registry_util::shared_handle    *handle =   create_shared_handle_(res);
             ws_sint32_t                     index   =   0;
 
-            if(NULL == handle)
+            if (NULL == handle)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 static const char message[] = "could not create shared enumeration context";
 
-                if(ERROR_ACCESS_DENIED == res)
+                if (ERROR_ACCESS_DENIED == res)
                 {
                     STLSOFT_THROW_X(access_denied_exception(message, res));
                 }
@@ -791,15 +791,15 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::iterator basic_re
                 // 4. Loop to get the full name
                 buffer_type_    buffer(++cchName);   // This is increased so that the call to reg_enum_key is likely to succeed
 
-                for(; !buffer.empty(); )    // Need to loop because sub-keys can change, when we're not monitoring
+                for (; !buffer.empty(); )    // Need to loop because sub-keys can change, when we're not monitoring
                 {
                     cchName  =   buffer.size();
 
                     res = traits_type::reg_enum_key(m_hkey, 0, &buffer[0], &cchName);
 
-                    if(ERROR_MORE_DATA == res)
+                    if (ERROR_MORE_DATA == res)
                     {
-                        if(!buffer.resize(2 * buffer.size())) // Throws, or returns false
+                        if (!buffer.resize(2 * buffer.size())) // Throws, or returns false
                         {
                             cchName =   0;
                             index   =   const_iterator::sentinel_();
@@ -808,12 +808,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::iterator basic_re
 
                         continue; // "Let's go round again"
                     }
-                    else if(ERROR_SUCCESS != res)
+                    else if (ERROR_SUCCESS != res)
                     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                         static const char message[] = "could not enumerate sub-keys";
 
-                        if(ERROR_ACCESS_DENIED == res)
+                        if (ERROR_ACCESS_DENIED == res)
                         {
                             STLSOFT_THROW_X(access_denied_exception(message, res));
                         }
@@ -850,7 +850,7 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::iterator basic_re
     ref_ptr<registry_util::shared_handle>   ref(handle, false); // Eat the reference here. The iterator will take another
     ws_sint32_t                             index   =   const_iterator::sentinel_();
 
-    if(NULL == handle)
+    if (NULL == handle)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(registry_exception("failed to take duplicate of key", res));
@@ -888,12 +888,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence<C, T, A>::size_type basic_r
     ws_uint32_t numEntries;
     result_type res = traits_type::reg_query_info(m_hkey, NULL, NULL, &numEntries, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not elicit number of sub-keys";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -951,7 +951,7 @@ inline basic_reg_key_sequence_iterator<C, T, V, A>::basic_reg_key_sequence_itera
     , m_name(rhs.m_name)
     , m_accessMask(rhs.m_accessMask)
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
@@ -969,12 +969,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
     m_handle        =   rhs.m_handle;
     m_accessMask    =   rhs.m_accessMask;
 
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
 
-    if(NULL != this_handle)
+    if (NULL != this_handle)
     {
         this_handle->Release();
     }
@@ -985,7 +985,7 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k V, ss_typename_param_k A>
 inline basic_reg_key_sequence_iterator<C, T, V, A>::~basic_reg_key_sequence_iterator() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->Release();
     }
@@ -1007,12 +1007,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
     size_type   cchName =   0;
     result_type res     =   traits_type::reg_query_info(m_handle->m_hkey, NULL, NULL, NULL, &cchName, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not elicit sub-key information";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1028,27 +1028,27 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
     {
         buffer_type_ buffer(++cchName); // This is increased so that the call to reg_enum_key is likely to succeed
 
-        for(; !buffer.empty(); buffer.resize(2 * buffer.size()))    // Need to loop because sub-keys can change, when we're not monitoring
+        for (; !buffer.empty(); buffer.resize(2 * buffer.size()))    // Need to loop because sub-keys can change, when we're not monitoring
         {
             cchName = buffer.size();
 
             res = traits_type::reg_enum_key(m_handle->m_hkey, static_cast<ws_dword_t>(1 + m_index), &buffer[0], &cchName);
 
-            if(ERROR_MORE_DATA == res)
+            if (ERROR_MORE_DATA == res)
             {
                 continue; // "Let's go round again"
             }
-            else if(ERROR_NO_MORE_ITEMS == res)
+            else if (ERROR_NO_MORE_ITEMS == res)
             {
                 m_index = sentinel_();
                 break;
             }
-            else if(ERROR_SUCCESS != res)
+            else if (ERROR_SUCCESS != res)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 static const char message[] = "could not enumerate sub-keys";
 
-                if(ERROR_ACCESS_DENIED == res)
+                if (ERROR_ACCESS_DENIED == res)
                 {
                     STLSOFT_THROW_X(access_denied_exception(message, res));
                 }
@@ -1087,12 +1087,12 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
     ws_uint32_t numEntries  =   0;
     result_type res         =   traits_type::reg_query_info(m_handle->m_hkey, NULL, NULL, &numEntries, &cchName, NULL, NULL, NULL, NULL, NULL, NULL);
 
-    if(ERROR_SUCCESS != res)
+    if (ERROR_SUCCESS != res)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         static const char message[] = "could not elicit sub-key information";
 
-        if(ERROR_ACCESS_DENIED == res)
+        if (ERROR_ACCESS_DENIED == res)
         {
             STLSOFT_THROW_X(access_denied_exception(message, res));
         }
@@ -1110,7 +1110,7 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
         ws_dword_t      index;
 
         // If the iterator is currently at the "end()", ...
-        if(m_index == sentinel_())
+        if (m_index == sentinel_())
         {
             // ... then set the index to be one past the end
             index = numEntries - 1;
@@ -1121,22 +1121,22 @@ inline ss_typename_type_ret_k basic_reg_key_sequence_iterator<C, T, V, A>::class
             index = m_index - 1;
         }
 
-        for(; !buffer.empty(); buffer.resize(2 * buffer.size()))    // Need to loop because sub-keys can change, when we're not monitoring
+        for (; !buffer.empty(); buffer.resize(2 * buffer.size()))    // Need to loop because sub-keys can change, when we're not monitoring
         {
             cchName  =   buffer.size();
 
             res = traits_type::reg_enum_key(m_handle->m_hkey, index, &buffer[0], &cchName);
 
-            if(ERROR_MORE_DATA == res)
+            if (ERROR_MORE_DATA == res)
             {
                 continue; // "Let's go round again"
             }
-            else if(ERROR_SUCCESS != res)
+            else if (ERROR_SUCCESS != res)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 static const char message[] = "could not elicit sub-key information";
 
-                if(ERROR_ACCESS_DENIED == res)
+                if (ERROR_ACCESS_DENIED == res)
                 {
                     STLSOFT_THROW_X(access_denied_exception(message, res));
                 }

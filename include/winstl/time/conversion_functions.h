@@ -4,11 +4,11 @@
  * Purpose:     Comparison functions for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_MINOR    1
 # define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_REVISION 7
-# define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_EDIT     65
+# define WINSTL_VER_WINSTL_TIME_H_CONVERSION_FUNCTIONS_EDIT     66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,7 +171,7 @@ winstl_C_FILETIMEToUNIXTime(
     i |= ft->dwLowDateTime;
 
     i -= STLSOFT_GEN_UINT64_SUFFIX(116444736000000000);
-    if(NULL != microseconds)
+    if (NULL != microseconds)
     {
         *microseconds = stlsoft_static_cast(ws_sint32_t, (i % 10000000) / 10);
 

@@ -4,7 +4,7 @@
  * Purpose:     Process Id sequence class.
  *
  * Created:     24th June 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Adi Shavit for spotting a small inefficiency in the
  *              resize()-ing, during the review of Extended STL volume 1
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PID_SEQUENCE_MAJOR    2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PID_SEQUENCE_MINOR    2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PID_SEQUENCE_REVISION 10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_PID_SEQUENCE_EDIT     67
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_PID_SEQUENCE_EDIT     68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -249,18 +249,18 @@ public:
         ws_uint32_t major   =   system_version::major();
         ws_uint32_t minor   =   system_version::minor();
 
-        if(4 == major)
+        if (4 == major)
         {
             return 2;   // NT 4
         }
         else
         {
-            if( 5 == major &&
+            if (5 == major &&
                 0 == minor)
             {
                 return 8; // Win2K
             }
-            else if(5 == major &&
+            else if (5 == major &&
                     1 == minor)
             {
                 return 4; // WinXP
@@ -302,13 +302,13 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
 {
     DWORD   cbReturned;
 
-    for(;;)
+    for (;;)
     {
 #if defined(_PSAPI_H_) || \
     defined(_PSAPI_H)
-        if(!::EnumProcesses(&m_pids[0], sizeof(value_type) * m_pids.size(), &cbReturned))
+        if (!::EnumProcesses(&m_pids[0], sizeof(value_type) * m_pids.size(), &cbReturned))
 #else /* ? psapi */
-        if(!dl_call<BOOL>(  "PSAPI.DLL"
+        if (!dl_call<BOOL>(  "PSAPI.DLL"
                         ,   WINSTL_DL_CALL_WINx_STDCALL_LITERAL("EnumProcesses")
                         ,   &m_pids[0]
                         ,   sizeof(value_type) * m_pids.size()
@@ -327,7 +327,7 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
         {
             const size_type n = cbReturned / sizeof(value_type);
 
-            if(n < m_pids.size())
+            if (n < m_pids.size())
             {
                 m_pids.resize(n);
 
@@ -339,7 +339,7 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
 
                 m_pids.resize(1); // Read "Extended STL, volume 1" to find out what this is for
 
-                if(!m_pids.resize(2 * size))
+                if (!m_pids.resize(2 * size))
                 {
                     // This will only ever be executed when compiled in the
                     // absence of throwing bad_alloc on memory exhaustion
@@ -351,7 +351,7 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
         }
     }
 
-    if(flags & (elideIdle | elideSystem))
+    if (flags & (elideIdle | elideSystem))
     {
         value_type* begin   =   &*m_pids.begin();
         value_type* end     =   &*m_pids.end();
@@ -359,7 +359,7 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
         value_type* pSystem =   (flags & elideSystem) ? STLSOFT_NS_QUAL_STD(find)(begin, end, systemProcessId()) : end;
 
         // Optimise for the special case where idle is [0] and system is [1]
-        if( end != pIdle &&
+        if (end != pIdle &&
             end != pSystem &&
             pSystem == pIdle + 1)
         {
@@ -368,12 +368,12 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
         }
         else
         {
-            if(end != pIdle)
+            if (end != pIdle)
             {
                 pod_move(pIdle + 1, end, pIdle);
                 m_pids.resize(m_pids.size() - 1);
             }
-            if(end != pSystem)
+            if (end != pSystem)
             {
                 pod_move(pSystem + 1, end, pSystem);
                 m_pids.resize(m_pids.size() - 1);
@@ -381,7 +381,7 @@ inline pid_sequence::pid_sequence(ws_uint32_t flags)
         }
     }
 
-    if(flags & sort)
+    if (flags & sort)
     {
         STLSOFT_NS_QUAL_STD(sort)(m_pids.begin(), m_pids.end());
     }

@@ -4,11 +4,11 @@
  * Purpose:     Z-order iteration.
  *
  * Created:     11th July 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MAJOR     2
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_MINOR     0
 # define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_REVISION  10
-# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      56
+# define WINSTL_VER_WINSTL_WINDOW_HPP_ZORDER_ITERATOR_EDIT      57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -310,12 +310,12 @@ inline /* static */ HWND zorder_iterator_tmpl<T>::get_next_window_(HWND hwnd, HW
 {
     hwnd = (*pfn)(hwnd);
 
-    if(NULL == hwnd)
+    if (NULL == hwnd)
     {
         DWORD const dwErr = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-//        if(ERROR_INVALID_WINDOW_HANDLE == dwErr)
-        if(ERROR_SUCCESS != dwErr)
+//        if (ERROR_INVALID_WINDOW_HANDLE == dwErr)
+        if (ERROR_SUCCESS != dwErr)
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(external_iterator_invalidation)("z-order search failed: window has been destroyed", static_cast<long>(dwErr)));
         }
@@ -355,7 +355,7 @@ inline /* static */ zorder_iterator_tmpl<T> zorder_iterator_tmpl<T>::create(HWND
 {
     HWND    hwndCurrent;
 
-    switch(from)
+    switch (from)
     {
         case    fromFirstChild:
         case    atLastChild:
@@ -364,7 +364,7 @@ inline /* static */ zorder_iterator_tmpl<T> zorder_iterator_tmpl<T>::create(HWND
             break;
     }
 
-    switch(from)
+    switch (from)
     {
         case    fromCurrent:
             hwndCurrent = hwndRoot;
@@ -407,7 +407,7 @@ inline ss_typename_type_ret_k zorder_iterator_tmpl<T>::class_type& zorder_iterat
 {
     WINSTL_MESSAGE_ASSERT("Attempt to decrement an invalid / out-of-range iterator", NULL != m_hwndRoot);
 
-    if(NULL != m_hwndCurrent)
+    if (NULL != m_hwndCurrent)
     {
         m_hwndCurrent  = class_type::get_next_window_(m_hwndCurrent, traits_type::get_previous_peer);
     }

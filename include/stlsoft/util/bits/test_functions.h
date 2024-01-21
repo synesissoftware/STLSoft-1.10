@@ -4,11 +4,11 @@
  * Purpose:     Bit test functions
  *
  * Created:     2nd June 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS_REVISION    3
-# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS_EDIT        10
+# define STLSOFT_VER_STLSOFT_UTIL_BITS_H_TEST_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ stlsoft_C_find_highest_bit_in_8bit_unsigned_integer(
 {
     unsigned c;
 
-    for(c = 0; 0 != v; ++c, v >>= 1)
+    for (c = 0; 0 != v; ++c, v >>= 1)
     {}
 
     return c;
@@ -120,7 +120,7 @@ stlsoft_C_find_highest_bit_in_16bit_unsigned_integer(
 {
     unsigned const r_high = stlsoft_C_find_highest_bit_in_8bit_unsigned_integer(STLSOFT_STATIC_CAST(ss_uint8_t, v >> 8));
 
-    if(0 != r_high)
+    if (0 != r_high)
     {
         return r_high + 8u;
     }
@@ -141,7 +141,7 @@ stlsoft_C_find_highest_bit_in_32bit_unsigned_integer(
 {
     unsigned const r_high = stlsoft_C_find_highest_bit_in_16bit_unsigned_integer(STLSOFT_STATIC_CAST(ss_uint16_t, v >> 16));
 
-    if(0 != r_high)
+    if (0 != r_high)
     {
         return r_high + 16u;
     }
@@ -162,7 +162,7 @@ stlsoft_C_find_highest_bit_in_64bit_unsigned_integer(
 {
     unsigned const r_high = stlsoft_C_find_highest_bit_in_32bit_unsigned_integer(STLSOFT_STATIC_CAST(ss_uint32_t, v >> 32));
 
-    if(0 != r_high)
+    if (0 != r_high)
     {
         return r_high + 32u;
     }

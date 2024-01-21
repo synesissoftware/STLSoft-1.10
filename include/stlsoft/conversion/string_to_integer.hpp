@@ -4,7 +4,7 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     18th November 2008
- * Updated:     31st October 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Chris Oldwood for righteous criticism of one of my hastily-
  *              written articles, which led to the creation of the
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MAJOR     3
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_REVISION  1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      71
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_INTEGER_EDIT      72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -153,11 +153,11 @@ struct ximpl_string_to_integer_util_
 
         I result = 0;
 
-        for(;; ++s)
+        for (;; ++s)
         {
             STLSOFT_COVER_MARK_LINE();
 
-            switch(*s)
+            switch (*s)
             {
                 case    '0':
                 case    '1':
@@ -204,13 +204,13 @@ struct ximpl_string_to_integer_util_
 
         *result = 0;
 
-        for(; 0 != len; ++s, --len)
+        for (; 0 != len; ++s, --len)
         {
             STLSOFT_COVER_MARK_LINE();
 
             C c = *s;
 
-            switch(c)
+            switch (c)
             {
                 case    'a':
                 case    'A':
@@ -283,11 +283,11 @@ calc:
         STLSOFT_ASSERT(0 != len);
         STLSOFT_ASSERT(NULL != endptr);
 
-        if('0' == s[0])
+        if ('0' == s[0])
         {
             STLSOFT_COVER_MARK_LINE();
 
-            if(1 == len)
+            if (1 == len)
             {
                 STLSOFT_COVER_MARK_LINE();
 
@@ -298,12 +298,12 @@ calc:
                 return true;
             }
             else
-            if( 'x' == s[1] ||
+            if ('x' == s[1] ||
                 'X' == s[1])
             {
                 STLSOFT_COVER_MARK_LINE();
 
-                if(2 == len)
+                if (2 == len)
                 {
                     STLSOFT_COVER_MARK_LINE();
 
@@ -326,11 +326,11 @@ calc:
 
         *result = 0;
 
-        for(; 0 != len; ++s, --len)
+        for (; 0 != len; ++s, --len)
         {
             STLSOFT_COVER_MARK_LINE();
 
-            switch(*s)
+            switch (*s)
             {
                 case    '0':
                 case    '1':
@@ -453,7 +453,7 @@ calc:
         // apply Null Object pattern
         C const* endptr_;
 
-        if(NULL == endptr)
+        if (NULL == endptr)
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -461,11 +461,11 @@ calc:
         }
 
         // skip whitespace
-        for(;; ++s)
+        for (;; ++s)
         {
             STLSOFT_COVER_MARK_LINE();
 
-            switch(*s)
+            switch (*s)
             {
                 case    ' ':
                 case    '\t':
@@ -482,7 +482,7 @@ calc:
             break;
         }
 
-        switch(*s)
+        switch (*s)
         {
             case    '+':
                 STLSOFT_COVER_MARK_LINE();
@@ -506,7 +506,7 @@ calc:
                     STLSOFT_COVER_MARK_LINE();
 
                     I   v;
-                    if(try_read_minus_(s + 1, endptr, &v, I_is_signed_type_()))
+                    if (try_read_minus_(s + 1, endptr, &v, I_is_signed_type_()))
                     {
                         return v;
                     }
@@ -543,7 +543,7 @@ calc:
         // apply Null Object pattern
         C const* endptr_;
 
-        if(NULL == endptr)
+        if (NULL == endptr)
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -552,7 +552,7 @@ calc:
 
         *endptr = NULL;
 
-        if(0 == len)
+        if (0 == len)
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -562,11 +562,11 @@ calc:
         }
 
         // skip whitespace
-        for(; 0 != len; ++s, --len)
+        for (; 0 != len; ++s, --len)
         {
             STLSOFT_COVER_MARK_LINE();
 
-            switch(*s)
+            switch (*s)
             {
                 case    ' ':
                 case    '\t':
@@ -583,7 +583,7 @@ calc:
             break;
         }
 
-        if(0 == len)
+        if (0 == len)
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -592,7 +592,7 @@ calc:
             return false;
         }
 
-        switch(*s)
+        switch (*s)
         {
             case    '+':
                 STLSOFT_COVER_MARK_LINE();
@@ -629,7 +629,7 @@ calc:
                 {
                     STLSOFT_COVER_MARK_LINE();
 
-                    if(try_read_minus_len_(s + 1, len - 1, endptr, result, I_is_signed_type_()))
+                    if (try_read_minus_len_(s + 1, len - 1, endptr, result, I_is_signed_type_()))
                     {
                         return true;
                     }
@@ -660,7 +660,7 @@ calc:
     ,   C3 const**  ep
     )
     {
-        if(0 == len)
+        if (0 == len)
         {
             return false;
         }
@@ -679,13 +679,13 @@ calc:
 
         STLSOFT_ASSERT(NULL != *ep);
 
-        if((*ep - s) < ss_ptrdiff_t(len))
+        if ((*ep - s) < ss_ptrdiff_t(len))
         {
             C2 const* const endCharsEnd = validEndChars + validEndCharsLen;
 
-            for( ; endCharsEnd != validEndChars; ++validEndChars)
+            for ( ; endCharsEnd != validEndChars; ++validEndChars)
             {
-                if(*validEndChars == **ep)
+                if (*validEndChars == **ep)
                 {
                     return true;
                 }
@@ -712,7 +712,7 @@ calc:
     ,   C const**   endptr
     )
     {
-        if(0 == len)
+        if (0 == len)
         {
             *endptr = NULL;
 
@@ -730,12 +730,12 @@ calc:
 
         STLSOFT_ASSERT(NULL != ep);
 
-        if(NULL != endptr)
+        if (NULL != endptr)
         {
             *endptr = ep;
         }
 
-        if((ep - s) < ss_ptrdiff_t(len))
+        if ((ep - s) < ss_ptrdiff_t(len))
         {
             return false;
         }
@@ -757,7 +757,7 @@ calc:
     ,   I*          pi
     )
     {
-        if(0 == len)
+        if (0 == len)
         {
             return false;
         }
@@ -771,7 +771,7 @@ calc:
 
         STLSOFT_ASSERT(NULL != ep);
 
-        if((ep - s) < ss_ptrdiff_t(len))
+        if ((ep - s) < ss_ptrdiff_t(len))
         {
             return false;
         }
@@ -795,7 +795,7 @@ calc:
     {
         ss_size_t const len = c_str_len(s);
 
-        if(0 == len)
+        if (0 == len)
         {
             return false;
         }
@@ -814,7 +814,7 @@ calc:
 
         STLSOFT_ASSERT(NULL != *ep);
 
-        if((*ep - s) < ss_ptrdiff_t(len))
+        if ((*ep - s) < ss_ptrdiff_t(len))
         {
             return false;
         }
@@ -837,7 +837,7 @@ calc:
     {
         ss_size_t const len = c_str_len(s);
 
-        if(0 == len)
+        if (0 == len)
         {
             return false;
         }
@@ -851,7 +851,7 @@ calc:
 
         STLSOFT_ASSERT(NULL != ep);
 
-        if((ep - s) < ss_ptrdiff_t(len))
+        if ((ep - s) < ss_ptrdiff_t(len))
         {
             return false;
         }

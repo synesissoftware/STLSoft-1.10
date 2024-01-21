@@ -4,7 +4,7 @@
  * Purpose:     Associative container range adaptor.
  *
  * Created:     1st October 2004
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,7 +50,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_ASSOCIATIVE_RANGE_MAJOR       1
 # define RANGELIB_VER_RANGELIB_HPP_ASSOCIATIVE_RANGE_MINOR       4
 # define RANGELIB_VER_RANGELIB_HPP_ASSOCIATIVE_RANGE_REVISION    11
-# define RANGELIB_VER_RANGELIB_HPP_ASSOCIATIVE_RANGE_EDIT        46
+# define RANGELIB_VER_RANGELIB_HPP_ASSOCIATIVE_RANGE_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -280,7 +280,7 @@ public:
 \code
 void dump_elements(std::vector<int> const& numbers)
 {
-  for(associative_range<std::vector<int> > r(numbers); r; ++r)
+  for (associative_range<std::vector<int> > r(numbers); r; ++r)
   {
     std::cout << &r; // Dump the current value to stdout
   }

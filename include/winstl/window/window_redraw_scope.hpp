@@ -4,11 +4,11 @@
  * Purpose:     Window redraw-state scoping class.
  *
  * Created:     5th January 1996
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_REDRAW_SCOPE_MAJOR      5
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_REDRAW_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_REDRAW_SCOPE_REVISION   6
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_REDRAW_SCOPE_EDIT       90
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_REDRAW_SCOPE_EDIT       91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ public:
     {
         ::SendMessage(m_hwnd, WM_SETREDRAW, true, 0L);
 
-        if(m_bInvalidateOnUnlock)
+        if (m_bInvalidateOnUnlock)
         {
             ::InvalidateRect(m_hwnd, NULL, true);
         }

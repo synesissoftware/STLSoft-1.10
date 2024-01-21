@@ -5,7 +5,7 @@
  *              class templates.
  *
  * Created:     1st December 2002
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Nevin Liber and Scott Meyers for kicking my lazy behind, and
  *              requiring that I implement the full complement of standard
@@ -60,7 +60,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MAJOR    4
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_MINOR    3
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_REVISION 11
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     101
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_ADAPTORS_EDIT     102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -376,7 +376,7 @@ public:
             array_type  ar;
 
             ar.SetSize(0, calc_increment_(n));
-            if(n > 0) // Can't pass 0 to InsertAt()
+            if (n > 0) // Can't pass 0 to InsertAt()
             {
                 ar.InsertAt(0, value, static_cast<int>(n));
             }
@@ -391,7 +391,7 @@ public:
             exception_translation_policy_type::handle(x);
         }
 #else /* ? MFCSTL_CARRAY_SWAP_MEMBERS_SUPPORT */
-//      if( empty() &&
+//      if (empty() &&
 //          0 != n)
 //      {
 //          resize(1);
@@ -419,7 +419,7 @@ public:
         MFCSTL_ASSERT(is_valid_source_range_(first, last));
 
 #ifdef MFCSTL_CARRAY_SWAP_MEMBERS_SUPPORT
-        if(empty())
+        if (empty())
         {
             // If "this" is empty, then we can call clear_and_assign_() to instantiate it
             // and just catch any thrown exception and call clear() to ensure strong
@@ -510,7 +510,7 @@ public:
     {
         const size_type oldSize = size();
         resize(n);
-        if(oldSize < n)
+        if (oldSize < n)
         {
             try
             {
@@ -556,7 +556,7 @@ public:
     /// instance of std::out_of_range will be thrown
     reference at(size_type n)
     {
-        if(n >= size())
+        if (n >= size())
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("Invalid index specified"));
         }
@@ -569,7 +569,7 @@ public:
     /// instance of std::out_of_range will be thrown
     const_reference at(size_type n) const
     {
-        if(n >= size())
+        if (n >= size())
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("Invalid index specified"));
         }
@@ -762,7 +762,7 @@ public:
         }
         catch(...)
         {
-            if(size() != oldSize)
+            if (size() != oldSize)
             {
                 MFCSTL_ASSERT(size() == oldSize + 1);
 
@@ -824,7 +824,7 @@ public:
         }
         catch(...)
         {
-            if(size() != oldSize)
+            if (size() != oldSize)
             {
                 MFCSTL_ASSERT(size() == oldSize + 1);
 
@@ -857,7 +857,7 @@ public:
 
         difference_type index = pos - begin();
 
-        if(empty())
+        if (empty())
         {
             MFCSTL_ASSERT(0 == index);
 
@@ -873,7 +873,7 @@ public:
             {
                 try
                 {
-                    if(n > 0) // Can't pass 0 to InsertAt()
+                    if (n > 0) // Can't pass 0 to InsertAt()
                     {
                         get_CArray().InsertAt(static_cast<int>(index), value, n);
                     }
@@ -889,7 +889,7 @@ public:
             }
             catch(...)
             {
-                if(size() != oldSize)
+                if (size() != oldSize)
                 {
                     MFCSTL_ASSERT(size() == oldSize + n);
 
@@ -949,7 +949,7 @@ public:
         }
         catch(...)
         {
-            if(size() != oldSize)
+            if (size() != oldSize)
             {
                 MFCSTL_ASSERT(size() == oldSize + n);
 

@@ -4,11 +4,11 @@
  * Purpose:     Byte-order independent large integer (aggregate) classes.
  *
  * Created:     15th October 2000
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_64BIT_INTEGERS_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_64BIT_INTEGERS_MINOR     1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_64BIT_INTEGERS_REVISION  5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_64BIT_INTEGERS_EDIT      141
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_64BIT_INTEGERS_EDIT      142
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -413,12 +413,12 @@ inline sinteger64::class_type& sinteger64::operator +=(class_type const& rhs)
     m_low   +=  rhs.m_low;
     m_high  +=  rhs.m_high;
 
-    if( rhs.m_low > 0 &&
+    if (rhs.m_low > 0 &&
         m_low < rhs.m_low)
     {
         ++m_high;
     }
-    else if(rhs.m_low < 0 &&
+    else if (rhs.m_low < 0 &&
             m_low > rhs.m_low)
     {
         --m_high;
@@ -461,12 +461,12 @@ inline sinteger64::class_type& sinteger64::operator -=(class_type const& rhs)
     m_low   -=  rhs.m_low;
     m_high  -=  rhs.m_high;
 
-    if( rhs.m_low > 0 &&
+    if (rhs.m_low > 0 &&
         m_low < rhs.m_low)
     {
         ++m_high;
     }
-    else if(rhs.m_low < 0 &&
+    else if (rhs.m_low < 0 &&
             m_low > rhs.m_low)
     {
         --m_high;
@@ -509,12 +509,12 @@ inline sinteger64::class_type& sinteger64::operator *=(class_type const& rhs)
     m_low   *=  rhs.m_low;
     m_high  *=  rhs.m_high;
 
-    if( rhs.m_low > 0 &&
+    if (rhs.m_low > 0 &&
         m_low < rhs.m_low)
     {
         ++m_high;
     }
-    else if(rhs.m_low < 0 &&
+    else if (rhs.m_low < 0 &&
             m_low > rhs.m_low)
     {
         --m_high;
@@ -620,7 +620,7 @@ inline ss_sint_t sinteger64::compare(class_type const& rhs) const
 {
     ss_sint_t   res =   m_high - rhs.m_high;
 
-    if(0 == res)
+    if (0 == res)
     {
         res = m_low - rhs.m_low;
     }

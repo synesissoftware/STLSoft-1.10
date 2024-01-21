@@ -10,7 +10,7 @@
  *              regretably now implemented as independent classes.
  *
  * Created:     15th January 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -61,7 +61,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_REVISION  15
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      135
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_FINDVOLUME_SEQUENCE_EDIT      136
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -317,7 +317,7 @@ private:
         }
         void Release()
         {
-            if(0 == --cRefs)
+            if (0 == --cRefs)
             {
                 delete this;
             }
@@ -331,7 +331,7 @@ private:
         {
             WINSTL_MESSAGE_ASSERT("Shared search handle being destroyed with outstanding references!", 0 == cRefs);
 
-            if(hSrch != INVALID_HANDLE_VALUE)
+            if (hSrch != INVALID_HANDLE_VALUE)
             {
                 traits_type::find_volume_close(hSrch);
             }
@@ -353,7 +353,7 @@ private:
     {
         WINSTL_ASSERT(INVALID_HANDLE_VALUE != hSrch);
 
-        if(NULL == m_handle)
+        if (NULL == m_handle)
         {
             traits_type::find_volume_close(hSrch);
             m_name[0] = '\0';
@@ -540,7 +540,7 @@ inline ss_typename_type_ret_k basic_findvolume_sequence<C, T>::const_iterator ba
     char_type   vol_name[MAX_VOL_NAME + 1];
     HANDLE      hSrch   =   traits_type::find_first_volume(vol_name, STLSOFT_NUM_ELEMENTS(vol_name));
 
-    if(hSrch != INVALID_HANDLE_VALUE)
+    if (hSrch != INVALID_HANDLE_VALUE)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         try
@@ -625,7 +625,7 @@ inline basic_findvolume_sequence_const_iterator<C, T, V>::basic_findvolume_seque
     : m_list(rhs.m_list)
     , m_handle(rhs.m_handle)
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
@@ -641,12 +641,12 @@ inline ss_typename_type_ret_k basic_findvolume_sequence_const_iterator<C, T, V>:
     m_list      =   rhs.m_list;
     m_handle    =   rhs.m_handle;
 
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->AddRef();
     }
 
-    if(NULL != this_handle)
+    if (NULL != this_handle)
     {
         this_handle->Release();
     }
@@ -659,7 +659,7 @@ inline ss_typename_type_ret_k basic_findvolume_sequence_const_iterator<C, T, V>:
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k V>
 inline basic_findvolume_sequence_const_iterator<C, T, V>::~basic_findvolume_sequence_const_iterator() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         m_handle->Release();
     }
@@ -670,7 +670,7 @@ inline ss_typename_type_ret_k basic_findvolume_sequence_const_iterator<C, T, V>:
 {
     WINSTL_MESSAGE_ASSERT("Attempting to increment an invalid iterator!", NULL != m_handle);
 
-    if(!traits_type::find_next_volume(m_handle->hSrch, m_name, STLSOFT_NUM_ELEMENTS(m_name)))
+    if (!traits_type::find_next_volume(m_handle->hSrch, m_name, STLSOFT_NUM_ELEMENTS(m_name)))
     {
         m_handle->Release();
 
@@ -693,7 +693,7 @@ inline ss_typename_type_ret_k basic_findvolume_sequence_const_iterator<C, T, V>:
 template <ss_typename_param_k C, ss_typename_param_k T, ss_typename_param_k V>
 inline const ss_typename_type_k basic_findvolume_sequence_const_iterator<C, T, V>::value_type basic_findvolume_sequence_const_iterator<C, T, V>::operator *() const
 {
-    if(NULL != m_handle)
+    if (NULL != m_handle)
     {
         return value_type(m_name);
     }

@@ -4,11 +4,11 @@
  * Purpose:     Memory mapped file class.
  *
  * Created:     15th December 1996
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MAJOR       4
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_MINOR       6
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_REVISION    2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT        108
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_MEMORY_MAPPED_FILE_EDIT        109
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -178,9 +178,9 @@ private:
                                 ,   &traits_type::close
                                 ,   -1);
 
-        if(hfile.empty())
+        if (hfile.empty())
         {
-            if(on_failure_("Failed to open file for mapping"))
+            if (on_failure_("Failed to open file for mapping"))
             {
                 return;
             }
@@ -189,32 +189,32 @@ private:
         {
             struct stat st;
 
-            if(0 != ::fstat(hfile.get(), &st))
+            if (0 != ::fstat(hfile.get(), &st))
             {
-                if(on_failure_("Failed to determine mapped file size"))
+                if (on_failure_("Failed to determine mapped file size"))
                 {
                     return;
                 }
             }
-            else if(0 == st.st_size)
+            else if (0 == st.st_size)
             {
                 m_memory    =   NULL;
                 m_cb        =   0;
             }
             else
             {
-                if(0 == requestSize)
+                if (0 == requestSize)
                 {
                     requestSize = static_cast<size_type>(st.st_size);
                 }
-                else if(requestSize + offset > static_cast<size_type>(st.st_size))
+                else if (requestSize + offset > static_cast<size_type>(st.st_size))
                 {
                     requestSize = static_cast<size_type>(st.st_size) - offset;
                 }
 
                 void* const memory = ::mmap(NULL, static_cast<size_t>(requestSize), PROT_READ, MAP_PRIVATE, hfile.get(), offset);
 
-                if(MAP_FAILED == memory)
+                if (MAP_FAILED == memory)
                 {
                     on_failure_("Failed to map view of file");
                 }
@@ -289,7 +289,7 @@ public:
     {
         UNIXSTL_ASSERT(is_valid());
 
-        if(NULL != m_memory)
+        if (NULL != m_memory)
         {
             ::munmap(m_memory, static_cast<us_size_t>(m_cb));
         }
@@ -368,11 +368,11 @@ public:
     {
         class_type const& lhs = *this;
 
-        if(lhs.size() != rhs.size())
+        if (lhs.size() != rhs.size())
         {
             return false;
         }
-        if(0 != ::memcmp(lhs.memory(), rhs.memory(), lhs.size()))
+        if (0 != ::memcmp(lhs.memory(), rhs.memory(), lhs.size()))
         {
             return false;
         }
@@ -391,7 +391,7 @@ private:
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 
-        switch(scode)
+        switch (scode)
         {
         case ENOMEM:
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_UNIXSTL, STLSoftLibraryIdentifier_FileSystem, scode));
@@ -415,7 +415,7 @@ private:
     bool_type is_valid() const
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if((NULL != m_memory) != (0 != m_cb))
+        if ((NULL != m_memory) != (0 != m_cb))
         {
             return false;
         }

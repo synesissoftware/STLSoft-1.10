@@ -4,11 +4,11 @@
  * Purpose:     Comparison functions for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MAJOR    4
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_MINOR    2
 # define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     62
+# define WINSTL_VER_WINSTL_TIME_H_COMPARISON_FUNCTIONS_EDIT     63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,21 +131,21 @@ winstl_C_compare_FILETIMEs(
     WINSTL_ASSERT(NULL != lhs);
     WINSTL_ASSERT(NULL != rhs);
 
-    if(lhs->dwHighDateTime < rhs->dwHighDateTime)
+    if (lhs->dwHighDateTime < rhs->dwHighDateTime)
     {
         return -1;
     }
-    else if(rhs->dwHighDateTime < lhs->dwHighDateTime)
+    else if (rhs->dwHighDateTime < lhs->dwHighDateTime)
     {
         return +1;
     }
     else
     {
-        if(lhs->dwLowDateTime < rhs->dwLowDateTime)
+        if (lhs->dwLowDateTime < rhs->dwLowDateTime)
         {
             return -1;
         }
-        else if(rhs->dwLowDateTime < lhs->dwLowDateTime)
+        else if (rhs->dwLowDateTime < lhs->dwLowDateTime)
         {
             return +1;
         }
@@ -172,7 +172,7 @@ winstl_C_compare_FILETIME_with_SYSTEMTIME(
     WINSTL_ASSERT(NULL != lhs);
     WINSTL_ASSERT(NULL != rhs);
 
-    if(!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(rhs, &ft2))
+    if (!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(rhs, &ft2))
     {
         /* rhs is probably invalid, so gamble on lhs
          * being valid, and convert it to FILETIME and
@@ -182,7 +182,7 @@ winstl_C_compare_FILETIME_with_SYSTEMTIME(
         DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
         SYSTEMTIME  st1;
 
-        if(WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(lhs, &st1))
+        if (WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(lhs, &st1))
         {
             WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(ERROR_SUCCESS);
 
@@ -225,91 +225,91 @@ winstl_C_compare_SYSTEMTIMEs(
     WINSTL_ASSERT(NULL != lhs);
     WINSTL_ASSERT(NULL != rhs);
 
-    if(0 == STLSOFT_NS_GLOBAL(memcmp(lhs, rhs, sizeof(SYSTEMTIME))))
+    if (0 == STLSOFT_NS_GLOBAL(memcmp(lhs, rhs, sizeof(SYSTEMTIME))))
     {
         return 0;
     }
 
     /* Year */
 
-    if(lhs->wYear < rhs->wYear)
+    if (lhs->wYear < rhs->wYear)
     {
         return -1;
     }
     else
-    if(lhs->wYear > rhs->wYear)
+    if (lhs->wYear > rhs->wYear)
     {
         return +1;
     }
 
     /* Month */
 
-    if(lhs->wMonth < rhs->wMonth)
+    if (lhs->wMonth < rhs->wMonth)
     {
         return -1;
     }
     else
-    if(lhs->wMonth > rhs->wMonth)
+    if (lhs->wMonth > rhs->wMonth)
     {
         return +1;
     }
 
     /* Day */
 
-    if(lhs->wDay < rhs->wDay)
+    if (lhs->wDay < rhs->wDay)
     {
         return -1;
     }
     else
-    if(lhs->wDay > rhs->wDay)
+    if (lhs->wDay > rhs->wDay)
     {
         return +1;
     }
 
     /* Hour */
 
-    if(lhs->wHour < rhs->wHour)
+    if (lhs->wHour < rhs->wHour)
     {
         return -1;
     }
     else
-    if(lhs->wHour > rhs->wHour)
+    if (lhs->wHour > rhs->wHour)
     {
         return +1;
     }
 
     /* Minute */
 
-    if(lhs->wMinute < rhs->wMinute)
+    if (lhs->wMinute < rhs->wMinute)
     {
         return -1;
     }
     else
-    if(lhs->wMinute > rhs->wMinute)
+    if (lhs->wMinute > rhs->wMinute)
     {
         return +1;
     }
 
     /* Second */
 
-    if(lhs->wSecond < rhs->wSecond)
+    if (lhs->wSecond < rhs->wSecond)
     {
         return -1;
     }
     else
-    if(lhs->wSecond > rhs->wSecond)
+    if (lhs->wSecond > rhs->wSecond)
     {
         return +1;
     }
 
     /* Milliseconds */
 
-    if(lhs->wMilliseconds < rhs->wMilliseconds)
+    if (lhs->wMilliseconds < rhs->wMilliseconds)
     {
         return -1;
     }
     else
-    if(lhs->wMilliseconds > rhs->wMilliseconds)
+    if (lhs->wMilliseconds > rhs->wMilliseconds)
     {
         return +1;
     }
@@ -333,7 +333,7 @@ winstl_C_absolute_difference_in_microseconds_FILETIMEs(
     n1 = (stlsoft_static_cast(ss_uint64_t, t1->dwHighDateTime) << 32) + (stlsoft_static_cast(ss_uint64_t, t1->dwLowDateTime) << 0);
     n2 = (stlsoft_static_cast(ss_uint64_t, t2->dwHighDateTime) << 32) + (stlsoft_static_cast(ss_uint64_t, t2->dwLowDateTime) << 0);
 
-    if(n1 < n2)
+    if (n1 < n2)
     {
         return (n2 - n1) / 10;
     }
@@ -356,18 +356,18 @@ winstl_C_absolute_difference_in_microseconds_SYSTEMTIMEs(
     WINSTL_ASSERT(NULL != t1);
     WINSTL_ASSERT(NULL != t2);
 
-    if(0 == STLSOFT_NS_GLOBAL(memcmp(t1, t2, sizeof(SYSTEMTIME))))
+    if (0 == STLSOFT_NS_GLOBAL(memcmp(t1, t2, sizeof(SYSTEMTIME))))
     {
         return 0;
     }
 
-    if( t1->wYear == t2->wYear &&
+    if (t1->wYear == t2->wYear &&
         t1->wMonth == t2->wMonth)
     {
         HRESULT const hr1 = winstl_C_time_validate_SYSTEMTIME(t1, NULL);
         HRESULT const hr2 = winstl_C_time_validate_SYSTEMTIME(t2, NULL);
 
-        if( ERROR_SUCCESS != hr1 ||
+        if (ERROR_SUCCESS != hr1 ||
             ERROR_SUCCESS != hr2)
         {
             return ~stlsoft_static_cast(ss_uint64_t, 0);
@@ -396,7 +396,7 @@ winstl_C_absolute_difference_in_microseconds_SYSTEMTIMEs(
                                         +   t2->wDay * us_in_d
                                         ;
 
-            if(t1_us < t2_us)
+            if (t1_us < t2_us)
             {
                 return t2_us - t1_us;
             }
@@ -407,11 +407,11 @@ winstl_C_absolute_difference_in_microseconds_SYSTEMTIMEs(
         }
     }
 
-    if(!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(t1, &ft1))
+    if (!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(t1, &ft1))
     {
         return ~stlsoft_static_cast(ss_uint64_t, 0);
     }
-    if(!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(t2, &ft2))
+    if (!WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime(t2, &ft2))
     {
         return ~stlsoft_static_cast(ss_uint64_t, 0);
     }
@@ -508,7 +508,7 @@ compare(
     ws_sint_t const r   =   winstl_C_compare_FILETIME_with_SYSTEMTIME(&lhs, &rhs);
     DWORD const     e   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-    if(ERROR_SUCCESS != e)
+    if (ERROR_SUCCESS != e)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(conversion_error("failed to convert time value", e));
@@ -536,7 +536,7 @@ compare(
     ws_sint_t const r   =   winstl_C_compare_SYSTEMTIME_with_FILETIME(&lhs, &rhs);
     DWORD const     e   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-    if(ERROR_SUCCESS != e)
+    if (ERROR_SUCCESS != e)
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(conversion_error("failed to convert time value", e));
@@ -578,7 +578,7 @@ absolute_difference_in_microseconds(
 {
     ss_uint64_t const r = winstl_C_absolute_difference_in_microseconds_SYSTEMTIMEs(&t1, &t2);
 
-    if(~stlsoft_static_cast(ss_uint64_t, 0) == r)
+    if (~stlsoft_static_cast(ss_uint64_t, 0) == r)
     {
         DWORD const e = ERROR_INVALID_PARAMETER;
 
@@ -623,7 +623,7 @@ absolute_difference_in_milliseconds(
 {
     ss_uint64_t const r = winstl_C_absolute_difference_in_milliseconds_SYSTEMTIMEs(&t1, &t2);
 
-    if(~stlsoft_static_cast(ss_uint64_t, 0) == r)
+    if (~stlsoft_static_cast(ss_uint64_t, 0) == r)
     {
         DWORD const e = ERROR_INVALID_PARAMETER;
 
@@ -668,7 +668,7 @@ absolute_difference_in_seconds(
 {
     ss_uint64_t const r = winstl_C_absolute_difference_in_seconds_SYSTEMTIMEs(&t1, &t2);
 
-    if(~stlsoft_static_cast(ss_uint64_t, 0) == r)
+    if (~stlsoft_static_cast(ss_uint64_t, 0) == r)
     {
         DWORD const e = ERROR_INVALID_PARAMETER;
 

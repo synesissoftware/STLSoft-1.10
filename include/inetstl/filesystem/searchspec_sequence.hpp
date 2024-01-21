@@ -15,7 +15,7 @@
  *              2003 issue of Windows Developer Network (http://windevnet.com).
  *
  * Created:     1st May 2004
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -66,7 +66,7 @@
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR      5
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR      1
 # define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION   12
-# define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT       71
+# define STLSOFT_VER_INETSTL_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT       72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -248,11 +248,11 @@ private:
             , m_entriesEnd(m_entries->end())
             , m_cRefs(1)
         {
-            while(m_entriesNext == m_entriesEnd)
+            while (m_entriesNext == m_entriesEnd)
             {
                 ++m_tokensNext;
 
-                if(m_tokensNext == m_tokensEnd)
+                if (m_tokensNext == m_tokensEnd)
                 {
                     break;
                 }
@@ -279,7 +279,7 @@ private:
         {
             search_state *ss = new search_state(hconn, rootDir, searchSpec, delimiter, flags);
 
-            if(ss->m_tokensNext == ss->m_tokensEnd)
+            if (ss->m_tokensNext == ss->m_tokensEnd)
             {
                 delete ss;
 
@@ -292,7 +292,7 @@ private:
     public:
         bool next()
         {
-            if(m_tokensNext == m_tokensEnd)
+            if (m_tokensNext == m_tokensEnd)
             {
                 return false;
             }
@@ -307,11 +307,11 @@ private:
 
             ++m_entriesNext;
 
-            while(m_entriesNext == m_entriesEnd)
+            while (m_entriesNext == m_entriesEnd)
             {
                 ++m_tokensNext;
 
-                if(m_tokensNext == m_tokensEnd)
+                if (m_tokensNext == m_tokensEnd)
                 {
                     return false;
                 }
@@ -332,7 +332,7 @@ private:
 
         void Release()
         {
-            if(0 == --m_cRefs)
+            if (0 == --m_cRefs)
             {
                 delete this;
             }
@@ -370,7 +370,7 @@ public:
         /// Destructor
         ~const_iterator() STLSOFT_NOEXCEPT
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 m_searchState->Release();
             }
@@ -380,7 +380,7 @@ public:
         const_iterator(class_type const& rhs)
             : m_searchState(rhs.m_searchState)
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 ++m_searchState->m_cRefs;
             }
@@ -388,14 +388,14 @@ public:
 
         class_type& operator =(class_type const& rhs)
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 m_searchState->Release();
             }
 
             m_searchState = rhs.m_searchState;
 
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 ++m_searchState->m_cRefs;
             }
@@ -408,7 +408,7 @@ public:
         {
             INETSTL_ASSERT(NULL != m_searchState);
 
-            if(!m_searchState->next())
+            if (!m_searchState->next())
             {
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER < 1300

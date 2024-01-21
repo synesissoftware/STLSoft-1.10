@@ -4,7 +4,7 @@
  * Purpose:     File-system functionals.
  *
  * Created:     19th January 2002
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR       4
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR       0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION    11
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        50
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -225,7 +225,7 @@ private:
         char_type   sz0[1 + INETSTL_CONST_MAX_PATH];
         is_dword_t  dw;
 
-        if(!traits_type::get_full_path_name(m_hConnection, s, STLSOFT_NUM_ELEMENTS(sz0), sz0))
+        if (!traits_type::get_full_path_name(m_hConnection, s, STLSOFT_NUM_ELEMENTS(sz0), sz0))
         {
             dw = 0xFFFFFFFF;
         }

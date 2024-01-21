@@ -4,11 +4,11 @@
  * Purpose:     Window text scoping class.
  *
  * Created:     21st August 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MAJOR    4
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_MINOR    1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_REVISION 7
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     54
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_TEXT_SCOPE_EDIT     55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -147,7 +147,7 @@ public:
     {
         buffer_type_    buffer(1 + traits_type::get_window_text_length(m_hwnd));
 
-        if(0 < buffer.size()) // Some allocators return NULL, rather than throw
+        if (0 < buffer.size()) // Some allocators return NULL, rather than throw
         {
             buffer[buffer.size() - 1] = char_type(0);
 
@@ -174,7 +174,7 @@ public:
     {
         buffer_type_    buffer(1 + traits_type::get_window_text_length(m_hwnd));
 
-        if(0 < buffer.size()) // Some allocators return NULL, rather than throw
+        if (0 < buffer.size()) // Some allocators return NULL, rather than throw
         {
             buffer[buffer.size() - 1] = char_type(0);
 
@@ -202,7 +202,7 @@ public:
     {
         buffer_type_    buffer(1 + traits_type::get_window_text_length(m_hwnd));
 
-        if(0 < buffer.size()) // Some allocators return NULL, rather than throw
+        if (0 < buffer.size()) // Some allocators return NULL, rather than throw
         {
             buffer[buffer.size() - 1] = char_type(0);
 

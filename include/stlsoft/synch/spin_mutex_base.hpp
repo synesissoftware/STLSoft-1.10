@@ -4,14 +4,14 @@
  * Purpose:     stlsoft::spin_mutex_base class template.
  *
  * Created:     27th August 1997
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Rupert Kittinger, for pointing out that the prior
  *              implementation that always yielded was not really "spinning".
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_MAJOR     6
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_REVISION  3
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_EDIT      76
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_SPIN_MUTEX_BASE_EDIT      77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -180,7 +180,7 @@ public:
         // members will all be assigned to 0, which is correct for
         // all except m_spinCount, which must be assigned to
         // &m_internalCount
-        if(NULL == m_spinCount)
+        if (NULL == m_spinCount)
         {
             m_spinCount = &m_internalCount;
         }
@@ -188,7 +188,7 @@ public:
 
         STLSOFT_MESSAGE_ASSERT("A global instance of an instantiation of spin_mutex_base<> has skipped dynamic initialisation. You must #define STLSOFT_SPINMUTEX_CHECK_INIT if your compilation causes dynamic initialisation to be skipped.", NULL != m_spinCount);
 
-        for(m_spunCount = 1; !spin_policy_::try_acquire_lock(m_yieldContext, m_spinCount, m_spunCount); ++m_spunCount)
+        for (m_spunCount = 1; !spin_policy_::try_acquire_lock(m_yieldContext, m_spinCount, m_spunCount); ++m_spunCount)
         {
             spin_policy_::on_spin(m_yieldContext, m_spunCount);
         }

@@ -4,11 +4,11 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     20th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  10
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      37
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -793,7 +793,7 @@ inline int custom_event_handler::cancel_custom_events(long code, custom_event_ha
         event_map_type::iterator    end     =   codes.end();
         as_int_t                    n;
 
-        for(n = 0; begin != end; ++begin)
+        for (n = 0; begin != end; ++begin)
         {
             info_ptr entry = (*begin).second;
 
@@ -830,7 +830,7 @@ inline int custom_event_handler::cancel_custom_event(custom_event_handler::event
     event_code_map_type::iterator    be  =   m_entries.begin();
     event_code_map_type::iterator    ee  =   m_entries.end();
 
-    for(; be != ee; ++be)
+    for (; be != ee; ++be)
     {
         event_map_type&             event_map   =   (*be).second;
         event_map_type::iterator    it          =   event_map.find(event);
@@ -874,7 +874,7 @@ inline as_int_t custom_event_handler::has_custom_event(event_id event) const
     event_code_map_type::const_iterator  be      =   m_entries.begin();
     event_code_map_type::const_iterator  ee      =   m_entries.end();
 
-    for(; be != ee; ++be)
+    for (; be != ee; ++be)
     {
         event_map_type const&           event_map   =   (*be).second;
         event_map_type::const_iterator  it          =   event_map.find(event);

@@ -4,11 +4,11 @@
  * Purpose:     Contains classes for initialising COM/OLE.
  *
  * Created:     1st February 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_MAJOR      4
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_MINOR      1
 # define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_REVISION   7
-# define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_EDIT       59
+# define COMSTL_VER_COMSTL_SECURITY_HPP_SECURITY_INITIALISERS_EDIT       60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -152,7 +152,7 @@ inline HRESULT CoInitSecurity(  LPUNKNOWN                   punkAccessControl,
 
     hr = punkAccessControl->QueryInterface(IID_IAccessControl__, (void**)&pac);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = ::CoInitializeSecurity(pac, cAuthSvc, asAuthSvc, NULL, dwAuthnLevel, dwImpLevel, pAuthInfo, dwCapabilities, NULL);
 

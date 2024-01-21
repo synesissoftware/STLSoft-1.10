@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for IEnumXXXX enumerator interfaces.
  *
  * Created:     17th September 1998
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Eduardo Bezerra and Vivi Orunitia for reporting
  *              incompatibilities with Borland's 5.82 (Turbo C++). The awful
@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_REVISION 12
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     270
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     271
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -271,11 +271,11 @@ public:
     {
         COMSTL_MESSAGE_ASSERT("Precondition violation: interface cannot be NULL!", NULL != i);
 
-        if(bAddRef)
+        if (bAddRef)
         {
             m_root->AddRef();
         }
-        if(bReset)
+        if (bReset)
         {
             m_root->Reset();
         }
@@ -291,7 +291,7 @@ public:
         // invocations of begin() must be directed to throw.
         m_enumerator = cloning_policy_type::get_working_instance(m_root);
 
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             m_bFirst = false;
         }
@@ -304,7 +304,7 @@ public:
         COMSTL_ASSERT(is_valid());
 
         m_root->Release();
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             m_enumerator->Release();
         }
@@ -374,7 +374,7 @@ public:
                     value_type const*   src_end    =   &rhs.m_values[0] + rhs.m_acquired;
 
                     // Copy each element up to the common extent ...
-                    for(; src_begin != src_end; ++begin, ++src_begin)
+                    for (; src_begin != src_end; ++begin, ++src_begin)
                     {
                         value_policy_type::copy(begin, src_begin);
                     }
@@ -428,7 +428,7 @@ public:
 
                 clear_elements_();
 
-                if(NULL != m_enumerator)
+                if (NULL != m_enumerator)
                 {
                     m_enumerator->Release();
                 }
@@ -440,7 +440,7 @@ public:
             }
             void Release()
             {
-                if(0 == --m_refCount)
+                if (0 == --m_refCount)
                 {
                     delete this;
                 }
@@ -448,7 +448,7 @@ public:
 
             static class_type* make_clone(class_type* ctxt)
             {
-                if(NULL == ctxt)
+                if (NULL == ctxt)
                 {
                     return NULL;
                 }
@@ -459,7 +459,7 @@ public:
                     interface_type* copy;
                     const bool      bTrueClone  =   cloning_policy_type::clone(ctxt->m_enumerator, &copy);
 
-                    if(!bTrueClone)
+                    if (!bTrueClone)
                     {
                         COMSTL_ASSERT(NULL == copy);
 
@@ -489,7 +489,7 @@ public:
                         {
                             newCtxt = new class_type(copy, *ctxt);
 
-                            if(NULL == newCtxt)
+                            if (NULL == newCtxt)
                             {
                                 copy->Release();
                             }
@@ -532,7 +532,7 @@ public:
                 COMSTL_MESSAGE_ASSERT("Attempting to increment an invalid iterator: m_acquired > m_quanta", m_acquired <= m_quanta);
                 COMSTL_MESSAGE_ASSERT("Attempting to increment an invalid iterator: m_quanta > dimensionof(m_values)", m_quanta <= STLSOFT_NUM_ELEMENTS(m_values));
 
-                if(++m_current < m_acquired)
+                if (++m_current < m_acquired)
                 {
                     // 2.
 
@@ -574,38 +574,38 @@ public:
         public:
             bool_type is_valid() const
             {
-                if(m_refCount < 1)
+                if (m_refCount < 1)
                 {
                     return false;
                 }
 
-                if( NULL == m_enumerator &&
+                if (NULL == m_enumerator &&
                     0 == m_quanta)
                 {
-                    if(0 != m_acquired)
+                    if (0 != m_acquired)
                     {
                         return false;
                     }
-                    if(0 != m_current)
+                    if (0 != m_current)
                     {
                         return false;
                     }
-                    if(0 != m_quanta)
+                    if (0 != m_quanta)
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    if(m_acquired < m_current)
+                    if (m_acquired < m_current)
                     {
                         return false;
                     }
-                    if(m_quanta < m_current)
+                    if (m_quanta < m_current)
                     {
                         return false;
                     }
-                    if(m_quanta < m_acquired)
+                    if (m_quanta < m_acquired)
                     {
                         return false;
                     }
@@ -705,7 +705,7 @@ public:
         {
             COMSTL_ASSERT(is_valid());
 
-            if(NULL != m_ctxt)
+            if (NULL != m_ctxt)
             {
                 m_ctxt->Release();
             }
@@ -715,7 +715,7 @@ public:
         {
             enumeration_context *newCtxt    =   enumeration_context::make_clone(rhs.m_ctxt);
 
-            if(NULL != m_ctxt)
+            if (NULL != m_ctxt)
             {
                 m_ctxt->Release();
             }
@@ -790,13 +790,13 @@ public:
             //
             // 3. They're not equal
 
-            if(lhs.is_end_point())
+            if (lhs.is_end_point())
             {
                 return rhs.is_end_point(); // 1 or 3
             }
             else
             {
-                if(rhs.is_end_point())
+                if (rhs.is_end_point())
                 {
                     return false; // 3
                 }
@@ -878,13 +878,13 @@ public:
 
         interface_type* en = NULL;
 
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             en = m_enumerator;
         }
         else
         {
-            if(!m_bFirst)
+            if (!m_bFirst)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(clone_failure(E_NOTIMPL));
@@ -927,7 +927,7 @@ public:
 private:
     bool_type is_valid() const
     {
-        if(NULL == m_root)
+        if (NULL == m_root)
         {
             return false;
         }
@@ -942,7 +942,7 @@ private:
     {
         COMSTL_MESSAGE_ASSERT("Cannot set a quantum that exceeds the value specified in the template specialisation", quanta <= retrievalQuanta); // Could have named these things better!
 
-        if( 0 == quanta ||
+        if (0 == quanta ||
             quanta > retrievalQuanta)
         {
             quanta = retrievalQuanta;

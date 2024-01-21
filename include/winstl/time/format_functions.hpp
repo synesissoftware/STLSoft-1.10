@@ -4,14 +4,14 @@
  * Purpose:     Comparison functions for Windows time structures.
  *
  * Created:     21st November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Mikael Pahmp, for spotting the failure to handle 24-hour
  *              time pictures.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_TIME_HPP_FORMAT_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_TIME_HPP_FORMAT_FUNCTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_TIME_HPP_FORMAT_FUNCTIONS_REVISION   10
-# define WINSTL_VER_WINSTL_TIME_HPP_FORMAT_FUNCTIONS_EDIT       76
+# define WINSTL_VER_WINSTL_TIME_HPP_FORMAT_FUNCTIONS_EDIT       77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -188,23 +188,23 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
     ,   processheap_allocator<char_t>
     >                                               buffer_t_;
 
-    if(dwFlags & (TIME_NOMINUTESORSECONDS | TIME_NOSECONDS))
+    if (dwFlags & (TIME_NOMINUTESORSECONDS | TIME_NOSECONDS))
     {
         return traits_t::GetTimeFormat(locale, dwFlags, lpTime, lpFormat, lpTimeStr, cchTime);
     }
 
-    if(dwFlags & LOCALE_NOUSEROVERRIDE)
+    if (dwFlags & LOCALE_NOUSEROVERRIDE)
     {
         locale = LOCALE_SYSTEM_DEFAULT;
     }
 
     buffer_t_           timePicture(1 + ((NULL == lpFormat) ? static_cast<ss_size_t>(::GetLocaleInfoA(locale, LOCALE_STIMEFORMAT, NULL, 0)) : 0));
 
-    if(NULL == lpFormat)
+    if (NULL == lpFormat)
     {
         ss_size_t   n = static_cast<ss_size_t>(traits_t::GetLocaleInfo(LOCALE_USER_DEFAULT, LOCALE_STIMEFORMAT, &timePicture[0], static_cast<int>(timePicture.size())));
         lpFormat = &timePicture[0];
-        if(n < timePicture.size())
+        if (n < timePicture.size())
         {
             timePicture[n] = static_cast<C>('\0');
         }
@@ -242,13 +242,13 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
     buffer_t_       am(0);
     buffer_t_       pm(0);
 
-    if( NULL == amMarker ||
+    if (NULL == amMarker ||
         NULL == pmMarker)
     {
         HKEY    hkey;
         LONG    res =   WINSTL_API_EXTERNAL_Registry_RegOpenKeyA(HKEY_CURRENT_USER, "Control Panel\\International", &hkey);
 
-        if(ERROR_SUCCESS == res)
+        if (ERROR_SUCCESS == res)
         {
             static char_t const s1159[] =   { 's', '1', '1', '5', '9', '\0' };
             static char_t const s2359[] =   { 's', '2', '3', '5', '9', '\0' };
@@ -256,12 +256,12 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
             ws_size_t           cchPM   =   0;
             LONG                r;
 
-            if( ERROR_SUCCESS != (r = reg_get_string_value(hkey, s1159, static_cast<char_t*>(NULL), cchAM)) ||
+            if (ERROR_SUCCESS != (r = reg_get_string_value(hkey, s1159, static_cast<char_t*>(NULL), cchAM)) ||
                 ERROR_SUCCESS != (r = (am.resize(cchAM), cchAM = am.size(), reg_get_string_value(hkey, s1159, &am[0], cchAM))))
             {
                 res = r;
             }
-            else if(ERROR_SUCCESS != (r = reg_get_string_value(hkey, s2359, static_cast<char_t*>(NULL), cchPM)) ||
+            else if (ERROR_SUCCESS != (r = reg_get_string_value(hkey, s2359, static_cast<char_t*>(NULL), cchPM)) ||
                     ERROR_SUCCESS != (r = (pm.resize(cchPM), cchPM = pm.size(), reg_get_string_value(hkey, s2359, &pm[0], cchPM))))
             {
                 res = r;
@@ -270,20 +270,20 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
             WINSTL_API_EXTERNAL_Registry_RegCloseKey(hkey);
         }
 
-        if(ERROR_SUCCESS == res)
+        if (ERROR_SUCCESS == res)
         {
-            if(NULL == amMarker)
+            if (NULL == amMarker)
             {
                 amMarker = &am[0];
             }
-            if(NULL == pmMarker)
+            if (NULL == pmMarker)
             {
                 pmMarker = &pm[0];
             }
         }
     }
 
-    if(NULL == amMarker)
+    if (NULL == amMarker)
     {
         static char_t const AM[]    =   { 'A', 'M', '\0' };
 
@@ -291,7 +291,7 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
 
         amMarker = traits_t::lstrcpy(&am[0], AM);
     }
-    if(NULL == pmMarker)
+    if (NULL == pmMarker)
     {
         static char_t const PM[]    =   { 'P', 'M', '\0' };
 
@@ -308,49 +308,49 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
     buffer_t_       buffer(1 + cchTimeMax);
     ws_size_t       len         =   0;
 
-    if(!buffer.empty())
+    if (!buffer.empty())
     {
         char_t const*   r;
         char_t*         w          =   &buffer[0];
         char_t          prev        =   '\0';
         ws_bool_t       bMarker1    =   true;
 
-        for(r = lpFormat; r != lpFormat + cchPicture; ++r)
+        for (r = lpFormat; r != lpFormat + cchPicture; ++r)
         {
             char_t const ch = *r;
 
-            switch(ch)
+            switch (ch)
             {
                 case    'h':
-                    if( 'h' == prev &&
+                    if ('h' == prev &&
                         '\0' == *(hours12 + 1))
                     {
                         --hours12;
                     }
                     break;
                 case    'H':
-                    if( 'H' == prev &&
+                    if ('H' == prev &&
                         '\0' == *(hours24 + 1))
                     {
                         --hours24;
                     }
                     break;
                 case    'm':
-                    if( 'm' == prev &&
+                    if ('m' == prev &&
                         '\0' == *(minutes + 1))
                     {
                         --minutes;
                     }
                     break;
                 case    's':
-                    if( 's' == prev &&
+                    if ('s' == prev &&
                         '.' == *(seconds + 1))
                     {
                         --seconds;
                     }
                     break;
                 case    't':
-                    if('t' == prev)
+                    if ('t' == prev)
                     {
                         bMarker1 = false;
                     }
@@ -360,16 +360,16 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
                         static char_t const s_emptyString[] = { '\0' };
                         char_t const*       p;
 
-                        switch(prev)
+                        switch (prev)
                         {
                             case    'h':    p = hours12;        break;
                             case    'H':    p = hours24;        break;
                             case    'm':    p = minutes;        break;
                             case    's':    p = seconds;        break;
                             case    't':
-                                if(0 == (dwFlags & TIME_NOTIMEMARKER))
+                                if (0 == (dwFlags & TIME_NOTIMEMARKER))
                                 {
-                                    if(!bMarker1)
+                                    if (!bMarker1)
                                     {
                                         p = timeMarker;
                                         break;
@@ -385,7 +385,7 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
                             default:        p = s_emptyString;   break;
                         }
 
-                        for(; '\0' != *p; *w++ = *p++, ++len)
+                        for (; '\0' != *p; *w++ = *p++, ++len)
                         {}
                     }
                     *w++ = ch;
@@ -393,7 +393,7 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
                     break;
             }
 
-            if('\0' == ch)
+            if ('\0' == ch)
             {
                 break;
             }
@@ -404,10 +404,10 @@ STLSOFT_STDCALL GetTimeFormat_ms_(
 
     // If 0 was specified, or
 
-    if( 0 == cchTime ||
+    if (0 == cchTime ||
         len <= ws_size_t(cchTime))
     {
-        if(0 != cchTime)
+        if (0 != cchTime)
         {
             traits_t::lstrcpy(lpTimeStr, &buffer[0]);
         }

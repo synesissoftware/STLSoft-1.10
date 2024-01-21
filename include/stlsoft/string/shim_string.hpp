@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_shim_string template class.
  *
  * Created:     9th July 2004
- * Updated:     20th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Dimitri Kaparis, for spotting a typo in the string access
  *              shims.
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_REVISION    8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        66
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -320,11 +320,11 @@ public:
 
         size_type newLen = m_len + n;
 
-        if(newLen + 1 > m_buffer.size())
+        if (newLen + 1 > m_buffer.size())
         {
             STLSOFT_COVER_MARK_LINE();
 
-            if(!reserve_(newLen))
+            if (!reserve_(newLen))
             {
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_COVER_MARK_LINE();
@@ -391,11 +391,11 @@ public:
     {
         STLSOFT_COVER_MARK_LINE();
 
-        if(n > m_len)
+        if (n > m_len)
         {
             STLSOFT_COVER_MARK_LINE();
 
-            if(!reserve_(n))
+            if (!reserve_(n))
             {
                 return false;
             }
@@ -415,7 +415,7 @@ public:
     {
         STLSOFT_COVER_MARK_LINE();
 
-        if(!reserve(n))
+        if (!reserve(n))
         {
             return false;
         }
@@ -553,7 +553,7 @@ private:
 #if 0
         STLSOFT_ASSERT(newLen >= m_buffer.size());
 #else
-        if(newLen < m_buffer.size())
+        if (newLen < m_buffer.size())
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -561,13 +561,13 @@ private:
         }
 #endif
 
-        if(newLen < internal_size())
+        if (newLen < internal_size())
         {
             STLSOFT_COVER_MARK_LINE();
 
             newBuffSize = internal_size();
         }
-        else if(newLen < 16)
+        else if (newLen < 16)
         {
             STLSOFT_COVER_MARK_LINE();
 

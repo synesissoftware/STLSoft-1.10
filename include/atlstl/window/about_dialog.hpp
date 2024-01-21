@@ -4,11 +4,11 @@
  * Purpose:     Simple 'about' dialog, that shell-executes hyperlinks.
  *
  * Created:     30th January 2000
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_MAJOR      4
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_MINOR      0
 # define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_REVISION   7
-# define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_EDIT       67
+# define ATLSTL_VER_ATLSTL_WINDOW_HPP_ABOUT_DIALOG_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -186,12 +186,12 @@ protected:
         HWND hwndCtrl = (HWND)lParam;
 
         // 1. Must be a child control
-        if(NULL != hwndCtrl)
+        if (NULL != hwndCtrl)
         {
             //  2. Must be a button
             LRESULT ctrlCode = ::SendMessage(hwndCtrl, WM_GETDLGCODE, 0, 0L);
 
-            if(DLGC_BUTTON & ctrlCode)
+            if (DLGC_BUTTON & ctrlCode)
             {
                 typedef ::stlsoft::auto_buffer_old<
                     TCHAR
@@ -209,7 +209,7 @@ protected:
                 buffer[len] = '\0';
 
                 // 4. Check whether contains a '.'
-                if( 0 < len &&
+                if (0 < len &&
                     NULL != _tcschr(buffer.data(), '.'))
                 {
                     SHELLEXECUTEINFO    sei;

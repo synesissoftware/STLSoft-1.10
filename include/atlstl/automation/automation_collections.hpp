@@ -4,11 +4,11 @@
  * Purpose:     Adaptor classes for creating COM collection instances.
  *
  * Created:     16th April 1999
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_MAJOR     3
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_MINOR     2
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_REVISION  7
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_EDIT      121
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_AUTOMATION_COLLECTIONS_EDIT      122
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -141,11 +141,11 @@ protected:
     }
     STDMETHOD(GetTypeInfo)(UINT iTInfo, LCID /* lcid */, ITypeInfo** ppTInfo)
     {
-        if(0 != iTInfo)
+        if (0 != iTInfo)
         {
             return DISP_E_BADINDEX;
         }
-        else if(NULL == ppTInfo)
+        else if (NULL == ppTInfo)
         {
             return E_POINTER;
         }
@@ -162,14 +162,14 @@ protected:
                             ,   LCID        /* lcid */
                             ,   DISPID*     rgDispId)
     {
-        if(1 == cNames)
+        if (1 == cNames)
         {
-            if(0 == ::wcscmp(rgszNames[0], L"Count"))
+            if (0 == ::wcscmp(rgszNames[0], L"Count"))
             {
                 derived_class_type* pThis   =   static_cast<derived_class_type*>(this);
                 HRESULT             hr      =   pThis->SupportsCount();
 
-                if(S_OK == hr)
+                if (S_OK == hr)
                 {
                     rgDispId[0] = DispidCount;
 
@@ -189,11 +189,11 @@ protected:
                     ,   EXCEPINFO*  /* pExcepInfo */
                     ,   UINT*       /* puArgErr */)
     {
-        if(DISPID_NEWENUM == dispidMember)
+        if (DISPID_NEWENUM == dispidMember)
         {
             derived_class_type* pThis = static_cast<derived_class_type*>(this);
 
-            if(0 != pDispParams->cArgs)
+            if (0 != pDispParams->cArgs)
             {
                 return DISP_E_BADPARAMCOUNT;
             }
@@ -207,7 +207,7 @@ protected:
 //              hr  =   (pThis->*pfn)(&punkEnumerator);
                 hr  =   pThis->get__NewEnum(&punkEnumerator);
 
-                if(SUCCEEDED(hr))
+                if (SUCCEEDED(hr))
                 {
                     pVarResult->vt      =   VT_UNKNOWN;
                     pVarResult->punkVal =   punkEnumerator;
@@ -216,7 +216,7 @@ protected:
                 return hr;
             }
         }
-        else if(DispidCount == dispidMember)
+        else if (DispidCount == dispidMember)
         {
             derived_class_type* pThis = static_cast<derived_class_type*>(this);
             HRESULT             hr;
@@ -225,7 +225,7 @@ protected:
 
             hr  =   pThis->get_Count(&pVarResult->lVal);
 
-            if(SUCCEEDED(hr))
+            if (SUCCEEDED(hr))
             {
                 pVarResult->vt = VT_I4;
             }
@@ -251,7 +251,7 @@ inline LPUNKNOWN get_clone(I1* instance, HRESULT (STDAPICALLTYPE I3::*pfn)(I2**)
 
     hr = (instance->*pfn)(&clone);
 
-    if(FAILED(hr))
+    if (FAILED(hr))
     {
         clone = NULL;
     }
@@ -287,7 +287,7 @@ public:
         ATLSTL_ASSERT(NULL == m_enumerator);
 
         m_enumerator = enumerator;
-        if(bAddRef)
+        if (bAddRef)
         {
             m_enumerator->AddRef();
         }
@@ -370,7 +370,7 @@ public:
     {
         ATLSTL_ASSERT(NULL != pVal);
 
-        if(sentinel_NoCount_() == m_count)
+        if (sentinel_NoCount_() == m_count)
         {
             return E_UNEXPECTED;
         }
