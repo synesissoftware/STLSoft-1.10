@@ -5,11 +5,11 @@
  *              directory.
  *
  * Created:     5th June 2003
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_MINOR    3
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_REVISION 1
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     72
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_MODULE_DIRECTORY_EDIT     73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -127,9 +127,9 @@ namespace winstl_project
  * [STLSOFT-DOC:VERBATIM:end]
  *
  * You can also use one of the three given typedefs:
- * \c module_directory (parameterised on TCHAR),
- * \c module_directory_a (parameterised on CHAR),
- * \c module_directory_w (parameterised on WCHAR).
+ * \c module_directory (specialised on TCHAR),
+ * \c module_directory_a (specialised on CHAR),
+ * \c module_directory_w (specialised on WCHAR).
  *
  * <h2>Why</h2>
  *

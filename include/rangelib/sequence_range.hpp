@@ -4,7 +4,7 @@
  * Purpose:     Sequence container range adaptor.
  *
  * Created:     4th November 2003
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Thanks:      To Luoyi (whom I could not thank by email), for pointing out
  *              some gaps with the sequence_range
@@ -53,7 +53,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MINOR    12
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_REVISION 6
-# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     74
+# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -143,7 +143,7 @@ template<   ss_typename_param_k S
 struct sequence_range_traits
 {
 private:
-    /// Indicates whether the parameterising sequence type has a \c reference member
+    /// Indicates whether the specialising sequence type has a \c reference member
     ///
     /// \note We can't use the type fixer in a fully correct way here, because
     /// most compilers do not detect reference / const_reference members, so we

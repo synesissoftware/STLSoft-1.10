@@ -4,13 +4,13 @@
  * Purpose:     Contains the c_str_ptr_extract_iterator template class and c_str_inserter creator function.
  *
  * Created:     12th October 2004
- * Updated:     29th March 2021
+ * Updated:     29th January 2024
  *
  * Thanks to:   Pablo Aguilar for spotting missing inclusions.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_MINOR     0
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_REVISION  7
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      45
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_C_STR_INSERTER_EDIT      46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -94,7 +94,7 @@ namespace stlsoft
 
 /** This iterator adaptor translates the values assigned to it via the
  * c_str_ptr access shim, and passes the result to the function on which it's
- * parameterised.
+ * specialised.
  *
  * \ingroup group__library__Iterator
  *

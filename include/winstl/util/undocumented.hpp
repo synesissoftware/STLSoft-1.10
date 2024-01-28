@@ -4,7 +4,7 @@
  * Purpose:     Miscellaneous undocumented features.
  *
  * Created:     20th October 1994
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MAJOR       4
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MINOR       0
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_REVISION    5
-#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        49
+#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        50
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -97,7 +97,7 @@ namespace winstl_project
  *
  * \note This has to be implemented as a class, because the function version
  * does not correctly work in respect of the static. Specifically, it does not
- * distinguish between different values of the parameterising constant, so that,
+ * distinguish between different values of the specialising constant, so that,
  * say, get_undoc_clipboard_fmt__<1>(. . .) will cause fmt to be correctly
  * initialised, but get_undoc_clipboard_fmt__<2>(. . .) will use the same value.
  * This behaviour is demonstrated on VC5 & VC6, but works fine with Intel C++

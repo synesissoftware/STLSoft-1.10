@@ -4,11 +4,11 @@
  * Purpose:     Indexed range adaptor class.
  *
  * Created:     11th October 2004
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,7 +50,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_INDEXED_RANGE_MAJOR       2
 # define RANGELIB_VER_RANGELIB_HPP_INDEXED_RANGE_MINOR       4
 # define RANGELIB_VER_RANGELIB_HPP_INDEXED_RANGE_REVISION    6
-# define RANGELIB_VER_RANGELIB_HPP_INDEXED_RANGE_EDIT        43
+# define RANGELIB_VER_RANGELIB_HPP_INDEXED_RANGE_EDIT        44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -141,7 +141,7 @@ class indexed_range
 /// @{
 private:
 #ifdef STLSOFT_CF_HAS_MEMBER_TYPE_SUPPORTED
-    /// Indicates whether the parameterising sequence type has a \c reference member
+    /// Indicates whether the specialising sequence type has a \c reference member
     ///
     /// \note We can't use the type fixer in a fully correct way here, because
     /// most compilers do not detect reference / const_reference members, so we
