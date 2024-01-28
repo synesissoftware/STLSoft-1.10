@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for ACE_SOCK (and derived) classes
  *
  * Created:     28th November 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define ACESTL_VER_ACESTL_NETWORK_HPP_SOCKET_FUNCTIONS_MAJOR      2
 # define ACESTL_VER_ACESTL_NETWORK_HPP_SOCKET_FUNCTIONS_MINOR      0
 # define ACESTL_VER_ACESTL_NETWORK_HPP_SOCKET_FUNCTIONS_REVISION   6
-# define ACESTL_VER_ACESTL_NETWORK_HPP_SOCKET_FUNCTIONS_EDIT       37
+# define ACESTL_VER_ACESTL_NETWORK_HPP_SOCKET_FUNCTIONS_EDIT       38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,12 +123,12 @@ acestl::close_and_deregister(m_peer, reactor());
  */
 inline as_bool_t close_and_deregister(ACE_SOCK &sk, ACE_Reactor *reactor)
 {
-    if(ACE_INVALID_HANDLE == sk.get_handle())
+    if (ACE_INVALID_HANDLE == sk.get_handle())
     {
         return false;
     }
 
-    if(NULL != reactor)
+    if (NULL != reactor)
     {
         const ACE_Reactor_Mask close_mask   =   ACE_Event_Handler::ALL_EVENTS_MASK
                                             |   ACE_Event_Handler::DONT_CALL;

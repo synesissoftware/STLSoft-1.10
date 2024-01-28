@@ -4,11 +4,11 @@
  * Purpose:     Policies for enumerator interface handling.
  *
  * Created:     20th December 2003
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_MAJOR       6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_MINOR       1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_REVISION    13
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_EDIT        68
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATION_POLICIES_EDIT        69
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -257,7 +257,7 @@ public:
         interface_type  *ret;
         HRESULT         hr  =   const_cast<interface_type*>(root)->Clone(&ret);
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
             ret = NULL;
         }
@@ -272,7 +272,7 @@ public:
         interface_type  *ret;
         HRESULT         hr  =   const_cast<interface_type*>(src)->Clone(&ret);
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(clone_failure(hr));
@@ -328,7 +328,7 @@ public:
         interface_type  *ret;
         HRESULT         hr  =   const_cast<interface_type*>(root)->Clone(&ret);
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(clone_failure(hr));
@@ -348,7 +348,7 @@ public:
         interface_type  *ret;
         HRESULT         hr  =   const_cast<interface_type*>(src)->Clone(&ret);
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(clone_failure(hr));
@@ -508,7 +508,7 @@ public:
         LPDISPATCH  pdisp;
         HRESULT     hr  =   pcoll->QueryInterface(IID_IDispatch, reinterpret_cast<void**>(&pdisp));
 
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             DISPPARAMS  params;
             UINT        argErrIndex;
@@ -528,13 +528,13 @@ public:
 
             pdisp->Release();
 
-            if(SUCCEEDED(hr))
+            if (SUCCEEDED(hr))
             {
                 hr = ::VariantChangeType(&result, &result, 0, VT_UNKNOWN);
 
-                if(SUCCEEDED(hr))
+                if (SUCCEEDED(hr))
                 {
-                    if(NULL == result.punkVal)
+                    if (NULL == result.punkVal)
                     {
                         hr = E_UNEXPECTED;
                     }

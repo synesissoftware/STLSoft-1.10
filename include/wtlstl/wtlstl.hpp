@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     12th May 2003
- * Updated:     4th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,7 +51,7 @@
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MAJOR    2
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_MINOR    4
 # define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_REVISION 3
-# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     59
+# define _WTLSTL_VER_WTLSTL_HPP_WTLSTL_EDIT     60
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file wtlstl/wtlstl.hpp
@@ -147,11 +147,11 @@
 # endif /* !MIDL_INTERFACE */
 
 # ifndef LONG_PTR
-#  define LONG_PTR                  LONG
+#  define LONG_PTR                                          LONG
 # endif /* !LONG_PTR */
 
 # ifndef UINT_PTR
-#  define UINT_PTR                  unsigned int
+#  define UINT_PTR                                          unsigned int
 # endif /* !UINT_PTR */
 
 # ifndef _ATL_NO_MSIMG
@@ -159,11 +159,11 @@
 # endif /* !_ATL_NO_MSIMG */
 
 # ifndef ATLASSERT
-#  define ATLASSERT                 _ASSERTE
+#  define ATLASSERT                                         _ASSERTE
 # endif /* !ATLASSERT */
 
 # ifndef _WIN32_IE
-#  define _WIN32_IE                 0x0300
+#  define _WIN32_IE                                         0x0300
 # endif /* !_WIN32_IE */
 
 #endif /* _MSC_VER < 1200 */
@@ -532,8 +532,8 @@ typedef STLSOFT_NS_QUAL(ss_streamoff_t)     ws_streamoff_t; //!< streamoff
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define ws_true_v       ss_true_v
-#define ws_false_v      ss_false_v
+#define ws_true_v                                           ss_true_v
+#define ws_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* /////////////////////////////////////////////////////////////////////////

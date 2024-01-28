@@ -4,11 +4,11 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     15th January 2007
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_UTIL_H_FEATURES_MAJOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_UTIL_H_FEATURES_MINOR    1
 # define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_UTIL_H_FEATURES_REVISION 4
-# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_UTIL_H_FEATURES_EDIT     13
+# define PLATFORMSTL_VER_PLATFORMSTL_SYNCH_UTIL_H_FEATURES_EDIT     14
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

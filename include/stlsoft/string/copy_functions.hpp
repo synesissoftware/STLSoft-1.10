@@ -4,11 +4,11 @@
  * Purpose:     String utility functions for copying.
  *
  * Created:     13th June 2006
- * Updated:     3rd December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MAJOR       1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_MINOR       0
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_REVISION    7
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        21
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_COPY_FUNCTIONS_EDIT        22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,7 +109,7 @@ copy_contents(
 {
     STLSOFT_ASSERT(NULL != src);
 
-    if(NULL == dest)
+    if (NULL == dest)
     {
         return cchSource;
     }
@@ -122,7 +122,7 @@ copy_contents(
 
         traits_t::copy(dest, src, cchContent);
 
-        if(cchContent < cchDest)
+        if (cchContent < cchDest)
         {
             traits_t::assign(&dest[cchContent], cchDest - cchContent, 0);
         }

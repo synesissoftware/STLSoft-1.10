@@ -4,11 +4,11 @@
  * Purpose:     Miscellaneous undocumented features.
  *
  * Created:     20th October 1994
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MAJOR       4
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_MINOR       0
 #define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_REVISION    5
-#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        48
+#define WINSTL_VER_WINSTL_UTIL_HPP_UNDOCUMENTED_EDIT        49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -165,7 +165,7 @@ private:
 /* Messages */
 
 #ifndef WM_CONTEXTMENU
-# define WM_CONTEXTMENU         (0x007B)
+# define WM_CONTEXTMENU                                     (0x007B)
 #endif /* !WM_CONTEXTMENU */
 
 /* Clipboard formats */
@@ -175,27 +175,27 @@ private:
 #endif /* __SYNSOFT_DBS_COMPILER_SUPPORTS_PRAGMA_MESSAGE */
 
 #ifndef CF_FILENAMEA
-# define CF_FILENAMEA           WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<1>(TEXT("FileName"))
+# define CF_FILENAMEA                                       WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<1>(TEXT("FileName"))
 #endif /* !CF_FILENAMEA */
 
 #ifndef CF_FILENAMEW
-# define CF_FILENAMEW           WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<2>(TEXT("FileNameW"))
+# define CF_FILENAMEW                                       WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<2>(TEXT("FileNameW"))
 #endif /* !CF_FILENAMEW */
 
 #ifndef CF_FILENAME
 # ifdef UNICODE
-#  define CF_FILENAME           CF_FILENAMEW
+#  define CF_FILENAME                                       CF_FILENAMEW
 # else /* ? UNICODE */
-#  define CF_FILENAME           CF_FILENAMEA
+#  define CF_FILENAME                                       CF_FILENAMEA
 # endif /* UNICODE */
 #endif /* !CF_FILENAME */
 
 #ifndef CF_IDLIST
-# define CF_IDLIST              WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<3>(TEXT("Shell IDList Array"))
+# define CF_IDLIST                                          WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<3>(TEXT("Shell IDList Array"))
 #endif /* !CF_IDLIST */
 
 #ifndef CF_NETRESOURCE
-# define CF_NETRESOURCE         WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<4>(TEXT("Net Resource"))
+# define CF_NETRESOURCE                                     WINSTL_NS_QUAL(get_undoc_clipboard_fmt__)<4>(TEXT("Net Resource"))
 #endif /* !CF_NETRESOURCE */
 
 /* ////////////////////////////////////////////////////////////////////// */

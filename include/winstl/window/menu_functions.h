@@ -4,11 +4,11 @@
  * Purpose:     Menu functions.
  *
  * Created:     20th October 1994
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_MAJOR       3
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_REVISION    4
-# define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_EDIT        135
+# define WINSTL_VER_WINSTL_WINDOW_H_MENU_FUNCTIONS_EDIT        136
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -98,9 +98,9 @@ STLSOFT_INLINE BOOL winstl__IsMenuItemChecked(HMENU hmenu, WORD wID)
     mii.cbSize  =   sizeof(mii);
     mii.fMask   =   MIIM_STATE;
 
-    if(STLSOFT_NS_GLOBAL(GetMenuItemInfo)(hmenu, wID, FALSE, &mii))
+    if (STLSOFT_NS_GLOBAL(GetMenuItemInfo)(hmenu, wID, FALSE, &mii))
     {
-        if(MFS_CHECKED == (MFS_CHECKED & mii.fState))
+        if (MFS_CHECKED == (MFS_CHECKED & mii.fState))
         {
             return TRUE;
         }

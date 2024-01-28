@@ -4,11 +4,11 @@
  * Purpose:     String to integer conversions.
  *
  * Created:     6th September 2014
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MAJOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_MINOR    1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_REVISION 5
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     11
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_STRING_TO_BOOL_EDIT     12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -144,20 +144,20 @@ try_parse_to_bool(
 {
     ss_char_a_t const*  dummy;
 
-    if(NULL == endptr)
+    if (NULL == endptr)
     {
         endptr = &dummy;
     }
 
-    { for(ss_size_t i = 0; numTrueSlices != i; ++i)
+    { for (ss_size_t i = 0; numTrueSlices != i; ++i)
     {
         stlsoft_C_string_slice_a_t const& slice = trueSlices[i];
 
-        if( 0 != slice.len &&
+        if (0 != slice.len &&
             n >= slice.len &&
             0 == ::memcmp(s, slice.ptr, slice.len * sizeof(ss_char_a_t)))
         {
-            if(n > slice.len)
+            if (n > slice.len)
             {
                 *endptr = &s[0] + slice.len;
             }
@@ -172,15 +172,15 @@ try_parse_to_bool(
         }
     }}
 
-    { for(ss_size_t i = 0; numFalseSlices != i; ++i)
+    { for (ss_size_t i = 0; numFalseSlices != i; ++i)
     {
         stlsoft_C_string_slice_a_t const& slice = falseSlices[i];
 
-        if( 0 != slice.len &&
+        if (0 != slice.len &&
             n >= slice.len &&
             0 == ::memcmp(s, slice.ptr, slice.len * sizeof(ss_char_a_t)))
         {
-            if(n > slice.len)
+            if (n > slice.len)
             {
                 *endptr = &s[0] + slice.len;
             }
@@ -216,20 +216,20 @@ try_parse_to_bool(
 {
     ss_char_w_t const*  dummy;
 
-    if(NULL == endptr)
+    if (NULL == endptr)
     {
         endptr = &dummy;
     }
 
-    { for(ss_size_t i = 0; numTrueSlices != i; ++i)
+    { for (ss_size_t i = 0; numTrueSlices != i; ++i)
     {
         stlsoft_C_string_slice_w_t const& slice = trueSlices[i];
 
-        if( 0 != slice.len &&
+        if (0 != slice.len &&
             n >= slice.len &&
             0 == ::memcmp(s, slice.ptr, slice.len * sizeof(ss_char_w_t)))
         {
-            if(n > slice.len)
+            if (n > slice.len)
             {
                 *endptr = &s[0] + slice.len;
             }
@@ -244,15 +244,15 @@ try_parse_to_bool(
         }
     }}
 
-    { for(ss_size_t i = 0; numFalseSlices != i; ++i)
+    { for (ss_size_t i = 0; numFalseSlices != i; ++i)
     {
         stlsoft_C_string_slice_w_t const& slice = falseSlices[i];
 
-        if( 0 != slice.len &&
+        if (0 != slice.len &&
             n >= slice.len &&
             0 == ::memcmp(s, slice.ptr, slice.len * sizeof(ss_char_w_t)))
         {
-            if(n > slice.len)
+            if (n > slice.len)
             {
                 *endptr = &s[0] + slice.len;
             }
@@ -586,12 +586,12 @@ try_parse_to_bool(
 {
     ss_char_a_t const*  endptr;
 
-    if(!try_parse_to_bool(s, result, &endptr))
+    if (!try_parse_to_bool(s, result, &endptr))
     {
         return false;
     }
 
-    if( ss_nullptr_k != endptr &&
+    if (ss_nullptr_k != endptr &&
         '\0' != 0[endptr])
     {
         return false;
@@ -621,12 +621,12 @@ try_parse_to_bool(
 {
     ss_char_w_t const*  endptr;
 
-    if(!try_parse_to_bool(s, result, &endptr))
+    if (!try_parse_to_bool(s, result, &endptr))
     {
         return false;
     }
 
-    if( ss_nullptr_k != endptr &&
+    if (ss_nullptr_k != endptr &&
         '\0' != 0[endptr])
     {
         return false;

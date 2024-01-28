@@ -4,11 +4,11 @@
  * Purpose:     Converts a standard rerror code (errno) to a printable string.
  *
  * Created:     18th July 2006
- * Updated:     16th February 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MAJOR     1
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_MINOR     3
 # define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_REVISION  1
-# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      42
+# define STLSOFT_VER_STLSOFT_ERROR_HPP_ERROR_DESC_EDIT      45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,13 +111,13 @@
 #if (   defined(STLSOFT_COMPILER_IS_MSVC) || \
         defined(STLSOFT_COMPILER_IS_INTEL)) && \
     _MSC_VER >= 1300
-# define STLSOFT_ERROR_DESC_wcserror    ::_wcserror
+# define STLSOFT_ERROR_DESC_wcserror                        ::_wcserror
 #endif /* compiler */
 
 #if (   defined(STLSOFT_COMPILER_IS_MSVC) || \
         defined(STLSOFT_COMPILER_IS_INTEL)) && \
     _MSC_VER >= 1400
-# define STLSOFT_ERROR_DESC_wcserror_s  ::_wcserror_s
+# define STLSOFT_ERROR_DESC_wcserror_s                      ::_wcserror_s
 #endif /* compiler */
 
 #ifdef STLSOFT_USING_SAFE_STR_FUNCTIONS
@@ -292,7 +292,7 @@ private: // types
 public:
     /// The character type
     typedef C                                               char_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_error_desc<C>                             class_type;
     /// The error type
     typedef int                                             error_type;
@@ -400,7 +400,7 @@ basic_error_desc<C>::basic_error_desc(
 {
     stlsoft::auto_buffer<char_type, 128, allocator_type>    buff(128);
 
-    for(;;)
+    for (;;)
     {
         // If you get compiler errors on the following line, it may be because
         // you are trying to use a wide char specialisation of basic_error_desc

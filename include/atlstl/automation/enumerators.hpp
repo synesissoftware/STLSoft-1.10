@@ -4,11 +4,11 @@
  * Purpose:     Enumerator classes.
  *
  * Created:     11th November 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_MAJOR    4
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_MINOR    0
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_REVISION 9
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_EDIT     80
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_ENUMERATORS_EDIT     81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 ////////////////////////////////////////////////////////////////////////////
@@ -245,7 +245,7 @@ public:
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
             m_values.clear();
 
-            for(; begin != end; ++begin)
+            for (; begin != end; ++begin)
             {
                 m_values.push_back(fn(*begin));
             }
@@ -274,7 +274,7 @@ public:
 # endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
             m_values.clear();
 
-            for(; begin != end; ++begin)
+            for (; begin != end; ++begin)
             {
                 m_values.push_back(*begin);
             }
@@ -316,7 +316,7 @@ private:
         T               begin   =   b;
         T               end     =   e;
 
-        for(; begin != end; ++begin)
+        for (; begin != end; ++begin)
         {
             ++d;
         }
@@ -327,7 +327,7 @@ private:
     template <typename T>
     static T increment_by(T it, difference_type by)
     {
-        for(; by-- > 0; )
+        for (; by-- > 0; )
         {
             ++it;
         }
@@ -434,7 +434,7 @@ inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Next(ULONG celt
 {
     HRESULT hr;
 
-    if( rgelt == NULL ||
+    if (rgelt == NULL ||
         (   celt != 1 &&
             pceltFetched == NULL))
     {
@@ -444,31 +444,31 @@ inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Next(ULONG celt
     {
         ULONG   celtFetched_;
 
-        if(NULL == pceltFetched)
+        if (NULL == pceltFetched)
         {
             pceltFetched = &celtFetched_;
         }
 
-        { for(*pceltFetched = 0, hr = S_OK; /* SUCCEEDED(hr) && */ celt > 0 && m_current != m_values.end(); --celt, ++m_current, ++rgelt, ++*pceltFetched)
+        { for (*pceltFetched = 0, hr = S_OK; /* SUCCEEDED(hr) && */ celt > 0 && m_current != m_values.end(); --celt, ++m_current, ++rgelt, ++*pceltFetched)
         {
             internal_to_external_transformer_type::init(rgelt);
             hr = internal_to_external_transformer_type::copy(rgelt, *m_current);
 
-            if(FAILED(hr))
+            if (FAILED(hr))
             {
                 break;
             }
         }}
 
-        if(FAILED(hr))
+        if (FAILED(hr))
         {
-            for(; 0 != *pceltFetched; --*pceltFetched)
+            for (; 0 != *pceltFetched; --*pceltFetched)
             {
                 internal_to_external_transformer_type::clear(--rgelt);
             }
         }
 
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             hr = (0 == celt) ? S_OK : S_FALSE;
         }
@@ -485,7 +485,7 @@ template<   ss_typename_param_k I
         >
 inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Skip(ULONG celt)
 {
-    { for(; celt > 0 && m_current == m_values.end(); --celt, ++m_current)
+    { for (; celt > 0 && m_current == m_values.end(); --celt, ++m_current)
     {
     }}
 
@@ -517,7 +517,7 @@ inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Clone(I** ppEnu
     try
     {
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(NULL == ppEnum)
+        if (NULL == ppEnum)
         {
             return E_POINTER;
         }
@@ -529,7 +529,7 @@ inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Clone(I** ppEnu
             class_type  *pThis  =   this;
             class_type  *p      =   pThis->CreateEmptyClone();
 
-            if(p == NULL)
+            if (p == NULL)
             {
                 hr = E_OUTOFMEMORY;
             }
@@ -539,7 +539,7 @@ inline STDMETHODIMP copy_enumerator_impl<I, piid, V, IV, I2ETx>::Clone(I** ppEnu
 
                 hr = p->Init(this->begin(), this->end());
 
-                if(SUCCEEDED(hr))
+                if (SUCCEEDED(hr))
                 {
                     const_iterator  begin   =   this->m_values.begin();
                     const_iterator  current =   this->m_current;

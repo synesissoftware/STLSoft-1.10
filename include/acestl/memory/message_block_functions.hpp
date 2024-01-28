@@ -4,11 +4,11 @@
  * Purpose:     Helper functions for ACE_Message_Block (and ACE_Data_Block) classes.
  *
  * Created:     23rd September 2004
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_MAJOR      2
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_MINOR      0
 # define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_REVISION   8
-# define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_EDIT       42
+# define ACESTL_VER_ACESTL_MEMORY_HPP_MESSAGE_BLOCK_FUNCTIONS_EDIT       43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,7 +121,7 @@ namespace acestl_project
 \code
 ACE_Message_Block *newBlock = acestl::make_copied_Message_Block("Contents", 7);
 
-if(NULL == newBlock)
+if (NULL == newBlock)
 {
   std::cerr <<  "Allocation failed!\n";
 }
@@ -139,7 +139,7 @@ inline ACE_Message_Block *make_copied_Message_Block(char const* p, as_size_t n)
 #endif /* ACE_NEW_THROWS_EXCEPTIONS */
         ACE_Message_Block *pmb = new ACE_Message_Block(n);
 
-        if(NULL == pmb)
+        if (NULL == pmb)
         {
             errno = ENOMEM;
         }
@@ -147,7 +147,7 @@ inline ACE_Message_Block *make_copied_Message_Block(char const* p, as_size_t n)
         {
             pmb->wr_ptr(n);
 
-            if(NULL != p)
+            if (NULL != p)
             {
                 STLSOFT_API_INTERNAL_memfns_memcpy(pmb->base(), p, n);
             }

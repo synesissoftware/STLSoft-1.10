@@ -4,11 +4,11 @@
  * Purpose:     System information functions.
  *
  * Created:     5th November 2014
- * Updated:     30th November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_MINOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_REVISION   4
-# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       11
+# define WINSTL_VER_WINSTL_SYSTEM_H_SYSTEM_INFORMATION_FUNCTIONS_EDIT       12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,7 +121,7 @@ winstl_C_system_information_functions_MORE_DATA_(
     DWORD e
 )
 {
-    switch(e)
+    switch (e)
     {
     case ERROR_BUFFER_OVERFLOW:
     case ERROR_INSUFFICIENT_BUFFER:

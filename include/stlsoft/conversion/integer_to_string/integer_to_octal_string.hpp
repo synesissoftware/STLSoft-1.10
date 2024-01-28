@@ -5,7 +5,7 @@
  *              octal representation.
  *
  * Created:     7th April 2002
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_OCTAL_STRING_MAJOR     5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_OCTAL_STRING_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_OCTAL_STRING_REVISION  22
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_OCTAL_STRING_EDIT      98
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_OCTAL_STRING_EDIT      99
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -197,7 +197,7 @@ unsigned_integer_to_octal_string(
 
     STLSOFT_COVER_MARK_LINE();
 
-    if(0 == i)
+    if (0 == i)
     {
         STLSOFT_COVER_MARK_LINE();
 
@@ -215,7 +215,7 @@ unsigned_integer_to_octal_string(
 
         C* p = end;
 
-        for(;;)
+        for (;;)
         {
             STLSOFT_COVER_MARK_LINE();
 
@@ -229,7 +229,7 @@ unsigned_integer_to_octal_string(
 
             i >>= 3;
 
-            if(0 == i)
+            if (0 == i)
             {
                 STLSOFT_COVER_MARK_LINE();
 
@@ -446,11 +446,11 @@ signed_integer_to_octal_string(
 
     typedef ss_typename_type_k sign_traits<I>::unsigned_type    unsigned_t;
 
-    if(i < 0)
+    if (i < 0)
     {
         STLSOFT_COVER_MARK_LINE();
 
-        if(i == limit_traits_t::minimum())
+        if (i == limit_traits_t::minimum())
         {
             STLSOFT_COVER_MARK_LINE();
 

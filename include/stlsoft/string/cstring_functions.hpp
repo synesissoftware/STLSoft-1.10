@@ -4,11 +4,11 @@
  * Purpose:     String duplication functions.
  *
  * Created:     26th May 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_MINOR    2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_REVISION 7
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     47
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_FUNCTIONS_EDIT     48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,7 +113,7 @@ inline C* string_dup_impl(C const* str, ss_size_t cch, A& ator)
     C* r = ator.allocate(1 + cch, NULL);
 
 #ifndef STLSOFT_CF_EXCEPTION_OPERATOR_NEW_THROWS_BAD_ALLOC
-    if(NULL != r)
+    if (NULL != r)
 #endif /* !STLSOFT_CF_EXCEPTION_OPERATOR_NEW_THROWS_BAD_ALLOC */
     {
         char_traits<C>::copy(r, str, cch);
@@ -176,7 +176,7 @@ inline C* string_dup(C const* str, A& ator, ss_size_t* psize = NULL)
 {
     ss_size_t dummy;
 
-    if(NULL == psize)
+    if (NULL == psize)
     {
         psize = &dummy;
     }

@@ -105,7 +105,7 @@ STLSOFT_API_INTERNAL_Time_gmtime(
 
     STLSOFT_COVER_MARK_LINE();
 
-    if(NULL == ptm)
+    if (NULL == ptm)
     {
         STLSOFT_COVER_MARK_LINE();
 
@@ -145,7 +145,7 @@ STLSOFT_API_INTERNAL_Time_localtime(
 
     STLSOFT_COVER_MARK_LINE();
 
-    if(NULL == ptm)
+    if (NULL == ptm)
     {
         STLSOFT_COVER_MARK_LINE();
 

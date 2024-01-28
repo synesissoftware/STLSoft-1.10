@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     12th January 2024
+ * Updated:     20th January 2024
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     318
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     319
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,7 +181,7 @@ public:
     typedef T                                               traits_type;
     /// The allocator type
     typedef A                                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_path<C, T, A>                             class_type;
     /// The size type
     typedef ss_typename_type_k traits_type::size_type       size_type;

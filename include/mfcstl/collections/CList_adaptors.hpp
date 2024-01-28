@@ -5,7 +5,7 @@
  *              class templates.
  *
  * Created:     1st December 2002
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_MAJOR     3
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_MINOR     0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_REVISION  15
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_EDIT      80
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_ADAPTORS_EDIT      81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -327,7 +327,7 @@ public:
         /// Pre-increment operator
         const_iterator& operator ++()
         {
-            if(m_pos == NULL)
+            if (m_pos == NULL)
             {
                 MFCSTL_MESSAGE_ASSERT("operator ++() called on invalid iterator", NULL != m_list);
 

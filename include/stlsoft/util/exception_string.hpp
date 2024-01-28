@@ -4,11 +4,11 @@
  * Purpose:     Contains the exception_string limited functionality string class.
  *
  * Created:     26th December 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_MINOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_REVISION 6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_EDIT     32
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_EXCEPTION_STRING_EDIT     33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -151,7 +151,7 @@ public:
         const ss_size_t n       =   traits_type::length(s);
         const ss_size_t currLen =   this->length();
 
-        if(m_message.resize(m_message.size() + n))
+        if (m_message.resize(m_message.size() + n))
         {
             traits_type::copy(&m_message[currLen], s, n);
             m_message[m_message.size() - 1] = '\0';
@@ -163,7 +163,7 @@ public:
         const ss_size_t n       =   rhs.length();
         const ss_size_t currLen =   this->length();
 
-        if(m_message.resize(m_message.size() + n))
+        if (m_message.resize(m_message.size() + n))
         {
             traits_type::copy(&m_message[currLen], rhs.c_str(), n);
             m_message[m_message.size() - 1] = '\0';
@@ -175,7 +175,7 @@ public:
         const ss_size_t n       =   1;
         const ss_size_t currLen =   this->length();
 
-        if(m_message.resize(m_message.size() + n))
+        if (m_message.resize(m_message.size() + n))
         {
             traits_type::copy(&m_message[currLen], &ch, n);
             m_message[m_message.size() - 1] = '\0';
@@ -190,9 +190,9 @@ public:
     ///  than the current length
     void truncate(size_type n)
     {
-        if(n < m_message.size() - 1)
+        if (n < m_message.size() - 1)
         {
-            if(m_message.resize(n + 1))
+            if (m_message.resize(n + 1))
             {
                 m_message[m_message.size() - 1] = '\0';
             }

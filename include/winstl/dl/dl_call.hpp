@@ -4,11 +4,11 @@
  * Purpose:     Invocation of functions in dynamic libraries.
  *
  * Created:     sometime in 1998
- * Updated:     26th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MAJOR     2
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_MINOR     8
 # define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_REVISION  2
-# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      66
+# define WINSTL_VER_WINSTL_DL_HPP_DL_CALL_EDIT      67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -312,7 +312,7 @@ namespace calling_convention
     calling_convention
     from_int(int i)
     {
-        switch(i)
+        switch (i)
         {
             default:
 
@@ -2219,7 +2219,7 @@ inline R dl_call_dispatch_0(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2247,7 +2247,7 @@ inline R dl_call_dispatch_1(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2275,7 +2275,7 @@ inline R dl_call_dispatch_2(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2303,7 +2303,7 @@ inline R dl_call_dispatch_3(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2331,7 +2331,7 @@ inline R dl_call_dispatch_4(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2359,7 +2359,7 @@ inline R dl_call_dispatch_5(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2387,7 +2387,7 @@ inline R dl_call_dispatch_6(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2415,7 +2415,7 @@ inline R dl_call_dispatch_7(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2443,7 +2443,7 @@ inline R dl_call_dispatch_8(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2471,7 +2471,7 @@ inline R dl_call_dispatch_9(dl_call_traits::entry_point_type fp, calling_convent
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2499,7 +2499,7 @@ inline R dl_call_dispatch_10(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2527,7 +2527,7 @@ inline R dl_call_dispatch_11(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2555,7 +2555,7 @@ inline R dl_call_dispatch_12(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2583,7 +2583,7 @@ inline R dl_call_dispatch_13(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2611,7 +2611,7 @@ inline R dl_call_dispatch_14(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2639,7 +2639,7 @@ inline R dl_call_dispatch_15(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2667,7 +2667,7 @@ inline R dl_call_dispatch_16(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2695,7 +2695,7 @@ inline R dl_call_dispatch_17(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2723,7 +2723,7 @@ inline R dl_call_dispatch_18(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2751,7 +2751,7 @@ inline R dl_call_dispatch_19(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2779,7 +2779,7 @@ inline R dl_call_dispatch_20(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2807,7 +2807,7 @@ inline R dl_call_dispatch_21(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2835,7 +2835,7 @@ inline R dl_call_dispatch_22(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2863,7 +2863,7 @@ inline R dl_call_dispatch_23(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2891,7 +2891,7 @@ inline R dl_call_dispatch_24(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2919,7 +2919,7 @@ inline R dl_call_dispatch_25(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2947,7 +2947,7 @@ inline R dl_call_dispatch_26(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -2975,7 +2975,7 @@ inline R dl_call_dispatch_27(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -3003,7 +3003,7 @@ inline R dl_call_dispatch_28(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -3031,7 +3031,7 @@ inline R dl_call_dispatch_29(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -3059,7 +3059,7 @@ inline R dl_call_dispatch_30(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -3087,7 +3087,7 @@ inline R dl_call_dispatch_31(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);
@@ -3115,7 +3115,7 @@ inline R dl_call_dispatch_32(dl_call_traits::entry_point_type fp, calling_conven
 {
   WINSTL_ASSERT(NULL != fp);
 
-  switch(cc)
+  switch (cc)
   {
       default:
           STLSOFT_MESSAGE_ASSERT("Invalid calling convention", 0);

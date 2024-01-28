@@ -5,11 +5,11 @@
  *              automatically the strong NULL.
  *
  * Created:     8th September 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_MAJOR     4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_REVISION  6
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_EDIT      63
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_NULL_EDIT      64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -129,11 +129,11 @@ namespace stlsoft
  *   int   i = NULL; // error
  *   int   *p = NULL; // OK
  *
- *   if(i == NULL) {} // error
- *   if(NULL == i) {} // error
+ *   if (i == NULL) {} // error
+ *   if (NULL == i) {} // error
  *
- *   if(p == NULL) {} // OK
- *   if(NULL == p) {} // OK
+ *   if (p == NULL) {} // OK
+ *   if (NULL == p) {} // OK
  *
  *
  * When used via inclusion of the file stlsoft_nulldef.h, the macro NULL is

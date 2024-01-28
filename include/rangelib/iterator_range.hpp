@@ -4,11 +4,11 @@
  * Purpose:     Iterator range adaptor.
  *
  * Created:     4th November 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,7 +50,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_ITERATOR_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_ITERATOR_RANGE_MINOR    6
 # define RANGELIB_VER_RANGELIB_HPP_ITERATOR_RANGE_REVISION 9
-# define RANGELIB_VER_RANGELIB_HPP_ITERATOR_RANGE_EDIT     54
+# define RANGELIB_VER_RANGELIB_HPP_ITERATOR_RANGE_EDIT     55
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -265,7 +265,7 @@ struct const_pointer_iterator_range_traits
 template<typename I>
 void dump_elements(I from, I to)
 {
-  for(iterator_range<I> r(from, to); r; ++r)
+  for (iterator_range<I> r(from, to); r; ++r)
   {
     std::cout << &r; // Dump the current value to stdout
   }

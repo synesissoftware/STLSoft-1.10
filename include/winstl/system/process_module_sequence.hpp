@@ -4,7 +4,7 @@
  * Purpose:     Process Id sequence class.
  *
  * Created:     24th June 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Adi Shavit for spotting a small inefficiency in the
  *              resize()-ing, during the review of Extended STL volume 1
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MAJOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_REVISION  10
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      64
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_PROCESS_MODULE_SEQUENCE_EDIT      65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -246,13 +246,13 @@ inline process_module_sequence::process_module_sequence(HANDLE hProcess)
 {
     DWORD   cbReturned;
 
-    for(;;)
+    for (;;)
     {
 #if defined(_PSAPI_H_) || \
     defined(_PSAPI_H)
-        if(!::EnumProcessModules(hProcess, &m_modules[0], sizeof(value_type) * m_modules.size(), &cbReturned))
+        if (!::EnumProcessModules(hProcess, &m_modules[0], sizeof(value_type) * m_modules.size(), &cbReturned))
 #else /* ? psapi */
-        if(!dl_call<BOOL>(  "PSAPI.DLL"
+        if (!dl_call<BOOL>(  "PSAPI.DLL"
                         ,   WINSTL_DL_CALL_WINx_STDCALL_LITERAL("EnumProcessModules")
                         ,   hProcess
                         ,   &m_modules[0]
@@ -272,7 +272,7 @@ inline process_module_sequence::process_module_sequence(HANDLE hProcess)
         {
             const ws_size_t n   =   cbReturned / sizeof(value_type);
 
-            if(n < m_modules.size())
+            if (n < m_modules.size())
             {
                 m_modules.resize(n);
 
@@ -284,7 +284,7 @@ inline process_module_sequence::process_module_sequence(HANDLE hProcess)
 
                 m_modules.resize(1); // Read "Extended STL, volume 1" to find out what this is for
 
-                if(!m_modules.resize(2 * size))
+                if (!m_modules.resize(2 * size))
                 {
                     // This will only ever be executed when compiled in the
                     // absence of throwing bad_alloc on memory exhaustion

@@ -4,7 +4,7 @@
  * Purpose:     Simple utility class for creating (constant) C-strings.
  *
  * Created:     14th May 2004
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_REVISION 5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     64
+# define STLSOFT_VER_STLSOFT_STRING_HPP_CSTRING_MAKER_EDIT     65
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -227,7 +227,7 @@ public:
         block* const    pblock  =   static_cast<block*>(static_cast<void*>(byte_ator.allocate(cb)));
 #endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 
-        if(NULL == pblock)
+        if (NULL == pblock)
         {
             return NULL;
         }
@@ -294,7 +294,7 @@ public:
         allocator_selector<ss_byte_t>::allocator_type                                   byte_ator;
 #endif /* STLSOFT_LF_ALLOCATOR_REBIND_SUPPORT */
 
-        if(NULL != pblock)
+        if (NULL != pblock)
         {
             if (0 == --pblock->rc)
             {
@@ -349,7 +349,7 @@ public:
 
         block* const    pblock  =   static_cast<block*>(malloc(cb));
 
-        if(NULL == pblock)
+        if (NULL == pblock)
         {
             return NULL;
         }

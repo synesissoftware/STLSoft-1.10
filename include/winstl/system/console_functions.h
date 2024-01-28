@@ -4,11 +4,11 @@
  * Purpose:     Windows console functions.
  *
  * Created:     3rd December 2005
- * Updated:     24th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MAJOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_MINOR     4
 # define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_REVISION  8
-# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT      42
+# define WINSTL_VER_WINSTL_SYSTEM_H_CONSOLE_FUNCTIONS_EDIT      44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ winstl_C_console_read_silent_character_from_(
 {
     DWORD   currMode;
 
-    if( !WINSTL_API_EXTERNAL_Console_GetConsoleMode(h, &currMode) ||
+    if (!WINSTL_API_EXTERNAL_Console_GetConsoleMode(h, &currMode) ||
         !WINSTL_API_EXTERNAL_Console_SetConsoleMode(h, 0))
     {
         return -1;
@@ -126,37 +126,37 @@ winstl_C_console_read_silent_character_from_(
     {
         LONG c = -1;
 
-        for(;;)
+        for (;;)
         {
             INPUT_RECORD    ir;
             DWORD           numRead;
 
-            if(!WINSTL_API_EXTERNAL_Console_ReadConsoleInput(h, &ir, 1, &numRead))
+            if (!WINSTL_API_EXTERNAL_Console_ReadConsoleInput(h, &ir, 1, &numRead))
             {
                 c = -1;
                 break;
             }
             else
             {
-                if(0 == numRead)
+                if (0 == numRead)
                 {
                     c = -1;
                     break;
                 }
                 else
                 {
-                    if(KEY_EVENT == ir.EventType)
+                    if (KEY_EVENT == ir.EventType)
                     {
-                        if(ir.Event.KeyEvent.bKeyDown)
+                        if (ir.Event.KeyEvent.bKeyDown)
                         {
 #ifdef UNICODE
-                            if(0 != ir.Event.KeyEvent.uChar.UnicodeChar)
+                            if (0 != ir.Event.KeyEvent.uChar.UnicodeChar)
                             {
                                 c = (long)ir.Event.KeyEvent.uChar.UnicodeChar;
                                 break;
                             }
 #else /* ? UNICODE */
-                            if(0 != ir.Event.KeyEvent.uChar.AsciiChar)
+                            if (0 != ir.Event.KeyEvent.uChar.AsciiChar)
                             {
                                 c = (long)ir.Event.KeyEvent.uChar.AsciiChar;
                                 break;
@@ -190,11 +190,11 @@ winstl_C_get_console_width(void)
 {
     HANDLE hStdOut = WINSTL_API_EXTERNAL_Console_GetStdHandle(STD_OUTPUT_HANDLE);
 
-    if(INVALID_HANDLE_VALUE != hStdOut)
+    if (INVALID_HANDLE_VALUE != hStdOut)
     {
         CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-        if(WINSTL_API_EXTERNAL_Console_GetConsoleScreenBufferInfo(hStdOut, &csbi))
+        if (WINSTL_API_EXTERNAL_Console_GetConsoleScreenBufferInfo(hStdOut, &csbi))
         {
             return csbi.dwMaximumWindowSize.X;
         }
@@ -222,7 +222,7 @@ GetConsoleWindow()
     HMODULE Kernel32    =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA("KERNEL32");
     GCW_t   pfn         =   stlsoft_reinterpret_cast(GCW_t, WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(Kernel32, "GetConsoleWindow"));
 
-    if(NULL == pfn)
+    if (NULL == pfn)
     {
         return NULL;
     }
@@ -276,7 +276,7 @@ winstl_C_console_read_silent_character_from_CONIO(void)
                     ,   NULL
                     );
 
-    if(INVALID_HANDLE_VALUE == hConin)
+    if (INVALID_HANDLE_VALUE == hConin)
     {
         return -1;
     }
@@ -311,12 +311,12 @@ winstl_C_console_read_silent_character_from_CONIO(void)
  *
  * \deprecated Use winstl_C_get_console_window
  */
-# define winstl__get_console_window         winstl_C_get_console_window
+# define winstl__get_console_window                         winstl_C_get_console_window
 /** \def winstl__get_console_width
  *
  * \deprecated Use winstl_C_get_console_width
  */
-# define winstl__get_console_width          winstl_C_get_console_width
+# define winstl__get_console_width                          winstl_C_get_console_width
 
 #endif /* obsolete || 1.9 */
 

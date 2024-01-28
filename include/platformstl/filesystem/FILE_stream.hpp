@@ -4,11 +4,11 @@
  * Purpose:     Facade for the standard C Streams API.
  *
  * Created:     31st May 2009
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2009-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MAJOR       2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_MINOR       1
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_REVISION    4
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        23
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_STREAM_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -285,7 +285,7 @@ public: // Operations
     /// stream.
     void flush()
     {
-        if(0 != ::fflush(m_ref->handle))
+        if (0 != ::fflush(m_ref->handle))
         {
             int const e = errno;
 
@@ -318,7 +318,7 @@ public: // Operations
     {
         long pos = ::ftell(m_ref->handle);
 
-        if(-1l == pos)
+        if (-1l == pos)
         {
             int const e = errno;
 
@@ -343,7 +343,7 @@ private: // Implementation
         _MSC_VER < 1310) || \
     defined(STLSOFT_COMPILER_IS_MWERKS)
 
-        if( NULL == h &&
+        if (NULL == h &&
             0 == e)
         {
             e = EMFILE;
@@ -370,12 +370,12 @@ private: // Implementation
         FILE* handle;
         int   e = ::fopen_s(&handle, path, mode);
 
-        if(0 != e)
+        if (0 != e)
         {
 #else // }
         FILE* handle = ::fopen(path, mode);
 
-        if(NULL == handle)
+        if (NULL == handle)
         {
             int e = errno;
 #endif
@@ -413,12 +413,12 @@ private: // Implementation
         FILE* handle;
         int   e = ::_wfopen_s(&handle, path, mode);
 
-        if(0 != e)
+        if (0 != e)
         {
 # else // }
         FILE* handle = ::_wfopen(path, mode);
 
-        if(NULL == handle)
+        if (NULL == handle)
         {
             int e = errno;
 # endif
@@ -453,7 +453,7 @@ private: // Implementation
     {
         STLSOFT_NS_QUAL(auto_buffer)<char>  buff(2u + len);
 
-        if(0 != len)
+        if (0 != len)
         {
             STLSOFT_API_INTERNAL_memfns_memcpy(&buff[0], s, sizeof(*s) * len);
         }
@@ -471,7 +471,7 @@ private: // Implementation
     {
         STLSOFT_NS_QUAL(auto_buffer)<wchar_t>  buff(2u + len);
 
-        if(0 != len)
+        if (0 != len)
         {
             STLSOFT_API_INTERNAL_memfns_memcpy(&buff[0], s, sizeof(*s) * len);
         }
@@ -489,7 +489,7 @@ private: // Implementation
     {
         size_type const n = ::fwrite(pv, sizeof(byte_t), cb, m_ref->handle);
 
-        if(n < cb)
+        if (n < cb)
         {
             int const e = errno;
 
@@ -519,7 +519,7 @@ private: // Implementation
 
         int const r = ::fprintf(m_ref->handle, fmt, ps);
 
-        if(r < 0)
+        if (r < 0)
         {
             int const e = errno;
 
@@ -549,7 +549,7 @@ private: // Implementation
 
         int const r = ::fwprintf(m_ref->handle, fmt, ps);
 
-        if(r < 0)
+        if (r < 0)
         {
             int const e = errno;
 
@@ -565,7 +565,7 @@ private: // Implementation
     ,   int     origin
     )
     {
-        if(0 != ::fseek(m_ref->handle, offset, origin))
+        if (0 != ::fseek(m_ref->handle, offset, origin))
         {
             int const e = errno;
 
@@ -580,7 +580,7 @@ private: // Implementation
     ,   int         e
     )
     {
-        switch(e)
+        switch (e)
         {
             case    ENOMEM:
                 STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_FileSystem, e));
@@ -605,7 +605,7 @@ private: // Implementation
     ,   int         e
     )
     {
-        switch(e)
+        switch (e)
         {
             case    ENOMEM:
                 STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_FileSystem, e));
@@ -630,12 +630,12 @@ private: // Implementation
     ,   int             e
     )
     {
-        if( NULL == path ||
+        if (NULL == path ||
             '\0' == path[0])
         {
             report_nonnormative_(message, e);
         }
-        else if(ENOMEM == e)
+        else if (ENOMEM == e)
         {
             report_nonnormative_(message, e);
         }

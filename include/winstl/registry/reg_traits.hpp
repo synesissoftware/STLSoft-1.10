@@ -5,13 +5,13 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     19th January 2002
- * Updated:     30th November 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Sam Fisher for requesting reg_delete_tree().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MAJOR    3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_MINOR    5
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_REVISION 8
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     92
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_REG_TRAITS_EDIT     93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -267,12 +267,12 @@ public:
         hkey_type   hkeyDup;
         result_type res = WINSTL_API_EXTERNAL_Registry_RegOpenKeyExA(hkey, "", 0, samDesired, &hkeyDup);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
             hkeyDup = NULL;
         }
 
-        if(NULL != result)
+        if (NULL != result)
         {
             *result = res;
         }
@@ -327,7 +327,7 @@ public:
     {
         result_type res = execute_dynamic_("advapi32.dll", "RegDeleteTreeA", hkey, sub_key_name);
 
-        if(ERROR_PROC_NOT_FOUND == res)
+        if (ERROR_PROC_NOT_FOUND == res)
         {
             res = execute_dynamic_("shlwapi.dll", "SHDeleteKeyA", hkey, sub_key_name);
         }
@@ -347,7 +347,7 @@ public:
                                         size_type*      cb_security_descriptor_max,
                                         time_type*      time_last_write)
     {
-        if( NULL == cch_key_class &&
+        if (NULL == cch_key_class &&
             NULL != key_class)
         {
             return ERROR_INVALID_PARAMETER;
@@ -406,7 +406,7 @@ private:
         result_type r       =   ERROR_SUCCESS;
         HINSTANCE   hinst   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(module);
 
-        if(NULL == hinst)
+        if (NULL == hinst)
         {
             r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
@@ -420,7 +420,7 @@ private:
 
             u.fp = WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hinst, function);
 
-            if(NULL == u.fp)
+            if (NULL == u.fp)
             {
                 r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }
@@ -459,12 +459,12 @@ public:
         hkey_type   hkeyDup;
         result_type res = WINSTL_API_EXTERNAL_Registry_RegOpenKeyExW(hkey, L"", 0, samDesired, &hkeyDup);
 
-        if(ERROR_SUCCESS != res)
+        if (ERROR_SUCCESS != res)
         {
             hkeyDup = NULL;
         }
 
-        if(NULL != result)
+        if (NULL != result)
         {
             *result = res;
         }
@@ -519,7 +519,7 @@ public:
     {
         result_type res = execute_dynamic_("advapi32.dll", "RegDeleteTreeW", hkey, sub_key_name);
 
-        if(ERROR_PROC_NOT_FOUND == res)
+        if (ERROR_PROC_NOT_FOUND == res)
         {
             res = execute_dynamic_("shlwapi.dll", "SHDeleteKeyW", hkey, sub_key_name);
         }
@@ -539,7 +539,7 @@ public:
                                         size_type*      cb_security_descriptor_max,
                                         time_type*      time_last_write)
     {
-        if( NULL == cch_key_class &&
+        if (NULL == cch_key_class &&
             NULL != key_class)
         {
             return ERROR_INVALID_PARAMETER;
@@ -598,7 +598,7 @@ private:
         result_type r       =   ERROR_SUCCESS;
         HINSTANCE   hinst   =   WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(module);
 
-        if(NULL == hinst)
+        if (NULL == hinst)
         {
             r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
         }
@@ -612,7 +612,7 @@ private:
 
             u.fp = WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hinst, function);
 
-            if(NULL == u.fp)
+            if (NULL == u.fp)
             {
                 r = static_cast<result_type>(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
             }

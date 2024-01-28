@@ -4,11 +4,11 @@
  * Purpose:     String split functions.
  *
  * Created:     28th January 2005
- * Updated:     24th October 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_MINOR      5
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_REVISION   1
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_EDIT       61
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_SPLIT_FUNCTIONS_EDIT       62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@ split_impl_2(
 
     s0 = S0(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -208,7 +208,7 @@ split_impl_3(
 
     s0 = S0(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -221,7 +221,7 @@ split_impl_3(
 
     s1 = S1(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -264,7 +264,7 @@ split_impl_4(
 
     s0 = S0(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -277,7 +277,7 @@ split_impl_4(
 
     s1 = S1(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -290,7 +290,7 @@ split_impl_4(
 
     s2 = S2(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -335,7 +335,7 @@ split_impl_5(
 
     s0 = S0(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -348,7 +348,7 @@ split_impl_5(
 
     s1 = S1(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -361,7 +361,7 @@ split_impl_5(
 
     s2 = S2(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -374,7 +374,7 @@ split_impl_5(
 
     s3 = S3(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -421,7 +421,7 @@ split_impl_6(
 
     s0 = S0(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -434,7 +434,7 @@ split_impl_6(
 
     s1 = S1(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -447,7 +447,7 @@ split_impl_6(
 
     s2 = S2(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -460,7 +460,7 @@ split_impl_6(
 
     s3 = S3(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;
@@ -473,7 +473,7 @@ split_impl_6(
 
     s4 = S4(it0, flexible_integer(it1 - it0));
 
-    if(e != it1)
+    if (e != it1)
     {
         ++n;
         it0 = ++it1;

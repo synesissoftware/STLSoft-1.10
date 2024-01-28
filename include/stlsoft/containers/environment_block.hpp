@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_environment_block class.
  *
  * Created:     25th June 2004
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MAJOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_MINOR     2
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_REVISION  10
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT      59
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_ENVIRONMENT_BLOCK_EDIT      61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ public:
     typedef T                                               traits_type;
     /// The allocator type
     typedef A                                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_environment_block<C, T, A>                class_type;
     /// The mutating (non-const) pointer type
     typedef char_type*                                      pointer;
@@ -248,7 +248,7 @@ public:
 public:
     char_type const* const* base() const
     {
-        if(m_pointers.size() != m_offsets.size())
+        if (m_pointers.size() != m_offsets.size())
         {
             set_pointers();
         }
@@ -267,9 +267,9 @@ public:
 private:
     void set_pointers()
     {
-        if(m_pointers.resize(m_offsets.size()))
+        if (m_pointers.resize(m_offsets.size()))
         {
-            for(size_type i = 0; i < m_offsets.size(); ++i)
+            for (size_type i = 0; i < m_offsets.size(); ++i)
             {
                 m_pointers[i] = &m_chars[m_offsets[i]];
             }

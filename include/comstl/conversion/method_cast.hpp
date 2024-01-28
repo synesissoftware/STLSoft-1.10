@@ -4,11 +4,11 @@
  * Purpose:     COM memory functions.
  *
  * Created:     20th December 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MAJOR     2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_MINOR     2
 # define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_REVISION  4
-# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      43
+# define COMSTL_VER_COMSTL_CONVERSION_HPP_METHOD_CAST_EDIT      44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -175,7 +175,7 @@ inline R method_cast(C& c, HRESULT (C::*pfn)(V*))
     V       v;
     HRESULT hr  =   (c.*pfn)(&v);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         return transfer_resource(r, v);
     }
@@ -197,7 +197,7 @@ inline R method_cast(C *c, HRESULT (STDAPICALLTYPE C::*pfn)(V*))
     V       v;
     HRESULT hr  =   (c->*pfn)(&v);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         return transfer_resource(r, v);
     }

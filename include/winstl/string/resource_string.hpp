@@ -4,14 +4,14 @@
  * Purpose:     basic_resource_string class.
  *
  * Created:     1st November 1994
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Ryan Ginstrom for suggesting the implementation for handling
  *              Unicode strings on Win9x.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * Copyright (c) 2004-2005, Ryan Ginstrom
  * All rights reserved.
@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MAJOR    4
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MINOR    2
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_REVISION 13
-# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     98
+# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     100
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,9 +149,9 @@ assert(0 == str.size());
 assert(str == "");
 \endcode
  *
- * If you want your parameterisation to throw an exception when the string
+ * If you want your specialisation to throw an exception when the string
  * resource is not found, simply specify a policy that throws an exception
- * to the parameterisation, as in:
+ * to the specialisation, as in:
  *
 \code
 // Assuming 9999999 is not a valid string resource identifier in the
@@ -197,7 +197,7 @@ private:
 public:
     /// The type of the underlying string
     typedef S                                          string_type;
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef basic_resource_string<S, X>                class_type;
     /// The exception policy type
     typedef X                                          exception_policy_type;
@@ -271,7 +271,7 @@ private:
     }
     ws_int_t load_string_(HINSTANCE hinst, int uID, ws_char_w_t *buffer, ws_size_t cchBuffer)
     {
-        if(winstl_C_internal_IsWindows9x(NULL, NULL, NULL))
+        if (winstl_C_internal_IsWindows9x(NULL, NULL, NULL))
         {
             // This block of code kindly provided by Ryan Ginstrom
             int     block   =   (uID >> 4) + 1; // Compute block number.
@@ -281,17 +281,17 @@ private:
                                                 ,   MAKEINTRESOURCE(block)
                                                 ,   MAKELANGID(LANG_NEUTRAL, SUBLANG_NEUTRAL));
 
-            if(NULL != hRC)
+            if (NULL != hRC)
             {
                 HGLOBAL hgl = ::LoadResource(hinst, hRC);
 
-                if(NULL != hgl)
+                if (NULL != hgl)
                 {
                     LPWSTR  res_str =   (LPWSTR)::LockResource(hgl);
 
-                    if(NULL != res_str)
+                    if (NULL != res_str)
                     {
-                        for(int i = 0; i < num; ++i)
+                        for (int i = 0; i < num; ++i)
                         {
                             res_str += *res_str + 1;
                         }
@@ -299,7 +299,7 @@ private:
                         const LPCWSTR   ptr =   res_str + 1;
                         const ws_size_t cch =   static_cast<ws_size_t>(*res_str);
 
-                        if(cch < cchBuffer)
+                        if (cch < cchBuffer)
                         {
                             cchBuffer = cch + 1; // This is +1, since lstrcpyn 'uses' a character for the nul character
                             buffer[cch] = L'\0';
@@ -324,9 +324,9 @@ private:
         // wrong, then need to fix this to use auto_buffer
         value_type  sz[1024];
 
-        if(0 == this->load_string_(hinst, id, sz, STLSOFT_NUM_ELEMENTS(sz)))
+        if (0 == this->load_string_(hinst, id, sz, STLSOFT_NUM_ELEMENTS(sz)))
         {
-            if(NULL != defaultValue)
+            if (NULL != defaultValue)
             {
                 parent_class_type::operator =(defaultValue);
             }

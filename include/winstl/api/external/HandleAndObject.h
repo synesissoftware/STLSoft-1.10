@@ -69,7 +69,7 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle
-# define WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle                        STLSOFT_NS_GLOBAL_(CloseHandle)
+# define WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle    STLSOFT_NS_GLOBAL_(CloseHandle)
 #endif /* !WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle */
 
 #ifndef WINSTL_API_EXTERNAL_HandleAndObject_CompareObjectHandles

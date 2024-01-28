@@ -4,11 +4,11 @@
  * Purpose:     Contains classes and functions for dealing with OLE/COM strings.
  *
  * Created:     24th May 2002
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_GUID_MAJOR       5
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_GUID_MINOR       1
 # define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_GUID_REVISION    10
-# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_GUID_EDIT        129
+# define COMSTL_VER_COMSTL_SHIMS_ACCESS_STRING_HPP_GUID_EDIT        130
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,14 +149,14 @@ public: // comparison
     {
         cs_size_t const len = STLSOFT_NS_QUAL(c_str_len)(s);
 
-        if(COMSTL_CCH_GUID != len)
+        if (COMSTL_CCH_GUID != len)
         {
             return false;
         }
 
-        { for(cs_size_t i = 0; i != len; ++i)
+        { for (cs_size_t i = 0; i != len; ++i)
         {
-            if(::toupper(s[i]) != ::toupper(data[i]))
+            if (::toupper(s[i]) != ::toupper(data[i]))
             {
                 return false;
             }

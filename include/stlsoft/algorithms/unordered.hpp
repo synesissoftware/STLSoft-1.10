@@ -4,7 +4,7 @@
  * Purpose:     Algorithms for manipulating unordered sequences.
  *
  * Created:     17th January 2002
- * Updated:     16th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MAJOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_MINOR     3
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_REVISION  7
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      85
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_UNORDERED_EDIT      86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,13 +123,13 @@ find_first_duplicate(
 ,   I   last
 )
 {
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
         I next = first;
 
-        for(++next; next != last; ++next)
+        for (++next; next != last; ++next)
         {
-            if(*next == *first)
+            if (*next == *first)
             {
                 return STLSOFT_NS_QUAL_STD(make_pair)(first, next);
             }
@@ -155,13 +155,13 @@ inline stlsoft_ns_qual_std_(pair)<I, I> find_first_duplicate(I first, I last, BP
 inline STLSOFT_NS_QUAL_STD(pair)<I, I> find_first_duplicate(I first, I last, BP pred)
 #endif /* compiler */
 {
-    for(; first != last; ++first)
+    for (; first != last; ++first)
     {
         I next = first;
 
-        for(++next; next != last; ++next)
+        for (++next; next != last; ++next)
         {
-            if(pred(*next, *first))
+            if (pred(*next, *first))
             {
                 return STLSOFT_NS_QUAL_STD(make_pair)(first, next);
             }
@@ -183,18 +183,18 @@ template <ss_typename_param_k FI>
 // [[synesis:function:algorithm: unordered_unique(T<I> first, T<I> last)]]
 inline FI unordered_unique(FI first, FI last)
 {
-    if(first != last)
+    if (first != last)
     {
         // Because this is unordered, we need to enumerate through the
         // elements in the sequence, and ...
         const FI    start   =   first;
         FI          dest    =   ++first;
 
-        for(; first != last; ++first)
+        for (; first != last; ++first)
         {
             // ... for each element in the sequence, we see if it has
             // already in the 'accepted' sequence, and, if not, ...
-            if(dest == std_find(start, dest, *first))
+            if (dest == std_find(start, dest, *first))
             {
                 // ... add it into the accepted sequence at the
                 // current point.
@@ -202,7 +202,7 @@ inline FI unordered_unique(FI first, FI last)
                 // Effectively, this is to overwrite the element
                 // if the source and destination points are different,
                 // or simply moving past it if not.
-                if(dest != first)
+                if (dest != first)
                 {
                     *dest = *first;
                 }
@@ -227,21 +227,21 @@ template<   ss_typename_param_k FI
 // [[synesis:function:algorithm: unordered_unique(T<I> first, T<I> last, T<BP> pred)]]
 inline FI unordered_unique(FI first, FI last, BP pred)
 {
-    if(first != last)
+    if (first != last)
     {
         // Because this is unordered, we need to enumerate through the
         // elements in the sequence, and ...
         const FI    start   =   first;
         FI          dest    =   ++first;
 
-        for(; first != last; ++first)
+        for (; first != last; ++first)
         {
             // ... for each element in the sequence, we see if it has
             // already in the 'accepted' sequence, and, if not, ...
 # if __cplusplus >= 201703L
-            if(dest == std_find_if(start, dest, std::bind(pred, std::placeholders::_1, *first)))
+            if (dest == std_find_if(start, dest, std::bind(pred, std::placeholders::_1, *first)))
 # else /* C++ version ? */
-            if(dest == std_find_if(start, dest, std::bind2nd(pred, *first)))
+            if (dest == std_find_if(start, dest, std::bind2nd(pred, *first)))
 # endif /* C++ version */
             {
                 // ... add it into the accepted sequence at the
@@ -250,7 +250,7 @@ inline FI unordered_unique(FI first, FI last, BP pred)
                 // Effectively, this is to overwrite the element
                 // if the source and destination points are different,
                 // or simply moving past it if not.
-                if(dest != first)
+                if (dest != first)
                 {
                     *dest = *first;
                 }
@@ -289,7 +289,7 @@ template<   ss_typename_param_k FI
 // [[synesis:function:algorithm: unordered_unique(T<I> first, T<I> last, T<OI> dest)]]
 inline OI unordered_unique_copy(FI first, FI last, OI dest)
 {
-    if(first != last)
+    if (first != last)
     {
         // Because this is unordered, we need to enumerate through the
         // elements in the sequence, and ...
@@ -297,11 +297,11 @@ inline OI unordered_unique_copy(FI first, FI last, OI dest)
         FI          curr    =   first;  // The first elements is always unique
 
         *dest++ = *first++;
-        for(; first != last; ++first)
+        for (; first != last; ++first)
         {
             // ... for each element in the sequence, we see if it has
             // already in the 'accepted' sequence, and, if not, ...
-            if(dest == std_find(start, dest, *first))
+            if (dest == std_find(start, dest, *first))
             {
                 // ... add it into the accepted sequence at the
                 // current point.
@@ -336,20 +336,20 @@ inline void remove_duplicates_from_unordered_sequence(C &container, BP pred)
     ss_size_t   index;
     iterator_t  begin;
 
-    for(index = 0, begin = container.begin(); begin != container.end(); )
+    for (index = 0, begin = container.begin(); begin != container.end(); )
     {
         iterator_t  it  =   begin;
         iterator_t  end =   container.end();
 
-        if(++it == end)
+        if (++it == end)
         {
             ++begin;
         }
         else
         {
-            for(;;)
+            for (;;)
             {
-                if(pred(*begin, *it))
+                if (pred(*begin, *it))
                 {
                     ss_size_t   last;
 
@@ -366,7 +366,7 @@ inline void remove_duplicates_from_unordered_sequence(C &container, BP pred)
                 }
                 else
                 {
-                    if(++it == end)
+                    if (++it == end)
                     {
                         ++begin;
                         ++index;
@@ -415,15 +415,15 @@ template<ss_typename_param_k I>
 // [[synesis:function:algorithm: fill_all(T<I> first, T<I> last)]]
 inline I skip_equal(I first, I last)
 {
-    if(first == last)
+    if (first == last)
     {
         return last;
     }
     else
     {
-        for(I next = first; next != last; ++next)
+        for (I next = first; next != last; ++next)
         {
-            if(*next != *first)
+            if (*next != *first)
             {
                 return next;
             }
@@ -448,20 +448,20 @@ template<   ss_typename_param_k I1
         >
 inline ss_bool_t unordered_includes(I1 first1, I1 last1, I2 first2, I2 last2)
 {
-    for(; first2 != last2; ++first2)
+    for (; first2 != last2; ++first2)
     {
         ss_bool_t   bFound  =   false;
 
-        for(I1 i1 = first1; i1 != last1; ++i1)
+        for (I1 i1 = first1; i1 != last1; ++i1)
         {
-            if(*first2 == *i1)
+            if (*first2 == *i1)
             {
                 bFound = true;
                 break;
             }
         }
 
-        if(!bFound)
+        if (!bFound)
         {
             return false;
         }

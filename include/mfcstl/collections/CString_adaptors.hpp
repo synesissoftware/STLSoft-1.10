@@ -5,11 +5,11 @@
  *              class templates.
  *
  * Created:     1st October 2002
- * Updated:     28th November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CSTRING_ADAPTORS_MAJOR       4
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CSTRING_ADAPTORS_MINOR       1
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CSTRING_ADAPTORS_REVISION    10
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CSTRING_ADAPTORS_EDIT        104
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CSTRING_ADAPTORS_EDIT        105
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1418,7 +1418,7 @@ inline ss_typename_type_ret_k CString_adaptor_base<I>::const_reference CString_a
 template<ss_typename_param_k I>
 inline ss_typename_type_ret_k CString_adaptor_base<I>::reference CString_adaptor_base<I>::at(size_type index)
 {
-    if(index >= size())
+    if (index >= size())
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("invalid index"));
     }
@@ -1428,7 +1428,7 @@ inline ss_typename_type_ret_k CString_adaptor_base<I>::reference CString_adaptor
 template<ss_typename_param_k I>
 inline ss_typename_type_ret_k CString_adaptor_base<I>::const_reference CString_adaptor_base<I>::at(size_type index) const
 {
-    if(index >= size())
+    if (index >= size())
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("invalid index"));
     }

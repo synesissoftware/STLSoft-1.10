@@ -4,11 +4,11 @@
  * Purpose:     null_allocator class - doesn't allocate.
  *
  * Created:     2nd January 2001
- * Updated:     30th November 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NULL_ALLOCATOR_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NULL_ALLOCATOR_MINOR    0
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_NULL_ALLOCATOR_REVISION 10
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_NULL_ALLOCATOR_EDIT     93
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_NULL_ALLOCATOR_EDIT     94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,7 +111,7 @@ class null_allocator
 private:
     typedef allocator_base<T, null_allocator<T> >                   parent_class_type;
 public:
-    /// The parameterisation of the class
+    /// The current specialisation of the type
     typedef null_allocator<T>                                       class_type;
     /// The value type
     typedef ss_typename_type_k parent_class_type::value_type        value_type;

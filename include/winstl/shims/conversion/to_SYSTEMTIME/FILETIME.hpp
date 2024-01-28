@@ -4,11 +4,11 @@
  * Purpose:     winstl::to_SYSTEMTIME(FILETIME const&) overload.
  *
  * Created:     24th May 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_MAJOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_MINOR    1
 # define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_REVISION 3
-# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_EDIT     21
+# define WINSTL_VER_WINSTL_SHIMS_CONVERSION_TO_SYSTEMTIME_HPP_FILETIME_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ inline const SYSTEMTIME to_SYSTEMTIME(FILETIME const& rhs)
 {
     SYSTEMTIME  st;
 
-    if(!WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(&rhs, &st))
+    if (!WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime(&rhs, &st))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(conversion_error("failed to convert time value", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));

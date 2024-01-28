@@ -124,10 +124,10 @@ BOOL WINAPI FindVolumeClose(
  */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CopyFileA
-# define WINSTL_API_EXTERNAL_FileManagement_CopyFileA                           STLSOFT_NS_GLOBAL_(CopyFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_CopyFileA       STLSOFT_NS_GLOBAL_(CopyFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CopyFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CopyFileW
-# define WINSTL_API_EXTERNAL_FileManagement_CopyFileW                           STLSOFT_NS_GLOBAL_(CopyFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_CopyFileW       STLSOFT_NS_GLOBAL_(CopyFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CopyFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CreateDirectoryA
@@ -138,28 +138,28 @@ BOOL WINAPI FindVolumeClose(
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CreateDirectoryW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CreateFileA
-# define WINSTL_API_EXTERNAL_FileManagement_CreateFileA                         STLSOFT_NS_GLOBAL_(CreateFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_CreateFileA     STLSOFT_NS_GLOBAL_(CreateFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CreateFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_CreateFileW
-# define WINSTL_API_EXTERNAL_FileManagement_CreateFileW                         STLSOFT_NS_GLOBAL_(CreateFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_CreateFileW     STLSOFT_NS_GLOBAL_(CreateFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_CreateFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_DeleteFileA
-# define WINSTL_API_EXTERNAL_FileManagement_DeleteFileA                         STLSOFT_NS_GLOBAL_(DeleteFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_DeleteFileA     STLSOFT_NS_GLOBAL_(DeleteFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_DeleteFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_DeleteFileW
-# define WINSTL_API_EXTERNAL_FileManagement_DeleteFileW                         STLSOFT_NS_GLOBAL_(DeleteFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_DeleteFileW     STLSOFT_NS_GLOBAL_(DeleteFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_DeleteFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindClose
-# define WINSTL_API_EXTERNAL_FileManagement_FindClose                           STLSOFT_NS_GLOBAL_(FindClose)
+# define WINSTL_API_EXTERNAL_FileManagement_FindClose       STLSOFT_NS_GLOBAL_(FindClose)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindClose */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindFirstFileA
-# define WINSTL_API_EXTERNAL_FileManagement_FindFirstFileA                      STLSOFT_NS_GLOBAL_(FindFirstFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_FindFirstFileA  STLSOFT_NS_GLOBAL_(FindFirstFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindFirstFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindFirstFileW
-# define WINSTL_API_EXTERNAL_FileManagement_FindFirstFileW                      STLSOFT_NS_GLOBAL_(FindFirstFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_FindFirstFileW  STLSOFT_NS_GLOBAL_(FindFirstFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindFirstFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindFirstFileExA
@@ -177,21 +177,21 @@ BOOL WINAPI FindVolumeClose(
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindFirstVolumeW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindNextFileA
-# define WINSTL_API_EXTERNAL_FileManagement_FindNextFileA                       STLSOFT_NS_GLOBAL_(FindNextFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_FindNextFileA   STLSOFT_NS_GLOBAL_(FindNextFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindNextFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindNextFileW
-# define WINSTL_API_EXTERNAL_FileManagement_FindNextFileW                       STLSOFT_NS_GLOBAL_(FindNextFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_FindNextFileW   STLSOFT_NS_GLOBAL_(FindNextFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindNextFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeA
-# define WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeA                     STLSOFT_NS_GLOBAL_(FindNextVolumeA)
+# define WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeA STLSOFT_NS_GLOBAL_(FindNextVolumeA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeW
-# define WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeW                     STLSOFT_NS_GLOBAL_(FindNextVolumeW)
+# define WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeW STLSOFT_NS_GLOBAL_(FindNextVolumeW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindNextVolumeW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_FindVolumeClose
-# define WINSTL_API_EXTERNAL_FileManagement_FindVolumeClose                     STLSOFT_NS_GLOBAL_(FindVolumeClose)
+# define WINSTL_API_EXTERNAL_FileManagement_FindVolumeClose STLSOFT_NS_GLOBAL_(FindVolumeClose)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_FindVolumeClose */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetCurrentDirectoryA
@@ -202,10 +202,10 @@ BOOL WINAPI FindVolumeClose(
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetCurrentDirectoryW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeA
-# define WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeA                       STLSOFT_NS_GLOBAL_(GetDriveTypeA)
+# define WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeA   STLSOFT_NS_GLOBAL_(GetDriveTypeA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeW
-# define WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeW                       STLSOFT_NS_GLOBAL_(GetDriveTypeW)
+# define WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeW   STLSOFT_NS_GLOBAL_(GetDriveTypeW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetDriveTypeW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetFileAttributesA
@@ -220,7 +220,7 @@ BOOL WINAPI FindVolumeClose(
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetFileInformationByHandle */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetFileSize
-# define WINSTL_API_EXTERNAL_FileManagement_GetFileSize                         STLSOFT_NS_GLOBAL_(GetFileSize)
+# define WINSTL_API_EXTERNAL_FileManagement_GetFileSize     STLSOFT_NS_GLOBAL_(GetFileSize)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetFileSize */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_GetFullPathNameA
@@ -242,10 +242,10 @@ BOOL WINAPI FindVolumeClose(
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_GetShortPathNameW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_MoveFileA
-# define WINSTL_API_EXTERNAL_FileManagement_MoveFileA                           STLSOFT_NS_GLOBAL_(MoveFileA)
+# define WINSTL_API_EXTERNAL_FileManagement_MoveFileA       STLSOFT_NS_GLOBAL_(MoveFileA)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_MoveFileA */
 #ifndef WINSTL_API_EXTERNAL_FileManagement_MoveFileW
-# define WINSTL_API_EXTERNAL_FileManagement_MoveFileW                           STLSOFT_NS_GLOBAL_(MoveFileW)
+# define WINSTL_API_EXTERNAL_FileManagement_MoveFileW       STLSOFT_NS_GLOBAL_(MoveFileW)
 #endif /* !WINSTL_API_EXTERNAL_FileManagement_MoveFileW */
 
 #ifndef WINSTL_API_EXTERNAL_FileManagement_RemoveDirectoryA

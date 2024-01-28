@@ -5,11 +5,11 @@
  *              number of (decimal) digits in an integer number.
  *
  * Created:     7th June 2011
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MAJOR     2
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_MINOR     0
 # define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_REVISION  1
-# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      12
+# define STLSOFT_VER_STLSOFT_UTIL_INCL_H_COUNT_DIGITS_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ namespace ximpl_count_digits_
         static size_t const width = sizeof(i);
 #endif /* 0 */
 
-        if(I(0) == i)
+        if (I(0) == i)
         {
             return 1u;
         }
@@ -112,7 +112,7 @@ namespace ximpl_count_digits_
         {
             size_t n = 0u;
 
-            for(; 0 != i; i /= 10, ++n)
+            for (; 0 != i; i /= 10, ++n)
             {}
 
             return n;
@@ -134,7 +134,7 @@ namespace ximpl_count_digits_
     )
     {
 #if 0
-        if(0 == (0xff00 & i))
+        if (0 == (0xff00 & i))
         {
             return count_digits_u8_(static_cast<uint8_t>(i));
         }
@@ -151,7 +151,7 @@ namespace ximpl_count_digits_
     )
     {
 #if 0
-        if(0 == (0xffff0000 & i))
+        if (0 == (0xffff0000 & i))
         {
             return count_digits_u16_(static_cast<uint16_t>(i));
         }
@@ -168,7 +168,7 @@ namespace ximpl_count_digits_
     )
     {
 #if 1
-        if(0 == (0xffffffff00000000 & i))
+        if (0 == (0xffffffff00000000 & i))
         {
             return count_digits_u32_(static_cast<uint32_t>(i));
         }

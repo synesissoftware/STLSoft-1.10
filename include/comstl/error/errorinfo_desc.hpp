@@ -4,11 +4,11 @@
  * Purpose:     errorinfo_desc class for accessing description from the COM error.
  *
  * Created:     19th December 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_MAJOR       1
 # define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_MINOR       1
 # define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_REVISION    3
-# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_EDIT        46
+# define COMSTL_VER_COMSTL_ERROR_HPP_ERRORINFO_DESC_EDIT        47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -138,7 +138,7 @@ public:
     {
         IErrorInfo* pei;
 
-        if(S_OK == ::GetErrorInfo(0, &pei))
+        if (S_OK == ::GetErrorInfo(0, &pei))
         {
             get_description(pei, m_description, m_len);
 
@@ -197,14 +197,14 @@ public:
 private:
     char const* check_description_a_()
     {
-        if( NULL == m_description_a &&
+        if (NULL == m_description_a &&
             NULL != m_description)
         {
             int cch = WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, m_description, -1, NULL, 0, NULL, NULL);
 
             m_description_a = static_cast<char*>(::CoTaskMemAlloc((1 + cch) * sizeof(char)));
 
-            if(NULL == m_description_a)
+            if (NULL == m_description_a)
             {
 #ifdef STLSOFT_CF_THROW_BAD_ALLOC
                 STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_COMSTL, STLSoftLibraryIdentifier_error));
@@ -223,7 +223,7 @@ private:
     {
         BSTR    bstr;
 
-        if( 0 != pei &&
+        if (0 != pei &&
             SUCCEEDED(pei->GetDescription(&bstr)))
         {
             // Now trim backwards to get rid of any trailing
@@ -232,13 +232,13 @@ private:
             LPOLESTR    end     =   begin + ::SysStringLen(bstr);
             LPOLESTR    last    =   end;
 
-            for(; begin != last; --last)
+            for (; begin != last; --last)
             {
                 OLECHAR ch = *(last - 1);
 
                 // This is not terribly internationalised, but
                 // will suffice for these simple purposes.
-                if( ch == ' ' ||
+                if (ch == ' ' ||
                     ch == '\t' ||
                     ch == '\r' ||
                     ch == '\n')
@@ -252,7 +252,7 @@ private:
 
             description = ::SysAllocStringLen(bstr, static_cast<UINT>(last - begin));
 
-            if(NULL == description)
+            if (NULL == description)
             {
                 // Failed, so grab what there is, which is better than nothing
                 description = bstr;

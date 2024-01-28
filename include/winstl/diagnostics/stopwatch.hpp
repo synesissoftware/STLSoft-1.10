@@ -6,11 +6,11 @@
  *              otherwise using the tick-count facilities.
  *
  * Created:     31st July 2002
- * Updated:     24th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_MAJOR      5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_REVISION   3
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT       46
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_STOPWATCH_EDIT       47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ namespace winstl_project
 winstl::stopwatch   counter;
 
 counter.start();
-for(size_t volatile i = 0; i != 0x7fffffff; ++i)
+for (size_t volatile i = 0; i != 0x7fffffff; ++i)
 {}
 counter.stop();
 
@@ -147,7 +147,7 @@ std::cout << "Number of nanoseconds:  " << counter.get_nanoseconds() << std::end
 winstl::stopwatch   counter;
 
 counter.start();
-for(size_t volatile i = 0; i != 0x7fffffff; ++i)
+for (size_t volatile i = 0; i != 0x7fffffff; ++i)
 {}
 counter.stop();
 

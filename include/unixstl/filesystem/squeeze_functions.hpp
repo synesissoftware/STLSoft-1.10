@@ -4,11 +4,11 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     13th June 2006
- * Updated:     30th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR     2
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR     0
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      26
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -123,11 +123,11 @@ path_squeeze_impl(
     typedef filesystem_traits<C>    traits_t;
     typedef us_size_t               size_t;
 
-    if(NULL == buffer)
+    if (NULL == buffer)
     {
         cchBuffer = pathLen + 1u;
     }
-    else if(0 != cchBuffer)
+    else if (0 != cchBuffer)
     {
         typedef basic_path<char_t>                              path_t_;
         typedef ss_typename_param_k path_t_::string_slice_type  slice_t_;
@@ -136,7 +136,7 @@ path_squeeze_impl(
         slice_t_ const  file        =   p.get_file();
         char_t const*   path_ptr    =   p.c_str();
 
-        if(cchBuffer > pathLen)
+        if (cchBuffer > pathLen)
         {
             // Room for all
 
@@ -155,11 +155,11 @@ path_squeeze_impl(
             // 3. rooted - begins with \ or /
             // 4. non-rooted
 
-            if(p.is_rooted())
+            if (p.is_rooted())
             {
-                if(p.is_absolute())
+                if (p.is_absolute())
                 {
-                    if(traits_t::is_path_UNC(path_ptr))
+                    if (traits_t::is_path_UNC(path_ptr))
                     {
                         // 1. UNC
 
@@ -169,7 +169,7 @@ path_squeeze_impl(
                     }
 #if defined(_WIN32) || \
     defined(_WIN64)
-                    else if(isalpha(path_ptr[0]) &&
+                    else if (isalpha(path_ptr[0]) &&
                             ':' == path_ptr[1])
                     {
                         // 2. drive
@@ -194,17 +194,17 @@ path_squeeze_impl(
                 rootLen = 0;
             }
 
-            if(cchBuffer < 5 + 1)
+            if (cchBuffer < 5 + 1)
             {
                 traits_t::char_copy(buffer, file.ptr, cchBuffer - 1);
                 buffer[cchBuffer - 1] = '\0';
 
-                if(cchBuffer > file.len)
+                if (cchBuffer > file.len)
                 {
                     cchBuffer = file.len + 1;
                 }
             }
-            else if(cchBuffer < file.len + 1)
+            else if (cchBuffer < file.len + 1)
             {
                 // Squeezing just file+ext
                 size_t const    leftLen     =   (cchBuffer - 3 - 1) / 2;
@@ -217,14 +217,14 @@ path_squeeze_impl(
                 traits_t::char_copy(buffer + leftLen + 3, file.ptr + (file.len - rightLen), rightLen);
                 buffer[leftLen + 3 + rightLen] = '\0';
             }
-            else if(cchBuffer < rootLen + 3 + 1 + file.len + 1)
+            else if (cchBuffer < rootLen + 3 + 1 + file.len + 1)
             {
                 // File (name + ext) only
 
                 traits_t::char_copy(buffer, file.ptr, file.len);
                 buffer[file.len] = '\0';
 
-                if(cchBuffer > file.len)
+                if (cchBuffer > file.len)
                 {
                     cchBuffer = file.len + 1;
                 }

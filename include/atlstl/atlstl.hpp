@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     4th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -51,7 +51,7 @@
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MAJOR     3
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_MINOR     7
 # define ATLSTL_VER_ATLSTL_HPP_ATLSTL_REVISION  2
-# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      122
+# define ATLSTL_VER_ATLSTL_HPP_ATLSTL_EDIT      123
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file atlstl/atlstl.hpp
@@ -154,7 +154,7 @@
      !defined(NO_STRICT) &&\
      1
 #  ifdef _ATLSTL_STRICT
-#   define STRICT 1
+#   define STRICT                                           1
 #  endif /* _ATLSTL_STRICT */
 # endif /* !NO_STRICT && !_ATLSTL_NO_STRICT && !STRICT */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -517,8 +517,8 @@ typedef STLSOFT_NS_QUAL(ss_streamoff_t)     as_streamoff_t; //!< streamoff
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define as_true_v       ss_true_v
-#define as_false_v      ss_false_v
+#define as_true_v                                           ss_true_v
+#define as_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* /////////////////////////////////////////////////////////////////////////

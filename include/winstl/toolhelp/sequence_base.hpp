@@ -4,13 +4,13 @@
  * Purpose:     TOOLHELP sequence_base class template.
  *
  * Created:     21st May 2005
- * Updated:     13th December 2023
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo for contributing this great library.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2007, Pablo Aguilar
  * Copyright (c) 2006-2007, Matthew Wilson
  * All rights reserved.
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_MAJOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_MINOR     1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_REVISION  12
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_EDIT      31
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_SEQUENCE_BASE_EDIT      32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -185,7 +185,7 @@ public:
         m_value.dwSize = sizeof(m_value);
 
         bool ok = traits_type::first(m_snapshot, m_value);
-        if( !ok )
+        if (!ok )
         {
             m_snapshot = traits_type::null_handle();
         }
@@ -213,7 +213,7 @@ public:
     class_type& operator ++()
     {
         bool ok = traits_type::next(m_snapshot, m_value);
-        if( !ok )
+        if (!ok )
             m_snapshot = traits_type::null_handle();
 
         return *this;
@@ -327,7 +327,7 @@ public:
     /// Destructor
     ~th_sequence_base()
     {
-        if(traits_type::invalid_handle() != m_snapshot)
+        if (traits_type::invalid_handle() != m_snapshot)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_snapshot);
         }
@@ -381,7 +381,7 @@ private:
 
     void verify_construction()
     {
-        if(traits_type::invalid_handle() == m_snapshot)
+        if (traits_type::invalid_handle() == m_snapshot)
         {
             exception_policy    xp;
             DWORD const         dwErr   =   WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();

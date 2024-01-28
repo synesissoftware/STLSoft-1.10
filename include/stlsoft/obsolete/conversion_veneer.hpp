@@ -4,11 +4,11 @@
  * Purpose:     Raw conversion veneer class.
  *
  * Created:     30th July 2002
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_CONVERSION_VENEER_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_CONVERSION_VENEER_MINOR      2
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_CONVERSION_VENEER_REVISION   5
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_CONVERSION_VENEER_EDIT       57
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_CONVERSION_VENEER_EDIT       58
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -527,7 +527,7 @@ public:
     typedef ss_typename_type_k PC::pointer_const_conversion     pointer_const_conversion_type;
     /// The reference-to-const conversion type
     typedef ss_typename_type_k RC::reference_const_conversion   reference_const_conversion_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef conversion_veneer<T, C, V, P, R, PC, RC>            class_type;
 
 // Construction

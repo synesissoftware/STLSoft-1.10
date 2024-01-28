@@ -4,11 +4,11 @@
  * Purpose:     Scopes the console colour (and intensity).
  *
  * Created:     20th July 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_MINOR    0
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_REVISION 14
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_EDIT     26
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_CONSOLE_COLOUR_SCOPE_EDIT     27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -145,7 +145,7 @@ public:
     ~console_colour_scope() STLSOFT_NOEXCEPT
     {
 #ifndef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(0xffffffff != m_attributes)
+        if (0xffffffff != m_attributes)
 #endif /* !STLSOFT_CF_EXCEPTION_SUPPORT */
         {
             WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute(m_hBuffer, static_cast<WORD>(m_attributes));
@@ -163,7 +163,7 @@ private:
         ws_uint32_t                 attr = 0xffffffff;
         CONSOLE_SCREEN_BUFFER_INFO  bufferInfo;
 
-        if(!WINSTL_API_EXTERNAL_Console_GetConsoleScreenBufferInfo(hBuffer, &bufferInfo))
+        if (!WINSTL_API_EXTERNAL_Console_GetConsoleScreenBufferInfo(hBuffer, &bufferInfo))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(winstl_exception("Could not retrieve console buffer information", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -171,7 +171,7 @@ private:
         }
         else
         {
-            if(!WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute(hBuffer, textAttributes))
+            if (!WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute(hBuffer, textAttributes))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(winstl_exception("Could not set console text attributes", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));

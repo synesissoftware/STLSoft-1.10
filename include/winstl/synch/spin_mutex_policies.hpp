@@ -4,11 +4,11 @@
  * Purpose:     Policies for spin mutexes.
  *
  * Created:     25th November 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MAJOR      2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_MINOR      1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_REVISION   3
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       16
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SPIN_MUTEX_POLICIES_EDIT       17
 #endif /* !WINSTL_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -199,7 +199,7 @@ public: // Operations
     {
         WINSTL_STATIC_ASSERT(0 != N_yieldThreshold);
 
-        if(0 == (spunCount % N_yieldThreshold))
+        if (0 == (spunCount % N_yieldThreshold))
         {
 #if 0
 #elif _WIN32_WINNT >= 0x0400

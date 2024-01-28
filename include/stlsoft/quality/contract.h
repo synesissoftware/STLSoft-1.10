@@ -5,11 +5,11 @@
  *              STLSoft libraries.
  *
  * Created:     13th October 2008
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://www.stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MAJOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_MINOR       1
 # define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_REVISION    3
-# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        14
+# define STLSOFT_VER_STLSOFT_QUALITY_H_CONTRACT_EDIT        15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -84,15 +84,15 @@
 #ifdef STLSOFT_USE_XCONTRACT
 
 # ifndef STLSOFT_CONTRACT_LEVEL_EXTERNAL
-#  define STLSOFT_CONTRACT_LEVEL_EXTERNAL        (21)
+#  define STLSOFT_CONTRACT_LEVEL_EXTERNAL                   (21)
 # endif /* !STLSOFT_CONTRACT_LEVEL_EXTERNAL */
 
 # ifndef STLSOFT_CONTRACT_LEVEL_INTERNAL
-#  define STLSOFT_CONTRACT_LEVEL_INTERNAL        (31)
+#  define STLSOFT_CONTRACT_LEVEL_INTERNAL                   (31)
 # endif /* !STLSOFT_CONTRACT_LEVEL_INTERNAL */
 
 # ifndef STLSOFT_CONTRACT_LEVEL_API
-#  define STLSOFT_CONTRACT_LEVEL_API             (35)
+#  define STLSOFT_CONTRACT_LEVEL_API                        (35)
 # endif /* !STLSOFT_CONTRACT_LEVEL_API */
 
 # define STLSOFT_CONTRACT_ENFORCE_UNEXPECTED_CONDITION_INTERNAL(msg)            XCONTRACT_ENFORCE_CONDITION_TYPE_LEVEL_(XCONTRACT_NS_QUAL(xContract_unexpectedCondition), STLSOFT_CONTRACT_LEVEL_INTERNAL, NULL, msg)

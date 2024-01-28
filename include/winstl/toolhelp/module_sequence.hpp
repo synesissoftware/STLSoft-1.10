@@ -4,13 +4,13 @@
  * Purpose:     TOOLHELP module sequence class.
  *
  * Created:     21st May 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo for contributing this great library.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2007, Pablo Aguilar
  * Copyright (c) 2006-2007, Matthew Wilson
  * All rights reserved.
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_MODULE_SEQUENCE_MAJOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_MODULE_SEQUENCE_MINOR       1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_MODULE_SEQUENCE_REVISION    5
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_MODULE_SEQUENCE_EDIT        21
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_MODULE_SEQUENCE_EDIT        22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,10 +125,10 @@ public: // iteration
 
 // th_sequence_value_traits specialization for module_sequence
 ////////////////////////////////////////////////////////////////////////////
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE                           MODULEENTRY32
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST                           Module32First
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT                            Module32Next
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG                            TH32CS_SNAPMODULE
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE          MODULEENTRY32
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST          Module32First
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT           Module32Next
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG           TH32CS_SNAPMODULE
 # define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_CREATE_SNAPSHOT_FAIL_MESSAGE    ("Could not create module list snapshot")
 # include <winstl/toolhelp/sequence_value_traits.hpp>
 

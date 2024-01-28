@@ -69,7 +69,7 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_ProcessAndThread_Sleep
-# define WINSTL_API_EXTERNAL_ProcessAndThread_Sleep                             STLSOFT_NS_GLOBAL_(Sleep)
+# define WINSTL_API_EXTERNAL_ProcessAndThread_Sleep         STLSOFT_NS_GLOBAL_(Sleep)
 #endif /* !WINSTL_API_EXTERNAL_ProcessAndThread_Sleep */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
  * Purpose:     Clipboard scoping and facade class.
  *
  * Created:     26th May 2005
- * Updated:     16th December 2023
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Martin Moene for reporting the problem with the data type
  *              in set_data_or_deallocate_and_throw_(), and for calling for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MAJOR      2
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_REVISION   1
-# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       53
+# define WINSTL_VER_WINSTL_CLIPBOARD_HPP_CLIPBOARD_SCOPE_EDIT       54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -396,7 +396,7 @@ private:
 
 inline clipboard_scope::clipboard_scope(HWND hwndOwner /* = NULL */) stlsoft_throw_1(clipboard_scope_exception)
 {
-    if(!::OpenClipboard(hwndOwner))
+    if (!::OpenClipboard(hwndOwner))
     {
         STLSOFT_THROW_X(clipboard_scope_exception("Cannot open clipboard", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -416,7 +416,7 @@ inline clipboard_scope::allocator_type clipboard_scope::get_allocator() const
 
 inline void clipboard_scope::clear() stlsoft_throw_1(clipboard_scope_exception)
 {
-    if(!::EmptyClipboard())
+    if (!::EmptyClipboard())
     {
         STLSOFT_THROW_X(clipboard_scope_exception("Cannot empty clipboard", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -426,7 +426,7 @@ inline HWND clipboard_scope::owner() const
 {
     HWND hwnd = ::GetClipboardOwner();
 
-    if( NULL == hwnd &&
+    if (NULL == hwnd &&
         ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
     {
         STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard owner", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -442,7 +442,7 @@ inline ws_bool_t clipboard_scope::is_fmt_available(UINT fmt) const
 
 inline void clipboard_scope::set_data(UINT fmt, HANDLE hData) stlsoft_throw_1(clipboard_scope_exception)
 {
-    if(NULL == ::SetClipboardData(fmt, hData))
+    if (NULL == ::SetClipboardData(fmt, hData))
     {
         STLSOFT_THROW_X(clipboard_scope_exception("Cannot set clipboard data", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -542,7 +542,7 @@ inline HANDLE clipboard_scope::get_data(UINT fmt) const stlsoft_throw_1(clipboar
 {
     HANDLE hData = ::GetClipboardData(fmt);
 
-    if( NULL == hData &&
+    if (NULL == hData &&
         ERROR_SUCCESS != WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())
     {
         STLSOFT_THROW_X(clipboard_scope_exception("Cannot get clipboard data", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));

@@ -4,11 +4,11 @@
  * Purpose:     Class to disambiguate between parent classes of same type.
  *
  * Created:     1st September 2002
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_MINOR      1
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_REVISION   4
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_EDIT       34
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_INHERITANCE_DISAMBIGUATOR_EDIT       35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ public:
     /// The disambiguated class type
     typedef T                               parent_class_type;
     enum { unique = N };
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef inheritance_disambiguator<T, N> class_type;
 
 // Construction

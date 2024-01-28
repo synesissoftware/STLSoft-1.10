@@ -4,11 +4,11 @@
  * Purpose:     stlsoft::errno_to_string_translation_policy policy class
  *
  * Created:     19th June 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_MAJOR      5
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_MINOR      0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_REVISION   1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_EDIT       66
+# define STLSOFT_VER_STLSOFT_EXCEPTION_POLICY_HPP_ERRNO_TO_STRING_TRANSLATION_POLICY_EDIT       67
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ public:
 
         creator.append(message, cchMessage);
 
-        if(0 != cchMessage)
+        if (0 != cchMessage)
         {
             creator.append(": ", 2);
         }
@@ -143,7 +143,7 @@ public:
         s   =   strerror_(sc);
         n   =   STLSOFT_NS_QUAL(c_str_len)(s);
 
-        if(0 == n)
+        if (0 == n)
         {
             s = STLSOFT_NS_QUAL(integer_to_decimal_string)(&num[0], STLSOFT_NUM_ELEMENTS(num), sc, &n);
         }

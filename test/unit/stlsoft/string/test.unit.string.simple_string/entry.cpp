@@ -168,7 +168,7 @@ int main(int argc, char **argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.unit.stlsoft.string.simple_string", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.stlsoft.string.simple_string", verbosity))
     {
 #ifdef STLSOFT_USE_XCOVER
         xcover::init();

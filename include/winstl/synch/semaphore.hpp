@@ -4,11 +4,11 @@
  * Purpose:     Semaphore class, based on Win32 kernel semaphore object.
  *
  * Created:     30th May 2006
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MAJOR    1
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_MINOR    3
 # define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_REVISION 16
-# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     43
+# define WINSTL_VER_WINSTL_SYNCH_HPP_SEMAPHORE_EDIT     44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -191,7 +191,7 @@ public:
     /// Destroys an instance of the semaphore
     ~semaphore() STLSOFT_NOEXCEPT
     {
-        if( NULL != m_sem &&
+        if (NULL != m_sem &&
             m_bOwnHandle)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_sem);
@@ -212,7 +212,7 @@ public:
 
         DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, INFINITE);
 
-        if(WAIT_OBJECT_0 != dwRes)
+        if (WAIT_OBJECT_0 != dwRes)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -230,7 +230,7 @@ public:
 
         DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_sem, wait);
 
-        if( WAIT_OBJECT_0 != dwRes &&
+        if (WAIT_OBJECT_0 != dwRes &&
             WAIT_TIMEOUT != dwRes)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
@@ -259,7 +259,7 @@ public:
     {
         WINSTL_ASSERT(NULL != m_sem);
 
-        if(!::ReleaseSemaphore(m_sem, 1, NULL))
+        if (!::ReleaseSemaphore(m_sem, 1, NULL))
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -290,7 +290,7 @@ public:
 
         LONG    previousCount   =   0;
 
-        if(!::ReleaseSemaphore(m_sem, static_cast<LONG>(numLocksToRelease), &previousCount))
+        if (!::ReleaseSemaphore(m_sem, static_cast<LONG>(numLocksToRelease), &previousCount))
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -356,7 +356,7 @@ private:
 
         synch_handle_type sem = CreateSemaphore_A_arguments_adjusted_(psa, initialCount, maxCount, name);
 
-        if(NULL == sem)
+        if (NULL == sem)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -381,7 +381,7 @@ private:
 
         synch_handle_type sem = CreateSemaphore_W_arguments_adjusted_(psa, initialCount, maxCount, name);
 
-        if(NULL == sem)
+        if (NULL == sem)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 

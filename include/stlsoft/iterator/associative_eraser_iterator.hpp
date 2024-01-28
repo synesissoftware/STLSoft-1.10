@@ -4,11 +4,11 @@
  * Purpose:     Eraser iterator for associative containers.
  *
  * Created:     28th January 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MAJOR      1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_MINOR      3
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_REVISION   2
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       26
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_ASSOCIATIVE_ERASE_ITERATOR_EDIT       27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -206,7 +206,7 @@ private:
     {
         size_type n = m_container->erase(value);
 
-        if(0u == n)
+        if (0u == n)
         {
             ++*m_misses;
         }
@@ -261,11 +261,11 @@ inline associative_eraser_iterator<T_container> make_associative_eraser_iterator
 {
     static ss_size_t dummy;
 
-    if(NULL == hits)
+    if (NULL == hits)
     {
         hits = &dummy;
     }
-    if(NULL == misses)
+    if (NULL == misses)
     {
         misses = &dummy;
     }
@@ -284,11 +284,11 @@ inline associative_eraser_iterator<T_container> assoc_eraser(
 {
     static ss_size_t dummy;
 
-    if(NULL == hits)
+    if (NULL == hits)
     {
         hits = &dummy;
     }
-    if(NULL == misses)
+    if (NULL == misses)
     {
         misses = &dummy;
     }

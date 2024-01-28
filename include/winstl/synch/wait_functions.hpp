@@ -5,11 +5,11 @@
  *              function template suite
  *
  * Created:     30th May 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_MAJOR       2
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_REVISION    10
-# define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_EDIT        26
+# define WINSTL_VER_WINSTL_SYNCH_HPP_WAIT_FUNCTIONS_EDIT        27
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -201,9 +201,9 @@ w4mo_helper_8(
     handles[6]   =   h6;
     handles[7]   =   h7;
 
-    for(ws_size_t i = numHandles; i < STLSOFT_NUM_ELEMENTS(handles); ++i, ++numHandles)
+    for (ws_size_t i = numHandles; i < STLSOFT_NUM_ELEMENTS(handles); ++i, ++numHandles)
     {
-        if(NULL == handles[i])
+        if (NULL == handles[i])
         {
             break;
         }

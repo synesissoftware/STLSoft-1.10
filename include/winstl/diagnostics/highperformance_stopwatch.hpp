@@ -4,11 +4,11 @@
  * Purpose:     WinSTL high stopwatch class.
  *
  * Created:     19th October 1998
- * Updated:     24th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_MAJOR      5
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_MINOR      0
 # define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_REVISION   3
-# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_EDIT       97
+# define WINSTL_VER_WINSTL_DIAGNOSTICS_HPP_HIGHPERFORMANCE_STOPWATCH_EDIT       98
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -214,7 +214,7 @@ highperformance_stopwatch::query_frequency_()
     interval_type   frequency;
 
     // If no high-performance stopwatch is available ...
-    if( !WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency(sap_cast<LARGE_INTEGER*>(&frequency)) ||
+    if (!WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency(sap_cast<LARGE_INTEGER*>(&frequency)) ||
         frequency == 0)
     {
         // ... then set the divisor to be the maximum value, guaranteeing that
@@ -291,7 +291,7 @@ highperformance_stopwatch::get_milliseconds() const
     highperformance_stopwatch::interval_type  result;
     highperformance_stopwatch::interval_type  count   =   get_period_count();
 
-    if(count < STLSOFT_GEN_SINT64_SUFFIX(0x20C49BA5E353F7))
+    if (count < STLSOFT_GEN_SINT64_SUFFIX(0x20C49BA5E353F7))
     {
         result = (count * interval_type(1000)) / frequency_();
     }
@@ -310,7 +310,7 @@ highperformance_stopwatch::get_microseconds() const
     highperformance_stopwatch::interval_type  result;
     highperformance_stopwatch::interval_type  count   =   get_period_count();
 
-    if(count < STLSOFT_GEN_SINT64_SUFFIX(0x8637BD05AF6))
+    if (count < STLSOFT_GEN_SINT64_SUFFIX(0x8637BD05AF6))
     {
         result = (count * interval_type(1000000)) / frequency_();
     }
@@ -329,7 +329,7 @@ highperformance_stopwatch::get_nanoseconds() const
     highperformance_stopwatch::interval_type  result;
     highperformance_stopwatch::interval_type  count   =   get_period_count();
 
-    if(count < STLSOFT_GEN_SINT64_SUFFIX(0x8637BD05AF6))
+    if (count < STLSOFT_GEN_SINT64_SUFFIX(0x8637BD05AF6))
     {
         result = (count * interval_type(1000000000)) / frequency_();
     }

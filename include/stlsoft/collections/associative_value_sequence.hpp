@@ -4,11 +4,11 @@
  * Purpose:     Adapts associative containers into a sequence of their values.
  *
  * Created:     28th January 2005
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_MAJOR       2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_REVISION    5
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_EDIT        38
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_VALUE_SEQUENCE_EDIT        39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -111,7 +111,7 @@ class associative_value_sequence
 /// \name Types
 /// @{
 public:
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef associative_value_sequence<A>           class_type;
     /// The value type
 #if 0

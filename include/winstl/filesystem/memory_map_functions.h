@@ -4,11 +4,11 @@
  * Purpose:     Windows memory mapping functions.
  *
  * Created:     15th December 1996
- * Updated:     24th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MAJOR      5
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_MINOR      3
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_REVISION   8
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       123
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_MEMORY_MAP_FUNCTIONS_EDIT       124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -699,11 +699,11 @@ winstl_C_map_readonly_view_of_file_by_name(
 
 # ifdef UNICODE
 
-#  define winstl_C_map_readonly_view_of_file_by_name    winstl_C_map_readonly_view_of_file_by_name_w
+#  define winstl_C_map_readonly_view_of_file_by_name        winstl_C_map_readonly_view_of_file_by_name_w
 
 # else /* ? UNICODE */
 
-#  define winstl_C_map_readonly_view_of_file_by_name    winstl_C_map_readonly_view_of_file_by_name_a
+#  define winstl_C_map_readonly_view_of_file_by_name        winstl_C_map_readonly_view_of_file_by_name_a
 
 # endif /* UNICODE */
 

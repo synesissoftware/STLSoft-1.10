@@ -4,11 +4,11 @@
  * Purpose:     resource_string class.
  *
  * Created:     1st November 1994
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_STRING_HPP_RESOURCE_STRING_MAJOR      4
 # define MFCSTL_VER_MFCSTL_STRING_HPP_RESOURCE_STRING_MINOR      0
 # define MFCSTL_VER_MFCSTL_STRING_HPP_RESOURCE_STRING_REVISION   8
-# define MFCSTL_VER_MFCSTL_STRING_HPP_RESOURCE_STRING_EDIT       92
+# define MFCSTL_VER_MFCSTL_STRING_HPP_RESOURCE_STRING_EDIT       93
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -244,7 +244,7 @@ inline S& operator <<(S& s, resource_string const& str)
 
 inline resource_string::resource_string(ms_uint_t id) stlsoft_throw_2(CMemoryException*, CResourceException*)
 {
-    if(!parent_class_type::LoadString(id))
+    if (!parent_class_type::LoadString(id))
     {
         AfxThrowResourceException();
     }
@@ -254,7 +254,7 @@ inline resource_string::resource_string(HINSTANCE hinst, ms_uint_t id) stlsoft_t
 {
     TCHAR sz[1024];
 
-    if(0 == ::LoadString(hinst, id, sz, STLSOFT_NUM_ELEMENTS(sz)))
+    if (0 == ::LoadString(hinst, id, sz, STLSOFT_NUM_ELEMENTS(sz)))
     {
         AfxThrowResourceException();
     }

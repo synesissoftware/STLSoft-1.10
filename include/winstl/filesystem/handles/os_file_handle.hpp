@@ -5,11 +5,11 @@
  *              Windows file handles.
  *
  * Created:     7th July 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_MAJOR      1
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_MINOR      0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_REVISION   6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_EDIT       14
+# define WINSTL_VER_WINSTL_FILESYSTEM_HANDLES_HPP_OS_FILE_HANDLE_EDIT       15
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -165,9 +165,9 @@ public: // Reference-counting Operations
     /// Releases/decrements the reference
     void Release()
     {
-        if(0 == refcount_policy::release(refCount))
+        if (0 == refcount_policy::release(refCount))
         {
-            if(isOwner)
+            if (isOwner)
             {
                 destroy(handle);
             }

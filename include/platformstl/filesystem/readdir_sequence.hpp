@@ -4,11 +4,11 @@
  * Purpose:     Platform header for the readdir_sequence components.
  *
  * Created:     29th April 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MAJOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_MINOR      2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_REVISION   9
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       32
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_READDIR_SEQUENCE_EDIT       33
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -392,7 +392,7 @@ namespace platformstl_project
         WINSTL_MESSAGE_ASSERT("Specification of unrecognised/unsupported flags", flags == (flags & validFlags));
         STLSOFT_SUPPRESS_UNUSED(validFlags);
 
-        if(0 == (flags & (directories | files)))
+        if (0 == (flags & (directories | files)))
         {
             flags |= (directories | files);
         }
@@ -404,22 +404,22 @@ namespace platformstl_project
     {
         flags_type  translatedFlags =   0;
 
-        if(underlying_sequence_type::includeDots & flags)
+        if (underlying_sequence_type::includeDots & flags)
         {
             translatedFlags |= underlying_sequence_type::includeDots;
         }
 
-        if(directories & flags)
+        if (directories & flags)
         {
             translatedFlags |= underlying_sequence_type::directories;
         }
 
-        if(files & flags)
+        if (files & flags)
         {
             translatedFlags |= underlying_sequence_type::files;
         }
 
-        if(fullPath == ((fullPath | absolutePath) & flags))
+        if (fullPath == ((fullPath | absolutePath) & flags))
         {
             translatedFlags |= underlying_sequence_type::relativePath;
         }

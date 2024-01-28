@@ -4,11 +4,11 @@
  * Purpose:     CY helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        15
+# define COMSTL_VER_COMSTL_UTIL_H_CY_FUNCTIONS_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -110,9 +110,9 @@ comstl_C_CY_compare(
 {
     COMSTL_MESSAGE_ASSERT("Cannot pass NULL pointer(s) to CY_compare()", (NULL != lhs && NULL != rhs));
 
-    if(lhs->Hi != rhs->Hi)
+    if (lhs->Hi != rhs->Hi)
     {
-        if(lhs->Hi < rhs->Hi)
+        if (lhs->Hi < rhs->Hi)
         {
             return -1;
         }
@@ -123,7 +123,7 @@ comstl_C_CY_compare(
     }
     else
     {
-        if(lhs->Lo < rhs->Lo)
+        if (lhs->Lo < rhs->Lo)
         {
             return -1;
         }

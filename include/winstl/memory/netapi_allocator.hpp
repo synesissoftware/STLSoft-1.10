@@ -4,11 +4,11 @@
  * Purpose:     netapi_allocator class.
  *
  * Created:     23rd March 2006
- * Updated:     30th November 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_MEMORY_HPP_NETAPI_ALLOCATOR_MAJOR    1
 # define WINSTL_VER_WINSTL_MEMORY_HPP_NETAPI_ALLOCATOR_MINOR    1
 # define WINSTL_VER_WINSTL_MEMORY_HPP_NETAPI_ALLOCATOR_REVISION 9
-# define WINSTL_VER_WINSTL_MEMORY_HPP_NETAPI_ALLOCATOR_EDIT     28
+# define WINSTL_VER_WINSTL_MEMORY_HPP_NETAPI_ALLOCATOR_EDIT     29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,7 +113,7 @@ class netapi_allocator
 private:
     typedef allocator_base<T, netapi_allocator<T> >                 parent_class_type;
 public:
-    /// The parameterisation of the class
+    /// The current specialisation of the type
     typedef netapi_allocator<T>                                     class_type;
     /// The value type
     typedef ss_typename_type_k parent_class_type::value_type        value_type;

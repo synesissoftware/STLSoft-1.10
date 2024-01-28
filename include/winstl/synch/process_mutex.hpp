@@ -4,11 +4,11 @@
  * Purpose:     Inter-process mutex, based on Windows MUTEX.
  *
  * Created:     15th May 2002
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MAJOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_MINOR    4
 # define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_REVISION 2
-# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     82
+# define WINSTL_VER_WINSTL_SYNCH_HPP_PROCESS_MUTEX_EDIT     83
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -243,7 +243,7 @@ public:
     /// Destroys an instance of the mutex
     ~process_mutex() STLSOFT_NOEXCEPT
     {
-        if( ss_nullptr_k != m_mx &&
+        if (ss_nullptr_k != m_mx &&
             m_bOwnHandle)
         {
             WINSTL_API_EXTERNAL_HandleAndObject_CloseHandle(m_mx);
@@ -264,9 +264,9 @@ public:
 
         DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_mx, INFINITE);
 
-        if(WAIT_ABANDONED == dwRes)
+        if (WAIT_ABANDONED == dwRes)
         {
-            if(ss_nullptr_k != m_evAbandoned)
+            if (ss_nullptr_k != m_evAbandoned)
             {
                 ::SetEvent(m_evAbandoned);
             }
@@ -277,7 +277,7 @@ public:
         {
             m_bAbandoned = false;
 
-            if(WAIT_OBJECT_0 != dwRes)
+            if (WAIT_OBJECT_0 != dwRes)
             {
                 DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -296,9 +296,9 @@ public:
 
         DWORD const dwRes = WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_mx, wait);
 
-        if(WAIT_ABANDONED == dwRes)
+        if (WAIT_ABANDONED == dwRes)
         {
-            if(ss_nullptr_k != m_evAbandoned)
+            if (ss_nullptr_k != m_evAbandoned)
             {
                 ::SetEvent(m_evAbandoned);
             }
@@ -311,13 +311,13 @@ public:
         {
             m_bAbandoned = false;
 
-            if(WAIT_TIMEOUT == dwRes)
+            if (WAIT_TIMEOUT == dwRes)
             {
                 return false;
             }
             else
             {
-                if(WAIT_OBJECT_0 != dwRes)
+                if (WAIT_OBJECT_0 != dwRes)
                 {
                     DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -344,7 +344,7 @@ public:
     {
         WINSTL_ASSERT(ss_nullptr_k != m_mx);
 
-        if(!WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex(m_mx))
+        if (!WINSTL_API_EXTERNAL_Synchronization_ReleaseMutex(m_mx))
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -404,7 +404,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_CreateMutexA(psa, bInitialOwner, name);
 
-        if(ss_nullptr_k == mx)
+        if (ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -423,7 +423,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_CreateMutexW(psa, bInitialOwner, name);
 
-        if(ss_nullptr_k == mx)
+        if (ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -442,7 +442,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_OpenMutexA(access, bInheritHandle, name);
 
-        if(ss_nullptr_k == mx)
+        if (ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -461,7 +461,7 @@ private:
     {
         HANDLE const mx = WINSTL_API_EXTERNAL_Synchronization_OpenMutexW(access, bInheritHandle, name);
 
-        if(ss_nullptr_k == mx)
+        if (ss_nullptr_k == mx)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 

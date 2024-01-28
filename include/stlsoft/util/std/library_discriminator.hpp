@@ -4,7 +4,7 @@
  * Purpose:     Discriminates between standard library implementations
  *
  * Created:     2nd January 2000
- * Updated:     12th December 2023
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Cláudio Albuquerque for assisting with VC++ 12 & 14
  *              support. To Gabor Fischer for reporting problems with VC++
@@ -13,7 +13,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -60,7 +60,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_MINOR       11
 # define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_REVISION    3
-# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        123
+# define STLSOFT_VER_STLSOFT_UTIL_STD_LIBRARY_DISCRIMINATOR_EDIT        124
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -185,7 +185,7 @@ namespace stlsoft
 #  pragma message("Standard library is libc++")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_LIBCPP
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "libc++"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "libc++"
 
 #elif defined(_STLPORT_VERSION) && \
       defined(_STLP_INTERNAL_ITERATOR_H)
@@ -194,7 +194,7 @@ namespace stlsoft
 #  pragma message("Standard library is STLport")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_STLPORT
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "STLport"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "STLport"
 #elif defined(_ITERATOR_) && \
       defined(_UTILITY_) && \
       defined(_XSTDDEF_)
@@ -206,13 +206,13 @@ namespace stlsoft
 #   pragma message("Standard library is Dinkumware (VC++)")
 #  endif /* STLSOFT_COMPILE_VERBOSE */
 #  define STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC
-#  define STLSOFT_CF_STD_LIBRARY_NAME_STRING            "Dinkumware (VC++)"
+#  define STLSOFT_CF_STD_LIBRARY_NAME_STRING                "Dinkumware (VC++)"
 # elif defined(STLSOFT_COMPILER_IS_BORLAND)
 #  ifdef STLSOFT_COMPILE_VERBOSE
 #   pragma message("Standard library is Dinkumware (Borland)")
 #  endif /* STLSOFT_COMPILE_VERBOSE */
 #  define STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_BORLAND
-#  define STLSOFT_CF_STD_LIBRARY_NAME_STRING            "Dinkumware (Borland)"
+#  define STLSOFT_CF_STD_LIBRARY_NAME_STRING                "Dinkumware (Borland)"
 # else /* ? compiler */
 #  error STLSoft does not currently recognise combination of any compilers except Borland, Intel and Microsoft with the Dinkumware libraries.
 # endif /* compiler */
@@ -224,13 +224,13 @@ namespace stlsoft
 #  pragma message("Standard library is MSL")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_MSL
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "MSL"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "MSL"
 #elif defined(__SGI_STL_INTERNAL_ITERATOR_H)
 # ifdef STLSOFT_COMPILE_VERBOSE
 #  pragma message("Standard library is HP/SGI")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_HP_SGI
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "HP/SGI"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "HP/SGI"
 #elif defined(__GLIBCPP_INTERNAL_ITERATOR_H) || \
       defined(_GLIBCXX_ITERATOR)
  /* HP/SGI/GnuFSF */
@@ -238,7 +238,7 @@ namespace stlsoft
 #  pragma message("Standard library is HP/SGI/GnuFSF")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_HP_SGI_GNU
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "HP/SGI/GnuFSF"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "HP/SGI/GnuFSF"
 #elif defined(__RW_ITERATOR_H) && \
       defined(__STD_RW_ITERATOR__)
  /* HP/RW */
@@ -246,20 +246,20 @@ namespace stlsoft
 #  pragma message("Standard library is HP/RW")
 # endif /* STLSOFT_COMPILE_VERBOSE */
 # define STLSOFT_CF_STD_LIBRARY_IS_HP_RW
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "HP/SGI/RW"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "HP/SGI/RW"
 #elif defined(STLSOFT_COMPILER_IS_SUNPRO) && \
       defined(__STD_ITERATOR__)
  /* Sun Pro/RW */
 # define STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "SunPro/RW"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "SunPro/RW"
 #elif defined(STLSOFT_OW12_INCL_ITERATOR)
  /* Watcom (patch) */
 # define STLSOFT_CF_STD_LIBRARY_IS_WATCOM_PATCH
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "STLSoft Watcom Patch"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "STLSoft Watcom Patch"
 #elif defined(STLSOFT_COMPILER_IS_WATCOM)
  /* Watcom (none) */
 # define STLSOFT_CF_STD_LIBRARY_IS_WATCOM_NONE
-# define STLSOFT_CF_STD_LIBRARY_NAME_STRING             "<no standard library with Open Watcom>"
+# define STLSOFT_CF_STD_LIBRARY_NAME_STRING                 "<no standard library with Open Watcom>"
 #else /* ? */
 # error Standard library implementation not recognised
 #endif /* various "unique" macros */
@@ -291,18 +291,18 @@ namespace stlsoft
 # undef STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION
 #endif /* STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION */
 
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_UNKNOWN        (0x0000)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_4_2            (0x0402)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_5_0            (0x0500)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_6_0            (0x0600)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0            (0x0700)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1            (0x0701)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_8_0            (0x0800)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_9_0            (0x0900)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_10_0           (0x0a00)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_11_0           (0x0b00)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_12_0           (0x0c00)
-#define STLSOFT_CF_DINKUMWARE_VC_VERSION_14_0           (0x0e00)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_UNKNOWN            (0x0000)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_4_2                (0x0402)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_5_0                (0x0500)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_6_0                (0x0600)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0                (0x0700)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1                (0x0701)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_8_0                (0x0800)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_9_0                (0x0900)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_10_0               (0x0a00)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_11_0               (0x0b00)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_12_0               (0x0c00)
+#define STLSOFT_CF_DINKUMWARE_VC_VERSION_14_0               (0x0e00)
 
 #ifdef STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC
 # if defined(STLSOFT_COMPILER_IS_INTEL) && \
@@ -323,56 +323,56 @@ namespace stlsoft
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 7.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0
 
 #  elif _CPPLIB_VER <= 313
   /* Version 7.1 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 7.1")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1
 
 #  elif _CPPLIB_VER <= 405
   /* Version 8.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 8.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_8_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_8_0
 
 #  elif _CPPLIB_VER <= 505
   /* Version 9.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 9.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_9_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_9_0
 
 #  elif _CPPLIB_VER <= 520
   /* Version 10.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 10.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_10_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_10_0
 
 #  elif _CPPLIB_VER <= 540
   /* Version 11.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 11.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_11_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_11_0
 
 #  elif _CPPLIB_VER <= 610
   /* Version 12.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 12.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_12_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_12_0
 
 #  elif _CPPLIB_VER <= 650
   /* Version 14.0 */
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 14.0")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_14_0
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_14_0
 
 #  else
 #   error Dinkumware C++ Library version unrecognised: are you using a version of VC++ later than 14.0?
@@ -395,7 +395,7 @@ namespace stlsoft
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 4.2")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_4_2
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_4_2
 
 #  elif\
      defined(_STCONS) && \
@@ -426,13 +426,13 @@ namespace stlsoft
 #    ifdef STLSOFT_COMPILE_VERBOSE
 #     pragma message("  Dinkumware version 6")
 #    endif /* STLSOFT_COMPILE_VERBOSE */
-#    define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_6_0
+#    define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION    STLSOFT_CF_DINKUMWARE_VC_VERSION_6_0
 #   elif defined(_TREE_)
   /* Version 5 */
 #    ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version 5")
 #    endif /* STLSOFT_COMPILE_VERBOSE */
-#    define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_5_0
+#    define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION    STLSOFT_CF_DINKUMWARE_VC_VERSION_5_0
 #   else
 #    error Does not appear to be either the VC5 or VC6 Dinkumware library
 #   endif /* _XTREE_ */
@@ -444,7 +444,7 @@ namespace stlsoft
 #   ifdef STLSOFT_COMPILE_VERBOSE
 #    pragma message("  Dinkumware version unknown")
 #   endif /* STLSOFT_COMPILE_VERBOSE */
-#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION      STLSOFT_CF_DINKUMWARE_VC_VERSION_UNKNOWN
+#   define STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION     STLSOFT_CF_DINKUMWARE_VC_VERSION_UNKNOWN
 #  endif /* VC++ version */
 # endif /* _CPPLIB_VER */
 #endif /* STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC */

@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_session class.
  *
  * Created:     30th April 1999
- * Updated:     23rd December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_MAJOR      5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_MINOR      1
 # define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_REVISION   11
-# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_EDIT       78
+# define INETSTL_VER_INETSTL_NETWORK_HPP_SESSION_EDIT       79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -271,7 +271,7 @@ inline
 basic_session<C, X, T>::basic_session()
     : m_hConn(traits_type::internet_open(null_string_(), INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0))
 {
-    if(NULL == m_hConn)
+    if (NULL == m_hConn)
     {
         exception_policy_type()("Failed to create session", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
     }
@@ -292,7 +292,7 @@ basic_session<C, X, T>::basic_session(
 )
     : m_hConn(traits_type::internet_open(pcszAgent, accessType, pcszProxyName, pcszProxyBypass, flags))
 {
-    if(NULL == m_hConn)
+    if (NULL == m_hConn)
     {
         exception_policy_type()("Failed to create session", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
     }
@@ -306,7 +306,7 @@ template<
 inline
 basic_session<C, X, T>::~basic_session() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_hConn)
+    if (NULL != m_hConn)
     {
         ::InternetCloseHandle(m_hConn);
     }
@@ -329,7 +329,7 @@ basic_session<C, X, T>::open(
 {
     is_bool_t    bRet;
 
-    if(is_open())
+    if (is_open())
     {
         bRet = false;
     }
@@ -337,7 +337,7 @@ basic_session<C, X, T>::open(
     {
         m_hConn = traits_type::internet_open(pcszAgent, accessType, pcszProxyName, pcszProxyBypass, flags);
 
-        if(NULL == m_hConn)
+        if (NULL == m_hConn)
         {
             exception_policy_type()("Failed to create session", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError());
 
@@ -361,7 +361,7 @@ inline
 void
 basic_session<C, X, T>::close()
 {
-    if(NULL != m_hConn)
+    if (NULL != m_hConn)
     {
         ::InternetCloseHandle(m_hConn);
 

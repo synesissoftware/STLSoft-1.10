@@ -4,11 +4,11 @@
  * Purpose:     Windows readonly (shareable) memory mapped file.
  *
  * Created:     30th August 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR     2
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR     0
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION  2
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT      16
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT      17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -308,7 +308,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        if(winstl_C_is_memory_status_code(e))
+        if (winstl_C_is_memory_status_code(e))
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_WinSTL, STLSoftLibraryIdentifier_FileSystem, e));
         }
@@ -317,7 +317,7 @@ private: // Implementation
 
         stlsoft::exception_string_creator xsc(50 + fnl);
 
-        if(0 == fnl)
+        if (0 == fnl)
         {
             xsc.append("could not map file");
         }
@@ -337,7 +337,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        switch(e)
+        switch (e)
         {
         case    ERROR_FILE_NOT_FOUND:
             STLSOFT_THROW_X(file_not_found_exception(message, e));
@@ -354,7 +354,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        if( NULL == fileName ||
+        if (NULL == fileName ||
             '\0' == fileName[0])
         {
             throw_(static_cast<ws_char_a_t const*>(NULL), e);
@@ -381,11 +381,11 @@ private: // Implementation
                                 ,   &viewSize
                                 );
 
-        if(NULL == memory)
+        if (NULL == memory)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-            if( 0 != viewSize ||
+            if (0 != viewSize ||
                 ERROR_SUCCESS != e)
             {
                 throw_(fileName, e);
@@ -421,11 +421,11 @@ private: // Implementation
                                 ,   &viewSize
                                 );
 
-        if(NULL == memory)
+        if (NULL == memory)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
-            if( 0 != viewSize ||
+            if (0 != viewSize ||
                 ERROR_SUCCESS != e)
             {
                 throw_(fileName, e);

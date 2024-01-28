@@ -4,11 +4,11 @@
  * Purpose:     Synchronisation object lock scoping class.
  *
  * Created:     1st October 1994
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_MAJOR     6
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_MINOR     0
 # define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_REVISION  6
-# define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_EDIT      125
+# define STLSOFT_VER_STLSOFT_SYNCH_HPP_LOCK_SCOPE_EDIT      126
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -97,7 +97,7 @@ struct lock_traits
 public:
     /// The lockable type
     typedef L                                               lock_type;
-    /// The current parameterisation of this type
+    /// The current specialisation of the type
     typedef lock_traits<L>                                  class_type;
 /// @}
 
@@ -134,7 +134,7 @@ struct lock_invert_traits
 public:
     /// The lockable type
     typedef L                                               lock_type;
-    /// The current parameterisation of this type
+    /// The current specialisation of the type
     typedef lock_invert_traits<L>                           class_type;
 /// @}
 
@@ -173,7 +173,7 @@ public:
     typedef T                                               traits_type;
     /// The lockable type
     typedef ss_typename_type_k traits_type::lock_type       lock_type;
-    /// The current parameterisation of this type
+    /// The current specialisation of the type
     typedef lock_traits_inverter<T>                         class_type;
 /// @}
 
@@ -219,7 +219,7 @@ public:
     typedef L                                               lock_type;
     /// The traits type
     typedef T                                               traits_type;
-    /// The current parameterisation of this type
+    /// The current specialisation of the type
     typedef lock_scope<L, T>                                class_type;
 /// @}
 

@@ -4,11 +4,11 @@
  * Purpose:     Message functions.
  *
  * Created:     9th March 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MAJOR    1
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_REVISION 5
-# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     20
+# define WINSTL_VER_WINSTL_WINDOW_H_RESOURCE_FUNCTIONS_EDIT     22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -100,7 +100,7 @@ winstl_C_Resource_loadLockAndSizeResource_(
 ,   LPDWORD     pcbResource
 )
 {
-    if(NULL == pcbResource)
+    if (NULL == pcbResource)
     {
         DWORD   dummy;
 
@@ -109,11 +109,11 @@ winstl_C_Resource_loadLockAndSizeResource_(
 
     *pcbResource = 0;
 
-    if(NULL != hrsrc)
+    if (NULL != hrsrc)
     {
         HGLOBAL const hglbl = STLSOFT_NS_GLOBAL(LoadResource)(hModule, hrsrc);
 
-        if(NULL != hglbl)
+        if (NULL != hglbl)
         {
             *pcbResource = STLSOFT_NS_GLOBAL(SizeofResource)(hModule, hrsrc);
 
@@ -181,9 +181,9 @@ winstl_C_Resource_loadCustomResource_W(
 }
 
 # ifdef UNICODE
-#  define winstl_C_Resource_loadCustomResource  winstl_C_Resource_loadCustomResource_W
+#  define winstl_C_Resource_loadCustomResource              winstl_C_Resource_loadCustomResource_W
 # else /* ? UNICODE */
-#  define winstl_C_Resource_loadCustomResource  winstl_C_Resource_loadCustomResource_A
+#  define winstl_C_Resource_loadCustomResource              winstl_C_Resource_loadCustomResource_A
 # endif /* UNICODE */
 
 /* /////////////////////////////////////////////////////////////////////////

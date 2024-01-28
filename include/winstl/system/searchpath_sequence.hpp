@@ -5,11 +5,11 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     12th July 2002
- * Updated:     13th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_MAJOR    4
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_MINOR    2
 # define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_REVISION 11
-# define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_EDIT     113
+# define WINSTL_VER_SYSTEM_HPP_SEARCHPATH_SEQUENCE_EDIT     115
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -148,7 +148,7 @@ public:
     typedef C                                                       char_type;
     /// The traits type
     typedef T                                                       traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_searchpath_sequence<C, T>                         class_type;
     /// The value type
     typedef char_type const*                                        value_type;
@@ -289,7 +289,7 @@ private:
         STLSOFT_NS_QUAL(lock_scope)<spin_mutex> lock(mx);
         static init_type                        s_init = ws_false_v;
 
-        if(!s_init)
+        if (!s_init)
         {
             char_type   dummy[WINSTL_CONST_MAX_PATH + 1];
             char_type*  file_part;
@@ -333,9 +333,9 @@ private:
         STLSOFT_NS_QUAL(lock_scope)<spin_mutex> lock(mx);
         static init_type                        s_init = ws_false_v;
 
-        if(!s_init)
+        if (!s_init)
         {
-            if(system_version::winnt())
+            if (system_version::winnt())
             {
                 char_type* file_part;
 
@@ -378,19 +378,19 @@ private:
 
         traits_type::get_environment_variable(disgusting_hack_("PATH", L"PATH"), &buffer[0], buffer.size());
 
-        for(; begin != end; ++begin)
+        for (; begin != end; ++begin)
         {
-            if(*begin != ';')
+            if (*begin != ';')
             {
                 break;
             }
         }
 
-        for(last = begin; begin != end; ++begin)
+        for (last = begin; begin != end; ++begin)
         {
-            if(*begin == ';')
+            if (*begin == ';')
             {
-                if(1 < begin - last)
+                if (1 < begin - last)
                 {
                     ++cPaths;
                 }
@@ -399,7 +399,7 @@ private:
             }
         }
 
-        if(1 < begin - last)
+        if (1 < begin - last)
         {
             ++cPaths;
         }
@@ -409,7 +409,7 @@ private:
 
     static ws_bool_t is_curr_dir_last_()
     {
-        if( system_version::winnt() &&
+        if (system_version::winnt() &&
             system_version::major() >= 5 &&
             system_version::minor() == 1)
         {
@@ -421,16 +421,16 @@ private:
                                                 ,   KEY_QUERY_VALUE
                                                 ,   &hkey);
 
-            if(ERROR_SUCCESS == lRes)
+            if (ERROR_SUCCESS == lRes)
             {
                 DWORD   type;
                 DWORD   data;
                 DWORD   cbData  =   sizeof(data);
 
                 lRes = WINSTL_API_EXTERNAL_Registry_RegQueryValueExW(hkey, L"SafeDllSearchMode", NULL, &type, reinterpret_cast<LPBYTE>(&data), &cbData);
-                if(ERROR_SUCCESS == lRes)
+                if (ERROR_SUCCESS == lRes)
                 {
-                    if(1 == data)
+                    if (1 == data)
                     {
                         res = true;
                     }
@@ -451,7 +451,7 @@ private:
     static char_type const* disgusting_hack_(ws_char_a_t* literal_a, ws_char_w_t* literal_w)
     {
 #if defined(STLSOFT_COMPILER_IS_DMC)
-        if(sizeof(char_type) == sizeof(ws_char_w_t))
+        if (sizeof(char_type) == sizeof(ws_char_w_t))
         {
             return static_cast<char_type*>(static_cast<void*>(literal_w));
         }
@@ -542,11 +542,11 @@ inline void basic_searchpath_sequence<C, T>::construct_(
 
     psz[0] = '\0';
 
-    { for(int i = 0; i < 2; ++i) {
+    { for (int i = 0; i < 2; ++i) {
 
-        if((i & 1) != static_cast<int>(bApplicationDirectoryFirst))
+        if ((i & 1) != static_cast<int>(bApplicationDirectoryFirst))
         {
-            if(bIncludeApplicationDirectory)
+            if (bIncludeApplicationDirectory)
             {
                 *it++ = psz;
 
@@ -558,14 +558,14 @@ inline void basic_searchpath_sequence<C, T>::construct_(
         }
         else
         {
-            if(bIncludeCurrentDirectory)
+            if (bIncludeCurrentDirectory)
             {
                 cwd =   psz;
 
                 // 2. Current directory - GetCurrentDirectory
                 psz += traits_type::get_current_directory(WINSTL_CONST_MAX_PATH + 1, psz);
 
-                if(!bIncludeCurrentDirectoryLast)
+                if (!bIncludeCurrentDirectoryLast)
                 {
                     *it++ = cwd;
                 }
@@ -585,7 +585,7 @@ inline void basic_searchpath_sequence<C, T>::construct_(
     ++psz;
 
     // 4. NT-only: 16-bit system directory
-    if(system_version::winnt())
+    if (system_version::winnt())
     {
         *it++ = psz;
         n = traits_type::str_len(get_system16_directory());
@@ -602,7 +602,7 @@ inline void basic_searchpath_sequence<C, T>::construct_(
     ++psz;
 
     // 2.b. Current directory last?
-    if( bIncludeCurrentDirectory &&
+    if (bIncludeCurrentDirectory &&
         bIncludeCurrentDirectoryLast)
     {
         *it++ = cwd;
@@ -614,19 +614,19 @@ inline void basic_searchpath_sequence<C, T>::construct_(
     char_type const*        last;
 
     // Move along to the first valid item
-    for(; begin != end; ++begin)
+    for (; begin != end; ++begin)
     {
-        if(*begin != ';')
+        if (*begin != ';')
         {
             break;
         }
     }
 
-    for(last = begin; begin != end; ++begin)
+    for (last = begin; begin != end; ++begin)
     {
-        if(*begin == ';')
+        if (*begin == ';')
         {
-            if(1 < begin - last)
+            if (1 < begin - last)
             {
                 *it++ = last;
             }
@@ -637,7 +637,7 @@ inline void basic_searchpath_sequence<C, T>::construct_(
         }
     }
 
-    if(1 < begin - last)
+    if (1 < begin - last)
     {
         *it++ = last;
     }

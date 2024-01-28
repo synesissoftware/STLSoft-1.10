@@ -4,11 +4,11 @@
  * Purpose:     Link functions.
  *
  * Created:     14th February 2011
- * Updated:     15th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_MINOR       2
 # define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_REVISION    1
-# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        24
+# define WINSTL_VER_WINSTL_H_LINK_FUNCTIONS_EDIT        25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -297,7 +297,7 @@ winstl_C_hard_link_get_link_information_a(
         {
             WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
         }
-        else if(0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
+        else if (0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
         {
             h = WINSTL_API_EXTERNAL_FileManagement_CreateFileA(
                 path
@@ -366,7 +366,7 @@ winstl_C_hard_link_get_link_information_w(
         {
             WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(le);
         }
-        else if(0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
+        else if (0 != (FILE_ATTRIBUTE_DIRECTORY & attrs))
         {
             h = WINSTL_API_EXTERNAL_FileManagement_CreateFileW(
                 path

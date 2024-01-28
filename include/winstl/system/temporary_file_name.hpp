@@ -5,13 +5,13 @@
  *              file name.
  *
  * Created:     5th June 2011
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Pablo Aguilar for requesting this component.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2011-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MAJOR     1
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_MINOR     2
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_REVISION  2
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      21
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_TEMPORARY_FILE_NAME_EDIT      22
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -189,7 +189,7 @@ private:
 
         DWORD const dw = ::GetTempPathA(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-        if(0 == dw)
+        if (0 == dw)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -197,7 +197,7 @@ private:
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-            if(0 != cchBuff)
+            if (0 != cchBuff)
             {
                 buff[0] = '\0';
             }
@@ -208,7 +208,7 @@ private:
 
         UINT const  r   =   ::GetTempFileNameA(&dirPath_[0], "wst", 0, &filePath_[0]);
 
-        if(0 == r)
+        if (0 == r)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -216,7 +216,7 @@ private:
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-            if(0 != cchBuff)
+            if (0 != cchBuff)
             {
                 buff[0] = '\0';
             }
@@ -227,16 +227,16 @@ private:
 
         size_t      cch =   traits_type_::str_len(filePath_);
 
-        if(0 != cchBuff)
+        if (0 != cchBuff)
         {
-            if(cch > cchBuff)
+            if (cch > cchBuff)
             {
                 cch = cchBuff;
             }
 
             traits_type_::char_copy(buff, filePath_, cch);
 
-            if(cch < cchBuff)
+            if (cch < cchBuff)
             {
                 buff[cch] = '\0';
             }
@@ -254,7 +254,7 @@ private:
 
         DWORD const dw  =   ::GetTempPathW(STLSOFT_NUM_ELEMENTS(dirPath_), &dirPath_[0]);
 
-        if(0 == dw)
+        if (0 == dw)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -262,7 +262,7 @@ private:
             STLSOFT_THROW_X(windows_exception("could not elicit temporary directory", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-            if(0 != cchBuff)
+            if (0 != cchBuff)
             {
                 buff[0] = '\0';
             }
@@ -273,7 +273,7 @@ private:
 
         UINT const  r   =   ::GetTempFileNameW(&dirPath_[0], L"wst", 0, &filePath_[0]);
 
-        if(0 == r)
+        if (0 == r)
         {
             DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -281,7 +281,7 @@ private:
             STLSOFT_THROW_X(windows_exception("could not elicit temporary file name", e));
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
 
-            if(0 != cchBuff)
+            if (0 != cchBuff)
             {
                 buff[0] = '\0';
             }
@@ -292,16 +292,16 @@ private:
 
         size_t      cch =   traits_type_::str_len(filePath_);
 
-        if(0 != cchBuff)
+        if (0 != cchBuff)
         {
-            if(cch > cchBuff)
+            if (cch > cchBuff)
             {
                 cch = cchBuff;
             }
 
             traits_type_::char_copy(buff, filePath_, cch);
 
-            if(cch < cchBuff)
+            if (cch < cchBuff)
             {
                 buff[cch] = '\0';
             }

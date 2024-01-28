@@ -4,11 +4,11 @@
  * Purpose:     UNIX readonly (shareable) memory mapped file.
  *
  * Created:     15th December 1996
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MAJOR       2
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_MINOR       0
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_REVISION    2
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        16
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_READONLY_MEMORY_MAPPED_FILE_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -329,7 +329,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        if(ENOMEM == e)
+        if (ENOMEM == e)
         {
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_UNIXSTL, STLSoftLibraryIdentifier_FileSystem, e));
         }
@@ -338,7 +338,7 @@ private: // Implementation
 
         stlsoft::exception_string_creator xsc(50 + fnl);
 
-        if(0 == fnl)
+        if (0 == fnl)
         {
             xsc.append("could not map file");
         }
@@ -358,7 +358,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        switch(e)
+        switch (e)
         {
         case    ENOENT:
             STLSOFT_THROW_X(file_not_found_exception(message, e));
@@ -375,7 +375,7 @@ private: // Implementation
     ,   status_code_type    e
     )
     {
-        if( NULL == fileName ||
+        if (NULL == fileName ||
             '\0' == fileName[0])
         {
             on_failure_(static_cast<us_char_a_t const*>(NULL), e);
@@ -405,7 +405,7 @@ private: // Implementation
         size_type           viewSize    =   0;
         void*               memory      =   NULL;
 
-        if(hfile.empty())
+        if (hfile.empty())
         {
             int const e = errno;
 
@@ -415,31 +415,31 @@ private: // Implementation
         {
             struct stat st;
 
-            if(0 != ::fstat(hfile.get(), &st))
+            if (0 != ::fstat(hfile.get(), &st))
             {
                 int const e = errno;
 
                 on_failure_("Failed to determine mapped file size", e);
             }
-            else if(0 == st.st_size)
+            else if (0 == st.st_size)
             {
                 memory      =   NULL;
                 viewSize    =   0;
             }
             else
             {
-                if(0 == requestSize)
+                if (0 == requestSize)
                 {
                     requestSize = static_cast<size_type>(st.st_size);
                 }
-                else if(requestSize + offset > static_cast<size_type>(st.st_size))
+                else if (requestSize + offset > static_cast<size_type>(st.st_size))
                 {
                     requestSize = static_cast<size_type>(st.st_size - offset);
                 }
 
                 memory = ::mmap(NULL, requestSize, PROT_READ, MAP_PRIVATE, hfile.get(), static_cast<off_t>(offset));
 
-                if(MAP_FAILED == memory)
+                if (MAP_FAILED == memory)
                 {
                     int const e = errno;
 

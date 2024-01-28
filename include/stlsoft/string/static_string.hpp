@@ -4,7 +4,7 @@
  * Purpose:     basic_static_string class template.
  *
  * Created:     11th June 1994
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Cláudio Albuquerque for supplying the pop_back() member.
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MAJOR    5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MINOR    0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     219
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     221
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -168,7 +168,7 @@ public:
     typedef ss_typename_type_k allocator_selector<
         C
     >::allocator_type                                       allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_static_string<
         C
     ,   V_internalSize
@@ -270,7 +270,7 @@ public:
         : m_length(static_cast<ss_size_t>(STLSOFT_NS_QUAL_STD(distance)(first, last)))
     {
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(!(max_size() < m_length))
+        if (!(max_size() < m_length))
         {
             STLSOFT_THROW_X(stlsoft_ns_qual_std(length_error)("range too large"));
         }
@@ -1140,7 +1140,7 @@ template <
 >
 inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::size_type basic_static_string<C, V_internalSize, T>::length_() const
 {
-    if(m_length == static_cast<ss_size_t>(-1))
+    if (m_length == static_cast<ss_size_t>(-1))
     {
         ss_size_t& _m_length = const_cast<class_type *>(this)->m_length;
 
@@ -1162,21 +1162,21 @@ basic_static_string<C, V_internalSize, T>::is_valid() const
     char_type const*        b  =   &m_buffer[0];
     char_type const* const  e  =   &m_buffer[STLSOFT_NUM_ELEMENTS(m_buffer)];
 
-    for(; b != e && '\0' != *b; ++b)
+    for (; b != e && '\0' != *b; ++b)
     {}
 
-    if(b == e)
+    if (b == e)
     {
         return false;
     }
 
-    if( m_length != static_cast<ss_size_t>(-1) &&
+    if (m_length != static_cast<ss_size_t>(-1) &&
         m_length > max_size())
     {
         return false;
     }
 
-    if( m_length != static_cast<ss_size_t>(-1) &&
+    if (m_length != static_cast<ss_size_t>(-1) &&
         '\0' != m_buffer[m_length])
     {
         return false;
@@ -1607,7 +1607,7 @@ inline /* static */ ss_sint_t basic_static_string<C, V_internalSize, T>::compare
     size_type const cmp_len =   (lhs_len < rhs_len) ? lhs_len : rhs_len;
     ss_int_t        result  =   traits_type::compare(lhs, rhs, cmp_len);
 
-    if(result == 0)
+    if (result == 0)
     {
         result = static_cast<ss_int_t>(lhs_len) - static_cast<ss_int_t>(rhs_len);
     }
@@ -1632,7 +1632,7 @@ basic_static_string<C, V_internalSize, T>::compare(
 
     size_type lhs_len = length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1641,14 +1641,14 @@ basic_static_string<C, V_internalSize, T>::compare(
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type rhs_len = (s == 0) ? 0 : traits_type::length(s);
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1674,7 +1674,7 @@ basic_static_string<C, V_internalSize, T>::compare(
 
     size_type lhs_len = length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1683,7 +1683,7 @@ basic_static_string<C, V_internalSize, T>::compare(
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1730,7 +1730,7 @@ basic_static_string<C, V_internalSize, T>::compare(
 
     size_type lhs_len = length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1739,14 +1739,14 @@ basic_static_string<C, V_internalSize, T>::compare(
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type rhs_len = rhs.length();
 
-    if(!(posRhs < rhs_len))
+    if (!(posRhs < rhs_len))
     {
         posRhs = rhs_len;
     }
@@ -1755,7 +1755,7 @@ basic_static_string<C, V_internalSize, T>::compare(
         rhs_len -= posRhs;
     }
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1781,7 +1781,7 @@ basic_static_string<C, V_internalSize, T>::compare(
 
     size_type lhs_len = length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1790,7 +1790,7 @@ basic_static_string<C, V_internalSize, T>::compare(
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1836,9 +1836,9 @@ inline void basic_static_string<C, V_internalSize, T>::resize(
 
     size_type const len =   length();
 
-    if(len != n)
+    if (len != n)
     {
-        if(len < n)
+        if (len < n)
         {
             traits_type::assign(m_buffer + len, n - len, ch);
         }
@@ -1904,7 +1904,7 @@ inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::referen
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(index >= size())
+    if (index >= size())
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("index out of range"));
     }
@@ -1923,7 +1923,7 @@ inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::const_r
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(index > size())
+    if (index > size())
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("index out of range"));
     }
@@ -1963,7 +1963,7 @@ inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::class_t
 
     STLSOFT_ASSERT(is_valid());
 
-    if(0 != n)
+    if (0 != n)
     {
         traits_type::copy(m_buffer + m_length, s, n);
 
@@ -2004,17 +2004,17 @@ inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::class_t
     char_type const* s  =   rhs.m_buffer;
     size_type       len =   rhs.length();
 
-    if(len < pos)
+    if (len < pos)
     {
         pos = len;
     }
 
-    if(len - pos < cch)
+    if (len - pos < cch)
     {
         cch = len - pos;
     }
 
-    if(NULL != s)
+    if (NULL != s)
     {
         s += pos;
     }
@@ -2054,7 +2054,7 @@ inline ss_typename_type_ret_k basic_static_string<C, V_internalSize, T>::class_t
 
     STLSOFT_ASSERT(is_valid());
 
-    if(0 != n)
+    if (0 != n)
     {
         traits_type::assign(m_buffer + m_length, n, ch);
 
@@ -2212,9 +2212,9 @@ basic_static_string<C, V_internalSize, T>::copy(
 
     size_type len = length();
 
-    if(pos < len)
+    if (pos < len)
     {
-        if(len < pos + cch)
+        if (len < pos + cch)
         {
             cch = len - pos;
         }

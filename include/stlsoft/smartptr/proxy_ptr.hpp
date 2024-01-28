@@ -4,11 +4,11 @@
  * Purpose:     Contains the proxy_ptr template class.
  *
  * Created:     17th January 1999
- * Updated:     26th December 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MAJOR       5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_MINOR       2
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_REVISION    1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        85
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_PROXY_PTR_EDIT        86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -97,7 +97,7 @@ class proxy_ptr
 public:
     /// The value type
     typedef T                       value_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef proxy_ptr<T>            class_type;
 
     typedef value_type*             resource_type;

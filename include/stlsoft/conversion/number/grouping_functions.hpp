@@ -4,11 +4,11 @@
  * Purpose:     Number formatting functions.
  *
  * Created:     28th August 2005
- * Updated:     16th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_MINOR     0
 # define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_REVISION  12
-# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      28
+# define STLSOFT_VER_STLSOFT_CONVERSION_NUMBER_HPP_GROUPING_FUNCTIONS_EDIT      29
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,7 +121,7 @@ translate_thousands(
     auto_buffer<C>  res(1 + 2 * cchRawNumber);
     C const*        pic_next;
 
-    for(pic_next = picture; fmtSep == *pic_next; ++pic_next)
+    for (pic_next = picture; fmtSep == *pic_next; ++pic_next)
     {}
     STLSOFT_ASSERT('0' != *pic_next);
     STLSOFT_ASSERT('0' < *pic_next);
@@ -133,16 +133,16 @@ translate_thousands(
     ss_size_t       n           =   num;
 
     *res_end = '\0';
-    for(--raw_end, --res_end; raw_end != raw_begin; --raw_end, --res_end)
+    for (--raw_end, --res_end; raw_end != raw_begin; --raw_end, --res_end)
     {
         *res_end = *raw_end;
-        if( 0 != n &&
+        if (0 != n &&
             0 == --n)
         {
-            if('\0' == *pic_next)
+            if ('\0' == *pic_next)
             {
             }
-            else if('0' == *pic_next)
+            else if ('0' == *pic_next)
             {
                 n = num;
             }
@@ -150,16 +150,16 @@ translate_thousands(
             {
                 C const* pic_end_next = ++pic_next;
 
-                for(; *pic_end_next == fmtSep; ++pic_end_next)
+                for (; *pic_end_next == fmtSep; ++pic_end_next)
                 {}
 
                 pic_next = pic_end_next;
 
-                if('\0' == *pic_next)
+                if ('\0' == *pic_next)
                 {
                     *--res_end = outputSep;
                 }
-                else if('0' == *pic_next)
+                else if ('0' == *pic_next)
                 {
                     n = num;
                 }
@@ -170,7 +170,7 @@ translate_thousands(
                 }
             }
 
-            if(0 != n)
+            if (0 != n)
             {
                 *--res_end = outputSep;
             }
@@ -180,9 +180,9 @@ translate_thousands(
 
     ss_size_t cch = static_cast<ss_size_t>(res.end() - res_end);
 
-    if(NULL != dest)
+    if (NULL != dest)
     {
-        if(cch > cchDest)
+        if (cch > cchDest)
         {
             cch = cchDest;
         }

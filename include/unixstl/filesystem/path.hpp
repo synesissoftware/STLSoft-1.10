@@ -4,14 +4,14 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     14th January 2021
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1993-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      1
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       271
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       273
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@ public:
     typedef T                                               traits_type;
     /// The allocator type
     typedef A                                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_path<C, T, A>                             class_type;
     /// The size type
     typedef ss_typename_type_k traits_type::size_type       size_type;
@@ -1143,7 +1143,7 @@ basic_path<C, T, A>::next_slash_or_end_(
 {
     for (; ; ++p)
     {
-        switch(*p)
+        switch (*p)
         {
             case    '/':
 #ifdef _WIN32
@@ -1584,7 +1584,7 @@ basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
             // It's / or \ - ignore
         }
 #ifdef _WIN32
-        else if(3 == len &&
+        else if (3 == len &&
                 ':' == m_buffer[1] &&
                 traits_type::is_path_name_separator(m_buffer[2]))
         {
@@ -1810,7 +1810,7 @@ basic_path<C, T, A>::canonicalise(
                 *dest++ = *p1++;
             }
         }
-        else if(isalpha(m_buffer[0]) &&
+        else if (isalpha(m_buffer[0]) &&
                 ':' == m_buffer[1])
         {
             // Copy over the drive letter, colon and slash
@@ -1850,7 +1850,7 @@ basic_path<C, T, A>::canonicalise(
             parts[i].len    =   static_cast<size_type>(p2 - p1);
             parts[i].p      =   p1;
             parts[i].type   =   part_type::normal;
-            switch(parts[i].len)
+            switch (parts[i].len)
             {
                 case    1:
 

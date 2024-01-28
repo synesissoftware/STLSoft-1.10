@@ -4,11 +4,11 @@
  * Purpose:     Registry functions.
  *
  * Created:     20th November 1995
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1995-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MAJOR     3
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_MINOR     1
 # define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_REVISION  7
-# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      61
+# define WINSTL_VER_WINSTL_REGISTRY_HPP_FUNCTIONS_EDIT      62
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ inline LONG reg_get_string_value(HKEY hkey, C const* name, C *buffer, ws_size_t 
     ws_size_t   cbData  =   sizeof(C) * cchBuffer;
     LONG        res     =   reg_traits<C>::reg_query_value(hkey, name, type, buffer, cbData);
 
-    if(ERROR_SUCCESS == res)
+    if (ERROR_SUCCESS == res)
     {
         cchBuffer = cbData / sizeof(C);
     }

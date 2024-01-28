@@ -4,11 +4,11 @@
  * Purpose:     COM ROT (Running Object Table) functions.
  *
  * Created:     21st October 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MAJOR       5
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_MINOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_REVISION    8
-# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        77
+# define COMSTL_VER_COMSTL_UTIL_H_ROT_FUNCTIONS_EDIT        79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_Register(
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->Register(COMSTL_ITF_THIS(prot) grfFlags, punkObject, pmkObjectName, pdwRegister);
 
@@ -139,7 +139,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_Revoke(DWORD dwRegister)
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->Revoke(COMSTL_ITF_THIS(prot) dwRegister);
 
@@ -165,7 +165,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_IsRunning(LPMONIKER pmkObjectName)
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->IsRunning(COMSTL_ITF_THIS(prot) pmkObjectName);
 
@@ -196,7 +196,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_GetObject(
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->GetObject(COMSTL_ITF_THIS(prot) pmkObjectName, ppunkObject);
 
@@ -226,7 +226,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_NoteChangeTime(
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->NoteChangeTime(COMSTL_ITF_THIS(prot) dwRegister, lpfiletime);
 
@@ -256,7 +256,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_GetTimeOfLastChange(
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->GetTimeOfLastChange(COMSTL_ITF_THIS(prot) pmkObjectName, lpfiletime);
 
@@ -281,7 +281,7 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_EnumRunning(IEnumMoniker** ppenumMoniker)
     LPRUNNINGOBJECTTABLE    prot;
     HRESULT                 hr = STLSOFT_NS_GLOBAL(GetRunningObjectTable)(0, &prot);
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(prot)->EnumRunning(COMSTL_ITF_THIS(prot) ppenumMoniker);
 
@@ -309,37 +309,37 @@ STLSOFT_INLINE HRESULT comstl_C_Rot_EnumRunning(IEnumMoniker** ppenumMoniker)
  *
  * \deprecated Use comstl_C_Rot_Register
  */
-# define comstl__Rot_Register               comstl_C_Rot_Register
+# define comstl__Rot_Register                               comstl_C_Rot_Register
 /** \def comstl__Rot_Revoke
  *
  * \deprecated Use comstl_C_Rot_Revoke
  */
-# define comstl__Rot_Revoke                 comstl_C_Rot_Revoke
+# define comstl__Rot_Revoke                                 comstl_C_Rot_Revoke
 /** \def comstl__Rot_IsRunning
  *
  * \deprecated Use comstl_C_Rot_IsRunning
  */
-# define comstl__Rot_IsRunning              comstl_C_Rot_IsRunning
+# define comstl__Rot_IsRunning                              comstl_C_Rot_IsRunning
 /** \def comstl__Rot_GetObject
  *
  * \deprecated Use comstl_C_Rot_GetObject
  */
-# define comstl__Rot_GetObject              comstl_C_Rot_GetObject
+# define comstl__Rot_GetObject                              comstl_C_Rot_GetObject
 /** \def comstl__Rot_NoteChangeTime
  *
  * \deprecated Use comstl_C_Rot_NoteChangeTime
  */
-# define comstl__Rot_NoteChangeTime         comstl_C_Rot_NoteChangeTime
+# define comstl__Rot_NoteChangeTime                         comstl_C_Rot_NoteChangeTime
 /** \def comstl__Rot_GetTimeOfLastChange
  *
  * \deprecated Use comstl_C_Rot_GetTimeOfLastChange
  */
-# define comstl__Rot_GetTimeOfLastChange    comstl_C_Rot_GetTimeOfLastChange
+# define comstl__Rot_GetTimeOfLastChange                    comstl_C_Rot_GetTimeOfLastChange
 /** \def comstl__Rot_EnumRunning
  *
  * \deprecated Use comstl_C_Rot_EnumRunning
  */
-# define comstl__Rot_EnumRunning            comstl_C_Rot_EnumRunning
+# define comstl__Rot_EnumRunning                            comstl_C_Rot_EnumRunning
 
 #endif /* obsolete || 1.9 */
 

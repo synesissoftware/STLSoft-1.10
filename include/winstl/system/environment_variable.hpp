@@ -4,13 +4,13 @@
  * Purpose:     Simple class that provides access to an environment variable.
  *
  * Created:     20th December 2002
- * Updated:     3rd December 2020
+ * Updated:     20th January 2024
  *
  * Thanks to:   Pablo Aguilar for requesting size() and empty().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MAJOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_MINOR    4
 # define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_REVISION 3
-# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     85
+# define WINSTL_VER_WINSTL_SYSTEM_HPP_ENVIRONMENT_VARIABLE_EDIT     86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ public:
     typedef T                                               traits_type;
     /// The allocator type
     typedef processheap_allocator<C>                        allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_environment_variable<C, T>                class_type;
     /// The size type
     typedef ws_size_t                                       size_type;

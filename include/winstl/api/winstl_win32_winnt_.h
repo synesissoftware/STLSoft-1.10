@@ -16,9 +16,9 @@
 #endif /* WINSTL_WIN32_WINNT */
 
 #if !defined(_WIN32_WINNT)
-# define WINSTL_WIN32_WINNT     (0)
+# define WINSTL_WIN32_WINNT                                 (0)
 #else
-# define WINSTL_WIN32_WINNT     (_WIN32_WINNT)
+# define WINSTL_WIN32_WINNT                                 (_WIN32_WINNT)
 #endif
 
 /* /////////////////////////////////////////////////////////////////////////

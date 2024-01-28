@@ -4,11 +4,11 @@
  * Purpose:     Window update-state scoping class.
  *
  * Created:     5th January 1996
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MAJOR      5
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_MINOR      1
 # define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_REVISION   6
-# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       90
+# define WINSTL_VER_WINSTL_WINDOW_HPP_WINDOW_UPDATE_SCOPE_EDIT       91
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -132,7 +132,7 @@ public:
     /// Releases the lock, if acquired in the constructor
     ~window_update_scope() STLSOFT_NOEXCEPT
     {
-        if(m_bIsLocked)
+        if (m_bIsLocked)
         {
             // Lock was successful, so undo here
             ::LockWindowUpdate(NULL);

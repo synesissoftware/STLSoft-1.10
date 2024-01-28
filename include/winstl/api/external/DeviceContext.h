@@ -69,7 +69,7 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_DeviceContext_GetObject
-# define WINSTL_API_EXTERNAL_DeviceContext_GetObject                                STLSOFT_NS_GLOBAL_(GetObject)
+# define WINSTL_API_EXTERNAL_DeviceContext_GetObject        STLSOFT_NS_GLOBAL_(GetObject)
 #endif /* !WINSTL_API_EXTERNAL_DeviceContext_GetObject */
 
 /* /////////////////////////////////////////////////////////////////////////

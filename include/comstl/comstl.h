@@ -5,7 +5,7 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th January 2002
- * Updated:     12th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define COMSTL_VER_COMSTL_H_COMSTL_MAJOR       3
 # define COMSTL_VER_COMSTL_H_COMSTL_MINOR       9
 # define COMSTL_VER_COMSTL_H_COMSTL_REVISION    8
-# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        129
+# define COMSTL_VER_COMSTL_H_COMSTL_EDIT        130
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file comstl/comstl.h
@@ -908,8 +908,8 @@ typedef cs_uptrint_t        uptrint_t;
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define cs_true_v       ss_true_v
-#define cs_false_v      ss_false_v
+#define cs_true_v                                           ss_true_v
+#define cs_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
@@ -920,7 +920,7 @@ typedef cs_uptrint_t        uptrint_t;
 #ifdef __cplusplus
 const cs_size_t COMSTL_CCH_GUID     =   38;
 #else /* ? __cplusplus */
-# define COMSTL_CCH_GUID            (38u)
+# define COMSTL_CCH_GUID                                    (38u)
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@
  *              fixed_array_4d template classes.
  *
  * Created:     4th August 1998
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode,
  *              requesting the function call operator, and for requesting
@@ -64,7 +64,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MAJOR      4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_MINOR      9
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_REVISION   12
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       205
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FIXED_ARRAY_EDIT       206
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -874,7 +874,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_1d<T, A, P, R>::range_check_(ss_typename_type_k fixed_array_1d<T, A, P, R>::index_type i0) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < m_d0))
+    if (!(i0 < m_d0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("fixed array index out of range"));
     }
@@ -942,7 +942,7 @@ inline fixed_array_1d<T, A, P, R>::fixed_array_1d(fixed_array_1d<T, A, P, R> con
     : m_data(R ? allocate_(rhs.dimension0()) : rhs.m_data)
     , m_d0(rhs.dimension0())
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::copy_construct(*this, data_(), rhs.data(), size());
     }
@@ -964,7 +964,7 @@ inline fixed_array_1d<T, A, P, R>::fixed_array_1d(fixed_array_1d<T, A, P, R> con
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline fixed_array_1d<T, A, P, R>::~fixed_array_1d() STLSOFT_NOEXCEPT
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::destroy(*this, data_(), size());
         deallocate_(m_data, size());
@@ -1212,7 +1212,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_2d<T, A, P, R>::range_check_(ss_typename_type_k fixed_array_2d<T, A, P, R>::index_type i0, ss_typename_type_k fixed_array_2d<T, A, P, R>::index_type i1) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < m_d0) ||
+    if (!(i0 < m_d0) ||
         !(i1 < m_d1))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("fixed array index out of range"));
@@ -1232,7 +1232,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_2d<T, A, P, R>::range_check_(ss_typename_type_k fixed_array_2d<T, A, P, R>::index_type i0) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < m_d0))
+    if (!(i0 < m_d0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("fixed array index out of range"));
     }
@@ -1306,7 +1306,7 @@ inline fixed_array_2d<T, A, P, R>::fixed_array_2d(fixed_array_2d<T, A, P, R> con
     , m_d1(rhs.dimension1())
     , m_size(rhs.dimension0() * rhs.dimension1())
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::copy_construct(*this, data_(), rhs.data(), size());
     }
@@ -1330,7 +1330,7 @@ inline fixed_array_2d<T, A, P, R>::fixed_array_2d(fixed_array_2d<T, A, P, R> con
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline fixed_array_2d<T, A, P, R>::~fixed_array_2d() STLSOFT_NOEXCEPT
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::destroy(*this, data_(), size());
         deallocate_(m_data, size());
@@ -1609,7 +1609,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_3d<T, A, P, R>::range_check_(ss_typename_type_k fixed_array_3d<T, A, P, R>::index_type i0, ss_typename_type_k fixed_array_3d<T, A, P, R>::index_type i1, ss_typename_type_k fixed_array_3d<T, A, P, R>::index_type i2) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < m_d0) ||
+    if (!(i0 < m_d0) ||
         !(i1 < m_d1) ||
         !(i2 < m_d2))
     {
@@ -1630,7 +1630,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_3d<T, A, P, R>::range_check_(ss_typename_type_k fixed_array_3d<T, A, P, R>::index_type i0) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < m_d0))
+    if (!(i0 < m_d0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("fixed array index out of range"));
     }
@@ -1704,7 +1704,7 @@ inline fixed_array_3d<T, A, P, R>::fixed_array_3d(fixed_array_3d<T, A, P, R> con
     , m_d1(rhs.dimension1())
     , m_d2(rhs.dimension2())
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::copy_construct(*this, data_(), rhs.data(), size());
     }
@@ -1728,7 +1728,7 @@ inline fixed_array_3d<T, A, P, R>::fixed_array_3d(fixed_array_3d<T, A, P, R> con
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline fixed_array_3d<T, A, P, R>::~fixed_array_3d() STLSOFT_NOEXCEPT
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::destroy(*this, data_(), size());
         deallocate_(m_data, size());
@@ -2011,7 +2011,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_4d<T, A, P, R>::range_check_(ss_typename_param_k fixed_array_4d<T, A, P, R>::index_type i0, ss_typename_param_k fixed_array_4d<T, A, P, R>::index_type i1, ss_typename_param_k fixed_array_4d<T, A, P, R>::index_type i2, ss_typename_param_k fixed_array_4d<T, A, P, R>::index_type i3) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < m_d0) ||
+    if (!(i0 < m_d0) ||
         !(i1 < m_d1) ||
         !(i2 < m_d2) ||
         !(i3 < m_d3))
@@ -2033,7 +2033,7 @@ template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, s
 inline void fixed_array_4d<T, A, P, R>::range_check_(ss_typename_param_k fixed_array_4d<T, A, P, R>::index_type i0) const stlsoft_throw_1(STLSOFT_NS_QUAL_STD(out_of_range) )
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < m_d0))
+    if (!(i0 < m_d0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("fixed array index out of range"));
     }
@@ -2113,7 +2113,7 @@ inline fixed_array_4d<T, A, P, R>::fixed_array_4d(fixed_array_4d<T, A, P, R> con
     , m_d2(rhs.dimension2())
     , m_d3(rhs.dimension3())
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::copy_construct(*this, data_(), rhs.data(), size());
     }
@@ -2138,7 +2138,7 @@ inline fixed_array_4d<T, A, P, R>::fixed_array_4d(fixed_array_4d<T, A, P, R> con
 template <ss_typename_param_k T, ss_typename_param_k A, ss_typename_param_k P, ss_bool_t R>
 inline fixed_array_4d<T, A, P, R>::~fixed_array_4d() STLSOFT_NOEXCEPT
 {
-    if(R)
+    if (R)
     {
         array_range_initialiser<T, A, P>::destroy(*this, data_(), size());
         deallocate_(m_data, size());

@@ -4,14 +4,14 @@
  * Purpose:     String view slice functions.
  *
  * Created:     25th April 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo Aguilar for inspiration for these functions, and
  *              collaboration on their implementation.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_MAJOR     2
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_MINOR     1
 # define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_REVISION  12
-# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_EDIT      42
+# define STLSOFT_VER_INCL_STLSOFT_STRING_HPP_VIEW_SLICE_FUNCTIONS_EDIT      43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -189,7 +189,7 @@ inline basic_string_view<C> left_view_helper(C const* s, ss_size_t n)
 {
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
 
-    if(n > len)
+    if (n > len)
     {
         // Want more than is available, so get all
         n = len;
@@ -225,7 +225,7 @@ inline ss_typename_type_ret_k string_view_helper_traits<S>::view_type left_view(
 
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
 
-    if(n > len)
+    if (n > len)
     {
         // Want more than is available, so get all
         n = len;
@@ -240,7 +240,7 @@ inline basic_string_view<C> right_view_helper(C const* s, ss_size_t n)
 {
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
 
-    if(n > len)
+    if (n > len)
     {
         // Want more than is available, so get all, from start
         n = len;
@@ -282,7 +282,7 @@ inline ss_typename_type_ret_k string_view_helper_traits<S>::view_type right_view
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
     ss_size_t       off =   0;
 
-    if(n > len)
+    if (n > len)
     {
         // Want more than is available, so get all, from start
         n = len;
@@ -302,7 +302,7 @@ inline basic_string_view<C> mid_view_helper(C const* s, ss_size_t start, ss_size
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
     ss_size_t       off =   0;
 
-    if(start > len)
+    if (start > len)
     {
         // Want more than is available, so we start at the end
         off = len;
@@ -312,7 +312,7 @@ inline basic_string_view<C> mid_view_helper(C const* s, ss_size_t start, ss_size
         off = start;
     }
 
-    if(off + n > len)
+    if (off + n > len)
     {
         // Want more than is available starting at off, so we just get what is available
         n = len - off;
@@ -349,7 +349,7 @@ inline ss_typename_type_ret_k string_view_helper_traits<S>::view_type mid_view(S
     const ss_size_t len = STLSOFT_NS_QUAL(c_str_len)(s);
     ss_size_t       off =   0;
 
-    if(start > len)
+    if (start > len)
     {
         // Want more than is available, so we start at the end
         off = len;
@@ -359,7 +359,7 @@ inline ss_typename_type_ret_k string_view_helper_traits<S>::view_type mid_view(S
         off = start;
     }
 
-    if(off + n > len)
+    if (off + n > len)
     {
         // Want more than is available starting at off, so we just get what is available
         n = len - off;

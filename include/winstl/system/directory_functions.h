@@ -4,11 +4,11 @@
  * Purpose:     Directory functions.
  *
  * Created:     29th January 2013
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2013-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_MINOR       0
 # define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_REVISION    6
-# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        12
+# define WINSTL_VER_WINSTL_SYSTEM_H_DIRECTORY_FUNCTIONS_EDIT        13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -114,14 +114,14 @@ winstl_C_get_home_directory_a(
     DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableA("HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;
 
-    if(0 == cchDirectory)
+    if (0 == cchDirectory)
     {
         return 0;
     }
 
-    if(cchBuffer < 1 + cchTotal)
+    if (cchBuffer < 1 + cchTotal)
     {
-        if( NULL != buffer &&
+        if (NULL != buffer &&
             cchBuffer > 0)
         {
             buffer[0] = '\0';
@@ -152,14 +152,14 @@ winstl_C_get_home_directory_w(
     DWORD const     cchDirectory    =   (0 == cchDrive) ? 0 : WINSTL_API_EXTERNAL_SystemInformation_GetEnvironmentVariableW(L"HOMEPATH", &directory[0], STLSOFT_NUM_ELEMENTS(directory));
     DWORD const     cchTotal        =   cchDrive + cchDirectory;
 
-    if(0 == cchDirectory)
+    if (0 == cchDirectory)
     {
         return 0;
     }
 
-    if(cchBuffer < 1 + cchTotal)
+    if (cchBuffer < 1 + cchTotal)
     {
-        if( NULL != buffer &&
+        if (NULL != buffer &&
             cchBuffer > 0)
         {
             buffer[0] = '\0';

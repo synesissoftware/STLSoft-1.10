@@ -4,13 +4,13 @@
  * Purpose:     Atomic operations built around GCC's builtins
  *
  * Created:     6th January 2017
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Author:      Matthew Wilson
  *
  * Home:        http://www.stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2017-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__MAJOR     1
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__MINOR     0
 # define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__REVISION  3
-# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__EDIT      7
+# define STLSOFT_VER_H_STLSOFT_INTERNAL_ATOMIC_H_GCC_BUILTINS__EDIT      8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -78,10 +78,10 @@
  * macros
  */
 
-#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_ADD_                   __ATOMIC_ACQ_REL
-#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_INC_                   __ATOMIC_ACQ_REL
-#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_READ_                  __ATOMIC_ACQUIRE
-#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_WRITE_                 __ATOMIC_RELEASE
+#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_ADD_           __ATOMIC_ACQ_REL
+#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_INC_           __ATOMIC_ACQ_REL
+#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_READ_          __ATOMIC_ACQUIRE
+#define STLSOFT_INTERNAL_ATOMIC_GCC_memorder_WRITE_         __ATOMIC_RELEASE
 
 /* exchange */
 

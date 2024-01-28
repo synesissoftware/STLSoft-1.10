@@ -4,11 +4,11 @@
  * Purpose:     Control Panel module/applet manipulation classes.
  *
  * Created:     1st April 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_MAJOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_MINOR    1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_REVISION 21
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_EDIT     41
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_HPP_APPLET_MODULE_EDIT     42
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -272,7 +272,7 @@ int main()
     winstl::system_directory    sysDir;
     winstl::findfile_sequence   files(sysDir, "*.cpl", winstl::findfile_sequence::files);
 
-    { for(winstl::findfile_sequence::const_iterator b = files.begin(); b != files.end(); ++b)
+    { for (winstl::findfile_sequence::const_iterator b = files.begin(); b != files.end(); ++b)
     {
       winstl::applet_module module(*b, winstl::applet_module:dontExpectNonZeroInit);
 
@@ -280,7 +280,7 @@ int main()
       winstl::applet_module::const_iterator e = module.end();
 
       std::cout << "path:          " << module.get_path() << std::endl;
-      for(; b != e; ++b)
+      for (; b != e; ++b)
       {
         winstl::applet const  &applet = *b;
 
@@ -503,7 +503,7 @@ inline applet::applet(applet_module_base* module, applet::index_type index)
 
     WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(0);
 
-    if( !control_panel_init(m_module->m_pfn, m_module->m_hwnd) &&
+    if (!control_panel_init(m_module->m_pfn, m_module->m_hwnd) &&
         0 == (m_module->m_flags & applet_module::dontExpectNonZeroInit))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
@@ -524,11 +524,11 @@ inline applet::applet(applet_module_base* module, applet::index_type index)
 
             control_panel_inquire(m_module->m_pfn, m_module->m_hwnd, m_index, &info);
 
-            if(CPL_DYNAMIC_RES != info.idIcon)
+            if (CPL_DYNAMIC_RES != info.idIcon)
             {
                 m_icon = ::LoadIcon(m_module->m_hinst, MAKEINTRESOURCE(info.idIcon));
 
-                if( NULL == m_icon &&
+                if (NULL == m_icon &&
                     applet_module::ignoreIconLoadFailures == (m_module->m_flags & applet_module::ignoreIconLoadFailures))
                 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
@@ -537,12 +537,12 @@ inline applet::applet(applet_module_base* module, applet::index_type index)
                 }
             }
 
-            if(CPL_DYNAMIC_RES != info.idName)
+            if (CPL_DYNAMIC_RES != info.idName)
             {
                 m_name = resource_string_type_(m_module->m_hinst, info.idName);
             }
 
-            if(CPL_DYNAMIC_RES != info.idInfo)
+            if (CPL_DYNAMIC_RES != info.idInfo)
             {
                 m_description = resource_string_type_(m_module->m_hinst, info.idInfo);
             }
@@ -566,7 +566,7 @@ inline applet::~applet() STLSOFT_NOEXCEPT
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL != NULL)
+    if (NULL != NULL)
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     {
         control_panel_uninit(m_module->m_pfn, m_module->m_hwnd);
@@ -578,10 +578,10 @@ inline void applet::open(HWND hwnd)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL != NULL)
+    if (NULL != NULL)
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     {
-        if(NULL == hwnd)
+        if (NULL == hwnd)
         {
             hwnd = m_module->m_hwnd;
         }
@@ -595,17 +595,17 @@ inline void applet::open(HWND hwnd, TCHAR const* arguments)
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL != NULL)
+    if (NULL != NULL)
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     {
-        if( NULL == arguments ||
+        if (NULL == arguments ||
             '\0' == *arguments)
         {
             this->open(hwnd);
         }
         else
         {
-            if(NULL == hwnd)
+            if (NULL == hwnd)
             {
                 hwnd = m_module->m_hwnd;
             }
@@ -620,7 +620,7 @@ inline applet::index_type applet::get_index() const
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL == m_module)
+    if (NULL == m_module)
     {
         return ~index_type(0);
     }
@@ -634,13 +634,13 @@ inline applet::string_type applet::get_name() const
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL == m_module)
+    if (NULL == m_module)
     {
         return m_name;
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-    if(m_name.empty())
+    if (m_name.empty())
     {
         NEWCPLINFO  info    =   { sizeof(info), 0, 0, 0, NULL, { '\0' }, { '\0' }, { '\0' } };
 
@@ -657,13 +657,13 @@ inline applet::string_type applet::get_description() const
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL == m_module)
+    if (NULL == m_module)
     {
         return m_description;
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-    if(m_description.empty())
+    if (m_description.empty())
     {
         NEWCPLINFO  info    =   { sizeof(info), 0, 0, 0, NULL, { '\0' }, { '\0' }, { '\0' } };
 
@@ -680,13 +680,13 @@ inline HICON applet::get_icon() const
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
     WINSTL_ASSERT(NULL != m_module);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-    if(NULL == m_module)
+    if (NULL == m_module)
     {
         return NULL;
     }
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
-    if(NULL == m_icon)
+    if (NULL == m_icon)
     {
         NEWCPLINFO  info    =   { sizeof(info), 0, 0, 0, NULL, { '\0' }, { '\0' }, { '\0' } };
 
@@ -741,7 +741,7 @@ inline void applet_module::init_(int flags, HWND hwndParent)
 
     WINSTL_API_EXTERNAL_ErrorHandling_SetLastError(0);
 
-    if(NULL == m_module.get_symbol("CPlApplet", m_pfn))
+    if (NULL == m_module.get_symbol("CPlApplet", m_pfn))
     {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         STLSOFT_THROW_X(control_panel_exception("Control panel entry point not found", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -755,13 +755,13 @@ inline void applet_module::init_(int flags, HWND hwndParent)
 
         size_type numApplets  =   control_panel_get_count(m_pfn, m_hwnd);
 
-        if( 0 == numApplets &&
+        if (0 == numApplets &&
             assumeOneAppletIfNone == (m_flags & assumeOneAppletIfNone))
         {
             numApplets = 1;
         }
 
-        { for(size_type index = 0; index != numApplets; ++index)
+        { for (size_type index = 0; index != numApplets; ++index)
         {
             m_applets.push_back(applet(this, index));
         }}

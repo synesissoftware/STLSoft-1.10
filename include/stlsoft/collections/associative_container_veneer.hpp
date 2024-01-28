@@ -4,11 +4,11 @@
  * Purpose:     RRID veneer for associative containers
  *
  * Created:     2nd October 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_CONTAINER_VENEER_MAJOR     4
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_CONTAINER_VENEER_MINOR     0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_CONTAINER_VENEER_REVISION  9
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_CONTAINER_VENEER_EDIT      61
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_ASSOCIATIVE_CONTAINER_VENEER_EDIT      63
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ public:
     typedef FV                                                      value_destruction_function_type;
     /// The function class applied to the container's keys
     typedef FK                                                      key_destruction_function_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef associative_container_veneer<T, FV, FK>                 class_type;
     /// The parent class type
 private:
@@ -231,7 +231,7 @@ public:
         ss_typename_type_k container_type::iterator b   =   container_type::begin();
         ss_typename_type_k container_type::iterator e   =   container_type::end();
 
-        for(destruction_function_t fn; b != e; ++b)
+        for (destruction_function_t fn; b != e; ++b)
         {
             fn(*b);
         }

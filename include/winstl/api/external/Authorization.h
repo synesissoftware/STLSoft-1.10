@@ -65,14 +65,14 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA
-# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA                                 STLSOFT_NS_GLOBAL_(GetFileSecurityA)
+# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA STLSOFT_NS_GLOBAL_(GetFileSecurityA)
 #endif /* !WINSTL_API_EXTERNAL_Authorization_GetFileSecurityA */
 #ifndef WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW
-# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW                                 STLSOFT_NS_GLOBAL_(GetFileSecurityW)
+# define WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW STLSOFT_NS_GLOBAL_(GetFileSecurityW)
 #endif /* !WINSTL_API_EXTERNAL_Authorization_GetFileSecurityW */
 
 #ifndef WINSTL_API_EXTERNAL_Authorization_LookupAccountSid
-# define WINSTL_API_EXTERNAL_Authorization_LookupAccountSid                                 STLSOFT_NS_GLOBAL_(LookupAccountSid)
+# define WINSTL_API_EXTERNAL_Authorization_LookupAccountSid STLSOFT_NS_GLOBAL_(LookupAccountSid)
 #endif /* !WINSTL_API_EXTERNAL_Authorization_LookupAccountSid */
 
 

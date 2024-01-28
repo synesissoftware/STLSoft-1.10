@@ -71,23 +71,23 @@
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_AddConsoleAlias
-#  define WINSTL_API_EXTERNAL_Console_AddConsoleAlias                       STLSOFT_NS_GLOBAL_(AddConsoleAlias)
+#  define WINSTL_API_EXTERNAL_Console_AddConsoleAlias       STLSOFT_NS_GLOBAL_(AddConsoleAlias)
 # endif /* !WINSTL_API_EXTERNAL_Console_AddConsoleAlias */
 # ifndef WINSTL_API_EXTERNAL_Console_AddConsoleAliasA
-#  define WINSTL_API_EXTERNAL_Console_AddConsoleAliasA                      STLSOFT_NS_GLOBAL_(AddConsoleAliasA)
+#  define WINSTL_API_EXTERNAL_Console_AddConsoleAliasA      STLSOFT_NS_GLOBAL_(AddConsoleAliasA)
 # endif /* !WINSTL_API_EXTERNAL_Console_AddConsoleAliasA */
 # ifndef WINSTL_API_EXTERNAL_Console_AddConsoleAliasW
-#  define WINSTL_API_EXTERNAL_Console_AddConsoleAliasW                      STLSOFT_NS_GLOBAL_(AddConsoleAliasW)
+#  define WINSTL_API_EXTERNAL_Console_AddConsoleAliasW      STLSOFT_NS_GLOBAL_(AddConsoleAliasW)
 # endif /* !WINSTL_API_EXTERNAL_Console_AddConsoleAliasW */
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_AllocConsole
-# define WINSTL_API_EXTERNAL_Console_AllocConsole                           STLSOFT_NS_GLOBAL_(AllocConsole)
+# define WINSTL_API_EXTERNAL_Console_AllocConsole           STLSOFT_NS_GLOBAL_(AllocConsole)
 #endif /* !WINSTL_API_EXTERNAL_Console_AllocConsole */
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_AttachConsole
-#  define WINSTL_API_EXTERNAL_Console_AttachConsole                         STLSOFT_NS_GLOBAL_(AttachConsole)
+#  define WINSTL_API_EXTERNAL_Console_AttachConsole         STLSOFT_NS_GLOBAL_(AttachConsole)
 # endif /* !WINSTL_API_EXTERNAL_Console_AttachConsole */
 #endif /* !WINSTL_WIN32_WINNT */
 
@@ -114,7 +114,7 @@
 #endif /* !WINSTL_API_EXTERNAL_Console_FlushConsoleInputBuffer */
 
 #ifndef WINSTL_API_EXTERNAL_Console_FreeConsole
-# define WINSTL_API_EXTERNAL_Console_FreeConsole                            STLSOFT_NS_GLOBAL_(FreeConsole)
+# define WINSTL_API_EXTERNAL_Console_FreeConsole            STLSOFT_NS_GLOBAL_(FreeConsole)
 #endif /* !WINSTL_API_EXTERNAL_Console_FreeConsole */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GenerateConsoleCtrlEvent
@@ -123,25 +123,25 @@
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAlias
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAlias                       STLSOFT_NS_GLOBAL_(GetConsoleAlias)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAlias       STLSOFT_NS_GLOBAL_(GetConsoleAlias)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAlias */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasA
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasA                      STLSOFT_NS_GLOBAL_(GetConsoleAliasA)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasA      STLSOFT_NS_GLOBAL_(GetConsoleAliasA)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasA */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasW
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasW                      STLSOFT_NS_GLOBAL_(GetConsoleAliasW)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasW      STLSOFT_NS_GLOBAL_(GetConsoleAliasW)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasW */
 #endif /* !WINSTL_WIN32_WINNT */
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliases
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliases                     STLSOFT_NS_GLOBAL_(GetConsoleAliases)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliases     STLSOFT_NS_GLOBAL_(GetConsoleAliases)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliases */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasesA
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasesA                    STLSOFT_NS_GLOBAL_(GetConsoleAliasesA)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasesA    STLSOFT_NS_GLOBAL_(GetConsoleAliasesA)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasesA */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasesW
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasesW                    STLSOFT_NS_GLOBAL_(GetConsoleAliasesW)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasesW    STLSOFT_NS_GLOBAL_(GetConsoleAliasesW)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasesW */
 #endif /* !WINSTL_WIN32_WINNT */
 
@@ -159,13 +159,13 @@
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasExes
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExes                   STLSOFT_NS_GLOBAL_(GetConsoleAliasExes)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExes   STLSOFT_NS_GLOBAL_(GetConsoleAliasExes)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasExes */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesA
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesA                  STLSOFT_NS_GLOBAL_(GetConsoleAliasExesA)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesA  STLSOFT_NS_GLOBAL_(GetConsoleAliasExesA)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesA */
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesW
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesW                  STLSOFT_NS_GLOBAL_(GetConsoleAliasExesW)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesW  STLSOFT_NS_GLOBAL_(GetConsoleAliasExesW)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleAliasExesW */
 #endif /* !WINSTL_WIN32_WINNT */
 
@@ -176,31 +176,31 @@
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleCP
-# define WINSTL_API_EXTERNAL_Console_GetConsoleCP                           STLSOFT_NS_GLOBAL_(GetConsoleCP)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleCP           STLSOFT_NS_GLOBAL_(GetConsoleCP)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleCP */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleCursorInfo
-# define WINSTL_API_EXTERNAL_Console_GetConsoleCursorInfo                   STLSOFT_NS_GLOBAL_(GetConsoleCursorInfo)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleCursorInfo   STLSOFT_NS_GLOBAL_(GetConsoleCursorInfo)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleCursorInfo */
 
 #if WINSTL_WIN32_WINNT >= 0x0500
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleDisplayMode
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleDisplayMode                 STLSOFT_NS_GLOBAL_(GetConsoleDisplayMode)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleDisplayMode STLSOFT_NS_GLOBAL_(GetConsoleDisplayMode)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleDisplayMode */
 #endif /* !WINSTL_WIN32_WINNT */
 
 #if WINSTL_WIN32_WINNT >= 0x0500
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleFontSize
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleFontSize                    STLSOFT_NS_GLOBAL_(GetConsoleFontSize)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleFontSize    STLSOFT_NS_GLOBAL_(GetConsoleFontSize)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleFontSize */
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleHistoryInfo
-# define WINSTL_API_EXTERNAL_Console_GetConsoleHistoryInfo                  STLSOFT_NS_GLOBAL_(GetConsoleHistoryInfo)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleHistoryInfo  STLSOFT_NS_GLOBAL_(GetConsoleHistoryInfo)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleHistoryInfo */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleMode
-# define WINSTL_API_EXTERNAL_Console_GetConsoleMode                         STLSOFT_NS_GLOBAL_(GetConsoleMode)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleMode         STLSOFT_NS_GLOBAL_(GetConsoleMode)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleMode */
 
 #if WINSTL_WIN32_WINNT >= 0x0600
@@ -216,12 +216,12 @@
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleOutputCP
-# define WINSTL_API_EXTERNAL_Console_GetConsoleOutputCP                     STLSOFT_NS_GLOBAL_(GetConsoleOutputCP)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleOutputCP     STLSOFT_NS_GLOBAL_(GetConsoleOutputCP)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleOutputCP */
 
 #if WINSTL_WIN32_WINNT >= 0x0501
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleProcessList
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleProcessList                 STLSOFT_NS_GLOBAL_(GetConsoleProcessList)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleProcessList STLSOFT_NS_GLOBAL_(GetConsoleProcessList)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleProcessList */
 #endif /* !WINSTL_WIN32_WINNT */
 
@@ -240,24 +240,24 @@
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleTitle
-# define WINSTL_API_EXTERNAL_Console_GetConsoleTitle                        STLSOFT_NS_GLOBAL_(GetConsoleTitle)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleTitle        STLSOFT_NS_GLOBAL_(GetConsoleTitle)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleTitle */
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleTitleA
-# define WINSTL_API_EXTERNAL_Console_GetConsoleTitleA                       STLSOFT_NS_GLOBAL_(GetConsoleTitleA)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleTitleA       STLSOFT_NS_GLOBAL_(GetConsoleTitleA)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleTitleA */
 #ifndef WINSTL_API_EXTERNAL_Console_GetConsoleTitleW
-# define WINSTL_API_EXTERNAL_Console_GetConsoleTitleW                       STLSOFT_NS_GLOBAL_(GetConsoleTitleW)
+# define WINSTL_API_EXTERNAL_Console_GetConsoleTitleW       STLSOFT_NS_GLOBAL_(GetConsoleTitleW)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleTitleW */
 
 #if WINSTL_WIN32_WINNT >= 0x0500
 # ifndef WINSTL_API_EXTERNAL_Console_GetConsoleWindow
-#  define WINSTL_API_EXTERNAL_Console_GetConsoleWindow                      STLSOFT_NS_GLOBAL_(GetConsoleWindow)
+#  define WINSTL_API_EXTERNAL_Console_GetConsoleWindow      STLSOFT_NS_GLOBAL_(GetConsoleWindow)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetConsoleWindow */
 #endif /* !WINSTL_WIN32_WINNT */
 
 #if WINSTL_WIN32_WINNT >= 0x0500
 # ifndef WINSTL_API_EXTERNAL_Console_GetCurrentConsoleFont
-#  define WINSTL_API_EXTERNAL_Console_GetCurrentConsoleFont                 STLSOFT_NS_GLOBAL_(GetCurrentConsoleFont)
+#  define WINSTL_API_EXTERNAL_Console_GetCurrentConsoleFont STLSOFT_NS_GLOBAL_(GetCurrentConsoleFont)
 # endif /* !WINSTL_API_EXTERNAL_Console_GetCurrentConsoleFont */
 #endif /* !WINSTL_WIN32_WINNT */
 
@@ -278,45 +278,45 @@
 #endif /* !WINSTL_API_EXTERNAL_Console_GetNumberOfConsoleMouseButtons */
 
 #ifndef WINSTL_API_EXTERNAL_Console_GetStdHandle
-# define WINSTL_API_EXTERNAL_Console_GetStdHandle                           STLSOFT_NS_GLOBAL_(GetStdHandle)
+# define WINSTL_API_EXTERNAL_Console_GetStdHandle           STLSOFT_NS_GLOBAL_(GetStdHandle)
 #endif /* !WINSTL_API_EXTERNAL_Console_GetStdHandle */
 
 #ifndef WINSTL_API_EXTERNAL_Console_HandlerRoutine
-# define WINSTL_API_EXTERNAL_Console_HandlerRoutine                         STLSOFT_NS_GLOBAL_(HandlerRoutine)
+# define WINSTL_API_EXTERNAL_Console_HandlerRoutine         STLSOFT_NS_GLOBAL_(HandlerRoutine)
 #endif /* !WINSTL_API_EXTERNAL_Console_HandlerRoutine */
 
 #ifndef WINSTL_API_EXTERNAL_Console_PeekConsoleInput
-# define WINSTL_API_EXTERNAL_Console_PeekConsoleInput                       STLSOFT_NS_GLOBAL_(PeekConsoleInput)
+# define WINSTL_API_EXTERNAL_Console_PeekConsoleInput       STLSOFT_NS_GLOBAL_(PeekConsoleInput)
 #endif /* !WINSTL_API_EXTERNAL_Console_PeekConsoleInput */
 
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsole
-# define WINSTL_API_EXTERNAL_Console_ReadConsole                            STLSOFT_NS_GLOBAL_(ReadConsole)
+# define WINSTL_API_EXTERNAL_Console_ReadConsole            STLSOFT_NS_GLOBAL_(ReadConsole)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsole */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleA
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleA                           STLSOFT_NS_GLOBAL_(ReadConsoleA)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleA           STLSOFT_NS_GLOBAL_(ReadConsoleA)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleA */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleW
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleW                           STLSOFT_NS_GLOBAL_(ReadConsoleW)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleW           STLSOFT_NS_GLOBAL_(ReadConsoleW)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleInput
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleInput                       STLSOFT_NS_GLOBAL_(ReadConsoleInput)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleInput       STLSOFT_NS_GLOBAL_(ReadConsoleInput)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleInput */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleInputA
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleInputA                      STLSOFT_NS_GLOBAL_(ReadConsoleInputA)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleInputA      STLSOFT_NS_GLOBAL_(ReadConsoleInputA)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleInputA */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleInputW
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleInputW                      STLSOFT_NS_GLOBAL_(ReadConsoleInputW)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleInputW      STLSOFT_NS_GLOBAL_(ReadConsoleInputW)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleInputW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleOutput
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutput                      STLSOFT_NS_GLOBAL_(ReadConsoleOutput)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutput      STLSOFT_NS_GLOBAL_(ReadConsoleOutput)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleOutput */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleOutputA
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutputA                     STLSOFT_NS_GLOBAL_(ReadConsoleOutputA)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutputA     STLSOFT_NS_GLOBAL_(ReadConsoleOutputA)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleOutputA */
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleOutputW
-# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutputW                     STLSOFT_NS_GLOBAL_(ReadConsoleOutputW)
+# define WINSTL_API_EXTERNAL_Console_ReadConsoleOutputW     STLSOFT_NS_GLOBAL_(ReadConsoleOutputW)
 #endif /* !WINSTL_API_EXTERNAL_Console_ReadConsoleOutputW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_ReadConsoleOutputAttribute
@@ -348,15 +348,15 @@
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleActiveScreenBuffer */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleCP
-# define WINSTL_API_EXTERNAL_Console_SetConsoleCP                           STLSOFT_NS_GLOBAL_(SetConsoleCP)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleCP           STLSOFT_NS_GLOBAL_(SetConsoleCP)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleCP */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleCtrlHandler
-# define WINSTL_API_EXTERNAL_Console_SetConsoleCtrlHandler                  STLSOFT_NS_GLOBAL_(SetConsoleCtrlHandler)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleCtrlHandler  STLSOFT_NS_GLOBAL_(SetConsoleCtrlHandler)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleCtrlHandler */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleCursorInfo
-# define WINSTL_API_EXTERNAL_Console_SetConsoleCursorInfo                   STLSOFT_NS_GLOBAL_(SetConsoleCursorInfo)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleCursorInfo   STLSOFT_NS_GLOBAL_(SetConsoleCursorInfo)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleCursorInfo */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleCursorPosition
@@ -364,19 +364,19 @@
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleCursorPosition */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleDisplayMode
-# define WINSTL_API_EXTERNAL_Console_SetConsoleDisplayMode                  STLSOFT_NS_GLOBAL_(SetConsoleDisplayMode)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleDisplayMode  STLSOFT_NS_GLOBAL_(SetConsoleDisplayMode)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleDisplayMode */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleHistoryInfo
-# define WINSTL_API_EXTERNAL_Console_SetConsoleHistoryInfo                  STLSOFT_NS_GLOBAL_(SetConsoleHistoryInfo)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleHistoryInfo  STLSOFT_NS_GLOBAL_(SetConsoleHistoryInfo)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleHistoryInfo */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleMode
-# define WINSTL_API_EXTERNAL_Console_SetConsoleMode                         STLSOFT_NS_GLOBAL_(SetConsoleMode)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleMode         STLSOFT_NS_GLOBAL_(SetConsoleMode)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleMode */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleOutputCP
-# define WINSTL_API_EXTERNAL_Console_SetConsoleOutputCP                     STLSOFT_NS_GLOBAL_(SetConsoleOutputCP)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleOutputCP     STLSOFT_NS_GLOBAL_(SetConsoleOutputCP)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleOutputCP */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleScreenBufferInfoEx
@@ -392,11 +392,11 @@
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleTextAttribute */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleTitle
-# define WINSTL_API_EXTERNAL_Console_SetConsoleTitle                        STLSOFT_NS_GLOBAL_(SetConsoleTitle)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleTitle        STLSOFT_NS_GLOBAL_(SetConsoleTitle)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleTitle */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetConsoleWindowInfo
-# define WINSTL_API_EXTERNAL_Console_SetConsoleWindowInfo                   STLSOFT_NS_GLOBAL_(SetConsoleWindowInfo)
+# define WINSTL_API_EXTERNAL_Console_SetConsoleWindowInfo   STLSOFT_NS_GLOBAL_(SetConsoleWindowInfo)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetConsoleWindowInfo */
 
 #if WINSTL_WIN32_WINNT >= 0x0500
@@ -406,37 +406,37 @@
 #endif /* !WINSTL_WIN32_WINNT */
 
 #ifndef WINSTL_API_EXTERNAL_Console_SetStdHandle
-# define WINSTL_API_EXTERNAL_Console_SetStdHandle                           STLSOFT_NS_GLOBAL_(SetStdHandle)
+# define WINSTL_API_EXTERNAL_Console_SetStdHandle           STLSOFT_NS_GLOBAL_(SetStdHandle)
 #endif /* !WINSTL_API_EXTERNAL_Console_SetStdHandle */
 
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsole
-# define WINSTL_API_EXTERNAL_Console_WriteConsole                           STLSOFT_NS_GLOBAL_(WriteConsole)
+# define WINSTL_API_EXTERNAL_Console_WriteConsole           STLSOFT_NS_GLOBAL_(WriteConsole)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsole */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleA
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleA                          STLSOFT_NS_GLOBAL_(WriteConsoleA)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleA          STLSOFT_NS_GLOBAL_(WriteConsoleA)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleA */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleW
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleW                          STLSOFT_NS_GLOBAL_(WriteConsoleW)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleW          STLSOFT_NS_GLOBAL_(WriteConsoleW)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleInput
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleInput                      STLSOFT_NS_GLOBAL_(WriteConsoleInput)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleInput      STLSOFT_NS_GLOBAL_(WriteConsoleInput)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleInput */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleInputA
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleInputA                     STLSOFT_NS_GLOBAL_(WriteConsoleInputA)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleInputA     STLSOFT_NS_GLOBAL_(WriteConsoleInputA)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleInputA */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleInputW
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleInputW                     STLSOFT_NS_GLOBAL_(WriteConsoleInputW)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleInputW     STLSOFT_NS_GLOBAL_(WriteConsoleInputW)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleInputW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleOutput
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutput                     STLSOFT_NS_GLOBAL_(WriteConsoleOutput)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutput     STLSOFT_NS_GLOBAL_(WriteConsoleOutput)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleOutput */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleOutputA
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutputA                    STLSOFT_NS_GLOBAL_(WriteConsoleOutputA)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutputA    STLSOFT_NS_GLOBAL_(WriteConsoleOutputA)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleOutputA */
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleOutputW
-# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutputW                    STLSOFT_NS_GLOBAL_(WriteConsoleOutputW)
+# define WINSTL_API_EXTERNAL_Console_WriteConsoleOutputW    STLSOFT_NS_GLOBAL_(WriteConsoleOutputW)
 #endif /* !WINSTL_API_EXTERNAL_Console_WriteConsoleOutputW */
 
 #ifndef WINSTL_API_EXTERNAL_Console_WriteConsoleOutputAttribute

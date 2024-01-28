@@ -4,11 +4,11 @@
  * Purpose:     A scoping class to aid in placement new-ing.
  *
  * Created:     9th January 2002
- * Updated:     30th November 2020
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PLACEMENT_AID_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PLACEMENT_AID_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_PLACEMENT_AID_REVISION 7
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_PLACEMENT_AID_EDIT     44
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_PLACEMENT_AID_EDIT     45
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ class placement_aid
 public:
     /// The value type
     typedef T                   value_type;
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef placement_aid<T>    class_type;
 
 // Construction

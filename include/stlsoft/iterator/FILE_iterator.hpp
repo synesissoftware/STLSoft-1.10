@@ -4,11 +4,11 @@
  * Purpose:     FILE* output iterator.
  *
  * Created:     21st April 2009
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2009-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_MAJOR       1
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_MINOR       0
 # define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_REVISION    8
-# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_EDIT        15
+# define STLSOFT_VER_STLSOFT_ITERATOR_HPP_FILE_ITERATOR_EDIT        16
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ namespace stlsoft
 
 std::vector<int>  ints(10);
 
-{ for(size_t i = 0; i < ints.size(); ++i)
+{ for (size_t i = 0; i < ints.size(); ++i)
 {
   ints[i] = i;
 }}

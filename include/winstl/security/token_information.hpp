@@ -4,11 +4,11 @@
  * Purpose:     Helper for accessing token information.
  *
  * Created:     20th June 2003
- * Updated:     28th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MAJOR     4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_MINOR     4
 # define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_REVISION  5
-# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      76
+# define WINSTL_VER_WINSTL_SECURITY_HPP_TOKEN_INFORMATION_EDIT      77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -408,7 +408,7 @@ private:
 
         ::GetTokenInformation(hToken, C, NULL, 0, &cbRequired);
         dwError = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
-        if(ERROR_INSUFFICIENT_BUFFER != dwError)
+        if (ERROR_INSUFFICIENT_BUFFER != dwError)
         {
             // Report error
             exception_thrower_type()(dwError);
@@ -418,7 +418,7 @@ private:
             raw_pointer_type_ const raw     =   raw_allocator_type_().allocate(cbRequired);
             pointer const           data    =   static_cast<pointer>(static_cast<void*>(raw));
 
-            if(NULL == data)
+            if (NULL == data)
             {
                 // Report error
                 exception_thrower_type()(ERROR_NOT_ENOUGH_MEMORY);
@@ -428,7 +428,7 @@ private:
             }
             else
             {
-                if(!::GetTokenInformation(hToken, C, data, cbRequired, &cbRequired))
+                if (!::GetTokenInformation(hToken, C, data, cbRequired, &cbRequired))
                 {
                     // Scope the last error, in case the client code is not using exception reporting
                     last_error_scope scope;
