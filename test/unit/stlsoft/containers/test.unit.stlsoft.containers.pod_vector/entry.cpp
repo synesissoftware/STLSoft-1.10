@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::pod_vector`.
  *
  * Created: 1st December 2008
- * Updated: 18th January 2024
+ * Updated: 28th January 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 

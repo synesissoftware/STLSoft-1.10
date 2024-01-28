@@ -4,6 +4,16 @@
 ----
 
 
+28th January 2024 - 1.10.6 released
+-----------------------------------
+
+ * simplification and improvement of CMake handling
+ * dependency on xTests is now optional (in prepare_cmake.sh)
+ * now depends on xTests 0.21.2
+ * CMake C language now C11
+ * fixed defect in `stlsoft::pod_vector`
+
+
 18th January 2024 - 1.10.5 released
 -----------------------------------
 
