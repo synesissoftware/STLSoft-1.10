@@ -3,7 +3,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 if (APPLE)
 
-    message("adding '/usr/local/include' to include-directories for 'test'")
+    message("adding '/usr/local/include' to include-directories for 'examples'")
 
     include_directories("/usr/local/include")
 endif()
@@ -21,8 +21,6 @@ if(WIN32)
 endif()
 
 
-add_subdirectory(scratch)
-add_subdirectory(unit)
 
 
 # ############################## end of file ############################# #

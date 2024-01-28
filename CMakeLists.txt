@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for STLSoft
 #
 # Created:  31st March 2021
-# Updated:  10th January 2024
+# Updated:  28th January 2024
 #
 # ######################################################################## #
 
@@ -60,7 +60,7 @@ message(NOTICE "Generating CMake build scripts for ${PROJECT_NAME} ${PROJECT_VER
 
 # adhere strictly to C and C++ standards plus extensions. These are actually
 # useless since we do not compile anything; they merely state our intention.
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON) # GNU extensions and POSIX standard
 set(CMAKE_CXX_STANDARD 17)
@@ -90,13 +90,27 @@ target_include_directories(STLSoft INTERFACE
 
 
 # ##########################################################
+# examples
+
+option(BUILD_EXAMPLES "Build examples" ON)
+if(BUILD_EXAMPLES)
+
+    message("-- enabled building of examples ...")
+
+    add_subdirectory(examples)
+endif()
+
+
+# ##########################################################
 # test
 
 include(CTest)
 
 if(BUILD_TESTING)
 
-    set(xTests_REQUIRED_VERSION_ 0.21.1)
+    message("-- enabled building of tests ...")
+
+    set(xTests_REQUIRED_VERSION_ 0.21.2)
 
     find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
 
@@ -121,6 +135,7 @@ foreach(ITEM
     atlstl
     comstl
     inetstl
+    mfcstl
     platformstl
     rangelib
     stlsoft
