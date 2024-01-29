@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_MAJOR     1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_MINOR     1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_REVISION  10
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_EDIT      34
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_REVISION  11
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_BYTE_FORMAT_FUNCTIONS_EDIT      35
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -76,6 +76,10 @@
 # include <stlsoft/conversion/sap_cast.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_CONVERSION_HPP_SAP_CAST */
 
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STRING_H_SNPRINTF
+# include <stlsoft/util/string/snprintf.h>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STRING_H_SNPRINTF */
+
 #ifndef STLSOFT_INCL_STLSOFT_API_external_h_string
 # include <stlsoft/api/external/string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_external_h_string */
@@ -83,13 +87,6 @@
 #ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
 # include <stlsoft/api/internal/memfns.h>
 #endif /* !STLSOFT_INCL_STLSOFT_API_internal_h_memfns */
-
-#ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-# ifndef STLSOFT_INCL_H_STDIO
-#  define STLSOFT_INCL_H_STDIO
-#  include <stdio.h>
-# endif /* !STLSOFT_INCL_H_STDIO */
-#endif /* STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -112,6 +109,8 @@ namespace format
 namespace impl
 {
 #endif /* STLSOFT_NO_NAMESPACE */
+
+# ifndef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
 
 inline char const* format_hex_chars(bool requestUppercaseAlpha)
 {
@@ -219,6 +218,7 @@ inline void format_hex_uint256(char buff[16], ss_byte_t const* py, bool requestU
     format_hex_uint128(buff + (highByteFirst ? 32 : 0), py + (highByteFirst ? 0 : 16), requestUppercaseAlpha, highByteFirst);
     format_hex_uint128(buff + (highByteFirst ? 0 : 32), py + (highByteFirst ? 16 : 0), requestUppercaseAlpha, highByteFirst);
 }
+# endif /* !STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
 
 
 #ifndef STLSOFT_NO_NAMESPACE
@@ -313,25 +313,29 @@ format_bytes(
                 }
 
 
+#ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
 
-#if defined(STLSOFT_COMPILER_IS_GCC)
+# if defined(STLSOFT_COMPILER_IS_GCC)
+
                 typedef unsigned        int8x_t;
-#else /* ? compiler */
-                typedef uint32_t        int8x_t;
-#endif /* compiler */
-                STLSOFT_SUPPRESS_UNUSED(sizeof(int8x_t));
+# else /* ? compiler */
 
-#ifndef STLSOFT_NO_NAMESPACE
+                typedef uint32_t        int8x_t;
+# endif /* compiler */
+#else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
+
+# ifndef STLSOFT_NO_NAMESPACE
                 using ::stlsoft::conversion::format::impl::format_hex_uint8;
                 using ::stlsoft::conversion::format::impl::format_hex_uint16;
                 using ::stlsoft::conversion::format::impl::format_hex_uint32;
                 using ::stlsoft::conversion::format::impl::format_hex_uint64;
                 using ::stlsoft::conversion::format::impl::format_hex_uint128;
                 using ::stlsoft::conversion::format::impl::format_hex_uint256;
-#endif /* STLSOFT_NO_NAMESPACE */
+# endif /* STLSOFT_NO_NAMESPACE */
 
-                const bool  requestUppercaseAlpha = false;
-                const bool  highByteFirst = false;
+                bool const  requestUppercaseAlpha   =   false;
+                bool const  highByteFirst           =   false;
+#endif
 
                 switch (byteGrouping)
                 {
@@ -341,8 +345,11 @@ format_bytes(
                         break;
                     case    1:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%02x" /* : "%04X" */
-                                            ,   *sap_cast<uint8_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%02x" /* : "%04X" */
+                                        ,   *sap_cast<uint8_t const*>(py)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint8(buff, py, requestUppercaseAlpha);
@@ -352,8 +359,11 @@ format_bytes(
                         break;
                     case    2:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%04x" /* : "%04X" */
-                                            ,   *sap_cast<uint16_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%04x" /* : "%04X" */
+                                        ,   *sap_cast<uint16_t const*>(py)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint16(buff, py, requestUppercaseAlpha, highByteFirst);
@@ -363,8 +373,11 @@ format_bytes(
                         break;
                     case    4:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%08x" /* : "%08X" */
-                                            ,   *sap_cast<int8x_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%08x" /* : "%08X" */
+                                        ,   *(sap_cast<int8x_t const*>(py) + 0)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint32(buff, py, requestUppercaseAlpha, highByteFirst);
@@ -374,9 +387,12 @@ format_bytes(
                         break;
                     case    8:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%08x%08x" /* : "%08X%08X" */
-                                            ,   *(sap_cast<int8x_t const*>(py) + 1)
-                                            ,   *sap_cast<int8x_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%08x%08x" /* : "%08X%08X" */
+                                        ,   *(sap_cast<int8x_t const*>(py) + 1)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 0)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint64(buff, py, requestUppercaseAlpha, highByteFirst);
@@ -386,11 +402,14 @@ format_bytes(
                         break;
                     case    16:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%08x%08x%08x%08x" /* : "%08X%08X%08X%08X" */
-                                            ,   *(sap_cast<int8x_t const*>(py) + 3)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 2)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 1)
-                                            ,   *sap_cast<int8x_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%08x%08x%08x%08x" /* : "%08X%08X%08X%08X" */
+                                        ,   *(sap_cast<int8x_t const*>(py) + 3)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 2)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 1)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 0)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint128(buff, py, requestUppercaseAlpha, highByteFirst);
@@ -400,15 +419,18 @@ format_bytes(
                         break;
                     case    32:
 #ifdef STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF
-                        cch     =   ::sprintf(  buff, /* (0 == uppercaseHex) ? */ "%08x%08x%08x%08x%08x%08x%08x%08x" /* : "%08X%08X%08X%08X%08X%08X%08X%08X" */
-                                            ,   *(sap_cast<int8x_t const*>(py) + 7)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 6)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 5)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 4)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 3)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 2)
-                                            ,   *(sap_cast<int8x_t const*>(py) + 1)
-                                            ,   *sap_cast<int8x_t const*>(py));
+                        cch     =   stlsoft_C_snprintf(
+                                            buff, cchBuff
+                                        ,   /* (0 == uppercaseHex) ? */ "%08x%08x%08x%08x%08x%08x%08x%08x" /* : "%08X%08X%08X%08X%08X%08X%08X%08X" */
+                                        ,   *(sap_cast<int8x_t const*>(py) + 7)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 6)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 5)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 4)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 3)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 2)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 1)
+                                        ,   *(sap_cast<int8x_t const*>(py) + 0)
+                                        );
                         buff    +=  cch;
 #else /* ? STLSOFT_CONVERSION_BYTE_FORMAT_FUNCTIONS_USE_SPRINTF */
                         format_hex_uint256(buff, py, requestUppercaseAlpha, highByteFirst);
@@ -423,13 +445,16 @@ format_bytes(
                     if (++lineIndex < numLines)
                     {
                         STLSOFT_API_INTERNAL_memfns_memcpy(buff, lineSeparator, cchLineSeparator * sizeof(char));
+
                         buff += cchLineSeparator;
                     }
+
                     groupIndex = 0;
                 }
                 else if (0 != cb)
                 {
                     STLSOFT_API_INTERNAL_memfns_memcpy(buff, groupSeparator, cchSeparator * sizeof(char));
+
                     buff += cchSeparator;
                 }
             }
