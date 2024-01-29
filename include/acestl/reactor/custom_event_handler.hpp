@@ -4,7 +4,7 @@
  * Purpose:     Event handler class for custom event notifications.
  *
  * Created:     1st October 2004
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MAJOR     2
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_MINOR     1
 # define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_REVISION  10
-# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      38
+# define ACESTL_VER_ACESTL_REACTOR_HPP_CUSTOM_EVENT_HANDLER_EDIT      39
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -194,7 +194,7 @@ private:
                               ,   long                  code
                               ,   void*                 arg)
   {
-    fprintf(stdout, "Received custom event: %ld, %p\n", code, arg);
+    printf("Received custom event: %ld, %p\n", code, arg);
 
     if (300 == code)
     {

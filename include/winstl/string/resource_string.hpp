@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MAJOR    4
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MINOR    2
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_REVISION 13
-# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     101
+# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ winstl::basic_resource_string<std::string>  str(1024);
 
 std::cout << "String with id 1024: " << str << std::endl;
 
-fprintf(stdout, "String with id 1024: %.*s\n", str.size(), str.data());
+printf("String with id 1024: %.*s\n", str.size(), str.data());
 \endcode
  *
  * The second template parameter is the exception policy, which determines
