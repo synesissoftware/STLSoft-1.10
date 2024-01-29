@@ -5,7 +5,7 @@
  *              Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR    5
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR    0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 2
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     94
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     95
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -467,15 +467,6 @@ public:
     static HINTERNET find_first_file(HINTERNET hconn, char_type const* spec, find_data_type *findData, is_dword_t flags = 0, is_dword_t context = 0)
     {
         HINTERNET hfind = ::FtpFindFirstFileA(hconn, spec, STLSOFT_NS_QUAL(any_caster)<find_data_type*, LPWIN32_FIND_DATAA, LPWIN32_FIND_DATAW>(findData), flags, context);
-
-#if 0
-        if (NULL == hfind)
-        {
-            findData->cFileName[0] = '\0';
-        }
-
-printf("find_first_file(0x%08x, %s => %s)\n", hfind, spec, findData->cFileName);
-#endif /* 0 */
 
         return hfind;
     }
