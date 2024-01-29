@@ -1,5 +1,5 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    test.unit.stlsoft.string.simple_string.cpp
+ * File:    test.unit.stlsoft.string.string.simple_string.cpp
  *
  * Purpose: Unit-tests for `stlsoft::basic_simple_string`.
  *
