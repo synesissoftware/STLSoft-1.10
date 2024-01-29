@@ -36,13 +36,8 @@
 /* xTests header files */
 #include <xtests/xtests.h>
 
-// /* STLSoft header files */
-// #include <stlsoft/stlsoft.h>
-
-// /* Standard C++ header files */
-// #include <iterator>
-// #include <sstream>
-// #include <string>
+/* STLSoft header files */
+#include <stlsoft/stlsoft.h>
 
 /* Standard C header files */
 #include <stdlib.h>
