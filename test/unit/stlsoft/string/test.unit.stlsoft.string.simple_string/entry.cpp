@@ -150,7 +150,7 @@ namespace
     static void test_1_28(void);
     static void test_string_access_shims(void);
     static void test_1_29(void);
-    static void test_inserter(void);
+    static void test_insertion(void);
     static void test_1_30(void);
     static void test_string_traits(void);
 
@@ -268,7 +268,7 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_28);
         XTESTS_RUN_CASE(test_string_access_shims);
         XTESTS_RUN_CASE(test_1_29);
-        XTESTS_RUN_CASE(test_inserter);
+        XTESTS_RUN_CASE(test_insertion);
         XTESTS_RUN_CASE(test_1_30);
         XTESTS_RUN_CASE(test_string_traits);
 
@@ -2493,7 +2493,7 @@ static void test_1_29(void)
 {
 }
 
-static void test_inserter(void)
+static void test_insertion(void)
 {
     string_t    s1;
     string_t    s2("abc");
