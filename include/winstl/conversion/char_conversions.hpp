@@ -4,7 +4,7 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     31st May 2003
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    4
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 13
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     115
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     116
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -218,7 +218,7 @@ private:
         // we're not in an exception-environment, then size() will be zero
         if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }
@@ -376,7 +376,7 @@ private:
         // we're not in an exception-environment, then size() will be zero
         if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }

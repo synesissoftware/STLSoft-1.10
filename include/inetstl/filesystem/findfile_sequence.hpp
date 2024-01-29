@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR     3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR     0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION  24
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      165
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      166
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1381,7 +1381,6 @@ inline ss_typename_type_ret_k basic_findfile_sequence_const_input_iterator<C, T,
                     }
                     search += pattern;
 
-//printf("[%s]\n", search.c_str());
                     HINTERNET       hSrch   =   find_first_file_(m_list->m_hconn, STLSOFT_NS_QUAL(c_str_ptr)(search), m_flags, &m_data);
 
                     if (NULL != hSrch)

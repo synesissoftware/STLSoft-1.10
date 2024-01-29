@@ -1,11 +1,11 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        stlsoft/smartptr/scoped_lambda.hpp
  *
- * Purpose:     scoped_lambda - parameterisable RAII class for arbitrary
+ * Purpose:     scoped_lambda - specialisable RAII class for arbitrary
  *              type methods.
  *
  * Created:     1st October 2014
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_MAJOR       1
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_MINOR       0
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_REVISION    1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_EDIT        7
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_LAMBDA_EDIT        8
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////

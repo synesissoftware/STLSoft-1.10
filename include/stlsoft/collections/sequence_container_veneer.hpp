@@ -4,7 +4,7 @@
  * Purpose:     RRID veneer for sequence containers
  *
  * Created:     2nd October 2002
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MAJOR      4
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MINOR      0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_REVISION   9
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       67
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -216,7 +216,7 @@ public:
 
     /// Copy assignment operator
     ///
-    /// This method is provided in case the parameterising class provides the
+    /// This method is provided in case the specialising class provides the
     /// operator. If it does not, then the compiler will ignore it unless a
     /// call is made to it, in which case an error would have been reported
     /// anyway

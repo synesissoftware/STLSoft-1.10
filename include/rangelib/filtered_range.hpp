@@ -4,7 +4,7 @@
  * Purpose:     Range filter adaptor.
  *
  * Created:     9th July 2004
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -50,7 +50,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_MINOR    5
 # define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_REVISION 6
-# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_EDIT     43
+# define RANGELIB_VER_RANGELIB_HPP_FILTERED_RANGE_EDIT     44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -158,7 +158,7 @@ public:
     typedef filtered_range<R, P, RC>                                            class_type;
 private:
 #ifdef STLSOFT_CF_HAS_MEMBER_TYPE_SUPPORTED
-    /// Indicates whether the parameterising sequence type has a \c reference member
+    /// Indicates whether the specialising sequence type has a \c reference member
     ///
     /// \note We can't use the type fixer in a fully correct way here, because
     /// most compilers do not detect reference / const_reference members, so we

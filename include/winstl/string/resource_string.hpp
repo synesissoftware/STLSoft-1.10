@@ -4,7 +4,7 @@
  * Purpose:     basic_resource_string class.
  *
  * Created:     1st November 1994
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Thanks to:   Ryan Ginstrom for suggesting the implementation for handling
  *              Unicode strings on Win9x.
@@ -59,7 +59,7 @@
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MAJOR    4
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_MINOR    2
 # define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_REVISION 13
-# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     100
+# define WINSTL_VER_WINSTL_STRING_HPP_RESOURCE_STRING_EDIT     102
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -120,9 +120,9 @@ namespace winstl_project
  *
  * \ingroup group__library__String
  *
- * It is an adaptor template, so is parameterised with the underlying string
+ * It is an adaptor template, so is specialised with the underlying string
  * type. For example, <code>winstl::basic_resource_string&lt;std::string&gt;</code>
- * is parameterised from <code>std::string</code>, and can therefore use its methods
+ * is specialised from <code>std::string</code>, and can therefore use its methods
  * and is compatible with its client code:
  *
 \code
@@ -130,7 +130,7 @@ winstl::basic_resource_string<std::string>  str(1024);
 
 std::cout << "String with id 1024: " << str << std::endl;
 
-fprintf(stdout, "String with id 1024: %.*s\n", str.size(), str.data());
+printf("String with id 1024: %.*s\n", str.size(), str.data());
 \endcode
  *
  * The second template parameter is the exception policy, which determines

@@ -4,11 +4,11 @@
  * Purpose:     Definition of the CArray_traits traits class.
  *
  * Created:     1st December 2002
- * Updated:     28th November 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MAJOR      2
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_MINOR      0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_REVISION   6
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_EDIT       24
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CARRAY_TRAITS_EDIT       25
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,7 @@ struct CArray_traits
     typedef ????            value_type;
     /// Typedef that defines the type of the arguments to the methods of the array
     typedef ????            arg_type;
-    /// Typedef that identifies the actual class type used to parameterise the traits
+    /// Typedef that identifies the actual class type used to specialise the traits
     typedef ????            array_type;
 };
 

@@ -8,7 +8,7 @@
  *              one of the typedefs
  *
  * Created:     1st May 2004
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION    11
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        75
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -158,7 +158,7 @@ public:
     class                                                               const_iterator;
 private:
     typedef basic_simple_string<char_type>                              string_type;
-    // TODO: Have all filesystem_traits that have a fixed length derive from a tag type, so that we can parameterise
+    // TODO: Have all filesystem_traits that have a fixed length derive from a tag type, so that we can specialise
     // based on that. Then reinstate the string type discrimination based on the traits
 //    typedef basic_static_string<char_type, traits_type::maxPathLength>  string_type;
     typedef string_tokeniser<string_type, char_type>                    tokeniser_type;

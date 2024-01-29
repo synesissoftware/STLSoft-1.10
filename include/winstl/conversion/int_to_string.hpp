@@ -4,7 +4,7 @@
  * Purpose:     WinSTL integer to string conversions.
  *
  * Created:     31st July 2002
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MAJOR      2
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_MINOR      1
 # define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_REVISION   15
-# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       60
+# define _WINSTL_VER_WINSTL_CONVERSION_HPP_INT_TO_STRING_EDIT       61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -261,7 +261,7 @@ struct Key
             // meaningful way
             // 2. Do not want to couple to C++ exception-handling
             // and there is no graceful way to allow this to be
-            // parameterisable. (May allow a pp-discriminated
+            // specialisable. (May allow a pp-discriminated
             // mechanism in next version.)
             if (TLS_OUT_OF_INDEXES == m_index)
             {

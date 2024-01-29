@@ -4,11 +4,11 @@
  * Purpose:     Definition of the CList_traits traits class.
  *
  * Created:     1st December 2002
- * Updated:     28th November 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MAJOR       3
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_MINOR       0
 # define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_REVISION    6
-# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_EDIT        70
+# define MFCSTL_VER_MFCSTL_COLLECTIONS_HPP_CLIST_TRAITS_EDIT        71
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,7 +131,7 @@ struct CList_traits
     typedef ????            value_type;
     /// Typedef that defines the type of the arguments to the methods of the list
     typedef ????            arg_type;
-    /// Typedef that identifies the actual class type used to parameterise the traits
+    /// Typedef that identifies the actual class type used to specialise the traits
     typedef ????            list_type;
 };
 

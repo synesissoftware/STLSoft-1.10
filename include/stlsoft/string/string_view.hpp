@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     22nd January 2024
+ * Updated:     29th January 2024
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        111
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        112
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1570,7 +1570,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
 
             STLSOFT_SUPPRESS_UNUSED(ator);  // Need this for silly old Borland
 
-            // Because the class might be parameterised with a no-throw allocator,
+            // Because the class might be specialised with a no-throw allocator,
             // we'll check the result. This is really hokey, of course, since we're
             // returning a NULL string in the circumstances where memory has
             // failed to allocate. In such cases we can only hope that the memory

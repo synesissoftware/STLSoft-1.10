@@ -4,7 +4,7 @@
  * Purpose:     Character-encoding scheme interconversion components.
  *
  * Created:     31st May 2003
- * Updated:     18th January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR      5
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR      3
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION   4
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT       119
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT       120
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -292,7 +292,7 @@ private:
         // we're not in an exception-environment, then size() will be zero
         if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }
@@ -437,7 +437,7 @@ private:
         // we're not in an exception-environment, then size() will be zero
         if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }

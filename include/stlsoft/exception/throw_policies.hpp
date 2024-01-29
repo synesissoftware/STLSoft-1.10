@@ -4,11 +4,11 @@
  * Purpose:     Exception throwing policy classes.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_MAJOR     6
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_MINOR     0
 # define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_REVISION  1
-# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_EDIT      60
+# define STLSOFT_VER_STLSOFT_EXCEPTION_HPP_THROW_POLICIES_EDIT      61
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -155,7 +155,7 @@ public:
  */
 typedef null_exception_policy   nothrow_exception_policy;
 
-/** The throwing exception policy. It throws instances of its parameterising type.
+/** The throwing exception policy. It throws instances of its specialising type.
  *
  * \ingroup group__library__Exception
  *
