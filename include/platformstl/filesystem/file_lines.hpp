@@ -4,11 +4,11 @@
  * Purpose:     Platform header for the file_lines components.
  *
  * Created:     25th October 2007
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -49,7 +49,7 @@
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_MAJOR    2
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_MINOR    0
 # define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_REVISION 13
-# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_EDIT     45
+# define PLATFORMSTL_VER_PLATFORMSTL_FILESYSTEM_HPP_FILE_LINES_EDIT     46
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file platformstl/filesystem/file_lines.hpp
@@ -267,7 +267,7 @@ public: // Comparison
     bool_type equal(class_type const& rhs) const
 #endif /* compiler */
     {
-        if(size() != rhs.size())
+        if (size() != rhs.size())
         {
             return false;
         }
@@ -364,7 +364,7 @@ private: // Implementation
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
 
         // check if it looks like a binary file
-        if(base + cch != std::find(base, base + cch, '\0'))
+        if (base + cch != std::find(base, base + cch, '\0'))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(invalid_file_type_exception("file is binary (or unsupported text encoding)", 0, path));
@@ -394,15 +394,15 @@ private: // Implementation
 //        bool const              hasLF   =   (base + cch != std::find(base, base + cch, '\n'));
 
 #if 1
-        { for(; begin != end; ++begin)
+        { for (; begin != end; ++begin)
         {
             char_type const     c   =   *begin;
             char_type const*    eol =   begin;
 
-            switch(c)
+            switch (c)
             {
             case '\r':
-                if('\r' == prev)
+                if ('\r' == prev)
                 {
                     --eol;
 
@@ -412,7 +412,7 @@ private: // Implementation
                 }
                 break;
             case '\n':
-                if('\r' == prev)
+                if ('\r' == prev)
                 {
                     --eol;
                 }
@@ -422,7 +422,7 @@ private: // Implementation
                 s0 = begin + 1;
                 break;
             default:
-                if('\r' == prev)
+                if ('\r' == prev)
                 {
                     --eol;
 
@@ -435,11 +435,11 @@ private: // Implementation
 
             prev = c;
         }}
-        if(s0 != end)
+        if (s0 != end)
         {
             char_type const* eol = begin;
 
-            if('\r' == prev)
+            if ('\r' == prev)
             {
                 --eol;
             }
@@ -456,16 +456,16 @@ private: // Implementation
         //    the first non-empty string's contents point within the mapping.
         bool canDiscardMapping = false;
 
-        if(!canDiscardMapping)
+        if (!canDiscardMapping)
         {
             canDiscardMapping = m_strings.empty();
         }
 
-        if(!canDiscardMapping)
+        if (!canDiscardMapping)
         {
-            { for(ss_typename_type_k strings_type_::const_iterator i = m_strings.begin(); i != m_strings.end(); ++i)
+            { for (ss_typename_type_k strings_type_::const_iterator i = m_strings.begin(); i != m_strings.end(); ++i)
             {
-                if(0u != (*i).size())
+                if (0u != (*i).size())
                 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                     void const* end2    =   ptr_byte_offset(base, STLSOFT_NS_QUAL(truncation_cast)<ss_ptrdiff_t>(cb));
@@ -481,7 +481,7 @@ private: // Implementation
             }}
         }
 
-        if(!canDiscardMapping)
+        if (!canDiscardMapping)
         {
             m_mmf = mmf;
         }

@@ -4,11 +4,11 @@
  * Purpose:     Compiler feature discrimination for Digital Mars C/C++.
  *
  * Created:     7th February 2003
- * Updated:     26th November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -62,7 +62,7 @@
 # define STLSOFT_VER_H_STLSOFT_CCCAP_DMC_MAJOR      3
 # define STLSOFT_VER_H_STLSOFT_CCCAP_DMC_MINOR      21
 # define STLSOFT_VER_H_STLSOFT_CCCAP_DMC_REVISION   1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_DMC_EDIT       104
+# define STLSOFT_VER_H_STLSOFT_CCCAP_DMC_EDIT       105
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -184,33 +184,33 @@
  * which indicate that a given type is not used in the size-specific types.
  */
 
-#define _STLSOFT_SIZEOF_CHAR            (1)
-#define _STLSOFT_SIZEOF_SHORT           (2)
-#define _STLSOFT_SIZEOF_INT             (4)
-#define _STLSOFT_SIZEOF_LONG            (4)
-#define _STLSOFT_SIZEOF_LONG_LONG       (8)
+#define _STLSOFT_SIZEOF_CHAR                                (1)
+#define _STLSOFT_SIZEOF_SHORT                               (2)
+#define _STLSOFT_SIZEOF_INT                                 (4)
+#define _STLSOFT_SIZEOF_LONG                                (4)
+#define _STLSOFT_SIZEOF_LONG_LONG                           (8)
 
 /* 8-bit integer */
 #define STLSOFT_CF_8BIT_INT_SUPPORT
-#define STLSOFT_SI08_T_BASE_TYPE    signed      char
-#define STLSOFT_UI08_T_BASE_TYPE    unsigned    char
+#define STLSOFT_SI08_T_BASE_TYPE                            signed      char
+#define STLSOFT_UI08_T_BASE_TYPE                            unsigned    char
 
 /* 16-bit integer */
 #define STLSOFT_CF_16BIT_INT_SUPPORT
-#define STLSOFT_SI16_T_BASE_TYPE    signed      short
-#define STLSOFT_UI16_T_BASE_TYPE    unsigned    short
+#define STLSOFT_SI16_T_BASE_TYPE                            signed      short
+#define STLSOFT_UI16_T_BASE_TYPE                            unsigned    short
 
 /* 32-bit integer */
 #define STLSOFT_CF_32BIT_INT_SUPPORT
-#define STLSOFT_SI32_T_BASE_TYPE    signed      int
-#define STLSOFT_UI32_T_BASE_TYPE    unsigned    int
+#define STLSOFT_SI32_T_BASE_TYPE                            signed      int
+#define STLSOFT_UI32_T_BASE_TYPE                            unsigned    int
 #define STLSOFT_CF_LONG_DISTINCT_INT_TYPE
 
 /* 64-bit integer */
 #define STLSOFT_CF_64BIT_INT_SUPPORT
 #define STLSOFT_CF_64BIT_INT_IS_long_long
-#define STLSOFT_SI64_T_BASE_TYPE    signed      long long
-#define STLSOFT_UI64_T_BASE_TYPE    unsigned    long long
+#define STLSOFT_SI64_T_BASE_TYPE                            signed      long long
+#define STLSOFT_UI64_T_BASE_TYPE                            unsigned    long long
 
 /* Member constants */
 #define STLSOFT_CF_MEMBER_CONSTANT_SUPPORT
@@ -431,7 +431,7 @@
 # define STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_ASSERT(expr)                   _STLSOFT_CUSTOM_ASSERT(expr)
 # if defined(_STLSOFT_CUSTOM_ASSERT_INCLUDE)
-#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME    _STLSOFT_CUSTOM_ASSERT_INCLUDE
+#  define   __STLSOFT_CF_ASSERT_INCLUDE_NAME                _STLSOFT_CUSTOM_ASSERT_INCLUDE
 # else
 #  error You must define _STLSOFT_CUSTOM_ASSERT_INCLUDE along with _STLSOFT_CUSTOM_ASSERT()
 # endif /* !_STLSOFT_CUSTOM_ASSERT_INCLUDE */
@@ -439,7 +439,7 @@
 # define __STLSOFT_CF_ASSERT_SUPPORT
 # define STLSOFT_CF_ASSERT_SUPPORT
  //#define   __STLSOFT_CF_USE_cassert
-# define __STLSOFT_CF_ASSERT_INCLUDE_NAME       <assert.h>
+# define __STLSOFT_CF_ASSERT_INCLUDE_NAME                   <assert.h>
 # define STLSOFT_ASSERT(expr)                   assert(expr)
 #endif /* _STLSOFT_CUSTOM_ASSERT */
 
@@ -452,10 +452,10 @@
 #define STLSOFT_CF_STDCALL_SUPPORTED
 
 #ifdef STLSOFT_CF_CDECL_SUPPORTED
-# define STLSOFT_CDECL              __cdecl
+# define STLSOFT_CDECL                                      __cdecl
 #endif /* STLSOFT_CF_CDECL_SUPPORTED */
 #ifdef STLSOFT_CF_STDCALL_SUPPORTED
-# define STLSOFT_STDCALL            __stdcall
+# define STLSOFT_STDCALL                                    __stdcall
 #endif /* STLSOFT_CF_STDCALL_SUPPORTED */
 
 /* /////////////////////////////////////////////////////////////////////////

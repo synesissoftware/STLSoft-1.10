@@ -4,11 +4,11 @@
  * Purpose:     Path classification functions
  *
  * Created:     28th November 2020
- * Updated:     23rd March 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2020-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2020-2024, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MAJOR       1
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_MINOR       3
 # define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_REVISION    3
-# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        10
+# define WINSTL_VER_WINSTL_FILESYSTEM_H_PATH_CLASSIFY_FUNCTIONS_EDIT        11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -91,12 +91,12 @@
 
 enum winstl_C_path_classification_t
 {
-        WinSTL_C_PathType_MIN_VALUE                         =   -10000
+        WinSTL_C_PathType_MIN_VALUE             =   -10000
 
-    ,   WinSTL_C_PathType_InvalidSlashRuns                  =   -3
-    ,   WinSTL_C_PathType_InvalidChars                      =   -2
-    ,   WinSTL_C_PathType_Invalid                           =   -1
-    ,   WinSTL_C_PathType_Unknown                           =   0
+    ,   WinSTL_C_PathType_InvalidSlashRuns      =   -3
+    ,   WinSTL_C_PathType_InvalidChars          =   -2
+    ,   WinSTL_C_PathType_Invalid               =   -1
+    ,   WinSTL_C_PathType_Unknown               =   0
     ,   WinSTL_C_PathType_Empty
     ,   WinSTL_C_PathType_Relative
     ,   WinSTL_C_PathType_SlashRooted
@@ -170,18 +170,20 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-# define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                        char
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_    stlsoft_C_string_slice_m_t
-# define winstl_C_path_classification_results_X_t_                  winstl_C_path_classification_results_m_t
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_           STLSOFT_NS_GLOBAL(isalpha)
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_           stlsoft_C_strnchr
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_         stlsoft_C_strnpbrkn
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_          stlsoft_C_strnstrn
-# define winstl_C_path_classify_alwaysInvalidChars_X_               winstl_C_path_classify_alwaysInvalidChars_m_
-# define winstl_C_path_classify_find_UNC_server_and_share_X_        winstl_C_path_classify_find_UNC_server_and_share_m_
-# define winstl_C_path_classify_root_X_                             winstl_C_path_classify_root_m_
-# define winstl_C_path_classify_impl_X_                             winstl_C_path_classify_impl_m_
-# define winstl_C_path_classify_root_impl_X_                        winstl_C_path_classify_root_impl_m_
+# define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                char
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_ \
+                                                            stlsoft_C_string_slice_m_t
+# define winstl_C_path_classification_results_X_t_          winstl_C_path_classification_results_m_t
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_   STLSOFT_NS_GLOBAL(isalpha)
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_   stlsoft_C_strnchr
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_ stlsoft_C_strnpbrkn
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_  stlsoft_C_strnstrn
+# define winstl_C_path_classify_alwaysInvalidChars_X_       winstl_C_path_classify_alwaysInvalidChars_m_
+# define winstl_C_path_classify_find_UNC_server_and_share_X_ \
+                                                            winstl_C_path_classify_find_UNC_server_and_share_m_
+# define winstl_C_path_classify_root_X_                     winstl_C_path_classify_root_m_
+# define winstl_C_path_classify_impl_X_                     winstl_C_path_classify_impl_m_
+# define winstl_C_path_classify_root_impl_X_                winstl_C_path_classify_root_impl_m_
 # include <winstl/filesystem/path_functions/classify_functions_X_.h>
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_
@@ -196,18 +198,20 @@ typedef struct winstl_C_path_classification_results_w_t     winstl_C_path_classi
 # undef winstl_C_path_classify_impl_X_
 # undef winstl_C_path_classify_root_impl_X_
 
-# define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                        wchar_t
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_    stlsoft_C_string_slice_w_t
-# define winstl_C_path_classification_results_X_t_                  winstl_C_path_classification_results_w_t
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_           STLSOFT_NS_GLOBAL(iswalpha)
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_           stlsoft_C_wcsnchr
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_         stlsoft_C_wcsnpbrkn
-# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_          stlsoft_C_wcsnstrn
-# define winstl_C_path_classify_alwaysInvalidChars_X_               winstl_C_path_classify_alwaysInvalidChars_w_
-# define winstl_C_path_classify_find_UNC_server_and_share_X_        winstl_C_path_classify_find_UNC_server_and_share_w_
-# define winstl_C_path_classify_root_X_                             winstl_C_path_classify_root_w_
-# define winstl_C_path_classify_impl_X_                             winstl_C_path_classify_impl_w_
-# define winstl_C_path_classify_root_impl_X_                        winstl_C_path_classify_root_impl_w_
+# define WINSTL_C_PATH_CLASSIFY_IMPL_char_t_                wchar_t
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_ \
+                                                            stlsoft_C_string_slice_w_t
+# define winstl_C_path_classification_results_X_t_          winstl_C_path_classification_results_w_t
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_isalpha_X_   STLSOFT_NS_GLOBAL(iswalpha)
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnchr_X_   stlsoft_C_wcsnchr
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnpbrkn_X_ stlsoft_C_wcsnpbrkn
+# define WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_strnstrn_X_  stlsoft_C_wcsnstrn
+# define winstl_C_path_classify_alwaysInvalidChars_X_       winstl_C_path_classify_alwaysInvalidChars_w_
+# define winstl_C_path_classify_find_UNC_server_and_share_X_ \
+                                                            winstl_C_path_classify_find_UNC_server_and_share_w_
+# define winstl_C_path_classify_root_X_                     winstl_C_path_classify_root_w_
+# define winstl_C_path_classify_impl_X_                     winstl_C_path_classify_impl_w_
+# define winstl_C_path_classify_root_impl_X_                winstl_C_path_classify_root_impl_w_
 # include <winstl/filesystem/path_functions/classify_functions_X_.h>
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_char_t_
 # undef WINSTL_C_PATH_CLASSIFY_IMPL_stlsoft_C_string_slice_X_t_

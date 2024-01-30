@@ -61,7 +61,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MAJOR       4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_MINOR       3
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_REVISION    2
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        96
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_POD_VECTOR_EDIT        97
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -148,7 +148,7 @@ public:
     typedef ss_typename_type_k buffer_type_::value_type     value_type;
     /// The allocator type
     typedef ss_typename_type_k buffer_type_::allocator_type allocator_type;
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef pod_vector<
         T_value
     ,   T_allocator

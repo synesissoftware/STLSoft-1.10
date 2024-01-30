@@ -4,7 +4,7 @@
  * Purpose:     Contains the auto_buffer template class.
  *
  * Created:     19th January 2002
- * Updated:     17th January 2024
+ * Updated:     20th January 2024
  *
  * Thanks:      To Magnificent Imbecil for pointing out error in
  *              documentation, and for suggesting swap() optimisation.
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MAJOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_MINOR       5
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_REVISION    7
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        202
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_AUTO_BUFFER_EDIT        203
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,7 @@ struct auto_buffer_internal_size_calculator<ss_char_w_t>
  * This class provides an efficient replacement for dynamic memory block
  * allocation when the block size generally falls under a predictable limit.
  * In such cases, significant performance benefits can be achieved by using
- * an instance of a parameterisation of auto_buffer, whose size parameter
+ * an instance of a specialisation of auto_buffer, whose size parameter
  * V_space is set to a level to cater for most of the requested sizes. Only
  * where the size of the buffer needs to be larger than this limit does an
  * allocation occur from the heap/free-store via the given allocator.
@@ -437,7 +437,7 @@ public: // types
     /// The allocator traits type
     typedef std::allocator_traits<allocator_type>           allocator_traits_type;
 #endif /* STLSOFT_LF_ALLOCATOR_TRAITS_SUPPORT */
-    /// The type of the current specialisation
+    /// The current specialisation of the type
 #ifdef STLSOFT_AUTO_BUFFER_USE_PRE_1_9_CHARACTERISTICS
     typedef auto_buffer<
         T_value

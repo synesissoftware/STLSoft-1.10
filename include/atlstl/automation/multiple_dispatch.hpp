@@ -5,11 +5,11 @@
  *              through multiple IDispatch interfaces visible to script clients.
  *
  * Created:     15th May 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2007-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_MAJOR      2
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_MINOR      1
 # define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_REVISION   5
-# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_EDIT       27
+# define ATLSTL_VER_ATLSTL_AUTOMATION_HPP_MULTIPLE_DISPATCH_EDIT       28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -229,7 +229,7 @@ protected:
         unsigned    index   =   1;
         HRESULT     hr      =   dispatch_parent_0_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -238,15 +238,15 @@ protected:
         }
 
         // Encode interface info into the dispid
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= (index - 1);
 
-            for(UINT i = 0; i < cNames; ++i)
+            for (UINT i = 0; i < cNames; ++i)
             {
-                if(rgdispid[i] < 0)
+                if (rgdispid[i] < 0)
                 {
                     // Leave these alone. They'll be processed on a first-come-first-serve
                     // basis, which assumes that the GetIDsOfNames() and Invoke() of I0 and
@@ -287,18 +287,18 @@ protected:
                     ,   EXCEPINFO*  pexcepinfo
                     ,   UINT*       puArgErr)
     {
-        if(dispidMember >= 0)
+        if (dispidMember >= 0)
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= 0;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_0_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_1_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
@@ -306,7 +306,7 @@ protected:
 
         HRESULT hr = dispatch_parent_0_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_1_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
@@ -380,7 +380,7 @@ protected:
         unsigned    index   =   1;
         HRESULT     hr      =   dispatch_parent_0_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -388,7 +388,7 @@ protected:
             hr = dispatch_parent_1_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -397,15 +397,15 @@ protected:
         }
 
         // Encode interface info into the dispid
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= (index - 1);
 
-            for(UINT i = 0; i < cNames; ++i)
+            for (UINT i = 0; i < cNames; ++i)
             {
-                if(rgdispid[i] < 0)
+                if (rgdispid[i] < 0)
                 {
                     // Leave these alone. They'll be processed on a first-come-first-serve
                     // basis, which assumes that the GetIDsOfNames() and Invoke() of I0 and
@@ -446,24 +446,24 @@ protected:
                     ,   EXCEPINFO*  pexcepinfo
                     ,   UINT*       puArgErr)
     {
-        if(dispidMember >= 0)
+        if (dispidMember >= 0)
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= 0;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_0_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_1_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_2_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
@@ -471,13 +471,13 @@ protected:
 
         HRESULT hr = dispatch_parent_0_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_1_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_2_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
@@ -555,7 +555,7 @@ protected:
         unsigned    index   =   1;
         HRESULT     hr      =   dispatch_parent_0_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -563,7 +563,7 @@ protected:
             hr = dispatch_parent_1_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -571,7 +571,7 @@ protected:
             hr = dispatch_parent_2_type::GetIDsOfNames(riid, rgszNames, cNames, lcid, rgdispid);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_UNKNOWNNAME == hr)
         {
             ++index;
@@ -580,15 +580,15 @@ protected:
         }
 
         // Encode interface info into the dispid
-        if(SUCCEEDED(hr))
+        if (SUCCEEDED(hr))
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= (index - 1);
 
-            for(UINT i = 0; i < cNames; ++i)
+            for (UINT i = 0; i < cNames; ++i)
             {
-                if(rgdispid[i] < 0)
+                if (rgdispid[i] < 0)
                 {
                     // Leave these alone. They'll be processed on a first-come-first-serve
                     // basis, which assumes that the GetIDsOfNames() and Invoke() of I0 and
@@ -629,30 +629,30 @@ protected:
                     ,   EXCEPINFO*  pexcepinfo
                     ,   UINT*       puArgErr)
     {
-        if(dispidMember >= 0)
+        if (dispidMember >= 0)
         {
             DISPID  dispidFlag  =   DISPID(0x1) << (8 * sizeof(DISPID) - 2);
 
             dispidFlag >>= 0;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_0_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_1_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_2_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
 
             dispidFlag >>= 1;
-            if(dispidMember & dispidFlag)
+            if (dispidMember & dispidFlag)
             {
                 return dispatch_parent_3_type::Invoke(dispidMember & ~dispidFlag, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
             }
@@ -660,19 +660,19 @@ protected:
 
         HRESULT hr = dispatch_parent_0_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_1_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_2_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
         }
 
-        if( FAILED(hr) &&
+        if (FAILED(hr) &&
             DISP_E_MEMBERNOTFOUND == hr)
         {
             hr = dispatch_parent_3_type::Invoke(dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);

@@ -4,11 +4,11 @@
  * Purpose:     An associative container that maintains the order of element insertion.
  *
  * Created:     12th February 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_MAJOR      1
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_MINOR      3
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_REVISION   7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_EDIT       33
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_UNSORTED_MAP_EDIT       34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -289,7 +289,7 @@ public:
                                     ,   member_selector(m_elements.end(), &internal_value_type_::first)
                                     ,   key).base();
 
-        if(m_elements.end() != it)
+        if (m_elements.end() != it)
         {
             m_elements.erase(it);
 
@@ -312,7 +312,7 @@ public:
                                     ,   member_selector(m_elements.end(), &internal_value_type_::first)
                                     ,   key).base();
 
-        if(m_elements.end() == it)
+        if (m_elements.end() == it)
         {
             m_elements.push_back(value_type(key, value));
         }

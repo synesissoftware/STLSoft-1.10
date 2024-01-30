@@ -4,13 +4,13 @@
  * Purpose:     Contains the listview_sequence class template.
  *
  * Created:     8th May 2003
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo Aguilar for making the requisite feature requests.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_MAJOR     4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_MINOR     3
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_REVISION  9
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_EDIT      91
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_LISTVIEW_SEQUENCE_EDIT      92
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -174,14 +174,14 @@ public:
         item.iItem      =   m_index;
         item.iSubItem   =   iSubItem;
 
-        for(;; cb += buffer_t::internal_size())
+        for (;; cb += buffer_t::internal_size())
         {
             buffer_t    buffer(cb);
 
             item.cchTextMax =   static_cast<int>(cb);
             item.pszText    =   &buffer[0];
 
-            if(!ListView_GetItem(m_hwndListView, &item))
+            if (!ListView_GetItem(m_hwndListView, &item))
             {
                 item.cchTextMax = 0;
                 break;
@@ -190,7 +190,7 @@ public:
             {
                 ss_size_t len =   static_cast<ss_size_t>(lstrlen(item.pszText));
 
-                if(len + 1 < cb)
+                if (len + 1 < cb)
                 {
                     return lvs_string_t(item.pszText, len);
                 }

@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     15th November 2002
- * Updated:     23rd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MAJOR     6
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_MINOR     2
 # define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_REVISION  1
-# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      134
+# define UNIXSTL_VER_UNIXSTL_SYSTEM_HPP_SYSTEM_TRAITS_EDIT      135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -654,7 +654,7 @@ public:
     {
         char const* var = ::getenv(name);
 
-        if(NULL == var)
+        if (NULL == var)
         {
             return 0;
         }
@@ -662,7 +662,7 @@ public:
         {
             us_size_t var_len = str_len(var);
 
-            if(NULL == buffer)
+            if (NULL == buffer)
             {
                 return var_len;
             }
@@ -671,7 +671,7 @@ public:
                 size_type writtenLen = (var_len < cchBuffer) ? var_len : cchBuffer;
 
                 char_copy(buffer, var, writtenLen);
-                if(writtenLen < cchBuffer)
+                if (writtenLen < cchBuffer)
                 {
                     buffer[writtenLen] = '\0';
                 }

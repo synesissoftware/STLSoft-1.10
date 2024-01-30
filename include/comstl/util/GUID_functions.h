@@ -4,11 +4,11 @@
  * Purpose:     GUID helper functions.
  *
  * Created:     12th May 2010
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2010-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MAJOR      1
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_MINOR      4
 # define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_REVISION   6
-# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       24
+# define COMSTL_VER_COMSTL_UTIL_H_GUID_FUNCTIONS_EDIT       26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -177,20 +177,20 @@ comstl_C_GUID_compare(
     /* Use the Null Object (Variable) pattern to relieve rest of code
      * of burden of knowing whether value required by caller
      */
-    if(NULL == comparisonSucceeded)
+    if (NULL == comparisonSucceeded)
     {
         comparisonSucceeded = &comparisonSucceeded_;
     }
 
     *comparisonSucceeded = S_OK;
 
-    if(NULL == lhs)
+    if (NULL == lhs)
     {
         return (NULL == rhs) ? 0 : -1;
     }
     else
     {
-        if(NULL == rhs)
+        if (NULL == rhs)
         {
             return +1;
         }
@@ -198,7 +198,7 @@ comstl_C_GUID_compare(
         {
             OLECHAR s1[1 + COMSTL_CCH_GUID];
 
-            if(FAILED(*comparisonSucceeded = comstl_C_GUID_to_string_w(COMSTL_PTR_2_REF(lhs), &s1)))
+            if (FAILED(*comparisonSucceeded = comstl_C_GUID_to_string_w(COMSTL_PTR_2_REF(lhs), &s1)))
             {
                 return -1;
             }
@@ -206,7 +206,7 @@ comstl_C_GUID_compare(
             {
                 OLECHAR s2[1 + COMSTL_CCH_GUID];
 
-                if(FAILED(*comparisonSucceeded = comstl_C_GUID_to_string_w(COMSTL_PTR_2_REF(rhs), &s2)))
+                if (FAILED(*comparisonSucceeded = comstl_C_GUID_to_string_w(COMSTL_PTR_2_REF(rhs), &s2)))
                 {
                     return -1;
                 }
@@ -243,13 +243,13 @@ comstl_C_GUID_binary_compare(
 ,   GUID const* rhs
 )
 {
-    if(NULL == lhs)
+    if (NULL == lhs)
     {
         return (NULL == rhs) ? 0 : -1;
     }
     else
     {
-        if(NULL == rhs)
+        if (NULL == rhs)
         {
             return +1;
         }
@@ -310,14 +310,14 @@ comstl_C_GUID_from_string_a(
     STLSOFT_CONTRACT_ENFORCE_PRECONDITION_PARAMS_API(NULL != str, "string parameter may not be null");
     STLSOFT_CONTRACT_ENFORCE_PRECONDITION_PARAMS_API(NULL != pguid, "return value out parameter may not be null");
 
-    switch(WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, str, -1, &ws[0], 1 + COMSTL_CCH_GUID))
+    switch (WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, str, -1, &ws[0], 1 + COMSTL_CCH_GUID))
     {
         case    1 + COMSTL_CCH_GUID:
             ws[COMSTL_CCH_GUID] = L'\0';
             hr = comstl_C_GUID_from_string_w(ws, pguid);
             break;
         default:
-            if(S_OK == (hr = HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())))
+            if (S_OK == (hr = HRESULT_FROM_WIN32(WINSTL_API_EXTERNAL_ErrorHandling_GetLastError())))
             {
                 hr = E_INVALIDARG;
             }
@@ -343,7 +343,7 @@ comstl_C_GUID_to_string_w(
 
     r = STLSOFT_NS_GLOBAL(StringFromGUID2)(guid, *buff, 1 + COMSTL_CCH_GUID);
 
-    if(0 == r)
+    if (0 == r)
     {
         return E_INVALIDARG;
     }
@@ -375,7 +375,7 @@ comstl_C_GUID_to_string_a(
     // all characters within a valid GUID string form are within the
     // ANSI character set's range
 
-    { cs_size_t i; for(i = 0; i != STLSOFT_NUM_ELEMENTS(wbuff); ++i)
+    { cs_size_t i; for (i = 0; i != STLSOFT_NUM_ELEMENTS(wbuff); ++i)
     {
         (*buff)[i] = STLSOFT_STATIC_CAST(cs_char_a_t, wbuff[i]);
     }}
@@ -429,11 +429,11 @@ comstl_C_GUID_to_string(
 #else /* ? __cplusplus */
 
 # ifdef UNICODE
-#  define comstl_C_GUID_from_string     comstl_C_GUID_from_string_w
-#  define comstl_C_GUID_to_string       comstl_C_GUID_to_string_w
+#  define comstl_C_GUID_from_string                         comstl_C_GUID_from_string_w
+#  define comstl_C_GUID_to_string                           comstl_C_GUID_to_string_w
 # else /* ? UNICODE */
-#  define comstl_C_GUID_from_string     comstl_C_GUID_from_string_a
-#  define comstl_C_GUID_to_string       comstl_C_GUID_to_string_a
+#  define comstl_C_GUID_from_string                         comstl_C_GUID_from_string_a
+#  define comstl_C_GUID_to_string                           comstl_C_GUID_to_string_a
 # endif /* UNICODE */
 
 #endif /* __cplusplus */
@@ -483,9 +483,9 @@ GUID_compare(
     HRESULT succeeded;
     int result = comstl_C_GUID_compare(lhs, rhs, &succeeded);
 
-    if(S_OK != succeeded)
+    if (S_OK != succeeded)
     {
-        if(NULL == comparisonSucceeded)
+        if (NULL == comparisonSucceeded)
         {
 # if _STLSOFT_VER >= 0x010a01ff
 #  if defined(STLSOFT_PPF_pragma_message_SUPPORT)

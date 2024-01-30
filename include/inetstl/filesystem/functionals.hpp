@@ -4,11 +4,11 @@
  * Purpose:     File-system functionals.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MAJOR       4
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_MINOR       0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_REVISION    11
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        49
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FUNCTIONALS_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,7 +140,7 @@ public:
     typedef ss_typename_type_k parent_class_type::result_type           result_type;
     /// The traits type
     typedef filesystem_traits<C>                                        traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_compare<C, A1, A2>                                     class_type;
 
 public:
@@ -200,7 +200,7 @@ public:
     typedef C                       char_type;
     /// The traits type
     typedef filesystem_traits<C>    traits_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef path_exists<C>          class_type;
 
 public:
@@ -225,7 +225,7 @@ private:
         char_type   sz0[1 + INETSTL_CONST_MAX_PATH];
         is_dword_t  dw;
 
-        if(!traits_type::get_full_path_name(m_hConnection, s, STLSOFT_NUM_ELEMENTS(sz0), sz0))
+        if (!traits_type::get_full_path_name(m_hConnection, s, STLSOFT_NUM_ELEMENTS(sz0), sz0))
         {
             dw = 0xFFFFFFFF;
         }

@@ -4,14 +4,14 @@
  * Purpose:     Special string instance class template.
  *
  * Created:     3rd June 2006
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Pablo Aguilar for spotting my omission of string access shims
  *              for special_string_instance_1.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MAJOR       1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_MINOR       5
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_REVISION    4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        42
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SPECIAL_STRING_INSTANCE_EDIT        43
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@ public:
 #if 1
         size_type cch = pfn(&m_buffer[0], m_buffer.size());
 
-        if(cch < m_buffer.size())
+        if (cch < m_buffer.size())
         {
             m_len = cch;
 
@@ -212,20 +212,20 @@ public:
         size_type cch   =   pfn(&empty, 0);
 #endif
 
-        if(m_buffer.resize(1 + cch))
+        if (m_buffer.resize(1 + cch))
         {
-            for(;;)
+            for (;;)
             {
                 cch = pfn(&m_buffer[0], m_buffer.size());
 
-                if(cch < m_buffer.size())
+                if (cch < m_buffer.size())
                 {
                     m_len = cch;
                     break;
                 }
                 else
                 {
-                    if(!m_buffer.resize(2 * m_buffer.size()))
+                    if (!m_buffer.resize(2 * m_buffer.size()))
                     {
                         m_buffer.resize(0);
                         break;
@@ -249,7 +249,7 @@ public:
 #if 1
         size_type cch = pfn(arg0, &m_buffer[0], m_buffer.size());
 
-        if(cch < m_buffer.size())
+        if (cch < m_buffer.size())
         {
             m_len = cch;
 
@@ -263,20 +263,20 @@ public:
         size_type   cch     =   pfn(arg0, &empty, 0);
 #endif
 
-        if(m_buffer.resize(1 + cch))
+        if (m_buffer.resize(1 + cch))
         {
-            for(;;)
+            for (;;)
             {
                 cch = pfn(arg0, &m_buffer[0], m_buffer.size());
 
-                if(cch < m_buffer.size())
+                if (cch < m_buffer.size())
                 {
                     m_len = cch;
                     break;
                 }
                 else
                 {
-                    if(!m_buffer.resize(2 * m_buffer.size()))
+                    if (!m_buffer.resize(2 * m_buffer.size()))
                     {
                         m_buffer.resize(0);
                         break;
@@ -455,7 +455,7 @@ private:
 
         static ssi_buffer_type                  s_buffer;
 
-        if(!s_bInit)
+        if (!s_bInit)
         {
             s_buffer.init(initial, pfn);
 
@@ -473,7 +473,7 @@ private:
 
         static ssi_buffer_type                  s_buffer;
 
-        if(!s_bInit)
+        if (!s_bInit)
         {
             s_buffer.init(initial, pfn, a0);
 
@@ -548,7 +548,7 @@ private: // implementation
     {
         typedef ss_typename_type_k value_to_yesno_type<caseSensitive>::type   yesno_t;
 
-        if(cch1 != cch2)
+        if (cch1 != cch2)
         {
             return false;
         }

@@ -4,11 +4,11 @@
  * Purpose:     Control Panel functions.
  *
  * Created:     1st April 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_REVISION   13
-# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       27
+# define WINSTL_VER_WINSTL_CONTROL_PANEL_H_FUNCTIONS_EDIT       28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -217,7 +217,7 @@ winstl_C_control_panel_newinquire(
     u.infow_.szInfo[0]      =   L'\0';
     u.infow_.szHelpFile[0]  =   L'\0';
 
-    if(sizeof(NEWCPLINFOW) == info->dwSize)
+    if (sizeof(NEWCPLINFOW) == info->dwSize)
     {
         /* Try Unicode first. */
         LPNEWCPLINFOW infow = STLSOFT_REINTERPRET_CAST(LPNEWCPLINFOW, info);
@@ -226,7 +226,7 @@ winstl_C_control_panel_newinquire(
 
         STLSOFT_STATIC_CAST(void, (*entry)(hwnd, CPL_NEWINQUIRE, STLSOFT_STATIC_CAST(LPARAM, index), STLSOFT_REINTERPRET_CAST(LPARAM, &u.infow_)));
 
-        if( u.infow_.dwSize == sizeof(NEWCPLINFOW) &&
+        if (u.infow_.dwSize == sizeof(NEWCPLINFOW) &&
             L'\0' != u.infow_.szName[0])
         {
             *infow = u.infow_;
@@ -252,7 +252,7 @@ winstl_C_control_panel_newinquire(
 
         STLSOFT_STATIC_CAST(void, (*entry)(hwnd, CPL_NEWINQUIRE, STLSOFT_STATIC_CAST(LPARAM, index), STLSOFT_REINTERPRET_CAST(LPARAM, &u.infoa_)));
 
-        if( u.infoa_.dwSize == sizeof(NEWCPLINFOA) &&
+        if (u.infoa_.dwSize == sizeof(NEWCPLINFOA) &&
             '\0' != u.infoa_.szName[0])
         {
             *infoa = u.infoa_;

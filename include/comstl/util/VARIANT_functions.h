@@ -4,11 +4,11 @@
  * Purpose:     VARIANT helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_MINOR       2
 # define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_REVISION    2
-# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        19
+# define COMSTL_VER_COMSTL_UTIL_H_VARIANT_FUNCTIONS_EDIT        20
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,20 +136,20 @@ comstl_C_VARIANT_equal(
     /* Use the Null Object (Variable) pattern to relieve rest of code
      * of burden of knowing whether value required by caller
      */
-    if(NULL == comparisonSucceeded)
+    if (NULL == comparisonSucceeded)
     {
         comparisonSucceeded = &comparisonSucceeded_;
     }
 
     *comparisonSucceeded = S_OK;
 
-    if(COMSTL_ACCESS_VARIANT_vt_BYPTR(lhs) != COMSTL_ACCESS_VARIANT_vt_BYPTR(rhs))
+    if (COMSTL_ACCESS_VARIANT_vt_BYPTR(lhs) != COMSTL_ACCESS_VARIANT_vt_BYPTR(rhs))
     {
         return 0;
     }
     else
     {
-        switch(COMSTL_ACCESS_VARIANT_vt_BYPTR(lhs))
+        switch (COMSTL_ACCESS_VARIANT_vt_BYPTR(lhs))
         {
             case    VT_EMPTY:
             case    VT_NULL:
@@ -231,10 +231,10 @@ comstl_C_VARIANT_change_type(
 {
     HRESULT hr = STLSOFT_NS_GLOBAL(VariantChangeTypeEx)(dest, stlsoft_const_cast(VARIANT*, src), lcid, flags, vt);
 
-    if( FAILED(hr) &&
+    if (FAILED(hr) &&
         0 == (VARIANT_NOVALUEPROP & flags))
     {
-        if( VT_UNKNOWN == COMSTL_ACCESS_VARIANT_vt_BYPTR(src) &&
+        if (VT_UNKNOWN == COMSTL_ACCESS_VARIANT_vt_BYPTR(src) &&
             NULL != COMSTL_ACCESS_VARIANT_MEM_BYPTR(src, punkVal))
         {
             /* Try to elicit IDispatch interface */
@@ -245,7 +245,7 @@ comstl_C_VARIANT_change_type(
 
             hr2 = COMSTL_ITF_CALL(COMSTL_ACCESS_VARIANT_MEM_BYPTR(src, punkVal))->QueryInterface(COMSTL_ITF_THIS(COMSTL_ACCESS_VARIANT_MEM_BYPTR(src, punkVal)) COMSTL_IID_2_REF(IID_IDispatch), stlsoft_reinterpret_cast(void**, &COMSTL_ACCESS_VARIANT_MEM_BYREF(src2, pdispVal)));
 
-            if(SUCCEEDED(hr2))
+            if (SUCCEEDED(hr2))
             {
                 hr = comstl_C_VARIANT_change_type(dest, &src2, lcid, flags, vt);
 

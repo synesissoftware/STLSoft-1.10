@@ -8,11 +8,11 @@
  *              one of the typedefs
  *
  * Created:     1st May 2004
- * Updated:     13th December 2023
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MAJOR       4
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_MINOR       1
 # define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_REVISION    11
-# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        73
+# define STLSOFT_VER_STLSOFT_FILESYSTEM_HPP_SEARCHSPEC_SEQUENCE_EDIT        76
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -140,7 +140,7 @@ class searchspec_sequence
 public:
     /// The underlying find sequence type
     typedef S                                                           find_sequence_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef searchspec_sequence<S>                                      class_type;
 private:
     typedef searchspec_sequence<S>                                      outer_class_type;
@@ -158,7 +158,7 @@ public:
     class                                                               const_iterator;
 private:
     typedef basic_simple_string<char_type>                              string_type;
-    // TODO: Have all filesystem_traits that have a fixed length derive from a tag type, so that we can parameterise
+    // TODO: Have all filesystem_traits that have a fixed length derive from a tag type, so that we can specialise
     // based on that. Then reinstate the string type discrimination based on the traits
 //    typedef basic_static_string<char_type, traits_type::maxPathLength>  string_type;
     typedef string_tokeniser<string_type, char_type>                    tokeniser_type;
@@ -248,11 +248,11 @@ private:
             , m_entriesEnd(m_entries->end())
             , m_cRefs(1)
         {
-            while(m_entriesNext == m_entriesEnd)
+            while (m_entriesNext == m_entriesEnd)
             {
                 ++m_tokensNext;
 
-                if(m_tokensNext == m_tokensEnd)
+                if (m_tokensNext == m_tokensEnd)
                 {
                     break;
                 }
@@ -283,7 +283,7 @@ private:
         {
             search_state *ss = new search_state(rootDir, searchSpec, delimiter, flags);
 
-            if(ss->m_tokensNext == ss->m_tokensEnd)
+            if (ss->m_tokensNext == ss->m_tokensEnd)
             {
                 delete ss;
 
@@ -296,7 +296,7 @@ private:
     public:
         bool next()
         {
-            if(m_tokensNext == m_tokensEnd)
+            if (m_tokensNext == m_tokensEnd)
             {
                 return false;
             }
@@ -311,11 +311,11 @@ private:
 
             ++m_entriesNext;
 
-            while(m_entriesNext == m_entriesEnd)
+            while (m_entriesNext == m_entriesEnd)
             {
                 ++m_tokensNext;
 
-                if(m_tokensNext == m_tokensEnd)
+                if (m_tokensNext == m_tokensEnd)
                 {
                     return false;
                 }
@@ -340,7 +340,7 @@ private:
 
         void Release()
         {
-            if(0 == --m_cRefs)
+            if (0 == --m_cRefs)
             {
                 delete this;
             }
@@ -381,7 +381,7 @@ public:
         /// Destructor
         ~const_iterator() STLSOFT_NOEXCEPT
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 m_searchState->Release();
             }
@@ -391,7 +391,7 @@ public:
         const_iterator(class_type const& rhs)
             : m_searchState(rhs.m_searchState)
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 ++m_searchState->m_cRefs;
             }
@@ -399,14 +399,14 @@ public:
 
         class_type& operator =(class_type const& rhs)
         {
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 m_searchState->Release();
             }
 
             m_searchState = rhs.m_searchState;
 
-            if(NULL != m_searchState)
+            if (NULL != m_searchState)
             {
                 ++m_searchState->m_cRefs;
             }
@@ -419,7 +419,7 @@ public:
         {
             STLSOFT_ASSERT(NULL != m_searchState);
 
-            if(!m_searchState->next())
+            if (!m_searchState->next())
             {
 #if defined(STLSOFT_COMPILER_IS_MSVC) && \
     _MSC_VER < 1300

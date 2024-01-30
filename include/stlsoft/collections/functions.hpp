@@ -4,11 +4,11 @@
  * Purpose:     Collection manipulation functions.
  *
  * Created:     11th November 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MAJOR    2
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_MINOR    0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_REVISION 7
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     47
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_FUNCTIONS_EDIT     48
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -131,7 +131,7 @@ inline ss_typename_type_ret_k M::mapped_type &lookup(M &m, K const& key)
 {
     ss_typename_type_k M::iterator it = m.find(key);
 
-    if(m.end() == it)
+    if (m.end() == it)
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("invalid key"));
     }
@@ -164,7 +164,7 @@ inline ss_typename_type_ret_k M::mapped_type const& lookup(M const& m, K const& 
 {
     ss_typename_type_k M::const_iterator it = m.find(key);
 
-    if(m.end() == it)
+    if (m.end() == it)
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("invalid key"));
     }

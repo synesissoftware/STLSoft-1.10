@@ -4,11 +4,11 @@
  * Purpose:     Bounded algorithms.
  *
  * Created:     23rd October 2004
- * Updated:     16th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_MINOR       1
 # define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_REVISION    5
-# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        36
+# define STLSOFT_VER_STLSOFT_ALGORITHMS_HPP_BOUNDED_EDIT        37
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ template<   ss_typename_param_k I
 // [[synesis:function:algorithm: copy_n(T<I> src, size_t n, T<O> dest)]]
 inline O copy_n(I src, ss_size_t n, O dest)
 {
-    for(; n != 0; ++src, ++dest, --n)
+    for (; n != 0; ++src, ++dest, --n)
     {
         *dest = *src;
     }
@@ -135,9 +135,9 @@ inline void replace_n(I src, ss_size_t n, T const& oldValue, T const& newValue)
 
     std_replace(src, src + n, oldValue, newValue);
 #else /* ? 0 */
-    for(; 0 != n; ++src, --n)
+    for (; 0 != n; ++src, --n)
     {
-        if(oldValue == *src)
+        if (oldValue == *src)
         {
             *src = newValue;
         }

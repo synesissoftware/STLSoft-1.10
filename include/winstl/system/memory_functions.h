@@ -4,11 +4,11 @@
  * Purpose:     Memory functions.
  *
  * Created:     5th November 2014
- * Updated:     30th November 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MAJOR      1
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_MINOR      0
 # define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_REVISION   6
-# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       11
+# define WINSTL_VER_WINSTL_SYSTEM_H_MEMORY_FUNCTIONS_EDIT       12
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ winstl_C_get_physical_memory_size(void)
 
     msex.dwLength = sizeof(msex);
 
-    if(GlobalMemoryStatusEx(&msex))
+    if (GlobalMemoryStatusEx(&msex))
     {
         return msex.ullTotalPhys;
     }
@@ -150,22 +150,22 @@ winstl_C_get_physical_memory_size(void)
     GMSEx_fn_t      GlobalMemoryStatusEx    =   (NULL != hModule) ? (GMSEx_fn_t)WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetProcAddress(hModule, "GlobalMemoryStatusEx") : NULL;
     MEMORYSTATUSEX_ msex = { 0 };
 
-    if(NULL != GlobalMemoryStatusEx)
+    if (NULL != GlobalMemoryStatusEx)
     {
         msex.dwLength = sizeof(msex);
 
-        if(!GlobalMemoryStatusEx(&msex))
+        if (!GlobalMemoryStatusEx(&msex))
         {
             GlobalMemoryStatusEx = NULL;
         }
     }
 
-    if(NULL != hModule)
+    if (NULL != hModule)
     {
         WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hModule);
     }
 
-    if(NULL != GlobalMemoryStatusEx)
+    if (NULL != GlobalMemoryStatusEx)
     {
         return msex.ullTotalPhys;
     }

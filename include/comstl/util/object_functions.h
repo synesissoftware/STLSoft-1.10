@@ -4,11 +4,11 @@
  * Purpose:     Reference-counting helper functions.
  *
  * Created:     2nd March 1996
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1996-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MAJOR    3
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_MINOR    2
 # define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_REVISION 1
-# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     78
+# define COMSTL_VER_COMSTL_UTIL_H_OBJECT_FUNCTIONS_EDIT     79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,11 +118,11 @@ comstl_C_get_object_identity(
 {
     HRESULT hr;
 
-    if(NULL == identity)
+    if (NULL == identity)
     {
         hr = E_INVALIDARG;
     }
-    else if(NULL == p)
+    else if (NULL == p)
     {
         hr = E_POINTER;
     }
@@ -156,24 +156,24 @@ comstl_C_is_same_object(
     LPUNKNOWN   punk2   =   NULL;
     HRESULT     hr      =   S_OK;
 
-    if( NULL == p1 ||
+    if (NULL == p1 ||
         NULL == p2)
     {
         hr = E_POINTER;
     }
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(p1)->QueryInterface(COMSTL_ITF_THIS(p1) COMSTL_IID_2_REF(IID_IUnknown), stlsoft_reinterpret_cast(void**, &punk1));
     }
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
         hr = COMSTL_ITF_CALL(p2)->QueryInterface(COMSTL_ITF_THIS(p2) COMSTL_IID_2_REF(IID_IUnknown), stlsoft_reinterpret_cast(void**, &punk2));
     }
 
-    if(SUCCEEDED(hr))
+    if (SUCCEEDED(hr))
     {
-        if( NULL == punk1 ||
+        if (NULL == punk1 ||
             NULL == punk2 ||
             punk1 != punk2)
         {
@@ -181,11 +181,11 @@ comstl_C_is_same_object(
         }
     }
 
-    if(NULL != punk1)
+    if (NULL != punk1)
     {
         COMSTL_ITF_CALL(punk1)->Release(COMSTL_ITF_THIS0(punk1));
     }
-    if(NULL != punk2)
+    if (NULL != punk2)
     {
         COMSTL_ITF_CALL(punk2)->Release(COMSTL_ITF_THIS0(punk2));
     }
@@ -216,7 +216,7 @@ comstl_C_is_interface_implemented(
 
     hr = COMSTL_ITF_CALL(p)->QueryInterface(COMSTL_ITF_THIS(p) riid, stlsoft_reinterpret_cast(void**, &punk));
 
-    if(NULL != punk)
+    if (NULL != punk)
     {
         COMSTL_ITF_CALL(punk)->Release(COMSTL_ITF_THIS0(punk));
     }

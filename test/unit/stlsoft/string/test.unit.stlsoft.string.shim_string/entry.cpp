@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::basic_shim_string`.
  *
  * Created: 9th November 2008
- * Updated: 17th January 2024
+ * Updated: 30th January 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -39,6 +39,8 @@
 #include <stlsoft/stlsoft.h>
 
 /* Standard C++ header files */
+#include <iomanip>
+#include <sstream>
 #include <string>
 
 /* Standard C header files */
@@ -72,6 +74,10 @@ namespace
     static void test_1_17(void);
     static void test_1_18(void);
     static void test_1_19(void);
+    static void test_insertion_1(void);
+    static void test_insertion_2(void);
+    static void test_insertion_3(void);
+    static void test_insertion_4(void);
 
 } // anonymous namespace
 
@@ -86,7 +92,7 @@ int main(int argc, char **argv)
 
     XTESTS_COMMANDLINE_PARSEVERBOSITY(argc, argv, &verbosity);
 
-    if(XTESTS_START_RUNNER("test.unit.stlsoft.string.shim_string", verbosity))
+    if (XTESTS_START_RUNNER("test.unit.stlsoft.string.shim_string", verbosity))
     {
         XTESTS_RUN_CASE(test_sizes);
         XTESTS_RUN_CASE(test_construction);
@@ -109,6 +115,10 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_17);
         XTESTS_RUN_CASE(test_1_18);
         XTESTS_RUN_CASE(test_1_19);
+        XTESTS_RUN_CASE(test_insertion_1);
+        XTESTS_RUN_CASE(test_insertion_2);
+        XTESTS_RUN_CASE(test_insertion_3);
+        XTESTS_RUN_CASE(test_insertion_4);
 
 #ifdef STLSOFT_USE_XCOVER
         XCOVER_REPORT_ALIAS_COVERAGE("shim_string", NULL);
@@ -128,8 +138,44 @@ int main(int argc, char **argv)
 
 namespace
 {
+    struct SimpleStream
+    {
+        std::string     contents;
+
+        SimpleStream&
+        write(
+            char const*     s
+        ,   std::streamsize n
+        )
+        {
+            contents.append(s, n);
+
+            return *this;
+        }
+
+        std::string
+        str() const
+        {
+            return contents;
+        }
+    };
+
+    SimpleStream&
+    operator <<(
+        SimpleStream&       stm
+    ,   char const*         s
+    )
+    {
+        std::size_t const   len = ::strlen(s);
+
+        stm.write(s, len);
+
+        return stm;
+    }
+
 
     char const alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+
 
 static void test_sizes()
 {
@@ -269,14 +315,14 @@ static void test_truncate()
 {
     stlsoft::basic_shim_string<char> str("abcdefghijklmnopqrstuvwx");
 
-    { for(size_t i = 0;; ++i)
+    { for (size_t i = 0;; ++i)
     {
         size_t numTriplets = (8 - i);
 
         XTESTS_TEST_INTEGER_EQUAL(3u * numTriplets, str.size());
         XTESTS_TEST_MULTIBYTE_STRING_EQUAL(std::string(alphabet, 3u * numTriplets), str);
 
-        if(8 == i)
+        if (8 == i)
         {
             break;
         }
@@ -349,7 +395,7 @@ static void test_append_c_string()
 
     stlsoft::basic_shim_string<char>    str(size_t(0u));
 
-    { for(size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
+    { for (size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
     {
         str.append(strings[i]);
 
@@ -378,7 +424,7 @@ static void test_append_c_string_after_truncate()
 
     str.truncate(0u);
 
-    { for(size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
+    { for (size_t i = 0; i != STLSOFT_NUM_ELEMENTS(strings); ++i)
     {
         str.append(strings[i]);
 
@@ -491,6 +537,143 @@ static void test_1_18()
 
 static void test_1_19()
 {
+}
+
+static void test_insertion_1(void)
+{
+    stlsoft::basic_shim_string<char> const  s1;
+    stlsoft::basic_shim_string<char> const  s2("abc");
+    stlsoft::basic_shim_string<char> const  s3("def");
+
+    {
+        std::stringstream   ss;
+
+        ss
+            << std::left
+            << s1
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+
+    {
+        SimpleStream    ss;
+
+        ss
+            << s1
+            << s2
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+}
+
+static void test_insertion_2(void)
+{
+    stlsoft::basic_shim_string<char> const  s2("abc");
+    stlsoft::basic_shim_string<char> const  s3("def");
+
+    {
+        std::stringstream ss;
+
+        ss
+            << std::setw(2)
+            << std::left
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+}
+
+static void test_insertion_3(void)
+{
+    stlsoft::basic_shim_string<char> const  s1;
+    stlsoft::basic_shim_string<char> const  s2("abc");
+    stlsoft::basic_shim_string<char> const  s3("def");
+
+    {
+        std::stringstream ss;
+
+        ss
+            << std::setw(4)
+            << std::setfill('_')
+            << s1
+            << std::left
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("____abc__def", ss.str());
+    }
+}
+
+
+static void test_insertion_4(void)
+{
+    const std::size_t FIELD_WIDTH = 2000;
+
+    stlsoft::basic_shim_string<char> const  s1;
+    stlsoft::basic_shim_string<char> const  s2("abc");
+    stlsoft::basic_shim_string<char> const  s3("defg");
+
+    std::stringstream   ss;
+
+    ss
+        << std::setw(FIELD_WIDTH)
+        << std::setfill('_')
+        << s1
+        << std::left
+        << s2
+        << std::right
+        << s3
+        ;
+
+
+#if __cplusplus >= 201402L
+    std::string expected = ([&s2, &s3]() {
+#else
+    struct Expected
+    {
+        static
+        std::string
+        fn(
+            stlsoft::basic_shim_string<char> const& s2
+        ,   stlsoft::basic_shim_string<char> const& s3
+        )
+#endif
+
+        {
+            std::string r;
+
+            r.append(FIELD_WIDTH, '_');
+
+            r.append(s2.data(), s2.size());
+            r.append(FIELD_WIDTH - s2.size(), '_');
+
+            r.append(FIELD_WIDTH - s3.size(), '_');
+            r.append(s3.data(), s3.size());
+
+            return r;
+        }
+#if __cplusplus >= 201402L
+    })();
+#else
+    };
+
+    std::string const expected = Expected::fn(s2, s3);
+#endif
+
+    XTESTS_TEST_MULTIBYTE_STRING_EQUAL(
+        expected
+        , ss.str());
 }
 
 

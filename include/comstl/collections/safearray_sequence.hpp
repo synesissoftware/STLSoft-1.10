@@ -4,11 +4,11 @@
  * Purpose:     STL sequence for COM collection interfaces.
  *
  * Created:     17th April 2004
- * Updated:     13th December 2023
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MAJOR     4
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_MINOR     2
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_REVISION  9
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      77
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_SAFEARRAY_SEQUENCE_EDIT      79
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ private:
 public:
     /// The value type
     typedef T                                               value_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef safearray_sequence<T>                           class_type;
     /// The size type
     typedef cs_size_t                                       size_type;
@@ -273,7 +273,7 @@ inline /* static */ DWORD safearray_sequence<T>::calc_size_(LPCSAFEARRAY array)
 {
     DWORD   cItems  =   1;
 
-    for(USHORT dim = 0; dim < array->cDims; ++dim)
+    for (USHORT dim = 0; dim < array->cDims; ++dim)
     {
         cItems *= array->rgsabound[dim].cElements;
     }
@@ -289,7 +289,7 @@ safearray_sequence<T>::safearray_sequence(
     : m_sa(array)
     , m_cItems(calc_size_(array))
 {
-    if(!type_is_compatible_(array))
+    if (!type_is_compatible_(array))
     {
         STLSOFT_THROW_X(variant_type_exception("initialising safearray_sequence from safe array to incompatible type", DISP_E_BADVARTYPE));
     }

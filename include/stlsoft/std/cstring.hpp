@@ -4,14 +4,14 @@
  * Purpose:     Mappings to std string functions
  *
  * Created:     2nd December 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Anton Sekeris for providing good advice on the naming scheme
  *              for the stlsoft/std headers
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MAJOR      1
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_MINOR      5
 # define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_REVISION   10
-# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       46
+# define STLSOFT_VER_STLSOFT_STD_HPP_CSTRING_EDIT       47
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -456,7 +456,7 @@ namespace std_impl
         const ss_size_t len =   ::wcslen(s);
         ss_char_w_t     *sz =   static_cast<ss_char_w_t*>(::malloc(sizeof(ss_char_w_t) * (1 + len)));
 
-        if(NULL != sz)
+        if (NULL != sz)
         {
             ::wcscpy(sz, s);
         }

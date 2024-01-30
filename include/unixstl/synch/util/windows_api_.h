@@ -4,7 +4,7 @@
  * Purpose:     Discrimination of synchronisation features.
  *
  * Created:     3rd January 2017
- * Updated:     18th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -56,7 +56,7 @@
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MAJOR    1
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__MINOR    2
 # define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__REVISION 4
-# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     10
+# define UNIXSTL_VER_UNIXSTL_SYNCH_UTIL_H_WINDOWS_API__EDIT     11
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -113,10 +113,10 @@ UNIXSTL_INTERNAL_SYNCH_32cast_v_(
 {
     return STLSOFT_CONST_CAST(long*, UNIXSTL_INTERNAL_SYNCH_32cast_(p));
 }
-#  define UNIXSTL_INTERNAL_SYNCH_32cast_                            UNIXSTL_INTERNAL_SYNCH_32cast_v_
+#  define UNIXSTL_INTERNAL_SYNCH_32cast_                    UNIXSTL_INTERNAL_SYNCH_32cast_v_
 # else
 
-#  define UNIXSTL_INTERNAL_SYNCH_32cast_                            UNIXSTL_INTERNAL_SYNCH_32cast_
+#  define UNIXSTL_INTERNAL_SYNCH_32cast_                    UNIXSTL_INTERNAL_SYNCH_32cast_
 # endif
 #else
 # error Architecture not recognised

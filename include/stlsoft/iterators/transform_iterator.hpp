@@ -6,11 +6,11 @@
  *              sequence.
  *
  * Created:     6th February 1999
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MAJOR     2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_MINOR     1
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_REVISION  6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      133
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_TRANSFORM_ITERATOR_EDIT      135
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -169,7 +169,7 @@ public:
     /// The difference type
     typedef ss_typename_type_k traits_type::difference_type         difference_type;
 #endif /* STLSOFT_ITER_TXFM_ITER_OLD_DW */
-    /// The parameterisation of the type
+    /// The current specialisation of the type
     typedef transform_iterator<I, F>                                class_type;
     /// The mutating (non-const) pointer type
     ///
@@ -361,7 +361,7 @@ public:
 private:
     void get_current_()
     {
-        if(NULL == m_current.get())
+        if (NULL == m_current.get())
         {
             m_current = value_type_ptr_type_(new value_type(m_transformer(*m_it)));
         }

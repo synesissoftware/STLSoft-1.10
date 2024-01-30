@@ -4,11 +4,11 @@
  * Purpose:     RRID veneer for sequence containers
  *
  * Created:     2nd October 2002
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MAJOR      4
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_MINOR      0
 # define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_REVISION   9
-# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       65
+# define STLSOFT_VER_STLSOFT_COLLECTIONS_HPP_SEQUENCE_CONTAINER_VENEER_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,7 @@ public:
     typedef T                                                       container_type;
     /// The function class applied to the container's items
     typedef F                                                       element_destruction_function_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef sequence_container_veneer<T, F>                         class_type;
 private:
     typedef T                                                       parent_class_type;
@@ -208,7 +208,7 @@ public:
         ss_typename_type_k container_type::iterator b       =   this_->begin();
         ss_typename_type_k container_type::iterator e       =   this_->end();
 
-        for(; b != e; ++b)
+        for (; b != e; ++b)
         {
             element_destruction_function_type()(*b);
         }
@@ -216,7 +216,7 @@ public:
 
     /// Copy assignment operator
     ///
-    /// This method is provided in case the parameterising class provides the
+    /// This method is provided in case the specialising class provides the
     /// operator. If it does not, then the compiler will ignore it unless a
     /// call is made to it, in which case an error would have been reported
     /// anyway

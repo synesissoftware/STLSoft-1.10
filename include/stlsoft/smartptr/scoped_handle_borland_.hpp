@@ -1,11 +1,11 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        stlsoft/smartptr/scoped_handle_borland_.hpp (evolved from MLResPtr.h, ::SynesisStd)
  *
- * Purpose:     scoped_handle - parameterisable RAII class for arbitrary
+ * Purpose:     scoped_handle - specialisable RAII class for arbitrary
  *              resource types; special implementation for Borland.
  *
  * Created:     1st November 1994
- * Updated:     16th January 2024
+ * Updated:     29th January 2024
  *
  * Thanks to:   Maciej Kaniewski, for requesting Borland compatibility (in
  *              order to use FastFormat and Pantheios)
@@ -61,7 +61,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__MAJOR      6
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__MINOR      2
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__REVISION   2
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__EDIT       683
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_BORLAND__EDIT       685
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1039,7 +1039,7 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("Invariant violation: function pointer must not be NULL", NULL != m_fn);
 
-        if(!empty())
+        if (!empty())
         {
             m_fn->destroy(m_handle);
         }
@@ -1060,7 +1060,7 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("Invariant violation: function pointer must not be NULL", NULL != m_fn);
 
-        if(!empty())
+        if (!empty())
         {
             m_fn->destroy(m_handle);
 
@@ -1199,7 +1199,7 @@ public:
 public:
     void close()
     {
-        if(!empty())
+        if (!empty())
         {
             m_fn->destroy();
             m_bInvoked = true;

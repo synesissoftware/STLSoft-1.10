@@ -89,13 +89,13 @@ FlashWindowEx
  */
 
 #ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage
-# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage                        STLSOFT_NS_GLOBAL_(FormatMessage)
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage    STLSOFT_NS_GLOBAL_(FormatMessage)
 #endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessage */
 #ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA
-# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA                       STLSOFT_NS_GLOBAL_(FormatMessageA)
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA   STLSOFT_NS_GLOBAL_(FormatMessageA)
 #endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageA */
 #ifndef WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW
-# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW                       STLSOFT_NS_GLOBAL_(FormatMessageW)
+# define WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW   STLSOFT_NS_GLOBAL_(FormatMessageW)
 #endif /* !WINSTL_API_EXTERNAL_ErrorHandling_FormatMessageW */
 
 
@@ -108,7 +108,7 @@ GetErrorMode
  */
 
 #ifndef WINSTL_API_EXTERNAL_ErrorHandling_GetLastError
-# define WINSTL_API_EXTERNAL_ErrorHandling_GetLastError                         STLSOFT_NS_GLOBAL_(GetLastError)
+# define WINSTL_API_EXTERNAL_ErrorHandling_GetLastError     STLSOFT_NS_GLOBAL_(GetLastError)
 #endif /* !WINSTL_API_EXTERNAL_ErrorHandling_GetLastError */
 
 /*
@@ -152,7 +152,7 @@ SetErrorMode
  */
 
 #ifndef WINSTL_API_EXTERNAL_ErrorHandling_SetLastError
-# define WINSTL_API_EXTERNAL_ErrorHandling_SetLastError                         STLSOFT_NS_GLOBAL_(SetLastError)
+# define WINSTL_API_EXTERNAL_ErrorHandling_SetLastError     STLSOFT_NS_GLOBAL_(SetLastError)
 #endif /* !WINSTL_API_EXTERNAL_ErrorHandling_SetLastError */
 
 /*

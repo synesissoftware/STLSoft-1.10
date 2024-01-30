@@ -4,11 +4,11 @@
  * Purpose:     Restartable tokenising functions.
  *
  * Created:     6th January 2001
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2001-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS_MAJOR      2
 # define STLSOFT_VER_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS_MINOR      0
 # define STLSOFT_VER_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS_REVISION   6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS_EDIT       33
+# define STLSOFT_VER_STLSOFT_STRING_HPP_TOKENISER_FUNCTIONS_EDIT       34
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,9 +121,9 @@ find_next_token(
     STLSOFT_ASSERT(p0 <= p1);
     STLSOFT_ASSERT(p1 <= end);
 
-    if(p1 != end)
+    if (p1 != end)
     {
-        if(p0 != p1)
+        if (p0 != p1)
         {
             p0 = ++p1;
         }
@@ -132,14 +132,14 @@ find_next_token(
             p0 = p1;
         }
 
-        if(delim == *p1)
+        if (delim == *p1)
         {
             ++p0;
             ++p1;
         }
-        else for(; p1 != end; ++p1)
+        else for (; p1 != end; ++p1)
         {
-            if(delim == *p1)
+            if (delim == *p1)
             {
                 break;
             }
@@ -183,14 +183,14 @@ find_next_token(
     STLSOFT_ASSERT(NULL != p1);
     STLSOFT_ASSERT(p0 <= p1);
 
-    if('\0' == *p1)
+    if ('\0' == *p1)
     {
         p0 = p1;
 
         return false;
     }
 
-    if(p0 != p1)
+    if (p0 != p1)
     {
         p0 = ++p1;
     }
@@ -199,18 +199,18 @@ find_next_token(
         p0 = p1;
     }
 
-    if(delim == *p1)
+    if (delim == *p1)
     {
         ++p0;
         ++p1;
     }
-    else for(;; ++p1)
+    else for (;; ++p1)
     {
-        if('\0' == *p1)
+        if ('\0' == *p1)
         {
             return p0 != p1;
         }
-        else if(delim == *p1)
+        else if (delim == *p1)
         {
             break;
         }

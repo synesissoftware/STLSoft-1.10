@@ -4,11 +4,11 @@
  * Purpose:     winstl::time_cast<>.
  *
  * Created:     26th May 2014
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MAJOR     2
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_MINOR     0
 # define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_REVISION  2
-# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      12
+# define WINSTL_VER_WINSTL_TIME_HPP_TIME_CAST_EDIT      13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -171,7 +171,7 @@ namespace ximpl_winstl_time_cast
         {
             FILETIME ft;
 
-            if(!STLSOFT_NS_GLOBAL(SystemTimeToFileTime)(&t, &ft))
+            if (!STLSOFT_NS_GLOBAL(SystemTimeToFileTime)(&t, &ft))
             {
                 DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 
@@ -195,7 +195,7 @@ namespace ximpl_winstl_time_cast
         {
             SYSTEMTIME st;
 
-            if(!STLSOFT_NS_GLOBAL(FileTimeToSystemTime)(&t, &st))
+            if (!STLSOFT_NS_GLOBAL(FileTimeToSystemTime)(&t, &st))
             {
                 DWORD const e = WINSTL_API_EXTERNAL_ErrorHandling_GetLastError();
 

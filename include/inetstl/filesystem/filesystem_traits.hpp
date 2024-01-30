@@ -5,11 +5,11 @@
  *              Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     25th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1999-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MAJOR    5
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_MINOR    0
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_REVISION 2
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     93
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FILESYSTEM_TRAITS_EDIT     95
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -287,10 +287,10 @@ public:
         char_type       *end;
         char_type const separator = (NULL == str_chr(dir, '/') && NULL != str_chr(dir, '\\')) ? '\\' : '/';
 
-        for(end = dir; *end != '\0'; ++end)
+        for (end = dir; *end != '\0'; ++end)
         {}
 
-        if( dir < end &&
+        if (dir < end &&
             *(end - 1) != separator)
         {
             *end        =   separator;
@@ -304,10 +304,10 @@ public:
     {
         char_type   *end;
 
-        for(end = dir; *end != '\0'; ++end)
+        for (end = dir; *end != '\0'; ++end)
         {}
 
-        if( dir < end &&
+        if (dir < end &&
             *(end - 1) == path_name_separator())
         {
             *(end - 1)  =   '\0';
@@ -376,7 +376,7 @@ public:
         size_type       len         =   str_len(fileName);
 
         // If we're not rooted, then get the current directory and concatenate
-        if(separator != *fileName)
+        if (separator != *fileName)
         {
             is_size_t   cchBuffer2  =   STLSOFT_NUM_ELEMENTS(fullPath);
             const int   isDot       =   '.' == 0[fileName] && '\0' == 0[fileName];
@@ -385,15 +385,15 @@ public:
 # pragma message(_sscomp_fileline_message("This looks a bit dodgy. Better to use an auto_buffer, and cycle the size, testing the return value from get_current_directory"))
 #endif /* __SYNSOFT_DBS_COMPILER_SUPPORTS_PRAGMA_MESSAGE */
 
-            if(!get_current_directory(hconn, cchBuffer2, fullPath))
+            if (!get_current_directory(hconn, cchBuffer2, fullPath))
             {
                 fullPath[0] = '\0';
             }
             size_type   cchFullPath = str_len(fullPath);
 
-            if(!isDot)
+            if (!isDot)
             {
-                if(!has_dir_end(fullPath))
+                if (!has_dir_end(fullPath))
                 {
                     ensure_dir_end(fullPath);
                     ++cchFullPath;
@@ -405,26 +405,26 @@ public:
             len         +=  cchFullPath;
         }
 
-        if(NULL != buffer)
+        if (NULL != buffer)
         {
-            if(cchBuffer < len)
+            if (cchBuffer < len)
             {
                 len = cchBuffer;
             }
 
             char_copy(buffer, fileName, cchBuffer);
 
-            if(NULL != ppFile)
+            if (NULL != ppFile)
             {
                 char_type const* pRSlash        =   str_rchr(buffer, '/');
                 char_type const* pRBackSlash    =   str_rchr(buffer, '\\');
 
-                if(pRSlash < pRBackSlash)
+                if (pRSlash < pRBackSlash)
                 {
                     pRSlash = pRBackSlash;
                 }
 
-                if(NULL == pRSlash)
+                if (NULL == pRSlash)
                 {
                     *ppFile = NULL;
                 }
@@ -467,15 +467,6 @@ public:
     static HINTERNET find_first_file(HINTERNET hconn, char_type const* spec, find_data_type *findData, is_dword_t flags = 0, is_dword_t context = 0)
     {
         HINTERNET hfind = ::FtpFindFirstFileA(hconn, spec, STLSOFT_NS_QUAL(any_caster)<find_data_type*, LPWIN32_FIND_DATAA, LPWIN32_FIND_DATAW>(findData), flags, context);
-
-#if 0
-        if(NULL == hfind)
-        {
-            findData->cFileName[0] = '\0';
-        }
-
-printf("find_first_file(0x%08x, %s => %s)\n", hfind, spec, findData->cFileName);
-#endif /* 0 */
 
         return hfind;
     }
@@ -576,10 +567,10 @@ public:
         char_type       *end;
         char_type const separator = (NULL == str_chr(dir, L'/') && NULL != str_chr(dir, L'\\')) ? L'\\' : L'/';
 
-        for(end = dir; *end != L'\0'; ++end)
+        for (end = dir; *end != L'\0'; ++end)
         {}
 
-        if( dir < end &&
+        if (dir < end &&
             *(end - 1) != separator)
         {
             *end        =   separator;
@@ -593,10 +584,10 @@ public:
     {
         char_type   *end;
 
-        for(end = dir; *end != '\0'; ++end)
+        for (end = dir; *end != '\0'; ++end)
         {}
 
-        if( dir < end &&
+        if (dir < end &&
             *(end - 1) == path_name_separator())
         {
             *(end - 1)  =   '\0';
@@ -665,7 +656,7 @@ public:
         size_type       len         =   str_len(fileName);
 
         // If we're not rooted, then get the current directory and concatenate
-        if(separator != *fileName)
+        if (separator != *fileName)
         {
             is_size_t   cchBuffer2  =   STLSOFT_NUM_ELEMENTS(fullPath);
             const int   isDot       =   L'.' == 0[fileName] && L'\0' == 0[fileName];
@@ -674,15 +665,15 @@ public:
 # pragma message(_sscomp_fileline_message("This looks a bit dodgy. Better to use an auto_buffer, and cycle the size, testing the return value from get_current_directory"))
 #endif /* __SYNSOFT_DBS_COMPILER_SUPPORTS_PRAGMA_MESSAGE */
 
-            if(!get_current_directory(hconn, cchBuffer2, fullPath))
+            if (!get_current_directory(hconn, cchBuffer2, fullPath))
             {
                 fullPath[0] = L'\0';
             }
             size_type   cchFullPath = str_len(fullPath);
 
-            if(!isDot)
+            if (!isDot)
             {
-                if(!has_dir_end(fullPath))
+                if (!has_dir_end(fullPath))
                 {
                     ensure_dir_end(fullPath);
                     ++cchFullPath;
@@ -694,26 +685,26 @@ public:
             len         +=  cchFullPath;
         }
 
-        if(NULL != buffer)
+        if (NULL != buffer)
         {
-            if(cchBuffer < len)
+            if (cchBuffer < len)
             {
                 len = cchBuffer;
             }
 
             char_copy(buffer, fileName, cchBuffer);
 
-            if(NULL != ppFile)
+            if (NULL != ppFile)
             {
                 char_type const* pRSlash        =   str_rchr(buffer, L'/');
                 char_type const* pRBackSlash    =   str_rchr(buffer, L'\\');
 
-                if(pRSlash < pRBackSlash)
+                if (pRSlash < pRBackSlash)
                 {
                     pRSlash = pRBackSlash;
                 }
 
-                if(NULL == pRSlash)
+                if (NULL == pRSlash)
                 {
                     *ppFile = NULL;
                 }

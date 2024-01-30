@@ -4,11 +4,11 @@
  * Purpose:     Interface-specific predicates and functions.
  *
  * Created:     14th June 2002
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_MAJOR     4
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_MINOR     0
 # define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_REVISION  7
-# define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_EDIT      80
+# define COMSTL_VER_HPP_INTERFACE_FUNCTIONALS_EDIT      81
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -118,7 +118,7 @@ namespace comstl_project
  * on them. Note that the function class benignly ignores null interface
  * pointers.
  *
- * \param I The COM interface on which to parameterise the template
+ * \param I The COM interface on which to specialise the template
  */
 template <ss_typename_param_k I>
 // [[synesis:class:unary-functor: interface_release]]
@@ -145,7 +145,7 @@ public:
  * on them. Note that the function class benignly ignores null interface
  * pointers.
  *
- * \param I The COM interface on which to parameterise the template
+ * \param I The COM interface on which to specialise the template
  */
 template <ss_typename_param_k I>
 // [[synesis:class:unary-functor: interface_addref]]

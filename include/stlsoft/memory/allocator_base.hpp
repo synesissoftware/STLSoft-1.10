@@ -4,7 +4,7 @@
  * Purpose:     Allocator commmon features.
  *
  * Created:     20th August 2003
- * Updated:     17th January 2024
+ * Updated:     20th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MAJOR    4
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_MINOR    1
 # define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_REVISION 16
-# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     65
+# define STLSOFT_VER_STLSOFT_MEMORY_HPP_ALLOCATOR_BASE_EDIT     66
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ namespace stlsoft
  *
  * \remarks This uses the SCTP/CRTP (Simulated Compile-time Polymorphism / Curiously
  * Recurring Template Pattern) technique, such that derived classes inherit from
- * parameterisations of the adaptor template which specify their fully derived
+ * specialisations of the adaptor template which specify their fully derived
  * template-id as the first parameter
  *
  * \note By default, an allocation failure results in a thrown std::bad_alloc. If
@@ -152,7 +152,7 @@ class allocator_base
 public:
     /// The value type
     typedef T                                   value_type;
-    /// The type of the current parameterisation
+    /// The current specialisation of the type
     typedef allocator_base<T, A>                class_type;
     /// The pointer type
     typedef value_type*                         pointer;

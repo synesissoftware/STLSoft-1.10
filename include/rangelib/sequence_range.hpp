@@ -4,14 +4,14 @@
  * Purpose:     Sequence container range adaptor.
  *
  * Created:     4th November 2003
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Thanks:      To Luoyi (whom I could not thank by email), for pointing out
  *              some gaps with the sequence_range
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -53,7 +53,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MAJOR    2
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_MINOR    12
 # define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_REVISION 6
-# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     73
+# define RANGELIB_VER_RANGELIB_HPP_SEQUENCE_RANGE_EDIT     75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -143,7 +143,7 @@ template<   ss_typename_param_k S
 struct sequence_range_traits
 {
 private:
-    /// Indicates whether the parameterising sequence type has a \c reference member
+    /// Indicates whether the specialising sequence type has a \c reference member
     ///
     /// \note We can't use the type fixer in a fully correct way here, because
     /// most compilers do not detect reference / const_reference members, so we
@@ -296,7 +296,7 @@ public:
 \code
   void dump_elements(std::vector<int> const& numbers)
   {
-    for(sequence_range<std::vector<int> > r(numbers); r; ++r)
+    for (sequence_range<std::vector<int> > r(numbers); r; ++r)
     {
       std::cout << &r; // Dump the current value to stdout
     }

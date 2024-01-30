@@ -4,11 +4,11 @@
  * Purpose:     Include for defining ZERO to be the ZERO_v template class.
  *
  * Created:     29th July 2003
- * Updated:     3rd December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_MINOR    0
 # define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_REVISION 8
-# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     37
+# define STLSOFT_VER_STLSOFT_UTIL_H_ZERODEF_EDIT     38
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@
  ///
  /// By including this file, \c ZERO is (re-)defined to be <code>stlsoft::ZERO_v()</code>
  /// which means that any use of \c ZERO must be with integral types.
-# define ZERO   STLSOFT_NS_QUAL(ZERO_v)::create()
+# define ZERO                                               STLSOFT_NS_QUAL(ZERO_v)::create()
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////

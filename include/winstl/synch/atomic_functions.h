@@ -4,11 +4,11 @@
  * Purpose:     WinSTL atomic functions.
  *
  * Created:     23rd October 1997
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_MINOR     8
 # define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_REVISION  3
-# define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      229
+# define WINSTL_VER_WINSTL_SYNCH_H_ATOMIC_FUNCTIONS_EDIT      231
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,10 +109,10 @@
 # if defined(STLSOFT_CF_FASTCALL_SUPPORTED) && \
      !defined(STLSOFT_NO_FASTCALL)
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_FASTCALL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __fastcall
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __fastcall
 # elif defined(STLSOFT_CF_STDCALL_SUPPORTED)
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_STDCALL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __stdcall
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __stdcall
 # else
 #  error Need to define calling convention
 # endif /* call-conv */
@@ -121,7 +121,7 @@
       defined(WINSTL_ARCH_IS_X64)
 
 #  define WINSTL_ATOMIC_FNS_CALLCONV_IS_CDECL
-#  define WINSTL_ATOMIC_FNS_CALLCONV        __cdecl
+#  define WINSTL_ATOMIC_FNS_CALLCONV                        __cdecl
 
 #else /* ? arch */
 # error Only defined for the Intel x86 and IA64 architectures
@@ -1106,13 +1106,13 @@ namespace ximpl
         static ws_bool_t    s_up;   /* This is the flag variable, also guaranteed to be zero */
 
         /* Simple spin lock */
-        if(!s_init) /* Low cost pre-test. In the unlikely event that another thread does come in and */
+        if (!s_init) /* Low cost pre-test. In the unlikely event that another thread does come in and */
         {           /* also sees this as false, the dual initialisation of all three statics is benign */
 
-            for(; 0 != atomic_exchange_smp(&s_spin, 1); )
+            for (; 0 != atomic_exchange_smp(&s_spin, 1); )
             {}
 
-            if(!s_init)
+            if (!s_init)
             {
                 SYSTEM_INFO sys_info;
 
@@ -1151,7 +1151,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_preincrement(atomic_int_t volatile*
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1231,7 +1231,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_predecrement(atomic_int_t volatile*
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1311,7 +1311,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_postincrement(atomic_int_t volatile
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1389,7 +1389,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_postdecrement(atomic_int_t volatile
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1467,7 +1467,7 @@ WINSTL_ATOMIC_FNS_IMPL_(void) atomic_increment(atomic_int_t volatile* /* pl */)
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1537,7 +1537,7 @@ WINSTL_ATOMIC_FNS_IMPL_(void) atomic_decrement(atomic_int_t volatile* /* pl */)
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1639,7 +1639,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_read(atomic_int_t volatile const* /
 {
     using namespace ximpl;
 
-    if(s_up)
+    if (s_up)
     {
         _asm
         {
@@ -1752,7 +1752,7 @@ WINSTL_ATOMIC_FNS_IMPL_(atomic_int_t) atomic_postadd(atomic_int_t volatile* /* p
     using namespace ximpl;
 
     /* Thanks to Eugene Gershnik for the fast-call implementation */
-    if(s_up)
+    if (s_up)
     {
         __asm
         {

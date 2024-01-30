@@ -5,11 +5,11 @@
  *              and platform discriminations, and definitions of types.
  *
  * Created:     15th September 2004
- * Updated:     4th January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -50,7 +50,7 @@
 # define ACESTL_VER_ACESTL_HPP_ACESTL_MAJOR     1
 # define ACESTL_VER_ACESTL_HPP_ACESTL_MINOR     8
 # define ACESTL_VER_ACESTL_HPP_ACESTL_REVISION  2
-# define ACESTL_VER_ACESTL_HPP_ACESTL_EDIT      53
+# define ACESTL_VER_ACESTL_HPP_ACESTL_EDIT      54
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /** \file acestl/acestl.hpp
@@ -173,9 +173,9 @@
 # ifdef ACE_WIN32
 #  undef     ACE_INVALID_HANDLE
 #  if defined(STLSOFT_COMPILER_IS_INTEL)
-#   define    ACE_INVALID_HANDLE            STLSOFT_NS_QUAL(union_cast)<HANDLE>(-1)
+#   define    ACE_INVALID_HANDLE                            STLSOFT_NS_QUAL(union_cast)<HANDLE>(-1)
 #  else /* ? compiler */
-#   define    ACE_INVALID_HANDLE            reinterpret_cast<HANDLE>(-1)
+#   define    ACE_INVALID_HANDLE                            reinterpret_cast<HANDLE>(-1)
 #  endif /* compiler */
 # endif /* ACE_WIN32 */
 #endif /* __cplusplus */
@@ -471,8 +471,8 @@ typedef as_streamoff_t      streamoff_t;        //!< streamoff
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
-#define as_true_v       ss_true_v
-#define as_false_v      ss_false_v
+#define as_true_v                                           ss_true_v
+#define as_false_v                                          ss_false_v
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* /////////////////////////////////////////////////////////////////////////

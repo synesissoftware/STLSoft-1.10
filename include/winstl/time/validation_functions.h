@@ -4,11 +4,11 @@
  * Purpose:     Validation functions for Windows time structures.
  *
  * Created:     1st June 2014
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2014-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MAJOR    2
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_MINOR    0
 # define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_REVISION 2
-# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     11
+# define WINSTL_VER_WINSTL_TIME_H_VALIDATION_FUNCTIONS_EDIT     13
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -116,11 +116,11 @@ namespace winstl_project
  * Mask of invalid time flags
  */
 
-#define WINSTL_INVALID_TIME_MILLISECONDS    (0x0010)
-#define WINSTL_INVALID_TIME_SECONDS         (0x0020)
-#define WINSTL_INVALID_TIME_MINUTES         (0x0040)
-#define WINSTL_INVALID_TIME_HOURS           (0x0080)
-#define WINSTL_INVALID_TIME_MASK            (0x00f0)
+#define WINSTL_INVALID_TIME_MILLISECONDS                    (0x0010)
+#define WINSTL_INVALID_TIME_SECONDS                         (0x0020)
+#define WINSTL_INVALID_TIME_MINUTES                         (0x0040)
+#define WINSTL_INVALID_TIME_HOURS                           (0x0080)
+#define WINSTL_INVALID_TIME_MASK                            (0x00f0)
 
 /** \def WINSTL_INVALID_DATE_DAYS
  * The time has an invalid days value
@@ -138,10 +138,10 @@ namespace winstl_project
  * Mask of invalid date flags
  */
 
-#define WINSTL_INVALID_DATE_DAYS            (0x0100)
-#define WINSTL_INVALID_DATE_MONTHS          (0x0200)
-#define WINSTL_INVALID_DATE_YEARS           (0x0400)
-#define WINSTL_INVALID_DATE_MASK            (0x0700)
+#define WINSTL_INVALID_DATE_DAYS                            (0x0100)
+#define WINSTL_INVALID_DATE_MONTHS                          (0x0200)
+#define WINSTL_INVALID_DATE_YEARS                           (0x0400)
+#define WINSTL_INVALID_DATE_MASK                            (0x0700)
 
 /** @} */
 
@@ -155,8 +155,8 @@ namespace winstl_project
  * Mask of invalid date flags
  */
 
-#define WINSTL_E_TIME_INVALIDDATE           MAKE_HRESULT(SEVERITY_ERROR, FACILITY_ITF, ERROR_INVALID_PARAMETER)
-#define WINSTL_E_TIME_INVALIDTIME           HRESULT_FROM_WIN32(ERROR_INVALID_TIME)
+#define WINSTL_E_TIME_INVALIDDATE                           MAKE_HRESULT(SEVERITY_ERROR, FACILITY_ITF, ERROR_INVALID_PARAMETER)
+#define WINSTL_E_TIME_INVALIDTIME                           HRESULT_FROM_WIN32(ERROR_INVALID_TIME)
 
 /** @} */
 
@@ -188,41 +188,41 @@ winstl_C_time_validate_SYSTEMTIME(
 {
     DWORD dummy;
 
-    if(NULL == details)
+    if (NULL == details)
     {
         details = &dummy;
     }
 
-    if(NULL == st)
+    if (NULL == st)
     {
         return E_POINTER;
     }
 
     *details = 0;
 
-    if(st->wMilliseconds > 999)
+    if (st->wMilliseconds > 999)
     {
         *details |= WINSTL_INVALID_TIME_MILLISECONDS;
     }
-    if(st->wSecond > 59)
+    if (st->wSecond > 59)
     {
         *details |= WINSTL_INVALID_TIME_SECONDS;
     }
-    if(st->wMinute > 59)
+    if (st->wMinute > 59)
     {
         *details |= WINSTL_INVALID_TIME_MINUTES;
     }
-    if(st->wHour > 23)
+    if (st->wHour > 23)
     {
         *details |= WINSTL_INVALID_TIME_HOURS;
     }
 
-    if( st->wMonth <  1 ||
+    if (st->wMonth <  1 ||
         st->wMonth > 12)
     {
         *details |= WINSTL_INVALID_DATE_MONTHS;
     }
-    if(0 == st->wDay)
+    if (0 == st->wDay)
     {
         *details |= WINSTL_INVALID_DATE_DAYS;
     }
@@ -230,17 +230,17 @@ winstl_C_time_validate_SYSTEMTIME(
     {
         int isLeap;
 
-        if(0 != (st->wYear % 4))
+        if (0 != (st->wYear % 4))
         {
             isLeap = 0;
         }
         else
-        if(0 != (st->wYear % 100))
+        if (0 != (st->wYear % 100))
         {
             isLeap = 1;
         }
         else
-        if(0 == (st->wYear % 400))
+        if (0 == (st->wYear % 400))
         {
             isLeap = 1;
         }
@@ -249,10 +249,10 @@ winstl_C_time_validate_SYSTEMTIME(
             isLeap = 0;
         }
 
-        switch(st->wMonth)
+        switch (st->wMonth)
         {
             default:
-                if(st->wDay > 31)
+                if (st->wDay > 31)
                 {
                     *details |= WINSTL_INVALID_DATE_DAYS;
                 }
@@ -262,22 +262,22 @@ winstl_C_time_validate_SYSTEMTIME(
             case    6:
             case    9:
             case    11:
-                if(st->wDay > 30)
+                if (st->wDay > 30)
                 {
                     *details |= WINSTL_INVALID_DATE_DAYS;
                 }
                 break;
             case    2:
-                if(isLeap)
+                if (isLeap)
                 {
-                    if(st->wDay > 29)
+                    if (st->wDay > 29)
                     {
                         *details |= WINSTL_INVALID_DATE_DAYS;
                     }
                 }
                 else
                 {
-                    if(st->wDay > 28)
+                    if (st->wDay > 28)
                     {
                         *details |= WINSTL_INVALID_DATE_DAYS;
                     }
@@ -286,12 +286,12 @@ winstl_C_time_validate_SYSTEMTIME(
         }
     }
 
-    if(0 != (WINSTL_INVALID_DATE_MASK & *details))
+    if (0 != (WINSTL_INVALID_DATE_MASK & *details))
     {
         return WINSTL_E_TIME_INVALIDDATE;
     }
 
-    if(0 != (WINSTL_INVALID_TIME_MASK & *details))
+    if (0 != (WINSTL_INVALID_TIME_MASK & *details))
     {
         return HRESULT_FROM_WIN32(ERROR_INVALID_TIME);
     }

@@ -4,11 +4,11 @@
  * Purpose:     Sequence class for adapting ACE_Message_Queue to an STL sequence.
  *
  * Created:     15th September 2004
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_MAJOR     2
 # define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_MINOR     1
 # define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_REVISION  16
-# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_EDIT      75
+# define ACESTL_VER_ACESTL_COLLECTIONS_HPP_MESSAGE_QUEUE_SEQUENCE_EDIT      77
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -181,7 +181,7 @@ public:
     typedef char                                    value_type;
     /// The sequence type
     typedef ACE_Message_Queue<ACE_SYNCH_USE>        sequence_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef message_queue_sequence<ACE_SYNCH_USE>   class_type;
     /// The size type
     typedef ss_size_t                               size_type;
@@ -231,15 +231,15 @@ public:
                 , m_entryIndex(0)
                 , m_refCount(1)
             {
-                if(m_mqi.next(m_entry))
+                if (m_mqi.next(m_entry))
                 {
-                    for(;;)
+                    for (;;)
                     {
-                        if(0 != (m_entryLength = m_entry->length()))
+                        if (0 != (m_entryLength = m_entry->length()))
                         {
                             break;
                         }
-                        else if(NULL == (m_entry = nextEntry()))
+                        else if (NULL == (m_entry = nextEntry()))
                         {
                             break;
                         }
@@ -281,17 +281,17 @@ public:
             {
                 ACESTL_MESSAGE_ASSERT("Invalid index", m_entryIndex < m_entryLength);
 
-                if(++m_entryIndex == m_entryLength)
+                if (++m_entryIndex == m_entryLength)
                 {
                     m_entryIndex = 0;
 
-                    for(;;)
+                    for (;;)
                     {
-                        if(NULL == (m_entry = nextEntry()))
+                        if (NULL == (m_entry = nextEntry()))
                         {
                             return false;
                         }
-                        else if(0 != (m_entryLength = m_entry->length()))
+                        else if (0 != (m_entryLength = m_entry->length()))
                         {
                             break;
                         }
@@ -311,7 +311,7 @@ public:
             {
                 ss_sint32_t rc = --m_refCount;
 
-                if(0 == rc)
+                if (0 == rc)
                 {
                     delete this;
                 }
@@ -324,11 +324,11 @@ public:
                 ACESTL_ASSERT(0 != n);
                 ACESTL_ASSERT(f != l);
 
-                if(0 != n)
+                if (0 != n)
                 {
                     size_type n1 = m_entryLength - m_entryIndex;
 
-                    if(n <= n1)
+                    if (n <= n1)
                     {
                         // Terminal case
 
@@ -362,7 +362,7 @@ public:
             {
                 size_type n1 = m_entryLength - m_entryIndex;
 
-                if( NULL != l &&
+                if (NULL != l &&
                     m_entry == l->m_entry)
                 {
                     // Terminal case
@@ -378,7 +378,7 @@ public:
 
                     m_entry = nextEntry();
 
-                    if(NULL != m_entry)
+                    if (NULL != m_entry)
                     {
                         m_entryIndex    =   0;
                         m_entryLength   =   m_entry->length();
@@ -391,7 +391,7 @@ public:
             {
                 size_type n1 = m_entryLength - m_entryIndex;
 
-                if(n <= n1)
+                if (n <= n1)
                 {
                     // Asking for less than (or equal to) the capacity
                     // of the current entry.
@@ -417,7 +417,7 @@ public:
 
                     ACESTL_MESSAGE_ASSERT("Attempt to walk off end of iterator's range", (0 == n || NULL != m_entry));
 
-                    if(NULL != m_entry)
+                    if (NULL != m_entry)
                     {
                         m_entryIndex    =   0;
                         m_entryLength   =   m_entry->length();
@@ -459,14 +459,14 @@ public:
         iterator(class_type const& rhs)
             : m_handle(rhs.m_handle)
         {
-            if(NULL != m_handle)
+            if (NULL != m_handle)
             {
                 m_handle->AddRef();
             }
         }
         ~iterator() STLSOFT_NOEXCEPT
         {
-            if(NULL != m_handle)
+            if (NULL != m_handle)
             {
                 m_handle->Release();
             }
@@ -478,12 +478,12 @@ public:
 
             m_handle = rhs.m_handle;
 
-            if(NULL != m_handle)
+            if (NULL != m_handle)
             {
                 m_handle->AddRef();
             }
 
-            if(NULL != this_handle)
+            if (NULL != this_handle)
             {
                 this_handle->Release();
             }
@@ -496,7 +496,7 @@ public:
         {
             ACESTL_ASSERT(NULL != m_handle);
 
-            if(!m_handle->advance())
+            if (!m_handle->advance())
             {
                 m_handle->Release();
 
@@ -552,13 +552,13 @@ public:
 #if 0
         static ss_bool_t equal_(class_type const& lhs, class_type const& rhs, STLSOFT_NS_QUAL_STD(forward_iterator_tag));
             // Forward or above
-            if(is_end_point())
+            if (is_end_point())
             {
                 return rhs.is_end_point();
             }
             else
             {
-                if(rhs.is_end_point())
+                if (rhs.is_end_point())
                 {
                     return false;
                 }
@@ -579,7 +579,7 @@ public:
     private:
         void fast_copy(char const* f, char const* l)
         {
-            if(f != l)
+            if (f != l)
             {
                 ACESTL_ASSERT(NULL != m_handle);
 
@@ -588,7 +588,7 @@ public:
         }
         void fast_copy(class_type const& l, char* o)
         {
-            if(*this != l)
+            if (*this != l)
             {
                 ACESTL_ASSERT(NULL != m_handle);
 
@@ -597,7 +597,7 @@ public:
         }
         void fast_copy(size_type n, char* o)
         {
-            if(0 != n)
+            if (0 != n)
             {
                 ACESTL_ASSERT(NULL != m_handle);
 
@@ -657,7 +657,7 @@ public:
     static char* fast_copy(iterator f, iterator l, char* o)
     {
 #if defined(ACESTL_MQS_NO_FAST_COPY_TO)
-        for(; f != l; ++f, ++o)
+        for (; f != l; ++f, ++o)
         {
             *o = *f;
         }
@@ -670,7 +670,7 @@ public:
     static char* fast_copy(iterator f, size_type n, char* o)
     {
 #if defined(ACESTL_MQS_NO_FAST_COPY_TO)
-        for(; 0 != n; ++f, ++o, --n)
+        for (; 0 != n; ++f, ++o, --n)
         {
             *o = *f;
         }
@@ -684,7 +684,7 @@ public:
     static iterator fast_copy(char const* f, char const* l, iterator o)
     {
 #if defined(ACESTL_MQS_NO_FAST_COPY_FROM)
-        for(; f != l; ++f, ++o)
+        for (; f != l; ++f, ++o)
         {
             *o = *f;
         }

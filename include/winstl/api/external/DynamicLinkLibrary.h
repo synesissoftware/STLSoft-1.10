@@ -69,7 +69,7 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary
-# define WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary                     STLSOFT_NS_GLOBAL_(FreeLibrary)
+# define WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary STLSOFT_NS_GLOBAL_(FreeLibrary)
 #endif /* !WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary */
 
 #ifndef WINSTL_API_EXTERNAL_DynamicLinkLibrary_GetModuleFileNameA

@@ -4,11 +4,11 @@
  * Purpose:     Window functions.
  *
  * Created:     7th May 2000
- * Updated:     18th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2000-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MAJOR     4
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_MINOR     0
 # define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_REVISION  16
-# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      81
+# define WINSTL_VER_WINSTL_WINDOW_H_FUNCTIONS_EDIT      82
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -784,7 +784,7 @@ FindFirstChildById_N(
 )
 #   endif /* WINSTL_FINDFIRSTCHILDBYID_SLF_FORM2 */
 {
-    if(::GetDlgCtrlID(hwndParent) == id)
+    if (::GetDlgCtrlID(hwndParent) == id)
     {
         return hwndParent;
     }
@@ -874,7 +874,7 @@ struct FindFirstChildById_class
 
     static HWND FindFirstChildById_N(HWND hwndParent, int id)
     {
-        if(::GetDlgCtrlID(hwndParent) == id)
+        if (::GetDlgCtrlID(hwndParent) == id)
         {
             return hwndParent;
         }

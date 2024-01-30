@@ -14,6 +14,7 @@
  * ~~CMake~~
  * VC++ common makefile(s)
  * STLSoft 1.10-related blog posts (focusing on new components)
+ * apply `stlsoft::unit::string_insert()` to UNIXSTL/WinSTL `basic_path<>`
 
 
 ## STLSoft 1.11+ TODOs:

@@ -4,13 +4,13 @@
  * Purpose:     Contains the shared_handle and monitored_shared_handle classes.
  *
  * Created:     19th January 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Austin Ziegler for fixes to defects evident on x64.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -62,7 +62,7 @@
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MAJOR       2
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_MINOR       0
 # define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_REVISION    17
-# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        50
+# define WINSTL_VER_WINSTL_REGISTRY_UTIL_HPP_SHARED_HANDLES_EDIT        51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -186,7 +186,7 @@ namespace registry_util
         {
             WINSTL_MESSAGE_ASSERT("Shared search handle being destroyed with outstanding references!", 0 == m_refCount);
 
-            if(NULL != m_hkey)
+            if (NULL != m_hkey)
             {
                 WINSTL_API_EXTERNAL_Registry_RegCloseKey(m_hkey);
             }
@@ -204,7 +204,7 @@ namespace registry_util
         {
             ss_sint32_t rc = --m_refCount;
 
-            if(0 == rc)
+            if (0 == rc)
             {
                 delete this;
             }
@@ -257,7 +257,7 @@ namespace registry_util
         virtual void test_reset_and_throw()
         {
             // 1. Test, . . .
-            if(WAIT_OBJECT_0 == WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_monitor.handle(), 0))
+            if (WAIT_OBJECT_0 == WINSTL_API_EXTERNAL_Synchronization_WaitForSingleObject(m_monitor.handle(), 0))
             {
                 // Must set to watch again here, because several iterators from the same
                 // same reg_key_sequence could be open simultaneously
@@ -290,7 +290,7 @@ namespace registry_util
                             ,   true
                             );
 
-                if(ERROR_SUCCESS != r)
+                if (ERROR_SUCCESS != r)
                 {
                     STLSOFT_THROW_X(registry_exception("could not register change notification", r));
                 }
@@ -300,7 +300,7 @@ namespace registry_util
                 ws_uint_t   verMajor;
                 ws_uint_t   verMinor;
 
-                if( winstl_C_internal_IsWindows9x(&verMajor, &verMinor, NULL) &&
+                if (winstl_C_internal_IsWindows9x(&verMajor, &verMinor, NULL) &&
                     verMajor == 4 &&
                     verMinor < 10)
                 {
@@ -358,7 +358,7 @@ namespace registry_util
     !defined(STLSOFT_COMPILER_IS_COMO) && \
     !defined(STLSOFT_COMPILER_IS_WATCOM)
 
-        if(bMonitorExternalInvalidation)
+        if (bMonitorExternalInvalidation)
         {
             return new monitored_shared_handle(hkey, eventType);
         }

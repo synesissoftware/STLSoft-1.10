@@ -4,11 +4,11 @@
  * Purpose:     proxy_iterator template class.
  *
  * Created:     28th June 2004
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -52,7 +52,7 @@
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_MAJOR      3
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_MINOR      0
 # define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_REVISION   6
-# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_EDIT       63
+# define STLSOFT_VER_STLSOFT_OBSOLETE_HPP_PROXY_ITERATOR_EDIT       64
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -304,7 +304,7 @@ public:
     {
         STLSOFT_MESSAGE_ASSERT("Attempting to dereference an invalid iterator", m_begin != m_end);
 
-        if(m_modified)
+        if (m_modified)
         {
             // Can't make m_value mutable, as it confuses too many compilers
             remove_const(m_value) = value_type(traits_type::make_value(*m_begin));
@@ -320,7 +320,7 @@ public:
     {
         ss_bool_t   bEqual;
 
-        if(m_end == rhs.m_end)
+        if (m_end == rhs.m_end)
         {
             // It's a copy of the same iterator, so it's only equal if the m_begin's are the tame
             bEqual = m_begin == rhs.m_begin;

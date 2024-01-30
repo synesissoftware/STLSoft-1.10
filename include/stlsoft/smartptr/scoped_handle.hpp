@@ -1,17 +1,17 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:        stlsoft/smartptr/scoped_handle.hpp (evolved from MLResPtr.h, ::SynesisStd)
  *
- * Purpose:     scoped_handle - parameterisable RAII class for arbitrary
+ * Purpose:     scoped_handle - specialisable RAII class for arbitrary
  *              resource types.
  *
  * Created:     1st November 1994
- * Updated:     24th December 2020
+ * Updated:     29th January 2024
  *
  * Thanks to:   Adi Shavit, for requesting the indirect functionality
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1994-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MAJOR    5
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_MINOR    6
 # define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_REVISION 1
-# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     685
+# define STLSOFT_VER_STLSOFT_SMARTPTR_HPP_SCOPED_HANDLE_EDIT     686
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -340,7 +340,7 @@ public:
  *
  * \ingroup group__library__SmartPointer
  *
- * The template is parameterised on the resource type (e.g. FILE*, int, void*)
+ * The template is specialised on the resource type (e.g. FILE*, int, void*)
  * and instances are initialised from a resource handle and the address of a
  * (single-parameter) cleanup function, as in:
  *

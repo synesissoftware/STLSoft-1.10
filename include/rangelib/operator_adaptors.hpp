@@ -5,11 +5,11 @@
  *              non_mutating_operator_adaptor classes.
  *
  * Created:     4th November 2003
- * Updated:     26th December 2020
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,7 +57,7 @@
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MAJOR       1
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_MINOR       5
 # define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_REVISION    8
-# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        43
+# define RANGELIB_VER_RANGELIB_HPP_OPERATOR_ADAPTORS_EDIT        44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ public:
 
 /** This class is a reverse bolt-in, which provides mutating and
  * non-mutating Range operators based on the method forms of its
- * parameterising (and deriving) class
+ * specialising (and deriving) class
  *
  * \ingroup group__library__Range
  *
@@ -210,7 +210,7 @@ public:
 };
 
 /** This class is a reverse bolt-in, which provides non-mutating Range
- * operators based on the method forms of its parameterising (and deriving)
+ * operators based on the method forms of its specialising (and deriving)
  * class
  *
  * \ingroup group__library__Range

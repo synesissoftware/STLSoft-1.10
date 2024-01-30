@@ -4,13 +4,13 @@
  * Purpose:     Statically sized multidimensional class template.
  *
  * Created:     4th August 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Neal Becker for suggesting the uninitialised mode.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MAJOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_MINOR     4
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_REVISION  7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      201
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_STATIC_ARRAY_EDIT      202
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -789,7 +789,7 @@ inline void static_array_1d<T, N0, P, M>::range_check_(ss_typename_type_k static
     STLSOFT_SUPPRESS_UNUSED(i0);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < N0))
+    if (!(i0 < N0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("static array index out of range"));
     }
@@ -824,7 +824,7 @@ inline static_array_1d<T, N0, P, M>::static_array_1d(static_array_1d<T, N0, P, M
 template <ss_typename_param_k T, ss_size_t N0, ss_typename_param_k P, ss_typename_param_k M>
 inline static_array_1d<T, N0, P, M>::~static_array_1d() STLSOFT_NOEXCEPT
 {
-    if(!is_pointer_type<M>::value)
+    if (!is_pointer_type<M>::value)
     {
         array_range_initialiser<T, allocator_type, P>::destroy(*this, data_(), size());
     }
@@ -1003,7 +1003,7 @@ inline void static_array_2d<T, N0, N1, P, M>::range_check_(ss_typename_type_k st
     STLSOFT_SUPPRESS_UNUSED(i0); STLSOFT_SUPPRESS_UNUSED(i1);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < N0) ||
+    if (!(i0 < N0) ||
         !(i1 < N1))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("static array index out of range"));
@@ -1019,7 +1019,7 @@ inline void static_array_2d<T, N0, N1, P, M>::range_check_(ss_typename_type_k st
     STLSOFT_SUPPRESS_UNUSED(i0);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < N0))
+    if (!(i0 < N0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("static array index out of range"));
     }
@@ -1054,7 +1054,7 @@ inline static_array_2d<T, N0, N1, P, M>::static_array_2d(static_array_2d<T, N0, 
 template <ss_typename_param_k T, ss_size_t N0, ss_size_t N1, ss_typename_param_k P, ss_typename_param_k M>
 inline static_array_2d<T, N0, N1, P, M>::~static_array_2d() STLSOFT_NOEXCEPT
 {
-    if(!is_pointer_type<M>::value)
+    if (!is_pointer_type<M>::value)
     {
         array_range_initialiser<T, allocator_type, P>::destroy(*this, data_(), size());
     }
@@ -1262,7 +1262,7 @@ inline void static_array_3d<T, N0, N1, N2, P, M>::range_check_(ss_typename_type_
     STLSOFT_SUPPRESS_UNUSED(i0); STLSOFT_SUPPRESS_UNUSED(i1); STLSOFT_SUPPRESS_UNUSED(i2);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < N0) ||
+    if (!(i0 < N0) ||
         !(i1 < N1) ||
         !(i2 < N2))
     {
@@ -1279,7 +1279,7 @@ inline void static_array_3d<T, N0, N1, N2, P, M>::range_check_(ss_typename_type_
     STLSOFT_SUPPRESS_UNUSED(i0);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < N0))
+    if (!(i0 < N0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("static array index out of range"));
     }
@@ -1314,7 +1314,7 @@ inline static_array_3d<T, N0, N1, N2, P, M>::static_array_3d(static_array_3d<T, 
 template <ss_typename_param_k T, ss_size_t N0, ss_size_t N1, ss_size_t N2, ss_typename_param_k P, ss_typename_param_k M>
 inline static_array_3d<T, N0, N1, N2, P, M>::~static_array_3d() STLSOFT_NOEXCEPT
 {
-    if(!is_pointer_type<M>::value)
+    if (!is_pointer_type<M>::value)
     {
         array_range_initialiser<T, allocator_type, P>::destroy(*this, data_(), size());
     }
@@ -1528,7 +1528,7 @@ inline void static_array_4d<T, N0, N1, N2, N3, P, M>::range_check_(ss_typename_t
     STLSOFT_SUPPRESS_UNUSED(i0); STLSOFT_SUPPRESS_UNUSED(i1); STLSOFT_SUPPRESS_UNUSED(i2); STLSOFT_SUPPRESS_UNUSED(i3);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if( !(i0 < N0) ||
+    if (!(i0 < N0) ||
         !(i1 < N1) ||
         !(i2 < N2) ||
         !(i3 < N3))
@@ -1546,7 +1546,7 @@ inline void static_array_4d<T, N0, N1, N2, N3, P, M>::range_check_(ss_typename_t
     STLSOFT_SUPPRESS_UNUSED(i0);
 
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(!(i0 < N0))
+    if (!(i0 < N0))
     {
         STLSOFT_THROW_X(STLSOFT_NS_QUAL_STD(out_of_range)("static array index out of range"));
     }
@@ -1576,7 +1576,7 @@ inline static_array_4d<T, N0, N1, N2, N3, P, M>::static_array_4d(static_array_4d
 template <ss_typename_param_k T, ss_size_t N0, ss_size_t N1, ss_size_t N2, ss_size_t N3, ss_typename_param_k P, ss_typename_param_k M>
 inline static_array_4d<T, N0, N1, N2, N3, P, M>::~static_array_4d() STLSOFT_NOEXCEPT
 {
-    if(!is_pointer_type<M>::value)
+    if (!is_pointer_type<M>::value)
     {
         array_range_initialiser<T, allocator_type, P>::destroy(*this, data_(), size());
     }

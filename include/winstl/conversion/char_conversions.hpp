@@ -4,7 +4,7 @@
  * Purpose:     Type conversions for Windows.
  *
  * Created:     31st May 2003
- * Updated:     17th January 2024
+ * Updated:     29th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,7 +55,7 @@
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MAJOR    5
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_MINOR    4
 # define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_REVISION 13
-# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     114
+# define WINSTL_VER_WINSTL_CONVERSION_HPP_CHAR_CONVERSIONS_EDIT     116
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -216,9 +216,9 @@ private:
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
-        if(0 == size)
+        if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }
@@ -226,7 +226,7 @@ private:
         {
             // NOTE: cannot use -1 for length, since s might be a type that
             // could change length
-            if(0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, static_cast<int>(size), data, static_cast<int>(size)))
+            if (0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_MultiByteToWideChar(0, 0, s, static_cast<int>(size), data, static_cast<int>(size)))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -261,7 +261,7 @@ public:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         WINSTL_ASSERT(0 != n);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(0 == n)
+        if (0 == n)
         {
             return 0;
         }
@@ -374,9 +374,9 @@ private:
 
         // If the auto_buffer failed to allocate the required memory, and
         // we're not in an exception-environment, then size() will be zero
-        if(0 == size)
+        if (0 == size)
         {
-            // Since we know that auto_buffer's parameterising size must
+            // Since we know that auto_buffer's specialising size must
             // always be greater that 0, then
             data[0] = '\0';
         }
@@ -384,7 +384,7 @@ private:
         {
             // NOTE: cannot use -1 for length, since s might be a type that
             // could change length
-            if(0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, s, static_cast<int>(size), data, static_cast<int>(size), NULL, NULL))
+            if (0 == WINSTL_API_EXTERNAL_UnicodeAndCharacterSet_WideCharToMultiByte(0, 0, s, static_cast<int>(size), data, static_cast<int>(size), NULL, NULL))
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(conversion_error("failed to convert multibyte string to wide string", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -419,7 +419,7 @@ public:
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
         WINSTL_ASSERT(0 != n);
 #else /* ? STLSOFT_CF_EXCEPTION_SUPPORT */
-        if(0 == n)
+        if (0 == n)
         {
             return 0;
         }

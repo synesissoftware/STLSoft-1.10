@@ -4,14 +4,14 @@
  * Purpose:     Helper functions for the Windows time types.
  *
  * Created:     2nd December 2004
- * Updated:     23rd November 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   David Wang, for spotting an error in one of the shim
  *              functions.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_MAJOR       2
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_MINOR       3
 # define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_REVISION    17
-# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_EDIT        74
+# define WINSTL_VER_WINSTL_SHIMS_ACCESS_STRING_HPP_TIME_EDIT        75
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -150,11 +150,11 @@ struct ximpl_winstl_shims_access_string_time
     {
         cchDate = static_cast<ws_size_t>(pfnGetDateFmtA(LOCALE_USER_DEFAULT, 0, &t, NULL, NULL, 0));
 
-        if(0 != cchDate)
+        if (0 != cchDate)
         {
             cchTime = static_cast<ws_size_t>(pfnGetTimeFmtA(LOCALE_USER_DEFAULT, 0, &t, NULL, NULL, 0));
 
-            if(0 != cchTime)
+            if (0 != cchTime)
             {
                 return (cchDate - 1) + 1 + (cchTime - 1);
             }
@@ -185,11 +185,11 @@ struct ximpl_winstl_shims_access_string_time
     {
         cchDate = static_cast<ws_size_t>(pfnGetDateFmtW(LOCALE_USER_DEFAULT, 0, &t, NULL, NULL, 0));
 
-        if(0 != cchDate)
+        if (0 != cchDate)
         {
             cchTime = static_cast<ws_size_t>(pfnGetTimeFmtW(LOCALE_USER_DEFAULT, 0, &t, NULL, NULL, 0));
 
-            if(0 != cchTime)
+            if (0 != cchTime)
             {
                 return (cchDate - 1) + 1 + (cchTime - 1);
             }
@@ -251,12 +251,12 @@ stream_insert(S &stm, SYSTEMTIME const& t)
 #ifdef STLSOFT_CD_EXCEPTION_SUPPORT
     WINSTL_ASSERT(0 != cchTotal);
 #else /* ? STLSOFT_CD_EXCEPTION_SUPPORT */
-    if(0 != cchTotal)
+    if (0 != cchTotal)
 #endif /* STLSOFT_CD_EXCEPTION_SUPPORT */
     {
         string_t s(cchTotal);
 
-        if(cchTotal == s.size())
+        if (cchTotal == s.size())
         {
             ::GetDateFormatA(LOCALE_USER_DEFAULT, 0, &t, NULL, &s.data()[0], static_cast<int>(cchDate));
             s.data()[cchDate - 1] = ' ';
@@ -328,7 +328,7 @@ c_str_ptr_a(
     const ws_size_t cchTotal    =   impl_t::calc_sizes(t, ::GetDateFormatA, pfnGetTimeFormatA, cchDate, cchTime);
     string_t        s(cchTotal);
 
-    if( 0 != cchTotal &&
+    if (0 != cchTotal &&
         cchTotal == s.size())
     {
         ::GetDateFormatA(LOCALE_USER_DEFAULT, 0, &t, NULL, &s.data()[0], static_cast<int>(cchDate));
@@ -378,7 +378,7 @@ c_str_ptr_w(
     const ws_size_t cchTotal    =   impl_t::calc_sizes(t, ::GetDateFormatW, pfnGetTimeFormatW, cchDate, cchTime);
     string_t        s(cchTotal);
 
-    if( 0 != cchTotal &&
+    if (0 != cchTotal &&
         cchTotal == s.size())
     {
         ::GetDateFormatW(LOCALE_USER_DEFAULT, 0, &t, NULL, &s.data()[0], static_cast<int>(cchDate));

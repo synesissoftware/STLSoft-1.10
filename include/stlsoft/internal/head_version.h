@@ -5,7 +5,7 @@
 #error This file can only be included implicitly by stlsoft/stlsoft.h; any other use is not supported
 #endif
 
-#define STLSOFT_HEAD_VER    _STLSOFT_VER
+#define STLSOFT_HEAD_VER                                    _STLSOFT_VER
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

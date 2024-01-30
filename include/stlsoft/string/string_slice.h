@@ -4,7 +4,7 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     3rd May 2014
- * Updated:     18th January 2024
+ * Updated:     30th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MAJOR    1
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    5
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 2
-# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     29
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_MINOR    6
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_REVISION 1
+# define STLSOFT_VER_STLSOFT_STRING_H_STRING_SLICE_EDIT     30
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -72,6 +72,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING
 # include <stlsoft/shims/access/string/std/c_string.h>
 #endif /* !STLSOFT_INCL_STLSOFT_SHIMS_ACCESS_STRING_STD_H_C_STRING */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
@@ -347,7 +350,7 @@ c_str_len(
 #endif /* STLSOFT_NO_NAMESPACE */
 
 /* /////////////////////////////////////////////////////////////////////////
- * stream insertion shims
+ * stream insertion
  */
 
 #ifdef __cplusplus
@@ -357,18 +360,19 @@ c_str_len(
  * \ingroup group__concept__Shim__stream_insertion
  *
  */
-template <ss_typename_param_k S>
+template <
+    ss_typename_param_k T_stream
+>
 inline
-S&
+T_stream&
 operator <<(
-    S&                                  s
+    T_stream&                           stm
 ,   stlsoft_C_string_slice_m_t const&   slice
 )
 {
-    s.write(slice.ptr, slice.len);
+    stlsoft::util::string_insert_m(stm, slice.ptr, slice.len);
 
-    return s;
-
+    return stm;
 }
 
 /** The \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft_C_string_slice_w_t
@@ -376,20 +380,20 @@ operator <<(
  * \ingroup group__concept__Shim__stream_insertion
  *
  */
-template <ss_typename_param_k S>
+template <
+    ss_typename_param_k T_stream
+>
 inline
-S&
+T_stream&
 operator <<(
-    S&                                  s
+    T_stream&                           stm
 ,   stlsoft_C_string_slice_w_t const&   slice
 )
 {
-    s.write(slice.ptr, slice.len);
+    stlsoft::util::string_insert_w(stm, slice.ptr, slice.len);
 
-    return s;
-
+    return stm;
 }
-
 #endif /* __cplusplus */
 
 /* /////////////////////////////////////////////////////////////////////////

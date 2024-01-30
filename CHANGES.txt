@@ -17,6 +17,60 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.7 (30th January 2024)
+
+General:
+========
+
+ * enhanced stream insertion operators, when used with types descended from `std::basic_ios<>`, to observe width and alignment for `stlsoft::basic_shim_string<>`, `stlsoft::basic_simple_string<>`, `stlsoft::basic_static_string`, `stlsoft::basic_string_view`, `stlsoft::stlsoft_C_string_slice_m_t`/`stlsoft::stlsoft_C_string_slice_w_t`
+ * refactored (almost) all direct calls to disparate parts of the `printf()`-family to use the STLSoft abstractions
+ * wholesale refinement of whitespace around conditional control statements;
+ * large number of minor and trivial tidyings
+
+Changes:
+========
+
+   Insertion operators (#30):
+
+      ~ moved test/unit/stlsoft/string/test.unit.string.simple_string => test/unit/stlsoft/string/test.unit.stlsoft.string.simple_string
+      + brought over test.unit.stlsoft.string.string_slice
+      + preparatory work, in defining some insertion operator tests
+      ~ whitespace
+      + added and applied `stlsoft::util::string_insert()`, including unit-tests, to `stlsoft::basic_shim_string<>`, `stlsoft::basic_simple_string<>`, `stlsoft::basic_static_string`, `stlsoft::stlsoft_C_string_slice_m_t`/`stlsoft::stlsoft_C_string_slice_w_t`
+      ~ applied `stlsoft::util::string_insert()` to `stlsoft::basic_string_view<>`, and brought in test.unit.stlsoft.string.string_view
+      ~ C++20 compatibility re `allocate()` hint
+      ~ tidying
+      ~ fix
+
+   printf refactoring (#29):
+
+      ~ nomenclature
+      ~ whitespace layout around flow-control keywords
+      ~ canonicalised indentation of `#define`s
+      ~ nomenclature
+      ~ printf()-related minor mods
+      - removed dead-code
+      + added test.unit.stlsoft.conversion.byte_format_functions
+      `stlsoft::format_bytes()` : ~ refactoring in terms of `stlsoft_C_snprintf()` (replacing `::sprintf()`)
+
+   Typos and tidying (#28):
+
+      ~ nomenclature
+      ~ whitespace layout around flow-control keywords
+      ~ canonicalised indentation of `#define`s
+      ~ nomenclature
+      ~ printf()-related minor mods
+      - removed dead-code
+
+   Typos and tidying (#27):
+
+      ~ nomenclature
+      ~ whitespace layout around flow-control keywords
+      ~ canonicalised indentation of `#define`s
+
+
+============================================================================
+
 Changes for 1.10.6 (28th January 2024)
 
 General:

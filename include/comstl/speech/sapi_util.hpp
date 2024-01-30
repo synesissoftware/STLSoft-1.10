@@ -4,11 +4,11 @@
  * Purpose:     Definition of SAPI types and constants.
  *
  * Created:     31st August 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MAJOR       1
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_MINOR       0
 # define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_REVISION    9
-# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        20
+# define COMSTL_VER_COMSTL_SPEECH_HPP_SAPI_UTIL_EDIT        21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -199,8 +199,8 @@ enum SPEAKFLAGS
     SPF_UNUSED_FLAGS = ~SPF_VOICE_MASK
 };
 
-# define CLSID_SpVoice  COMSTL_NS_QUAL(CLSID_SpVoice_)
-# define ISpVoice       COMSTL_NS_QUAL(ISpVoice_)
+# define CLSID_SpVoice                                      COMSTL_NS_QUAL(CLSID_SpVoice_)
+# define ISpVoice                                           COMSTL_NS_QUAL(ISpVoice_)
 
 namespace
 {

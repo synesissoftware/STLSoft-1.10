@@ -4,7 +4,7 @@
  * Purpose:     STL sequence for IEnumXXXX enumerator interfaces.
  *
  * Created:     17th September 1998
- * Updated:     20th December 2020
+ * Updated:     29th January 2024
  *
  * Thanks:      To Eduardo Bezerra and Vivi Orunitia for reporting
  *              incompatibilities with Borland's 5.82 (Turbo C++). The awful
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,7 +59,7 @@
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MAJOR    6
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_MINOR    1
 # define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_REVISION 12
-# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     269
+# define COMSTL_VER_COMSTL_COLLECTIONS_HPP_ENUMERATOR_SEQUENCE_EDIT     273
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -137,20 +137,21 @@ namespace comstl_project
  * \param Q Quanta. The number of elements retrieved from the enumerator
  *   with each invocation of Next(). Defaults to 10
  *
- * The various parameterising types are used to stipulate the interface and
+ * The various specialising types are used to stipulate the interface and
  * the value type, and how they are to be handled.
  *
- * For example, the following parameterisation defines a sequence operating
+ * For example, the following specialisation defines a sequence operating
  * over an <code>IEnumGUID</code> enumerator instance.
  *
 \code
-typedef enumerator_sequence<IEnumGUID
-                          , GUID
-                          , GUID_policy
-                          , GUID const&
-                          , forward_cloning_policy<IEnumGUID>
-                          , 5
-                          >    enum_sequence_t;
+typedef enumerator_sequence<
+    IEnumGUID
+,   GUID
+,   GUID_policy
+,   GUID const&
+,   forward_cloning_policy<IEnumGUID>
+,   5
+>           enum_sequence_t;
 \endcode
  *
  * The value type is <code>GUID</code> and it is returned as a reference, as
@@ -203,48 +204,57 @@ class enumerator_sequence
 /// @{
 public:
     /// Interface type
-    typedef I                                                                   interface_type;
+    typedef I                                               interface_type;
     /// Value type
-    typedef V                                                                   value_type;
+    typedef V                                               value_type;
     /// Value policy type
-    typedef value_policy_adaptor<VP>                                            value_policy_type;
+    typedef value_policy_adaptor<VP>                        value_policy_type;
     /// Reference type
-    typedef R                                                                   reference;
+    typedef R                                               reference;
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-    typedef R                                                                   reference_type; // For backwards compatiblity
+    typedef R                                               reference_type; // For backwards compatiblity
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
     /// The mutating (non-const) pointer type
 #if defined(STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF) && \
        !defined(STLSOFT_COMPILER_IS_BORLAND)
-    typedef ss_typename_type_k STLSOFT_NS_QUAL(select_first_type_if)<   value_type const*
-                                                                    ,   value_type*
-                                                                    ,   STLSOFT_NS_QUAL(base_type_traits)<R>::is_const
-                                                                    >::type     pointer;
+    typedef ss_typename_type_k STLSOFT_NS_QUAL(select_first_type_if)<
+        value_type const*
+    ,   value_type*
+    ,   STLSOFT_NS_QUAL(base_type_traits)<R>::is_const
+    >::type                                                 pointer;
 #else /* ? STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF */
-    typedef value_type*                                                         pointer;
+    typedef value_type*                                     pointer;
 #endif /* !STLSOFT_META_HAS_SELECT_FIRST_TYPE_IF */
     /// The non-mutating (const) pointer type
-    typedef value_type const*                                                   const_pointer;
+    typedef value_type const*                               const_pointer;
     /// Cloning policy type
-    typedef CP                                                                  cloning_policy_type;
+    typedef CP                                              cloning_policy_type;
     /// Iterator tag type
-    typedef ss_typename_type_k cloning_policy_type::iterator_tag_type           iterator_tag_type;
+    typedef ss_typename_type_k cloning_policy_type::iterator_tag_type
+                                                            iterator_tag_type;
 #ifdef STLSOFT_COMPILER_IS_BORLAND
-# define retrievalQuanta                                                        Q
+# define retrievalQuanta                                    Q
 #else /* ? compiler */
     /// Retrieval quanta
-    enum                                                                      { retrievalQuanta = Q };
+    enum                                                    { retrievalQuanta = Q };
 #endif /* compiler */
-    /// Type of the current parameterisation
-    typedef enumerator_sequence<I, V, VP, R, CP, Q>                             class_type;
-    /// Type of the current parameterisation
-    typedef class_type                                                          sequence_type;
+    /// The current specialisation of the type
+    typedef enumerator_sequence<
+        I
+    ,   V
+    ,   VP
+    ,   R
+    ,   CP
+    ,   Q
+    >                                                       class_type;
+    /// The current specialisation of the type
+    typedef class_type                                      sequence_type;
     /// The size type
-    typedef cs_size_t                                                           size_type;
+    typedef cs_size_t                                       size_type;
     /// The difference type
-    typedef cs_ptrdiff_t                                                        difference_type;
+    typedef cs_ptrdiff_t                                    difference_type;
     /// The Boolean type
-    typedef cs_bool_t                                                           bool_type;
+    typedef cs_bool_t                                       bool_type;
 /// @}
 
 public:
@@ -270,11 +280,11 @@ public:
     {
         COMSTL_MESSAGE_ASSERT("Precondition violation: interface cannot be NULL!", NULL != i);
 
-        if(bAddRef)
+        if (bAddRef)
         {
             m_root->AddRef();
         }
-        if(bReset)
+        if (bReset)
         {
             m_root->Reset();
         }
@@ -290,7 +300,7 @@ public:
         // invocations of begin() must be directed to throw.
         m_enumerator = cloning_policy_type::get_working_instance(m_root);
 
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             m_bFirst = false;
         }
@@ -303,7 +313,7 @@ public:
         COMSTL_ASSERT(is_valid());
 
         m_root->Release();
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             m_enumerator->Release();
         }
@@ -373,7 +383,7 @@ public:
                     value_type const*   src_end    =   &rhs.m_values[0] + rhs.m_acquired;
 
                     // Copy each element up to the common extent ...
-                    for(; src_begin != src_end; ++begin, ++src_begin)
+                    for (; src_begin != src_end; ++begin, ++src_begin)
                     {
                         value_policy_type::copy(begin, src_begin);
                     }
@@ -427,7 +437,7 @@ public:
 
                 clear_elements_();
 
-                if(NULL != m_enumerator)
+                if (NULL != m_enumerator)
                 {
                     m_enumerator->Release();
                 }
@@ -439,7 +449,7 @@ public:
             }
             void Release()
             {
-                if(0 == --m_refCount)
+                if (0 == --m_refCount)
                 {
                     delete this;
                 }
@@ -447,7 +457,7 @@ public:
 
             static class_type* make_clone(class_type* ctxt)
             {
-                if(NULL == ctxt)
+                if (NULL == ctxt)
                 {
                     return NULL;
                 }
@@ -458,7 +468,7 @@ public:
                     interface_type* copy;
                     const bool      bTrueClone  =   cloning_policy_type::clone(ctxt->m_enumerator, &copy);
 
-                    if(!bTrueClone)
+                    if (!bTrueClone)
                     {
                         COMSTL_ASSERT(NULL == copy);
 
@@ -488,7 +498,7 @@ public:
                         {
                             newCtxt = new class_type(copy, *ctxt);
 
-                            if(NULL == newCtxt)
+                            if (NULL == newCtxt)
                             {
                                 copy->Release();
                             }
@@ -531,7 +541,7 @@ public:
                 COMSTL_MESSAGE_ASSERT("Attempting to increment an invalid iterator: m_acquired > m_quanta", m_acquired <= m_quanta);
                 COMSTL_MESSAGE_ASSERT("Attempting to increment an invalid iterator: m_quanta > dimensionof(m_values)", m_quanta <= STLSOFT_NUM_ELEMENTS(m_values));
 
-                if(++m_current < m_acquired)
+                if (++m_current < m_acquired)
                 {
                     // 2.
 
@@ -573,38 +583,38 @@ public:
         public:
             bool_type is_valid() const
             {
-                if(m_refCount < 1)
+                if (m_refCount < 1)
                 {
                     return false;
                 }
 
-                if( NULL == m_enumerator &&
+                if (NULL == m_enumerator &&
                     0 == m_quanta)
                 {
-                    if(0 != m_acquired)
+                    if (0 != m_acquired)
                     {
                         return false;
                     }
-                    if(0 != m_current)
+                    if (0 != m_current)
                     {
                         return false;
                     }
-                    if(0 != m_quanta)
+                    if (0 != m_quanta)
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    if(m_acquired < m_current)
+                    if (m_acquired < m_current)
                     {
                         return false;
                     }
-                    if(m_quanta < m_current)
+                    if (m_quanta < m_current)
                     {
                         return false;
                     }
-                    if(m_quanta < m_acquired)
+                    if (m_quanta < m_acquired)
                     {
                         return false;
                     }
@@ -704,7 +714,7 @@ public:
         {
             COMSTL_ASSERT(is_valid());
 
-            if(NULL != m_ctxt)
+            if (NULL != m_ctxt)
             {
                 m_ctxt->Release();
             }
@@ -714,7 +724,7 @@ public:
         {
             enumeration_context *newCtxt    =   enumeration_context::make_clone(rhs.m_ctxt);
 
-            if(NULL != m_ctxt)
+            if (NULL != m_ctxt)
             {
                 m_ctxt->Release();
             }
@@ -789,13 +799,13 @@ public:
             //
             // 3. They're not equal
 
-            if(lhs.is_end_point())
+            if (lhs.is_end_point())
             {
                 return rhs.is_end_point(); // 1 or 3
             }
             else
             {
-                if(rhs.is_end_point())
+                if (rhs.is_end_point())
                 {
                     return false; // 3
                 }
@@ -877,13 +887,13 @@ public:
 
         interface_type* en = NULL;
 
-        if(NULL != m_enumerator)
+        if (NULL != m_enumerator)
         {
             en = m_enumerator;
         }
         else
         {
-            if(!m_bFirst)
+            if (!m_bFirst)
             {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
                 STLSOFT_THROW_X(clone_failure(E_NOTIMPL));
@@ -926,7 +936,7 @@ public:
 private:
     bool_type is_valid() const
     {
-        if(NULL == m_root)
+        if (NULL == m_root)
         {
             return false;
         }
@@ -941,7 +951,7 @@ private:
     {
         COMSTL_MESSAGE_ASSERT("Cannot set a quantum that exceeds the value specified in the template specialisation", quanta <= retrievalQuanta); // Could have named these things better!
 
-        if( 0 == quanta ||
+        if (0 == quanta ||
             quanta > retrievalQuanta)
         {
             quanta = retrievalQuanta;

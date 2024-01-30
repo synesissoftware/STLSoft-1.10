@@ -4,11 +4,11 @@
  * Purpose:     Contains the basic_shim_string template class for VC++ 5.
  *
  * Created:     16th October 2006
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2006-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -58,7 +58,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_VC5__MAJOR      1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_VC5_MINOR       1
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_VC5_REVISION    5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_VC5_EDIT        23
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_VC5_EDIT        24
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -120,7 +120,7 @@ public:
         : m_buffer(NULL)
         , m_length(0)
     {
-        if(NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
+        if (NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_String));
@@ -138,7 +138,7 @@ public:
         : m_buffer(NULL)
         , m_length(0)
     {
-        if(NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
+        if (NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_String));
@@ -147,7 +147,7 @@ public:
         else
         {
             m_length    =   n;
-            if(NULL == s)
+            if (NULL == s)
             {
                 m_buffer[0] = '\0';
             }
@@ -165,7 +165,7 @@ public:
     {
         const ss_size_t n   =   (NULL == s) ? 0 : traits_type::length(s);
 
-        if(NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
+        if (NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + n)))))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_String));
@@ -184,7 +184,7 @@ public:
         : m_buffer(NULL)
         , m_length(0)
     {
-        if(NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + rhs.size())))))
+        if (NULL == (m_buffer = static_cast<char_type*>(::malloc(sizeof(char_type) * (1 + rhs.size())))))
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(STLSOFT_NS_QUAL(out_of_memory_exception)(STLSoftProjectIdentifier_STLSoft, STLSoftLibraryIdentifier_String));

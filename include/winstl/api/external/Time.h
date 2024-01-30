@@ -114,35 +114,35 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Time_CompareFileTime
-# define WINSTL_API_EXTERNAL_Time_CompareFileTime                           STLSOFT_NS_GLOBAL_(CompareFileTime)
+# define WINSTL_API_EXTERNAL_Time_CompareFileTime           STLSOFT_NS_GLOBAL_(CompareFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_CompareFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_FileTimeToLocalFileTime
-# define WINSTL_API_EXTERNAL_Time_FileTimeToLocalFileTime                   STLSOFT_NS_GLOBAL_(FileTimeToLocalFileTime)
+# define WINSTL_API_EXTERNAL_Time_FileTimeToLocalFileTime   STLSOFT_NS_GLOBAL_(FileTimeToLocalFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_FileTimeToLocalFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime
-# define WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime                      STLSOFT_NS_GLOBAL_(FileTimeToSystemTime)
+# define WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime      STLSOFT_NS_GLOBAL_(FileTimeToSystemTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_FileTimeToSystemTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_GetFileTime
-# define WINSTL_API_EXTERNAL_Time_GetFileTime                               STLSOFT_NS_GLOBAL_(GetFileTime)
+# define WINSTL_API_EXTERNAL_Time_GetFileTime               STLSOFT_NS_GLOBAL_(GetFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_GetFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_GetFileTimeAsSystemTime
-# define WINSTL_API_EXTERNAL_Time_GetFileTimeAsSystemTime                   STLSOFT_NS_GLOBAL_(GetFileTimeAsSystemTime)
+# define WINSTL_API_EXTERNAL_Time_GetFileTimeAsSystemTime   STLSOFT_NS_GLOBAL_(GetFileTimeAsSystemTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_GetFileTimeAsSystemTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_LocalTimeToFileTime
-# define WINSTL_API_EXTERNAL_Time_LocalTimeToFileTime                       STLSOFT_NS_GLOBAL_(LocalTimeToFileTime)
+# define WINSTL_API_EXTERNAL_Time_LocalTimeToFileTime       STLSOFT_NS_GLOBAL_(LocalTimeToFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_LocalTimeToFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_SetFileTime
-# define WINSTL_API_EXTERNAL_Time_SetFileTime                               STLSOFT_NS_GLOBAL_(SetFileTime)
+# define WINSTL_API_EXTERNAL_Time_SetFileTime               STLSOFT_NS_GLOBAL_(SetFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_SetFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime
-# define WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime                      STLSOFT_NS_GLOBAL_(SystemTimeToFileTime)
+# define WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime      STLSOFT_NS_GLOBAL_(SystemTimeToFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_SystemTimeToFileTime */
 
 /* *************************************
@@ -150,11 +150,11 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Time_DosDateTimeToFileTime
-# define WINSTL_API_EXTERNAL_Time_DosDateTimeToFileTime                     STLSOFT_NS_GLOBAL_(DosDateTimeToFileTime)
+# define WINSTL_API_EXTERNAL_Time_DosDateTimeToFileTime     STLSOFT_NS_GLOBAL_(DosDateTimeToFileTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_DosDateTimeToFileTime */
 
 #ifndef WINSTL_API_EXTERNAL_Time_FileTimeToDosDateTime
-# define WINSTL_API_EXTERNAL_Time_FileTimeToDosDateTime                     STLSOFT_NS_GLOBAL_(FileTimeToDosDateTime)
+# define WINSTL_API_EXTERNAL_Time_FileTimeToDosDateTime     STLSOFT_NS_GLOBAL_(FileTimeToDosDateTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_FileTimeToDosDateTime */
 
 
@@ -163,16 +163,16 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Time_GetSystemTime
-# define WINSTL_API_EXTERNAL_Time_GetSystemTime                             STLSOFT_NS_GLOBAL_(GetSystemTime)
+# define WINSTL_API_EXTERNAL_Time_GetSystemTime             STLSOFT_NS_GLOBAL_(GetSystemTime)
 #endif /* !WINSTL_API_EXTERNAL_Time_GetSystemTime  */
 
 #ifndef WINSTL_API_EXTERNAL_Time_GetTickCount
-# define WINSTL_API_EXTERNAL_Time_GetTickCount                              STLSOFT_NS_GLOBAL_(GetTickCount)
+# define WINSTL_API_EXTERNAL_Time_GetTickCount              STLSOFT_NS_GLOBAL_(GetTickCount)
 #endif /* !WINSTL_API_EXTERNAL_Time_GetTickCount */
 
 #if WINSTL_WIN32_WINNT >= 0x0400
 # ifndef WINSTL_API_EXTERNAL_Time_GetTickCount64
-#  define WINSTL_API_EXTERNAL_Time_GetTickCount64                           STLSOFT_NS_GLOBAL_(GetTickCount64)
+#  define WINSTL_API_EXTERNAL_Time_GetTickCount64           STLSOFT_NS_GLOBAL_(GetTickCount64)
 # endif /* !WINSTL_API_EXTERNAL_Time_GetTickCount64 */
 #endif
 
@@ -182,11 +182,11 @@
  */
 
 #ifndef WINSTL_API_EXTERNAL_Time_QueryPerformanceCounter
-# define WINSTL_API_EXTERNAL_Time_QueryPerformanceCounter                   STLSOFT_NS_GLOBAL_(QueryPerformanceCounter)
+# define WINSTL_API_EXTERNAL_Time_QueryPerformanceCounter   STLSOFT_NS_GLOBAL_(QueryPerformanceCounter)
 #endif /* !WINSTL_API_EXTERNAL_Time_QueryPerformanceCounter */
 
 #ifndef WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency
-# define WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency                 STLSOFT_NS_GLOBAL_(QueryPerformanceFrequency)
+# define WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency STLSOFT_NS_GLOBAL_(QueryPerformanceFrequency)
 #endif /* !WINSTL_API_EXTERNAL_Time_QueryPerformanceFrequency */
 
 

@@ -4,13 +4,13 @@
  * Purpose:     TOOLHELP process sequence class.
  *
  * Created:     21st May 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Thanks:      To Pablo for contributing this great library.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2007, Pablo Aguilar
  * Copyright (c) 2006-2007, Matthew Wilson
  * All rights reserved.
@@ -58,7 +58,7 @@
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MAJOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_MINOR      1
 # define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_REVISION   4
-# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       20
+# define WINSTL_VER_WINSTL_TOOLHELP_HPP_PROCESS_SEQUENCE_EDIT       21
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -125,10 +125,10 @@ public: // iteration
 
 // th_sequence_value_traits specialization for process_sequence
 ////////////////////////////////////////////////////////////////////////////
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE                           PROCESSENTRY32
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST                           Process32First
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT                            Process32Next
-# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG                            TH32CS_SNAPPROCESS
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_VALUE          PROCESSENTRY32
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FIRST          Process32First
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_NEXT           Process32Next
+# define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_FLAG           TH32CS_SNAPPROCESS
 # define WINSTL_TH_API_SEQUENCE_VALUE_TRAITS_CREATE_SNAPSHOT_FAIL_MESSAGE    ("Could not create process list snapshot")
 # include <winstl/toolhelp/sequence_value_traits.hpp>
 

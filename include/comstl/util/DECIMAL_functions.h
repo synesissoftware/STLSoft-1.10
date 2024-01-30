@@ -4,11 +4,11 @@
  * Purpose:     DECIMAL helper functions.
  *
  * Created:     23rd August 2008
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2008-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MAJOR       1
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_MINOR       0
 # define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_REVISION    7
-# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        16
+# define COMSTL_VER_COMSTL_UTIL_H_DECIMAL_FUNCTIONS_EDIT        17
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -121,13 +121,13 @@ comstl_C_DECIMAL_compare(
     COMSTL_MESSAGE_ASSERT("invalid sign value in lhs", (0 == lhs->sign || DECIMAL_NEG == lhs->sign));
     COMSTL_MESSAGE_ASSERT("invalid sign value in rhs", (0 == rhs->sign || DECIMAL_NEG == rhs->sign));
 
-    if(lhs->sign != rhs->sign)
+    if (lhs->sign != rhs->sign)
     {
         /* signs are different, so we need only check for both being 0,
          * otherwise just return indication of which is -ve
          */
 
-        if( 0 == lhs->Hi32 &&
+        if (0 == lhs->Hi32 &&
             0 == rhs->Hi32 &&
             0 == lhs->Mid32 &&
             0 == rhs->Mid32 &&
@@ -138,7 +138,7 @@ comstl_C_DECIMAL_compare(
         }
         else
         {
-            if(0 != lhs->sign)
+            if (0 != lhs->sign)
             {
                 /* lhs is negative, and rhs is not, so lhs is less */
                 return -1;
@@ -152,7 +152,7 @@ comstl_C_DECIMAL_compare(
     else
     {
         /* next see if scale is the same */
-        if(lhs->scale != rhs->scale)
+        if (lhs->scale != rhs->scale)
         {
             /* This is too-hard, so we convert to VARIANTS and do the check
              * that way
@@ -176,11 +176,11 @@ comstl_C_DECIMAL_compare(
             VariantChangeType(&vdblL, &vdecL, 0, VT_R8);
             VariantChangeType(&vdblR, &vdecR, 0, VT_R8);
 
-            if(COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblL, dblVal) == COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblR, dblVal))
+            if (COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblL, dblVal) == COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblR, dblVal))
             {
                 return 0;
             }
-            else if(COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblL, dblVal) < COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblR, dblVal))
+            else if (COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblL, dblVal) < COMSTL_ACCESS_VARIANT_MEM_BYREF(vdblR, dblVal))
             {
                 return -1;
             }
@@ -192,19 +192,19 @@ comstl_C_DECIMAL_compare(
         else
         {
             /* scale is the same, so compare Hi32 first */
-            if(lhs->Hi32 != rhs->Hi32)
+            if (lhs->Hi32 != rhs->Hi32)
             {
                 return (lhs->Hi32 < rhs->Hi32) ? -1 : +1;
             }
             else
             {
-                if(lhs->Mid32 != rhs->Mid32)
+                if (lhs->Mid32 != rhs->Mid32)
                 {
                     return (lhs->Mid32 < rhs->Mid32) ? -1 : +1;
                 }
                 else
                 {
-                    if(lhs->Lo32 != rhs->Lo32)
+                    if (lhs->Lo32 != rhs->Lo32)
                     {
                         return (lhs->Lo32 < rhs->Lo32) ? -1 : +1;
                     }

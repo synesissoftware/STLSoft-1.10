@@ -4,11 +4,11 @@
  * Purpose:     Functionals for application to controls.
  *
  * Created:     8th October 2002
- * Updated:     2nd January 2021
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MAJOR    4
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_MINOR    2
 # define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_REVISION 9
-# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     93
+# define WINSTL_VER_WINSTL_CONTROL_HPP_FUNCTIONALS_EDIT     94
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -221,7 +221,7 @@ private:
     {
         int nCheck  =   static_cast<int>(::SendMessage(hwnd, BM_GETCHECK, 0, 0L));
 
-        if(-1 == m_nCheckType)
+        if (-1 == m_nCheckType)
         {
             return nCheck;
         }
@@ -374,7 +374,7 @@ public:
 private:
     void insert(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_insertstring_w(m_hwndListbox, a2w(s), 0);
         }
@@ -385,7 +385,7 @@ private:
     }
     void insert(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_insertstring_w(m_hwndListbox, s, 0);
         }
@@ -450,7 +450,7 @@ public:
 private:
     void add(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_addstring_w(m_hwndListbox, a2w(s));
         }
@@ -461,7 +461,7 @@ private:
     }
     void add(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_addstring_w(m_hwndListbox, s);
         }
@@ -526,7 +526,7 @@ public:
 private:
     void insert(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_insertstring_w(m_hwndListbox, a2w(s), -1);
         }
@@ -537,7 +537,7 @@ private:
     }
     void insert(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             listbox_insertstring_w(m_hwndListbox, s, -1);
         }
@@ -604,7 +604,7 @@ public:
 private:
     void insert(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_insertstring_w(m_hwndListbox, a2w(s), 0);
         }
@@ -615,7 +615,7 @@ private:
     }
     void insert(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_insertstring_w(m_hwndListbox, s, 0);
         }
@@ -680,7 +680,7 @@ public:
 private:
     void add(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_addstring_w(m_hwndListbox, a2w(s));
         }
@@ -691,7 +691,7 @@ private:
     }
     void add(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_addstring_w(m_hwndListbox, s);
         }
@@ -756,7 +756,7 @@ public:
 private:
     void insert(ws_char_a_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_insertstring_w(m_hwndListbox, a2w(s), -1);
         }
@@ -767,7 +767,7 @@ private:
     }
     void insert(ws_char_w_t const* s)
     {
-        if(m_bUnicode)
+        if (m_bUnicode)
         {
             combobox_insertstring_w(m_hwndListbox, s, -1);
         }

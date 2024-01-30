@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     26th December 2020
+ * Updated:     30th January 2024
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -12,7 +12,7 @@
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2004-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,9 +57,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        109
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,13 @@
     ((__MWERKS__ & 0xff00) < 0x3000)
 # error stlsoft/string/string_view.hpp not compatible with Metrowerks 7.x (v2.4)
 #endif /* compiler */
+
+#ifndef STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS
+# include <stlsoft/collections/util/collections.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR
+# include <stlsoft/memory/util/allocator_selector.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS
 # include <stlsoft/string/char_traits.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS */
@@ -86,15 +93,13 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
 # include <stlsoft/util/std/iterator_helper.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
-#ifndef STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS
-# include <stlsoft/collections/util/collections.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
-#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR
-# include <stlsoft/memory/util/allocator_selector.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 # ifndef STLSOFT_INCL_STDEXCEPT
 #  define STLSOFT_INCL_STDEXCEPT
@@ -151,7 +156,7 @@ public:
     typedef T                               traits_type;
     /// The allocator type
     typedef A                               allocator_type;
-    /// The current parameterisation of the type
+    /// The current specialisation of the type
     typedef basic_string_view<C, T, A>      class_type;
     /// The character type
     typedef value_type                      char_type;
@@ -330,7 +335,7 @@ public:
     /// string changes after this point, this will not be reflected in the value returned
     /// by c_str(), until such time as refresh() is called.
     ///
-    /// \note If the view's parameterisation is with a no-throw allocator, behaviour
+    /// \note If the view's specialisation is with a no-throw allocator, behaviour
     /// is undefined in con
     value_type const*       c_str() const;
 #if 0
@@ -852,21 +857,31 @@ inline ss_bool_t operator >=(C const* lhs, basic_string_view<C, T, A> const& rhs
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
- * iostream compatibility
+ * stream insertion
  */
 
-template<   ss_typename_param_k S
-        ,   ss_typename_param_k C
-        ,   ss_typename_param_k T
-        ,   ss_typename_param_k A
-        >
-inline S& operator <<(S& s, basic_string_view<C, T, A> const& str)
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+T_stream&
+operator <<(
+    T_stream&                           stm
+,   basic_string_view<C, T, A> const&   s
+)
 {
-    s.write(str.data(), static_cast<ss_streamoff_t>(str.length()));
+    STLSOFT_NS_USING(util::string_insert);
 
-    return s;
+    string_insert(stm, s.data(), s.size());
+
+    return stm;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
@@ -904,7 +919,7 @@ inline /* static */ ss_sint_t basic_string_view<C, T, A>::compare_( ss_typename_
     size_type   cmp_len =   (lhs_len < rhs_len) ? lhs_len : rhs_len;
     ss_int_t    result  =   traits_type::compare(lhs, rhs, cmp_len);
 
-    if(0 == result)
+    if (0 == result)
     {
         result = static_cast<ss_int_t>(lhs_len) - static_cast<ss_int_t>(rhs_len);
     }
@@ -935,7 +950,7 @@ template<   ss_typename_param_k C
         >
 inline /* static */ void basic_string_view<C, T, A>::close_set_null_() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         close_();
 
@@ -973,13 +988,13 @@ inline ss_bool_t basic_string_view<C, T, A>::is_valid() const
 {
     // NOTE: Must not call any methods or ctors in this function!!
 
-    if( 0 == m_length &&
+    if (0 == m_length &&
         NULL != m_cstr)
     {
         return false; // If the slice is empty, there should be no m_cstr
     }
 
-    if( 0 != m_length &&
+    if (0 != m_length &&
         NULL == m_base)
     {
         return false; // If the slice is non-empty, m_base should not be NULL
@@ -1091,7 +1106,7 @@ inline basic_string_view<C, T, A>::~basic_string_view() STLSOFT_NOEXCEPT
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         close_();
     }
@@ -1261,7 +1276,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type   lhs_len =   length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1270,14 +1285,14 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type   rhs_len =   (NULL == rhs) ? 0 : traits_type::length(rhs);
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1299,7 +1314,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type   lhs_len =   length();
 
-    if(!(pos < lhs_len))
+    if (!(pos < lhs_len))
     {
         pos = lhs_len;
     }
@@ -1308,7 +1323,7 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1350,32 +1365,32 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type lhs_len = length();
 
-    if(pos == lhs_len)
+    if (pos == lhs_len)
     {
         lhs_len = 0u;
     }
-    else if(pos + cch > lhs_len)
+    else if (pos + cch > lhs_len)
     {
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
 
     size_type rhs_len = rhs.length();
 
-    if(posRhs == rhs_len)
+    if (posRhs == rhs_len)
     {
         rhs_len = 0u;
     }
-    else if(posRhs + cchRhs > rhs_len)
+    else if (posRhs + cchRhs > rhs_len)
     {
         rhs_len -= posRhs;
     }
 
-    if(cchRhs < rhs_len)
+    if (cchRhs < rhs_len)
     {
         rhs_len = cchRhs;
     }
@@ -1397,16 +1412,16 @@ inline ss_sint_t basic_string_view<C, T, A>::compare(   ss_typename_type_k basic
 
     size_type lhs_len = length();
 
-    if(pos == lhs_len)
+    if (pos == lhs_len)
     {
         lhs_len = 0u;
     }
-    else if(pos + cch > lhs_len)
+    else if (pos + cch > lhs_len)
     {
         lhs_len -= pos;
     }
 
-    if(cch < lhs_len)
+    if (cch < lhs_len)
     {
         lhs_len = cch;
     }
@@ -1471,7 +1486,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::const_reference basic_
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(!(index < size()))
+    if (!(index < size()))
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
@@ -1494,14 +1509,14 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(pos > size())
+    if (pos > size())
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
 
     STLSOFT_ASSERT(is_valid());
 
-    if(cch > (this->length() - pos))
+    if (cch > (this->length() - pos))
     {
         cch = this->length() - pos;
     }
@@ -1521,7 +1536,7 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::class_type
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(pos > size())
+    if (pos > size())
     {
         STLSOFT_THROW_X(stlsoft_ns_qual_std(out_of_range)("index out of range"));
     }
@@ -1551,14 +1566,14 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
 {
     STLSOFT_ASSERT(is_valid());
 
-    if(NULL != m_cstr)
+    if (NULL != m_cstr)
     {
         // Already allocated, so return; if underlying
         return m_cstr;
     }
     else
     {
-        if(0 == m_length)
+        if (0 == m_length)
         {
             return empty_string_();
         }
@@ -1566,18 +1581,22 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
         {
             // Must allocate the m_cstr member
             allocator_type& ator   =   const_cast<class_type&>(*this);
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
             char_type*      s      =   ator.allocate(1 + length(), NULL);
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+            char_type*      s      =   ator.allocate(1 + length());
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 
             STLSOFT_SUPPRESS_UNUSED(ator);  // Need this for silly old Borland
 
-            // Because the class might be parameterised with a no-throw allocator,
+            // Because the class might be specialised with a no-throw allocator,
             // we'll check the result. This is really hokey, of course, since we're
             // returning a NULL string in the circumstances where memory has
             // failed to allocate. In such cases we can only hope that the memory
             // exhaustion is non-local and that the callee is going to suffer and die
             // anyway, irrespective of the fact that we've returned an invalid value
             // to it.
-            if(NULL != s)
+            if (NULL != s)
             {
                 traits_type::copy(s, m_base, m_length);
                 s[m_length] = '\0';
@@ -1599,7 +1618,7 @@ template<   ss_typename_param_k C
         >
 inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basic_string_view<C, T, A>::c_str(ss_bool_t bRefresh) const
 {
-    if(bRefresh)
+    if (bRefresh)
     {
         const_cast<class_type*>(this)->refresh();
     }
@@ -1688,9 +1707,9 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::size_type basic_string
 
     size_type   len =   length();
 
-    if(pos < len)
+    if (pos < len)
     {
-        if(len < pos + cch)
+        if (len < pos + cch)
         {
             cch = len - pos;
         }

@@ -4,11 +4,11 @@
  * Purpose:     string_concatenator_iterator class template.
  *
  * Created:     12th May 1998
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1998-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_MINOR       4
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_REVISION    6
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_EDIT        56
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_STRING_CONCATENATOR_ITERATOR_EDIT        57
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -235,7 +235,7 @@ private:
         STLSOFT_ASSERT(NULL != m_s);
         STLSOFT_ASSERT(NULL != m_delim);
 
-        if(0 != c_str_len(*m_s))
+        if (0 != c_str_len(*m_s))
         {
             // NOTE: Use +=, as it's the most general
             *m_s += c_str_ptr(*m_delim);
@@ -251,7 +251,7 @@ private:
 
         bool const valueEmpty = (0u == c_str_len(value));
 
-        if( valueEmpty &&
+        if (valueEmpty &&
             0 == (string_concatenation_flags::AlwaysSeparate & m_flags))
         {
             ;
@@ -260,9 +260,9 @@ private:
         {
             bool const stringEmpty = (0u == c_str_len(*m_s));
 
-            if(stringEmpty)
+            if (stringEmpty)
             {
-                if( 0 != m_count &&
+                if (0 != m_count &&
                     0 != (string_concatenation_flags::AlwaysSeparate & m_flags))
                 {
                   *m_s += c_str_ptr_a(*m_delim);
@@ -286,7 +286,7 @@ private:
 
         bool const valueEmpty = (0u == c_str_len(value));
 
-        if( valueEmpty &&
+        if (valueEmpty &&
             0 == (string_concatenation_flags::AlwaysSeparate & m_flags))
         {
             ;
@@ -295,9 +295,9 @@ private:
         {
             bool const stringEmpty = (0u == c_str_len(*m_s));
 
-            if(stringEmpty)
+            if (stringEmpty)
             {
-                if( 0 != m_count &&
+                if (0 != m_count &&
                     0 != (string_concatenation_flags::AlwaysSeparate & m_flags))
                 {
                   *m_s += c_str_ptr_w(*m_delim);

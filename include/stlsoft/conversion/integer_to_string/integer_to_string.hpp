@@ -4,7 +4,7 @@
  * Purpose:     Very efficient integer to string conversion functions.
  *
  * Created:     7th April 2002
- * Updated:     17th January 2024
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,7 +54,7 @@
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_MAJOR       5
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_MINOR       1
 # define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_REVISION    8
-# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_EDIT        96
+# define STLSOFT_VER_STLSOFT_CONVERSION_INTEGER_TO_STRING_HPP_INTEGER_TO_STRING_EDIT        97
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -197,7 +197,7 @@ C const*
 integer_to_string(C *buf, ss_size_t cchBuf, ss_sint64_t const& i)
 {
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
-    if(i < 0x80000000)
+    if (i < 0x80000000)
     {
         return integer_to_decimal_string(buf, cchBuf, static_cast<ss_sint32_t>(i));
     }
@@ -219,7 +219,7 @@ C const*
 integer_to_string(C *buf, ss_size_t cchBuf, ss_uint64_t const& i)
 {
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
-    if(i < 0x80000000)
+    if (i < 0x80000000)
     {
         return integer_to_decimal_string(buf, cchBuf, static_cast<ss_uint32_t>(i));
     }
@@ -467,7 +467,7 @@ integer_to_string(C (&buf)[V_dimension], ss_sint64_t const& i)
     STLSOFT_STATIC_ASSERT(!(V_dimension < 21));
 
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
-    if(i < 0x80000000)
+    if (i < 0x80000000)
     {
         return integer_to_decimal_string(buf, V_dimension, static_cast<ss_sint32_t>(i));
     }
@@ -494,7 +494,7 @@ integer_to_string(C (&buf)[V_dimension], ss_uint64_t const& i)
     STLSOFT_STATIC_ASSERT(!(V_dimension < 21));
 
 #ifdef STLSOFT_INTEGER_TO_STRING_OPTIMISE_64BIT
-    if(i < 0x80000000)
+    if (i < 0x80000000)
     {
         return integer_to_decimal_string(buf, V_dimension, static_cast<ss_uint32_t>(i));
     }

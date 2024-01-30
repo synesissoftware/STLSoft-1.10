@@ -4,11 +4,11 @@
  * Purpose:     A container that measures the frequency of the unique elements it contains.
  *
  * Created:     1st October 2005
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -55,7 +55,7 @@
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MAJOR    2
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MINOR    6
 # define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_REVISION 7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_EDIT     43
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_EDIT     44
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -178,7 +178,7 @@ public: // Modifiers
         // NOTE: Because the count type N must be an integer, the code above
         // is equivalent to the following "full" exception-safe implementation.
         ss_typename_param_k map_type_::iterator it = m_map.find(key);
-        if(m_map.end() == it)
+        if (m_map.end() == it)
         {
             value_type value(key, 1);
 
@@ -207,7 +207,7 @@ public: // Modifiers
     )
     {
         // TODO: update this to a single action
-        { for(count_type i = 0; i != n; ++i)
+        { for (count_type i = 0; i != n; ++i)
         {
             push(key);
         }}
@@ -231,7 +231,7 @@ public: // Modifiers
 
         class_type t(*this);
 
-        { for(const_iterator i = rhs.begin(); i != rhs.end(); ++i)
+        { for (const_iterator i = rhs.begin(); i != rhs.end(); ++i)
         {
             t.m_map[(*i).first] += (*i).second;
         }}

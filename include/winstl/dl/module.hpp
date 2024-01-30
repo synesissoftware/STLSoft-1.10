@@ -4,13 +4,13 @@
  * Purpose:     Contains the module class.
  *
  * Created:     30th October 1997
- * Updated:     30th November 2020
+ * Updated:     22nd January 2024
  *
  * Thanks to:   Pablo Aguilar for the idea of a template-based get_symbol().
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 1997-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,7 +56,7 @@
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_MAJOR      6
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_MINOR      6
 # define WINSTL_VER_WINSTL_DL_HPP_MODULE_REVISION   1
-# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       249
+# define WINSTL_VER_WINSTL_DL_HPP_MODULE_EDIT       250
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -185,7 +185,7 @@ public:
         , m_proc(NULL)
     {
 # ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-        if(NULL == m_hmodule)
+        if (NULL == m_hmodule)
         {
             STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
         }
@@ -395,7 +395,7 @@ inline module::module(ws_char_a_t const* moduleName)
     , m_proc(NULL)
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -408,7 +408,7 @@ inline module::module(ws_char_a_t const* moduleName, void (*pfn)(ws_char_a_t con
     , m_proc(reinterpret_cast<degenerate_feedback_proc_type>(pfn))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -421,7 +421,7 @@ inline module::module(ws_char_w_t const* moduleName)
     , m_proc(NULL)
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -434,7 +434,7 @@ inline module::module(ws_char_w_t const* moduleName, void (*pfn)(ws_char_w_t con
     , m_proc(reinterpret_cast<degenerate_feedback_proc_type>(pfn))
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -447,7 +447,7 @@ inline module::module(module::module_handle_type hmodule)
     , m_proc(NULL)
 {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
-    if(NULL == m_hmodule)
+    if (NULL == m_hmodule)
     {
         STLSOFT_THROW_X(winstl_exception("Cannot load module", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
     }
@@ -458,7 +458,7 @@ inline module::module(module const& rhs)
     : m_param(NULL)
     , m_proc(NULL)
 {
-    if(NULL == rhs.get_module_handle())
+    if (NULL == rhs.get_module_handle())
     {
         m_hmodule = NULL;
     }
@@ -470,7 +470,7 @@ inline module::module(module const& rhs)
         STLSOFT_NS_QUAL(auto_buffer)<ws_char_a_t>   buffer(1 + cchRequired);
         ws_size_t const                             cch =   system_traits<ws_char_a_t>::get_module_filename(rhs.get_module_handle(), &buffer[0], buffer.size());
 
-        if(0 == cch)
+        if (0 == cch)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             STLSOFT_THROW_X(winstl_exception("Cannot get module path", WINSTL_API_EXTERNAL_ErrorHandling_GetLastError()));
@@ -492,9 +492,9 @@ inline module::~module() STLSOFT_NOEXCEPT
 
 inline void module::unload() STLSOFT_NOEXCEPT
 {
-    if(NULL != m_hmodule)
+    if (NULL != m_hmodule)
     {
-        if(NULL != m_proc)
+        if (NULL != m_proc)
         {
             class_type::unload(m_hmodule, m_proc, m_param);
         }
@@ -525,7 +525,7 @@ inline /* static */ module::module_handle_type module::load(ws_char_a_t const* m
 {
     HINSTANCE hinst = WINSTL_API_EXTERNAL_DynamicLinkLibrary_LoadLibraryA(moduleName);
 
-    if(NULL != pfn)
+    if (NULL != pfn)
     {
         (*pfn)(moduleName, hinst, param);
     }
@@ -540,7 +540,7 @@ inline /* static */ module::module_handle_type module::load(ws_char_w_t const* m
 
 inline /* static */ void module::unload(module::module_handle_type hmodule) STLSOFT_NOEXCEPT
 {
-    if(NULL != hmodule)
+    if (NULL != hmodule)
     {
         WINSTL_API_EXTERNAL_DynamicLinkLibrary_FreeLibrary(hmodule);
     }
@@ -548,9 +548,9 @@ inline /* static */ void module::unload(module::module_handle_type hmodule) STLS
 
 inline /* static */ void module::unload(module::module_handle_type hmodule, module::degenerate_feedback_proc_type pfn, void* param) /* STLSOFT_NOEXCEPT */
 {
-    if(NULL != hmodule)
+    if (NULL != hmodule)
     {
-        if(NULL != pfn)
+        if (NULL != pfn)
         {
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
             try

@@ -4,11 +4,11 @@
  * Purpose:     Functionals for application to common controls.
  *
  * Created:     8th October 2002
- * Updated:     26th December 2020
+ * Updated:     22nd January 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,7 +54,7 @@
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMMCTRL_FUNCTIONALS_MAJOR      4
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMMCTRL_FUNCTIONALS_MINOR      1
 # define WINSTL_VER_WINSTL_CONTROLS_HPP_COMMCTRL_FUNCTIONALS_REVISION   9
-# define WINSTL_VER_WINSTL_CONTROLS_HPP_COMMCTRL_FUNCTIONALS_EDIT       89
+# define WINSTL_VER_WINSTL_CONTROLS_HPP_COMMCTRL_FUNCTIONALS_EDIT       90
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -185,7 +185,7 @@ private:
         item.iItem      =   insert_index();
         item.iSubItem   =   0;
 
-        if(image_none != m_iImage)
+        if (image_none != m_iImage)
         {
             item.mask |= LVIF_IMAGE;
             item.iImage = m_iImage;
@@ -203,7 +203,7 @@ private:
         item.iItem      =   insert_index();
         item.iSubItem   =   0;
 
-        if(image_none != m_iImage)
+        if (image_none != m_iImage)
         {
             item.mask |= LVIF_IMAGE;
             item.iImage = m_iImage;
@@ -313,7 +313,7 @@ private:
         tvis.item.mask      =   TVIF_TEXT;
         tvis.item.pszText   =   const_cast<char*>(s);
 
-        if(image_none != m_iImage)
+        if (image_none != m_iImage)
         {
             tvis.item.mask |= TVIF_IMAGE;
             tvis.item.iImage = m_iImage;
@@ -332,7 +332,7 @@ private:
         tvis.item.mask      =   TVIF_TEXT;
         tvis.item.pszText   =   const_cast<wchar_t*>(s);
 
-        if(image_none != m_iImage)
+        if (image_none != m_iImage)
         {
             tvis.item.mask |= TVIF_IMAGE;
             tvis.item.iImage = m_iImage;

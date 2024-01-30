@@ -4,6 +4,15 @@
 ----
 
 
+30th January 2024 - 1.10.7 released
+-----------------------------------
+
+ * enhanced stream insertion operators, when used with types descended from `std::basic_ios<>`, to observe width and alignment for `stlsoft::basic_shim_string<>`, `stlsoft::basic_simple_string<>`, `stlsoft::basic_static_string`, `stlsoft::basic_string_view`, `stlsoft::stlsoft_C_string_slice_m_t`/`stlsoft::stlsoft_C_string_slice_w_t`
+ * refactored (almost) all direct calls to disparate parts of the `printf()`-family to use the STLSoft abstractions
+ * wholesale refinement of whitespace around conditional control statements;
+ * large number of minor and trivial tidyings
+
+
 28th January 2024 - 1.10.6 released
 -----------------------------------
 
