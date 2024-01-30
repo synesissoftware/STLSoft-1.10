@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::basic_shim_string`.
  *
  * Created: 9th November 2008
- * Updated: 17th January 2024
+ * Updated: 30th January 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -39,6 +39,7 @@
 #include <stlsoft/stlsoft.h>
 
 /* Standard C++ header files */
+#include <sstream>
 #include <string>
 
 /* Standard C header files */
@@ -72,6 +73,7 @@ namespace
     static void test_1_17(void);
     static void test_1_18(void);
     static void test_1_19(void);
+    static void test_insertion_1(void);
 
 } // anonymous namespace
 
@@ -109,6 +111,7 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_17);
         XTESTS_RUN_CASE(test_1_18);
         XTESTS_RUN_CASE(test_1_19);
+        XTESTS_RUN_CASE(test_insertion_1);
 
 #ifdef STLSOFT_USE_XCOVER
         XCOVER_REPORT_ALIAS_COVERAGE("shim_string", NULL);
@@ -128,8 +131,44 @@ int main(int argc, char **argv)
 
 namespace
 {
+    struct SimpleStream
+    {
+        std::string     contents;
+
+        SimpleStream&
+        write(
+            char const*     s
+        ,   std::streamsize n
+        )
+        {
+            contents.append(s, n);
+
+            return *this;
+        }
+
+        std::string
+        str() const
+        {
+            return contents;
+        }
+    };
+
+    SimpleStream&
+    operator <<(
+        SimpleStream&       stm
+    ,   char const*         s
+    )
+    {
+        std::size_t const   len = ::strlen(s);
+
+        stm.write(s, len);
+
+        return stm;
+    }
+
 
     char const alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+
 
 static void test_sizes()
 {
@@ -491,6 +530,39 @@ static void test_1_18()
 
 static void test_1_19()
 {
+}
+
+static void test_insertion_1(void)
+{
+    stlsoft::basic_shim_string<char> const  s1;
+    stlsoft::basic_shim_string<char> const  s2("abc");
+    stlsoft::basic_shim_string<char> const  s3("def");
+
+    {
+        std::stringstream   ss;
+
+        ss
+            << std::left
+            << s1
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+
+    {
+        SimpleStream    ss;
+
+        ss
+            << s1
+            << s2
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
 }
 
 

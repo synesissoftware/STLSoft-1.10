@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::basic_string_slice`.
  *
  * Created: 19th February 2010
- * Updated: 29th January 2024
+ * Updated: 30th January 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -24,6 +24,10 @@
 
 /* STLSoft header files */
 #include <stlsoft/stlsoft.h>
+
+/* Standard C++ header files */
+#include <sstream>
+#include <string>
 
 /* Standard C header files */
 #include <stdlib.h>
@@ -52,6 +56,7 @@ namespace
     static void test_greater_than_operator_1(void);
     static void test_lessgreaterequal_operators_1(void);
     static void test_lessgreaterequal_operators_2(void);
+    static void test_insertion_1(void);
 
 } // anonymous namespace
 
@@ -85,6 +90,7 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_greater_than_operator_1);
         XTESTS_RUN_CASE(test_lessgreaterequal_operators_1);
         XTESTS_RUN_CASE(test_lessgreaterequal_operators_2);
+        XTESTS_RUN_CASE(test_insertion_1);
 
         XTESTS_PRINT_RESULTS();
 
@@ -100,8 +106,45 @@ int main(int argc, char **argv)
 
 namespace
 {
+    struct SimpleStream
+    {
+        std::string     contents;
+
+        SimpleStream&
+        write(
+            char const*     s
+        ,   std::streamsize n
+        )
+        {
+            contents.append(s, n);
+
+            return *this;
+        }
+
+        std::string
+        str() const
+        {
+            return contents;
+        }
+    };
+
+    SimpleStream&
+    operator <<(
+        SimpleStream&       stm
+    ,   char const*         s
+    )
+    {
+        std::size_t const   len = ::strlen(s);
+
+        stm.write(s, len);
+
+        return stm;
+    }
+
+
     static char const		alphabet[]		=	 "abcdefghijklmnopqrstuvwxyz";
     static wchar_t const	alphabet_w[]	=	L"abcdefghijklmnopqrstuvwxyz";
+
 
 static void test_type_exists()
 {
@@ -351,6 +394,39 @@ static void test_lessgreaterequal_operators_2()
 
     XTESTS_TEST_BOOLEAN_TRUE(slice1 <= slice2);
     XTESTS_TEST_BOOLEAN_TRUE(slice1_w <= slice2_w);
+}
+
+static void test_insertion_1(void)
+{
+    stlsoft::string_slice<char> const   s1;
+    stlsoft::string_slice<char> const   s2("abc");
+    stlsoft::string_slice<char> const   s3("def");
+
+    {
+        std::stringstream   ss;
+
+        ss
+            << std::left
+            << s1
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+
+    {
+        SimpleStream    ss;
+
+        ss
+            << s1
+            << s2
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
 }
 
 

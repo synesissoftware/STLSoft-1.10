@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::basic_simple_string`.
  *
  * Created: 4th November 2008
- * Updated: 17th January 2024
+ * Updated: 30th January 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -150,7 +150,7 @@ namespace
     static void test_1_28(void);
     static void test_string_access_shims(void);
     static void test_1_29(void);
-    static void test_insertion(void);
+    static void test_insertion_1(void);
     static void test_1_30(void);
     static void test_string_traits(void);
 
@@ -268,7 +268,7 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_1_28);
         XTESTS_RUN_CASE(test_string_access_shims);
         XTESTS_RUN_CASE(test_1_29);
-        XTESTS_RUN_CASE(test_insertion);
+        XTESTS_RUN_CASE(test_insertion_1);
         XTESTS_RUN_CASE(test_1_30);
         XTESTS_RUN_CASE(test_string_traits);
 
@@ -301,6 +301,42 @@ namespace
     typedef std::string                                     string_t;
     typedef std::wstring                                    wstring_t;
 #endif /* USING_STLSOFT_SIMPLE_STRING */
+
+
+    struct SimpleStream
+    {
+        std::string     contents;
+
+        SimpleStream&
+        write(
+            char const*     s
+        ,   std::streamsize n
+        )
+        {
+            contents.append(s, n);
+
+            return *this;
+        }
+
+        std::string
+        str() const
+        {
+            return contents;
+        }
+    };
+
+    SimpleStream&
+    operator <<(
+        SimpleStream&       stm
+    ,   char const*         s
+    )
+    {
+        std::size_t const   len = ::strlen(s);
+
+        stm.write(s, len);
+
+        return stm;
+    }
 
 
 static void test_ctor_default()
@@ -2493,17 +2529,37 @@ static void test_1_29(void)
 {
 }
 
-static void test_insertion(void)
+static void test_insertion_1(void)
 {
-    string_t    s1;
-    string_t    s2("abc");
-    string_t    s3("def");
+    string_t const  s1;
+    string_t const  s2("abc");
+    string_t const  s3("def");
 
-    std::stringstream   ss;
+    {
+        std::stringstream   ss;
 
-    ss << s1 << s2 << s3;
+        ss
+            << std::left
+            << s1
+            << s2
+            << std::right
+            << s3
+            ;
 
-    XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+
+    {
+        SimpleStream    ss;
+
+        ss
+            << s1
+            << s2
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
 }
 
 
