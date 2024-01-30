@@ -4,7 +4,7 @@
  * Purpose:     basic_string_view class.
  *
  * Created:     16th October 2004
- * Updated:     29th January 2024
+ * Updated:     30th January 2024
  *
  * Thanks to:   Bjorn Karlsson and Scott Patterson for discussions on various
  *              naming and design issues. Thanks also to Pablo Aguilar for
@@ -57,9 +57,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        112
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        113
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -77,6 +77,13 @@
     ((__MWERKS__ & 0xff00) < 0x3000)
 # error stlsoft/string/string_view.hpp not compatible with Metrowerks 7.x (v2.4)
 #endif /* compiler */
+
+#ifndef STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS
+# include <stlsoft/collections/util/collections.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
+#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR
+# include <stlsoft/memory/util/allocator_selector.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR */
 #ifndef STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS
 # include <stlsoft/string/char_traits.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_STRING_HPP_CHAR_TRAITS */
@@ -86,15 +93,13 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
 # include <stlsoft/util/std/iterator_helper.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
-#ifndef STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS
-# include <stlsoft/collections/util/collections.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_COLLECTIONS_UTIL_HPP_COLLECTIONS */
-#ifndef STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR
-# include <stlsoft/memory/util/allocator_selector.hpp>
-#endif /* !STLSOFT_INCL_STLSOFT_MEMORY_UTIL_HPP_ALLOCATOR_SELECTOR */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
+
 #ifdef STLSOFT_CF_EXCEPTION_SUPPORT
 # ifndef STLSOFT_INCL_STDEXCEPT
 #  define STLSOFT_INCL_STDEXCEPT
@@ -852,21 +857,31 @@ inline ss_bool_t operator >=(C const* lhs, basic_string_view<C, T, A> const& rhs
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
- * iostream compatibility
+ * stream insertion
  */
 
-template<   ss_typename_param_k S
-        ,   ss_typename_param_k C
-        ,   ss_typename_param_k T
-        ,   ss_typename_param_k A
-        >
-inline S& operator <<(S& s, basic_string_view<C, T, A> const& str)
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+T_stream&
+operator <<(
+    T_stream&                           stm
+,   basic_string_view<C, T, A> const&   s
+)
 {
-    s.write(str.data(), static_cast<ss_streamoff_t>(str.length()));
+    STLSOFT_NS_USING(util::string_insert);
 
-    return s;
+    string_insert(stm, s.data(), s.size());
+
+    return stm;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation
