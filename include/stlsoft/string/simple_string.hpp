@@ -4,7 +4,7 @@
  * Purpose:     basic_simple_string class template.
  *
  * Created:     19th March 1993
- * Updated:     22nd January 2024
+ * Updated:     30th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,9 +53,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MAJOR    4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MINOR    3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     270
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_MINOR    4
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_REVISION 1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SIMPLE_STRING_EDIT     271
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -105,6 +105,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
 # include <stlsoft/util/std/iterator_helper.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_API_internal_h_memfns
 # include <stlsoft/api/internal/memfns.h>
@@ -1268,21 +1271,30 @@ inline ss_size_t c_str_len_w(basic_simple_string<ss_char_w_t, T, A> const& s)
 
 
 
-/* operator << */
-template<   ss_typename_param_k S
-        ,   ss_typename_param_k C
-        ,   ss_typename_param_k T
-        ,   ss_typename_param_k A
-        >
-inline S& operator <<(S& s, basic_simple_string<C, T, A> const& str)
+/* /////////////////////////////////////////////////////////////////////////
+ * stream insertion
+ */
+
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k C
+,   ss_typename_param_k T
+,   ss_typename_param_k A
+>
+inline
+T_stream&
+operator <<(
+    T_stream&                           stm
+,   basic_simple_string<C, T, A> const& s
+)
 {
-    // This cast is needed because some silly old compilers treat it as a
-    // void*.
+    STLSOFT_NS_USING(util::string_insert);
 
-    s << static_cast<C const*>(str.c_str());
+    string_insert(stm, s.data(), s.size());
 
-    return s;
+    return stm;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * swapping

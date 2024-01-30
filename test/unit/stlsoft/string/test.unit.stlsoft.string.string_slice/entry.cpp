@@ -26,6 +26,7 @@
 #include <stlsoft/stlsoft.h>
 
 /* Standard C++ header files */
+#include <iomanip>
 #include <sstream>
 #include <string>
 
@@ -57,6 +58,9 @@ namespace
     static void test_lessgreaterequal_operators_1(void);
     static void test_lessgreaterequal_operators_2(void);
     static void test_insertion_1(void);
+    static void test_insertion_2(void);
+    static void test_insertion_3(void);
+    static void test_insertion_4(void);
 
 } // anonymous namespace
 
@@ -91,6 +95,9 @@ int main(int argc, char **argv)
         XTESTS_RUN_CASE(test_lessgreaterequal_operators_1);
         XTESTS_RUN_CASE(test_lessgreaterequal_operators_2);
         XTESTS_RUN_CASE(test_insertion_1);
+        XTESTS_RUN_CASE(test_insertion_2);
+        XTESTS_RUN_CASE(test_insertion_3);
+        XTESTS_RUN_CASE(test_insertion_4);
 
         XTESTS_PRINT_RESULTS();
 
@@ -427,6 +434,110 @@ static void test_insertion_1(void)
 
         XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
     }
+}
+
+static void test_insertion_2(void)
+{
+    stlsoft::string_slice<char> const   s2("abc");
+    stlsoft::string_slice<char> const   s3("def");
+
+    {
+        std::stringstream ss;
+
+        ss
+            << std::setw(2)
+            << std::left
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+    }
+}
+
+static void test_insertion_3(void)
+{
+    stlsoft::string_slice<char> const   s1;
+    stlsoft::string_slice<char> const   s2("abc");
+    stlsoft::string_slice<char> const   s3("def");
+
+    {
+        std::stringstream ss;
+
+        ss
+            << std::setw(4)
+            << std::setfill('_')
+            << s1
+            << std::left
+            << s2
+            << std::right
+            << s3
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("____abc__def", ss.str());
+    }
+}
+
+
+static void test_insertion_4(void)
+{
+    const std::size_t FIELD_WIDTH = 2000;
+
+    stlsoft::string_slice<char> const   s1;
+    stlsoft::string_slice<char> const   s2("abc");
+    stlsoft::string_slice<char> const   s3("defg");
+
+    std::stringstream   ss;
+
+    ss
+        << std::setw(FIELD_WIDTH)
+        << std::setfill('_')
+        << s1
+        << std::left
+        << s2
+        << std::right
+        << s3
+        ;
+
+
+#if __cplusplus >= 201402L
+    std::string expected = ([&s2, &s3]() {
+#else
+    struct Expected
+    {
+        static
+        std::string
+        fn(
+            stlsoft::string_slice<char> const&  s2
+        ,   stlsoft::string_slice<char> const&  s3
+        )
+#endif
+
+        {
+            std::string r;
+
+            r.append(FIELD_WIDTH, '_');
+
+            r.append(s2.data(), s2.size());
+            r.append(FIELD_WIDTH - s2.size(), '_');
+
+            r.append(FIELD_WIDTH - s3.size(), '_');
+            r.append(s3.data(), s3.size());
+
+            return r;
+        }
+#if __cplusplus >= 201402L
+    })();
+#else
+    };
+
+    std::string const expected = Expected::fn(s2, s3);
+#endif
+
+    XTESTS_TEST_MULTIBYTE_STRING_EQUAL(
+        expected
+        , ss.str());
 }
 
 

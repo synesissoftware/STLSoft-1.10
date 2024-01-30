@@ -4,7 +4,7 @@
  * Purpose:     basic_static_string class template.
  *
  * Created:     11th June 1994
- * Updated:     22nd January 2024
+ * Updated:     30th January 2024
  *
  * Thanks:      To Cláudio Albuquerque for supplying the pop_back() member.
  *
@@ -55,9 +55,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MAJOR    5
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MINOR    0
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_REVISION 4
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     221
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_MINOR    1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_REVISION 1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STATIC_STRING_EDIT     222
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -101,6 +101,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER
 # include <stlsoft/util/std/iterator_helper.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
@@ -1097,6 +1100,10 @@ inline ss_size_t c_str_len(STLSOFT_NS_QUAL(basic_static_string)<C, V_internalSiz
 
 
 
+/* /////////////////////////////////////////////////////////////////////////
+ * stream insertion
+ */
+
 /** \ref group__concept__Shim__stream_insertion "stream insertion shim" for stlsoft::basic_static_string
  *
  * \ingroup group__concept__Shim__stream_insertion
@@ -1118,14 +1125,17 @@ template <
 inline
 T_stream&
 operator <<(
-    T_stream&                                               stm
-,   STLSOFT_NS_QUAL(basic_static_string)<C, V_internalSize, T> const&  s
+    T_stream&                                                           stm
+,   STLSOFT_NS_QUAL(basic_static_string)<C, V_internalSize, T> const&   s
 )
 {
-    stm << s.c_str();
+    STLSOFT_NS_USING(util::string_insert);
+
+    string_insert(stm, s.data(), s.size());
 
     return stm;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * implementation

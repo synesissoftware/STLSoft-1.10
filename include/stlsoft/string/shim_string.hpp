@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_shim_string template class.
  *
  * Created:     9th July 2004
- * Updated:     22nd January 2024
+ * Updated:     30th January 2024
  *
  * Thanks to:   Dimitri Kaparis, for spotting a typo in the string access
  *              shims.
@@ -56,9 +56,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MAJOR       3
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MINOR       6
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_REVISION    8
-# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        67
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_MINOR       7
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_REVISION    1
+# define STLSOFT_VER_STLSOFT_STRING_HPP_SHIM_STRING_EDIT        68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,6 +92,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STLSOFT_QUALITY_H_CONTRACT
 # include <stlsoft/quality/contract.h>
@@ -767,22 +770,26 @@ inline ss_char_w_t const* c_str_ptr_null_w(basic_shim_string<ss_char_w_t, N, U, 
 /* stream inserters */
 
 template <
-    ss_typename_param_k S
+    ss_typename_param_k T_stream
 ,   ss_typename_param_k C
 ,   ss_size_t           N
 ,   ss_bool_t           U
 ,   ss_typename_param_k A
 ,   ss_typename_param_k T
 >
-inline S& operator <<(S& s, basic_shim_string<C, N, U, A, T> const& ss)
+inline
+T_stream&
+operator <<(
+    T_stream&                               stm
+,   basic_shim_string<C, N, U, A, T> const& s
+)
 {
-    STLSOFT_COVER_MARK_LINE();
+    STLSOFT_NS_USING(util::string_insert);
 
-    s.write(ss.data(), ss.size());
+    string_insert(stm, s.data(), s.size());
 
-    return s;
+    return stm;
 }
-
 #endif /* compiler */
 
 /* ////////////////////////////////////////////////////////////////////// */

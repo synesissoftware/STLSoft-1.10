@@ -4,7 +4,7 @@
  * Purpose:     Defines the string_slice class template.
  *
  * Created:     22nd February 2010
- * Updated:     22nd January 2024
+ * Updated:     30th January 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,9 +52,9 @@
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_MAJOR      1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_MINOR      5
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_MINOR      6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_REVISION   1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_EDIT       31
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_SLICE_EDIT       32
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -162,6 +162,27 @@ public: // Construction
     {
         std_swap(this->len, rhs.len);
         std_swap(this->ptr, rhs.ptr);
+    }
+
+
+public: // Attributes
+    size_type size() const STLSOFT_NOEXCEPT
+    {
+        return this->len;
+    }
+    size_type length() const STLSOFT_NOEXCEPT
+    {
+        return length();
+    }
+    ss_bool_t empty() const STLSOFT_NOEXCEPT
+    {
+        return 0 == this->len;
+    }
+
+public: // Accessors
+    value_type const* data() const STLSOFT_NOEXCEPT
+    {
+        return this->ptr;
     }
 
 public: // Comparison
