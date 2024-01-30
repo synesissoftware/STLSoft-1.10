@@ -119,7 +119,7 @@ string_insert_3_(
 ,   T_stream&                       stm
 )
 {
-        stm.write(s, static_cast<ss_streamoff_t>(cch));
+    stm.write(s, static_cast<ss_streamoff_t>(cch));
 }
 
 template <
@@ -137,14 +137,6 @@ string_insert_4_(
 {
     T_character const   c_fill  =   stm.fill();
     ss_ptrdiff_t const  n_width =   stm.width();
-
-#if 0
-fprintf(stderr, "%s:%d:%s: c_fill='%c' (%d), n_width=%ld\n", __FILE__, __LINE__, __FUNCTION__
-,   c_fill
-,   c_fill
-,   n_width
-);
-#endif
 
     if (0 == n_width ||
         static_cast<ss_ptrdiff_t>(cch) >= n_width ||
@@ -175,13 +167,6 @@ fprintf(stderr, "%s:%d:%s: c_fill='%c' (%d), n_width=%ld\n", __FILE__, __LINE__,
             for ( ; 0 != num_to_write; )
             {
                 ss_size_t n = STLSOFT_NS_QUAL(minimum(num_to_write, STLSOFT_NUM_ELEMENTS(padding)));
-
-#if 0
-fprintf(stderr, "%s:%d:%s: num_to_write=%lu, n=%lu\n", __FILE__, __LINE__, __FUNCTION__
-,   num_to_write
-,   n
-);
-#endif
 
                 stm.write(padding, n);
 
