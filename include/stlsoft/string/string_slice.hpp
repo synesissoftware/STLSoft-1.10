@@ -172,7 +172,7 @@ public: // Attributes
     }
     size_type length() const STLSOFT_NOEXCEPT
     {
-        return length();
+        return size();
     }
     ss_bool_t empty() const STLSOFT_NOEXCEPT
     {
