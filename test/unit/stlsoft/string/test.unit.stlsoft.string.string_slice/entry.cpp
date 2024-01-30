@@ -39,7 +39,7 @@
 namespace
 {
 
-	static void test_type_exists(void);
+    static void test_type_exists(void);
     static void test_constructor_callable(void);
     static void test_constructed_state(void);
     static void test_constructed_subslice_1(void);
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 
     if(XTESTS_START_RUNNER("test.unit.stlsoft.string.string_slice", verbosity))
     {
-		XTESTS_RUN_CASE(test_type_exists);
+        XTESTS_RUN_CASE(test_type_exists);
         XTESTS_RUN_CASE(test_constructor_callable);
         XTESTS_RUN_CASE(test_constructed_state);
         XTESTS_RUN_CASE(test_constructed_subslice_1);
@@ -142,22 +142,22 @@ namespace
     }
 
 
-    static char const		alphabet[]		=	 "abcdefghijklmnopqrstuvwxyz";
-    static wchar_t const	alphabet_w[]	=	L"abcdefghijklmnopqrstuvwxyz";
+    static char const       alphabet[]      =    "abcdefghijklmnopqrstuvwxyz";
+    static wchar_t const    alphabet_w[]    =   L"abcdefghijklmnopqrstuvwxyz";
 
 
 static void test_type_exists()
 {
-	typeid(stlsoft::string_slice<char>);
-	typeid(stlsoft::string_slice<wchar_t>);
+    typeid(stlsoft::string_slice<char>);
+    typeid(stlsoft::string_slice<wchar_t>);
 
     XTESTS_TEST_PASSED();
 }
 
 static void test_constructor_callable()
 {
-    stlsoft::string_slice<char>		slice;
-    stlsoft::string_slice<wchar_t>	slice_w;
+    stlsoft::string_slice<char>     slice;
+    stlsoft::string_slice<wchar_t>  slice_w;
 
     STLSOFT_SUPPRESS_UNUSED(slice);
     STLSOFT_SUPPRESS_UNUSED(slice_w);
@@ -167,8 +167,8 @@ static void test_constructor_callable()
 
 static void test_constructed_state()
 {
-    stlsoft::string_slice<char>		slice;
-    stlsoft::string_slice<wchar_t>	slice_w;
+    stlsoft::string_slice<char>     slice;
+    stlsoft::string_slice<wchar_t>  slice_w;
 
     XTESTS_TEST_INTEGER_EQUAL(0u, slice.len);
     XTESTS_TEST_POINTER_EQUAL(NULL, slice.ptr);
@@ -198,8 +198,8 @@ static void test_constructed_state()
 
 static void test_constructed_subslice_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, slice.len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, slice.ptr);
@@ -209,8 +209,8 @@ static void test_constructed_subslice_1()
 
 static void test_constructed_from_c_string_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w);
+    stlsoft::string_slice<char>     slice(alphabet);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w);
 
     XTESTS_TEST_INTEGER_EQUAL(26u, slice.len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, slice.ptr);
@@ -220,10 +220,10 @@ static void test_constructed_from_c_string_1()
 
 static void test_copy_construction_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<char>		slice2(slice);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
-    stlsoft::string_slice<wchar_t>	slice2_w(slice_w);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<char>     slice2(slice);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<wchar_t>  slice2_w(slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, slice2.len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, slice2.ptr);
@@ -233,13 +233,13 @@ static void test_copy_construction_1()
 
 static void test_assignment_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<char>		slice2;
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
-    stlsoft::string_slice<wchar_t>	slice2_w;
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<char>     slice2;
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<wchar_t>  slice2_w;
 
-    slice2		=	slice;
-    slice2_w	=	slice_w;
+    slice2      =   slice;
+    slice2_w    =   slice_w;
 
     XTESTS_TEST_INTEGER_EQUAL(3u, slice2.len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, slice2.ptr);
@@ -249,13 +249,13 @@ static void test_assignment_1()
 
 static void test_string_access_shims_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
 
-    size_t			len		=	stlsoft::c_str_len(slice);
-    char const*		ptr		=	stlsoft::c_str_data(slice);
-    size_t			len_w	=	stlsoft::c_str_len(slice_w);
-    wchar_t const*	ptr_w	=	stlsoft::c_str_data(slice_w);
+    size_t          len     =   stlsoft::c_str_len(slice);
+    char const*     ptr     =   stlsoft::c_str_data(slice);
+    size_t          len_w   =   stlsoft::c_str_len(slice_w);
+    wchar_t const*  ptr_w   =   stlsoft::c_str_data(slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, ptr);
@@ -265,13 +265,13 @@ static void test_string_access_shims_1()
 
 static void test_string_access_shims_multibyte_1()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
 
-    size_t			len		=	stlsoft::c_str_len_a(slice);
-    char const*		ptr		=	stlsoft::c_str_data_a(slice);
-    size_t			len_w	=	stlsoft::c_str_len_w(slice_w);
-    wchar_t const*	ptr_w	=	stlsoft::c_str_data_w(slice_w);
+    size_t          len     =   stlsoft::c_str_len_a(slice);
+    char const*     ptr     =   stlsoft::c_str_data_a(slice);
+    size_t          len_w   =   stlsoft::c_str_len_w(slice_w);
+    wchar_t const*  ptr_w   =   stlsoft::c_str_data_w(slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, ptr);
@@ -281,13 +281,13 @@ static void test_string_access_shims_multibyte_1()
 
 static void test_string_access_shims_2()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
 
-    size_t			len		=	stlsoft::c_str_len(&slice);
-    char const*		ptr		=	stlsoft::c_str_data(&slice);
-    size_t			len_w	=	stlsoft::c_str_len(&slice_w);
-    wchar_t const*	ptr_w	=	stlsoft::c_str_data(&slice_w);
+    size_t          len     =   stlsoft::c_str_len(&slice);
+    char const*     ptr     =   stlsoft::c_str_data(&slice);
+    size_t          len_w   =   stlsoft::c_str_len(&slice_w);
+    wchar_t const*  ptr_w   =   stlsoft::c_str_data(&slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, ptr);
@@ -297,13 +297,13 @@ static void test_string_access_shims_2()
 
 static void test_string_access_shims_multibyte_2()
 {
-    stlsoft::string_slice<char>		slice(alphabet, 3u);
-    stlsoft::string_slice<wchar_t>	slice_w(alphabet_w, 3u);
+    stlsoft::string_slice<char>     slice(alphabet, 3u);
+    stlsoft::string_slice<wchar_t>  slice_w(alphabet_w, 3u);
 
-    size_t			len		=	stlsoft::c_str_len_a(&slice);
-    char const*		ptr		=	stlsoft::c_str_data_a(&slice);
-    size_t			len_w	=	stlsoft::c_str_len_w(&slice_w);
-    wchar_t const*	ptr_w	=	stlsoft::c_str_data_w(&slice_w);
+    size_t          len     =   stlsoft::c_str_len_a(&slice);
+    char const*     ptr     =   stlsoft::c_str_data_a(&slice);
+    size_t          len_w   =   stlsoft::c_str_len_w(&slice_w);
+    wchar_t const*  ptr_w   =   stlsoft::c_str_data_w(&slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(3u, len);
     XTESTS_TEST_POINTER_EQUAL(alphabet, ptr);
@@ -313,13 +313,13 @@ static void test_string_access_shims_multibyte_2()
 
 static void test_string_access_shims_multibyte_3()
 {
-    stlsoft::string_slice<char> const*		slice	=	NULL;
-    stlsoft::string_slice<wchar_t> const*	slice_w	=	NULL;
+    stlsoft::string_slice<char> const*      slice   =   NULL;
+    stlsoft::string_slice<wchar_t> const*   slice_w =   NULL;
 
-    size_t			len		=	stlsoft::c_str_len_a(slice);
-    char const*		ptr		=	stlsoft::c_str_data_a(slice);
-    size_t			len_w	=	stlsoft::c_str_len_w(slice_w);
-    wchar_t const*	ptr_w	=	stlsoft::c_str_data_w(slice_w);
+    size_t          len     =   stlsoft::c_str_len_a(slice);
+    char const*     ptr     =   stlsoft::c_str_data_a(slice);
+    size_t          len_w   =   stlsoft::c_str_len_w(slice_w);
+    wchar_t const*  ptr_w   =   stlsoft::c_str_data_w(slice_w);
 
     XTESTS_TEST_INTEGER_EQUAL(0u, len);
     XTESTS_TEST_POINTER_NOT_EQUAL(NULL, ptr);
