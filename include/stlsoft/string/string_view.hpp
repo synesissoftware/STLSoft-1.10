@@ -59,7 +59,7 @@
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MAJOR       3
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_MINOR       6
 # define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_REVISION    1
-# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        113
+# define STLSOFT_VER_STLSOFT_STRING_HPP_STRING_VIEW_EDIT        114
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -1581,7 +1581,11 @@ inline ss_typename_type_ret_k basic_string_view<C, T, A>::value_type const* basi
         {
             // Must allocate the m_cstr member
             allocator_type& ator   =   const_cast<class_type&>(*this);
+#ifdef STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT
             char_type*      s      =   ator.allocate(1 + length(), NULL);
+#else /* ? STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
+            char_type*      s      =   ator.allocate(1 + length());
+#endif /* STLSOFT_LF_ALLOCATOR_ALLOCATE_HAS_HINT */
 
             STLSOFT_SUPPRESS_UNUSED(ator);  // Need this for silly old Borland
 
