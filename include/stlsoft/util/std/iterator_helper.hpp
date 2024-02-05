@@ -58,8 +58,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MAJOR     5
 # define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_MINOR     8
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  7
-# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      124
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_REVISION  8
+# define STLSOFT_VER_STLSOFT_UTIL_STD_HPP_ITERATOR_HELPER_EDIT      125
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -149,6 +149,11 @@ namespace stlsoft
  *
  * There are three recognised forms:
  *
+ * 0. Form Cxx17 (STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT). From C++17
+ *    onwards, std::iterator is deprecated, and instead iterator classes
+ *    should define their member types directly.
+ *
+ *
  * 1. Form 1 (STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT). This is the standard
  *    (C++-98: 24.2) form, and looks like the following:
  *
@@ -190,6 +195,10 @@ namespace stlsoft
  */
 
 
+#ifdef STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT
+# undef STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT
+#endif /* !STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT */
+
 #ifdef STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT
 # undef STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT
 #endif /* !STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT */
@@ -204,6 +213,8 @@ namespace stlsoft
 
 
 #if 0
+#elif __cplusplus >= 201703L
+# define STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT
 #elif defined(STLSOFT_CF_STD_LIBRARY_IS_LIBCPP)
 # define STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT
 #elif defined(STLSOFT_COMPILER_IS_GCC) && \
@@ -247,6 +258,15 @@ namespace stlsoft
 /* reverse_iterator
  *
  * There are four known forms for reverse_iterators:
+ *
+ * 0. Form Cxx14 (STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT). From
+ *    C++14 onwards, we assume the following:
+ *
+ *    template <typename I>
+ *    class reverse_iterator
+ *    {
+ *        . . . // inferential definition of `iterator_category`, etc.
+ *    };
  *
  * 1. Form 1 (STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT). This is the
  *    standard (C++-98: 24.4.1.1) form, and looks like the following:
@@ -341,6 +361,10 @@ namespace stlsoft
  *
  */
 
+#ifdef STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT
+# undef STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT
+#endif /* !STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT */
+
 #ifdef STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT
 # undef STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT
 #endif /* !STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT */
@@ -422,6 +446,8 @@ namespace stlsoft
 /* Form 1 / Form 5 */
 
 # if 0
+# elif __cplusplus >= 201402L
+#  define STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT
 # elif defined(STLSOFT_CF_STD_LIBRARY_IS_LIBCPP)
 #  define STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT
 # elif defined(STLSOFT_CF_STD_LIBRARY_IS_STLPORT)
@@ -492,6 +518,7 @@ namespace stlsoft
 # elif 0 || \
        defined(STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM1_SUPPORT) || \
        defined(STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM2_SUPPORT) || \
+       defined(STLSOFT_ITERATOR_REVERSE_ITERATOR_FORMcxx14_SUPPORT) || \
        0
 #  define stlsoft_reverse_iterator(I, V, R, P, D)           STLSOFT_NS_QUAL_STD(reverse_iterator)<I>
 # elif defined(STLSOFT_ITERATOR_REVERSE_ITERATOR_FORM3_SUPPORT)
@@ -552,6 +579,8 @@ template<
 >
 struct iterator_base
 #if 0
+#elif defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT)
+    /* Form Cxx17 does not provide an iterator from which we can derive */
 #elif defined(STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT)
     : public STLSOFT_NS_QUAL_STD(iterator)<C, V, D, P, R>
 #elif defined(STLSOFT_ITERATOR_ITERATOR_FORM2_SUPPORT)
@@ -564,6 +593,9 @@ struct iterator_base
 {
 private:
 #if 0
+#elif defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT)
+    /* Form Cxx17 does not provide an iterator from which we can derive */
+    typedef void                                            parent_class_type;
 #elif defined(STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT)
     typedef STLSOFT_NS_QUAL_STD(iterator)<C, V, D, P, R>    parent_class_type;
 #elif defined(STLSOFT_ITERATOR_ITERATOR_FORM2_SUPPORT)
@@ -620,6 +652,7 @@ public:
 public:
 #if 0
 #elif 0 || \
+      defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT) || \
       defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT) || \
       0
     typedef C                                               iterator_category;

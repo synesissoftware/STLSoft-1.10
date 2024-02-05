@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MINOR       4
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_REVISION    11
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        72
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_REVISION    12
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -150,6 +150,7 @@ struct msi_parent_type
                 >
 # elif 0 || \
        defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT) || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT) || \
        0
   // do not derive
 # else /* ? STLSOFT_ITERATOR_ITERATOR_FORM??????_SUPPORT */
@@ -162,6 +163,7 @@ public:
 # if 0
 # elif 0 || \
        defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT) || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT) || \
        0
     typedef STLSOFT_NS_QUAL_STD(input_iterator_tag)         iterator_category;
 # endif /* form ? */
