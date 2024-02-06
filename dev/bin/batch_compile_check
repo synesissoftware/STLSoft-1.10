@@ -28,7 +28,12 @@ FILE_PATTERN_Cxx='*.hpp'
 INPUT_FILE_LANGUAGE_C=c
 INPUT_FILE_LANGUAGE_Cxx=c++
 LANGUAGE_STD_DEFAULT_VERSION_C=c17
-LANGUAGE_STD_DEFAULT_VERSION_Cxx=c++17
+LANGUAGE_STD_DEFAULT_VERSIONS_Cxx=(98 03 11 14 17)
+
+SUBPROJECTS_DEFAULT=(stlsoft platformstl unixstl)
+
+SUPPORTED_LANGUAGE_VERSIONS_C=(89 90 9 11 17)
+SUPPORTED_LANGUAGE_VERSIONS_Cxx=(98 03 11 14 17 20 23)
 
 COMMON_SKIP_SEQUENCES=(STLSOFT:FILE_DEPRECATED STLSOFT:FILE_EXCEPTED STLSOFT:FILE_NOT_SELF_SUFFICIENT)
 
@@ -42,7 +47,7 @@ DebugConfiguration=0
 Defines=()
 DryRun="false"
 Language=
-LanguageVersion=
+LanguageVersions=()
 Subprojects=()
 VerboseMode=0
 
@@ -63,6 +68,20 @@ while [[ $# -gt 0 ]]; do
         -C++|--language-is-C++)
 
             Language=Cxx
+            ;;
+        -l|--language-version)
+
+            shift
+            language_version=$1
+
+            if [ -z "$language_version" ]; then
+
+                >&2 echo "$ScriptPath: missing argument; use --help for usage"
+
+                exit 1
+            fi
+
+            LanguageVersions+=($language_version)
             ;;
         -p|--subproject)
 
@@ -114,6 +133,11 @@ Flags/options:
     --language-is-C++
         specifies that processing should only be for C++. Default is to
         process all files for all suitable languages
+
+    -l <language-version>
+    --language-version <language-version>
+        specifies the C++ language version. Can be specified multiple
+        times in order to run compilations over multiple versions
 
     -p <subproject>
     --subproject <subproject>
@@ -179,20 +203,34 @@ fi
 Defines=($(echo "${Defines[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
 Defines2_=${Defines[@]/#/-D}
 Defines=()
-Defines=$Defines2_
+Defines+=(${Defines2_[@]})
 
-[ $VerboseMode -eq 0 ] || echo "defines: ${Defines[@]}"
+[ $VerboseMode -eq 0 ] || echo "defines{${#Defines[@]}}: ${Defines[@]}"
+
+
+if [ -z "$LanguageVersions" ]; then
+
+    LanguageVersions=${LANGUAGE_STD_DEFAULT_VERSIONS_Cxx[@]}
+fi
+
+# sort language versions (without changing order)
+LanguageVersions=($(echo "${LanguageVersions[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
+LanguageVersions2_=${LanguageVersions[@]/#/c++}
+LanguageVersions=()
+LanguageVersions+=(${LanguageVersions2_[@]})
+
+[ $VerboseMode -eq 0 ] || echo "language versions{${#LanguageVersions[@]}}: (${LanguageVersions[*]})"
 
 
 if [ -z "$Subprojects" ]; then
 
-    Subprojects=(stlsoft platformstl unixstl)
+    Subprojects=${SUBPROJECTS_DEFAULT[@]}
 fi
 
-# sort subprojects (without changing order)
+# sort sub-projects (without changing order)
 Subprojects=($(echo "${Subprojects[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
 
-[ $VerboseMode -eq 0 ] || echo "subprojects: (${Subprojects[*]})"
+[ $VerboseMode -eq 0 ] || echo "subprojects{${#Subprojects[@]}}: (${Subprojects[*]})"
 
 
 # exit 0
@@ -200,6 +238,9 @@ Subprojects=($(echo "${Subprojects[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n
 
 # ##########################################################
 # main()
+
+trap "exit" INT
+
 
 IncludeDirLen=${#IncludeDir}+1
 
@@ -270,7 +311,7 @@ do
 
         if [ "$ShouldSkip" = "true" ]; then
 
-            [ $VerboseMode -eq 0 ] || echo "            - skipped ($SkipCause)"
+            [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
 
             continue
         fi
@@ -287,23 +328,39 @@ do
 
         if [ "$ShouldSkip" = "true" ]; then
 
-            [ $VerboseMode -eq 0 ] || echo "            - skipped ($SkipCause)"
+            [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
 
             continue
         fi
-
-        # STLSOFT:Windows:FILE_EXCEPTED
-        # STLSOFT:C++17:FILE_DEPRECATED
 
 
         if [ "$ShouldCompileCxx" = "true" ]; then
 
             [ $VerboseMode -eq 0 ] || echo "        $srp (C++):"
 
-            if [ "$DryRun" != "true" ]; then
+            for l in "${LanguageVersions[@]}"
+            do
 
-                echo "#include <$f>" | $COMPILER_COMMAND_Cxx -c -std=$LANGUAGE_STD_DEFAULT_VERSION_Cxx -x $INPUT_FILE_LANGUAGE_Cxx ${Defines[@]} -I "$IncludeDir" -
-            fi
+                if grep -i -q "STLSOFT:$l:FILE_DEPRECATED" "$f"; then
+
+                    ShouldSkip="true"
+                    SkipCause="STLSOFT:$l:FILE_DEPRECATED"
+                fi
+
+                if [ "$ShouldSkip" = "true" ]; then
+
+                    [ $VerboseMode -eq 0 ] || echo "            ($l) - skipped ($SkipCause)"
+
+                    continue
+                fi
+
+                [ $VerboseMode -eq 0 ] || echo "            ($l)"
+
+                if [ "$DryRun" != "true" ]; then
+
+                    echo "#include <$f>" | $COMPILER_COMMAND_Cxx -c -std=$l -x $INPUT_FILE_LANGUAGE_Cxx ${Defines[@]} -I "$IncludeDir" -
+                fi
+            done
         fi
 
         if [ "$ShouldCompileC" = "true" ]; then
