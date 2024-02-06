@@ -4,6 +4,14 @@
 ----
 
 
+6th February 2024 - 1.10.8 released
+-----------------------------------
+
+ * added dev/bin/batch_compile_check
+ * language compatibility fix
+ * iterator definition fixes (related to C++17 deprecation of std::iterator)
+
+
 30th January 2024 - 1.10.7 released
 -----------------------------------
 

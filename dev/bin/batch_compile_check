@@ -1,0 +1,380 @@
+#! /bin/bash
+
+
+ScriptPath=$0
+ProjectDir=$(cd $(dirname "$ScriptPath"); pwd)
+Basename=$(basename "$ScriptPath")
+IncludeDir="$ProjectDir/../../include"
+ScratchDir="$ProjectDir/../../scratch"
+
+if ! [ -d "$ScratchDir" ]; then
+
+    if ! mkdir -p "$ScratchDir"; then
+
+        >&2 echo "$ScriptPath: failed to create scratch directory '$ScratchDir'"
+
+        exit 1
+    fi
+fi
+
+IncludeDir=$(cd "$IncludeDir"; pwd)
+ScratchDir=$(cd "$ScratchDir"; pwd)
+
+
+COMPILER_COMMAND_C=cc
+COMPILER_COMMAND_Cxx=c++
+FILE_PATTERN_C='*.h'
+FILE_PATTERN_Cxx='*.hpp'
+INPUT_FILE_LANGUAGE_C=c
+INPUT_FILE_LANGUAGE_Cxx=c++
+LANGUAGE_STD_DEFAULT_VERSION_C=c17
+LANGUAGE_STD_DEFAULT_VERSIONS_Cxx=(98 03 11 14 17)
+
+SUBPROJECTS_DEFAULT=(stlsoft platformstl unixstl)
+
+SUPPORTED_LANGUAGE_VERSIONS_C=(89 90 9 11 17)
+SUPPORTED_LANGUAGE_VERSIONS_Cxx=(98 03 11 14 17 20 23)
+
+COMMON_SKIP_SEQUENCES=(STLSOFT:FILE_DEPRECATED STLSOFT:FILE_EXCEPTED STLSOFT:FILE_NOT_SELF_SUFFICIENT)
+
+UNIX_SKIP_SEQUENCES=(STLSOFT:Windows:FILE_EXCEPTED)
+
+
+# ##########################################################
+# command-line handling
+
+DebugConfiguration=0
+Defines=()
+DryRun="false"
+Language=
+LanguageVersions=()
+Subprojects=()
+VerboseMode=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -d|--debug-configuration)
+
+            DebugConfiguration=1
+            ;;
+        -y|--dry-run)
+
+            DryRun="true"
+            ;;
+        -C|--language-is-C)
+
+            Language=C
+            ;;
+        -C++|--language-is-C++)
+
+            Language=Cxx
+            ;;
+        -l|--language-version)
+
+            shift
+            language_version=$1
+
+            if [ -z "$language_version" ]; then
+
+                >&2 echo "$ScriptPath: missing argument; use --help for usage"
+
+                exit 1
+            fi
+
+            LanguageVersions+=($language_version)
+            ;;
+        -p|--subproject)
+
+            shift
+            subproject=$1
+
+            if [ -z "$subproject" ]; then
+
+                >&2 echo "$ScriptPath: missing argument; use --help for usage"
+
+                exit 1
+            fi
+
+            Subprojects+=($subproject)
+            ;;
+        -v|--verbose-mode)
+
+            VerboseMode=1
+            ;;
+        --help)
+
+            cat << EOF
+STLSoft is a suite of C/C++ libraries that provide STL extensions and facades over operating-system and technology-specific APIs
+Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
+Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
+Runs batch compilation over all library files for a given set of sub-project(s) and particular language(s) (C or C++)
+
+$ScriptPath [ ... flags/options ... ]
+
+Flags/options:
+
+    behaviour:
+
+    -d
+    --debug-configuration
+        specifies STLSOFT_DEBUG and not NDEBUG. Default is to specify
+        NDEBUG and not STLSOFT_DEBUG
+
+    -y
+    --dry-run
+        runs through all actions except performing the compilation
+
+    -C
+    --language-is-C
+        specifies that processing should only be for C. Default is to
+        process all files for all suitable languages
+
+    -C++
+    --language-is-C++
+        specifies that processing should only be for C++. Default is to
+        process all files for all suitable languages
+
+    -l <language-version>
+    --language-version <language-version>
+        specifies the C++ language version. Can be specified multiple
+        times in order to run compilations over multiple versions
+
+    -p <subproject>
+    --subproject <subproject>
+        adds specified <subproject> to the list of subprojects to be
+        evaluated
+
+    -v
+    --verbose-mode
+        announces each include file as it is compiled
+
+
+    standard flags:
+
+    --help
+        displays this help and terminates
+
+EOF
+
+            exit 0
+            ;;
+        *)
+
+            >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
+
+            exit 1
+            ;;
+    esac
+
+    shift
+done
+
+
+if false; then
+    :
+elif [ "$Language" = "Cxx" ]; then
+
+    FilePattern=$FILE_PATTERN_Cxx
+elif [ "$Language" = "C" ]; then
+
+    FilePattern=$FILE_PATTERN_C
+else
+
+    FilePattern='*.h*'
+fi
+
+[ $VerboseMode -eq 0 ] || echo "searching for files matchin '$FilePattern'"
+
+
+if [ -z "$Defines" ]; then
+
+    Defines+=(_REENTRANT UNIX)
+fi
+
+if [ $DebugConfiguration -eq 1 ]; then
+
+    Defines+=(STLSOFT_DEBUG _DEBUG)
+else
+
+    Defines+=(NDEBUG)
+fi
+
+# sort #defines (without changing order)
+Defines=($(echo "${Defines[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
+Defines2_=${Defines[@]/#/-D}
+Defines=()
+Defines+=(${Defines2_[@]})
+
+[ $VerboseMode -eq 0 ] || echo "defines{${#Defines[@]}}: ${Defines[@]}"
+
+
+if [ -z "$LanguageVersions" ]; then
+
+    LanguageVersions=${LANGUAGE_STD_DEFAULT_VERSIONS_Cxx[@]}
+fi
+
+# sort language versions (without changing order)
+LanguageVersions=($(echo "${LanguageVersions[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
+LanguageVersions2_=${LanguageVersions[@]/#/c++}
+LanguageVersions=()
+LanguageVersions+=(${LanguageVersions2_[@]})
+
+[ $VerboseMode -eq 0 ] || echo "language versions{${#LanguageVersions[@]}}: (${LanguageVersions[*]})"
+
+
+if [ -z "$Subprojects" ]; then
+
+    Subprojects=${SUBPROJECTS_DEFAULT[@]}
+fi
+
+# sort sub-projects (without changing order)
+Subprojects=($(echo "${Subprojects[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n' ' '))
+
+[ $VerboseMode -eq 0 ] || echo "subprojects{${#Subprojects[@]}}: (${Subprojects[*]})"
+
+
+# exit 0
+
+
+# ##########################################################
+# main()
+
+trap "exit" INT
+
+
+IncludeDirLen=${#IncludeDir}+1
+
+
+for p in ${Subprojects[*]}
+do
+
+    [ $VerboseMode -eq 0 ] || echo "    $p:"
+
+    for f in $(find "$IncludeDir/$p" -type f -name $FilePattern)
+    do
+        srp=${f:$IncludeDirLen}
+
+        # at this point we need to check the language of the file, since we
+        # may wish to compile the .h files as both C and C++
+
+        FileIsCxx="false"
+        if [ ".hpp" = "${srp: -4}" ]; then
+
+            FileIsCxx="true"
+        fi
+
+        ShouldCompileC="false"
+        ShouldCompileCxx="false"
+
+        if [ "$FileIsCxx" = "true" ]; then
+
+            # NOTE: this should not be necessary, if $FilePattern is
+            # evaluated correctly
+            if [ "$Language" != "C" ]; then
+
+                ShouldCompileCxx="true"
+            fi
+        else
+
+            if false; then
+                :
+            elif [ "$Language" = "Cxx" ]; then
+
+                :
+            elif [ "$Language" = "C" ]; then
+
+                ShouldCompileC="true"
+            else
+
+                ShouldCompileC="true"
+                ShouldCompileCxx="true"
+            fi
+        fi
+
+        if [ ! "$ShouldCompileC" = "true" ] && [ ! "$ShouldCompileCxx" = "true" ]; then
+
+            continue
+        fi
+
+        ShouldSkip="false"
+        SkipCause=""
+
+        for s in "${COMMON_SKIP_SEQUENCES[@]}"
+        do
+
+            if grep -q "$s" "$f"; then
+
+                ShouldSkip="true"
+                SkipCause="$s"
+            fi
+        done
+
+        if [ "$ShouldSkip" = "true" ]; then
+
+            [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
+
+            continue
+        fi
+
+        for s in "${UNIX_SKIP_SEQUENCES[@]}"
+        do
+
+            if grep -q "$s" "$f"; then
+
+                ShouldSkip="true"
+                SkipCause="$s"
+            fi
+        done
+
+        if [ "$ShouldSkip" = "true" ]; then
+
+            [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
+
+            continue
+        fi
+
+
+        if [ "$ShouldCompileCxx" = "true" ]; then
+
+            [ $VerboseMode -eq 0 ] || echo "        $srp (C++):"
+
+            for l in "${LanguageVersions[@]}"
+            do
+
+                if grep -i -q "STLSOFT:$l:FILE_DEPRECATED" "$f"; then
+
+                    ShouldSkip="true"
+                    SkipCause="STLSOFT:$l:FILE_DEPRECATED"
+                fi
+
+                if [ "$ShouldSkip" = "true" ]; then
+
+                    [ $VerboseMode -eq 0 ] || echo "            ($l) - skipped ($SkipCause)"
+
+                    continue
+                fi
+
+                [ $VerboseMode -eq 0 ] || echo "            ($l)"
+
+                if [ "$DryRun" != "true" ]; then
+
+                    echo "#include <$f>" | $COMPILER_COMMAND_Cxx -c -std=$l -x $INPUT_FILE_LANGUAGE_Cxx ${Defines[@]} -I "$IncludeDir" -
+                fi
+            done
+        fi
+
+        if [ "$ShouldCompileC" = "true" ]; then
+
+            [ $VerboseMode -eq 0 ] || echo "        $srp (C):"
+
+            if [ "$DryRun" != "true" ]; then
+
+                echo "#include <$f>" | $COMPILER_COMMAND_C -c -std=$LANGUAGE_STD_DEFAULT_VERSION_C -x $INPUT_FILE_LANGUAGE_C ${Defines[@]} -I "$IncludeDir" -
+            fi
+        fi
+    done
+done
+
+
+# ############################## end of file ############################# #
+

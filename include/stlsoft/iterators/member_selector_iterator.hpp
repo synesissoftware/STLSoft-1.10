@@ -4,14 +4,14 @@
  * Purpose:     member_selector_iterator class.
  *
  * Created:     7th April 2005
- * Updated:     26th December 2020
+ * Updated:     6th February 2024
  *
  * Thanks to:   Felix Gartsman for spotting a bug in (lack of) operator <()
  *              when building Pantheios.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2020, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2005-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -57,8 +57,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MAJOR       2
 # define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_MINOR       4
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_REVISION    11
-# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        71
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_REVISION    12
+# define STLSOFT_VER_STLSOFT_ITERATORS_HPP_MEMBER_SELECTOR_ITERATOR_EDIT        73
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -112,26 +112,28 @@ template<   ss_typename_param_k I
         ,   ss_typename_param_k M
         >
 struct msi_parent_type
-// Unfortunately, we can't just go with what iterator form the library supports,
-// because we have to deal with:
+// Unfortunately, we can't just go with what iterator form the library
+// supports, because we have to deal with:
 //
-// - VC 7.0, whose Dinkumware library thinks its iterator form is form-1, but
-//    the compiler doesn't do partial template specialiation
+// - VC 7.0, whose Dinkumware library thinks its iterator form is form-1,
+//   but the compiler doesn't do partial template specialiation;
 // - Intel 6/7/7.1/8, which may be used with Visual C++ 6 or 7.0 Dinkumware
-//    libraries
+//   libraries;
 //
-# if defined(STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT) && \
-     defined(STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT) && \
-     (   !defined(STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC) || \
-         STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION >= STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1) && \
-     !defined(STLSOFT_COMPILER_IS_BORLAND) && \
-     !defined(STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW)
-    : public iterator_base< ss_typename_type_k STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category
-                        ,   M
-                        ,   ss_ptrdiff_t
-                        ,   M*
-                        ,   M&
-                        >
+# if 0
+# elif defined(STLSOFT_ITERATOR_ITERATOR_FORM1_SUPPORT) && \
+       defined(STLSOFT_CF_TEMPLATE_PARTIAL_SPECIALISATION_SUPPORT) && \
+       (   !defined(STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC) || \
+           STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION >= STLSOFT_CF_DINKUMWARE_VC_VERSION_7_1) && \
+       !defined(STLSOFT_COMPILER_IS_BORLAND) && \
+       !defined(STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW)
+    : public iterator_base<
+                    ss_typename_type_k STLSOFT_NS_QUAL_STD(iterator_traits)<I>::iterator_category
+                ,   M
+                ,   ss_ptrdiff_t
+                ,   M*
+                ,   M&
+                >
 # elif defined(STLSOFT_ITERATOR_ITERATOR_FORM2_SUPPORT) || \
        (   defined(STLSOFT_CF_STD_LIBRARY_IS_DINKUMWARE_VC) && \
            STLSOFT_CF_STD_LIBRARY_DINKUMWARE_VC_VERSION == STLSOFT_CF_DINKUMWARE_VC_VERSION_7_0) || \
@@ -139,13 +141,17 @@ struct msi_parent_type
            _MSC_VER == 1300) || \
      defined(STLSOFT_COMPILER_IS_BORLAND) || \
      defined(STLSOFT_CF_STD_LIBRARY_IS_SUNPRO_RW)
-    : public iterator_base< STLSOFT_NS_QUAL_STD(input_iterator_tag)
-                        ,   M
-                        ,   ss_ptrdiff_t
-                        ,   M*
-                        ,   M&
-                        >
-# elif defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT)
+    : public iterator_base<
+                    STLSOFT_NS_QUAL_STD(input_iterator_tag)
+                ,   M
+                ,   ss_ptrdiff_t
+                ,   M*
+                ,   M&
+                >
+# elif 0 || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT) || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT) || \
+       0
   // do not derive
 # else /* ? STLSOFT_ITERATOR_ITERATOR_FORM??????_SUPPORT */
 #  error iterator support type not discriminated
@@ -154,18 +160,22 @@ struct msi_parent_type
 /// \name Member Types
 /// @{
 public:
-# if defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT)
-    typedef STLSOFT_NS_QUAL_STD(input_iterator_tag) iterator_category;
+# if 0
+# elif 0 || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORM3_SUPPORT) || \
+       defined(STLSOFT_ITERATOR_ITERATOR_FORMcxx17_SUPPORT) || \
+       0
+    typedef STLSOFT_NS_QUAL_STD(input_iterator_tag)         iterator_category;
 # endif /* form ? */
-    typedef I                                       base_iterator_type;
-    typedef C                                       selected_class_type;
-    typedef M                                       value_type;
-    typedef value_type*                             pointer;
-    typedef value_type const*                       const_pointer;
-    typedef value_type&                             reference;
-    typedef value_type const&                       const_reference;
-    typedef ss_size_t                               size_type;
-    typedef ss_ptrdiff_t                            difference_type;
+    typedef I                                               base_iterator_type;
+    typedef C                                               selected_class_type;
+    typedef M                                               value_type;
+    typedef value_type*                                     pointer;
+    typedef value_type const*                               const_pointer;
+    typedef value_type&                                     reference;
+    typedef value_type const&                               const_reference;
+    typedef ss_size_t                                       size_type;
+    typedef ss_ptrdiff_t                                    difference_type;
 /// @}
 };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */

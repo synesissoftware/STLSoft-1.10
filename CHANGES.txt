@@ -17,6 +17,29 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.8 (6th February 2024)
+
+General:
+========
+
+ * added dev/bin/batch_compile_check
+ * language compatibility fix
+ * iterator definition fixes (related to C++17 deprecation of std::iterator)
+
+Changes:
+========
+
+ * include/stlsoft/string/string_slice.h - ~ language compatibility fix
+ * dev/bin/batch_compile_check - new script to run cross-language/cross-version compilation
+ * include/stlsoft/properties/field_properties.hpp - compatibility fixes
+ * include/stlsoft/properties/method_properties.hpp - compatibility fixes
+ * include/stlsoft/shims/access/string/std/nullptr.hpp - compatibility fixes
+ * include/stlsoft/iterators/member_selector_iterator.hpp - iterator definition fixes
+ * include/stlsoft/util/std/iterator_helper.hpp - iterator definition fixes
+
+
+============================================================================
+
 Changes for 1.10.7 (30th January 2024)
 
 General:
