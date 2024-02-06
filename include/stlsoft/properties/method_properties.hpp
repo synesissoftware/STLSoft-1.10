@@ -4,7 +4,7 @@
  * Purpose:     Method-based properties.
  *
  * Created:     6th October 2003
- * Updated:     29th January 2024
+ * Updated:     6th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -41,6 +41,9 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
+/* STLSOFT:C++98:FILE_DEPRECATED */
+/* STLSOFT:C++03:FILE_DEPRECATED */
+
 /** \file stlsoft/properties/method_properties.hpp
  *
  * \brief [C++] Definition of the method property implementation
@@ -67,8 +70,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_MAJOR     4
 # define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_MINOR     0
-# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_REVISION  7
-# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_EDIT      71
+# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_REVISION  8
+# define STLSOFT_VER_STLSOFT_PROPERTIES_HPP_METHOD_PROPERTIES_EDIT      72
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
