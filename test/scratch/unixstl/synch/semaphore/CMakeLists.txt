@@ -8,8 +8,12 @@ target_compile_options(test.scratch.unixstl.synch.semaphore PRIVATE
         -Werror -Wall -Wextra -pedantic
 
         -Wno-deprecated-declarations
+
+        ${GCC_WARN_NO_cxx11_long_long}
     >
-    $<$<CXX_COMPILER_ID:MSVC>: /WX /W4>
+    $<$<CXX_COMPILER_ID:MSVC>:
+        /WX /W4
+    >
 )
 
 

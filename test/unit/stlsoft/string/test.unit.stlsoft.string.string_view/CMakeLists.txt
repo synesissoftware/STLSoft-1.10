@@ -13,8 +13,12 @@ target_compile_options(test.unit.stlsoft.string.string_view PRIVATE
 
         -Wno-unused-function
         -Wno-unused-value
+
+        ${GCC_WARN_NO_cxx11_long_long}
     >
-    $<$<CXX_COMPILER_ID:MSVC>: /WX /W4>
+    $<$<CXX_COMPILER_ID:MSVC>:
+        /WX /W4
+    >
 )
 
 

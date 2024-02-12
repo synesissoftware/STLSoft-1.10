@@ -6,7 +6,7 @@
  *              types.
  *
  * Created:     15th January 2002
- * Updated:     6th February 2024
+ * Updated:     12th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,9 +55,9 @@
 /* File version */
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_H_STLSOFT_MAJOR    3
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    51
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 15
-# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     544
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_MINOR    52
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_REVISION 1
+# define STLSOFT_VER_STLSOFT_H_STLSOFT_EDIT     545
 #else /* ? STLSOFT_DOCUMENTATION_SKIP_SECTION */
 /* # include "./internal/doxygen_defs.h" */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
@@ -344,12 +344,13 @@
 # define _STLSOFT_VER_1_10_6        0x010a06ff  /*!< Version 1.10.6 (28th January 2024) */
 # define _STLSOFT_VER_1_10_7        0x010a07ff  /*!< Version 1.10.7 (30th January 2024) */
 # define _STLSOFT_VER_1_10_8        0x010a08ff  /*!< Version 1.10.8 (6th February 2024) */
+# define _STLSOFT_VER_1_10_9        0x010a09ff  /*!< Version 1.10.9 (12th February 2024) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR          1
 #define _STLSOFT_VER_MINOR          10
-#define _STLSOFT_VER_REVISION       8
-#define _STLSOFT_VER                _STLSOFT_VER_1_10_8
+#define _STLSOFT_VER_REVISION       9
+#define _STLSOFT_VER                _STLSOFT_VER_1_10_9
 
 /* /////////////////////////////////////
  * underlying version detection
@@ -2100,6 +2101,14 @@ namespace stlsoft
  typedef STLSOFT_UI64_T_BASE_TYPE                           STLSOFT_UI64_T_BASE_TYPE_;
 #endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
 
+/* ptr-bit */
+#ifdef STLSOFT_SPTR_T_BASE_TYPE
+ typedef STLSOFT_SPTR_T_BASE_TYPE                           STLSOFT_SPTR_T_BASE_TYPE_;
+#endif
+#ifdef STLSOFT_UPTR_T_BASE_TYPE
+ typedef STLSOFT_UPTR_T_BASE_TYPE                           STLSOFT_UPTR_T_BASE_TYPE_;
+#endif
+
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* Type definitions - proper */
@@ -2120,6 +2129,12 @@ typedef STLSOFT_UI32_T_BASE_TYPE_                           ss_uint32_t;        
  typedef STLSOFT_SI64_T_BASE_TYPE_                          ss_sint64_t;        /*!< 64-bit signed integer      */
  typedef STLSOFT_UI64_T_BASE_TYPE_                          ss_uint64_t;        /*!< 64-bit unsigned integer    */
 #endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
+#ifdef STLSOFT_SPTR_T_BASE_TYPE
+ typedef STLSOFT_SPTR_T_BASE_TYPE_                          ss_sintptr_t;       /*!< ptr-bit signed integer     */
+#endif
+#ifdef STLSOFT_UPTR_T_BASE_TYPE
+ typedef STLSOFT_UPTR_T_BASE_TYPE_                          ss_uintptr_t;       /*!< ptr-bit unsigned integer   */
+#endif
 typedef short                                               ss_short_t;         /*!< short integer              */
 typedef int STLSOFT_WARN_64                                 ss_int_t;           /*!< integer                    */
 typedef signed int STLSOFT_WARN_64                          ss_sint_t;          /*!< signed integer             */
@@ -2162,6 +2177,12 @@ typedef ss_int64_t                                          int64_t;            
 typedef ss_sint64_t                                         sint64_t;           /*!< 64-bit signed integer      */
 typedef ss_uint64_t                                         uint64_t;           /*!< 64-bit unsigned integer    */
 # endif /* STLSOFT_CF_64BIT_INT_SUPPORT */
+#ifdef STLSOFT_SPTR_T_BASE_TYPE
+typedef ss_sintptr_t                                        sintptr_t;          /*!< ptr-bit signed integer     */
+#endif
+#ifdef STLSOFT_UPTR_T_BASE_TYPE
+typedef ss_uintptr_t                                        uintptr_t;          /*!< ptr-bit unsigned integer   */
+#endif
 typedef ss_short_t                                          short_t;            /*!< short integer              */
 typedef ss_int_t STLSOFT_WARN_64                            int_t;              /*!< integer                    */
 typedef ss_sint_t STLSOFT_WARN_64                           sint_t;             /*!< signed integer             */
