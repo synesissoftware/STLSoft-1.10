@@ -4,6 +4,14 @@
 ----
 
 
+12th February 2024 - 1.10.9 released
+------------------------------------
+
+ * stlsoft::frequency_map uses traits to select between ordered and unordered representation
+ * added test.unit.stlsoft.containers.frequency_map project
+ * C++98 compatibility
+
+
 6th February 2024 - 1.10.8 released
 -----------------------------------
 

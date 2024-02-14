@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  28th January 2024
+; Updated:  14th February 2024
 
 ============================================================================
 
@@ -16,6 +16,31 @@ STLSoft - Changes
    *                                    *
    **************************************
 
+
+Changes for 1.10.9 (12th February 2024)
+
+General:
+========
+
+ * stlsoft::frequency_map uses traits to select between ordered and unordered representation
+ * added test.unit.stlsoft.containers.frequency_map project
+ * C++98 compatibility
+
+Changes:
+========
+
+ * .vscode/settings.json - added settings
+ * include/stlsoft/containers/frequency_map.hpp - added traits (to select unordered vs ordered), improved implementation of `#push_n()`, added `noexcept`, added `#cbegin()`/`#cend()`, added `#crbegin()`/`#crend()`
+ * include/stlsoft/internal/cccap/clang.h - added discrimination of `STLSOFT_SPTR_T_BASE_TYPE`, `STLSOFT_UPTR_T_BASE_TYPE`
+ * include/stlsoft/internal/cccap/gcc.h -  added discrimination of `STLSOFT_SPTR_T_BASE_TYPE`, `STLSOFT_UPTR_T_BASE_TYPE`
+ * include/stlsoft/internal/cccap/msvc.h -  added discrimination of `STLSOFT_SPTR_T_BASE_TYPE`, `STLSOFT_UPTR_T_BASE_TYPE`
+ * **/CMakeLists.txt - minor improvements throughout
+ * test.unit.stlsoft.containers.frequency_map - added test.unit.stlsoft.containers.frequency_map project
+ * test/unit/stlsoft/memory/test.unit.stlsoft.memory.auto_buffer/entry.cpp - C++98 compatibility
+ * test/unit/stlsoft/string/test.unit.stlsoft.string.static_string/entry.cpp - C++98 compatibility
+
+
+============================================================================
 
 Changes for 1.10.8 (6th February 2024)
 
