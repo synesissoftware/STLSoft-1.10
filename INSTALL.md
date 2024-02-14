@@ -83,13 +83,13 @@ For example, if you're using **UNIX** and you install to
 **/usr/local/stlsoft/stlsoft-1.10.9**
 then you should set the environment variable `STLSOFT` to
 **/usr/local/stlsoft/stlsoft-1.10.9**
-in which case the file `stlsoft/stlsoft.h`, for example, will be located in `$STLSOFT/include/stlsoft/stlsoft.h`.
+in which case the file `stlsoft/stlsoft.h`, for example, will be located in `/usr/local/stlsoft/stlsoft-1.10.9/include/stlsoft/stlsoft.h`.
 
 Conversely, if you're using **Windows** and you intall to
-**C:\3pty\STLSoft\stlsoft-1.10.9**
+**C:\3pty\STLSoft\STLSoft-1.10.9**
 then you should set the environment variable `STLSoft` to
-**C:\3pty\STLSoft\stlsoft-1.10.9**
-in which case the file `stlsoft/stlsoft.h`, for example, will be located in `C:\3pty\STLSoft\stlsoft-1.10.9\stlsoft\stlsoft.h`.
+**C:\3pty\STLSoft\STLSoft-1.10.9**
+in which case the file `stlsoft/stlsoft.h`, for example, will be located in `C:\3pty\STLSoft\STLSoft-1.10.9\include\stlsoft\stlsoft.h`.
 
 The makefiles / project files of several other open-source projects expect this symbol, including:
 
