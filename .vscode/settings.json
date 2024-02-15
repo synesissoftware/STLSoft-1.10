@@ -14,6 +14,7 @@
         "__functional_base": "cpp",
         "__hash_table": "cpp",
         "__locale": "cpp",
+        "__memory": "cpp",
         "__mutex_base": "cpp",
         "__node_handle": "cpp",
         "__nullptr": "cpp",
