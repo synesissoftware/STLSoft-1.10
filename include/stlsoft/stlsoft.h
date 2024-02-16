@@ -347,12 +347,13 @@
 # define _STLSOFT_VER_1_10_8        0x010a08ff  /*!< Version 1.10.8 (6th February 2024) */
 # define _STLSOFT_VER_1_10_9        0x010a09ff  /*!< Version 1.10.9 (12th February 2024) */
 # define _STLSOFT_VER_1_10_10       0x010a0aff  /*!< Version 1.10.10 (16th February 2024) */
+# define _STLSOFT_VER_1_10_11       0x010a0bff  /*!< Version 1.10.11 (16th February 2024) */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 #define _STLSOFT_VER_MAJOR          1
 #define _STLSOFT_VER_MINOR          10
-#define _STLSOFT_VER_REVISION       10
-#define _STLSOFT_VER                _STLSOFT_VER_1_10_10
+#define _STLSOFT_VER_REVISION       11
+#define _STLSOFT_VER                _STLSOFT_VER_1_10_11
 
 /* /////////////////////////////////////
  * underlying version detection

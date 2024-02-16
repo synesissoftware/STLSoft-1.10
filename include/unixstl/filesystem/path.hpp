@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   4
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       274
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   5
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       275
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -200,7 +200,7 @@ private:
     ,   allocator_type
     >::type                                                 path_buffer_type_;
 
-    typedef ss_typename_param_k path_buffer_type_::buffer_type
+    typedef ss_typename_type_k path_buffer_type_::buffer_type
                                                             buffer_type_;
 public:
     typedef STLSOFT_NS_QUAL(string_slice)<
@@ -1635,8 +1635,8 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -1782,8 +1782,8 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0

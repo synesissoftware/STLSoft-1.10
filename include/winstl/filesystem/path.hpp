@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 6
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     320
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 7
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     321
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@ private:
     ,   allocator_type
     >::type                                                 path_buffer_type_;
 
-    typedef ss_typename_param_k path_buffer_type_::buffer_type
+    typedef ss_typename_type_k path_buffer_type_::buffer_type
                                                             buffer_type_;
 public:
     typedef STLSOFT_NS_QUAL(string_slice)<
@@ -1534,8 +1534,8 @@ basic_path<C, T, A>::push_(
 ,   bool_type           bAddPathNameSeparator
 )
 {
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type        results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_string_slice_type   slice_t_;
 
     // Algorithm:
     //
@@ -1754,8 +1754,8 @@ basic_path<C, T, A>::pop(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 ) STLSOFT_NOEXCEPT
 {
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -1838,8 +1838,8 @@ basic_path<C, T, A>::pop_sep() STLSOFT_NOEXCEPT
     //   - if rooted, has 2+ directories, OR
     //   - if !rooted, has 1+ directories
 
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -1874,8 +1874,8 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -1953,7 +1953,7 @@ basic_path<C, T, A>::make_absolute(
     bool_type bRemoveTrailingPathNameSeparator /* = true */
 )
 {
-    typedef ss_typename_param_k traits_type::path_classification_string_slice_type  slice_t_;
+    typedef ss_typename_type_k traits_type::path_classification_string_slice_type   slice_t_;
 
     int const               parseFlags  =   0
                                         |   WINSTL_PATH_CLASSIFY_F_IGNOREINVALIDCHARSINLONGPATH
@@ -2048,8 +2048,8 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0

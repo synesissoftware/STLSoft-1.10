@@ -17,6 +17,65 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.11 (16th February 2024)
+
+General:
+========
+
+ * project boilerplate
+ * corrected inappropriate use of `ss_typename_param_k`
+
+Changes:
+========
+
+ * include/inetstl/filesystem/findfile_sequence.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/inetstl/network/connection.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/inetstl/network/session.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/stlsoft/conversion/truncation_test.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/stlsoft/iterators/filter_transform_iterator.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/stlsoft/iterators/transform_filter_iterator.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/stlsoft/util/operator_bool.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/unixstl/filesystem/path.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/unixstl/filesystem/squeeze_functions.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/winstl/filesystem/path.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/winstl/filesystem/squeeze_functions.hpp - corrected inappropriate use of `ss_typename_param_k`
+ * include/winstl/security/token_information.hpp - corrected inappropriate use of `ss_typename_param_k`
+
+
+============================================================================
+
+Changes for 1.10.10 (16th February 2024)
+
+General:
+========
+
+ * further tranche of stream insertion operator implementations
+ * fixes and enhancements to `stlsoft::util::string_insert`
+ * added `stlsoft::meta::hash_sentry` meta-type;
+ * added test.unit.unixstl.filesystem.path test project;
+
+Changes:
+========
+
+ * .vscode/settings.json - added settings
+ * include/stlsoft/meta/detector/has_sentry.hpp - added `stlsoft::meta::hash_sentry` TMP detector type
+ * include/stlsoft/meta/detectors.hpp - added `stlsoft::meta::hash_sentry` TMP detector type
+ * include/stlsoft/util/streams/string_insertion.hpp - fixes and enhancements to `stlsoft::util::string_insert()`
+ * include/unixstl/filesystem/path.hpp - applied `stlsoft::util::string_insert()` to `unixstl::filesystem::basic_path<>`
+ * include/winstl/filesystem/path.hpp - applied `stlsoft::util::string_insert()` to `winxstl::filesystem::basic_path<>`
+ * test/unit/CMakeLists.txt - new project(s)
+ * test/unit/stlsoft/string/test.unit.stlsoft.string.shim_string/entry.cpp - enhanced unit-tests to verify changes to `stlsoft::string_insert()`
+ * test/unit/stlsoft/string/test.unit.stlsoft.string.simple_string/entry.cpp - enhanced unit-tests to verify changes to `stlsoft::string_insert()`
+ * test/unit/stlsoft/string/test.unit.stlsoft.string.string_slice/entry.cpp - enhanced unit-tests to verify changes to `stlsoft::string_insert()`
+ * test/unit/stlsoft/string/test.unit.stlsoft.string.string_view/entry.cpp - enhanced unit-tests to verify changes to `stlsoft::string_insert()`
+ * test/unit/unixstl/CMakeLists.txt - new project(s)
+ * test/unit/unixstl/filesystem/CMakeLists.txt - new project(s)
+ * test/unit/unixstl/filesystem/test.unit.unixstl.filesystem.path/CMakeLists.txt - added test.unit.unixstl.filesystem.path test project
+ * test/unit/unixstl/filesystem/test.unit.unixstl.filesystem.path/entry.cpp - added test.unit.unixstl.filesystem.path test project
+
+
+============================================================================
+
 Changes for 1.10.9 (12th February 2024)
 
 General:
