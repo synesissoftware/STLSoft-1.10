@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     20th January 2024
+ * Updated:     16th February 2024
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MAJOR    7
 # define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_MINOR    1
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 5
-# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     319
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_REVISION 6
+# define WINSTL_VER_WINSTL_FILESYSTEM_HPP_PATH_EDIT     320
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -106,6 +106,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STDEXCEPT
 # define STLSOFT_INCL_STDEXCEPT
@@ -119,6 +122,7 @@
 #ifndef WINSTL_INCL_WINSTL_API_external_h_ErrorHandling
 # include <winstl/api/external/ErrorHandling.h>
 #endif /* !WINSTL_INCL_WINSTL_API_external_h_ErrorHandling */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -138,6 +142,7 @@ namespace winstl_project
 {
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * basic_path
@@ -612,6 +617,7 @@ private: // fields
     path_buffer_type_   m_buffer;
 };
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs for commonly encountered types
  */
@@ -631,6 +637,7 @@ typedef basic_path<ws_char_w_t, filesystem_traits<ws_char_w_t> >       path_w;
  * \ingroup group__library__FileSystem
  */
 typedef basic_path<TCHAR, filesystem_traits<TCHAR> >                   path;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * Support for PlatformSTL redefinition by inheritance+namespace, for confused
@@ -718,6 +725,7 @@ typedef basic_path<TCHAR, filesystem_traits<TCHAR> >                   path;
 # endif /* STLSOFT_CF_MEMBER_TEMPLATE_FUNCTION_SUPPORT */
     };
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * operators
@@ -872,6 +880,7 @@ operator /(
     return basic_path<C, T, A>(lhs) /= rhs;
 }
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
@@ -899,6 +908,7 @@ make_path(
 # endif /* compiler */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * swapping
  */
@@ -917,6 +927,7 @@ swap(
 {
     lhs.swap(rhs);
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * shims
@@ -1127,6 +1138,7 @@ c_str_ptr_null_w(
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * operators
  */
@@ -1136,25 +1148,29 @@ c_str_ptr_null_w(
  * \ingroup group__concept__Shim__stream_insertion
  */
 template<
-    ss_typename_param_k S
+    ss_typename_param_k T_stream
 ,   ss_typename_param_k C
 ,   ss_typename_param_k T
 ,   ss_typename_param_k A
 >
 inline
-S&
+T_stream&
 operator <<(
-    S&                                          s
+    T_stream&                                   stm
 ,   WINSTL_NS_QUAL(basic_path)<C, T, A> const&  b
 )
 {
-    s.write(b.data(), b.size());
+    STLSOFT_NS_USING(util::string_insert);
 
-    return s;
+    string_insert(stm, b.data(), b.size());
+
+    return stm;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// Implementation
+
+/* /////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
@@ -2664,6 +2680,7 @@ basic_path<C, T, A>::equal(
 }
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef WINSTL_NO_NAMESPACE
@@ -2702,6 +2719,7 @@ namespace std
 } /* namespace std */
 # endif /* INTEL && _MSC_VER < 1310 */
 #endif /* STLSOFT_CF_std_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -2744,6 +2762,7 @@ using ::winstl::c_str_ptr_null_w;
 # endif /* !STLSOFT_NO_NAMESPACE */
 #endif /* !WINSTL_NO_NAMESPACE */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control
  */
@@ -2753,6 +2772,7 @@ using ::winstl::c_str_ptr_null_w;
 #endif /* STLSOFT_CF_PRAGMA_ONCE_SUPPORT */
 
 #endif /* !WINSTL_INCL_WINSTL_FILESYSTEM_HPP_PATH */
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

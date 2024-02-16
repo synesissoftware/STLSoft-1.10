@@ -4,7 +4,7 @@
  * Purpose: Unit-tests for `stlsoft::basic_shim_string`.
  *
  * Created: 9th November 2008
- * Updated: 30th January 2024
+ * Updated: 16th February 2024
  *
  * ////////////////////////////////////////////////////////////////////// */
 
@@ -169,6 +169,17 @@ namespace
         std::size_t const   len = ::strlen(s);
 
         stm.write(s, len);
+
+        return stm;
+    }
+
+    SimpleStream&
+    operator <<(
+        SimpleStream&       stm
+    ,   std::string const&  s
+    )
+    {
+        stm.write(s.data(), s.size());
 
         return stm;
     }
@@ -541,77 +552,308 @@ static void test_1_19()
 
 static void test_insertion_1(void)
 {
-    stlsoft::basic_shim_string<char> const  s1;
-    stlsoft::basic_shim_string<char> const  s2("abc");
-    stlsoft::basic_shim_string<char> const  s3("def");
+    // char const* (for reference)
 
     {
-        std::stringstream   ss;
+        char const* const   s1  =   "";
+        char const* const   s2  =   "abc";
+        char const* const   s3  =   "def";
 
-        ss
-            << std::left
-            << s1
-            << s2
-            << std::right
-            << s3
-            ;
+        {
+            std::stringstream   ss;
 
-        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+            ss
+                << s1
+                << std::left
+                << s2
+                << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            SimpleStream    ss;
+
+            ss
+                << s1
+                << s2
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
     }
 
+    // std::string (for reference)
+
     {
-        SimpleStream    ss;
+        std::string const   s1;
+        std::string const   s2("abc");
+        std::string const   s3("def");
 
-        ss
-            << s1
-            << s2
-            << s3
-            ;
+        {
+            std::stringstream   ss;
 
-        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+            ss
+                << s1
+                << std::left
+                << s2
+                << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            SimpleStream    ss;
+
+            ss
+                << s1
+                << s2
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+    }
+
+    // stlsoft::basic_shim_string<>
+
+    {
+        stlsoft::basic_shim_string<char> const  s1;
+        stlsoft::basic_shim_string<char> const  s2("abc");
+        stlsoft::basic_shim_string<char> const  s3("def");
+
+        {
+            std::stringstream   ss;
+
+            ss
+                << s1
+                << std::left
+                << s2
+                << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            SimpleStream    ss;
+
+            ss
+                << s1
+                << s2
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
     }
 }
 
 static void test_insertion_2(void)
 {
-    stlsoft::basic_shim_string<char> const  s2("abc");
-    stlsoft::basic_shim_string<char> const  s3("def");
+    // char const* (for reference)
 
     {
-        std::stringstream ss;
+        char const* const   s2  =   "abc";
+        char const* const   s3  =   "def";
 
-        ss
-            << std::setw(2)
-            << std::left
-            << s2
-            << std::right
-            << s3
-            ;
+        {
+            std::stringstream ss;
 
-        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+            ss
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            std::stringstream ss;
+
+            ss
+                << '['
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                << ']'
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[abcdef]", ss.str());
+        }
+    }
+
+    // std::string (for reference)
+
+    {
+        std::string const   s2("abc");
+        std::string const   s3("def");
+
+        {
+            std::stringstream ss;
+
+            ss
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            std::stringstream ss;
+
+            ss
+                << '['
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                << ']'
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[abcdef]", ss.str());
+        }
+    }
+
+    // stlsoft::basic_shim_string<>
+
+    {
+        stlsoft::basic_shim_string<char> const  s2("abc");
+        stlsoft::basic_shim_string<char> const  s3("def");
+
+        {
+            std::stringstream ss;
+
+            ss
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("abcdef", ss.str());
+        }
+
+        {
+            std::stringstream ss;
+
+            ss
+                << '['
+                << std::setw(2) << std::left
+                << s2
+                << std::setw(2) << std::right
+                << s3
+                << ']'
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[abcdef]", ss.str());
+        }
     }
 }
 
 static void test_insertion_3(void)
 {
-    stlsoft::basic_shim_string<char> const  s1;
-    stlsoft::basic_shim_string<char> const  s2("abc");
-    stlsoft::basic_shim_string<char> const  s3("def");
+    // char const* (for reference)
 
     {
+        char const* const   s1  =   "";
+        char const* const   s2  =   "abc";
+        char const* const   s3  =   "def";
+
         std::stringstream ss;
 
         ss
-            << std::setw(4)
+            << '['
             << std::setfill('_')
+            << std::setw(4)
             << s1
-            << std::left
+            << std::setw(4) << std::left
             << s2
-            << std::right
+            << std::setw(4) << std::right
             << s3
+            << ']'
             ;
 
-        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("____abc__def", ss.str());
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[____abc__def]", ss.str());
+    }
+
+    // std::string (for reference)
+
+    {
+        std::string const   s1;
+        std::string const   s2("abc");
+        std::string const   s3("def");
+
+        std::stringstream ss;
+
+        ss
+            << '['
+            << std::setfill('_')
+            << std::setw(4)
+            << s1
+            << std::setw(4) << std::left
+            << s2
+            << std::setw(4) << std::right
+            << s3
+            << ']'
+            ;
+
+        XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[____abc__def]", ss.str());
+    }
+
+    // stlsoft::basic_shim_string<>
+
+    {
+        stlsoft::basic_shim_string<char> const  s1;
+        stlsoft::basic_shim_string<char> const  s2("abc");
+        stlsoft::basic_shim_string<char> const  s3("def");
+
+        {
+            std::stringstream ss;
+
+            ss
+                << std::setfill('_')
+                << std::setw(4)
+                << s1
+                << std::setw(4) << std::left
+                << s2
+                << std::setw(4) << std::right
+                << s3
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("____abc__def", ss.str());
+        }
+
+        {
+            std::stringstream ss;
+
+            ss
+                << '['
+                << std::setfill('_')
+                << std::setw(4)
+                << s1
+                << std::setw(4) << std::left
+                << s2
+                << std::setw(4) << std::right
+                << s3
+                << std::setw(0)
+                << ']'
+                ;
+
+            XTESTS_TEST_MULTIBYTE_STRING_EQUAL("[____abc__def]", ss.str());
+        }
     }
 }
 
@@ -627,12 +869,12 @@ static void test_insertion_4(void)
     std::stringstream   ss;
 
     ss
-        << std::setw(FIELD_WIDTH)
         << std::setfill('_')
+        << std::setw(FIELD_WIDTH)
         << s1
-        << std::left
+        << std::setw(FIELD_WIDTH) << std::left
         << s2
-        << std::right
+        << std::setw(FIELD_WIDTH) << std::right
         << s3
         ;
 

@@ -466,12 +466,12 @@ static void test_insertion_3(void)
         std::stringstream ss;
 
         ss
-            << std::setw(4)
             << std::setfill('_')
+            << std::setw(4)
             << s1
-            << std::left
+            << std::setw(4) << std::left
             << s2
-            << std::right
+            << std::setw(4) << std::right
             << s3
             ;
 
@@ -491,12 +491,12 @@ static void test_insertion_4(void)
     std::stringstream   ss;
 
     ss
-        << std::setw(FIELD_WIDTH)
         << std::setfill('_')
+        << std::setw(FIELD_WIDTH)
         << s1
-        << std::left
+        << std::setw(FIELD_WIDTH) << std::left
         << s2
-        << std::right
+        << std::setw(FIELD_WIDTH) << std::right
         << s3
         ;
 
