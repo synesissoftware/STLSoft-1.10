@@ -5,7 +5,7 @@
 # Purpose:  CMake module file (for BuildType)
 #
 # Created:  16th October 2019
-# Updated:  11th December 2023
+# Updated:  9th January 2024
 #
 # ######################################################################## #
 
@@ -36,8 +36,10 @@ include(BuildType)
 
 
 if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
+
     set(default_build_type "Debug")
 else()
+
     set(default_build_type "Release")
 endif()
 

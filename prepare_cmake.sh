@@ -127,7 +127,6 @@ if [ $RunMake -ne 0 ]; then
     echo "Executing make"
 
     make
-
     status=$?
 fi
 

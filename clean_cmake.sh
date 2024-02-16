@@ -14,7 +14,7 @@ while [[ $# -gt 0 ]]; do
         --help)
             cat << EOF
 STLSoft is a suite of libraries that provide STL extensions and facades over operating-system and technology-specific APIs
-Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
 Copyright (c) 2002-2019, Matthew Wilson and Synesis Software
 Executes CMake-generated artefacts to clean project
 
@@ -67,8 +67,11 @@ else
         echo "Cleaning build (via command \`make clean\`)"
 
         make clean
+        status=$?
 
         cd ->/dev/null
+
+        exit $status
     fi
 fi
 
