@@ -1,5 +1,4 @@
 
-
 function(define_automated_test_program program_name entry_point_source_name)
 
 	add_executable(${program_name}
@@ -28,21 +27,22 @@ function(define_automated_test_program program_name entry_point_source_name)
 			endforeach()
 	endif()
 
-	target_compile_options(${program_name} PRIVATE
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-			-Werror -Wall -Wextra -pedantic
+	target_compile_options(${program_name}
+		PRIVATE
+			$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+				-Werror -Wall -Wextra -pedantic
 
-			${GCC_WARN_NO_cxx11_long_long}
-			${X_GCC_CUSTOM_WARNINGS_}
-		>
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
-			-Wno-unused-lambda-capture
-		>
-		$<$<CXX_COMPILER_ID:MSVC>:
-			/WX /W4
+				${GCC_WARN_NO_cxx11_long_long}
+				${X_GCC_CUSTOM_WARNINGS_}
+			>
+			$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
+				-Wno-unused-lambda-capture
+			>
+			$<$<CXX_COMPILER_ID:MSVC>:
+				/WX /W4
 
-			${X_MSVC_CUSTOM_WARNINGS_}
-		>
+				${X_MSVC_CUSTOM_WARNINGS_}
+			>
 	)
 endfunction(define_automated_test_program)
 
@@ -71,24 +71,24 @@ function(define_example_program program_name entry_point_source_name)
 			endforeach()
 	endif()
 
-	target_compile_options(${program_name} PRIVATE
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-			-Werror -Wall -Wextra -pedantic
+	target_compile_options(${program_name}
+		PRIVATE
+			$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+				-Werror -Wall -Wextra -pedantic
 
-			${GCC_WARN_NO_cxx11_long_long}
-			${X_GCC_CUSTOM_WARNINGS_}
-		>
-		$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
-			-Wno-unused-lambda-capture
-		>
-		$<$<CXX_COMPILER_ID:MSVC>:
-			/WX /W4
+				${GCC_WARN_NO_cxx11_long_long}
+				${X_GCC_CUSTOM_WARNINGS_}
+			>
+			$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:
+				-Wno-unused-lambda-capture
+			>
+			$<$<CXX_COMPILER_ID:MSVC>:
+				/WX /W4
 
-			${X_MSVC_CUSTOM_WARNINGS_}
-		>
+				${X_MSVC_CUSTOM_WARNINGS_}
+			>
 	)
 endfunction(define_example_program)
-
 
 
 # ############################## end of file ############################# #
