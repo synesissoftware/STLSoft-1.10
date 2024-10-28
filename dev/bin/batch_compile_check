@@ -1,5 +1,17 @@
 #! /bin/bash
 
+# ######################################################################## #
+# File:     dev/bin/batch_compile_check
+#
+# Purpose:  Finds and compiles (individually) headers in the libraries.
+#
+# Created:  14th February 2024
+# Updated:  28th October 2024
+#
+# Home:     http://stlsoft.org/
+#
+# ######################################################################## #
+
 
 ScriptPath=$0
 ProjectDir=$(cd $(dirname "$ScriptPath"); pwd)
@@ -28,7 +40,7 @@ FILE_PATTERN_Cxx='*.hpp'
 INPUT_FILE_LANGUAGE_C=c
 INPUT_FILE_LANGUAGE_Cxx=c++
 LANGUAGE_STD_DEFAULT_VERSION_C=c17
-LANGUAGE_STD_DEFAULT_VERSIONS_Cxx=(98 03 11 14 17)
+LANGUAGE_STD_DEFAULT_VERSIONS_Cxx=(98 03 11 14)
 
 SUBPROJECTS_DEFAULT=(stlsoft platformstl unixstl)
 
@@ -48,11 +60,23 @@ Defines=()
 DryRun="false"
 Language=
 LanguageVersions=()
+ShowCounts="false"
 Subprojects=()
 VerboseMode=0
 
+
 while [[ $# -gt 0 ]]; do
     case $1 in
+        -c|--c-compiler)
+
+            shift
+            COMPILER_COMMAND_C=$1
+
+            ;;
+        -n|--counts)
+
+            ShowCounts="true"
+            ;;
         -d|--debug-configuration)
 
             DebugConfiguration=1
@@ -101,6 +125,12 @@ while [[ $# -gt 0 ]]; do
 
             VerboseMode=1
             ;;
+        -x|--cxx-compiler)
+
+            shift
+            COMPILER_COMMAND_Cxx=$1
+
+            ;;
         --help)
 
             cat << EOF
@@ -114,6 +144,15 @@ $ScriptPath [ ... flags/options ... ]
 Flags/options:
 
     behaviour:
+
+    -c
+    --c-compiler
+        specifies the name of the C-compiler, which otherwise defaults
+        to cc
+
+    -n
+    --counts
+        show counts of events, including number of files compiled
 
     -d
     --debug-configuration
@@ -147,6 +186,11 @@ Flags/options:
     -v
     --verbose-mode
         announces each include file as it is compiled
+
+    -c
+    --cxx-compiler
+        specifies the name of the C++-compiler, which otherwise defaults
+        to c++
 
 
     standard flags:
@@ -233,9 +277,6 @@ Subprojects=($(echo "${Subprojects[@]}" | tr ' ' '\n' | awk '! a[$0]++' | tr '\n
 [ $VerboseMode -eq 0 ] || echo "subprojects{${#Subprojects[@]}}: (${Subprojects[*]})"
 
 
-# exit 0
-
-
 # ##########################################################
 # main()
 
@@ -244,6 +285,10 @@ trap "exit" INT
 
 IncludeDirLen=${#IncludeDir}+1
 
+NumFilesCompiled=0
+NumFilesFailed=0
+NumFilesSkipped=0
+NumFilesTotal=0
 
 for p in ${Subprojects[*]}
 do
@@ -253,6 +298,8 @@ do
     for f in $(find "$IncludeDir/$p" -type f -name $FilePattern)
     do
         srp=${f:$IncludeDirLen}
+
+        ((NumFilesTotal++))
 
         # at this point we need to check the language of the file, since we
         # may wish to compile the .h files as both C and C++
@@ -313,6 +360,8 @@ do
 
             [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
 
+            ((NumFilesSkipped++))
+
             continue
         fi
 
@@ -330,26 +379,30 @@ do
 
             [ $VerboseMode -eq 0 ] || echo "        $srp - skipped ($SkipCause)"
 
+            ((NumFilesSkipped++))
+
             continue
         fi
 
 
         if [ "$ShouldCompileCxx" = "true" ]; then
 
-            [ $VerboseMode -eq 0 ] || echo "        $srp (C++):"
+            [ $VerboseMode -eq 0 ] || echo "        $srp ($COMPILER_COMMAND_Cxx):"
 
             for l in "${LanguageVersions[@]}"
             do
 
-                if grep -i -q "STLSOFT:$l:FILE_DEPRECATED" "$f"; then
+                if grep -i -q "STLSOFT:$l:FILE_\(DEPRECATED\|EXCEPTED\)" "$f"; then
 
                     ShouldSkip="true"
-                    SkipCause="STLSOFT:$l:FILE_DEPRECATED"
+                    SkipCause="STLSOFT:$l:FILE_DEPRECATED/FILE_EXCEPTED"
                 fi
 
                 if [ "$ShouldSkip" = "true" ]; then
 
                     [ $VerboseMode -eq 0 ] || echo "            ($l) - skipped ($SkipCause)"
+
+                    ((NumFilesSkipped++))
 
                     continue
                 fi
@@ -358,22 +411,35 @@ do
 
                 if [ "$DryRun" != "true" ]; then
 
+                    ((NumFilesCompiled++))
+
                     echo "#include <$f>" | $COMPILER_COMMAND_Cxx -c -std=$l -x $INPUT_FILE_LANGUAGE_Cxx ${Defines[@]} -I "$IncludeDir" -
+
+                    [ $? -eq 0 ] || ((NumFilesFailed++))
                 fi
             done
         fi
 
         if [ "$ShouldCompileC" = "true" ]; then
 
-            [ $VerboseMode -eq 0 ] || echo "        $srp (C):"
+            [ $VerboseMode -eq 0 ] || echo "        $srp ($COMPILER_COMMAND_C):"
 
             if [ "$DryRun" != "true" ]; then
 
+                ((NumFilesCompiled++))
+
                 echo "#include <$f>" | $COMPILER_COMMAND_C -c -std=$LANGUAGE_STD_DEFAULT_VERSION_C -x $INPUT_FILE_LANGUAGE_C ${Defines[@]} -I "$IncludeDir" -
+
+                [ $? -eq 0 ] || ((NumFilesFailed++))
             fi
         fi
     done
 done
+
+if [ "$ShowCounts" = "true" ]; then
+
+    echo "$NumFilesTotal file(s) found, of which $NumFilesSkipped skipped and the remaining $NumFilesCompiled compiled, of which $NumFilesFailed failed"
+fi
 
 
 # ############################## end of file ############################# #
