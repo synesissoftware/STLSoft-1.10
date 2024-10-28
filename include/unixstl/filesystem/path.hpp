@@ -4,7 +4,7 @@
  * Purpose:     Simple class that represents a path.
  *
  * Created:     1st May 1993
- * Updated:     22nd January 2024
+ * Updated:     16th February 2024
  *
  * Thanks to:   Pablo Aguilar for reporting defect in push_ext() (which
  *              doesn't work for wide-string builds).
@@ -56,8 +56,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MAJOR      7
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_MINOR      1
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       273
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_REVISION   5
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_PATH_EDIT       275
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -109,6 +109,9 @@
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
+#ifndef STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION
+# include <stlsoft/util/streams/string_insertion.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION */
 
 #ifndef STLSOFT_INCL_STDEXCEPT
 # define STLSOFT_INCL_STDEXCEPT
@@ -121,6 +124,7 @@
 #ifdef STLSOFT_DEBUG
 # include <stlsoft/algorithms/pod.hpp>
 #endif
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -140,6 +144,7 @@ namespace unixstl_project
 {
 # endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !UNIXSTL_NO_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * basic_path
@@ -195,7 +200,7 @@ private:
     ,   allocator_type
     >::type                                                 path_buffer_type_;
 
-    typedef ss_typename_param_k path_buffer_type_::buffer_type
+    typedef ss_typename_type_k path_buffer_type_::buffer_type
                                                             buffer_type_;
 public:
     typedef STLSOFT_NS_QUAL(string_slice)<
@@ -547,6 +552,7 @@ private: // fields
     path_buffer_type_   m_buffer;
 };
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * typedefs for commonly encountered types
  */
@@ -566,6 +572,7 @@ typedef basic_path<us_char_w_t, filesystem_traits<us_char_w_t> >       path_w;
  * \ingroup group__library__FileSystem
  */
 typedef basic_path<us_char_a_t, filesystem_traits<us_char_a_t> >       path;
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * Support for PlatformSTL redefinition by inheritance+namespace, for confused
@@ -654,6 +661,7 @@ typedef basic_path<us_char_a_t, filesystem_traits<us_char_a_t> >       path;
     };
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * operators
@@ -808,6 +816,7 @@ operator /(
     return basic_path<C, T, A>(lhs) /= rhs;
 }
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * helper functions
  */
@@ -836,6 +845,7 @@ make_path(
 # endif /* compiler */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * swapping
  */
@@ -854,6 +864,7 @@ swap(
 {
     lhs.swap(rhs);
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * shims
@@ -1073,25 +1084,29 @@ c_str_ptr_null_w(
  * \ingroup group__concept__Shim__stream_insertion
  */
 template<
-    ss_typename_param_k S
+    ss_typename_param_k T_stream
 ,   ss_typename_param_k C
 ,   ss_typename_param_k T
 ,   ss_typename_param_k A
 >
 inline
-S&
+T_stream&
 operator <<(
-    S&                                          s
+    T_stream&                                   stm
 ,   UNIXSTL_NS_QUAL(basic_path)<C, T, A> const& b
 )
 {
-    s.write(b.data(), b.size());
+    STLSOFT_NS_USING(util::string_insert);
 
-    return s;
+    string_insert(stm, b.data(), b.size());
+
+    return stm;
 }
 
-////////////////////////////////////////////////////////////////////////////
-// Implementation
+
+/* /////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 
@@ -1620,8 +1635,8 @@ inline
 basic_path<C, T, A>&
 basic_path<C, T, A>::pop_ext() STLSOFT_NOEXCEPT
 {
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -1767,8 +1782,8 @@ basic_path<C, T, A>::canonicalise(
 #endif /* STLSOFT_CF_EXCEPTION_SUPPORT */
     }
 
-    typedef ss_typename_param_k traits_type::path_classification_type               classification_t_;
-    typedef ss_typename_param_k traits_type::path_classification_results_type       results_t_;
+    typedef ss_typename_type_k traits_type::path_classification_type            classification_t_;
+    typedef ss_typename_type_k traits_type::path_classification_results_type    results_t_;
 
     results_t_              results;
     int const               parseFlags  =   0
@@ -2413,6 +2428,7 @@ basic_path<C, T, A>::equal(
 
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef UNIXSTL_NO_NAMESPACE
@@ -2451,6 +2467,7 @@ namespace std
 } /* namespace std */
 # endif /* INTEL && _MSC_VER < 1310 */
 #endif /* STLSOFT_CF_std_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -2492,6 +2509,7 @@ using ::unixstl::c_str_ptr_null_w;
 /* There is no stlsoft namespace, so must define in the global namespace */
 # endif /* !STLSOFT_NO_NAMESPACE */
 #endif /* !UNIXSTL_NO_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

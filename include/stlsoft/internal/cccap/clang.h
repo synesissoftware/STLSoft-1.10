@@ -4,11 +4,11 @@
  * Purpose:     Compiler feature discrimination for Clang C/C++.
  *
  * Created:     14th March 2015
- * Updated:     26th April 2021
+ * Updated:     12th February 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2021, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2015-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -56,14 +56,16 @@
 # error This file cannot be included more than once in any compilation unit
 #endif /* STLSOFT_INCL_H_STLSOFT_CCCAP_CLANG */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MAJOR    1
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    7
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 4
-# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     25
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_MINOR    8
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_REVISION 1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_CLANG_EDIT     26
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * Structure:
@@ -136,6 +138,7 @@
 # define STLSOFT_CF_gcc_pragma_diagnostic_pop
 #endif
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for built-in types
  *
@@ -158,6 +161,7 @@
 #endif /* __cplusplus */
 
 #define STLSOFT_CF_BUILTIN_long_long_SUPPORT
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * built-in type characteristics
@@ -206,6 +210,7 @@
 
 #define STLSOFT_CF_NEGATIVE_MODULUS_POSITIVE_GIVES_NEGATIVE_RESULT
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for C language features
  *
@@ -218,6 +223,7 @@
 
 # define STLSOFT_CUSTOM_C_INLINE                            static inline
 #endif
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * support for C++ language features - 1
@@ -301,6 +307,7 @@
 
 #define STLSOFT_CF_STATIC_ARRAY_SIZE_DETERMINATION_SUPPORT
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for C++ language features - 2
  *
@@ -372,19 +379,23 @@
 # define STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
 #endif /* compiler */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * inline assembler
  */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * linkage specification
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * atomics support
  */
 
 #define STLSOFT_CF_SUPPORT_ATOMIC_GCC_BUILTINS
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * calling convention
@@ -400,6 +411,7 @@
 # define STLSOFT_CDECL
 #endif /* STLSOFT_CF_CDECL_SUPPORTED */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * integer sizes
  */
@@ -409,6 +421,7 @@
 #define _STLSOFT_SIZEOF_INT                                 __SIZEOF_INT__
 #define _STLSOFT_SIZEOF_LONG                                __SIZEOF_LONG__
 #define _STLSOFT_SIZEOF_LONG_LONG                           __SIZEOF_LONG_LONG__
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * size-specific integer types
@@ -448,6 +461,11 @@
 #define STLSOFT_SI64_T_BASE_TYPE                            __INT64_TYPE__
 #define STLSOFT_UI64_T_BASE_TYPE                            __UINT64_TYPE__
 
+/* ptr-bit integer */
+#define STLSOFT_SPTR_T_BASE_TYPE                            __INTPTR_TYPE__
+#define STLSOFT_UPTR_T_BASE_TYPE                            __UINTPTR_TYPE__
+
+
 /* /////////////////////////////////////////////////////////////////////////
  * still-to-be-determined features
  */
@@ -455,6 +473,7 @@
 #define STLSOFT_CF_FUNCTION_SIGNATURE_FULL_ARG_QUALIFICATION_REQUIRED
 
 #define STLSOFT_CF_TEMPLATE_OUTOFCLASSFN_QUALIFIED_TYPE_SUPPORT
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * quality assurance features
@@ -472,6 +491,7 @@
 # define __STLSOFT_CF_USE_cassert
 #endif
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * compiler warning suppression
  */
@@ -482,6 +502,7 @@
  */
 
 #include <stlsoft/internal/cccap/obsolete.h>
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

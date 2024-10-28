@@ -4,7 +4,7 @@
  * Purpose:     Path squeeze functions
  *
  * Created:     13th June 2006
- * Updated:     22nd January 2024
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MAJOR     2
 # define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_MINOR     0
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  3
-# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      27
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_REVISION  4
+# define UNIXSTL_VER_UNIXSTL_FILESYSTEM_HPP_SQUEEZE_FUNCTIONS_EDIT      28
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ path_squeeze_impl(
     else if (0 != cchBuffer)
     {
         typedef basic_path<char_t>                              path_t_;
-        typedef ss_typename_param_k path_t_::string_slice_type  slice_t_;
+        typedef ss_typename_type_k path_t_::string_slice_type   slice_t_;
 
         path_t_         p(path, pathLen);
         slice_t_ const  file        =   p.get_file();

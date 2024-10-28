@@ -4,7 +4,7 @@
  * Purpose:     Contains the basic_connection class.
  *
  * Created:     30th April 1999
- * Updated:     22nd January 2024
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MAJOR       5
 # define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_MINOR       1
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    11
-# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        85
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_REVISION    12
+# define INETSTL_VER_INETSTL_NETWORK_HPP_CONNECTION_EDIT        86
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ class basic_connection
 public:
     typedef C                                                       char_type;
     typedef X                                                       exception_policy_type;
-    typedef ss_typename_param_k exception_policy_type::thrown_type  thrown_type;
+    typedef ss_typename_type_k exception_policy_type::thrown_type   thrown_type;
     typedef T                                                       traits_type;
     typedef basic_connection<C, X, T>                               class_type;
 

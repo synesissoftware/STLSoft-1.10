@@ -5,7 +5,7 @@
  *              and Unicode specialisations thereof.
  *
  * Created:     30th April 1999
- * Updated:     29th January 2024
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -55,8 +55,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MAJOR     3
 # define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_MINOR     0
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION  24
-# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      166
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_REVISION  25
+# define INETSTL_VER_INETSTL_FILESYSTEM_HPP_FINDFILE_SEQUENCE_EDIT      167
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -187,7 +187,7 @@ public:
     /// The exception policy type
     typedef X                                                                   exception_policy_type;
     /// The type thrown
-    typedef ss_typename_param_k exception_policy_type::thrown_type              thrown_type;
+    typedef ss_typename_type_k exception_policy_type::thrown_type               thrown_type;
     /// The traits type
     typedef T                                                                   traits_type;
     /// The current specialisation of the type
@@ -389,7 +389,7 @@ public:
     /// The exception policy type
     typedef X                                                       exception_policy_type;
     /// The type thrown
-    typedef ss_typename_param_k exception_policy_type::thrown_type  thrown_type;
+    typedef ss_typename_type_k exception_policy_type::thrown_type   thrown_type;
     /// The traits type
     typedef T                                                       traits_type;
     /// The current specialisation of the type
@@ -516,7 +516,7 @@ public:
     /// The exception policy type
     typedef X                                                           exception_policy_type;
     /// The type thrown
-    typedef ss_typename_param_k exception_policy_type::thrown_type      thrown_type;
+    typedef ss_typename_type_k exception_policy_type::thrown_type       thrown_type;
     /// The traits type
     typedef T                                                           traits_type;
     /// The value type

@@ -1,19 +1,23 @@
 
 add_executable(test.unit.string.simple_string
-    entry.cpp
+	entry.cpp
 )
 
 target_link_libraries(test.unit.string.simple_string
-    xTests::xTests.core
+	$<IF:$<VERSION_LESS:${xTests_VERSION},"0.23">,xTests::xTests.core,xTests::core>
 )
 
 target_compile_options(test.unit.string.simple_string PRIVATE
-    $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-        -Werror -Wall -Wextra -pedantic
+	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+		-Werror -Wall -Wextra -pedantic
 
-        -Wno-unused-function
-    >
-    $<$<CXX_COMPILER_ID:MSVC>: /WX /W4>
+		-Wno-unused-function
+
+		${GCC_WARN_NO_cxx11_long_long}
+	>
+	$<$<CXX_COMPILER_ID:MSVC>:
+		/WX /W4
+	>
 )
 
 

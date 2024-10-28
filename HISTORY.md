@@ -4,6 +4,38 @@
 ----
 
 
+16th February 2024 - 1.10.11 released
+-------------------------------------
+
+ * project boilerplate
+ * corrected inappropriate use of `ss_typename_param_k`
+
+
+16th February 2024 - 1.10.10 released
+-------------------------------------
+
+ * further tranche of stream insertion operator implementations
+ * fixes and enhancements to `stlsoft::util::string_insert`
+ * added `stlsoft::meta::hash_sentry` meta-type;
+ * added test.unit.unixstl.filesystem.path test project;
+
+
+12th February 2024 - 1.10.9 released
+------------------------------------
+
+ * stlsoft::frequency_map uses traits to select between ordered and unordered representation
+ * added test.unit.stlsoft.containers.frequency_map project
+ * C++98 compatibility
+
+
+6th February 2024 - 1.10.8 released
+-----------------------------------
+
+ * added dev/bin/batch_compile_check
+ * language compatibility fix
+ * iterator definition fixes (related to C++17 deprecation of std::iterator)
+
+
 30th January 2024 - 1.10.7 released
 -----------------------------------
 

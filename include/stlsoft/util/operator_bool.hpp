@@ -4,11 +4,11 @@
  * Purpose:     A robust and portable operator bool generator class.
  *
  * Created:     5th November 2003
- * Updated:     16th December 2023
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -54,8 +54,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_MAJOR    4
 # define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_MINOR    0
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_REVISION 5
-# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_EDIT     48
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_REVISION 6
+# define STLSOFT_VER_STLSOFT_UTIL_HPP_OPERATOR_BOOL_EDIT     49
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -126,8 +126,8 @@ namespace stlsoft
 
 # define STLSOFT_DEFINE_OPERATOR_BOOL_TYPES_T(U, G, B)                                              \
                                                                                                     \
-    typedef ss_typename_param_k STLSOFT_NS_QUAL(operator_bool_generator)<U>::class_type G;          \
-    typedef ss_typename_param_k G::return_type                                          B
+    typedef ss_typename_type_k STLSOFT_NS_QUAL(operator_bool_generator)<U>::class_type G;           \
+    typedef ss_typename_type_k G::return_type                                          B
 
 #endif /* compiler */
 

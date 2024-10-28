@@ -4,7 +4,7 @@
  * Purpose:     A container that measures the frequency of the unique elements it contains.
  *
  * Created:     1st October 2005
- * Updated:     22nd January 2024
+ * Updated:     12th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -43,8 +43,8 @@
 
 /** \file stlsoft/containers/frequency_map.hpp
  *
- * \brief [C++] Definition of the stlsoft::frequency_map container
- *   class template
+ * \brief [C++] Definition of the stlsoft::frequency_map container class
+ *   template
  *   (\ref group__library__Container "Container" Library).
  */
 
@@ -52,15 +52,17 @@
 #define STLSOFT_INCL_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MAJOR    2
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MINOR    6
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_REVISION 7
-# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_EDIT     44
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MAJOR     2
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_MINOR     8
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_REVISION  1
+# define STLSOFT_VER_STLSOFT_CONTAINERS_HPP_FREQUENCY_MAP_EDIT      51
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
- * Auto-generation and compatibility
+ * auto-generation and compatibility
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * includes
@@ -83,10 +85,21 @@
 # include <stlsoft/util/std_swap.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_STD_SWAP */
 
+#ifndef STLSOFT_INCL_FUNCTIONAL
+# define STLSOFT_INCL_FUNCTIONAL
+# include <functional>
+#endif /* !STLSOFT_INCL_FUNCTIONAL */
 #ifndef STLSOFT_INCL_MAP
 # define STLSOFT_INCL_MAP
 # include <map>
 #endif /* !STLSOFT_INCL_MAP */
+#if __cplusplus >= 201103L
+# ifndef STLSOFT_INCL_UNORDERED_MAP
+#  define STLSOFT_INCL_UNORDERED_MAP
+#  include <unordered_map>
+# endif /* !STLSOFT_INCL_UNORDERED_MAP */
+#endif /* C++11+ */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -97,77 +110,175 @@ namespace stlsoft
 {
 #endif /* STLSOFT_NO_NAMESPACE */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * classes
  */
 
-/** A container that measures the frequency of the unique elements it
+/** @brief Base-traits for stlsoft::frequency_map
+ *
+ * @tparam T_value The value type of the  specialisation of
+ *   stlsoft::frequency_map
+ */
+template <
+    ss_typename_param_k T_value
+>
+struct frequency_map_traits_base
+{
+    /// The value type
+    typedef T_value                                         value_type;
+    /// The count type
+#if 0
+#elif defined(STLSOFT_COMPILER_IS_MSVC) && \
+    _MSC_VER < 1300
+    typedef unsigned int                                    count_type;
+
+#elif defined(STLSOFT_UPTR_T_BASE_TYPE)
+
+    typedef uintptr_t                                       count_type;
+#else
+
+    typedef uint32_t                                        count_type;
+#endif
+};
+
+template <
+    ss_typename_param_k T_value
+>
+struct frequency_map_traits;
+
+/** @brief Ordered traits for stlsoft::frequency_map
+ *
+ * @tparam T_value The value type of the  specialisation of
+ *   stlsoft::frequency_map
+ * @tparam T_count The count type of the  specialisation of
+ *   stlsoft::frequency_map
+ */
+template <
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_count = ss_typename_type_k frequency_map_traits_base<T_value>::count_type
+>
+struct frequency_map_traits_ordered
+{
+    /// The value type
+    typedef T_value                                         value_type;
+    /// The count type
+    typedef T_count                                         count_type;
+    /// The compare type
+    typedef STLSOFT_NS_QUAL_STD(less)<T_value>              compare_type;
+    /// The map type
+    typedef STLSOFT_NS_QUAL_STD(map)<
+        value_type
+    ,   count_type
+    ,   compare_type
+    >                                                       map_type;
+    /// The non-mutating (const) reverse iterator type
+    typedef ss_typename_type_k map_type::const_reverse_iterator
+                                                            const_reverse_iterator;
+};
+
+#if __cplusplus >= 201103L
+
+/** @brief Unordered traits for stlsoft::frequency_map
+ *
+ * @tparam T_value The value type of the  specialisation of
+ *   stlsoft::frequency_map
+ * @tparam T_count The count type of the  specialisation of
+ *   stlsoft::frequency_map
+ */
+template <
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_count = ss_typename_type_k frequency_map_traits_base<T_value>::count_type
+>
+struct frequency_map_traits_unordered
+{
+    /// The value type
+    typedef T_value                                         value_type;
+    /// The count type
+    typedef T_count                                         count_type;
+    /// The hash type
+    typedef STLSOFT_NS_QUAL_STD(hash)<T_value>              hash_type;
+    /// The key-equal type
+    typedef STLSOFT_NS_QUAL_STD(equal_to)<T_value>          key_equal_type;
+    /// The map type
+    typedef STLSOFT_NS_QUAL_STD(unordered_map)<
+        value_type
+    ,   count_type
+    ,   hash_type
+    ,   key_equal_type
+    >                                                       map_type;
+    /// The non-mutating (const) reverse iterator type
+    typedef void                                            const_reverse_iterator;
+};
+#endif /* C++11+ */
+
+
+/** A container that measures the frequencies of the unique elements it
  *    contains.
  *
  * \ingroup group__library__Container
  *
- * \param T The value type of the container
- * \param N The count integer type. Defaults to uint32_t
+ * \tparam T_value The value type of the container
+ * \tparam T_traits The traits type, such as frequency_map_traits_ordered
+ *   or frequency_map_traits_unordered
  */
 template<
-    ss_typename_param_k T
-#if defined(STLSOFT_COMPILER_IS_MSVC) && \
-    _MSC_VER < 1300
-,   ss_typename_param_k N = unsigned int
-#else
-,   ss_typename_param_k N = uint32_t
-#endif
-,   ss_typename_param_k P = STLSOFT_NS_QUAL_STD(less)<T>
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_traits = frequency_map_traits_ordered<T_value>
 >
 class frequency_map
     : public stl_collection_tag
 {
-private: // Member Types
-    typedef STLSOFT_NS_QUAL_STD(map)<T, N, P>                       map_type_;
+private: // types
+    typedef ss_typename_type_k T_traits::map_type           map_type_;
 public:
     /// This type
-    typedef frequency_map<T, N, P>                                  class_type;
+    typedef frequency_map<
+        T_value
+    ,   T_traits
+    >                                                       class_type;
     /// The value type
-    typedef ss_typename_param_k map_type_::value_type               value_type;
+    typedef ss_typename_type_k map_type_::value_type        value_type;
     /// The non-mutating (const) iterator type
-    typedef ss_typename_param_k map_type_::const_iterator           const_iterator;
-//    typedef ss_typename_param_k map_type_::const_pointer            const_pointer;
+    typedef ss_typename_type_k map_type_::const_iterator    const_iterator;
     /// The non-mutating (const) reverse iterator type
-    typedef ss_typename_param_k map_type_::const_reverse_iterator   const_reverse_iterator;
+    typedef ss_typename_type_k T_traits::const_reverse_iterator
+                                                            const_reverse_iterator;
     /// The non-mutating (const) reference type
-    typedef ss_typename_param_k map_type_::const_reference          const_reference;
+    typedef ss_typename_type_k map_type_::const_reference   const_reference;
     /// The key type
-    typedef ss_typename_param_k map_type_::key_type                 key_type;
-//    typedef ss_typename_param_k map_type_::mapped_type              mapped_type
+    typedef ss_typename_type_k map_type_::key_type          key_type;
     /// The count type
-    typedef N                                                       count_type;
+    typedef ss_typename_type_k T_traits::count_type         count_type;
     /// The size type
-    typedef ss_size_t                                               size_type;
+    typedef ss_size_t                                       size_type;
     /// The difference type
-    typedef ss_ptrdiff_t                                            difference_type;
+    typedef ss_ptrdiff_t                                    difference_type;
     /// The boolean type
-    typedef ss_bool_t                                               bool_type;
+    typedef ss_bool_t                                       bool_type;
 
-public: // Construction
+public: // construction
     /// Creates an instance of the map
     frequency_map()
         : m_map()
         , m_total(0)
     {
-        STLSOFT_STATIC_ASSERT(0 != stlsoft::is_integral_type<N>::value);
+        STLSOFT_STATIC_ASSERT(0 != stlsoft::is_integral_type<count_type>::value);
 
         STLSOFT_ASSERT(is_valid());
     }
 
-public: // Modifiers
+public: // operations
     /// Pushes an entry onto the map
+    ///
+    /// \param key The record key
     ///
     /// If the entry already exists in the map, its count will be increased
     /// by 1. If it does not previously exist, it will be added with an
     /// initial count of one
     ///
     /// \note <b>Thread-safety</b>: it is strongly exception-safe - if an
-    ///   entry cannot be added,
+    ///   entry cannot be added, the state of the instance will be unchanged
     count_type push(key_type const& key)
     {
         STLSOFT_ASSERT(is_valid());
@@ -175,9 +286,9 @@ public: // Modifiers
         count_type r = ++m_map[key];
 
 #if 0
-        // NOTE: Because the count type N must be an integer, the code above
+        // NOTE: Because the count type T_count must be an integer, the code above
         // is equivalent to the following "full" exception-safe implementation.
-        ss_typename_param_k map_type_::iterator it = m_map.find(key);
+        ss_typename_type_k map_type_::iterator it = m_map.find(key);
         if (m_map.end() == it)
         {
             value_type value(key, 1);
@@ -201,20 +312,52 @@ public: // Modifiers
         return r;
     }
 
+    /// Pushes an entry onto the map with a count of \c n
+    ///
+    /// If the entry already exists in the map, its count will be increased
+    /// by \c n. If it does not previously exist, it will be added with an
+    /// initial count of \c n
+    ///
+    /// \param key The record key
+    /// \param n The number by which to to insert/increase the count
+    ///   associated with \c key
+    ///
+    /// \note <b>Thread-safety</b>: it is strongly exception-safe - if an
+    ///   entry cannot be added, the state of the instance will be unchanged
     void push_n(
         key_type const&     key
     ,   count_type          n
     )
     {
-        // TODO: update this to a single action
-        { for (count_type i = 0; i != n; ++i)
+        STLSOFT_ASSERT(is_valid());
+
+        m_map[key] += n;
+
+#if 0
+        // NOTE: Because the count type T_count must be an integer, the code above
+        // is equivalent to the following "full" exception-safe implementation.
+        ss_typename_type_k map_type_::iterator it = m_map.find(key);
+        if (m_map.end() == it)
         {
-            push(key);
-        }}
+            value_type value(key, n);
+
+            m_map.insert(value);
+        }
+        else
+        {
+            value_type& value = *it;
+
+            (*it).second += n;
+        }
+#endif /* 0 */
+
+        m_total += n;
+
+        STLSOFT_ASSERT(is_valid());
     }
 
     /// Removes all entries from the map
-    void clear()
+    void clear() STLSOFT_NOEXCEPT
     {
         STLSOFT_ASSERT(is_valid());
 
@@ -231,7 +374,7 @@ public: // Modifiers
 
         class_type t(*this);
 
-        { for (const_iterator i = rhs.begin(); i != rhs.end(); ++i)
+        { for (const_iterator i = rhs.begin(); rhs.end() != i; ++i)
         {
             t.m_map[(*i).first] += (*i).second;
         }}
@@ -270,7 +413,7 @@ public: // Search
         return m_map.find(key);
     }
 
-public: // Element Access
+public: // accessors
     /// Returns the count associated with the entry representing the given
     /// key, or 0 if no such entry exists.
     count_type operator [](key_type const& key) const
@@ -291,9 +434,9 @@ public: // Element Access
         return (m_map.end() != it) ? (*it).second : 0;
     }
 
-public: // Size
+public: // attributes
     /// Indicates whether the map is empty
-    bool_type empty() const
+    bool_type empty() const STLSOFT_NOEXCEPT
     {
         STLSOFT_ASSERT(is_valid());
 
@@ -304,7 +447,7 @@ public: // Size
     ///
     /// \remarks This may not be the same as the number of calls to
     ///   <code>push()</code>
-    size_type size() const
+    size_type size() const STLSOFT_NOEXCEPT
     {
         STLSOFT_ASSERT(is_valid());
 
@@ -315,22 +458,24 @@ public: // Size
     ///
     /// \remarks This may not be the same as the number of calls to
     ///   <code>push()</code>
-    count_type total() const
+    count_type total() const STLSOFT_NOEXCEPT
     {
         STLSOFT_ASSERT(is_valid());
 
         return m_total;
     }
 
-public: // Iteration
-    /// A non-mutating (const) iterator representing the start of the sequence
+public: // iteration
+    /// A non-mutating (const) iterator representing the start of the
+    /// sequence
     const_iterator begin() const
     {
         STLSOFT_ASSERT(is_valid());
 
         return m_map.begin();
     }
-    /// A non-mutating (const) iterator representing the end-point of the sequence
+    /// A non-mutating (const) iterator representing the end-point of the
+    /// sequence
     const_iterator end() const
     {
         STLSOFT_ASSERT(is_valid());
@@ -338,14 +483,35 @@ public: // Iteration
         return m_map.end();
     }
 
-    /// A non-mutating (const) iterator representing the start of the reverse sequence
+    /// A non-mutating (const) iterator representing the start of the
+    /// sequence
+    const_iterator cbegin() const
+    {
+        return begin();
+    }
+    /// A non-mutating (const) iterator representing the end-point of the
+    /// sequence
+    const_iterator cend() const
+    {
+        return end();
+    }
+
+    /// A non-mutating (const) iterator representing the start of the
+    /// reverse sequence
+    ///
+    /// @note This method will not instantiate when the class template is
+    ///  specialised for unordered storage
     const_reverse_iterator rbegin() const
     {
         STLSOFT_ASSERT(is_valid());
 
         return m_map.rbegin();
     }
-    /// A non-mutating (const) iterator representing the end of the reverse sequence
+    /// A non-mutating (const) iterator representing the end of the reverse
+    /// sequence
+    ///
+    /// @note This method will not instantiate when the class template is
+    ///  specialised for unordered storage
     const_reverse_iterator rend() const
     {
         STLSOFT_ASSERT(is_valid());
@@ -353,39 +519,59 @@ public: // Iteration
         return m_map.rend();
     }
 
-private:
-    bool is_valid() const
+    /// A non-mutating (const) iterator representing the start of the
+    /// reverse sequence
+    ///
+    /// @note This method will not instantiate when the class template is
+    ///  specialised for unordered storage
+    const_reverse_iterator crbegin() const
+    {
+        return rbegin();
+    }
+    /// A non-mutating (const) iterator representing the end of the reverse
+    /// sequence
+    ///
+    /// @note This method will not instantiate when the class template is
+    ///  specialised for unordered storage
+    const_reverse_iterator crend() const
+    {
+        return rend();
+    }
+
+private: // implementation
+    bool is_valid() const STLSOFT_NOEXCEPT
     {
         return m_map.empty() == (0u == m_total);
     }
 
-private: // Member Variables
+private: // fields
     map_type_   m_map;
     count_type  m_total;
 };
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * operators
  */
 
 template<
-    ss_typename_param_k T
-,   ss_typename_param_k N
-,   ss_typename_param_k P
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_traits
 >
 inline
-frequency_map<T, N, P>
+frequency_map<T_value, T_traits>
 operator +(
-    frequency_map<T, N, P> const& lhs
-,   frequency_map<T, N, P> const& rhs
+    frequency_map<T_value, T_traits> const& lhs
+,   frequency_map<T_value, T_traits> const& rhs
 )
 {
-    frequency_map<T, N, P> r(lhs);
+    frequency_map<T_value, T_traits> r(lhs);
 
     r += rhs;
 
     return r;
 }
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * swapping
@@ -394,19 +580,18 @@ operator +(
 #if !defined(STLSOFT_COMPILER_IS_WATCOM)
 
 template<
-    ss_typename_param_k T
-,   ss_typename_param_k N
-,   ss_typename_param_k P
+    ss_typename_param_k T_value
+,   ss_typename_param_k T_traits
 >
 inline void swap(
-    frequency_map<T, N, P>& lhs
-,   frequency_map<T, N, P>& rhs
+    frequency_map<T_value, T_traits>& lhs
+,   frequency_map<T_value, T_traits>& rhs
 )
 {
     lhs.swap(rhs);
 }
-
 #endif /* compiler */
+
 
 /* ////////////////////////////////////////////////////////////////////// */
 
@@ -421,13 +606,12 @@ namespace std
 # if !defined(STLSOFT_COMPILER_IS_MSVC) || \
        _MSC_VER >= 1310
     template<
-        ss_typename_param_k T
-    ,   ss_typename_param_k N
-    ,   ss_typename_param_k P
+        ss_typename_param_k T_value
+    ,   ss_typename_param_k T_traits
     >
     inline void swap(
-        STLSOFT_NS_QUAL(frequency_map)<T, N, P>& lhs
-    ,   STLSOFT_NS_QUAL(frequency_map)<T, N, P>& rhs
+        STLSOFT_NS_QUAL(frequency_map)<T_value, T_traits>& lhs
+    ,   STLSOFT_NS_QUAL(frequency_map)<T_value, T_traits>& rhs
     )
     {
         lhs.swap(rhs);
@@ -436,6 +620,7 @@ namespace std
 
 } /* namespace std */
 #endif /* STLSOFT_CF_std_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

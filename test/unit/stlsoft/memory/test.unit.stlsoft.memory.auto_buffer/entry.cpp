@@ -207,8 +207,8 @@ static void test_copy_from()
 
     int const ints[] = { -5, -4, -3, -2, -1, 0, 1, 2, 3, 4 };
 
-    ab_int_8_t  buff(STLSOFT_NUM_ELEMENTS(ints));
-    auto const& cbuff = buff;
+    ab_int_8_t          buff(STLSOFT_NUM_ELEMENTS(ints));
+    ab_int_8_t const&   cbuff = buff;
 
     assert(buff.size() >= STLSOFT_NUM_ELEMENTS(ints));
     std::copy(

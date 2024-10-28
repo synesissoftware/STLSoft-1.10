@@ -1,18 +1,15 @@
 
-add_executable(test.unit.stlsoft.string.string_view
+add_executable(test.unit.stlsoft.containers.frequency_map
 	entry.cpp
 )
 
-target_link_libraries(test.unit.stlsoft.string.string_view
+target_link_libraries(test.unit.stlsoft.containers.frequency_map
 	$<IF:$<VERSION_LESS:${xTests_VERSION},"0.23">,xTests::xTests.core,xTests::core>
 )
 
-target_compile_options(test.unit.stlsoft.string.string_view PRIVATE
+target_compile_options(test.unit.stlsoft.containers.frequency_map PRIVATE
 	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
 		-Werror -Wall -Wextra -pedantic
-
-		-Wno-unused-function
-		-Wno-unused-value
 
 		${GCC_WARN_NO_cxx11_long_long}
 	>

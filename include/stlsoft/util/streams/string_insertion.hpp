@@ -4,7 +4,7 @@
  * Purpose:     Contains equivalents to contents of std's <utility>.
  *
  * Created:     29th January 2024
- * Updated:     30th January 2024
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -52,8 +52,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_MAJOR    1
 # define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_MINOR    0
-# define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_REVISION 1
-# define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_EDIT     1
+# define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_REVISION 2
+# define STLSOFT_VER_STLSOFT_UTIL_STREAMS_HPP_STRING_INSERTION_EDIT     2
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -74,6 +74,12 @@
 #ifndef STLSOFT_INCL_STLSOFT_ALGORITHM_STD_HPP_ALT
 # include <stlsoft/algorithms/std/alt.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_ALGORITHM_STD_HPP_ALT */
+#ifndef STLSOFT_INCL_STLSOFT_META_DETECTOR_HPP_HAS_SENTRY
+# include <stlsoft/meta/detector/has_sentry.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_META_DETECTOR_HPP_HAS_SENTRY */
+#ifndef STLSOFT_INCL_STLSOFT_META_HPP_YESNO
+# include <stlsoft/meta/yesno.hpp>
+#endif /* !STLSOFT_INCL_STLSOFT_META_HPP_YESNO */
 #ifndef STLSOFT_INCL_STLSOFT_UTIL_HPP_MINMAX
 # include <stlsoft/util/minmax.hpp>
 #endif /* !STLSOFT_INCL_STLSOFT_UTIL_HPP_MINMAX */
@@ -82,6 +88,7 @@
 # define STLSOFT_INCL_IOS
 # include <ios>
 #endif /* !STLSOFT_INCL_IOS */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * namespace
@@ -93,6 +100,7 @@ namespace stlsoft
 namespace util
 {
 #endif /* STLSOFT_NO_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * functions
@@ -128,11 +136,10 @@ template <
 >
 inline
 void
-string_insert_4_(
+string_insert_3_common_(
     T_character const*              s
 ,   ss_size_t                       cch
 ,   T_stream&                       stm
-,   std::basic_ios<T_character>*
 )
 {
     T_character const   c_fill  =   stm.fill();
@@ -152,7 +159,7 @@ string_insert_4_(
 
         if (!is_right_justified)
         {
-            stm.write(s, static_cast<ss_streamoff_t>(cch));
+            string_insert_3_(s, cch, stm);
         }
 
         // do padding
@@ -160,9 +167,10 @@ string_insert_4_(
         {
             T_character padding[256];
 
-            std_fill_n(padding, STLSOFT_NUM_ELEMENTS(padding), c_fill);
+            ss_size_t       num_to_write    =   n_width - cch;
+            ss_size_t const num_pad         =   STLSOFT_NS_QUAL(minimum(num_to_write, STLSOFT_NUM_ELEMENTS(padding)));
 
-            ss_size_t num_to_write = n_width - cch;
+            std_fill_n(padding, num_pad, c_fill);
 
             for ( ; 0 != num_to_write; )
             {
@@ -179,6 +187,94 @@ string_insert_4_(
             string_insert_3_(s, cch, stm);
         }
     }
+}
+
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k T_character
+>
+inline
+void
+string_insert_5_(
+    T_character const*              s
+,   ss_size_t                       cch
+,   T_stream&                       stm
+,   std::basic_ios<T_character>*
+,   yes_type
+)
+{
+    ss_typename_type_k T_stream::sentry sentry(stm);
+
+    if (!sentry)
+    {
+        // TODO: should throw?
+
+        stm.setstate(std::ios_base::failbit);
+    }
+    else
+    {
+        string_insert_3_common_(
+            s
+        ,   cch
+        ,   stm
+        );
+
+        stm.width(0);
+    }
+}
+
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k T_character
+>
+inline
+void
+string_insert_5_(
+    T_character const*              s
+,   ss_size_t                       cch
+,   T_stream&                       stm
+,   std::basic_ios<T_character>*
+,   no_type
+)
+{
+    std::ios_base::fmtflags const flags = stm.flags();
+
+    string_insert_3_common_(
+        s
+    ,   cch
+    ,   stm
+    );
+
+    stm.fill('\0');
+    stm.width(0);
+    stm.flags(flags);
+}
+
+template <
+    ss_typename_param_k T_stream
+,   ss_typename_param_k T_character
+>
+inline
+void
+string_insert_4_(
+    T_character const*              s
+,   ss_size_t                       cch
+,   T_stream&                       stm
+,   std::basic_ios<T_character>*    ios_
+)
+{
+    // sentry
+    enum { has_member_sentry = 0 != has_sentry<T_stream>::value };
+
+    typedef ss_typename_type_k value_to_yesno_type<has_member_sentry>::type has_sentry_yesno_t;
+
+    string_insert_5_(
+        s
+    ,   cch
+    ,   stm
+    ,   ios_
+    ,   has_sentry_yesno_t()
+    );
 }
 
 template <
@@ -204,11 +300,22 @@ string_insert_4_(
 #endif /* STLSOFT_NO_NAMESPACE */
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * functions
  */
 
-
+/** T.B.C.
+ *
+ * \tparam T_stream The stream type
+ * \tparam T_character The character type
+ *
+ * \param stm The stream instance, into which to insert
+ * \param s The string to insert
+ * \param cch The number of characters to insert
+ *
+ * \return \c stm
+ */
 template <
     ss_typename_param_k T_stream
 ,   ss_typename_param_k T_character
@@ -229,6 +336,16 @@ string_insert(
     );
 }
 
+/** T.B.C.
+ *
+ * \tparam T_stream The stream type
+ *
+ * \param stm The stream instance, into which to insert
+ * \param s The multibyte string to insert
+ * \param cch The number of characters to insert
+ *
+ * \return \c stm
+ */
 template <
     ss_typename_param_k T_stream
 >
@@ -248,6 +365,16 @@ string_insert_m(
     );
 }
 
+/** T.B.C.
+ *
+ * \tparam T_stream The stream type
+ *
+ * \param stm The stream instance, into which to insert
+ * \param s The wide string to insert
+ * \param cch The number of characters to insert
+ *
+ * \return \c stm
+ */
 template <
     ss_typename_param_k T_stream
 >
@@ -267,12 +394,14 @@ string_insert_w(
     );
 }
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef STLSOFT_NO_NAMESPACE
 } /* namespace util */
 } /* namespace stlsoft */
 #endif /* STLSOFT_NO_NAMESPACE */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * inclusion control

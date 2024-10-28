@@ -215,7 +215,7 @@ static void test_copy()
     {
         char dest[26 + 1] = { 0 };
 
-        auto n = alphabet.copy(&dest[0], 26);
+        size_t n = alphabet.copy(&dest[0], 26);
         dest[26] = '\0';
 
         XTESTS_TEST_INTEGER_EQUAL(26, n);
@@ -225,7 +225,7 @@ static void test_copy()
     {
         char dest[20 + 1] = { 0 };
 
-        auto n = alphabet.copy(&dest[0], 20);
+        size_t n = alphabet.copy(&dest[0], 20);
         dest[20] = '\0';
 
         XTESTS_TEST_INTEGER_EQUAL(20, n);
@@ -235,7 +235,7 @@ static void test_copy()
     {
         char dest[20 + 1] = { 0 };
 
-        auto n = alphabet.copy(&dest[0], 20, 6);
+        size_t n = alphabet.copy(&dest[0], 20, 6);
         dest[20] = '\0';
 
         XTESTS_TEST_INTEGER_EQUAL(20, n);
@@ -245,7 +245,7 @@ static void test_copy()
     {
         char dest[10 + 1] = { 0 };
 
-        auto n = alphabet.copy(&dest[0], 20, 16);
+        size_t n = alphabet.copy(&dest[0], 20, 16);
         dest[10] = '\0';
 
         XTESTS_TEST_INTEGER_EQUAL(10, n);

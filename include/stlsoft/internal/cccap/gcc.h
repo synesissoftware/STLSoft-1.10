@@ -4,14 +4,14 @@
  * Purpose:     Compiler feature discrimination for GNU C/C++.
  *
  * Created:     7th February 2003
- * Updated:     13th December 2013
+ * Updated:     12th February 2024
  *
  * Thanks:      To Sergey Nikulov, for PowerPC (BSD) compatibility fixes;
  *              wiluite for MinGW 64-bit compatibility.
  *
  * Home:        http://stlsoft.org/
  *
- * Copyright (c) 2019-2023, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2019-2024, Matthew Wilson and Synesis Information Systems
  * Copyright (c) 2003-2019, Matthew Wilson and Synesis Software
  * All rights reserved.
  *
@@ -59,14 +59,16 @@
 # error This file cannot be included more than once in any compilation unit
 #endif /* STLSOFT_INCL_H_STLSOFT_CCCAP_GCC */
 
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MAJOR      3
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      30
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   2
-# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       112
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_MINOR      31
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_REVISION   1
+# define STLSOFT_VER_H_STLSOFT_CCCAP_GCC_EDIT       113
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * Structure:
@@ -120,6 +122,7 @@
         (STLSOFT_INTERNAL_GCC_PATCHLEVEL_   * 1)            \
     )
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * preprocessor features
  *
@@ -160,6 +163,7 @@
 # define STLSOFT_PPF_VARIADIC_MACROS_SUPPORT
 #endif /* compiler */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * compiler-specific features
  *
@@ -170,6 +174,7 @@
 #if STLSOFT_GCC_VER >= 40200
 # define STLSOFT_CF_gcc_pragma_diagnostic_pop
 #endif /* compiler */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * support for built-in types
@@ -204,6 +209,7 @@
 
 #define STLSOFT_CF_BUILTIN___int64_SUPPORT
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * built-in type characteristics
  *
@@ -220,6 +226,7 @@
 #ifdef STLSOFT_CF_BUILTIN_wchar_t_SUPPORT
 # define STLSOFT_CF_NATIVE_WCHAR_T_SUPPORT
 #endif /* STLSOFT_CF_BUILTIN_wchar_t_SUPPORT */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * support for C/C++ language features
@@ -238,6 +245,7 @@
 
 #define STLSOFT_CF_NEGATIVE_MODULUS_POSITIVE_GIVES_NEGATIVE_RESULT
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for C language features
  *
@@ -250,6 +258,7 @@
 
 # define STLSOFT_CUSTOM_C_INLINE                            static inline
 #endif
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * support for C++ language features - 1
@@ -366,6 +375,7 @@
 #define STLSOFT_CF_OPERATOR_BOOL_AS_OPERATOR_POINTER_TO_MEMBER_SUPPORT
 #define STLSOFT_CF_OPERATOR_NOT_VIA_OPERATOR_POINTER_TO_MEMBER_SUPPORT
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * support for C++ language features - 2
  *
@@ -453,6 +463,7 @@
 # define STLSOFT_CF_VARIADIC_TEMPLATE_SUPPORT
 #endif /* compiler */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * inline assembler
  */
@@ -460,9 +471,11 @@
 /* #define STSLSOFT_INLINE_ASM_SUPPORTED */
 /* #define STSLSOFT_ASM_IN_INLINE_SUPPORTED */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * linkage specification
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * atomics support
@@ -471,6 +484,7 @@
 #if STLSOFT_GCC_VER >= 40700
 # define STLSOFT_CF_SUPPORT_ATOMIC_GCC_BUILTINS
 #endif
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * calling convention
@@ -513,6 +527,7 @@
 
 #endif /* !unix && !__unix__ */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * integer sizes
  */
@@ -551,6 +566,7 @@
 #else /* ? data model */
 # error Use of GCC has not been verified with any memory model other than LP64 and LLP64. Please contact Synesis Software
 #endif /* data model */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * size-specific integer types
@@ -601,6 +617,11 @@
 #define STLSOFT_SI64_T_BASE_TYPE                            signed      long long
 #define STLSOFT_UI64_T_BASE_TYPE                            unsigned    long long
 
+/* ptr-bit integer */
+#define STLSOFT_SPTR_T_BASE_TYPE                            __INTPTR_TYPE__
+#define STLSOFT_UPTR_T_BASE_TYPE                            __UINTPTR_TYPE__
+
+
 /* /////////////////////////////////////////////////////////////////////////
  * still-to-be-determined features
  */
@@ -634,6 +655,7 @@
 /* Shims are supported?
  */
 /* #define STLSOFT_CF_TEMPLATE_SHIMS_NOT_SUPPORTED */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * quality assurance features
@@ -678,15 +700,18 @@
 # define STLSOFT_ASSERT(expr)                               assert(expr)
 #endif /* _STLSOFT_CUSTOM_ASSERT */
 
+
 /* /////////////////////////////////////////////////////////////////////////
  * compiler warning suppression
  */
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * obsolete features
  */
 
 #include <stlsoft/internal/cccap/obsolete.h>
+
 
 /* ///////////////////////////// end of file //////////////////////////// */
 

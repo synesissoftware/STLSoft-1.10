@@ -5,16 +5,28 @@
 ## STLSoft 1.10.x TODOs:
 
  * centralise `mbstowcs`/`mbstowcs_s` and `wcstombs`/`wcstombs_s` in single function
- * final filesystem fixes (found during testing of [**recls**](https://github.com/synesissoftware/recls) 1.10's significantly improved functionality)
+ * ~~final filesystem fixes (found during testing of [**recls**](https://github.com/synesissoftware/recls) 1.10's significantly improved functionality)~~ - ✅
  * have `basic_path_buffer` use pre and post eye-catcher (`STLSOFT_DEBUG`-only)
  * take down https://github.com/synesissoftware/STLSoft-1.10-delta
  * update the downloads on SourceForge
  * flesh out [**README.md**](./README.md)
  * sort the SourceForge site
- * ~~CMake~~
+ * ~~CMake~~ - ✅
  * VC++ common makefile(s)
  * STLSoft 1.10-related blog posts (focusing on new components)
- * apply `stlsoft::unit::string_insert()` to UNIXSTL/WinSTL `basic_path<>`
+ * ~~apply `stlsoft::unit::string_insert()` to UNIXSTL/WinSTL `basic_path<>`~~ - ✅
+ * `invoke_ACE_OS_snprintf` should be implemented in terms of `stlsoft_C_snprintf()`
+ * `invalid_integral_range_policy::operator ()` should be implemented in terms of `stlsoft_C_snprintf()`
+ * ~~C++ 11/14/17/20 compatibility - partial~~ - ✅
+ * optimise `char_traits<>` and/or `pod_fill_n()` block operations (e.g. in terms of `mem***()`)
+ * standard names of integer-to-string and string-to-integer to allow for coming enhancements for multiple bases
+ * `stlsoft::auto_buffer<>::copy_from()` should be template and work with other instances (with different `V_internalSize`)
+ * GitHub README.md image features - version, build, etc;
+ * hash specialisations for all possible key types (incl. `stlsoft::basic_simple_string<>`, etc.);
+ * better documentation markup for `stlsoft::translate_thousands()`, `stlsoft::format_thousands()`, `stlsoft::integer_to_lc_string()`, `winstl::format_thousands()`, ...
+ * apply `stlsoft::string_insert()` to **WinSTL** time type shims;
+ * fix Doxygen build;
+
 
 
 ## STLSoft 1.11+ TODOs:
@@ -29,12 +41,12 @@
  * find all `STLSOFT_USING_SAFE_STR_FUNCTIONS` and abstract all code to worker functions
  * canonicalise all exception messages - consistency, lower-case, etc.
  * memory-mapped-file class minor issues
- * integrate STLSoft's exception-hierarchies with new standard exception design
+ * integrate **STLSoft**'s exception-hierarchies with new standard exception design
  * C++ 11/14/17/20 compatibility - partial; further coming in 1.12
  * bring in platformstl::properties_file from 1.12 project
  * further system_traits refactoring:
-   - joining common code via CRTP
-   - abstracting out string stuff (into stlsoft::)
+   - joining common code via **CRTP**
+   - abstracting out string stuff (into `stlsoft::`)
    - sorting the "safe-string" stuff
  * Documentation improvements
  * Website - currenty http://stlsoft.org/ is *VERY* out of date

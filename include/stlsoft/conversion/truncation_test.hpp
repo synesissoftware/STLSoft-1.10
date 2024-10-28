@@ -4,7 +4,7 @@
  * Purpose:     Runtime checking for numeric conversions.
  *
  * Created:     10th August 2006
- * Updated:     22nd January 2024
+ * Updated:     16th February 2024
  *
  * Home:        http://stlsoft.org/
  *
@@ -53,8 +53,8 @@
 #ifndef STLSOFT_DOCUMENTATION_SKIP_SECTION
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_MAJOR      1
 # define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_MINOR      1
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_REVISION   10
-# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_EDIT       67
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_REVISION   11
+# define STLSOFT_VER_STLSOFT_CONVERSION_HPP_TRUNCATION_TEST_EDIT       68
 #endif /* !STLSOFT_DOCUMENTATION_SKIP_SECTION */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -350,7 +350,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed_FROM_smallerth
     STLSOFT_SUPPRESS_UNUSED(sizeofFROM);
     STLSOFT_SUPPRESS_UNUSED(sizeofTO);
 
-    typedef ss_typename_param_k value_to_yesno_type<sizeofTO < sizeofFROM>::type  FROM_largerthan_TO_yesno_t;
+    typedef ss_typename_type_k value_to_yesno_type<sizeofTO < sizeofFROM>::type FROM_largerthan_TO_yesno_t;
 
     return truncation_test_helper_runtime_test_different_sign_FROM_is_signed_FROM_largerthan_TO(from, FROM_largerthan_TO_yesno_t(), T_to());
 }
@@ -404,7 +404,7 @@ truncation_test_helper_runtime_test_different_sign_FROM_is_signed(
         return false;
     }
 
-    typedef ss_typename_param_k value_to_yesno_type<sizeofFROM < sizeofTO>::type  FROM_smallerthan_TO_yesno_t;
+    typedef ss_typename_type_k value_to_yesno_type<sizeofFROM < sizeofTO>::type FROM_smallerthan_TO_yesno_t;
 
     return truncation_test_helper_runtime_test_different_sign_FROM_is_signed_FROM_smallerthan_TO(from, FROM_smallerthan_TO_yesno_t(), T_to());
 }
@@ -542,7 +542,7 @@ truncation_test_helper_runtime_test_same_sign(
 
     STLSOFT_STATIC_ASSERT((0 == int(TO_is_signed)) != (0 == int(FROM_is_signed)));
 
-    typedef ss_typename_param_k value_to_yesno_type<FROM_is_signed>::type  same_sign_yesno_t;
+    typedef ss_typename_type_k value_to_yesno_type<FROM_is_signed>::type    same_sign_yesno_t;
 
     return truncation_test_helper_runtime_test_different_sign_FROM_is_signed<T_to>(from, same_sign_yesno_t(), T_to());
 }
@@ -586,7 +586,7 @@ truncation_test_helper_runtime_test(
     STLSOFT_SUPPRESS_UNUSED(sizeofTO);
     STLSOFT_SUPPRESS_UNUSED(sizeofFROM);
 
-    typedef ss_typename_param_k value_to_yesno_type<types_have_same_sign>::type  same_sign_yesno_t;
+    typedef ss_typename_type_k value_to_yesno_type<types_have_same_sign>::type  same_sign_yesno_t;
 
     return truncation_test_helper_runtime_test_same_sign<T_to>(from, same_sign_yesno_t(), T_to());
 }
@@ -660,7 +660,7 @@ truncation_test_(
                                                 (   !FROM_is_signed &&
                                                     sizeofFROM < sizeofTO)  };
 
-    typedef ss_typename_param_k value_to_yesno_type<types_are_statically_compatible>::type  yesno_t;
+    typedef ss_typename_type_k value_to_yesno_type<types_are_statically_compatible>::type   yesno_t;
 
 # if defined(STLSOFT_COMPILER_IS_MSVC) && \
      defined(_Wp64) && \
