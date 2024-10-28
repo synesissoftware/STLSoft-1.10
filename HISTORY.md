@@ -4,6 +4,12 @@
 ----
 
 
+28th October 2024 - 1.10.12 released
+------------------------------------
+
+ * project boilerplate updated (in line with STLSoft-1.11)
+
+
 16th February 2024 - 1.10.11 released
 -------------------------------------
 

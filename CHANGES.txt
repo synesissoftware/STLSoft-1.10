@@ -17,6 +17,13 @@ STLSoft - Changes
    **************************************
 
 
+Changes for 1.10.12 (28th October 2024)
+
+ * project boilerplate updated (in line with STLSoft-1.11)
+
+
+============================================================================
+
 Changes for 1.10.11 (16th February 2024)
 
 General:
