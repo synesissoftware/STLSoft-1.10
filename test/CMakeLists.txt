@@ -15,12 +15,6 @@ if(UNIX)
     add_definitions(-Dunix)
 endif()
 
-if(WIN32)
-
-    message(FATAL_ERROR "Use of CMake on Windows not currently supported")
-endif()
-
-
 set(GCC_WARN_NO_cxx11_long_long "")
 if("${CMAKE_CXX_STANDARD}" STREQUAL "98")
 

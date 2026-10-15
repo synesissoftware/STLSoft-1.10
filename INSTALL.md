@@ -1,5 +1,17 @@
 # STLSoft - Install <!-- omit in toc -->
 
+
+> **Semi-frozen / maintenance**
+>
+> **STLSoft-1.10** is a historical, maintenance-only line. It remains available for
+> consumers that must stay on the 1.10 API (for example compatibility matrices),
+> but all **new development** and **new consumers** MUST use
+> **[synesissoftware/STLSoft](https://github.com/synesissoftware/STLSoft)** (tip).
+> Feature work belongs on tip; this repository only receives recognition and
+> packaging fixes required by historical consumers.
+
+----
+
 ## Table of Contents <!-- omit in toc -->
 
 - [Installing](#installing)
@@ -123,6 +135,17 @@ This project comes with a number of scripts useful for building with **CMake**, 
 | **clean_cmake.sh**            | Executes **CMake**-generated artefacts to clean project.<br/><br/>Performs a (re)build, meaningful only once `prepare_cmake.sh` has been run once to generate all the **CMake** build artefacts and a build has been run.<br/><br/>Use `./clean_cmake.sh --help` for further information. |
 | **run_all_unit_tests.sh**     | Runs all (matching) unit-test programs.<br/><br/>Performs a build and then recursively runs and executes all (excutable programs) matching the shell patterns `test_*` and `test.*`.<br/><br/>Use `./run_all_unit_tests.sh --help` for further information. |
 | **remove_cmake_artefacts.sh** | Removes all known **CMake** artefacts.<br/><br/>Removes all known **CMake** build artefacts from the build directory (currently hard-coded to `./_build`) to prepare for complete regeneration using `prepare_cmake.sh`.<br/><br/>Use `./remove_cmake_artefacts.sh --help` for further information. |
+
+
+
+## Compile smoke (recognition)
+
+When CMake testing is enabled, the scratch suite includes:
+
+* `test.scratch.smoke.c` — C header / compiler recognition;
+* `test.scratch.smoke.cpp` — C++ headers, standard-library discrimination, and a platform header;
+
+Build them with the project CMake build (for example after `./prepare_cmake.sh` and `./build_cmake.sh`), then run the scratch runner, or build the targets directly. These programs are compile/link smokes that return 0; they exist to catch MSVC / CRT recognition regressions on modern toolchains.
 
 
 <!-- ########################### end of file ########################### -->

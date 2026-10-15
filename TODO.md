@@ -1,5 +1,24 @@
 # STLSoft - TODO
 
+
+> **Semi-frozen / maintenance**
+>
+> **STLSoft-1.10** is a historical, maintenance-only line. It remains available for
+> consumers that must stay on the 1.10 API (for example compatibility matrices),
+> but all **new development** and **new consumers** MUST use
+> **[synesissoftware/STLSoft](https://github.com/synesissoftware/STLSoft)** (tip).
+> Feature work belongs on tip; this repository only receives recognition and
+> packaging fixes required by historical consumers.
+
+----
+
+
+## Maintenance policy
+
+* Feature work and new consumers belong on **[synesissoftware/STLSoft](https://github.com/synesissoftware/STLSoft)** (tip).
+* This 1.10 line is **semi-frozen**: recognition / packaging / helper fixes for historical consumers only. No CI is maintained on this line.
+
+
 **NOTE**: some of the following are very old, stretching back even into the 2000s, so this list will be updated a lot over the coming months. The most glaring of these is to ensure compatiblity with C++-14/17/20 as is necessary.
 
 ## STLSoft 1.10.x TODOs:

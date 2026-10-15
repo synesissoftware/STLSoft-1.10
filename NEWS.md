@@ -1,8 +1,21 @@
 # STLSoft - News
 
 
+
+> **Semi-frozen / maintenance**
+>
+> **STLSoft-1.10** is a historical, maintenance-only line. It remains available for
+> consumers that must stay on the 1.10 API (for example compatibility matrices),
+> but all **new development** and **new consumers** MUST use
+> **[synesissoftware/STLSoft](https://github.com/synesissoftware/STLSoft)** (tip).
+> Feature work belongs on tip; this repository only receives recognition and
+> packaging fixes required by historical consumers.
+
+----
+
 | Date                  | News Item                                                 |
 | --------------------- | --------------------------------------------------------- |
+| 15th October 2026     |   Release of STLSoft 1.10.13                              |
 | 28th October 2024     |   Release of STLSoft 1.10.12                              |
 | 16th February 2024    |   Release of STLSoft 1.10.11                              |
 | 16th February 2024    |   Release of STLSoft 1.10.10                              |

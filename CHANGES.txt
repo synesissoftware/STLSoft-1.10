@@ -2,7 +2,7 @@
 STLSoft - Changes
 
 ; Created:  29th March 2002
-; Updated:  14th February 2024
+; Updated:  15th October 2026
 
 ============================================================================
 
@@ -15,6 +15,20 @@ STLSoft - Changes
    *   *  means a general bullet-point  *
    *                                    *
    **************************************
+
+
+Changes for 1.10.13 (15th October 2026)
+
+General:
+========
+
+ * Semi-frozen / maintenance status: redirect all new work to synesissoftware/STLSoft (tip);
+ * Visual C++ recognition: extend known bands through 18.x; unknown-newer toolsets warn via #pragma message and continue (no #error);
+ * Standard-library recognition: accept modern MSVC STL via _YVALS_CORE_H_ alongside the classic _ITERATOR_/_UTILITY_/_XSTDDEF_ trio;
+ * Helper scripts / CMake: .sis project identity; Windows CMake test tree no longer hard-fails; minimal compile smoke targets;
+
+
+============================================================================
 
 
 Changes for 1.10.12 (28th October 2024)
